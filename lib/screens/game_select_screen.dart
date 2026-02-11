@@ -2,17 +2,105 @@ import 'package:flutter/material.dart';
 
 import '../theme/orbit_theme.dart';
 import '../storage/app_settings_store.dart';
+import '../storage/update_store.dart';
 import 'mode_select_screen.dart';
 import 'fortnite_hub_screen.dart';
 import 'settings_screen.dart';
 
-class GameSelectScreen extends StatelessWidget {
+class GameSelectScreen extends StatefulWidget {
   final AppSettingsStore settings;
+  final UpdateStore updateStore;
 
-  const GameSelectScreen({super.key, required this.settings});
+  const GameSelectScreen({
+    super.key,
+    required this.settings,
+    required this.updateStore,
+  });
+
+  @override
+  State<GameSelectScreen> createState() => _GameSelectScreenState();
+}
+
+class _GameSelectScreenState extends State<GameSelectScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Popup nach dem ersten Frame (damit context safe ist)
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Wenn Check noch nicht gelaufen ist: kurz warten/auslösen
+      // (bei dir wird updateStore.check() schon in main() gestartet)
+      if (widget.updateStore.shouldShowPopup) {
+        await _showUpdateDialog();
+      }
+    });
+
+    // Wenn UpdateStore später erst "updateAvailable=true" bekommt,
+    // wollen wir ebenfalls einmal poppen:
+    widget.updateStore.addListener(_maybeShowPopupOnUpdate);
+  }
+
+  @override
+  void dispose() {
+    widget.updateStore.removeListener(_maybeShowPopupOnUpdate);
+    super.dispose();
+  }
+
+  Future<void> _maybeShowPopupOnUpdate() async {
+    if (!mounted) return;
+    if (widget.updateStore.shouldShowPopup) {
+      await _showUpdateDialog();
+    }
+  }
+
+  Future<void> _showUpdateDialog() async {
+    widget.updateStore.markPopupShown();
+
+    final notes = (widget.updateStore.notes ?? '').trim();
+
+    await showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Update verfügbar ✅'),
+        content: Text(
+          'Aktuell: ${widget.updateStore.current}\n'
+          'Neu: ${widget.updateStore.latest}'
+          '${notes.isNotEmpty ? '\n\n' + notes : ''}',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Später'),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(ctx);
+
+              // optional: kleiner Loader
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Update wird geladen…')),
+              );
+
+              try {
+                await widget.updateStore.downloadAndInstall();
+              } catch (e) {
+                if (!mounted) return;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Update fehlgeschlagen: $e')),
+                );
+              }
+            },
+            child: const Text('Jetzt installieren'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final hasUpdate = widget.updateStore.updateAvailable;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: OrbitBackground(
@@ -23,33 +111,53 @@ class GameSelectScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 6),
+
+                // Header + Settings Button rechts
                 Row(
                   children: [
                     const Icon(Icons.public, size: 22),
                     const SizedBox(width: 10),
-                    Text(
-                      'Orbit',
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.w800,
-                          ),
+                    Expanded(
+                      child: Text(
+                        'Orbit',
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.w800,
+                            ),
+                      ),
                     ),
-                    const Spacer(),
 
-                    // ✅ Settings Button
-                    IconButton(
-                      tooltip: 'Einstellungen',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => SettingsScreen(settings: settings),
+                    // Mini "Update Punkt" am Settings Icon, wenn Update da ist
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        IconButton(
+                          tooltip: 'Einstellungen',
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => SettingsScreen(settings: widget.settings),
+                            ),
                           ),
-                        );
-                      },
-                      icon: const Icon(Icons.settings),
+                          icon: const Icon(Icons.settings),
+                        ),
+                        if (hasUpdate)
+                          Positioned(
+                            right: 10,
+                            top: 10,
+                            child: Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color: Colors.greenAccent.withOpacity(0.95),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ],
                 ),
+
                 const SizedBox(height: 14),
                 Text(
                   'Wähle ein Spiel',
@@ -64,20 +172,16 @@ class GameSelectScreen extends StatelessWidget {
                     children: [
                       _GameCard(
                         title: 'Fortnite',
-                        subtitle:
-                            'Aufgaben abhaken • Season-Countdown • Item-Shop (bald)',
+                        subtitle: 'Aufgaben abhaken • Season-Countdown • Item-Shop (bald)',
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => const FortniteHubScreen(),
-                          ),
+                          MaterialPageRoute(builder: (_) => const FortniteHubScreen()),
                         ),
                       ),
                       const SizedBox(height: 14),
                       _GameCard(
                         title: 'Call of Duty: Black Ops 7',
-                        subtitle:
-                            'Aufgaben (Soon) • Steam Erfolge • Countdowns (Soon)',
+                        subtitle: 'Aufgaben (Soon) • Steam Erfolge • Countdowns (Soon)',
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -145,7 +249,6 @@ class _GameCard extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: 8),
-
               Text(
                 subtitle,
                 maxLines: 2,
@@ -154,19 +257,16 @@ class _GameCard extends StatelessWidget {
                       color: Colors.white70,
                     ),
               ),
-
               const Spacer(),
               Row(
                 children: [
-                  const Icon(Icons.calendar_today,
-                      size: 18, color: Colors.white70),
+                  const Icon(Icons.calendar_today, size: 18, color: Colors.white70),
                   const SizedBox(width: 8),
                   Text(
                     'Orbit Tracker',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.copyWith(color: Colors.white70),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white70,
+                        ),
                   ),
                   const Spacer(),
                   const Icon(Icons.chevron_right, size: 28),

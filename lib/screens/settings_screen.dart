@@ -5,12 +5,19 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../storage/app_settings_store.dart';
+import '../storage/update_store.dart';
+import '../services/in_app_update_service.dart';
 import '../theme/orbit_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
   final AppSettingsStore settings;
+  final UpdateStore updateStore;
 
-  const SettingsScreen({super.key, required this.settings});
+  const SettingsScreen({
+    super.key,
+    required this.settings,
+    required this.updateStore,
+  });
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -18,6 +25,11 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
+
+  // Download UI
+  bool _downloading = false;
+  int _recv = 0;
+  int _total = -1;
 
   @override
   void initState() {
@@ -34,12 +46,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.black.withOpacity(0.45), // macht unten dunkler
+      barrierColor: Colors.black.withOpacity(0.45),
       isScrollControlled: true,
       builder: (_) => _DesignPickerSheet(settings: widget.settings),
     );
 
-    // wenn du nach dem Schließen nochmal neu zeichnen willst:
     if (mounted) setState(() {});
   }
 
@@ -49,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (ctx) => AlertDialog(
         title: const Text('Alles zurücksetzen?'),
         content: const Text(
-          'Das setzt alles zurück (z.B. Häkchen und gespeicherte Einstellungen).',
+          'Das setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen)',
         ),
         actions: [
           TextButton(
@@ -80,9 +91,109 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  Future<void> _checkUpdates() async {
+    try {
+      await widget.updateStore.check();
+      if (!mounted) return;
+
+      if (widget.updateStore.updateAvailable) {
+        final latest = widget.updateStore.latest ?? 'unbekannt';
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Update verfügbar: $latest')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Du bist auf dem neuesten Stand ✅')),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Update-Check fehlgeschlagen: $e')),
+      );
+    }
+  }
+
+  String _progressText() {
+    if (_total <= 0) return 'Lade herunter…';
+    final p = (_recv / _total * 100).clamp(0, 100).toStringAsFixed(0);
+    return 'Lade herunter… $p%';
+    }
+
+  Future<void> _installUpdate() async {
+    final r = widget.updateStore.result;
+    final url = r?.url;
+
+    if (r == null || url == null || url.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Kein Update-Link gefunden ❌')),
+      );
+      return;
+    }
+
+    setState(() {
+      _downloading = true;
+      _recv = 0;
+      _total = -1;
+    });
+
+    try {
+      await InAppUpdateService.downloadAndInstallApk(
+        apkUrl: url,
+        onProgress: (recv, total) {
+          if (!mounted) return;
+          setState(() {
+            _recv = recv;
+            _total = total;
+          });
+        },
+      );
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Installer geöffnet ✅')),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Update Download/Installation fehlgeschlagen ❌\n'
+            'Tipp: Erlaube „Unbekannte Apps installieren“ für Orbit.\n$e',
+          ),
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() => _downloading = false);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentDesignName = OrbitTheme.displayName(widget.settings.darkTheme);
+
+    final checking = widget.updateStore.checking;
+
+    final hasResult = widget.updateStore.result != null;
+    final updateAvailable = widget.updateStore.updateAvailable;
+    final result = widget.updateStore.result;
+
+    String updateSubtitle;
+    if (_downloading) {
+      updateSubtitle = _progressText();
+    } else if (checking) {
+      updateSubtitle = 'Suche…';
+    } else if (hasResult) {
+      if (updateAvailable) {
+        updateSubtitle = 'Update verfügbar: ${result!.latest}';
+      } else {
+        updateSubtitle = 'App ist aktuell ✅';
+      }
+    } else {
+      updateSubtitle = 'Tippe zum Prüfen';
+    }
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -126,7 +237,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
               const SizedBox(height: 10),
 
-              // ✅ Design auswählen (statt "Design-Modus" + extra Dark-Button)
+              _Tile(
+                icon: Icons.system_update_alt,
+                title: 'Nach Updates suchen',
+                subtitle: updateSubtitle,
+                trailing: (_downloading || checking)
+                    ? const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.refresh, size: 22),
+                onTap: (_downloading || checking) ? null : _checkUpdates,
+              ),
+
+              if (!_downloading && !checking && updateAvailable && result != null)
+                ...[
+                  const SizedBox(height: 10),
+                  _Tile(
+                    icon: Icons.download,
+                    title: 'Update installieren',
+                    subtitle: 'APK herunterladen & installieren',
+                    trailing: const Icon(Icons.chevron_right, size: 24),
+                    onTap: _installUpdate,
+                  ),
+                ],
+
+              const SizedBox(height: 10),
+
               _Tile(
                 icon: Icons.palette_outlined,
                 title: 'Design',
@@ -143,7 +281,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _Tile(
                 icon: Icons.delete_outline,
                 title: 'Daten löschen',
-                subtitle: 'Setzt alles zurück (z.B. Häkchen & Einstellungen)',
+                subtitle: 'Setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen)',
                 trailing: const Icon(Icons.chevron_right, size: 24),
                 onTap: _resetAll,
               ),
@@ -160,9 +298,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 trailing: const Icon(Icons.chevron_right, size: 24),
                 onTap: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Sprache bauen wir als nächstes rein 🙂'),
-                    ),
+                    const SnackBar(content: Text('Bald kann man die Sprache ändern!🙂')),
                   );
                 },
               ),
@@ -198,14 +334,13 @@ class _DesignPickerSheet extends StatelessWidget {
             24 + MediaQuery.of(context).padding.bottom,
           ),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.50), // "cremig"
+            color: Colors.black.withOpacity(0.50),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
             border: Border.all(color: Colors.white.withOpacity(0.10)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Drag Handle
               Container(
                 width: 44,
                 height: 4,
@@ -215,7 +350,6 @@ class _DesignPickerSheet extends StatelessWidget {
                   borderRadius: BorderRadius.circular(999),
                 ),
               ),
-
               Row(
                 children: [
                   Expanded(
@@ -232,9 +366,7 @@ class _DesignPickerSheet extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 10),
-
               ...OrbitDarkTheme.values.map((t) {
                 final isSelected = t == selected;
                 return _DesignOption(
@@ -246,7 +378,6 @@ class _DesignPickerSheet extends StatelessWidget {
                   },
                 );
               }).toList(),
-
               const SizedBox(height: 10),
               Text(
                 'Bald mehr Designs 👀',
@@ -301,8 +432,7 @@ class _DesignOption extends StatelessWidget {
                     ),
               ),
             ),
-            if (selected)
-              const Icon(Icons.check_circle, color: Colors.white),
+            if (selected) const Icon(Icons.check_circle, color: Colors.white),
           ],
         ),
       ),

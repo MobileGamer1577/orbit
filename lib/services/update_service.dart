@@ -4,10 +4,10 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class UpdateResult {
   final bool updateAvailable;
-  final String current;
-  final String latest;
+  final String current; // z.B. 0.1.0-beta+1
+  final String latest;  // z.B. 0.1.1-beta+2
   final String? notes;
-  final String? url;
+  final String? url; // download oder release url
 
   UpdateResult({
     required this.updateAvailable,
@@ -19,27 +19,35 @@ class UpdateResult {
 }
 
 class UpdateService {
-  /// ✅ HIER TRÄGST DU DEINE RAW JSON URL EIN (siehe Schritt B)
+  /// ✅ Orbit Update JSON (RAW)
+  /// Datei kommt ins Repo: /update/orbit.json
   static const String updateJsonUrl =
-      'https://raw.githubusercontent.com/DEINNAME/DEINREPO/main/update/orbit.json';
+  'https://raw.githubusercontent.com/MobileGamer1577/orbit/main/update/orbit.json';
 
   static Future<UpdateResult> checkForUpdates() async {
     final info = await PackageInfo.fromPlatform();
-    final current = '${info.version}+${info.buildNumber}';
 
-    final res = await http.get(Uri.parse(updateJsonUrl));
+    final current = _fullVersion(info.version, info.buildNumber);
+
+    final res = await http.get(Uri.parse(updateJsonUrl), headers: {
+      'Accept': 'application/json',
+      'User-Agent': 'Orbit-App',
+      'Cache-Control': 'no-cache',
+    });
+
     if (res.statusCode < 200 || res.statusCode >= 300) {
       throw Exception('HTTP ${res.statusCode}');
     }
 
     final data = jsonDecode(res.body) as Map<String, dynamic>;
-    final latestVersion = (data['latest'] ?? '').toString().trim();
-    final latestBuild = (data['build'] ?? '').toString().trim();
-    final notes = (data['notes'] ?? '').toString().trim();
-    final url = (data['url'] ?? '').toString().trim();
+
+    final latestVersion = (data['latest'] ?? '').toString().trim(); // z.B. 0.1.0-beta
+    final latestBuild = (data['build'] ?? '').toString().trim();    // z.B. 2
+    final notesRaw = (data['notes'] ?? '').toString().trim();
+    final urlRaw = (data['url'] ?? '').toString().trim();
 
     if (latestVersion.isEmpty) {
-      throw Exception('Update JSON: latest fehlt');
+      throw Exception('Update JSON: "latest" fehlt');
     }
 
     final latest = latestBuild.isNotEmpty ? '$latestVersion+$latestBuild' : latestVersion;
@@ -55,10 +63,18 @@ class UpdateService {
       updateAvailable: updateAvailable,
       current: current,
       latest: latest,
-      notes: notes.isEmpty ? null : notes,
-      url: url.isEmpty ? null : url,
+      notes: notesRaw.isEmpty ? null : notesRaw,
+      url: urlRaw.isEmpty ? null : urlRaw,
     );
   }
+
+  static String _fullVersion(String version, String buildNumber) {
+    final v = version.trim();
+    final b = buildNumber.trim();
+    // Wenn buildNumber = "0" oder leer, zeigen wir ohne + an
+    if (b.isEmpty || b == '0') return v;
+    return '$v+$b';
+    }
 
   static bool _isNewerVersion({
     required String currentVersion,
@@ -70,19 +86,19 @@ class UpdateService {
     if (vCmp < 0) return true; // latestVersion ist höher
     if (vCmp > 0) return false;
 
-    // Version gleich -> Build vergleichen (falls vorhanden)
+    // Version gleich -> Build vergleichen
     final cB = int.tryParse(currentBuild) ?? 0;
     final lB = int.tryParse(latestBuild) ?? 0;
     return lB > cB;
   }
 
-  /// Vergleicht sowas wie:
+  /// Vergleicht z.B.:
   /// 0.1.0-beta < 0.1.1-beta < 0.1.1
   static int _compareSemverLike(String a, String b) {
     final pa = _parse(a);
     final pb = _parse(b);
 
-    // 1) 3 Zahlen vergleichen
+    // 1) Zahlen vergleichen
     for (int i = 0; i < 3; i++) {
       if (pa.nums[i] != pb.nums[i]) {
         return pa.nums[i] < pb.nums[i] ? -1 : 1;
@@ -95,7 +111,7 @@ class UpdateService {
       if (!pa.isPre && pb.isPre) return 1;
     }
 
-    // 3) beide prerelease -> tag vergleichen
+    // 3) beide prerelease -> tag vergleichen (alpha < beta < rc)
     return pa.preTag.compareTo(pb.preTag);
   }
 
@@ -116,11 +132,12 @@ class UpdateService {
     while (nums.length < 3) nums.add(0);
     if (nums.length > 3) nums.removeRange(3, nums.length);
 
-    // prerelease ranking
+    // prerelease ranking string
     String tag;
-    if (pre.startsWith('beta')) tag = '0-beta';
-    else if (pre.startsWith('rc')) tag = '1-rc';
-    else if (pre.isNotEmpty) tag = '2-$pre';
+    if (pre.startsWith('alpha')) tag = '0-alpha';
+    else if (pre.startsWith('beta')) tag = '1-beta';
+    else if (pre.startsWith('rc')) tag = '2-rc';
+    else if (pre.isNotEmpty) tag = '3-$pre';
     else tag = '9-stable';
 
     return _V(nums: nums, isPre: pre.isNotEmpty, preTag: tag);
