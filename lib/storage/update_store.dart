@@ -9,6 +9,9 @@ import '../services/update_service.dart';
 class UpdateStore extends ChangeNotifier {
   bool isChecking = false;
 
+  // ✅ kompatibel mit Screens, die "checking" erwarten
+  bool get checking => isChecking;
+
   bool updateAvailable = false;
   String current = '';
   String latest = '';
@@ -17,14 +20,9 @@ class UpdateStore extends ChangeNotifier {
 
   String? error;
 
-  UpdateResult? _result;
-  UpdateResult? get result => _result;
-
-  bool get checking => isChecking;
-
   bool _popupShownThisRun = false;
 
-  /// Wird beim App-Start oder per Button aufgerufen
+  /// Wird beim App-Start aufgerufen
   Future<void> check() async {
     if (isChecking) return;
     isChecking = true;
@@ -32,17 +30,14 @@ class UpdateStore extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final r = await UpdateService.checkForUpdates();
-      _result = r;
-
-      updateAvailable = r.updateAvailable;
-      current = r.current;
-      latest = r.latest;
-      notes = r.notes;
-      url = r.url;
+      final result = await UpdateService.checkForUpdates();
+      updateAvailable = result.updateAvailable;
+      current = result.current;
+      latest = result.latest;
+      notes = result.notes;
+      url = result.url;
     } catch (e) {
       error = e.toString();
-      _result = null;
     } finally {
       isChecking = false;
       notifyListeners();
@@ -51,11 +46,12 @@ class UpdateStore extends ChangeNotifier {
 
   /// Damit das Popup nicht bei jedem Screen-Rebuild wiederkommt
   bool get shouldShowPopup => updateAvailable && !_popupShownThisRun;
+
   void markPopupShown() {
     _popupShownThisRun = true;
   }
 
-  /// APK runterladen und Installer öffnen (ohne Progressbar)
+  /// APK runterladen und Installer öffnen
   Future<void> downloadAndInstall() async {
     final u = (url ?? '').trim();
     if (u.isEmpty) {
