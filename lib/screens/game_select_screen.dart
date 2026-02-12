@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
+import '../theme/orbit_theme.dart';
+
 import 'mode_select_screen.dart';
 import 'settings_screen.dart';
 
@@ -21,154 +23,140 @@ class GameSelectScreen extends StatefulWidget {
 
 class _GameSelectScreenState extends State<GameSelectScreen> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _maybeShowUpdatePopup();
+  }
 
-    // Popup nur einmal pro App-Start (wenn Update verfügbar)
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+  void _maybeShowUpdatePopup() {
+    if (!widget.updateStore.shouldShowPopup) return;
+
+    widget.updateStore.markPopupShown();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (!mounted) return;
 
-      if (widget.updateStore.shouldShowPopup) {
-        widget.updateStore.markPopupShown();
+      final latest = widget.updateStore.latest;
+      final notes = widget.updateStore.notes;
+      final url = widget.updateStore.url;
 
-        showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-            title: const Text('Update verfügbar 🎉'),
-            content: Text(
-              'Aktuell: ${widget.updateStore.current}\n'
-              'Neu: ${widget.updateStore.latest}\n\n'
-              '${widget.updateStore.notes ?? ''}',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(ctx),
-                child: const Text('Später'),
-              ),
-              TextButton(
-                onPressed: () async {
-                  Navigator.pop(ctx);
-                  try {
-                    await widget.updateStore.downloadAndInstall();
-                  } catch (e) {
-                    if (!mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Update fehlgeschlagen: $e')),
-                    );
-                  }
-                },
-                child: const Text('Installieren'),
-              ),
-            ],
+      await showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Update verfügbar'),
+          content: Text(
+            'Neue Version: $latest\n\n'
+            '${(notes ?? '').trim().isEmpty ? '' : 'Infos:\n$notes\n\n'}'
+            'Jetzt installieren?',
           ),
-        );
-      }
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Später'),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.pop(ctx);
+                if (url == null || url.trim().isEmpty) return;
+
+                try {
+                  await widget.updateStore.downloadAndInstall();
+                } catch (e) {
+                  if (!mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Update fehlgeschlagen: $e')),
+                  );
+                }
+              },
+              child: const Text('Installieren'),
+            ),
+          ],
+        ),
+      );
     });
+  }
+
+  void _openSettings() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => SettingsScreen(
+          settings: widget.settings,
+          updateStore: widget.updateStore,
+        ),
+      ),
+    );
+  }
+
+  void _openTracker({
+    required String gameId,
+    required String gameTitle,
+  }) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ModeSelectScreen(
+          gameId: gameId,
+          gameTitle: gameTitle,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final hasUpdate = widget.updateStore.updateAvailable;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  const Expanded(
-                    child: Text(
-                      'Orbit',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                  Stack(
-                    children: [
-                      IconButton(
-                        tooltip: 'Einstellungen',
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => SettingsScreen(
-                              settings: widget.settings,
-                              updateStore: widget.updateStore, // ✅ FIX
-                            ),
-                          ),
-                        ),
-                        icon: const Icon(Icons.settings),
-                      ),
-                      if (hasUpdate)
-                        Positioned(
-                          right: 10,
-                          top: 10,
-                          child: Container(
-                            width: 10,
-                            height: 10,
-                            decoration: const BoxDecoration(
-                              color: Colors.redAccent,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 14,
-                  mainAxisSpacing: 14,
+      body: OrbitBackground(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Top Bar (wie Bild 2)
+                Row(
                   children: [
-                    _GameCard(
-                      title: 'Fortnite',
-                      subtitle: 'Quests / Fortschritt',
-                      icon: Icons.videogame_asset,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => ModeSelectScreen(
-                            title: 'Fortnite',
-                            modes: const ['Battle Royale'],
-                            jsonFiles: const ['assets/data/fortnite_br.json'],
-                            settings: widget.settings,
+                    const Icon(Icons.public, size: 22),
+                    const SizedBox(width: 10),
+                    Text(
+                      'Orbit',
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.w900,
                           ),
-                        ),
-                      ),
                     ),
-                    _GameCard(
-                      title: 'BO7',
-                      subtitle: 'Erfolge / Checklisten',
-                      icon: Icons.sports_esports,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => ModeSelectScreen(
-                            title: 'BO7',
-                            modes: const ['MP', 'Zombies', 'Warzone', 'Koop Endspiel'],
-                            jsonFiles: const [
-                              'assets/data/bo7_mp.json',
-                              'assets/data/bo7_zombies.json',
-                              'assets/data/bo7_warzone.json',
-                              'assets/data/bo7_koop_endspiel.json',
-                            ],
-                            settings: widget.settings,
-                          ),
-                        ),
-                      ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: _openSettings,
+                      icon: const Icon(Icons.settings),
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  'Wähle ein Spiel',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white70,
+                      ),
+                ),
+                const SizedBox(height: 22),
+
+                // Fortnite Block
+                _GameBlock(
+                  title: 'Fortnite',
+                  subtitle: 'Aufgaben abhaken • Season-Countdown • Item-Shop (bald)',
+                  onTap: () => _openTracker(gameId: 'fortnite', gameTitle: 'Fortnite'),
+                ),
+
+                const SizedBox(height: 20),
+
+                // BO7 Block
+                _GameBlock(
+                  title: 'Call of Duty: Black Ops 7',
+                  subtitle: 'Aufgaben (Soon) • Steam Erfolge • Countdowns (Soon)',
+                  onTap: () => _openTracker(gameId: 'bo7', gameTitle: 'BO7'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -176,53 +164,75 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   }
 }
 
-class _GameCard extends StatelessWidget {
+class _GameBlock extends StatelessWidget {
   final String title;
   final String subtitle;
-  final IconData icon;
   final VoidCallback onTap;
 
-  const _GameCard({
+  const _GameBlock({
     required this.title,
     required this.subtitle,
-    required this.icon,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: onTap,
-      child: Ink(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white.withOpacity(0.06),
-          border: Border.all(color: Colors.white.withOpacity(0.08)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(icon, size: 34),
-            const Spacer(),
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(fontWeight: FontWeight.w900),
+    return Container(
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.06),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: Colors.white.withOpacity(0.08)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            subtitle,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(color: Colors.white70),
+          ),
+          const SizedBox(height: 14),
+
+          InkWell(
+            borderRadius: BorderRadius.circular(18),
+            onTap: onTap,
+            child: Ink(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.06),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: Colors.white.withOpacity(0.08)),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.calendar_month_outlined,
+                      color: Colors.white.withOpacity(0.9)),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Orbit Tracker',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white70,
+                          ),
+                    ),
+                  ),
+                  const Icon(Icons.chevron_right, size: 26),
+                ],
+              ),
             ),
-            const SizedBox(height: 6),
-            Text(
-              subtitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: Colors.white70),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

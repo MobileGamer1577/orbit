@@ -14,12 +14,10 @@ Future<void> main() async {
   await Hive.openBox('settings');
 
   final settings = await AppSettingsStore.create();
-  settings.reloadFromBox(); // sorgt dafür, dass OrbitTheme.currentDarkTheme gesetzt ist
+  settings.reloadFromBox();
 
   final updateStore = UpdateStore();
-  // ✅ Start-Check (läuft einmal beim Start)
-  // Wenn kein Internet/WLAN: error wird gesetzt, aber App läuft normal weiter.
-  updateStore.check();
+  updateStore.check(); // Start-Check
 
   runApp(OrbitApp(settings: settings, updateStore: updateStore));
 }
@@ -36,15 +34,16 @@ class OrbitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ✅ Nur settings triggert App-Rebuild (Theme/Design)
     return AnimatedBuilder(
-      animation: Listenable.merge([settings, updateStore]),
+      animation: settings,
       builder: (_, __) {
         return MaterialApp(
           title: 'Orbit',
           debugShowCheckedModeBanner: false,
           theme: OrbitTheme.light(),
           darkTheme: OrbitTheme.dark(),
-          themeMode: ThemeMode.dark, // App bleibt dark
+          themeMode: ThemeMode.dark,
           home: GameSelectScreen(settings: settings, updateStore: updateStore),
         );
       },

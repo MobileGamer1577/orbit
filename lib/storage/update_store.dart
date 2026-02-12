@@ -17,9 +17,14 @@ class UpdateStore extends ChangeNotifier {
 
   String? error;
 
+  UpdateResult? _result;
+  UpdateResult? get result => _result;
+
+  bool get checking => isChecking;
+
   bool _popupShownThisRun = false;
 
-  /// Wird beim App-Start aufgerufen
+  /// Wird beim App-Start oder per Button aufgerufen
   Future<void> check() async {
     if (isChecking) return;
     isChecking = true;
@@ -27,14 +32,17 @@ class UpdateStore extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final result = await UpdateService.checkForUpdates();
-      updateAvailable = result.updateAvailable;
-      current = result.current;
-      latest = result.latest;
-      notes = result.notes;
-      url = result.url;
+      final r = await UpdateService.checkForUpdates();
+      _result = r;
+
+      updateAvailable = r.updateAvailable;
+      current = r.current;
+      latest = r.latest;
+      notes = r.notes;
+      url = r.url;
     } catch (e) {
       error = e.toString();
+      _result = null;
     } finally {
       isChecking = false;
       notifyListeners();
@@ -47,14 +55,13 @@ class UpdateStore extends ChangeNotifier {
     _popupShownThisRun = true;
   }
 
-  /// APK runterladen und Installer öffnen
+  /// APK runterladen und Installer öffnen (ohne Progressbar)
   Future<void> downloadAndInstall() async {
     final u = (url ?? '').trim();
     if (u.isEmpty) {
       throw Exception('Keine Update-URL vorhanden.');
     }
 
-    // Download
     final res = await http.get(Uri.parse(u));
     if (res.statusCode < 200 || res.statusCode >= 300) {
       throw Exception('Download fehlgeschlagen (HTTP ${res.statusCode})');
@@ -62,7 +69,6 @@ class UpdateStore extends ChangeNotifier {
 
     final dir = await getApplicationDocumentsDirectory();
 
-    // Dateiname sauber wählen
     final fileName = _fileNameFromUrl(u).isNotEmpty
         ? _fileNameFromUrl(u)
         : 'orbit-update.apk';
@@ -70,10 +76,8 @@ class UpdateStore extends ChangeNotifier {
     final file = File('${dir.path}/$fileName');
     await file.writeAsBytes(res.bodyBytes, flush: true);
 
-    // Installer öffnen
     final r = await OpenFilex.open(file.path);
 
-    // Falls Android blockt, kommt hier oft "permission denied" o.ä.
     if (kDebugMode) {
       // ignore: avoid_print
       print('OpenFilex result: ${r.type} / ${r.message}');

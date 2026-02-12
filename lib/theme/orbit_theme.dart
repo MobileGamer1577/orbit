@@ -25,6 +25,23 @@ class OrbitTheme {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF7C4DFF),
           brightness: Brightness.light,
+
+
+          static ThemeData light() => ThemeData(
+  useMaterial3: true,
+  brightness: Brightness.light,
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: FadeSlidePageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    },
+  ),
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: const Color(0xFF7C4DFF),
+    brightness: Brightness.light,
+  ),
+);
+
         ),
       );
 
@@ -40,6 +57,24 @@ class OrbitTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: seed,
         brightness: Brightness.dark,
+
+
+
+        return ThemeData(
+  useMaterial3: true,
+  brightness: Brightness.dark,
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: FadeSlidePageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    },
+  ),
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: seed,
+    brightness: Brightness.dark,
+  ),
+);
+
       ),
     );
   }

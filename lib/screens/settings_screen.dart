@@ -1,11 +1,11 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
+import '../services/in_app_update_service.dart';
 import '../theme/orbit_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -25,7 +25,10 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
 
-  bool _installing = false;
+  // Download UI
+  bool _downloading = false;
+  int _recv = 0;
+  int _total = -1;
 
   @override
   void initState() {
@@ -35,6 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _loadVersion() async {
     final info = await PackageInfo.fromPlatform();
+    // zeigt bei dir z.B. 0.1.0-beta+1
     setState(() => _versionText = '${info.version}+${info.buildNumber}');
   }
 
@@ -56,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (ctx) => AlertDialog(
         title: const Text('Alles zurücksetzen?'),
         content: const Text(
-          'Das setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen).',
+          'Das setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen)',
         ),
         actions: [
           TextButton(
@@ -91,10 +95,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await widget.updateStore.check();
     if (!mounted) return;
 
-    final err = widget.updateStore.error;
-    if (err != null && err.isNotEmpty) {
+    if (widget.updateStore.error != null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Update-Check fehlgeschlagen: $err')),
+        SnackBar(content: Text('Update-Check fehlgeschlagen: ${widget.updateStore.error}')),
       );
       return;
     }
@@ -110,28 +113,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  String _progressText() {
+    if (_total <= 0) return 'Lade herunter…';
+    final p = (_recv / _total * 100).clamp(0, 100).toStringAsFixed(0);
+    return 'Lade herunter… $p%';
+  }
+
   Future<void> _installUpdate() async {
-    if (_installing) return;
+    final url = (widget.updateStore.url ?? '').trim();
 
-    if (!widget.updateStore.updateAvailable) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Kein Update verfügbar ✅')),
-      );
-      return;
-    }
-
-    final u = (widget.updateStore.url ?? '').trim();
-    if (u.isEmpty) {
+    if (url.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Kein Update-Link gefunden ❌')),
       );
       return;
     }
 
-    setState(() => _installing = true);
+    setState(() {
+      _downloading = true;
+      _recv = 0;
+      _total = -1;
+    });
 
     try {
-      await widget.updateStore.downloadAndInstall();
+      await InAppUpdateService.downloadAndInstallApk(
+        apkUrl: url,
+        onProgress: (recv, total) {
+          if (!mounted) return;
+          setState(() {
+            _recv = recv;
+            _total = total;
+          });
+        },
+      );
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -142,13 +156,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Update fehlgeschlagen ❌\n'
+            'Update Download/Installation fehlgeschlagen ❌\n'
             'Tipp: Erlaube „Unbekannte Apps installieren“ für Orbit.\n$e',
           ),
         ),
       );
     } finally {
-      if (mounted) setState(() => _installing = false);
+      if (mounted) setState(() => _downloading = false);
     }
   }
 
@@ -157,19 +171,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final currentDesignName = OrbitTheme.displayName(widget.settings.darkTheme);
 
     final checking = widget.updateStore.isChecking;
+    final hasCheckedOnce = widget.updateStore.current.isNotEmpty || widget.updateStore.latest.isNotEmpty;
     final updateAvailable = widget.updateStore.updateAvailable;
 
     String updateSubtitle;
-    if (_installing) {
-      updateSubtitle = 'Installiere…';
+    if (_downloading) {
+      updateSubtitle = _progressText();
     } else if (checking) {
       updateSubtitle = 'Suche…';
-    } else if (widget.updateStore.current.isNotEmpty) {
-      if (updateAvailable) {
-        updateSubtitle = 'Update verfügbar: ${widget.updateStore.latest}';
-      } else {
-        updateSubtitle = 'App ist aktuell ✅';
-      }
+    } else if (widget.updateStore.error != null) {
+      updateSubtitle = 'Fehler: Tippe zum erneuten Prüfen';
+    } else if (hasCheckedOnce) {
+      updateSubtitle = updateAvailable
+          ? 'Update verfügbar: ${widget.updateStore.latest}'
+          : 'App ist aktuell ✅';
     } else {
       updateSubtitle = 'Tippe zum Prüfen';
     }
@@ -220,26 +235,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 icon: Icons.system_update_alt,
                 title: 'Nach Updates suchen',
                 subtitle: updateSubtitle,
-                trailing: (_installing || checking)
+                trailing: (_downloading || checking)
                     ? const SizedBox(
                         width: 18,
                         height: 18,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Icon(Icons.refresh, size: 22),
-                onTap: (_installing || checking) ? null : _checkUpdates,
+                onTap: (_downloading || checking) ? null : _checkUpdates,
               ),
 
-              if (!_installing && !checking && updateAvailable) ...[
-                const SizedBox(height: 10),
-                _Tile(
-                  icon: Icons.download,
-                  title: 'Update installieren',
-                  subtitle: 'APK herunterladen & installieren',
-                  trailing: const Icon(Icons.chevron_right, size: 24),
-                  onTap: _installUpdate,
-                ),
-              ],
+              if (!_downloading && !checking && updateAvailable)
+                ...[
+                  const SizedBox(height: 10),
+                  _Tile(
+                    icon: Icons.download,
+                    title: 'Update installieren',
+                    subtitle: 'APK herunterladen & installieren',
+                    trailing: const Icon(Icons.chevron_right, size: 24),
+                    onTap: _installUpdate,
+                  ),
+                ],
 
               const SizedBox(height: 10),
 
@@ -259,7 +275,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _Tile(
                 icon: Icons.delete_outline,
                 title: 'Daten löschen',
-                subtitle: 'Setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen)',
+                subtitle: 'Setzt alles zurück (z.B. Abgeschlossene Aufgaben & Einstellungen)',
                 trailing: const Icon(Icons.chevron_right, size: 24),
                 onTap: _resetAll,
               ),
