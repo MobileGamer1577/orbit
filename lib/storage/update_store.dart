@@ -12,8 +12,13 @@ class UpdateStore extends ChangeNotifier {
   String latest = '';
   String? notes;
 
-  /// ✅ Immer Release-Seite (keine APK-URL mehr)
+  /// 👉 Neue Release-Seite (GitHub)
   String releaseUrl = UpdateService.githubLatestReleaseUrl;
+
+  /// ✅ WICHTIG:
+  /// Alte UI benutzt noch `updateStore.url`
+  /// Deshalb behalten wir diesen Getter zur Kompatibilität
+  String? get url => releaseUrl;
 
   String? error;
 
@@ -46,8 +51,8 @@ class UpdateStore extends ChangeNotifier {
     _popupShownThisRun = true;
   }
 
-  /// ✅ Früher: APK runterladen & Installer öffnen
-  /// Jetzt: Nur GitHub Release-Seite öffnen (manueller Download)
+  /// ❌ Früher: APK downloaden & installieren
+  /// ✅ Jetzt: Nur GitHub Release-Seite öffnen
   Future<void> downloadAndInstall() async {
     await openLatestReleasePage();
   }
@@ -55,9 +60,11 @@ class UpdateStore extends ChangeNotifier {
   Future<bool> openLatestReleasePage() async {
     final uri = Uri.parse(releaseUrl);
     final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+
     if (!ok) {
       throw Exception('Konnte GitHub Release-Seite nicht öffnen.');
     }
+
     return ok;
   }
 }
