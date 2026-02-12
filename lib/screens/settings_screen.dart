@@ -1,11 +1,11 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
-import '../services/in_app_update_service.dart';
 import '../theme/orbit_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -25,11 +25,6 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
 
-  // Download UI
-  bool _downloading = false;
-  int _recv = 0;
-  int _total = -1;
-
   @override
   void initState() {
     super.initState();
@@ -38,7 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _loadVersion() async {
     final info = await PackageInfo.fromPlatform();
-    // zeigt bei dir z.B. 0.1.0-beta+1
+    if (!mounted) return;
     setState(() => _versionText = '${info.version}+${info.buildNumber}');
   }
 
@@ -46,40 +41,72 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.black.withOpacity(0.45),
       isScrollControlled: true,
-      builder: (_) => _DesignPickerSheet(settings: widget.settings),
+      builder: (ctx) {
+        return Padding(
+          padding: const EdgeInsets.all(14),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(22),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.55),
+                  borderRadius: BorderRadius.circular(22),
+                  border: Border.all(color: Colors.white.withOpacity(0.10)),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.palette, color: Colors.white),
+                        const SizedBox(width: 10),
+                        Text(
+                          'Dark Design',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(fontWeight: FontWeight.w900),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 14),
+                    ...OrbitDarkTheme.values.map((t) {
+                      final selected = widget.settings.darkTheme == t;
+                      return _OptionTile(
+                        title: OrbitTheme.displayName(t),
+                        selected: selected,
+                        onTap: () async {
+                          await widget.settings.setDarkTheme(t);
+                          if (ctx.mounted) Navigator.of(ctx).pop();
+                        },
+                      );
+                    }),
+                    const SizedBox(height: 6),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
-
-    if (mounted) setState(() {});
   }
 
-  Future<void> _resetAll() async {
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Alles zurücksetzen?'),
-        content: const Text(
-          'Das setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen)',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Abbrechen'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Zurücksetzen'),
-          ),
-        ],
-      ),
+  Future<void> _resetTasks() async {
+    final box = await Hive.openBox('task_state');
+    await box.clear();
+
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Fortschritt zurückgesetzt ✅')),
     );
+  }
 
-    if (ok != true) return;
-
-    final taskBox = await Hive.openBox('task_state');
-    await taskBox.clear();
-
+  Future<void> _resetSettings() async {
     final settingsBox = await Hive.openBox('settings');
     await settingsBox.clear();
 
@@ -87,7 +114,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Alles zurückgesetzt ✅')),
+      const SnackBar(content: Text('Einstellungen zurückgesetzt ✅')),
     );
   }
 
@@ -97,7 +124,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     if (widget.updateStore.error != null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Update-Check fehlgeschlagen: ${widget.updateStore.error}')),
+        SnackBar(
+          content: Text('Update-Check fehlgeschlagen: ${widget.updateStore.error}'),
+        ),
       );
       return;
     }
@@ -113,56 +142,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  String _progressText() {
-    if (_total <= 0) return 'Lade herunter…';
-    final p = (_recv / _total * 100).clamp(0, 100).toStringAsFixed(0);
-    return 'Lade herunter… $p%';
-  }
-
-  Future<void> _installUpdate() async {
-    final url = (widget.updateStore.url ?? '').trim();
-
-    if (url.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Kein Update-Link gefunden ❌')),
-      );
-      return;
-    }
-
-    setState(() {
-      _downloading = true;
-      _recv = 0;
-      _total = -1;
-    });
-
+  Future<void> _openGithubLatest() async {
     try {
-      await InAppUpdateService.downloadAndInstallApk(
-        apkUrl: url,
-        onProgress: (recv, total) {
-          if (!mounted) return;
-          setState(() {
-            _recv = recv;
-            _total = total;
-          });
-        },
-      );
-
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Installer geöffnet ✅')),
-      );
+      await widget.updateStore.openLatestReleasePage();
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Update Download/Installation fehlgeschlagen ❌\n'
-            'Tipp: Erlaube „Unbekannte Apps installieren“ für Orbit.\n$e',
-          ),
-        ),
+        SnackBar(content: Text('Konnte GitHub nicht öffnen ❌\n$e')),
       );
-    } finally {
-      if (mounted) setState(() => _downloading = false);
     }
   }
 
@@ -171,216 +158,119 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final currentDesignName = OrbitTheme.displayName(widget.settings.darkTheme);
 
     final checking = widget.updateStore.isChecking;
-    final hasCheckedOnce = widget.updateStore.current.isNotEmpty || widget.updateStore.latest.isNotEmpty;
+    final hasCheckedOnce = widget.updateStore.current.isNotEmpty ||
+        widget.updateStore.latest.isNotEmpty ||
+        widget.updateStore.error != null;
     final updateAvailable = widget.updateStore.updateAvailable;
 
     String updateSubtitle;
-    if (_downloading) {
-      updateSubtitle = _progressText();
-    } else if (checking) {
+    if (checking) {
       updateSubtitle = 'Suche…';
     } else if (widget.updateStore.error != null) {
-      updateSubtitle = 'Fehler: Tippe zum erneuten Prüfen';
-    } else if (hasCheckedOnce) {
-      updateSubtitle = updateAvailable
-          ? 'Update verfügbar: ${widget.updateStore.latest}'
-          : 'App ist aktuell ✅';
+      updateSubtitle = 'Fehler beim Check';
+    } else if (!hasCheckedOnce) {
+      updateSubtitle = 'Noch nicht geprüft';
+    } else if (updateAvailable) {
+      updateSubtitle = 'Update verfügbar: ${widget.updateStore.latest}';
     } else {
-      updateSubtitle = 'Tippe zum Prüfen';
+      updateSubtitle = 'Aktuell ✅';
     }
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: OrbitBackground(
-        child: SafeArea(
-          child: ListView(
+    return OrbitBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text('Einstellungen'),
+        ),
+        body: SafeArea(
+          child: Padding(
             padding: const EdgeInsets.all(16),
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back),
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: Text(
-                      'Einstellungen',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(fontWeight: FontWeight.w800),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 14),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const _SectionTitle(title: 'Allgemein'),
+                const SizedBox(height: 10),
 
-              _SectionTitle(title: 'Allgemein'),
-              const SizedBox(height: 10),
-
-              _Tile(
-                icon: Icons.info_outline,
-                title: 'App-Version',
-                subtitle: _versionText,
-                trailing: const SizedBox.shrink(),
-                onTap: null,
-              ),
-
-              const SizedBox(height: 10),
-
-              _Tile(
-                icon: Icons.system_update_alt,
-                title: 'Nach Updates suchen',
-                subtitle: updateSubtitle,
-                trailing: (_downloading || checking)
-                    ? const SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : const Icon(Icons.refresh, size: 22),
-                onTap: (_downloading || checking) ? null : _checkUpdates,
-              ),
-
-              if (!_downloading && !checking && updateAvailable)
-                ...[
-                  const SizedBox(height: 10),
-                  _Tile(
-                    icon: Icons.download,
-                    title: 'Update installieren',
-                    subtitle: 'APK herunterladen & installieren',
-                    trailing: const Icon(Icons.chevron_right, size: 24),
-                    onTap: _installUpdate,
-                  ),
-                ],
-
-              const SizedBox(height: 10),
-
-              _Tile(
-                icon: Icons.palette_outlined,
-                title: 'Design',
-                subtitle: currentDesignName,
-                trailing: const Icon(Icons.chevron_right, size: 24),
-                onTap: _openDesignPicker,
-              ),
-
-              const SizedBox(height: 18),
-
-              _SectionTitle(title: 'Wartung'),
-              const SizedBox(height: 10),
-
-              _Tile(
-                icon: Icons.delete_outline,
-                title: 'Daten löschen',
-                subtitle: 'Setzt alles zurück (z.B. Abgeschlossene Aufgaben & Einstellungen)',
-                trailing: const Icon(Icons.chevron_right, size: 24),
-                onTap: _resetAll,
-              ),
-
-              const SizedBox(height: 18),
-
-              _SectionTitle(title: 'Sprachen (später)'),
-              const SizedBox(height: 10),
-
-              _Tile(
-                icon: Icons.language,
-                title: 'Sprache',
-                subtitle: 'Deutsch (später umstellbar)',
-                trailing: const Icon(Icons.chevron_right, size: 24),
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Bald kann man die Sprache ändern!🙂')),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// =========================
-/// Cremiges Design-Auswahl Menü (BottomSheet)
-/// =========================
-class _DesignPickerSheet extends StatelessWidget {
-  final AppSettingsStore settings;
-
-  const _DesignPickerSheet({required this.settings});
-
-  @override
-  Widget build(BuildContext context) {
-    final selected = settings.darkTheme;
-
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-        child: Container(
-          padding: EdgeInsets.fromLTRB(
-            16,
-            18,
-            16,
-            24 + MediaQuery.of(context).padding.bottom,
-          ),
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.50),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-            border: Border.all(color: Colors.white.withOpacity(0.10)),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 44,
-                height: 4,
-                margin: const EdgeInsets.only(bottom: 16),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.28),
-                  borderRadius: BorderRadius.circular(999),
+                _Tile(
+                  icon: Icons.info_outline,
+                  title: 'Version',
+                  subtitle: _versionText,
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  onTap: null,
                 ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Design auswählen',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w900,
-                          ),
+                const SizedBox(height: 10),
+
+                _Tile(
+                  icon: Icons.palette_outlined,
+                  title: 'Dark Design',
+                  subtitle: currentDesignName,
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  onTap: _openDesignPicker,
+                ),
+
+                const SizedBox(height: 18),
+                const _SectionTitle(title: 'Updates'),
+                const SizedBox(height: 10),
+
+                _Tile(
+                  icon: Icons.system_update_alt,
+                  title: 'Update-Status',
+                  subtitle: updateSubtitle,
+                  trailing: checking
+                      ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.chevron_right, color: Colors.white70),
+                  onTap: _checkUpdates,
+                ),
+                const SizedBox(height: 10),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: checking ? null : _checkUpdates,
+                        icon: const Icon(Icons.refresh),
+                        label: const Text('Check'),
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              ...OrbitDarkTheme.values.map((t) {
-                final isSelected = t == selected;
-                return _DesignOption(
-                  title: OrbitTheme.displayName(t),
-                  selected: isSelected,
-                  onTap: () {
-                    settings.setDarkTheme(t);
-                    Navigator.pop(context);
-                  },
-                );
-              }).toList(),
-              const SizedBox(height: 10),
-              Text(
-                'Bald mehr Designs 👀',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(color: Colors.white60),
-              ),
-            ],
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: _openGithubLatest,
+                        icon: const Icon(Icons.open_in_new),
+                        label: const Text('GitHub'),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 18),
+                const _SectionTitle(title: 'Zurücksetzen'),
+                const SizedBox(height: 10),
+
+                _Tile(
+                  icon: Icons.restart_alt,
+                  title: 'Fortschritt zurücksetzen',
+                  subtitle: 'Checkbox-Status löschen',
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  onTap: _resetTasks,
+                ),
+                const SizedBox(height: 10),
+
+                _Tile(
+                  icon: Icons.settings_backup_restore,
+                  title: 'Einstellungen zurücksetzen',
+                  subtitle: 'Design & Settings zurücksetzen',
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  onTap: _resetSettings,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -388,12 +278,12 @@ class _DesignPickerSheet extends StatelessWidget {
   }
 }
 
-class _DesignOption extends StatelessWidget {
+class _OptionTile extends StatelessWidget {
   final String title;
   final bool selected;
   final VoidCallback onTap;
 
-  const _DesignOption({
+  const _OptionTile({
     required this.title,
     required this.selected,
     required this.onTap,

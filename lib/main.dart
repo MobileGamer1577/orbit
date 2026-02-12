@@ -17,7 +17,7 @@ Future<void> main() async {
   settings.reloadFromBox();
 
   final updateStore = UpdateStore();
-  updateStore.check(); // Start-Check
+  updateStore.check(); // Start-Check (nur Hinweis/Link, keine Installation)
 
   runApp(OrbitApp(settings: settings, updateStore: updateStore));
 }

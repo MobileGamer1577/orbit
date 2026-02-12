@@ -28,6 +28,26 @@ class OrbitTheme {
     }
   }
 
+  /// ✅ FIX: String aus Hive (z.B. "purple", "neonNights") -> Enum
+  /// (ohne Aussehen/Funktionen zu ändern)
+  static OrbitDarkTheme fromName(String raw) {
+    final s = raw.trim();
+    if (s.isEmpty) return OrbitDarkTheme.purple;
+
+    // Normalisieren (damit auch "Neon Nights" / "neon_nights" etc. nicht crashen)
+    final key = s.toLowerCase().replaceAll(RegExp(r'[\s_\-]'), '');
+
+    for (final t in OrbitDarkTheme.values) {
+      final nameKey = t.name.toLowerCase().replaceAll(RegExp(r'[\s_\-]'), '');
+      if (nameKey == key) return t;
+    }
+
+    // Falls mal ein alter Wert gespeichert wurde
+    if (key == 'neonnight' || key == 'neonnights') return OrbitDarkTheme.neonNights;
+
+    return OrbitDarkTheme.purple;
+  }
+
   static ThemeData light() {
     final cs = ColorScheme.fromSeed(
       seedColor: const Color(0xFF7C4DFF),

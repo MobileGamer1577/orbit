@@ -1,28 +1,24 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
-import 'package:open_filex/open_filex.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../services/update_service.dart';
 
 class UpdateStore extends ChangeNotifier {
   bool isChecking = false;
-
-  // ✅ kompatibel mit Screens, die "checking" erwarten
   bool get checking => isChecking;
 
   bool updateAvailable = false;
   String current = '';
   String latest = '';
   String? notes;
-  String? url;
+
+  /// ✅ Immer Release-Seite (keine APK-URL mehr)
+  String releaseUrl = UpdateService.githubLatestReleaseUrl;
 
   String? error;
 
   bool _popupShownThisRun = false;
 
-  /// Wird beim App-Start aufgerufen
   Future<void> check() async {
     if (isChecking) return;
     isChecking = true;
@@ -35,7 +31,7 @@ class UpdateStore extends ChangeNotifier {
       current = result.current;
       latest = result.latest;
       notes = result.notes;
-      url = result.url;
+      releaseUrl = result.releaseUrl;
     } catch (e) {
       error = e.toString();
     } finally {
@@ -44,50 +40,24 @@ class UpdateStore extends ChangeNotifier {
     }
   }
 
-  /// Damit das Popup nicht bei jedem Screen-Rebuild wiederkommt
   bool get shouldShowPopup => updateAvailable && !_popupShownThisRun;
 
   void markPopupShown() {
     _popupShownThisRun = true;
   }
 
-  /// APK runterladen und Installer öffnen
+  /// ✅ Früher: APK runterladen & Installer öffnen
+  /// Jetzt: Nur GitHub Release-Seite öffnen (manueller Download)
   Future<void> downloadAndInstall() async {
-    final u = (url ?? '').trim();
-    if (u.isEmpty) {
-      throw Exception('Keine Update-URL vorhanden.');
-    }
-
-    final res = await http.get(Uri.parse(u));
-    if (res.statusCode < 200 || res.statusCode >= 300) {
-      throw Exception('Download fehlgeschlagen (HTTP ${res.statusCode})');
-    }
-
-    final dir = await getApplicationDocumentsDirectory();
-
-    final fileName = _fileNameFromUrl(u).isNotEmpty
-        ? _fileNameFromUrl(u)
-        : 'orbit-update.apk';
-
-    final file = File('${dir.path}/$fileName');
-    await file.writeAsBytes(res.bodyBytes, flush: true);
-
-    final r = await OpenFilex.open(file.path);
-
-    if (kDebugMode) {
-      // ignore: avoid_print
-      print('OpenFilex result: ${r.type} / ${r.message}');
-    }
+    await openLatestReleasePage();
   }
 
-  String _fileNameFromUrl(String u) {
-    try {
-      final uri = Uri.parse(u);
-      final last = uri.pathSegments.isNotEmpty ? uri.pathSegments.last : '';
-      if (last.toLowerCase().endsWith('.apk')) return last;
-      return '';
-    } catch (_) {
-      return '';
+  Future<bool> openLatestReleasePage() async {
+    final uri = Uri.parse(releaseUrl);
+    final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!ok) {
+      throw Exception('Konnte GitHub Release-Seite nicht öffnen.');
     }
+    return ok;
   }
 }
