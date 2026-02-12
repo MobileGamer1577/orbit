@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Internet für Update-Check + APK Download -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Erlaubt Installation von APKs aus der App heraus -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:label="orbit"
@@ -18,7 +21,6 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
-            <!-- Theme während Flutter lädt -->
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme" />
@@ -30,14 +32,23 @@
 
         </activity>
 
-        <!-- Flutter Embedding -->
+        <!-- FileProvider: nötig, damit OpenFilex/APK-Installer sauber öffnen kann -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
 
     </application>
 
-    <!-- Für Text-Verarbeitung (Standard Flutter Block) -->
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
