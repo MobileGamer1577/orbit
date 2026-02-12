@@ -6,7 +6,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
-import '../services/in_app_update_service.dart';
 import '../theme/orbit_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -26,10 +25,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
 
-  // Download UI
-  bool _downloading = false;
-  int _recv = 0;
-  int _total = -1;
+  bool _installing = false;
 
   @override
   void initState() {
@@ -60,7 +56,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (ctx) => AlertDialog(
         title: const Text('Alles zurücksetzen?'),
         content: const Text(
-          'Das setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen)',
+          'Das setzt alles zurück (z.B. Abgeschlossene Aufgaben & alle Einstellungen).',
         ),
         actions: [
           TextButton(
@@ -92,62 +88,50 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _checkUpdates() async {
-    try {
-      await widget.updateStore.check();
-      if (!mounted) return;
+    await widget.updateStore.check();
+    if (!mounted) return;
 
-      if (widget.updateStore.updateAvailable) {
-        final latest = widget.updateStore.latest ?? 'unbekannt';
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Update verfügbar: $latest')),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Du bist auf dem neuesten Stand ✅')),
-        );
-      }
-    } catch (e) {
-      if (!mounted) return;
+    final err = widget.updateStore.error;
+    if (err != null && err.isNotEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Update-Check fehlgeschlagen: $e')),
+        SnackBar(content: Text('Update-Check fehlgeschlagen: $err')),
+      );
+      return;
+    }
+
+    if (widget.updateStore.updateAvailable) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Update verfügbar: ${widget.updateStore.latest}')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Du bist auf dem neuesten Stand ✅')),
       );
     }
   }
 
-  String _progressText() {
-    if (_total <= 0) return 'Lade herunter…';
-    final p = (_recv / _total * 100).clamp(0, 100).toStringAsFixed(0);
-    return 'Lade herunter… $p%';
+  Future<void> _installUpdate() async {
+    if (_installing) return;
+
+    if (!widget.updateStore.updateAvailable) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Kein Update verfügbar ✅')),
+      );
+      return;
     }
 
-  Future<void> _installUpdate() async {
-    final r = widget.updateStore.result;
-    final url = r?.url;
-
-    if (r == null || url == null || url.isEmpty) {
+    final u = (widget.updateStore.url ?? '').trim();
+    if (u.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Kein Update-Link gefunden ❌')),
       );
       return;
     }
 
-    setState(() {
-      _downloading = true;
-      _recv = 0;
-      _total = -1;
-    });
+    setState(() => _installing = true);
 
     try {
-      await InAppUpdateService.downloadAndInstallApk(
-        apkUrl: url,
-        onProgress: (recv, total) {
-          if (!mounted) return;
-          setState(() {
-            _recv = recv;
-            _total = total;
-          });
-        },
-      );
+      await widget.updateStore.downloadAndInstall();
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -158,15 +142,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Update Download/Installation fehlgeschlagen ❌\n'
+            'Update fehlgeschlagen ❌\n'
             'Tipp: Erlaube „Unbekannte Apps installieren“ für Orbit.\n$e',
           ),
         ),
       );
     } finally {
-      if (mounted) {
-        setState(() => _downloading = false);
-      }
+      if (mounted) setState(() => _installing = false);
     }
   }
 
@@ -174,20 +156,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final currentDesignName = OrbitTheme.displayName(widget.settings.darkTheme);
 
-    final checking = widget.updateStore.checking;
-
-    final hasResult = widget.updateStore.result != null;
+    final checking = widget.updateStore.isChecking;
     final updateAvailable = widget.updateStore.updateAvailable;
-    final result = widget.updateStore.result;
 
     String updateSubtitle;
-    if (_downloading) {
-      updateSubtitle = _progressText();
+    if (_installing) {
+      updateSubtitle = 'Installiere…';
     } else if (checking) {
       updateSubtitle = 'Suche…';
-    } else if (hasResult) {
+    } else if (widget.updateStore.current.isNotEmpty) {
       if (updateAvailable) {
-        updateSubtitle = 'Update verfügbar: ${result!.latest}';
+        updateSubtitle = 'Update verfügbar: ${widget.updateStore.latest}';
       } else {
         updateSubtitle = 'App ist aktuell ✅';
       }
@@ -241,27 +220,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 icon: Icons.system_update_alt,
                 title: 'Nach Updates suchen',
                 subtitle: updateSubtitle,
-                trailing: (_downloading || checking)
+                trailing: (_installing || checking)
                     ? const SizedBox(
                         width: 18,
                         height: 18,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Icon(Icons.refresh, size: 22),
-                onTap: (_downloading || checking) ? null : _checkUpdates,
+                onTap: (_installing || checking) ? null : _checkUpdates,
               ),
 
-              if (!_downloading && !checking && updateAvailable && result != null)
-                ...[
-                  const SizedBox(height: 10),
-                  _Tile(
-                    icon: Icons.download,
-                    title: 'Update installieren',
-                    subtitle: 'APK herunterladen & installieren',
-                    trailing: const Icon(Icons.chevron_right, size: 24),
-                    onTap: _installUpdate,
-                  ),
-                ],
+              if (!_installing && !checking && updateAvailable) ...[
+                const SizedBox(height: 10),
+                _Tile(
+                  icon: Icons.download,
+                  title: 'Update installieren',
+                  subtitle: 'APK herunterladen & installieren',
+                  trailing: const Icon(Icons.chevron_right, size: 24),
+                  onTap: _installUpdate,
+                ),
+              ],
 
               const SizedBox(height: 10),
 
