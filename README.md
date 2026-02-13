@@ -25,7 +25,8 @@ English language support is planned for a future update.
 
 ### 🎮 Fortnite
 - Season countdowns  
-- Quest tracking (manual check-off system)  
+- Quest tracking *(Battle Royale & OG – available March 22)*  
+- Manual quest check-off system  
 - Item Shop *(planned)*  
 
 ### 🔫 Call of Duty: Black Ops 7
