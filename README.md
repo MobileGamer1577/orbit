@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# orbit
-
-=======
 # 🚀 Orbit
 
 <p align="center">
@@ -128,4 +124,3 @@ It is used for:
 Created by **MobileGamer1577**
 
 ⭐ If you like Orbit, consider starring the repository.
->>>>>>> 16c0fe14dc7acfee71cb38cfecf7b31f00ea97f7
