@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/orbit_theme.dart';
 import 'task_list_screen.dart';
 
@@ -35,8 +36,8 @@ class ModeSelectScreen extends StatelessWidget {
                     Text(
                       gameTitle,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w800,
-                          ),
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ],
                 ),
@@ -45,25 +46,11 @@ class ModeSelectScreen extends StatelessWidget {
                 // Subtitle
                 Text(
                   'Wähle einen Modus',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white70),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleMedium?.copyWith(color: Colors.white70),
                 ),
                 const SizedBox(height: 14),
-
-                // ===== BO7 Countdown Card (oben) =====
-                if (gameId == 'bo7') ...[
-                  _ModeCard(
-                    icon: Icons.timer,
-                    title: 'Season Countdown (Soon)',
-                    subtitle: 'Wann endet die Season & wann kommen neue Weekly Aufgaben?',
-                    onTap: () {
-                      // Später: Countdown Screen öffnen
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Countdown kommt bald ✅')),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 12),
-                ],
 
                 Expanded(
                   child: ListView.separated(
@@ -98,6 +85,7 @@ class ModeSelectScreen extends StatelessWidget {
 
   List<_Mode> _modesFor(String gameId) {
     if (gameId == 'fortnite') {
+      // Fortnite: Aufträge/ToDos (kein Zero Build extra – BR ist "Standard")
       return const [
         _Mode(
           title: 'Battle Royale',
@@ -106,10 +94,52 @@ class ModeSelectScreen extends StatelessWidget {
           icon: Icons.layers,
         ),
         _Mode(
-          title: 'Zero Build',
-          subtitle: 'Quests/ToDos ohne Bauen',
-          assetPath: 'assets/data/fortnite_zb.json',
-          icon: Icons.layers,
+          title: 'Reload',
+          subtitle: 'Reload Quests/ToDos',
+          assetPath: 'assets/data/fortnite_reload.json',
+          icon: Icons.refresh,
+        ),
+        _Mode(
+          title: 'Ballistic',
+          subtitle: 'Ballistic Quests/ToDos',
+          assetPath: 'assets/data/fortnite_ballistic.json',
+          icon: Icons.shield_outlined,
+        ),
+        _Mode(
+          title: 'LEGO Fortnite',
+          subtitle: 'LEGO Pass / Ninjago / Aufgaben',
+          assetPath: 'assets/data/fortnite_lego.json',
+          icon: Icons.directions_car_filled_outlined,
+        ),
+        _Mode(
+          title: 'Delulu',
+          subtitle: 'Delulu Aufgaben/ToDos',
+          assetPath: 'assets/data/fortnite_delulu.json',
+          icon: Icons.emoji_emotions_outlined,
+        ),
+        _Mode(
+          title: 'Blitz Royale',
+          subtitle: 'Blitz Royale Aufgaben/ToDos',
+          assetPath: 'assets/data/fortnite_blitz_royale.json',
+          icon: Icons.flash_on,
+        ),
+        _Mode(
+          title: 'OG',
+          subtitle: 'OG / Classic Aufgaben/ToDos',
+          assetPath: 'assets/data/fortnite_og.json',
+          icon: Icons.history_toggle_off,
+        ),
+        _Mode(
+          title: 'Rocket Racing',
+          subtitle: 'Races / Quests / Pass',
+          assetPath: 'assets/data/fortnite_rocket_racing.json',
+          icon: Icons.rocket_launch_outlined,
+        ),
+        _Mode(
+          title: 'Festival',
+          subtitle: 'Musik Pass / Quests',
+          assetPath: 'assets/data/fortnite_festival.json',
+          icon: Icons.music_note,
         ),
       ];
     }
@@ -193,12 +223,16 @@ class _ModeCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
                   ),
                 ],
               ),
