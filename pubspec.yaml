@@ -47,7 +47,8 @@ flutter:
     - assets/data/
     - assets/icon/   # <- empfehle ich, wenn du icons dort liegen hast
 
-flutter_icons:
+flutter_launcher_icons:
   android: true
-  ios: true
+  adaptive_icon_background: "#12002b" # dunkles lila/schwarz
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
   image_path: "assets/icon/app_icon.png"
