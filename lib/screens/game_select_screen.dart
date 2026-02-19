@@ -91,7 +91,10 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   void _openFortnite() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => FortniteHubScreen(settings: widget.settings),
+        builder: (_) => FortniteHubScreen(
+          settings: widget.settings,
+          updateStore: widget.updateStore,
+        ),
       ),
     );
   }
@@ -115,7 +118,6 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top Bar
                 Row(
                   children: [
                     const Icon(Icons.public, size: 22),
@@ -142,21 +144,18 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                 ),
                 const SizedBox(height: 22),
 
-                // Fortnite Block
                 _GameBlock(
                   title: 'Fortnite',
                   subtitle:
-                      'Aufträge abhaken • Season-Countdown • Item-Shop (bald)',
+                      'Countdowns • Aufträge • Shop (bald) • Festival (bald mehr)',
                   onTap: _openFortnite,
                 ),
 
                 const SizedBox(height: 20),
 
-                // BO7 Block
                 _GameBlock(
                   title: 'Call of Duty: Black Ops 7',
-                  subtitle:
-                      'Aufgaben (Soon) • Steam Erfolge • Countdowns (Soon)',
+                  subtitle: 'Aufgaben • Steam Erfolge • Countdowns (Soon)',
                   onTap: _openBo7,
                 ),
               ],
@@ -218,20 +217,20 @@ class _GameBlock extends StatelessWidget {
               child: Row(
                 children: [
                   Icon(
-                    Icons.calendar_month_outlined,
+                    Icons.chevron_right,
                     color: Colors.white.withOpacity(0.9),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      'Orbit Tracker',
+                      'Öffnen',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w800,
                         color: Colors.white70,
                       ),
                     ),
                   ),
-                  const Icon(Icons.chevron_right, size: 26),
+                  const Icon(Icons.arrow_forward_ios, size: 18),
                 ],
               ),
             ),

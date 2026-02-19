@@ -26,24 +26,25 @@ class ModeSelectScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top Bar
                 Row(
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
                       icon: const Icon(Icons.arrow_back),
                     ),
-                    Text(
-                      gameTitle,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w800,
+                    Expanded(
+                      child: Text(
+                        gameTitle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 10),
-
-                // Subtitle
                 Text(
                   'Wähle einen Modus',
                   style: Theme.of(
@@ -85,66 +86,53 @@ class ModeSelectScreen extends StatelessWidget {
 
   List<_Mode> _modesFor(String gameId) {
     if (gameId == 'fortnite') {
-      // Fortnite: Aufträge/ToDos (kein Zero Build extra – BR ist "Standard")
       return const [
         _Mode(
           title: 'Battle Royale',
-          subtitle: 'Quests/ToDos für BR',
+          subtitle: 'Quests/ToDos für BR (inkl. Zero Build)',
           assetPath: 'assets/data/fortnite_br.json',
           icon: Icons.layers,
         ),
         _Mode(
-          title: 'Reload',
-          subtitle: 'Reload Quests/ToDos',
+          title: 'Fortnite Reload',
+          subtitle: 'Aufträge/ToDos für Reload',
           assetPath: 'assets/data/fortnite_reload.json',
-          icon: Icons.refresh,
+          icon: Icons.restart_alt,
         ),
         _Mode(
           title: 'Ballistic',
-          subtitle: 'Ballistic Quests/ToDos',
+          subtitle: 'Aufträge/ToDos für Ballistic',
           assetPath: 'assets/data/fortnite_ballistic.json',
-          icon: Icons.shield_outlined,
+          icon: Icons.sports_martial_arts,
         ),
         _Mode(
           title: 'LEGO Fortnite',
-          subtitle: 'LEGO Pass / Ninjago / Aufgaben',
+          subtitle: 'Aufträge/ToDos für LEGO',
           assetPath: 'assets/data/fortnite_lego.json',
-          icon: Icons.directions_car_filled_outlined,
+          icon: Icons.extension,
         ),
         _Mode(
           title: 'Delulu',
-          subtitle: 'Delulu Aufgaben/ToDos',
+          subtitle: 'Aufträge/ToDos (Event/Mode)',
           assetPath: 'assets/data/fortnite_delulu.json',
-          icon: Icons.emoji_emotions_outlined,
+          icon: Icons.auto_awesome,
         ),
         _Mode(
           title: 'Blitz Royale',
-          subtitle: 'Blitz Royale Aufgaben/ToDos',
+          subtitle: 'Aufträge/ToDos (Event/Mode)',
           assetPath: 'assets/data/fortnite_blitz_royale.json',
           icon: Icons.flash_on,
         ),
         _Mode(
           title: 'OG',
-          subtitle: 'OG / Classic Aufgaben/ToDos',
+          subtitle: 'Aufträge/ToDos (OG)',
           assetPath: 'assets/data/fortnite_og.json',
-          icon: Icons.history_toggle_off,
-        ),
-        _Mode(
-          title: 'Rocket Racing',
-          subtitle: 'Races / Quests / Pass',
-          assetPath: 'assets/data/fortnite_rocket_racing.json',
-          icon: Icons.rocket_launch_outlined,
-        ),
-        _Mode(
-          title: 'Festival',
-          subtitle: 'Musik Pass / Quests',
-          assetPath: 'assets/data/fortnite_festival.json',
-          icon: Icons.music_note,
+          icon: Icons.history,
         ),
       ];
     }
 
-    // ===== Black Ops 7: genau deine Liste =====
+    // ===== Black Ops 7 =====
     return const [
       _Mode(
         title: 'Koop & Endspiel',
@@ -224,7 +212,7 @@ class _ModeCard extends StatelessWidget {
                   Text(
                     title,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                   const SizedBox(height: 4),

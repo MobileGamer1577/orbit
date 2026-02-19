@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
 import '../storage/app_settings_store.dart';
+import '../storage/update_store.dart';
 import '../theme/orbit_theme.dart';
 import 'fortnite_countdown_screen.dart';
+import 'fortnite_festival_hub_screen.dart';
 import 'mode_select_screen.dart';
 
 class FortniteHubScreen extends StatelessWidget {
   final AppSettingsStore settings;
+  final UpdateStore updateStore;
 
-  const FortniteHubScreen({super.key, required this.settings});
+  const FortniteHubScreen({
+    super.key,
+    required this.settings,
+    required this.updateStore,
+  });
 
-  void _comingSoon(BuildContext context, String featureName) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$featureName kommt bald ✅'),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
+  void _push(BuildContext context, Widget page) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
   }
 
   @override
@@ -30,25 +32,24 @@ class FortniteHubScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top Bar
                 Row(
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
                       icon: const Icon(Icons.arrow_back),
                     ),
+                    const SizedBox(width: 6),
                     Text(
                       'Fortnite',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 10),
-
                 Text(
-                  'Was willst du machen?',
+                  'Was willst du öffnen?',
                   style: Theme.of(
                     context,
                   ).textTheme.titleMedium?.copyWith(color: Colors.white70),
@@ -58,63 +59,75 @@ class FortniteHubScreen extends StatelessWidget {
                 Expanded(
                   child: ListView(
                     children: [
-                      _OrbitNavCard(
-                        icon: Icons.timer_outlined,
-                        title: 'Countdown',
-                        subtitle: 'Season-Ende (bald)',
-                        onTap: () => Navigator.push(
+                      _HubCard(
+                        icon: Icons.timer,
+                        title: 'Countdowns',
+                        subtitle:
+                            'Season-Ende, Festival-Season, Events (bald mehr)',
+                        onTap: () => _push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => const FortniteCountdownScreen(),
-                          ),
+                          FortniteCountdownScreen(settings: settings),
                         ),
                       ),
                       const SizedBox(height: 12),
-                      _OrbitNavCard(
-                        icon: Icons.checklist_outlined,
+                      _HubCard(
+                        icon: Icons.checklist,
                         title: 'Aufträge',
-                        subtitle:
-                            'Battle Royale • Reload • Ballistic • LEGO • OG • …',
-                        onTap: () => Navigator.push(
+                        subtitle: 'BR, Reload, Ballistic, LEGO, OG…',
+                        onTap: () => _push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => const ModeSelectScreen(
-                              gameId: 'fortnite',
-                              gameTitle: 'Aufträge',
-                            ),
+                          const ModeSelectScreen(
+                            gameId: 'fortnite',
+                            gameTitle: 'Fortnite',
                           ),
                         ),
                       ),
                       const SizedBox(height: 12),
-                      _OrbitNavCard(
-                        icon: Icons.storefront_outlined,
-                        title: 'Shop',
-                        subtitle:
-                            'Item-Shop & Bundles (bald – mit Favoriten/Notifs)',
-                        onTap: () => _comingSoon(context, 'Shop'),
+                      _HubCard(
+                        icon: Icons.storefront,
+                        title: 'Item-Shop',
+                        subtitle: 'Kommt bald (API / später)',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Item-Shop kommt bald ✅'),
+                            ),
+                          );
+                        },
                       ),
                       const SizedBox(height: 12),
-                      _OrbitNavCard(
-                        icon: Icons.bar_chart_rounded,
+                      _HubCard(
+                        icon: Icons.insights,
                         title: 'Stats',
-                        subtitle:
-                            'Deine Stats/Übersichten (bald – mit Account-Verknüpfung)',
-                        onTap: () => _comingSoon(context, 'Stats'),
+                        subtitle: 'Kommt bald (API später)',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Stats kommen bald ✅'),
+                            ),
+                          );
+                        },
                       ),
                       const SizedBox(height: 12),
-                      _OrbitNavCard(
-                        icon: Icons.music_note_outlined,
+                      _HubCard(
+                        icon: Icons.music_note,
                         title: 'Festival',
-                        subtitle:
-                            'Songs suchen • Schwierigkeiten • Playlist-Builder (bald)',
-                        onTap: () => _comingSoon(context, 'Festival'),
+                        subtitle: 'Songs suchen & Playlist bauen',
+                        onTap: () =>
+                            _push(context, const FortniteFestivalHubScreen()),
                       ),
                       const SizedBox(height: 12),
-                      _OrbitNavCard(
-                        icon: Icons.info_outline,
+                      _HubCard(
+                        icon: Icons.public,
                         title: 'Status',
-                        subtitle: 'Serverstatus / Downtime / Hotfixes (bald)',
-                        onTap: () => _comingSoon(context, 'Status'),
+                        subtitle: 'Kommt bald (Server/Services)',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Status kommt bald ✅'),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -128,13 +141,13 @@ class FortniteHubScreen extends StatelessWidget {
   }
 }
 
-class _OrbitNavCard extends StatelessWidget {
+class _HubCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String subtitle;
   final VoidCallback onTap;
 
-  const _OrbitNavCard({
+  const _HubCard({
     required this.icon,
     required this.title,
     required this.subtitle,
@@ -164,7 +177,7 @@ class _OrbitNavCard extends StatelessWidget {
                   Text(
                     title,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                   const SizedBox(height: 4),
