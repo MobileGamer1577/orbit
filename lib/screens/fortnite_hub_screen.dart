@@ -61,7 +61,7 @@ class FortniteHubScreen extends StatelessWidget {
                       _OrbitNavCard(
                         icon: Icons.timer_outlined,
                         title: 'Countdown',
-                        subtitle: 'Season-Ende • Weekly Reset • Events (bald)',
+                        subtitle: 'Season-Ende (bald)',
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -89,7 +89,8 @@ class FortniteHubScreen extends StatelessWidget {
                       _OrbitNavCard(
                         icon: Icons.storefront_outlined,
                         title: 'Shop',
-                        subtitle: 'Item-Shop & Bundles (bald – später mit API)',
+                        subtitle:
+                            'Item-Shop & Bundles (bald – mit Favoriten/Notifs)',
                         onTap: () => _comingSoon(context, 'Shop'),
                       ),
                       const SizedBox(height: 12),
@@ -97,7 +98,7 @@ class FortniteHubScreen extends StatelessWidget {
                         icon: Icons.bar_chart_rounded,
                         title: 'Stats',
                         subtitle:
-                            'Deine Stats/Übersichten (bald – später mit API)',
+                            'Deine Stats/Übersichten (bald – mit Account-Verknüpfung)',
                         onTap: () => _comingSoon(context, 'Stats'),
                       ),
                       const SizedBox(height: 12),
