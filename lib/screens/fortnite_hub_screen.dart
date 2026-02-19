@@ -64,10 +64,8 @@ class FortniteHubScreen extends StatelessWidget {
                         title: 'Countdowns',
                         subtitle:
                             'Season-Ende, Festival-Season, Events (bald mehr)',
-                        onTap: () => _push(
-                          context,
-                          FortniteCountdownScreen(settings: settings),
-                        ),
+                        onTap: () =>
+                            _push(context, const FortniteCountdownScreen()),
                       ),
                       const SizedBox(height: 12),
                       _HubCard(

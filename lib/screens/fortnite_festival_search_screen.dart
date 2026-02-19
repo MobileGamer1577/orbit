@@ -162,7 +162,7 @@ class _FortniteFestivalSearchScreenState
             ],
             if (s.announceDate.isNotEmpty) ...[
               const SizedBox(height: 8),
-              Text('Announce: ${s.announceDate}'),
+              Text('Erschienen: ${s.announceDate}'),
             ],
             if (s.source.isNotEmpty) ...[
               const SizedBox(height: 8),
@@ -171,7 +171,7 @@ class _FortniteFestivalSearchScreenState
               ),
             ],
             const SizedBox(height: 8),
-            Text('Pro Vocals: ${s.proVocals ? 'Ja' : 'Nein'}'),
+            Text('Pro Gesang: ${s.proVocals ? 'Ja' : 'Nein'}'),
           ],
         ),
         actions: [
@@ -223,7 +223,7 @@ class _FortniteFestivalSearchScreenState
                   controller: _controller,
                   textInputAction: TextInputAction.search,
                   decoration: InputDecoration(
-                    hintText: 'Song / Artist / SID…',
+                    hintText: 'Song / Artist / ID…',
                     prefixIcon: const Icon(Icons.search),
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.08),
