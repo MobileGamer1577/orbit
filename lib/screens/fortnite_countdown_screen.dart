@@ -60,8 +60,7 @@ class FortniteCountdownScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Text(
                         '• Season-Ende Countdown\n'
-                        '• Weekly Reset Timer\n'
-                        '• Optional: Reminder/Notifs (später)',
+                        '• Optional: Reminder/Notifs (bald)',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           color: Colors.white70,
                           height: 1.4,
