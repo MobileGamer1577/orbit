@@ -6,6 +6,8 @@ import '../storage/app_settings_store.dart';
 import '../storage/collection_store.dart';
 import '../storage/update_store.dart';
 import '../theme/orbit_theme.dart';
+import '../widgets/orbit_glass_card.dart';
+
 import 'fortnite_hub_screen.dart';
 import 'mode_select_screen.dart';
 import 'settings_screen.dart';
@@ -27,9 +29,7 @@ class GameSelectScreen extends StatefulWidget {
 }
 
 class _GameSelectScreenState extends State<GameSelectScreen> {
-  final _updateService = UpdateService();
   final _inAppUpdateService = InAppUpdateService();
-
   bool _checking = false;
 
   @override
@@ -45,14 +45,15 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
     setState(() => _checking = true);
 
     try {
-      final result = await _updateService.checkForUpdate();
+      final result = await UpdateService.checkForUpdates();
+
       if (!mounted) return;
 
-      if (result.hasUpdate) {
+      if (result.updateAvailable) {
         await _showUpdateDialog(
-          version: result.latestVersion,
-          notes: result.releaseNotes,
-          url: result.downloadUrl,
+          version: result.latest,
+          notes: result.notes ?? '',
+          url: result.releaseUrl,
         );
       } else {
         if (showNoUpdateToast) {
@@ -92,9 +93,10 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
           FilledButton(
             onPressed: () async {
               Navigator.pop(context);
-              await _inAppUpdateService.downloadAndInstallApk(url);
+              // Öffnet die GitHub Release-Seite extern
+              await _inAppUpdateService.downloadAndInstallApk(apkUrl: url);
             },
-            child: const Text('Update installieren'),
+            child: const Text('Release öffnen'),
           ),
         ],
       ),

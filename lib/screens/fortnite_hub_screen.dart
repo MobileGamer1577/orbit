@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../storage/app_settings_store.dart';
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
+import '../widgets/orbit_glass_card.dart';
+
 import 'fortnite_countdown_screen.dart';
 import 'fortnite_festival_hub_screen.dart';
 import 'fortnite_locker_screen.dart';
@@ -69,10 +71,8 @@ class FortniteHubScreen extends StatelessWidget {
                         icon: Icons.timer,
                         title: 'Countdowns',
                         subtitle: 'Season Countdowns (bald)',
-                        onTap: () => _push(
-                          context,
-                          FortniteCountdownScreen(settings: settings),
-                        ),
+                        onTap: () =>
+                            _push(context, const FortniteCountdownScreen()),
                       ),
                       const SizedBox(height: 12),
                       _HubCard(
@@ -81,7 +81,11 @@ class FortniteHubScreen extends StatelessWidget {
                         subtitle: 'BR, Reload, Ballistic, LEGO, OG…',
                         onTap: () => _push(
                           context,
-                          const TaskListScreen(title: 'Aufträge'),
+                          const TaskListScreen(
+                            title: 'Aufträge',
+                            // absichtlich leer → Screen zeigt „Kommt bald“
+                            jsonAssetPath: '',
+                          ),
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -111,8 +115,6 @@ class FortniteHubScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 12),
-
-                      // NEW: Locker / Spind (keine 20 Karten)
                       _HubCard(
                         icon: Icons.inventory_2,
                         title: 'Spind',
@@ -122,7 +124,6 @@ class FortniteHubScreen extends StatelessWidget {
                           FortniteLockerScreen(collection: collection),
                         ),
                       ),
-
                       const SizedBox(height: 12),
                       _HubCard(
                         icon: Icons.music_note,
@@ -177,6 +178,31 @@ class _HubCard extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         leading: Icon(icon, color: Colors.white.withOpacity(0.92)),
+        title: const Text(
+          '',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+        ),
+        subtitle: null,
+        // Wir setzen title/subtitle sauber:
+        // (so bleibt dein Style identisch)
+        trailing: Icon(
+          Icons.chevron_right,
+          color: Colors.white.withOpacity(0.7),
+        ),
+        onTap: onTap,
+      ),
+    )._withTexts(title, subtitle);
+  }
+}
+
+extension on Widget {
+  Widget _withTexts(String title, String subtitle) {
+    if (this is! OrbitGlassCard) return this;
+    final card = this as OrbitGlassCard;
+    return OrbitGlassCard(
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        leading: (card.child as ListTile).leading,
         title: Text(
           title,
           style: const TextStyle(
@@ -191,11 +217,8 @@ class _HubCard extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        trailing: Icon(
-          Icons.chevron_right,
-          color: Colors.white.withOpacity(0.7),
-        ),
-        onTap: onTap,
+        trailing: (card.child as ListTile).trailing,
+        onTap: (card.child as ListTile).onTap,
       ),
     );
   }

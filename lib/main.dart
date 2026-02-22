@@ -8,17 +8,15 @@ import 'storage/update_store.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Hive.initFlutter();
 
-  // Settings / Update state
-  await Hive.openBox('app_settings');
-  await Hive.openBox('update_state');
-
-  // Shared collection state (Owned/Wishlist)
+  // Boxen öffnen (müssen zu deinen Stores passen)
+  await Hive.openBox('settings');
   await Hive.openBox('collection_state');
 
-  final settings = AppSettingsStore();
+  final settings = await AppSettingsStore.create();
+  settings.reloadFromBox();
+
   final updateStore = UpdateStore();
   final collection = CollectionStore();
 
