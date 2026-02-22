@@ -14,7 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # Link öffnen
-  url_launcher: ^6.3.0
+  url_launcher: ^6.3.2
 
   # Version automatisch aus App-Metadaten lesen
   package_info_plus: ^8.0.2
