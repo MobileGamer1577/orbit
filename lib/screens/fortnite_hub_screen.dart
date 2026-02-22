@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 
 import '../storage/app_settings_store.dart';
-import '../storage/update_store.dart';
+import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 import 'fortnite_countdown_screen.dart';
 import 'fortnite_festival_hub_screen.dart';
-import 'mode_select_screen.dart';
+import 'fortnite_locker_screen.dart';
+import 'task_list_screen.dart';
 
 class FortniteHubScreen extends StatelessWidget {
   final AppSettingsStore settings;
-  final UpdateStore updateStore;
+  final CollectionStore collection;
 
   const FortniteHubScreen({
     super.key,
     required this.settings,
-    required this.updateStore,
+    required this.collection,
   });
 
   void _push(BuildContext context, Widget page) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+    Navigator.push(context, MaterialPageRoute(builder: (_) => page));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: OrbitBackground(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(18, 18, 18, 14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -36,55 +36,59 @@ class FortniteHubScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    Text(
-                      'Fortnite',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w900,
+                    const Expanded(
+                      child: Text(
+                        'Fortnite',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 6),
                 Text(
                   'Was willst du öffnen?',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium?.copyWith(color: Colors.white70),
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.65),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                 ),
                 const SizedBox(height: 14),
-
                 Expanded(
                   child: ListView(
+                    physics: const BouncingScrollPhysics(),
                     children: [
                       _HubCard(
                         icon: Icons.timer,
                         title: 'Countdowns',
-                        subtitle:
-                            'Season-Ende, Festival-Season, Events (bald mehr)',
-                        onTap: () =>
-                            _push(context, const FortniteCountdownScreen()),
+                        subtitle: 'Season Countdowns (bald)',
+                        onTap: () => _push(
+                          context,
+                          FortniteCountdownScreen(settings: settings),
+                        ),
                       ),
                       const SizedBox(height: 12),
                       _HubCard(
                         icon: Icons.checklist,
-                        title: 'Aufträge',
+                        title: 'Aufträge (bald)',
                         subtitle: 'BR, Reload, Ballistic, LEGO, OG…',
                         onTap: () => _push(
                           context,
-                          const ModeSelectScreen(
-                            gameId: 'fortnite',
-                            gameTitle: 'Fortnite',
-                          ),
+                          const TaskListScreen(title: 'Aufträge'),
                         ),
                       ),
                       const SizedBox(height: 12),
                       _HubCard(
                         icon: Icons.storefront,
                         title: 'Item-Shop',
-                        subtitle: 'Kommt bald (API / später)',
+                        subtitle: 'Kommt bald',
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -97,7 +101,7 @@ class FortniteHubScreen extends StatelessWidget {
                       _HubCard(
                         icon: Icons.insights,
                         title: 'Stats',
-                        subtitle: 'Kommt bald (API später)',
+                        subtitle: 'Kommt bald',
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -107,12 +111,27 @@ class FortniteHubScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 12),
+
+                      // NEW: Locker / Spind (keine 20 Karten)
+                      _HubCard(
+                        icon: Icons.inventory_2,
+                        title: 'Spind',
+                        subtitle: 'Alle Cosmetics (aktuell: Songs)',
+                        onTap: () => _push(
+                          context,
+                          FortniteLockerScreen(collection: collection),
+                        ),
+                      ),
+
+                      const SizedBox(height: 12),
                       _HubCard(
                         icon: Icons.music_note,
                         title: 'Festival',
                         subtitle: 'Songs suchen & Playlist bauen',
-                        onTap: () =>
-                            _push(context, const FortniteFestivalHubScreen()),
+                        onTap: () => _push(
+                          context,
+                          FortniteFestivalHubScreen(collection: collection),
+                        ),
                       ),
                       const SizedBox(height: 12),
                       _HubCard(
@@ -154,43 +173,29 @@ class _HubCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(18),
-      onTap: onTap,
-      child: Ink(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.06),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Colors.white.withOpacity(0.08)),
+    return OrbitGlassCard(
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        leading: Icon(icon, color: Colors.white.withOpacity(0.92)),
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w800,
+          ),
         ),
-        child: Row(
-          children: [
-            Icon(icon, size: 26),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
-                  ),
-                ],
-              ),
-            ),
-            const Icon(Icons.chevron_right, size: 28),
-          ],
+        subtitle: Text(
+          subtitle,
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.7),
+            fontWeight: FontWeight.w600,
+          ),
         ),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: Colors.white.withOpacity(0.7),
+        ),
+        onTap: onTap,
       ),
     );
   }

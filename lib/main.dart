@@ -2,51 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'screens/game_select_screen.dart';
-import 'theme/orbit_theme.dart';
 import 'storage/app_settings_store.dart';
+import 'storage/collection_store.dart';
 import 'storage/update_store.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  await Hive.openBox('task_state');
-  await Hive.openBox('settings');
 
-  final settings = await AppSettingsStore.create();
-  settings.reloadFromBox();
+  // Settings / Update state
+  await Hive.openBox('app_settings');
+  await Hive.openBox('update_state');
 
+  // Shared collection state (Owned/Wishlist)
+  await Hive.openBox('collection_state');
+
+  final settings = AppSettingsStore();
   final updateStore = UpdateStore();
-  updateStore.check(); // Start-Check (nur Hinweis/Link, keine Installation)
+  final collection = CollectionStore();
 
-  runApp(OrbitApp(settings: settings, updateStore: updateStore));
+  runApp(
+    OrbitApp(
+      settings: settings,
+      updateStore: updateStore,
+      collection: collection,
+    ),
+  );
 }
 
 class OrbitApp extends StatelessWidget {
   final AppSettingsStore settings;
   final UpdateStore updateStore;
+  final CollectionStore collection;
 
   const OrbitApp({
     super.key,
     required this.settings,
     required this.updateStore,
+    required this.collection,
   });
 
   @override
   Widget build(BuildContext context) {
-    // ✅ Nur settings triggert App-Rebuild (Theme/Design)
-    return AnimatedBuilder(
-      animation: settings,
-      builder: (_, __) {
-        return MaterialApp(
-          title: 'Orbit',
-          debugShowCheckedModeBanner: false,
-          theme: OrbitTheme.light(),
-          darkTheme: OrbitTheme.dark(),
-          themeMode: ThemeMode.dark,
-          home: GameSelectScreen(settings: settings, updateStore: updateStore),
-        );
-      },
+    return MaterialApp(
+      title: 'Orbit',
+      debugShowCheckedModeBanner: false,
+      home: GameSelectScreen(
+        settings: settings,
+        updateStore: updateStore,
+        collection: collection,
+      ),
     );
   }
 }

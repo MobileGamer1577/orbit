@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 
 class FortniteFestivalPlaylistScreen extends StatelessWidget {
-  const FortniteFestivalPlaylistScreen({super.key});
+  final CollectionStore collection;
+
+  const FortniteFestivalPlaylistScreen({super.key, required this.collection});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: OrbitBackground(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(18, 18, 18, 14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -20,37 +22,33 @@ class FortniteFestivalPlaylistScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    Expanded(
+                    const Expanded(
                       child: Text(
-                        'Playlist erstellen',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w900,
+                        'Playlist',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.06),
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: Colors.white.withOpacity(0.08)),
-                  ),
-                  child: Text(
-                    'Kommt als nächstes 🙂\n\n'
-                    'Plan:\n'
-                    '• Playlist aus der wöchentlichen Rotation\n'
-                    '• Playlist aus deinen Songs im Besitz\n'
-                    '• Playlist aus ALLEN Songs\n\n'
-                    'Dafür brauchen wir später: Song-Schwierigkeiten + „besitzt du“ Toggle + Rotation-Daten.',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyLarge?.copyWith(color: Colors.white70),
+                const SizedBox(height: 10),
+                OrbitGlassCard(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      'Kommt bald ✅\n\nGeplant:\n• Playlist aus Weekly Rotation\n• Playlist aus deinen Owned-Songs\n• Playlist aus ALLEN Songs\n\n(Tipp: Owned/Wishlist kannst du schon in der Song-Suche setzen.)',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.75),
+                        fontWeight: FontWeight.w700,
+                        height: 1.25,
+                      ),
+                    ),
                   ),
                 ),
               ],
