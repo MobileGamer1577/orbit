@@ -29,7 +29,6 @@ class GameSelectScreen extends StatefulWidget {
 }
 
 class _GameSelectScreenState extends State<GameSelectScreen> {
-  final _inAppUpdateService = InAppUpdateService();
   bool _checking = false;
 
   @override
@@ -45,6 +44,7 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
     setState(() => _checking = true);
 
     try {
+      // ✅ UpdateService ist bei dir static
       final result = await UpdateService.checkForUpdates();
 
       if (!mounted) return;
@@ -93,8 +93,8 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
           FilledButton(
             onPressed: () async {
               Navigator.pop(context);
-              // Öffnet die GitHub Release-Seite extern
-              await _inAppUpdateService.downloadAndInstallApk(apkUrl: url);
+              // ✅ InAppUpdateService ist bei dir static + named parameter
+              await InAppUpdateService.downloadAndInstallApk(apkUrl: url);
             },
             child: const Text('Release öffnen'),
           ),

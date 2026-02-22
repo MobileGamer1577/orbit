@@ -83,8 +83,8 @@ class FortniteHubScreen extends StatelessWidget {
                           context,
                           const TaskListScreen(
                             title: 'Aufträge',
-                            // absichtlich leer → Screen zeigt „Kommt bald“
-                            jsonAssetPath: '',
+                            jsonAssetPath:
+                                '', // leer = “Kommt bald” (wenn du meinen TaskList-Fix drin hast)
                           ),
                         ),
                       ),
@@ -178,31 +178,6 @@ class _HubCard extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         leading: Icon(icon, color: Colors.white.withOpacity(0.92)),
-        title: const Text(
-          '',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
-        ),
-        subtitle: null,
-        // Wir setzen title/subtitle sauber:
-        // (so bleibt dein Style identisch)
-        trailing: Icon(
-          Icons.chevron_right,
-          color: Colors.white.withOpacity(0.7),
-        ),
-        onTap: onTap,
-      ),
-    )._withTexts(title, subtitle);
-  }
-}
-
-extension on Widget {
-  Widget _withTexts(String title, String subtitle) {
-    if (this is! OrbitGlassCard) return this;
-    final card = this as OrbitGlassCard;
-    return OrbitGlassCard(
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        leading: (card.child as ListTile).leading,
         title: Text(
           title,
           style: const TextStyle(
@@ -217,8 +192,11 @@ extension on Widget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        trailing: (card.child as ListTile).trailing,
-        onTap: (card.child as ListTile).onTap,
+        trailing: Icon(
+          Icons.chevron_right,
+          color: Colors.white.withOpacity(0.7),
+        ),
+        onTap: onTap,
       ),
     );
   }
