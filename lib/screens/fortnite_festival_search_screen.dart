@@ -47,7 +47,7 @@ class _FortniteFestivalSearchScreenState
       );
       final decoded = jsonDecode(jsonStr);
 
-      // ✅ Bugfix: Die JSON ist ein Map und die Liste befindet sich im Schlüssel "songs"
+      // ✅ Bugfix: Holt das Array aus dem Key 'songs', da die JSON kein reines Array ist
       if (decoded is Map<String, dynamic> && decoded['songs'] is List) {
         final songsList = decoded['songs'] as List;
 

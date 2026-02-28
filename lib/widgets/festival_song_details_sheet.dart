@@ -35,15 +35,11 @@ class FestivalSongDetails {
       return s == 'true' || s == 'yes' || s == '1' || s == 'ja';
     }
 
-    // ✅ Bugfix: Daten-Mapping korrigiert und an JSON-Struktur angepasst
-    // Wichtig: In der JSON-Quelle sind Interpret ('song') und Titel ('artist') vertauscht.
+    // ✅ Bugfix: Angepasst an die Keys in deiner festival_songs.json
+    // Achtung: In deiner JSON ist "song" der Interpret und "artist" der Titel!
     return FestivalSongDetails(
-      title: pick(
-        'artist',
-      ), // In der JSON ist 'artist' der Titel ("Can't Feel My Face")
-      artist: pick(
-        'song',
-      ), // In der JSON ist 'song' der Interpret ("The Weeknd")
+      title: pick('artist'),
+      artist: pick('song'),
       songId: pick('sid'),
       source: pick('source'),
       bpm: pick('bpm'),
