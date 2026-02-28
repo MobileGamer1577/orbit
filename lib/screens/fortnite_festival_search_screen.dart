@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../widgets/orbit_glass_card.dart';
-
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/festival_song_details_sheet.dart';
@@ -47,16 +46,22 @@ class _FortniteFestivalSearchScreenState
         'assets/data/festival_songs.json',
       );
       final decoded = jsonDecode(jsonStr);
-      if (decoded is List) {
-        _songs = decoded
+
+      // ✅ Bugfix: Die JSON ist ein Map und die Liste befindet sich im Schlüssel "songs"
+      if (decoded is Map<String, dynamic> && decoded['songs'] is List) {
+        final songsList = decoded['songs'] as List;
+
+        _songs = songsList
             .whereType<Map<String, dynamic>>()
             .map(FestivalSongDetails.fromMap)
             .where((s) => s.songId.trim().isNotEmpty)
             .toList();
+
         _songs.sort(
           (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()),
         );
       }
+
       _applyFilter();
     } catch (_) {
       _songs = [];
@@ -179,67 +184,51 @@ class _FortniteFestivalSearchScreenState
                                   const SizedBox(height: 10),
                               itemBuilder: (context, i) {
                                 final s = _filtered[i];
-
                                 final owned = widget.collection.isOwned(
                                   CollectionStore.categoryFestivalSong,
                                   s.songId,
                                 );
-                                final wished = widget.collection.isWished(
-                                  CollectionStore.categoryFestivalSong,
-                                  s.songId,
-                                );
-
                                 return OrbitGlassCard(
-                                  child: ListTile(
-                                    contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                      vertical: 8,
-                                    ),
-                                    title: Text(
-                                      s.title,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    subtitle: Text(
-                                      '${s.artist} • ${s.songId}',
-                                      style: TextStyle(
-                                        color: Colors.white.withOpacity(0.7),
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                  onTap: () => showFestivalSongDetailsSheet(
+                                    context,
+                                    song: s,
+                                    collection: widget.collection,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12),
+                                    child: Row(
                                       children: [
-                                        if (owned)
-                                          Icon(
-                                            Icons.check_circle,
-                                            color: Colors.white.withOpacity(
-                                              0.90,
-                                            ),
-                                            size: 20,
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                s.title,
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 4),
+                                              Text(
+                                                s.artist,
+                                                style: TextStyle(
+                                                  color: Colors.white
+                                                      .withOpacity(0.7),
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        if (owned) const SizedBox(width: 8),
-                                        if (wished)
-                                          Icon(
-                                            Icons.favorite,
-                                            color: Colors.white.withOpacity(
-                                              0.90,
-                                            ),
-                                            size: 20,
-                                          ),
-                                        const SizedBox(width: 10),
-                                        Icon(
-                                          Icons.chevron_right,
-                                          color: Colors.white.withOpacity(0.7),
                                         ),
+                                        if (owned)
+                                          const Icon(
+                                            Icons.check_circle,
+                                            color: Colors.greenAccent,
+                                          ),
                                       ],
-                                    ),
-                                    onTap: () => showFestivalSongDetailsSheet(
-                                      context,
-                                      song: s,
-                                      collection: widget.collection,
                                     ),
                                   ),
                                 );

@@ -35,14 +35,20 @@ class FestivalSongDetails {
       return s == 'true' || s == 'yes' || s == '1' || s == 'ja';
     }
 
+    // ✅ Bugfix: Daten-Mapping korrigiert und an JSON-Struktur angepasst
+    // Wichtig: In der JSON-Quelle sind Interpret ('song') und Titel ('artist') vertauscht.
     return FestivalSongDetails(
-      title: pick('title'),
-      artist: pick('artist'),
-      songId: pick('songId'),
+      title: pick(
+        'artist',
+      ), // In der JSON ist 'artist' der Titel ("Can't Feel My Face")
+      artist: pick(
+        'song',
+      ), // In der JSON ist 'song' der Interpret ("The Weeknd")
+      songId: pick('sid'),
       source: pick('source'),
       bpm: pick('bpm'),
-      released: pick('released'),
-      hasVocalPro: pickBool('vocalPro'),
+      released: pick('announce_date'),
+      hasVocalPro: pickBool('pro_vocals'),
     );
   }
 }
@@ -159,7 +165,7 @@ class _FestivalSongSheet extends StatelessWidget {
                         ),
                         _miniInfoChip(
                           icon: Icons.music_note,
-                          label: song.bpm.isEmpty
+                          label: song.bpm.isEmpty || song.bpm == 'null'
                               ? 'BPM: ?'
                               : 'BPM: ${song.bpm}',
                         ),
