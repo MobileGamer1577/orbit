@@ -11,9 +11,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
-  await Hive.openBox('settings');
+  // ✅ Kritischen Bug behoben: Die Box 'task_state' muss vor der Nutzung in task_store.dart geöffnet werden.
+  await Hive.openBox('task_state');
   await Hive.openBox('collection_state');
 
+  // ✅ Redundanz behoben: AppSettingsStore.create() öffnet die 'settings' Box intern, daher ist kein extra openBox() hier nötig.
   final settings = await AppSettingsStore.create();
   settings.reloadFromBox();
 
