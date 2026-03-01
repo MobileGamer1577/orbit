@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/orbit_theme.dart';
+import '../theme/orbit_theme.dart';
 
 class FortniteCountdownScreen extends StatelessWidget {
   const FortniteCountdownScreen({super.key});

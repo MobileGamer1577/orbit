@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../widgets/orbit_glass_card.dart';
-import '../../storage/collection_store.dart';
-import '../../core/theme/orbit_theme.dart';
-import '../../widgets/festival_song_details_sheet.dart';
+import '../widgets/orbit_glass_card.dart';
+import '../storage/collection_store.dart';
+import '../theme/orbit_theme.dart';
+import '../widgets/festival_song_details_sheet.dart';
 
 class FortniteFestivalSearchScreen extends StatefulWidget {
   final CollectionStore collection;
@@ -180,7 +180,7 @@ class _FortniteFestivalSearchScreenState
                             return ListView.separated(
                               physics: const BouncingScrollPhysics(),
                               itemCount: _filtered.length,
-                              separatorBuilder: (_, __) =>
+                              separatorBuilder: (_, _) =>
                                   const SizedBox(height: 10),
                               itemBuilder: (context, i) {
                                 final s = _filtered[i];
@@ -188,47 +188,49 @@ class _FortniteFestivalSearchScreenState
                                   CollectionStore.categoryFestivalSong,
                                   s.songId,
                                 );
-                                return OrbitGlassCard(
+                                return GestureDetector(
                                   onTap: () => showFestivalSongDetailsSheet(
                                     context,
                                     song: s,
                                     collection: widget.collection,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                s.title,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16,
+                                  child: OrbitGlassCard(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  s.title,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(height: 4),
-                                              Text(
-                                                s.artist,
-                                                style: TextStyle(
-                                                  color: Colors.white
-                                                      .withOpacity(0.7),
-                                                  fontSize: 14,
+                                                const SizedBox(height: 4),
+                                                Text(
+                                                  s.artist,
+                                                  style: TextStyle(
+                                                    color: Colors.white
+                                                        .withOpacity(0.7),
+                                                    fontSize: 14,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        if (owned)
-                                          const Icon(
-                                            Icons.check_circle,
-                                            color: Colors.greenAccent,
-                                          ),
-                                      ],
+                                          if (owned)
+                                            const Icon(
+                                              Icons.check_circle,
+                                              color: Colors.greenAccent,
+                                            ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );

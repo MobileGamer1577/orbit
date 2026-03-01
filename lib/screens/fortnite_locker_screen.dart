@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../storage/collection_store.dart';
-import '../../core/theme/orbit_theme.dart';
-import '../../widgets/festival_song_details_sheet.dart';
-import '../../widgets/orbit_glass_card.dart';
+import '../storage/collection_store.dart';
+import '../theme/orbit_theme.dart';
+import '../widgets/festival_song_details_sheet.dart';
+import '../widgets/orbit_glass_card.dart';
 
 enum _LockerFilter { all, owned, wishlist }
 
@@ -161,7 +161,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                             return ListView.separated(
                               physics: const BouncingScrollPhysics(),
                               itemCount: list.length,
-                              separatorBuilder: (_, __) =>
+                              separatorBuilder: (_, _) =>
                                   const SizedBox(height: 10),
                               itemBuilder: (context, i) {
                                 final s = list[i];

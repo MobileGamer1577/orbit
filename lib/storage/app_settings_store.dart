@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../core/theme/orbit_theme.dart';
+import '../theme/orbit_theme.dart';
 
 class AppSettingsStore extends ChangeNotifier {
   static const String _boxName = 'settings';

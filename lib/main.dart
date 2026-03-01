@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'features/game_select/game_select_screen.dart';
+import 'screens/game_select_screen.dart';
 import 'storage/app_settings_store.dart';
 import 'storage/collection_store.dart';
 import 'storage/update_store.dart';
-import 'core/theme/orbit_theme.dart';
+import 'theme/orbit_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

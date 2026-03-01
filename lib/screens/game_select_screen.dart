@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../services/in_app_update_service.dart';
-import '../../services/update_service.dart';
-import '../../storage/app_settings_store.dart';
-import '../../storage/collection_store.dart';
-import '../../storage/update_store.dart';
-import '../../core/theme/orbit_theme.dart';
-import '../../widgets/orbit_glass_card.dart';
+import '../services/in_app_update_service.dart';
+import '../services/update_service.dart';
+import '../storage/app_settings_store.dart';
+import '../storage/collection_store.dart';
+import '../storage/update_store.dart';
+import '../theme/orbit_theme.dart';
+import '../widgets/orbit_glass_card.dart';
 
-import '../fortnite_hub/fortnite_hub_screen.dart';
-import '../mode_select/mode_select_screen.dart';
-import '../settings/settings_screen.dart';
+import 'fortnite_hub_screen.dart';
+import 'mode_select_screen.dart';
+import 'settings_screen.dart';
 
 class GameSelectScreen extends StatefulWidget {
   final AppSettingsStore settings;

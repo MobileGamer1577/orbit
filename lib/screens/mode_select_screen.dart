@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/orbit_theme.dart';
-import '../task_list/task_list_screen.dart';
+import '../theme/orbit_theme.dart';
+import 'task_list_screen.dart';
 
 class ModeSelectScreen extends StatelessWidget {
   final String gameId;
@@ -56,7 +56,7 @@ class ModeSelectScreen extends StatelessWidget {
                 Expanded(
                   child: ListView.separated(
                     itemCount: modes.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
+                    separatorBuilder: (_, _) => const SizedBox(height: 12),
                     itemBuilder: (context, i) {
                       final m = modes[i];
                       return _ModeCard(
@@ -67,7 +67,7 @@ class ModeSelectScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (_) => TaskListScreen(
-                              title: '${gameTitle} – ${m.title}',
+                              title: '$gameTitle – ${m.title}',
                               jsonAssetPath: m.assetPath,
                             ),
                           ),

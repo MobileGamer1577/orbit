@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../storage/app_settings_store.dart';
-import '../../storage/update_store.dart';
-import '../../core/theme/orbit_theme.dart';
+import '../storage/app_settings_store.dart';
+import '../storage/update_store.dart';
+import '../theme/orbit_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
   final AppSettingsStore settings;

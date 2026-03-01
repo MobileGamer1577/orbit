@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/orbit_glass_card.dart';
+import '../widgets/orbit_glass_card.dart';
 
-import '../../storage/collection_store.dart';
-import '../../core/theme/orbit_theme.dart';
-import '../fortnite_festival_playlist/fortnite_festival_playlist_screen.dart';
-import '../fortnite_festival_search/fortnite_festival_search_screen.dart';
+import '../storage/collection_store.dart';
+import '../theme/orbit_theme.dart';
+import 'fortnite_festival_playlist_screen.dart';
+import 'fortnite_festival_search_screen.dart';
 
 class FortniteFestivalHubScreen extends StatelessWidget {
   final CollectionStore collection;

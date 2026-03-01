@@ -5,7 +5,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 class UpdateResult {
   final bool updateAvailable;
   final String current; // z.B. 0.1.0-beta+1
-  final String latest;  // z.B. 0.1.1-beta+2
+  final String latest; // z.B. 0.1.1-beta+2
   final String? notes;
 
   /// ✅ Immer nur Release-Seite (keine In-App Installation)
@@ -34,11 +34,14 @@ class UpdateService {
     final info = await PackageInfo.fromPlatform();
     final current = _fullVersion(info.version, info.buildNumber);
 
-    final res = await http.get(Uri.parse(updateJsonUrl), headers: {
-      'Accept': 'application/json',
-      'User-Agent': 'Orbit-App',
-      'Cache-Control': 'no-cache',
-    });
+    final res = await http.get(
+      Uri.parse(updateJsonUrl),
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'Orbit-App',
+        'Cache-Control': 'no-cache',
+      },
+    );
 
     if (res.statusCode < 200 || res.statusCode >= 300) {
       throw Exception('HTTP ${res.statusCode}');
@@ -46,8 +49,9 @@ class UpdateService {
 
     final data = jsonDecode(res.body) as Map<String, dynamic>;
 
-    final latestVersion =
-        (data['latest'] ?? '').toString().trim(); // z.B. 0.1.0-beta
+    final latestVersion = (data['latest'] ?? '')
+        .toString()
+        .trim(); // z.B. 0.1.0-beta
     final latestBuild = (data['build'] ?? '').toString().trim(); // z.B. 2
     final notesRaw = (data['notes'] ?? '').toString().trim();
 
@@ -55,8 +59,9 @@ class UpdateService {
       throw Exception('Update JSON: "latest" fehlt');
     }
 
-    final latest =
-        latestBuild.isNotEmpty ? '$latestVersion+$latestBuild' : latestVersion;
+    final latest = latestBuild.isNotEmpty
+        ? '$latestVersion+$latestBuild'
+        : latestVersion;
 
     final updateAvailable = _isNewerVersion(
       currentVersion: info.version,
@@ -126,15 +131,22 @@ class UpdateService {
     }
 
     final nums = s.split('.').map((e) => int.tryParse(e) ?? 0).toList();
-    while (nums.length < 3) nums.add(0);
+    while (nums.length < 3) {
+      nums.add(0);
+    }
     if (nums.length > 3) nums.removeRange(3, nums.length);
 
     String tag;
-    if (pre.startsWith('alpha')) tag = '0-alpha';
-    else if (pre.startsWith('beta')) tag = '1-beta';
-    else if (pre.startsWith('rc')) tag = '2-rc';
-    else if (pre.isNotEmpty) tag = '3-$pre';
-    else tag = '9-stable';
+    if (pre.startsWith('alpha')) {
+      tag = '0-alpha';
+    } else if (pre.startsWith('beta'))
+      tag = '1-beta';
+    else if (pre.startsWith('rc'))
+      tag = '2-rc';
+    else if (pre.isNotEmpty)
+      tag = '3-$pre';
+    else
+      tag = '9-stable';
 
     return _V(nums: nums, isPre: pre.isNotEmpty, preTag: tag);
   }
