@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-import '../storage/task_store.dart';
-import '../theme/orbit_theme.dart';
+import '../../storage/task_store.dart';
+import '../../core/theme/orbit_theme.dart';
 
 class TaskListScreen extends StatefulWidget {
   final String title;

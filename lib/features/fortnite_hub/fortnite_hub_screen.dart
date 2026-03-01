@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../storage/app_settings_store.dart';
-import '../storage/collection_store.dart';
-import '../theme/orbit_theme.dart';
-import '../widgets/orbit_glass_card.dart';
+import '../../storage/app_settings_store.dart';
+import '../../storage/collection_store.dart';
+import '../../core/theme/orbit_theme.dart';
+import '../../widgets/orbit_glass_card.dart';
 
-import 'fortnite_countdown_screen.dart';
-import 'fortnite_festival_hub_screen.dart';
-import 'fortnite_locker_screen.dart';
-import 'task_list_screen.dart';
+import '../fortnite_countdown/fortnite_countdown_screen.dart';
+import '../fortnite_festival_hub/fortnite_festival_hub_screen.dart';
+import '../fortnite_locker/fortnite_locker_screen.dart';
+import '../task_list/task_list_screen.dart';
 
 class FortniteHubScreen extends StatelessWidget {
   final AppSettingsStore settings;

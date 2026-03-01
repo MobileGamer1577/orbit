@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theme/orbit_theme.dart';
-import 'task_list_screen.dart';
+import '../../core/theme/orbit_theme.dart';
+import '../task_list/task_list_screen.dart';
 
 class ModeSelectScreen extends StatelessWidget {
   final String gameId;

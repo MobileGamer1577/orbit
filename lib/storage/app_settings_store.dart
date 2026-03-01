@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../theme/orbit_theme.dart';
+import '../core/theme/orbit_theme.dart';
 
 class AppSettingsStore extends ChangeNotifier {
   static const String _boxName = 'settings';
 
-  static const String _kDarkThemeName = 'dark_theme_name'; // enum name: purple, blue, ...
+  static const String _kDarkThemeName =
+      'dark_theme_name'; // enum name: purple, blue, ...
 
   final Box _box;
 

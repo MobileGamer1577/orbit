@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../storage/app_settings_store.dart';
-import '../storage/update_store.dart';
-import '../theme/orbit_theme.dart';
+import '../../storage/app_settings_store.dart';
+import '../../storage/update_store.dart';
+import '../../core/theme/orbit_theme.dart';
 
 class SettingsScreen extends StatefulWidget {
   final AppSettingsStore settings;
@@ -66,9 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         const SizedBox(width: 10),
                         Text(
                           'Dark Design',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
+                          style: Theme.of(context).textTheme.titleLarge
                               ?.copyWith(fontWeight: FontWeight.w900),
                         ),
                       ],
@@ -125,7 +123,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (widget.updateStore.error != null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Update-Check fehlgeschlagen: ${widget.updateStore.error}'),
+          content: Text(
+            'Update-Check fehlgeschlagen: ${widget.updateStore.error}',
+          ),
         ),
       );
       return;
@@ -133,7 +133,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     if (widget.updateStore.updateAvailable) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Update verfügbar: ${widget.updateStore.latest}')),
+        SnackBar(
+          content: Text('Update verfügbar: ${widget.updateStore.latest}'),
+        ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -158,7 +160,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final currentDesignName = OrbitTheme.displayName(widget.settings.darkTheme);
 
     final checking = widget.updateStore.isChecking;
-    final hasCheckedOnce = widget.updateStore.current.isNotEmpty ||
+    final hasCheckedOnce =
+        widget.updateStore.current.isNotEmpty ||
         widget.updateStore.latest.isNotEmpty ||
         widget.updateStore.error != null;
     final updateAvailable = widget.updateStore.updateAvailable;
@@ -197,7 +200,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.info_outline,
                   title: 'Version',
                   subtitle: _versionText,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white70,
+                  ),
                   onTap: null,
                 ),
                 const SizedBox(height: 10),
@@ -206,7 +212,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.palette_outlined,
                   title: 'Dark Design',
                   subtitle: currentDesignName,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white70,
+                  ),
                   onTap: _openDesignPicker,
                 ),
 
@@ -257,7 +266,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.restart_alt,
                   title: 'Fortschritt zurücksetzen',
                   subtitle: 'Checkbox-Status löschen',
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white70,
+                  ),
                   onTap: _resetTasks,
                 ),
                 const SizedBox(height: 10),
@@ -266,7 +278,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.settings_backup_restore,
                   title: 'Einstellungen zurücksetzen',
                   subtitle: 'Design & Settings zurücksetzen',
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white70),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white70,
+                  ),
                   onTap: _resetSettings,
                 ),
               ],
@@ -311,9 +326,9 @@ class _OptionTile extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
               ),
             ),
             if (selected) const Icon(Icons.check_circle, color: Colors.white),
@@ -335,10 +350,10 @@ class _SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: Theme.of(context)
-          .textTheme
-          .titleMedium
-          ?.copyWith(color: Colors.white70, fontWeight: FontWeight.w800),
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+        color: Colors.white70,
+        fontWeight: FontWeight.w800,
+      ),
     );
   }
 }
@@ -380,18 +395,16 @@ class _Tile extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontWeight: FontWeight.w900),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.copyWith(color: Colors.white70),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
                   ),
                 ],
               ),
