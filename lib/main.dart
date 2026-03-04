@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-import 'screens/game_select_screen.dart';
+import 'core/supabase_client.dart';
+import 'core/constants.dart';
+import 'features/auth/login_page.dart';
 import 'storage/app_settings_store.dart';
 import 'storage/collection_store.dart';
 import 'storage/update_store.dart';
 import 'theme/orbit_theme.dart';
-import 'core/constants.dart';
-import 'core/supabase_client.dart';
+import 'screens/game_select_screen.dart';
+import 'features/auth/auth_repository.dart';
 import 'features/auth/logout_button.dart';
 import 'features/cod_integration/cod_settings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-
-  // Hive Boxen öffnen
   await Hive.openBox('task_state');
   await Hive.openBox('collection_state');
 
-  // Settings laden
   final settings = await AppSettingsStore.create();
   settings.reloadFromBox();
-
   final updateStore = UpdateStore();
   final collection = CollectionStore();
 
-  // Start-Theme setzen
   OrbitTheme.currentDarkTheme = settings.darkTheme;
 
-  // Supabase initialisieren
   await SupabaseClientManager.init();
 
   runApp(
@@ -68,21 +62,17 @@ class _OrbitAppState extends State<OrbitApp> {
   }
 
   Future<void> _checkSession() async {
-    final session = SupabaseClientManager.client.auth.currentSession;
+    final session = AuthRepository.currentSession();
     if (session == null) {
-      // User nicht eingeloggt → Discord OAuth starten
-      await SupabaseClientManager.client.auth.signInWithOAuth(
-        OAuthProvider.discord,
-      );
+      // Kein User eingeloggt → LoginPage anzeigen
+      setState(() => _checkingSession = false);
+      return;
     }
-    setState(() {
-      _checkingSession = false;
-    });
+    setState(() => _checkingSession = false);
   }
 
   @override
   Widget build(BuildContext context) {
-    // Theme live aktualisieren
     OrbitTheme.currentDarkTheme = widget.settings.darkTheme;
 
     if (_checkingSession) {
@@ -91,7 +81,13 @@ class _OrbitAppState extends State<OrbitApp> {
       );
     }
 
-    // Haupt-App mit GameSelectScreen und zusätzlichen Widgets
+    // Wenn User nicht eingeloggt → LoginPage
+    final session = AuthRepository.currentSession();
+    if (session == null) {
+      return const MaterialApp(home: LoginPage());
+    }
+
+    // User eingeloggt → normale App
     return MaterialApp(
       title: 'Orbit',
       debugShowCheckedModeBanner: false,
@@ -104,7 +100,6 @@ class _OrbitAppState extends State<OrbitApp> {
           updateStore: widget.updateStore,
           collection: widget.collection,
         ),
-        // Optional: Logout & CoD Settings Overlay oder dauerhaft unten
         bottomNavigationBar: Column(
           mainAxisSize: MainAxisSize.min,
           children: const [LogoutButton(), CodSettingsWidget()],
