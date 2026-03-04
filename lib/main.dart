@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'screens/game_select_screen.dart';
 import 'storage/app_settings_store.dart';
 import 'storage/collection_store.dart';
 import 'storage/update_store.dart';
 import 'theme/orbit_theme.dart';
+import 'core/constants.dart';
+import 'core/supabase_client.dart';
+import 'features/auth/logout_button.dart';
+import 'features/cod_integration/cod_settings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
-  // ✅ Kritischen Bug behoben: Die Box 'task_state' muss vor der Nutzung in task_store.dart geöffnet werden.
+  // Hive Boxen öffnen
   await Hive.openBox('task_state');
   await Hive.openBox('collection_state');
 
-  // ✅ Redundanz behoben: AppSettingsStore.create() öffnet die 'settings' Box intern, daher ist kein extra openBox() hier nötig.
+  // Settings laden
   final settings = await AppSettingsStore.create();
   settings.reloadFromBox();
 
   final updateStore = UpdateStore();
   final collection = CollectionStore();
 
-  // ✅ Start-Theme setzen, damit Schrift/Look sofort stimmt
+  // Start-Theme setzen
   OrbitTheme.currentDarkTheme = settings.darkTheme;
+
+  // Supabase initialisieren
+  await SupabaseClientManager.init();
 
   runApp(
     OrbitApp(
@@ -34,7 +42,7 @@ Future<void> main() async {
   );
 }
 
-class OrbitApp extends StatelessWidget {
+class OrbitApp extends StatefulWidget {
   final AppSettingsStore settings;
   final UpdateStore updateStore;
   final CollectionStore collection;
@@ -47,30 +55,61 @@ class OrbitApp extends StatelessWidget {
   });
 
   @override
+  State<OrbitApp> createState() => _OrbitAppState();
+}
+
+class _OrbitAppState extends State<OrbitApp> {
+  bool _checkingSession = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkSession();
+  }
+
+  Future<void> _checkSession() async {
+    final session = SupabaseClientManager.client.auth.currentSession;
+    if (session == null) {
+      // User nicht eingeloggt → Discord OAuth starten
+      await SupabaseClientManager.client.auth.signInWithOAuth(
+        OAuthProvider.discord,
+      );
+    }
+    setState(() {
+      _checkingSession = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // ✅ Rebuild, sobald Settings geändert werden (Design Picker etc.)
-    return AnimatedBuilder(
-      animation: settings,
-      builder: (context, _) {
-        // ✅ Theme live aktualisieren
-        OrbitTheme.currentDarkTheme = settings.darkTheme;
+    // Theme live aktualisieren
+    OrbitTheme.currentDarkTheme = widget.settings.darkTheme;
 
-        return MaterialApp(
-          title: 'Orbit',
-          debugShowCheckedModeBanner: false,
+    if (_checkingSession) {
+      return const MaterialApp(
+        home: Scaffold(body: Center(child: CircularProgressIndicator())),
+      );
+    }
 
-          // ✅ Lesbare Schrift + konsistentes Design
-          theme: OrbitTheme.light(),
-          darkTheme: OrbitTheme.dark(),
-          themeMode: ThemeMode.dark,
-
-          home: GameSelectScreen(
-            settings: settings,
-            updateStore: updateStore,
-            collection: collection,
-          ),
-        );
-      },
+    // Haupt-App mit GameSelectScreen und zusätzlichen Widgets
+    return MaterialApp(
+      title: 'Orbit',
+      debugShowCheckedModeBanner: false,
+      theme: OrbitTheme.light(),
+      darkTheme: OrbitTheme.dark(),
+      themeMode: ThemeMode.dark,
+      home: Scaffold(
+        body: GameSelectScreen(
+          settings: widget.settings,
+          updateStore: widget.updateStore,
+          collection: widget.collection,
+        ),
+        // Optional: Logout & CoD Settings Overlay oder dauerhaft unten
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [LogoutButton(), CodSettingsWidget()],
+        ),
+      ),
     );
   }
 }
