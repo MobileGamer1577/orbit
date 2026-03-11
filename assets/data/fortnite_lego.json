@@ -1,14 +1,144 @@
 {
   "tasks": [
     {
-      "id": "example_1",
-      "title": "Title Placeholder",
-      "description": "LEGO Fortnite"
+      "id": "lego_01",
+      "title": "Besiege einen Feuerdrachen",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
     },
     {
-      "id": "example_2",
-      "title": "Title Placeholder",
-      "description": "LEGO Fortnite"
+      "id": "lego_02",
+      "title": "Besiege Elementarbären",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_03",
+      "title": "Besiege Elementarroller",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_04",
+      "title": "Besiege Elementarwölfe",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_05",
+      "title": "Besiege Gegner mit Gegenangriff nach Nunchaku-Abwehr",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_06",
+      "title": "Besiege glockenförmige Verlorene Meister",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_07",
+      "title": "Besuche das Blitzheiligtum",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+    },
+    {
+      "id": "lego_08",
+      "title": "Besuche das Eisheiligtum",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+    },
+    {
+      "id": "lego_09",
+      "title": "Besuche das Erdheiligtum",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+    },
+    {
+      "id": "lego_10",
+      "title": "Füge Gegnern Schaden mit dem Nunchaku-Sprintangriff zu",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1.000"
+    },
+    {
+      "id": "lego_11",
+      "title": "Öffne tägliche Truhen",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_12",
+      "title": "Schließe Ninjago-Chaos-Herausforderungen ab",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/20"
+    },
+    {
+      "id": "lego_13",
+      "title": "Schließe Portale",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_14",
+      "title": "Stelle die Blitz-Spinjitzu-Meisterrolle her",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+    },
+    {
+      "id": "lego_15",
+      "title": "Stelle die Eis-Spinjitzu-Meisterrolle her",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+    },
+    {
+      "id": "lego_16",
+      "title": "Stelle die Erd-Spinjitzu-Meisterrolle her",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+    },
+    {
+      "id": "lego_17",
+      "title": "Stelle Ninja-Relikte her",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_18",
+      "title": "Stelle Nunchakus her",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/3"
+    },
+    {
+      "id": "lego_19",
+      "title": "Stelle Shuriken her",
+      "description": "Ninjago-Herausforderungen • 10k XP • 0/3"
+    },
+    {
+      "id": "lego_20",
+      "title": "Füge Blitzschaden zu – Teil 1",
+      "description": "Ninjago Meilensteine • 10k XP • 0/1.000"
+    },
+    {
+      "id": "lego_21",
+      "title": "Füge Eisschaden zu – Teil 1",
+      "description": "Ninjago Meilensteine • 10k XP • 0/1.000"
+    },
+    {
+      "id": "lego_22",
+      "title": "Füge Erdschaden zu – Teil 1",
+      "description": "Ninjago Meilensteine • 10k XP • 0/1.000"
+    },
+    {
+      "id": "lego_23",
+      "title": "Großwildjäger: Elementarwölfe",
+      "description": "Ninjago Meilensteine • 10k XP • 0/5"
+    },
+    {
+      "id": "lego_24",
+      "title": "Besiege 'Zerbrochene Seele'-Horden",
+      "description": "Tränke sind da • 20k XP • 0/50"
+    },
+    {
+      "id": "lego_25",
+      "title": "Besiege Gegner mit Heldenfähigkeiten",
+      "description": "Tränke sind da • 20k XP • 0/50"
+    },
+    {
+      "id": "lego_26",
+      "title": "Stelle Heldenfähigkeit-Gegenstände her",
+      "description": "Tränke sind da • 20k XP • 0/5"
+    },
+    {
+      "id": "lego_27",
+      "title": "Stelle Mahlzeiten im Ofen her",
+      "description": "Tränke sind da • 20k XP • 0/1"
+    },
+    {
+      "id": "lego_28",
+      "title": "Stelle Tränke her und verwende sie",
+      "description": "Tränke sind da • 20k XP • 0/50"
     }
   ]
 }

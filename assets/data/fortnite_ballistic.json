@@ -1,14 +1,9 @@
 {
   "tasks": [
     {
-      "id": "example_1",
-      "title": "Title Placeholder",
-      "description": "Ballistic"
-    },
-    {
-      "id": "example_2",
-      "title": "Title Placeholder",
-      "description": "Ballistic"
+      "id": "ballistic_01",
+      "title": "Gewinne Runden in Ranked Ballistic",
+      "description": "Ranked • Pop-Corn (Dunkel) Lackierung • 0/50"
     }
   ]
 }

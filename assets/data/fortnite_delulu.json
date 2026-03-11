@@ -1,14 +1,54 @@
 {
   "tasks": [
     {
-      "id": "example_1",
-      "title": "Title Placeholder",
-      "description": "Delulu"
+      "id": "delulu_01",
+      "title": "Verbringe Zeit in einer Freundschaftszonenblase",
+      "description": "Starthilfe • 15k XP • 0/30"
     },
     {
-      "id": "example_2",
-      "title": "Title Placeholder",
-      "description": "Delulu"
+      "id": "delulu_02",
+      "title": "Durchsuche Vorratslieferungen oder Truhen (kooperativ)",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    {
+      "id": "delulu_03",
+      "title": "Belebe verschiedene Spieler wieder",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    {
+      "id": "delulu_04",
+      "title": "Füge Gegnern Schaden zu, während du in einem Team bist",
+      "description": "Starthilfe • 15k XP • 0/1.000"
+    },
+    {
+      "id": "delulu_05",
+      "title": "Suche als Geist einen Spieler in verschiedenen Matches heim",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    {
+      "id": "delulu_06",
+      "title": "Benutze ein Emote in 10m Umkreis eines anderen Spielers",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    {
+      "id": "delulu_07",
+      "title": "Gehöre zu den letzten 10 Spielern im Team",
+      "description": "Starthilfe • 15k XP • 0/2"
+    },
+    {
+      "id": "delulu_08",
+      "title": "Tritt in verschiedenen Matches Teams vor der zweiten Sturmphase bei",
+      "description": "Starthilfe • 15k XP • 0/2"
+    },
+    {
+      "id": "delulu_09",
+      "title": "Unterstütze einen Spieler als Geist in verschiedenen Matches",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    {
+      "id": "delulu_10",
+      "title": "Besuche benannte Orte, während du in einem Team bist",
+      "description": "Starthilfe • 15k XP • 0/10"
     }
   ]
 }
