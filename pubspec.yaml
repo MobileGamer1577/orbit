@@ -45,17 +45,10 @@ flutter:
 
   assets:
     - assets/data/
-    - assets/icon/   # <- empfehle ich, wenn du icons dort liegen hast
+    - assets/icon/
 
 flutter_launcher_icons:
   android: true
-  adaptive_icon_background: "#12002b" # dunkles lila/schwarz
+  adaptive_icon_background: "#12002b"
   adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
   image_path: "assets/icon/app_icon.png"
-
-dependencies:
-  flutter:
-    sdk: flutter
-  hive_flutter: ^1.1.0
-  supabase_flutter: ^2.0.0
-  # deine anderen Dependencies bleiben unverändert
