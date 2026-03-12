@@ -4,33 +4,27 @@ import '../services/shop_service.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
-// ─────────────────────────────────────────────────────────
-// Seltenheits-Farben
-// ─────────────────────────────────────────────────────────
 const _rarityColors = {
-  'common':         Color(0xFF8F8F8F),
-  'uncommon':       Color(0xFF2ECC40),
-  'rare':           Color(0xFF0077FF),
-  'epic':           Color(0xFF9B59B6),
-  'legendary':      Color(0xFFFF8C00),
-  'mythic':         Color(0xFFFFD700),
-  'exotic':         Color(0xFF00E5FF),
-  'transcendent':   Color(0xFFFF1744),
-  'slurp':          Color(0xFF00E5FF),
-  'gaminglegends':  Color(0xFF6200EA),
-  'shadow':         Color(0xFF616161),
-  'icon':           Color(0xFF1DE9B6),
-  'marvel':         Color(0xFFFF1744),
-  'dc':             Color(0xFF1565C0),
-  'starwars':       Color(0xFFFFD600),
+  'common':        Color(0xFF8F8F8F),
+  'uncommon':      Color(0xFF2ECC40),
+  'rare':          Color(0xFF0077FF),
+  'epic':          Color(0xFF9B59B6),
+  'legendary':     Color(0xFFFF8C00),
+  'mythic':        Color(0xFFFFD700),
+  'exotic':        Color(0xFF00E5FF),
+  'transcendent':  Color(0xFFFF1744),
+  'slurp':         Color(0xFF00E5FF),
+  'gaminglegends': Color(0xFF6200EA),
+  'shadow':        Color(0xFF616161),
+  'icon':          Color(0xFF1DE9B6),
+  'marvel':        Color(0xFFFF1744),
+  'dc':            Color(0xFF1565C0),
+  'starwars':      Color(0xFFFFD600),
 };
 
 Color _rarityColor(String rarity) =>
     _rarityColors[rarity.toLowerCase()] ?? const Color(0xFF8F8F8F);
 
-// ─────────────────────────────────────────────────────────
-// Screen
-// ─────────────────────────────────────────────────────────
 class FortniteShopScreen extends StatefulWidget {
   const FortniteShopScreen({super.key});
 
@@ -40,6 +34,7 @@ class FortniteShopScreen extends StatefulWidget {
 
 class _FortniteShopScreenState extends State<FortniteShopScreen> {
   late final ShopService _service;
+  bool _showDebug = true; // temporär an — nach dem Fix ausschalten
 
   @override
   void initState() {
@@ -60,7 +55,8 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   }
 
   String _formatTime(DateTime dt) =>
-      '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')} Uhr';
+      '${dt.hour.toString().padLeft(2, '0')}:'
+      '${dt.minute.toString().padLeft(2, '0')} Uhr';
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +69,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
             children: [
               // ── Header ─────────────────────────────────
               Padding(
-                padding: const EdgeInsets.fromLTRB(4, 4, 16, 0),
+                padding: const EdgeInsets.fromLTRB(4, 4, 8, 0),
                 child: Row(
                   children: [
                     IconButton(
@@ -93,11 +89,24 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                         ),
                       ),
                     ),
+                    // Debug-Toggle
+                    IconButton(
+                      onPressed: () =>
+                          setState(() => _showDebug = !_showDebug),
+                      icon: Icon(
+                        Icons.bug_report_outlined,
+                        color: _showDebug
+                            ? const Color(0xFF9C6FFF)
+                            : Colors.white38,
+                        size: 22,
+                      ),
+                    ),
                     IconButton(
                       onPressed: _service.loading ? null : _service.fetch,
                       icon: _service.loading
                           ? const SizedBox(
-                              width: 20, height: 20,
+                              width: 20,
+                              height: 20,
                               child: CircularProgressIndicator(
                                   strokeWidth: 2, color: Colors.white),
                             )
@@ -111,7 +120,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
               // ── Statuszeile ─────────────────────────────
               if (_service.data != null)
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 6),
+                  padding: const EdgeInsets.only(left: 20, bottom: 4),
                   child: Text(
                     'Aktualisiert: ${_formatTime(_service.data!.fetchedAt)}'
                     ' • ${_service.data!.entries.length} Einträge',
@@ -119,6 +128,32 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                       color: Colors.white.withOpacity(0.40),
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+
+              // ── Debug-Panel ─────────────────────────────
+              if (_showDebug && _service.data != null)
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.60),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                        color: const Color(0xFF9C6FFF).withOpacity(0.40)),
+                  ),
+                  child: Text(
+                    '${_service.data!.debugFirstEntry}\n'
+                    '${_service.data!.debugFirstItem}\n'
+                    '--- cosmetics ---\n'
+                    '${_service.data!.debugCosmeticsCount}',
+                    style: const TextStyle(
+                      color: Colors.white60,
+                      fontSize: 10,
+                      fontFamily: 'monospace',
+                      height: 1.5,
                     ),
                   ),
                 ),
@@ -152,13 +187,11 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 
     if (_service.data == null || _service.data!.entries.isEmpty) {
       return _ErrorView(
-        error: 'Keine Einträge gefunden.',
-        onRetry: _service.fetch,
-      );
+          error: 'Keine Einträge gefunden.', onRetry: _service.fetch);
     }
 
-    final sections  = _service.data!.bySection;
-    final imgMap    = _service.data!.cosmeticImages;
+    final sections = _service.data!.bySection;
+    final imgMap   = _service.data!.cosmeticImages;
 
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
@@ -185,7 +218,8 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
@@ -203,10 +237,8 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 }
 
 // ─────────────────────────────────────────────────────────
-// Shop-Karte
-// ─────────────────────────────────────────────────────────
 class _ShopCard extends StatelessWidget {
-  final ShopEntry                  entry;
+  final ShopEntry                   entry;
   final Map<String, CosmeticImages> imgMap;
 
   const _ShopCard({required this.entry, required this.imgMap});
@@ -228,19 +260,18 @@ class _ShopCard extends StatelessWidget {
             Colors.white.withOpacity(0.03),
           ],
         ),
-        border: Border.all(color: accentColor.withOpacity(0.45), width: 1.2),
+        border:
+            Border.all(color: accentColor.withOpacity(0.45), width: 1.2),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(17),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // ── Bild ──────────────────────────────────────
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  // Rarity-Hintergrund
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -253,19 +284,19 @@ class _ShopCard extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  // Item-Bild
                   if (imageUrl != null)
                     Image.network(
                       imageUrl,
                       fit: BoxFit.contain,
-                      errorBuilder: (_, __, ___) => const _NoImage(),
+                      errorBuilder: (_, __, ___) =>
+                          const _NoImage(),
                       loadingBuilder: (_, child, progress) =>
                           progress == null
                               ? child
                               : Center(
                                   child: SizedBox(
-                                    width: 22, height: 22,
+                                    width: 22,
+                                    height: 22,
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
                                       color: accentColor.withOpacity(0.60),
@@ -275,25 +306,22 @@ class _ShopCard extends StatelessWidget {
                     )
                   else
                     const _NoImage(),
-
-                  // Sale-Badge
                   if (entry.isOnSale)
                     Positioned(
                       top: 7, right: 7,
-                      child: _Badge(label: 'SALE', color: Colors.red.shade600),
+                      child: _Badge(
+                          label: 'SALE', color: Colors.red.shade600),
                     ),
-
-                  // Bundle-Badge
                   if (entry.isBundle)
                     Positioned(
                       top: 7, left: 7,
-                      child: _Badge(label: 'BUNDLE', color: Colors.purple.shade700),
+                      child: _Badge(
+                          label: 'BUNDLE',
+                          color: Colors.purple.shade700),
                     ),
                 ],
               ),
             ),
-
-            // ── Info ───────────────────────────────────────
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
               child: Column(
@@ -310,7 +338,8 @@ class _ShopCard extends StatelessWidget {
                       height: 1.2,
                     ),
                   ),
-                  if (entry.primaryItem?.typeDisplay.isNotEmpty == true) ...[
+                  if (entry.primaryItem?.typeDisplay.isNotEmpty ==
+                      true) ...[
                     const SizedBox(height: 2),
                     Text(
                       entry.primaryItem!.typeDisplay,
@@ -359,9 +388,6 @@ class _ShopCard extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────
-// Kleine Widgets
-// ─────────────────────────────────────────────────────────
-
 class _NoImage extends StatelessWidget {
   const _NoImage();
   @override
@@ -379,50 +405,45 @@ class _Badge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+        padding:
+            const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(6),
         ),
-        child: Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 9,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 0.8,
-          ),
-        ),
+        child: Text(label,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 9,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 0.8)),
       );
 }
 
 class _VBucksIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-        width: 16, height: 16,
+        width: 16,
+        height: 16,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: const Color(0xFF00C8FF).withOpacity(0.20),
           border: Border.all(
-            color: const Color(0xFF00C8FF).withOpacity(0.60),
-            width: 1,
-          ),
+              color: const Color(0xFF00C8FF).withOpacity(0.60),
+              width: 1),
         ),
         child: const Center(
-          child: Text(
-            'V',
-            style: TextStyle(
-              color: Color(0xFF00C8FF),
-              fontSize: 9,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
+          child: Text('V',
+              style: TextStyle(
+                  color: Color(0xFF00C8FF),
+                  fontSize: 9,
+                  fontWeight: FontWeight.w900)),
         ),
       );
 }
 
 class _ErrorView extends StatelessWidget {
-  final String error;
+  final String       error;
   final VoidCallback onRetry;
   const _ErrorView({required this.error, required this.onRetry});
 
@@ -433,23 +454,21 @@ class _ErrorView extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.storefront_outlined, color: Colors.white24, size: 52),
+              Icon(Icons.storefront_outlined,
+                  color: Colors.white24, size: 52),
               const SizedBox(height: 16),
-              Text(
-                'Shop konnte nicht geladen werden',
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.75),
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700),
-                textAlign: TextAlign.center,
-              ),
+              Text('Shop konnte nicht geladen werden',
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.75),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center),
               const SizedBox(height: 8),
-              Text(
-                error,
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.40), fontSize: 12),
-                textAlign: TextAlign.center,
-              ),
+              Text(error,
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.40),
+                      fontSize: 12),
+                  textAlign: TextAlign.center),
               const SizedBox(height: 24),
               FilledButton.icon(
                 onPressed: onRetry,
