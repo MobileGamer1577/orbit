@@ -22,35 +22,64 @@ class ShopEntry {
     required this.items,
   });
 
-  bool get isBundle => bundleName != null;
+  bool get isBundle => bundleName != null && bundleName!.isNotEmpty;
+  bool get isOnSale => finalPrice < regularPrice;
 
-  /// Anzeigename: Bundle-Name oder erster Item-Name
-  String get displayName =>
-      bundleName ?? (items.isNotEmpty ? items.first.name : '???');
+  String get displayName {
+    if (isBundle) return bundleName!;
+    if (items.isNotEmpty) return items.first.name;
+    return '???';
+  }
 
-  /// Bild: Featured-Bild bevorzugt, dann Icon
   String? get displayImage {
     if (items.isEmpty) return null;
-    final item = items.first;
-    return item.featuredImage ?? item.iconImage;
+    return items.first.featuredImage ?? items.first.iconImage;
   }
 
   ShopItem? get primaryItem => items.isNotEmpty ? items.first : null;
 
   factory ShopEntry.fromJson(Map<String, dynamic> j) {
-    final bundleData = j['bundle'] as Map<String, dynamic>?;
-    final sectionData = j['section'] as Map<String, dynamic>?;
-    final rawItems = (j['items'] as List?) ?? [];
+    // Bundle-Name
+    String? bundleName;
+    final bundle = j['bundle'];
+    if (bundle is Map) {
+      bundleName = bundle['name'] as String?;
+    }
+
+    // Section-Name – API liefert manchmal String, manchmal Map
+    String sectionName = 'Shop';
+    final section = j['section'];
+    if (section is Map) {
+      sectionName = (section['name'] as String?) ?? 'Shop';
+    } else if (section is String) {
+      sectionName = section;
+    }
+    // Fallback: categories Liste
+    if (sectionName == 'Shop') {
+      final cats = j['categories'];
+      if (cats is List && cats.isNotEmpty) {
+        sectionName = cats.first.toString();
+      }
+    }
+
+    // Items
+    final rawItems = j['items'];
+    final List<ShopItem> items;
+    if (rawItems is List) {
+      items = rawItems
+          .whereType<Map>()
+          .map((m) => ShopItem.fromJson(Map<String, dynamic>.from(m)))
+          .toList();
+    } else {
+      items = [];
+    }
 
     return ShopEntry(
-      finalPrice: (j['finalPrice'] as num?)?.toInt() ?? 0,
-      regularPrice: (j['regularPrice'] as num?)?.toInt() ?? 0,
-      bundleName: bundleData?['name'] as String?,
-      sectionName: sectionData?['name'] as String? ?? 'Featured',
-      items: rawItems
-          .cast<Map<String, dynamic>>()
-          .map(ShopItem.fromJson)
-          .toList(),
+      finalPrice: _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
+      regularPrice: _toInt(j['regularPrice']) ?? _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
+      bundleName: bundleName,
+      sectionName: sectionName,
+      items: items,
     );
   }
 }
@@ -60,7 +89,7 @@ class ShopItem {
   final String name;
   final String description;
   final String typeDisplay;
-  final String rarityValue;   // common, uncommon, rare, epic, legendary, …
+  final String rarityValue;
   final String rarityDisplay;
   final String? iconImage;
   final String? featuredImage;
@@ -77,19 +106,47 @@ class ShopItem {
   });
 
   factory ShopItem.fromJson(Map<String, dynamic> j) {
-    final type = j['type'] as Map<String, dynamic>?;
-    final rarity = j['rarity'] as Map<String, dynamic>?;
-    final images = j['images'] as Map<String, dynamic>?;
+    // type: kann Map oder String sein
+    String typeDisplay = '';
+    final type = j['type'];
+    if (type is Map) {
+      typeDisplay = (type['displayValue'] as String?) ?? (type['value'] as String?) ?? '';
+    } else if (type is String) {
+      typeDisplay = type;
+    }
+
+    // rarity: kann Map oder String sein
+    String rarityValue = 'common';
+    String rarityDisplay = '';
+    final rarity = j['rarity'];
+    if (rarity is Map) {
+      rarityValue = (rarity['value'] as String?) ?? 'common';
+      rarityDisplay = (rarity['displayValue'] as String?) ?? '';
+    } else if (rarity is String) {
+      rarityValue = rarity;
+    }
+
+    // images
+    String? iconImage;
+    String? featuredImage;
+    final images = j['images'];
+    if (images is Map) {
+      iconImage = images['icon'] as String?;
+      featuredImage = images['featured'] as String?;
+      // Fallback: smallIcon, background
+      iconImage ??= images['smallIcon'] as String?;
+      featuredImage ??= images['featuredSmall'] as String?;
+    }
 
     return ShopItem(
       id: j['id'] as String? ?? '',
       name: j['name'] as String? ?? '???',
       description: j['description'] as String? ?? '',
-      typeDisplay: type?['displayValue'] as String? ?? '',
-      rarityValue: rarity?['value'] as String? ?? 'common',
-      rarityDisplay: rarity?['displayValue'] as String? ?? '',
-      iconImage: images?['icon'] as String?,
-      featuredImage: images?['featured'] as String?,
+      typeDisplay: typeDisplay,
+      rarityValue: rarityValue,
+      rarityDisplay: rarityDisplay,
+      iconImage: iconImage,
+      featuredImage: featuredImage,
     );
   }
 }
@@ -97,10 +154,14 @@ class ShopItem {
 class ShopData {
   final List<ShopEntry> entries;
   final DateTime fetchedAt;
+  final String rawDebug; // für Fehleranalyse
 
-  const ShopData({required this.entries, required this.fetchedAt});
+  const ShopData({
+    required this.entries,
+    required this.fetchedAt,
+    this.rawDebug = '',
+  });
 
-  /// Gruppiert nach Section-Name
   Map<String, List<ShopEntry>> get bySection {
     final map = <String, List<ShopEntry>>{};
     for (final e in entries) {
@@ -111,9 +172,19 @@ class ShopData {
 }
 
 // ─────────────────────────────────────────────────────────
+// Hilfsfunktion
+// ─────────────────────────────────────────────────────────
+int? _toInt(dynamic v) {
+  if (v == null) return null;
+  if (v is int) return v;
+  if (v is double) return v.toInt();
+  if (v is String) return int.tryParse(v);
+  return null;
+}
+
+// ─────────────────────────────────────────────────────────
 // Service
 // ─────────────────────────────────────────────────────────
-
 class ShopService extends ChangeNotifier {
   static const _apiKey = '135f01ed-1a5e-40df-b8b6-4b2c97f47151';
   static const _url = 'https://fortnite-api.com/v2/shop';
@@ -121,11 +192,13 @@ class ShopService extends ChangeNotifier {
   ShopData? _data;
   bool _loading = false;
   String? _error;
+  String _debugInfo = '';
   Timer? _timer;
 
   ShopData? get data => _data;
   bool get loading => _loading;
   String? get error => _error;
+  String get debugInfo => _debugInfo;
 
   ShopService() {
     fetch();
@@ -138,17 +211,13 @@ class ShopService extends ChangeNotifier {
     super.dispose();
   }
 
-  // ── Stündliche Aktualisierung zur vollen Stunde ──────────
   void _scheduleHourlyRefresh() {
     _timer?.cancel();
     final now = DateTime.now();
-    // Sekunden bis zur nächsten vollen Stunde
     final nextHour = DateTime(now.year, now.month, now.day, now.hour + 1);
     final delay = nextHour.difference(now);
-
     _timer = Timer(delay, () {
       fetch();
-      // Danach jede volle Stunde
       _timer = Timer.periodic(const Duration(hours: 1), (_) => fetch());
     });
   }
@@ -165,26 +234,88 @@ class ShopService extends ChangeNotifier {
         headers: {
           'Authorization': _apiKey,
           'Accept': 'application/json',
+          'User-Agent': 'Orbit/1.0',
         },
-      ).timeout(const Duration(seconds: 15));
+      ).timeout(const Duration(seconds: 20));
 
       if (res.statusCode != 200) {
-        throw Exception('HTTP ${res.statusCode}');
+        throw Exception('HTTP ${res.statusCode}: ${res.body.substring(0, res.body.length.clamp(0, 200))}');
       }
 
-      final json = jsonDecode(res.body) as Map<String, dynamic>;
-      final shopData = json['data'] as Map<String, dynamic>;
-      final rawEntries = (shopData['entries'] as List?) ?? [];
+      final decoded = jsonDecode(res.body);
+      final json = decoded as Map<String, dynamic>;
 
-      final entries = rawEntries
-          .cast<Map<String, dynamic>>()
-          .map(ShopEntry.fromJson)
-          .where((e) => e.items.isNotEmpty)
-          .toList();
+      // Top-Level-Keys für Debug speichern
+      final topKeys = json.keys.toList();
+      final dataVal = json['data'];
+      String debugStr = 'Top: $topKeys';
 
-      _data = ShopData(entries: entries, fetchedAt: DateTime.now());
+      List<Map<String, dynamic>> rawEntries = [];
+
+      if (dataVal is Map) {
+        final shopMap = Map<String, dynamic>.from(dataVal);
+        debugStr += ' | data keys: ${shopMap.keys.toList()}';
+
+        // Variante 1: data.entries (neue API)
+        final entriesRaw = shopMap['entries'];
+        if (entriesRaw is List && entriesRaw.isNotEmpty) {
+          rawEntries = entriesRaw.whereType<Map>()
+              .map((m) => Map<String, dynamic>.from(m))
+              .toList();
+          debugStr += ' | entries: ${rawEntries.length}';
+        }
+
+        // Variante 2: data.featured + data.daily (alte API)
+        if (rawEntries.isEmpty) {
+          final featured = shopMap['featured'];
+          final daily = shopMap['daily'];
+          if (featured is Map) {
+            final fe = featured['entries'];
+            if (fe is List) {
+              rawEntries.addAll(fe.whereType<Map>().map((m) => Map<String, dynamic>.from(m)));
+            }
+          }
+          if (daily is Map) {
+            final de = daily['entries'];
+            if (de is List) {
+              rawEntries.addAll(de.whereType<Map>().map((m) => Map<String, dynamic>.from(m)));
+            }
+          }
+          debugStr += ' | featured+daily: ${rawEntries.length}';
+        }
+
+        // Variante 3: data direkt ist eine Liste
+        if (rawEntries.isEmpty && dataVal is List) {
+          rawEntries = (dataVal as List).whereType<Map>()
+              .map((m) => Map<String, dynamic>.from(m))
+              .toList();
+          debugStr += ' | data-as-list: ${rawEntries.length}';
+        }
+      } else if (dataVal is List) {
+        // data selbst ist die Liste
+        rawEntries = dataVal.whereType<Map>()
+            .map((m) => Map<String, dynamic>.from(m))
+            .toList();
+        debugStr += ' | data-list: ${rawEntries.length}';
+      }
+
+      // Debug: erste Entry-Keys anzeigen
+      if (rawEntries.isNotEmpty) {
+        debugStr += ' | entry[0] keys: ${rawEntries.first.keys.toList()}';
+      }
+
+      _debugInfo = debugStr;
+
+      final entries = rawEntries.map(ShopEntry.fromJson).toList();
+
+      _data = ShopData(
+        entries: entries,
+        fetchedAt: DateTime.now(),
+        rawDebug: debugStr,
+      );
     } catch (e) {
       _error = e.toString();
+      _debugInfo = 'Error: $_error';
     } finally {
       _loading = false;
       notifyListeners();

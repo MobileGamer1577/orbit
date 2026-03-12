@@ -4,7 +4,9 @@ import '../services/shop_service.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
-// Seltenheits-Farben (passend zu Fortnite)
+// ─────────────────────────────────────────────────────────
+// Seltenheits-Farben
+// ─────────────────────────────────────────────────────────
 const _rarityColors = {
   'common': Color(0xFF8F8F8F),
   'uncommon': Color(0xFF2ECC40),
@@ -16,7 +18,7 @@ const _rarityColors = {
   'transcendent': Color(0xFFFF1744),
   'slurp': Color(0xFF00E5FF),
   'gaminglegends': Color(0xFF6200EA),
-  'shadow': Color(0xFF424242),
+  'shadow': Color(0xFF616161),
   'icon': Color(0xFF1DE9B6),
   'marvel': Color(0xFFFF1744),
   'dc': Color(0xFF1565C0),
@@ -26,6 +28,9 @@ const _rarityColors = {
 Color _rarityColor(String rarity) =>
     _rarityColors[rarity.toLowerCase()] ?? const Color(0xFF8F8F8F);
 
+// ─────────────────────────────────────────────────────────
+// Screen
+// ─────────────────────────────────────────────────────────
 class FortniteShopScreen extends StatefulWidget {
   const FortniteShopScreen({super.key});
 
@@ -93,7 +98,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                         ),
                       ),
                     ),
-                    // Refresh-Button
                     IconButton(
                       onPressed: _service.loading ? null : _service.fetch,
                       icon: _service.loading
@@ -114,10 +118,10 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                 ),
               ),
 
-              // ── Aktualisierungszeit ──────────────────────
+              // ── Statuszeile ─────────────────────────────
               if (_service.data != null)
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 8),
+                  padding: const EdgeInsets.only(left: 20, bottom: 6),
                   child: Text(
                     'Aktualisiert: ${_formatTime(_service.data!.fetchedAt)}'
                     ' • ${_service.data!.entries.length} Einträge',
@@ -129,7 +133,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                   ),
                 ),
 
-              // ── Inhalt ──────────────────────────────────
               Expanded(child: _buildBody()),
             ],
           ),
@@ -139,6 +142,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   }
 
   Widget _buildBody() {
+    // Lädt erstmalig
     if (_service.loading && _service.data == null) {
       return const Center(
         child: Column(
@@ -155,50 +159,25 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
       );
     }
 
+    // Fehler ohne Daten
     if (_service.error != null && _service.data == null) {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.wifi_off, color: Colors.white38, size: 52),
-              const SizedBox(height: 16),
-              Text(
-                'Shop konnte nicht geladen werden',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.75),
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                _service.error!,
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.40),
-                  fontSize: 12,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 24),
-              FilledButton.icon(
-                onPressed: _service.fetch,
-                style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF7C4DFF),
-                ),
-                icon: const Icon(Icons.refresh),
-                label: const Text('Erneut versuchen'),
-              ),
-            ],
-          ),
-        ),
+      return _ErrorView(
+        error: _service.error!,
+        onRetry: _service.fetch,
       );
     }
 
     if (_service.data == null) return const SizedBox.shrink();
 
+    // 0 Einträge → Debug-Info anzeigen
+    if (_service.data!.entries.isEmpty) {
+      return _EmptyView(
+        debugInfo: _service.debugInfo,
+        onRetry: _service.fetch,
+      );
+    }
+
+    // ── Normaler Shop ───────────────────────────────────
     final sections = _service.data!.bySection;
 
     return ListView.builder(
@@ -212,8 +191,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 18),
-            // Section Header
+            const SizedBox(height: 20),
             Text(
               sectionName.toUpperCase(),
               style: TextStyle(
@@ -224,7 +202,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            // Grid
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -245,6 +222,129 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 }
 
 // ─────────────────────────────────────────────────────────
+// 0-Einträge-Ansicht (mit Debug-Info)
+// ─────────────────────────────────────────────────────────
+class _EmptyView extends StatelessWidget {
+  final String debugInfo;
+  final VoidCallback onRetry;
+
+  const _EmptyView({required this.debugInfo, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(28),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.storefront_outlined, color: Colors.white24, size: 52),
+            const SizedBox(height: 16),
+            Text(
+              'Shop ist leer',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.75),
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Die API hat geantwortet, aber keine Items gefunden.',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.45),
+                fontSize: 13,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            if (debugInfo.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.white.withOpacity(0.08)),
+                ),
+                child: Text(
+                  debugInfo,
+                  style: const TextStyle(
+                    color: Colors.white38,
+                    fontSize: 10,
+                    fontFamily: 'monospace',
+                  ),
+                ),
+              ),
+            ],
+            const SizedBox(height: 24),
+            FilledButton.icon(
+              onPressed: onRetry,
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF7C4DFF),
+              ),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Erneut laden'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+// Fehler-Ansicht
+// ─────────────────────────────────────────────────────────
+class _ErrorView extends StatelessWidget {
+  final String error;
+  final VoidCallback onRetry;
+
+  const _ErrorView({required this.error, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.wifi_off, color: Colors.white38, size: 52),
+            const SizedBox(height: 16),
+            Text(
+              'Verbindungsfehler',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.75),
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              error,
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.40),
+                fontSize: 12,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            FilledButton.icon(
+              onPressed: onRetry,
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF7C4DFF),
+              ),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Erneut versuchen'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────
 // Shop-Karte
 // ─────────────────────────────────────────────────────────
 class _ShopCard extends StatelessWidget {
@@ -257,7 +357,6 @@ class _ShopCard extends StatelessWidget {
     final rarity = entry.primaryItem?.rarityValue ?? 'common';
     final accentColor = _rarityColor(rarity);
     final imageUrl = entry.displayImage;
-    final isOnSale = entry.finalPrice < entry.regularPrice;
 
     return Container(
       decoration: BoxDecoration(
@@ -271,7 +370,7 @@ class _ShopCard extends StatelessWidget {
           ],
         ),
         border: Border.all(
-          color: accentColor.withOpacity(0.40),
+          color: accentColor.withOpacity(0.45),
           width: 1.2,
         ),
       ),
@@ -280,12 +379,11 @@ class _ShopCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Bild
+            // ── Bild ──────────────────────────────────────
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  // Hintergrund-Gradient in Rarityfarbe
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -298,8 +396,6 @@ class _ShopCard extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  // Item-Bild
                   if (imageUrl != null)
                     Image.network(
                       imageUrl,
@@ -307,87 +403,52 @@ class _ShopCard extends StatelessWidget {
                       errorBuilder: (_, __, ___) => Icon(
                         Icons.image_not_supported_outlined,
                         color: Colors.white24,
-                        size: 40,
+                        size: 36,
                       ),
-                      loadingBuilder: (_, child, progress) {
-                        if (progress == null) return child;
-                        return Center(
-                          child: SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: accentColor.withOpacity(0.60),
+                      loadingBuilder: (_, child, progress) => progress == null
+                          ? child
+                          : Center(
+                              child: SizedBox(
+                                width: 22,
+                                height: 22,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: accentColor.withOpacity(0.60),
+                                ),
+                              ),
                             ),
-                          ),
-                        );
-                      },
                     )
                   else
-                    Icon(Icons.storefront, color: Colors.white24, size: 40),
+                    Icon(Icons.storefront, color: Colors.white24, size: 36),
 
                   // Sale-Badge
-                  if (isOnSale)
+                  if (entry.isOnSale)
                     Positioned(
-                      top: 8,
-                      right: 8,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 7,
-                          vertical: 3,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.red.shade600,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: const Text(
-                          'SALE',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 9,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 0.8,
-                          ),
-                        ),
-                      ),
+                      top: 7,
+                      right: 7,
+                      child: _Badge(label: 'SALE', color: Colors.red.shade600),
                     ),
 
                   // Bundle-Badge
                   if (entry.isBundle)
                     Positioned(
-                      top: 8,
-                      left: 8,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 7,
-                          vertical: 3,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.purple.shade700,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: const Text(
-                          'BUNDLE',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 9,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 0.8,
-                          ),
-                        ),
+                      top: 7,
+                      left: 7,
+                      child: _Badge(
+                        label: 'BUNDLE',
+                        color: Colors.purple.shade700,
                       ),
                     ),
                 ],
               ),
             ),
 
-            // Info-Bereich
+            // ── Info ───────────────────────────────────────
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Name
                   Text(
                     entry.displayName,
                     maxLines: 2,
@@ -399,9 +460,8 @@ class _ShopCard extends StatelessWidget {
                       height: 1.2,
                     ),
                   ),
-
                   if (entry.primaryItem?.typeDisplay.isNotEmpty == true) ...[
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 2),
                     Text(
                       entry.primaryItem!.typeDisplay,
                       style: TextStyle(
@@ -411,35 +471,11 @@ class _ShopCard extends StatelessWidget {
                       ),
                     ),
                   ],
-
                   const SizedBox(height: 6),
-
                   // Preis
                   Row(
                     children: [
-                      // V-Bucks Icon
-                      Container(
-                        width: 16,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: const Color(0xFF00C8FF).withOpacity(0.20),
-                          border: Border.all(
-                            color: const Color(0xFF00C8FF).withOpacity(0.60),
-                            width: 1,
-                          ),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'V',
-                            style: TextStyle(
-                              color: Color(0xFF00C8FF),
-                              fontSize: 9,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                        ),
-                      ),
+                      _VBucksIcon(),
                       const SizedBox(width: 5),
                       Text(
                         '${entry.finalPrice}',
@@ -449,7 +485,7 @@ class _ShopCard extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-                      if (isOnSale) ...[
+                      if (entry.isOnSale) ...[
                         const SizedBox(width: 6),
                         Text(
                           '${entry.regularPrice}',
@@ -467,6 +503,61 @@ class _ShopCard extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Badge extends StatelessWidget {
+  final String label;
+  final Color color;
+
+  const _Badge({required this.label, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Text(
+        label,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 9,
+          fontWeight: FontWeight.w900,
+          letterSpacing: 0.8,
+        ),
+      ),
+    );
+  }
+}
+
+class _VBucksIcon extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 16,
+      height: 16,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: const Color(0xFF00C8FF).withOpacity(0.20),
+        border: Border.all(
+          color: const Color(0xFF00C8FF).withOpacity(0.60),
+          width: 1,
+        ),
+      ),
+      child: const Center(
+        child: Text(
+          'V',
+          style: TextStyle(
+            color: Color(0xFF00C8FF),
+            fontSize: 9,
+            fontWeight: FontWeight.w900,
+          ),
         ),
       ),
     );
