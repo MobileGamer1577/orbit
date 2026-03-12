@@ -1,0 +1,109 @@
+{
+  "tasks": [
+    {
+      "id": "rr_w1_01",
+      "title": "Erhalte einen Startlinien-Boost von ≥50 %",
+      "description": "Woche 1 • 12.000 XP • 0/10"
+    },
+    {
+      "id": "rr_w1_02",
+      "title": "Aktiviere den Turbo",
+      "description": "Woche 1 • 12.000 XP • 0/30"
+    },
+    {
+      "id": "rr_w1_03",
+      "title": "Fahre oder drifte eine Gesamtstrecke",
+      "description": "Woche 1 • 12.000 XP • 0/150.000"
+    },
+    {
+      "id": "rr_w1_04",
+      "title": "Aktiviere Windschattenfahren",
+      "description": "Woche 1 • 12.000 XP • 0/10"
+    },
+    {
+      "id": "rr_w1_05",
+      "title": "Überwinde eine Strecke mit Turbo",
+      "description": "Woche 1 • 12.000 XP • 0/45.000"
+    },
+    {
+      "id": "rr_w1_06",
+      "title": "Beende Rennen",
+      "description": "Woche 1 • 12.000 XP • 0/15"
+    },
+    {
+      "id": "rr_w1_07",
+      "title": "Erreiche Startlinien-Boost-Prozentsatz",
+      "description": "Woche 1 • 12.000 XP • 0/600 %"
+    },
+    {
+      "id": "rr_w1_08",
+      "title": "Beende Rennen mit 250 % Bodendösen",
+      "description": "Woche 1 • 12.000 XP • 0/10"
+    },
+    {
+      "id": "rr_w2",
+      "title": "Woche 2 freischalten",
+      "description": "Woche 2 • Voraussetzung • Schließe 6 Woche-1-Aufträge ab"
+    },
+    {
+      "id": "rr_w3",
+      "title": "Woche 3 freischalten",
+      "description": "Woche 3 • Voraussetzung • Schließe 6 Woche-2-Aufträge ab"
+    },
+    {
+      "id": "rr_w4",
+      "title": "Woche 4 freischalten",
+      "description": "Woche 4 • Voraussetzung • Schließe 6 Woche-3-Aufträge ab"
+    },
+    {
+      "id": "rr_w5",
+      "title": "Woche 5 freischalten",
+      "description": "Woche 5 • Voraussetzung • Schließe 6 Woche-4-Aufträge ab"
+    },
+    {
+      "id": "rr_w6",
+      "title": "Woche 6 freischalten",
+      "description": "Woche 6 • Voraussetzung • Schließe 6 Woche-5-Aufträge ab"
+    },
+    {
+      "id": "rr_w7",
+      "title": "Woche 7 freischalten",
+      "description": "Woche 7 • Voraussetzung • Schließe 6 Woche-6-Aufträge ab"
+    },
+    {
+      "id": "rr_w8",
+      "title": "Woche 8 freischalten",
+      "description": "Woche 8 • Voraussetzung • Schließe 6 Woche-7-Aufträge ab"
+    },
+    {
+      "id": "rr_ranked_gold",
+      "title": "Beende ein Ranked-Rennen mit Rang Gold",
+      "description": "Ranked • • 0/1"
+    },
+    {
+      "id": "rr_ranked_platin",
+      "title": "Beende ein Ranked-Rennen mit Rang Platin",
+      "description": "Ranked • • 0/1"
+    },
+    {
+      "id": "rr_ranked_diamant",
+      "title": "Beende ein Ranked-Rennen mit Rang Diamant",
+      "description": "Ranked • • 0/1"
+    },
+    {
+      "id": "rr_ranked_elite",
+      "title": "Beende ein Ranked-Rennen mit Rang Elite",
+      "description": "Ranked • • 0/1"
+    },
+    {
+      "id": "rr_ranked_champion",
+      "title": "Beende ein Ranked-Rennen mit Rang Champion",
+      "description": "Ranked • • 0/1"
+    },
+    {
+      "id": "rr_ranked_unreal",
+      "title": "Beende ein Ranked-Rennen mit Rang Unreal",
+      "description": "Ranked • • 0/1"
+    }
+  ]
+}

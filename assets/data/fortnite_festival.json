@@ -1,0 +1,84 @@
+{
+  "tasks": [
+    {
+      "id": "festival_hb_sh_01",
+      "title": "Spiele Noten",
+      "description": "Hauptbühne • Starthilfe • 0/50"
+    },
+    {
+      "id": "festival_hb_sh_02",
+      "title": "Beende einen Song",
+      "description": "Hauptbühne • Starthilfe • 0/1"
+    },
+    {
+      "id": "festival_hb_sh_03",
+      "title": "Erziele Punkte",
+      "description": "Hauptbühne • Starthilfe • 0/1.000"
+    },
+    {
+      "id": "festival_hb_sh_04",
+      "title": "Aktiviere Glanzleistung",
+      "description": "Hauptbühne • Starthilfe • 0/4"
+    },
+    {
+      "id": "festival_hb_sh_05",
+      "title": "Beende eine Setliste mit 3+ Songs",
+      "description": "Hauptbühne • Starthilfe • 0/1"
+    },
+    {
+      "id": "festival_hb_sh_06",
+      "title": "Verdiene Sterne",
+      "description": "Hauptbühne • Starthilfe • 0/9"
+    },
+    {
+      "id": "festival_hb_ms_01",
+      "title": "Schließe tägliche Aufträge ab",
+      "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/4"
+    },
+    {
+      "id": "festival_hb_ms_02",
+      "title": "Verdiene Sterne",
+      "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/10"
+    },
+    {
+      "id": "festival_hb_ms_03",
+      "title": "Verdiene Bandsterne (Mehrspieler Hauptbühne)",
+      "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/5"
+    },
+    {
+      "id": "festival_hb_ms_04",
+      "title": "Beende eine Setliste mit 2+ Songs auf der Hauptbühne",
+      "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/3"
+    },
+    {
+      "id": "festival_hb_w1_01",
+      "title": "Verdiene 2+ Sterne mit Spotlight-/vorgestellten Songs",
+      "description": "Hauptbühne • Woche 1 • 0/7"
+    },
+    {
+      "id": "festival_hb_w1_02",
+      "title": "Spiele Noten nach 2+ verdienten Sternen",
+      "description": "Hauptbühne • Woche 1 • 0/2.500"
+    },
+    {
+      "id": "festival_hb_w1_03",
+      "title": "Verdiene Punkte mit Multiplikator ×3",
+      "description": "Hauptbühne • Woche 1 • 0/150.000"
+    },
+    {
+      "id": "festival_bb_sh_01",
+      "title": "Führe Angriffe auf der Battle-Bühne aus",
+      "description": "Battle-Bühne • Starthilfe • 0/4"
+    },
+    {
+      "id": "festival_bb_sh_02",
+      "title": "Beende Runden auf der Battle-Bühne",
+      "description": "Battle-Bühne • Starthilfe • 0/2"
+    },
+    {
+      "id": "festival_bb_ms_01",
+      "title": "Überlebe Runden auf der Battle-Bühne",
+      "description": "Battle-Bühne • Meilenstein Phase 1/20 • 0/3"
+    }
+  ]
+}
