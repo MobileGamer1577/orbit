@@ -1,6 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+/// Glass-Karte mit BackdropFilter.
+///
+/// BackdropFilter hier ist OK – er wird nur auf die kleine Kartenfläche
+/// angewendet, nicht auf den ganzen Screen. Das kostet deutlich weniger.
 class OrbitGlassCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry padding;
@@ -18,16 +22,15 @@ class OrbitGlassCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: borderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 22, sigmaY: 22),
+        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Container(
           padding: padding,
           decoration: BoxDecoration(
-            // Subtiler vertikaler Gradient: oben etwas heller
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.white.withOpacity(0.10),
+                Colors.white.withOpacity(0.11),
                 Colors.white.withOpacity(0.04),
               ],
             ),

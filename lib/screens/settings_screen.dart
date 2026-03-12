@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../services/update_service.dart';
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
 import '../theme/orbit_theme.dart';
@@ -23,7 +24,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
-  bool checking = false;
+  bool _checking = false;
 
   @override
   void initState() {
@@ -38,15 +39,38 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _checkUpdates() async {
-    // Implementierung kommt vom UpdateService – hier nur State
-    setState(() => checking = true);
-    await Future.delayed(const Duration(seconds: 2));
-    if (mounted) setState(() => checking = false);
+    if (_checking) return;
+    setState(() => _checking = true);
+    try {
+      final result = await UpdateService.checkForUpdates();
+      if (!mounted) return;
+      if (result.updateAvailable) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Update verfügbar: ${result.latest} 🚀')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Keine Updates gefunden ✅')),
+        );
+      }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Update-Check fehlgeschlagen.')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _checking = false);
+    }
   }
 
   Future<void> _openGithubLatest() async {
-    final url = Uri.parse('https://github.com/MobileGamer1577/orbit/releases/latest');
-    if (await canLaunchUrl(url)) launchUrl(url, mode: LaunchMode.externalApplication);
+    final url = Uri.parse(
+      'https://github.com/MobileGamer1577/orbit/releases/latest',
+    );
+    if (await canLaunchUrl(url)) {
+      launchUrl(url, mode: LaunchMode.externalApplication);
+    }
   }
 
   Future<void> _resetTasks() async {
@@ -87,28 +111,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
           elevation: 0,
           title: const Text(
             'Einstellungen',
-            style: TextStyle(
-              fontWeight: FontWeight.w800,
-              color: Colors.white,
-            ),
+            style: TextStyle(fontWeight: FontWeight.w800, color: Colors.white),
           ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // ── Allgemein ──────────────────────────────
                 const _SectionTitle(title: 'Allgemein'),
                 const SizedBox(height: 10),
-
                 _Tile(
                   icon: Icons.info_outline,
+                  iconColor: const Color(0xFF9C6FFF),
                   title: 'Version',
                   subtitle: _versionText,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white38),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: null,
                 ),
 
@@ -116,38 +141,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(height: 22),
                 const _SectionTitle(title: 'Updates'),
                 const SizedBox(height: 10),
-
                 _Tile(
                   icon: Icons.system_update_alt,
+                  iconColor: const Color(0xFF00D4FF),
                   title: 'Update-Status',
                   subtitle: updateSubtitle,
-                  trailing: checking
+                  trailing: _checking
                       ? const SizedBox(
                           width: 18,
                           height: 18,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Icon(Icons.chevron_right, color: Colors.white38),
+                      : const Icon(
+                          Icons.chevron_right,
+                          color: Colors.white24,
+                        ),
                   onTap: _checkUpdates,
                 ),
                 const SizedBox(height: 10),
-
                 Row(
                   children: [
                     Expanded(
-                      child: _OutlineBtn(
+                      child: _ActionBtn(
                         icon: Icons.refresh,
                         label: 'Check',
-                        onPressed: checking ? null : _checkUpdates,
+                        onPressed: _checking ? null : _checkUpdates,
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: _OutlineBtn(
+                      child: _ActionBtn(
                         icon: Icons.open_in_new,
                         label: 'GitHub',
                         onPressed: _openGithubLatest,
-                        filled: true,
+                        accent: true,
                       ),
                     ),
                   ],
@@ -157,21 +184,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(height: 22),
                 const _SectionTitle(title: 'Zurücksetzen'),
                 const SizedBox(height: 10),
-
                 _Tile(
                   icon: Icons.restart_alt,
+                  iconColor: const Color(0xFFFF6B6B),
                   title: 'Fortschritt zurücksetzen',
                   subtitle: 'Checkbox-Status löschen',
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white38),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _resetTasks,
                 ),
                 const SizedBox(height: 10),
-
                 _Tile(
                   icon: Icons.settings_backup_restore,
+                  iconColor: const Color(0xFFFFD600),
                   title: 'Einstellungen zurücksetzen',
                   subtitle: 'Settings auf Standard zurücksetzen',
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white38),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _resetSettings,
                 ),
               ],
@@ -183,9 +216,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Wiederverwendbare UI-Bausteine
-// ─────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────
+// Wiederverwendbare Bausteine
+// ──────────────────────────────────────────────
 
 class _SectionTitle extends StatelessWidget {
   final String title;
@@ -196,10 +229,10 @@ class _SectionTitle extends StatelessWidget {
     return Text(
       title.toUpperCase(),
       style: TextStyle(
-        color: Colors.white.withOpacity(0.45),
+        color: Colors.white.withOpacity(0.40),
         fontWeight: FontWeight.w700,
         fontSize: 11,
-        letterSpacing: 1.4,
+        letterSpacing: 1.5,
       ),
     );
   }
@@ -207,6 +240,7 @@ class _SectionTitle extends StatelessWidget {
 
 class _Tile extends StatelessWidget {
   final IconData icon;
+  final Color iconColor;
   final String title;
   final String subtitle;
   final Widget trailing;
@@ -214,6 +248,7 @@ class _Tile extends StatelessWidget {
 
   const _Tile({
     required this.icon,
+    required this.iconColor,
     required this.title,
     required this.subtitle,
     required this.trailing,
@@ -228,7 +263,7 @@ class _Tile extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         onTap: onTap,
         child: Ink(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -244,13 +279,17 @@ class _Tile extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 36,
-                height: 36,
+                width: 38,
+                height: 38,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.08),
-                  borderRadius: BorderRadius.circular(10),
+                  color: iconColor.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(11),
+                  border: Border.all(
+                    color: iconColor.withOpacity(0.28),
+                    width: 1.1,
+                  ),
                 ),
-                child: Icon(icon, size: 20, color: Colors.white.withOpacity(0.85)),
+                child: Icon(icon, size: 19, color: iconColor),
               ),
               const SizedBox(width: 14),
               Expanded(
@@ -269,7 +308,7 @@ class _Tile extends StatelessWidget {
                     Text(
                       subtitle,
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.55),
+                        color: Colors.white.withOpacity(0.50),
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
                       ),
@@ -287,47 +326,39 @@ class _Tile extends StatelessWidget {
   }
 }
 
-class _OutlineBtn extends StatelessWidget {
+class _ActionBtn extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback? onPressed;
-  final bool filled;
+  final bool accent;
 
-  const _OutlineBtn({
+  const _ActionBtn({
     required this.icon,
     required this.label,
     required this.onPressed,
-    this.filled = false,
+    this.accent = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (filled) {
-      return FilledButton.icon(
-        onPressed: onPressed,
-        style: FilledButton.styleFrom(
-          backgroundColor: Colors.white.withOpacity(0.12),
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 13),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
-            side: BorderSide(color: Colors.white.withOpacity(0.15)),
-          ),
-        ),
-        icon: Icon(icon, size: 17),
-        label: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
-      );
-    }
     return OutlinedButton.icon(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.white,
+        backgroundColor: accent
+            ? Colors.white.withOpacity(0.08)
+            : Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 13),
-        side: BorderSide(color: Colors.white.withOpacity(0.18)),
+        side: BorderSide(
+          color: Colors.white.withOpacity(accent ? 0.18 : 0.14),
+        ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
       icon: Icon(icon, size: 17),
-      label: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
+      label: Text(
+        label,
+        style: const TextStyle(fontWeight: FontWeight.w700),
+      ),
     );
   }
 }

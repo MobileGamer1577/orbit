@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class OrbitTheme {
@@ -40,20 +39,11 @@ class OrbitTheme {
       },
     );
   }
-
-  /// Das einzige Design: Reiches tiefes Lila
-  static List<Color> backgroundGradient() {
-    return const [
-      Color(0xFF2D0B65), // sattes Lila oben
-      Color(0xFF10041E), // tiefes Violett mittig
-      Color(0xFF060209), // fast schwarz unten
-    ];
-  }
 }
 
-/// ──────────────────────────────────────────────
-/// Custom Page Transition (Fade + kleiner Slide)
-/// ──────────────────────────────────────────────
+// ──────────────────────────────────────────────
+// Custom Page Transition
+// ──────────────────────────────────────────────
 class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
   const FadeSlidePageTransitionsBuilder();
 
@@ -73,23 +63,27 @@ class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
       reverseCurve: Curves.easeInCubic,
     );
 
-    final fade = Tween<double>(begin: 0.0, end: 1.0).animate(curved);
-    final slide = Tween<Offset>(
-      begin: const Offset(0.03, 0.0),
-      end: Offset.zero,
-    ).animate(curved);
-
     return FadeTransition(
-      opacity: fade,
-      child: SlideTransition(position: slide, child: child),
+      opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curved),
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(0.03, 0.0),
+          end: Offset.zero,
+        ).animate(curved),
+        child: child,
+      ),
     );
   }
 }
 
-/// ──────────────────────────────────────────────
-/// OrbitBackground – verschönerter Hintergrund
-/// mit Gradient + subtilen Leucht-Orbs
-/// ──────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────────────────
+// OrbitBackground
+//
+// ❌ KEIN BackdropFilter über den ganzen Screen – das kostet bei jeder
+//    Animation Frames, weil Flutter den kompletten Screen-Inhalt
+//    neu blurren muss. Stattdessen: nur Gradient + zwei dekorative
+//    RadialGradient-Orbs (reine CPU-Paint, kein Compositing-Layer).
+// ──────────────────────────────────────────────────────────────────────────
 class OrbitBackground extends StatelessWidget {
   final Widget child;
 
@@ -97,35 +91,38 @@ class OrbitBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = OrbitTheme.backgroundGradient();
-
     return Stack(
       children: [
-        // Basis-Gradient
-        Container(
+        // Basis-Gradient (3 Farben, links-oben → rechts-unten)
+        const DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: colors,
+              colors: [
+                Color(0xFF2D0B65),
+                Color(0xFF10041E),
+                Color(0xFF060209),
+              ],
             ),
           ),
+          child: SizedBox.expand(),
         ),
 
-        // Leuchtender Orb oben-mitte (lila Glow)
+        // Lila Glow-Orb oben-mitte
         Positioned(
-          top: -80,
+          top: -110,
           left: 0,
           right: 0,
           child: Center(
             child: Container(
-              width: 340,
-              height: 340,
+              width: 360,
+              height: 360,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    const Color(0xFF7C4DFF).withOpacity(0.22),
+                    const Color(0xFF7C4DFF).withOpacity(0.20),
                     Colors.transparent,
                   ],
                 ),
@@ -134,29 +131,23 @@ class OrbitBackground extends StatelessWidget {
           ),
         ),
 
-        // Zweiter subtiler Orb unten-rechts (blau-violett)
+        // Blauer Glow-Orb unten-rechts
         Positioned(
-          bottom: -60,
-          right: -60,
+          bottom: -90,
+          right: -90,
           child: Container(
-            width: 220,
-            height: 220,
+            width: 270,
+            height: 270,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(
                 colors: [
-                  const Color(0xFF4A1FA8).withOpacity(0.18),
+                  const Color(0xFF3A0FA0).withOpacity(0.18),
                   Colors.transparent,
                 ],
               ),
             ),
           ),
-        ),
-
-        // Soft Blur über allem für cremigen Look
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 22, sigmaY: 22),
-          child: Container(color: Colors.transparent),
         ),
 
         // Content
