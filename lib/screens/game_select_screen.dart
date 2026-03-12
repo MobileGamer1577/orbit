@@ -34,17 +34,34 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   @override
   void initState() {
     super.initState();
+
+    // ✅ FIX: Auf Theme-Änderungen aus den Einstellungen reagieren.
+    // AppSettingsStore ist ein ChangeNotifier → ruft notifyListeners() in
+    // setDarkTheme(). Ohne diesen Listener würde OrbitBackground das neue
+    // currentDarkTheme erst nach einem App-Neustart lesen.
+    widget.settings.addListener(_onSettingsChanged);
+
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => _checkUpdates(showNoUpdateToast: false),
     );
   }
+
+  @override
+  void dispose() {
+    // Listener sauber entfernen, damit es keine Memory-Leaks gibt
+    widget.settings.removeListener(_onSettingsChanged);
+    super.dispose();
+  }
+
+  /// Wird aufgerufen wenn das Design (oder eine andere Einstellung) geändert wird.
+  /// setState() erzwingt einen Rebuild → OrbitBackground liest das neue Theme.
+  void _onSettingsChanged() => setState(() {});
 
   Future<void> _checkUpdates({required bool showNoUpdateToast}) async {
     if (_checking) return;
     setState(() => _checking = true);
 
     try {
-      // ✅ UpdateService ist bei dir static
       final result = await UpdateService.checkForUpdates();
 
       if (!mounted) return;
@@ -93,7 +110,6 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
           FilledButton(
             onPressed: () async {
               Navigator.pop(context);
-              // ✅ InAppUpdateService ist bei dir static + named parameter
               await InAppUpdateService.downloadAndInstallApk(apkUrl: url);
             },
             child: const Text('Release öffnen'),
@@ -131,7 +147,8 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => const ModeSelectScreen(gameId: 'bo7', gameTitle: 'BO7'),
+        builder: (_) =>
+            const ModeSelectScreen(gameId: 'bo7', gameTitle: 'BO7'),
       ),
     );
   }

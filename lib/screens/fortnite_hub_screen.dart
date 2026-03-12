@@ -8,7 +8,7 @@ import '../widgets/orbit_glass_card.dart';
 import 'fortnite_countdown_screen.dart';
 import 'fortnite_festival_hub_screen.dart';
 import 'fortnite_locker_screen.dart';
-import 'task_list_screen.dart';
+import 'mode_select_screen.dart';
 
 class FortniteHubScreen extends StatelessWidget {
   final AppSettingsStore settings;
@@ -70,21 +70,20 @@ class FortniteHubScreen extends StatelessWidget {
                       _HubCard(
                         icon: Icons.timer,
                         title: 'Countdowns',
-                        subtitle: 'Season Countdowns (bald)',
+                        subtitle: 'Season Pässe & Ablaufdaten',
                         onTap: () =>
                             _push(context, const FortniteCountdownScreen()),
                       ),
                       const SizedBox(height: 12),
                       _HubCard(
                         icon: Icons.checklist,
-                        title: 'Aufträge (bald)',
+                        title: 'Aufträge',
                         subtitle: 'BR, Reload, Ballistic, LEGO, OG…',
                         onTap: () => _push(
                           context,
-                          const TaskListScreen(
-                            title: 'Aufträge',
-                            jsonAssetPath:
-                                '', // leer = “Kommt bald” (wenn du meinen TaskList-Fix drin hast)
+                          const ModeSelectScreen(
+                            gameId: 'fortnite',
+                            gameTitle: 'Aufträge',
                           ),
                         ),
                       ),
