@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'storage/app_settings_store.dart';
 import 'storage/collection_store.dart';
 import 'storage/update_store.dart';
-import 'theme/orbit_theme.dart';
 import 'screens/game_select_screen.dart';
 
 Future<void> main() async {
@@ -13,11 +12,8 @@ Future<void> main() async {
   await Hive.openBox('collection_state');
 
   final settings = await AppSettingsStore.create();
-  settings.reloadFromBox();
   final updateStore = UpdateStore();
   final collection = CollectionStore();
-
-  OrbitTheme.currentDarkTheme = settings.darkTheme;
 
   runApp(
     OrbitApp(
@@ -42,13 +38,9 @@ class OrbitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OrbitTheme.currentDarkTheme = settings.darkTheme;
-
     return MaterialApp(
       title: 'Orbit',
       debugShowCheckedModeBanner: false,
-      theme: OrbitTheme.light(),
-      darkTheme: OrbitTheme.dark(),
       themeMode: ThemeMode.dark,
       home: GameSelectScreen(
         settings: settings,

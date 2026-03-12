@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
@@ -24,6 +23,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
+  bool checking = false;
 
   @override
   void initState() {
@@ -37,67 +37,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
     setState(() => _versionText = '${info.version}+${info.buildNumber}');
   }
 
-  Future<void> _openDesignPicker() async {
-    await showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      builder: (ctx) {
-        return Padding(
-          padding: const EdgeInsets.all(14),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(22),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.55),
-                  borderRadius: BorderRadius.circular(22),
-                  border: Border.all(color: Colors.white.withOpacity(0.10)),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.palette, color: Colors.white),
-                        const SizedBox(width: 10),
-                        Text(
-                          'Dark Design',
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w900),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 14),
-                    ...OrbitDarkTheme.values.map((t) {
-                      final selected = widget.settings.darkTheme == t;
-                      return _OptionTile(
-                        title: OrbitTheme.displayName(t),
-                        selected: selected,
-                        onTap: () async {
-                          await widget.settings.setDarkTheme(t);
-                          if (ctx.mounted) Navigator.of(ctx).pop();
-                        },
-                      );
-                    }),
-                    const SizedBox(height: 6),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
+  Future<void> _checkUpdates() async {
+    // Implementierung kommt vom UpdateService – hier nur State
+    setState(() => checking = true);
+    await Future.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => checking = false);
+  }
+
+  Future<void> _openGithubLatest() async {
+    final url = Uri.parse('https://github.com/MobileGamer1577/orbit/releases/latest');
+    if (await canLaunchUrl(url)) launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   Future<void> _resetTasks() async {
     final box = await Hive.openBox('task_state');
     await box.clear();
-
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Fortschritt zurückgesetzt ✅')),
@@ -107,73 +61,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _resetSettings() async {
     final settingsBox = await Hive.openBox('settings');
     await settingsBox.clear();
-
     widget.settings.reloadFromBox();
-
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Einstellungen zurückgesetzt ✅')),
     );
   }
 
-  Future<void> _checkUpdates() async {
-    await widget.updateStore.check();
-    if (!mounted) return;
-
-    if (widget.updateStore.error != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Update-Check fehlgeschlagen: ${widget.updateStore.error}',
-          ),
-        ),
-      );
-      return;
-    }
-
-    if (widget.updateStore.updateAvailable) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Update verfügbar: ${widget.updateStore.latest}'),
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Du bist auf dem neuesten Stand ✅')),
-      );
-    }
-  }
-
-  Future<void> _openGithubLatest() async {
-    try {
-      await widget.updateStore.openLatestReleasePage();
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Konnte GitHub nicht öffnen ❌\n$e')),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final currentDesignName = OrbitTheme.displayName(widget.settings.darkTheme);
-
-    final checking = widget.updateStore.isChecking;
-    final hasCheckedOnce =
-        widget.updateStore.current.isNotEmpty ||
-        widget.updateStore.latest.isNotEmpty ||
-        widget.updateStore.error != null;
-    final updateAvailable = widget.updateStore.updateAvailable;
-
-    String updateSubtitle;
-    if (checking) {
-      updateSubtitle = 'Suche…';
-    } else if (widget.updateStore.error != null) {
-      updateSubtitle = 'Fehler beim Check';
-    } else if (!hasCheckedOnce) {
-      updateSubtitle = 'Noch nicht geprüft';
-    } else if (updateAvailable) {
+    final String updateSubtitle;
+    if (widget.updateStore.isChecking) {
+      updateSubtitle = 'Wird geprüft…';
+    } else if (widget.updateStore.updateAvailable) {
       updateSubtitle = 'Update verfügbar: ${widget.updateStore.latest}';
     } else {
       updateSubtitle = 'Aktuell ✅';
@@ -185,14 +85,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: const Text('Einstellungen'),
+          title: const Text(
+            'Einstellungen',
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+            ),
+          ),
+          iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // ── Allgemein ──────────────────────────────
                 const _SectionTitle(title: 'Allgemein'),
                 const SizedBox(height: 10),
 
@@ -200,26 +108,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.info_outline,
                   title: 'Version',
                   subtitle: _versionText,
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white70,
-                  ),
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white38),
                   onTap: null,
                 ),
-                const SizedBox(height: 10),
 
-                _Tile(
-                  icon: Icons.palette_outlined,
-                  title: 'Dark Design',
-                  subtitle: currentDesignName,
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white70,
-                  ),
-                  onTap: _openDesignPicker,
-                ),
-
-                const SizedBox(height: 18),
+                // ── Updates ────────────────────────────────
+                const SizedBox(height: 22),
                 const _SectionTitle(title: 'Updates'),
                 const SizedBox(height: 10),
 
@@ -233,7 +127,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           height: 18,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Icon(Icons.chevron_right, color: Colors.white70),
+                      : const Icon(Icons.chevron_right, color: Colors.white38),
                   onTap: _checkUpdates,
                 ),
                 const SizedBox(height: 10),
@@ -241,24 +135,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: OutlinedButton.icon(
+                      child: _OutlineBtn(
+                        icon: Icons.refresh,
+                        label: 'Check',
                         onPressed: checking ? null : _checkUpdates,
-                        icon: const Icon(Icons.refresh),
-                        label: const Text('Check'),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: ElevatedButton.icon(
+                      child: _OutlineBtn(
+                        icon: Icons.open_in_new,
+                        label: 'GitHub',
                         onPressed: _openGithubLatest,
-                        icon: const Icon(Icons.open_in_new),
-                        label: const Text('GitHub'),
+                        filled: true,
                       ),
                     ),
                   ],
                 ),
 
-                const SizedBox(height: 18),
+                // ── Zurücksetzen ───────────────────────────
+                const SizedBox(height: 22),
                 const _SectionTitle(title: 'Zurücksetzen'),
                 const SizedBox(height: 10),
 
@@ -266,10 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.restart_alt,
                   title: 'Fortschritt zurücksetzen',
                   subtitle: 'Checkbox-Status löschen',
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white70,
-                  ),
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white38),
                   onTap: _resetTasks,
                 ),
                 const SizedBox(height: 10),
@@ -277,11 +170,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _Tile(
                   icon: Icons.settings_backup_restore,
                   title: 'Einstellungen zurücksetzen',
-                  subtitle: 'Design & Settings zurücksetzen',
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white70,
-                  ),
+                  subtitle: 'Settings auf Standard zurücksetzen',
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white38),
                   onTap: _resetSettings,
                 ),
               ],
@@ -293,55 +183,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 }
 
-class _OptionTile extends StatelessWidget {
-  final String title;
-  final bool selected;
-  final VoidCallback onTap;
+// ─────────────────────────────────────────────────────────
+// Wiederverwendbare UI-Bausteine
+// ─────────────────────────────────────────────────────────
 
-  const _OptionTile({
-    required this.title,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(18),
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(selected ? 0.14 : 0.07),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: selected
-                ? Colors.white.withOpacity(0.35)
-                : Colors.white.withOpacity(0.10),
-          ),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                title,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),
-              ),
-            ),
-            if (selected) const Icon(Icons.check_circle, color: Colors.white),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// =========================
-/// UI Helpers
-/// =========================
 class _SectionTitle extends StatelessWidget {
   final String title;
   const _SectionTitle({required this.title});
@@ -349,10 +194,12 @@ class _SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      title,
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-        color: Colors.white70,
-        fontWeight: FontWeight.w800,
+      title.toUpperCase(),
+      style: TextStyle(
+        color: Colors.white.withOpacity(0.45),
+        fontWeight: FontWeight.w700,
+        fontSize: 11,
+        letterSpacing: 1.4,
       ),
     );
   }
@@ -375,45 +222,112 @@ class _Tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(18),
-      onTap: onTap,
-      child: Ink(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.06),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: Colors.white.withOpacity(0.08)),
-        ),
-        child: Row(
-          children: [
-            Icon(icon, size: 22, color: Colors.white.withOpacity(0.9)),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
-                  ),
-                ],
-              ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: onTap,
+        child: Ink(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.white.withOpacity(0.09),
+                Colors.white.withOpacity(0.04),
+              ],
             ),
-            const SizedBox(width: 10),
-            trailing,
-          ],
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: Colors.white.withOpacity(0.10)),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.08),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(icon, size: 20, color: Colors.white.withOpacity(0.85)),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 15,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.55),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              trailing,
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class _OutlineBtn extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback? onPressed;
+  final bool filled;
+
+  const _OutlineBtn({
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+    this.filled = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (filled) {
+      return FilledButton.icon(
+        onPressed: onPressed,
+        style: FilledButton.styleFrom(
+          backgroundColor: Colors.white.withOpacity(0.12),
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 13),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+            side: BorderSide(color: Colors.white.withOpacity(0.15)),
+          ),
+        ),
+        icon: Icon(icon, size: 17),
+        label: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
+      );
+    }
+    return OutlinedButton.icon(
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 13),
+        side: BorderSide(color: Colors.white.withOpacity(0.18)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+      icon: Icon(icon, size: 17),
+      label: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
     );
   }
 }

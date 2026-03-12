@@ -34,28 +34,10 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   @override
   void initState() {
     super.initState();
-
-    // ✅ FIX: Auf Theme-Änderungen aus den Einstellungen reagieren.
-    // AppSettingsStore ist ein ChangeNotifier → ruft notifyListeners() in
-    // setDarkTheme(). Ohne diesen Listener würde OrbitBackground das neue
-    // currentDarkTheme erst nach einem App-Neustart lesen.
-    widget.settings.addListener(_onSettingsChanged);
-
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => _checkUpdates(showNoUpdateToast: false),
     );
   }
-
-  @override
-  void dispose() {
-    // Listener sauber entfernen, damit es keine Memory-Leaks gibt
-    widget.settings.removeListener(_onSettingsChanged);
-    super.dispose();
-  }
-
-  /// Wird aufgerufen wenn das Design (oder eine andere Einstellung) geändert wird.
-  /// setState() erzwingt einen Rebuild → OrbitBackground liest das neue Theme.
-  void _onSettingsChanged() => setState(() {});
 
   Future<void> _checkUpdates({required bool showNoUpdateToast}) async {
     if (_checking) return;
@@ -163,9 +145,27 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Header
                 Row(
                   children: [
-                    Icon(Icons.public, color: Colors.white.withOpacity(0.92)),
+                    Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: RadialGradient(
+                          colors: [
+                            const Color(0xFF9C6FFF).withOpacity(0.35),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.public,
+                        color: Colors.white.withOpacity(0.95),
+                        size: 22,
+                      ),
+                    ),
                     const SizedBox(width: 10),
                     const Expanded(
                       child: Text(
@@ -174,55 +174,82 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                           fontSize: 30,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
+                          letterSpacing: -0.5,
                         ),
                       ),
                     ),
                     IconButton(
                       onPressed: _openSettings,
-                      icon: const Icon(Icons.settings, color: Colors.white),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Wähle ein Spiel',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.65),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                _GameCard(
-                  title: 'Fortnite',
-                  subtitle:
-                      'Aufgaben abhaken • Season-\nCountdown • Item-Shop (bald)',
-                  onTap: _openFortnite,
-                ),
-                const SizedBox(height: 14),
-                _GameCard(
-                  title: 'Call of Duty: Black Ops 7',
-                  subtitle:
-                      'Aufgaben (Soon) • Steam Erfolge •\nCountdowns (Soon)',
-                  onTap: _openBo7,
-                ),
-                const Spacer(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: FilledButton.icon(
-                        onPressed: _checking
-                            ? null
-                            : () => _checkUpdates(showNoUpdateToast: true),
-                        icon: Icon(
-                          _checking
-                              ? Icons.hourglass_top
-                              : Icons.system_update_alt,
-                        ),
-                        label: Text(_checking ? 'Prüfe…' : 'Updates prüfen'),
+                      icon: Icon(
+                        Icons.settings_outlined,
+                        color: Colors.white.withOpacity(0.85),
                       ),
                     ),
                   ],
+                ),
+
+                const SizedBox(height: 6),
+                Text(
+                  'Wähle ein Spiel',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.55),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    letterSpacing: 0.2,
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Fortnite Card
+                _GameCard(
+                  title: 'Fortnite',
+                  subtitle: 'Aufgaben • Season-Countdown • Item-Shop (bald)',
+                  accentColor: const Color(0xFF00D4FF),
+                  secondaryColor: const Color(0xFF0070FF),
+                  icon: Icons.bolt,
+                  onTap: _openFortnite,
+                ),
+                const SizedBox(height: 14),
+
+                // BO7 Card
+                _GameCard(
+                  title: 'Call of Duty: BO7',
+                  subtitle: 'Steam Erfolge • PlayStation Trophäen • Modi',
+                  accentColor: const Color(0xFFFF6B35),
+                  secondaryColor: const Color(0xFFCC2200),
+                  icon: Icons.military_tech,
+                  onTap: _openBo7,
+                ),
+
+                const Spacer(),
+
+                // Update Button
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.icon(
+                    onPressed: _checking
+                        ? null
+                        : () => _checkUpdates(showNoUpdateToast: true),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Colors.white.withOpacity(0.10),
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        side: BorderSide(
+                          color: Colors.white.withOpacity(0.12),
+                        ),
+                      ),
+                    ),
+                    icon: Icon(
+                      _checking ? Icons.hourglass_top : Icons.system_update_alt,
+                      size: 18,
+                    ),
+                    label: Text(
+                      _checking ? 'Prüfe…' : 'Updates prüfen',
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -233,14 +260,23 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   }
 }
 
+// ─────────────────────────────────────────────────────────
+// Game Card mit Akzentfarbe pro Spiel
+// ─────────────────────────────────────────────────────────
 class _GameCard extends StatelessWidget {
   final String title;
   final String subtitle;
+  final Color accentColor;
+  final Color secondaryColor;
+  final IconData icon;
   final VoidCallback onTap;
 
   const _GameCard({
     required this.title,
     required this.subtitle,
+    required this.accentColor,
+    required this.secondaryColor,
+    required this.icon,
     required this.onTap,
   });
 
@@ -251,50 +287,64 @@ class _GameCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(18, 18, 18, 14),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
+          child: Row(
             children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                subtitle,
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.65),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  height: 1.2,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Icon(
-                    Icons.calendar_today,
-                    color: Colors.white.withOpacity(0.85),
+              // Farbiges Icon-Badge
+              Container(
+                width: 52,
+                height: 52,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      accentColor.withOpacity(0.28),
+                      secondaryColor.withOpacity(0.18),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  Text(
-                    'Orbit Tracker',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.9),
-                      fontWeight: FontWeight.w800,
-                      fontSize: 18,
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(
+                    color: accentColor.withOpacity(0.35),
+                    width: 1.2,
+                  ),
+                ),
+                child: Icon(icon, color: accentColor, size: 26),
+              ),
+              const SizedBox(width: 16),
+
+              // Text
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -0.3,
+                      ),
                     ),
-                  ),
-                  const Spacer(),
-                  Icon(
-                    Icons.chevron_right,
-                    color: Colors.white.withOpacity(0.7),
-                  ),
-                ],
+                    const SizedBox(height: 5),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.60),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        height: 1.3,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(width: 8),
+              Icon(
+                Icons.chevron_right,
+                color: Colors.white.withOpacity(0.45),
               ),
             ],
           ),

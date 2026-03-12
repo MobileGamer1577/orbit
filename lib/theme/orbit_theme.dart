@@ -1,59 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-enum OrbitDarkTheme {
-  purple,
-  blue,
-  red,
-  emerald,
-  neonNights,
-}
-
 class OrbitTheme {
-  /// Wird von deinen Settings gesetzt (AppSettingsStore)
-  static OrbitDarkTheme currentDarkTheme = OrbitDarkTheme.purple;
-
-  static String displayName(OrbitDarkTheme t) {
-    switch (t) {
-      case OrbitDarkTheme.purple:
-        return 'Purple';
-      case OrbitDarkTheme.blue:
-        return 'Blue';
-      case OrbitDarkTheme.red:
-        return 'Red';
-      case OrbitDarkTheme.emerald:
-        return 'Emerald';
-      case OrbitDarkTheme.neonNights:
-        return 'Neon Nights';
-    }
-  }
-
-  /// ✅ FIX: String aus Hive (z.B. "purple", "neonNights") -> Enum
-  /// (ohne Aussehen/Funktionen zu ändern)
-  static OrbitDarkTheme fromName(String raw) {
-    final s = raw.trim();
-    if (s.isEmpty) return OrbitDarkTheme.purple;
-
-    // Normalisieren (damit auch "Neon Nights" / "neon_nights" etc. nicht crashen)
-    final key = s.toLowerCase().replaceAll(RegExp(r'[\s_\-]'), '');
-
-    for (final t in OrbitDarkTheme.values) {
-      final nameKey = t.name.toLowerCase().replaceAll(RegExp(r'[\s_\-]'), '');
-      if (nameKey == key) return t;
-    }
-
-    // Falls mal ein alter Wert gespeichert wurde
-    if (key == 'neonnight' || key == 'neonnights') return OrbitDarkTheme.neonNights;
-
-    return OrbitDarkTheme.purple;
-  }
-
   static ThemeData light() {
     final cs = ColorScheme.fromSeed(
       seedColor: const Color(0xFF7C4DFF),
       brightness: Brightness.light,
     );
-
     return ThemeData(
       useMaterial3: true,
       colorScheme: cs,
@@ -67,26 +20,19 @@ class OrbitTheme {
       seedColor: const Color(0xFF7C4DFF),
       brightness: Brightness.dark,
     );
-
     return ThemeData(
       useMaterial3: true,
       colorScheme: cs,
       scaffoldBackgroundColor: Colors.transparent,
-
-      // bisschen „cremiger“ Text (wie bei deinem Look)
       textTheme: const TextTheme().apply(
         bodyColor: Colors.white,
         displayColor: Colors.white,
       ),
-
       pageTransitionsTheme: _pageTransitions(),
     );
   }
 
   static PageTransitionsTheme _pageTransitions() {
-    // ✅ Leichte Animationen (Fade + mini Slide)
-    // - fühlt sich auf Handy gut an
-    // - kostet kaum Performance
     return const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: FadeSlidePageTransitionsBuilder(),
@@ -95,44 +41,19 @@ class OrbitTheme {
     );
   }
 
-  /// Farben fürs Background-Gradient je nach Design
-  static List<Color> backgroundGradient(OrbitDarkTheme t) {
-    switch (t) {
-      case OrbitDarkTheme.purple:
-        return const [
-          Color(0xFF2A0A57),
-          Color(0xFF12051F),
-          Color(0xFF07030D),
-        ];
-      case OrbitDarkTheme.blue:
-        return const [
-          Color(0xFF062A5B),
-          Color(0xFF051323),
-          Color(0xFF04070D),
-        ];
-      case OrbitDarkTheme.red:
-        return const [
-          Color(0xFF4A0A12),
-          Color(0xFF1D0508),
-          Color(0xFF090305),
-        ];
-      case OrbitDarkTheme.emerald:
-        return const [
-          Color(0xFF053B2B),
-          Color(0xFF041A13),
-          Color(0xFF030908),
-        ];
-      case OrbitDarkTheme.neonNights:
-        return const [
-          Color(0xFF0B0B2B),
-          Color(0xFF12031C),
-          Color(0xFF030206),
-        ];
-    }
+  /// Das einzige Design: Reiches tiefes Lila
+  static List<Color> backgroundGradient() {
+    return const [
+      Color(0xFF2D0B65), // sattes Lila oben
+      Color(0xFF10041E), // tiefes Violett mittig
+      Color(0xFF060209), // fast schwarz unten
+    ];
   }
 }
 
-/// ✅ Custom Page Transition (Fade + very small Slide)
+/// ──────────────────────────────────────────────
+/// Custom Page Transition (Fade + kleiner Slide)
+/// ──────────────────────────────────────────────
 class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
   const FadeSlidePageTransitionsBuilder();
 
@@ -144,7 +65,6 @@ class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    // Keine Animation für "initial route"
     if (route.isFirst) return child;
 
     final curved = CurvedAnimation(
@@ -154,8 +74,6 @@ class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
     );
 
     final fade = Tween<double>(begin: 0.0, end: 1.0).animate(curved);
-
-    // sehr kleiner Slide → wirkt „flüssig“ statt ruckelig
     final slide = Tween<Offset>(
       begin: const Offset(0.03, 0.0),
       end: Offset.zero,
@@ -163,17 +81,15 @@ class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
 
     return FadeTransition(
       opacity: fade,
-      child: SlideTransition(
-        position: slide,
-        child: child,
-      ),
+      child: SlideTransition(position: slide, child: child),
     );
   }
 }
 
-/// =========================
-/// Background Widget (dein Look)
-/// =========================
+/// ──────────────────────────────────────────────
+/// OrbitBackground – verschönerter Hintergrund
+/// mit Gradient + subtilen Leucht-Orbs
+/// ──────────────────────────────────────────────
 class OrbitBackground extends StatelessWidget {
   final Widget child;
 
@@ -181,11 +97,11 @@ class OrbitBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = OrbitTheme.backgroundGradient(OrbitTheme.currentDarkTheme);
+    final colors = OrbitTheme.backgroundGradient();
 
     return Stack(
       children: [
-        // Gradient
+        // Basis-Gradient
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -196,9 +112,50 @@ class OrbitBackground extends StatelessWidget {
           ),
         ),
 
-        // leichter Blur „cremig“
+        // Leuchtender Orb oben-mitte (lila Glow)
+        Positioned(
+          top: -80,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              width: 340,
+              height: 340,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    const Color(0xFF7C4DFF).withOpacity(0.22),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        // Zweiter subtiler Orb unten-rechts (blau-violett)
+        Positioned(
+          bottom: -60,
+          right: -60,
+          child: Container(
+            width: 220,
+            height: 220,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  const Color(0xFF4A1FA8).withOpacity(0.18),
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        // Soft Blur über allem für cremigen Look
         BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+          filter: ImageFilter.blur(sigmaX: 22, sigmaY: 22),
           child: Container(color: Colors.transparent),
         ),
 
