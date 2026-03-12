@@ -8,6 +8,7 @@ import '../widgets/orbit_glass_card.dart';
 import 'fortnite_countdown_screen.dart';
 import 'fortnite_festival_hub_screen.dart';
 import 'fortnite_locker_screen.dart';
+import 'fortnite_shop_screen.dart';
 import 'mode_select_screen.dart';
 
 class FortniteHubScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class FortniteHubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color(0xFF07020F),
       body: OrbitBackground(
         child: SafeArea(
           child: Padding(
@@ -101,15 +102,17 @@ class FortniteHubScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
+
+                      // ── Item Shop ── jetzt aktiv!
                       _HubCard(
                         icon: Icons.storefront,
                         iconColor: const Color(0xFFFFD600),
                         title: 'Item-Shop',
-                        subtitle: 'Kommt bald',
-                        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Item-Shop kommt bald ✅')),
-                        ),
+                        subtitle: 'Täglicher Shop • stündlich aktualisiert',
+                        onTap: () =>
+                            _push(context, const FortniteShopScreen()),
                       ),
+
                       const SizedBox(height: 10),
                       _HubCard(
                         icon: Icons.insights,
@@ -117,7 +120,9 @@ class FortniteHubScreen extends StatelessWidget {
                         title: 'Stats',
                         subtitle: 'Kommt bald',
                         onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Stats kommen bald ✅')),
+                          const SnackBar(
+                            content: Text('Stats kommen bald ✅'),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -149,7 +154,9 @@ class FortniteHubScreen extends StatelessWidget {
                         title: 'Status',
                         subtitle: 'Kommt bald (Server/Services)',
                         onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Status kommt bald ✅')),
+                          const SnackBar(
+                            content: Text('Status kommt bald ✅'),
+                          ),
                         ),
                       ),
                     ],

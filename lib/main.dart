@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'storage/app_settings_store.dart';
 import 'storage/collection_store.dart';
 import 'storage/update_store.dart';
+import 'theme/orbit_theme.dart';
 import 'screens/game_select_screen.dart';
 
 Future<void> main() async {
@@ -15,13 +16,11 @@ Future<void> main() async {
   final updateStore = UpdateStore();
   final collection = CollectionStore();
 
-  runApp(
-    OrbitApp(
-      settings: settings,
-      updateStore: updateStore,
-      collection: collection,
-    ),
-  );
+  runApp(OrbitApp(
+    settings: settings,
+    updateStore: updateStore,
+    collection: collection,
+  ));
 }
 
 class OrbitApp extends StatelessWidget {
@@ -41,6 +40,10 @@ class OrbitApp extends StatelessWidget {
     return MaterialApp(
       title: 'Orbit',
       debugShowCheckedModeBanner: false,
+      // ← Hintergrundfarbe der App selbst (sichtbar beim Screen-Wechsel)
+      color: const Color(0xFF07020F),
+      theme: OrbitTheme.light(),
+      darkTheme: OrbitTheme.dark(),
       themeMode: ThemeMode.dark,
       home: GameSelectScreen(
         settings: settings,

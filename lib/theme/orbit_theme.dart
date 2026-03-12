@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// Haupthintergrundfarbe – wird überall als scaffoldBackgroundColor gesetzt,
+// damit beim Screen-Wechsel KEIN weißer Blitz erscheint.
+const _kBgColor = Color(0xFF07020F);
+
 class OrbitTheme {
   static ThemeData light() {
     final cs = ColorScheme.fromSeed(
@@ -9,7 +13,7 @@ class OrbitTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: cs,
-      scaffoldBackgroundColor: Colors.transparent,
+      scaffoldBackgroundColor: _kBgColor,
       pageTransitionsTheme: _pageTransitions(),
     );
   }
@@ -22,7 +26,8 @@ class OrbitTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: cs,
-      scaffoldBackgroundColor: Colors.transparent,
+      // ← WICHTIG: NICHT transparent. Dunkel = kein weißer Blitz.
+      scaffoldBackgroundColor: _kBgColor,
       textTheme: const TextTheme().apply(
         bodyColor: Colors.white,
         displayColor: Colors.white,
@@ -34,18 +39,19 @@ class OrbitTheme {
   static PageTransitionsTheme _pageTransitions() {
     return const PageTransitionsTheme(
       builders: {
-        TargetPlatform.android: FadeSlidePageTransitionsBuilder(),
-        TargetPlatform.iOS: FadeSlidePageTransitionsBuilder(),
+        TargetPlatform.android: _OrbitPageTransition(),
+        TargetPlatform.iOS: _OrbitPageTransition(),
       },
     );
   }
 }
 
-// ──────────────────────────────────────────────
-// Custom Page Transition
-// ──────────────────────────────────────────────
-class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
-  const FadeSlidePageTransitionsBuilder();
+// ──────────────────────────────────────────────────────────────────────────
+// Einfacher Fade (kein Slide → weniger GPU-Arbeit, kein weißes Flackern
+// an den Rändern beim Slide-Overshot).
+// ──────────────────────────────────────────────────────────────────────────
+class _OrbitPageTransition extends PageTransitionsBuilder {
+  const _OrbitPageTransition();
 
   @override
   Widget buildTransitions<T>(
@@ -57,32 +63,21 @@ class FadeSlidePageTransitionsBuilder extends PageTransitionsBuilder {
   ) {
     if (route.isFirst) return child;
 
-    final curved = CurvedAnimation(
-      parent: animation,
-      curve: Curves.easeOutCubic,
-      reverseCurve: Curves.easeInCubic,
-    );
-
     return FadeTransition(
-      opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curved),
-      child: SlideTransition(
-        position: Tween<Offset>(
-          begin: const Offset(0.03, 0.0),
-          end: Offset.zero,
-        ).animate(curved),
-        child: child,
+      opacity: CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
       ),
+      child: child,
     );
   }
 }
 
 // ──────────────────────────────────────────────────────────────────────────
 // OrbitBackground
-//
-// ❌ KEIN BackdropFilter über den ganzen Screen – das kostet bei jeder
-//    Animation Frames, weil Flutter den kompletten Screen-Inhalt
-//    neu blurren muss. Stattdessen: nur Gradient + zwei dekorative
-//    RadialGradient-Orbs (reine CPU-Paint, kein Compositing-Layer).
+// Kein BackdropFilter! Nur Gradient + RadialGradient-Orbs.
+// BackdropFilter auf dem ganzen Screen → massiver Lag bei Animationen.
 // ──────────────────────────────────────────────────────────────────────────
 class OrbitBackground extends StatelessWidget {
   final Widget child;
@@ -93,7 +88,7 @@ class OrbitBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Basis-Gradient (3 Farben, links-oben → rechts-unten)
+        // Basis-Gradient
         const DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -102,14 +97,14 @@ class OrbitBackground extends StatelessWidget {
               colors: [
                 Color(0xFF2D0B65),
                 Color(0xFF10041E),
-                Color(0xFF060209),
+                Color(0xFF07020F),
               ],
             ),
           ),
           child: SizedBox.expand(),
         ),
 
-        // Lila Glow-Orb oben-mitte
+        // Lila Orb oben-mitte
         Positioned(
           top: -110,
           left: 0,
@@ -131,7 +126,7 @@ class OrbitBackground extends StatelessWidget {
           ),
         ),
 
-        // Blauer Glow-Orb unten-rechts
+        // Blauer Orb unten-rechts
         Positioned(
           bottom: -90,
           right: -90,
@@ -150,7 +145,6 @@ class OrbitBackground extends StatelessWidget {
           ),
         ),
 
-        // Content
         child,
       ],
     );

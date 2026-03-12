@@ -1,10 +1,16 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
-/// Glass-Karte mit BackdropFilter.
+/// Glass-Karte OHNE BackdropFilter.
 ///
-/// BackdropFilter hier ist OK – er wird nur auf die kleine Kartenfläche
-/// angewendet, nicht auf den ganzen Screen. Das kostet deutlich weniger.
+/// BackdropFilter auf mehreren gleichzeitig sichtbaren Karten (z.B. in einer
+/// ListView) bedeutet, dass Flutter für jede Karte einen eigenen Compositing-
+/// Layer anlegt und alles dahinter separat blurren muss — das ist die
+/// häufigste Ursache für Ruckler in Flutter-Listen.
+///
+/// Der Glaseffekt wird hier rein visuell mit einem halbtransparenten
+/// Gradient + einem feinen weißen Border imitiert — auf einem dunklen
+/// Hintergrund wie OrbitBackground ist der Unterschied kaum zu sehen,
+/// die Performance aber deutlich besser.
 class OrbitGlassCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry padding;
@@ -19,26 +25,26 @@ class OrbitGlassCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: borderRadius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-        child: Container(
-          padding: padding,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.white.withOpacity(0.11),
-                Colors.white.withOpacity(0.04),
-              ],
-            ),
-            borderRadius: borderRadius,
-            border: Border.all(color: Colors.white.withOpacity(0.13)),
-          ),
-          child: child,
+    return Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.white.withOpacity(0.10),
+            Colors.white.withOpacity(0.04),
+          ],
         ),
+        borderRadius: borderRadius,
+        border: Border.all(
+          color: Colors.white.withOpacity(0.12),
+          width: 1.0,
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: child,
       ),
     );
   }
