@@ -203,7 +203,7 @@ Map<String, String> get _headers => const {
 // ─────────────────────────────────────────────────────────
 class ShopService extends ChangeNotifier {
   static const _shopUrl      = 'https://fortnite-api.com/v2/shop';
-  static const _cosmeticsUrl = 'https://fortnite-api.com/v2/cosmetics/br';
+  static const _cosmeticsUrl = 'https://fortnite-api.com/v2/cosmetics';
 
   ShopData? _data;
   bool      _loading = false;
@@ -298,9 +298,20 @@ class ShopService extends ChangeNotifier {
 
       if (cosmeticsRes.statusCode == 200) {
         try {
-          final cosJson   = jsonDecode(cosmeticsRes.body) as Map<String, dynamic>;
-          final cosData   = cosJson['data'];
-          final cosmetics = cosData is List ? cosData : (cosData as Map?)?.values.expand((v) => v is List ? v : [v]).toList() ?? [];
+          final cosJson = jsonDecode(cosmeticsRes.body) as Map<String, dynamic>;
+          final cosData = cosJson['data'];
+
+          // /v2/cosmetics gibt { br: [...], tracks: [...], instruments: [...], ... }
+          // Nur 'br' enthält die Shop-Items
+          Iterable<dynamic> cosmetics;
+          if (cosData is Map) {
+            final br = cosData['br'];
+            cosmetics = br is List ? br : cosData.values.expand((v) => v is List ? v : <dynamic>[]);
+          } else if (cosData is List) {
+            cosmetics = cosData;
+          } else {
+            cosmetics = <dynamic>[];
+          }
 
           for (final raw in cosmetics) {
             if (raw is Map) {
