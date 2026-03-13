@@ -13,7 +13,6 @@ class ShopEntry {
   final String? bundleName;
   final String sectionName;
   final String devName;
-  final String newDisplayAssetPath;
   final List<ShopTrack> tracks;
 
   const ShopEntry({
@@ -22,7 +21,6 @@ class ShopEntry {
     this.bundleName,
     required this.sectionName,
     required this.devName,
-    required this.newDisplayAssetPath,
     required this.tracks,
   });
 
@@ -33,25 +31,23 @@ class ShopEntry {
     if (isBundle) return bundleName!;
     if (tracks.isNotEmpty) {
       final n = tracks.first.name;
-      // Bereinige "[VIRTUAL]1 x ..." Einträge
+      // "[VIRTUAL]1 x Songname for 500 V-Bucks" → "Songname"
       if (n.startsWith('[VIRTUAL]')) {
-        final cleaned = n.replaceFirst(RegExp(r'\[VIRTUAL\]\d+ x '), '');
-        return cleaned;
+        final m = RegExp(r'\[VIRTUAL\]\d+ x (.+?) for \d+').firstMatch(n);
+        if (m != null) return m.group(1)!;
+        return n.replaceFirst(RegExp(r'\[VIRTUAL\]\d+ x '), '');
       }
       return n;
     }
-    return devName.split('.').last.replaceAll('_', ' ');
+    // devName als Fallback, z.B. "BR.Pickaxe.FestivalPickaxe_001" → "FestivalPickaxe 001"
+    final last = devName.split('.').last;
+    return last.replaceAll('_', ' ');
   }
 
   String? imageFor(Map<String, CosmeticImages> imgMap) {
     for (final track in tracks) {
-      // Direkt per ID suchen
       final ci = imgMap[track.id];
       if (ci != null) return ci.featured ?? ci.icon ?? ci.smallIcon;
-
-      // Fallback: lowercase
-      final ciLower = imgMap[track.id.toLowerCase()];
-      if (ciLower != null) return ciLower.featured ?? ciLower.icon ?? ciLower.smallIcon;
     }
     return null;
   }
@@ -88,13 +84,12 @@ class ShopEntry {
         : [];
 
     return ShopEntry(
-      finalPrice:           _toInt(j['finalPrice'])   ?? _toInt(j['price'])   ?? 0,
-      regularPrice:         _toInt(j['regularPrice']) ?? _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
-      bundleName:           bundleName,
-      sectionName:          sectionName,
-      devName:              j['devName']              as String? ?? '',
-      newDisplayAssetPath:  j['newDisplayAssetPath']  as String? ?? '',
-      tracks:               tracks,
+      finalPrice:   _toInt(j['finalPrice'])   ?? _toInt(j['price'])   ?? 0,
+      regularPrice: _toInt(j['regularPrice']) ?? _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
+      bundleName:   bundleName,
+      sectionName:  sectionName,
+      devName:      j['devName'] as String? ?? '',
+      tracks:       tracks,
     );
   }
 }
@@ -167,13 +162,11 @@ class ShopData {
   final List<ShopEntry>             entries;
   final Map<String, CosmeticImages> cosmeticImages;
   final DateTime                    fetchedAt;
-  final String                      debugInfo; // ← debug
 
   const ShopData({
     required this.entries,
     required this.cosmeticImages,
     required this.fetchedAt,
-    this.debugInfo = '',
   });
 
   Map<String, List<ShopEntry>> get bySection {
@@ -204,8 +197,11 @@ const Map<String, String> _headers = {
 // Service
 // ─────────────────────────────────────────────────────────
 class ShopService extends ChangeNotifier {
-  static const _shopUrl      = 'https://fortnite-api.com/v2/shop?language=de';
-  static const _cosmeticsUrl = 'https://fortnite-api.com/v2/cosmetics/br?language=de';
+  // Shop-Endpoint
+  static const _shopUrl = 'https://fortnite-api.com/v2/shop?language=de';
+
+  // ALLE Cosmetic-Typen in einem Call (br + tracks + instruments + lego + cars + beans + …)
+  static const _cosmeticsUrl = 'https://fortnite-api.com/v2/cosmetics?language=de';
 
   ShopData? _data;
   bool      _loading = false;
@@ -244,9 +240,12 @@ class ShopService extends ChangeNotifier {
     notifyListeners();
 
     try {
+      // Shop + alle Cosmetics gleichzeitig laden
       final results = await Future.wait([
-        http.get(Uri.parse(_shopUrl),      headers: _headers).timeout(const Duration(seconds: 20)),
-        http.get(Uri.parse(_cosmeticsUrl), headers: _headers).timeout(const Duration(seconds: 45)),
+        http.get(Uri.parse(_shopUrl),      headers: _headers)
+            .timeout(const Duration(seconds: 20)),
+        http.get(Uri.parse(_cosmeticsUrl), headers: _headers)
+            .timeout(const Duration(seconds: 60)),
       ]);
 
       final shopRes      = results[0];
@@ -273,60 +272,45 @@ class ShopService extends ChangeNotifier {
 
       final entries = rawEntries.map(ShopEntry.fromJson).toList();
 
-      // ── Cosmetics laden ──────────────────────────────────
+      // ── ALLE Cosmetic-Typen in eine Map laden ────────────
+      // /v2/cosmetics gibt: { br: [...], tracks: [...], instruments: [...], lego: [...], ... }
+      // Wir iterieren über ALLE Arrays, damit sid_XXX, CID_XXX, EID_XXX etc. alle abgedeckt sind.
       final cosmeticImages = <String, CosmeticImages>{};
 
       if (cosmeticsRes.statusCode == 200) {
         try {
           final cosJson = jsonDecode(cosmeticsRes.body) as Map<String, dynamic>;
           final cosData = cosJson['data'];
-          Iterable<dynamic> cosmetics = cosData is List ? cosData : <dynamic>[];
 
-          for (final raw in cosmetics) {
+          Iterable<dynamic> allItems;
+          if (cosData is List) {
+            // Flache Liste
+            allItems = cosData;
+          } else if (cosData is Map) {
+            // Alle Arrays zusammenfassen: br, tracks, instruments, lego, cars, beans, sparks, …
+            allItems = cosData.values.expand((v) => v is List ? v : <dynamic>[]);
+          } else {
+            allItems = <dynamic>[];
+          }
+
+          for (final raw in allItems) {
             if (raw is Map) {
               final id = raw['id'] as String?;
               if (id != null && id.isNotEmpty) {
-                cosmeticImages[id] = CosmeticImages.fromJson(Map<String, dynamic>.from(raw));
+                cosmeticImages[id] = CosmeticImages.fromJson(
+                    Map<String, dynamic>.from(raw));
               }
             }
           }
-        } catch (_) {}
-      }
-
-      // ── Gezielte ID-Debug ────────────────────────────────
-      final debugLines = <String>[];
-      debugLines.add('cosmetics geladen: ${cosmeticImages.length}');
-
-      // Zeige erste 3 Cosmetic-IDs
-      final firstCosIds = cosmeticImages.keys.take(3).toList();
-      debugLines.add('erste cos-IDs: $firstCosIds');
-
-      // Zeige erste 3 Track-IDs aus dem Shop
-      final firstTrackIds = <String>[];
-      final firstNewDisplays = <String>[];
-      for (final e in entries.take(5)) {
-        for (final t in e.tracks) {
-          if (firstTrackIds.length < 3) firstTrackIds.add(t.id);
+        } catch (_) {
+          // nicht kritisch
         }
-        if (e.newDisplayAssetPath.isNotEmpty && firstNewDisplays.length < 2) {
-          firstNewDisplays.add(e.newDisplayAssetPath);
-        }
-      }
-      debugLines.add('track IDs: $firstTrackIds');
-      debugLines.add('newDisplayAssetPath: $firstNewDisplays');
-
-      // Prüfe ob erste track ID im cosmetics-Map ist
-      if (firstTrackIds.isNotEmpty) {
-        final id  = firstTrackIds.first;
-        final hit = cosmeticImages[id];
-        debugLines.add('ID "$id" → ${hit == null ? "FEHLT" : "GEFUNDEN icon=${hit.icon?.substring(0,50)}"}');
       }
 
       _data = ShopData(
         entries:        entries,
         cosmeticImages: cosmeticImages,
         fetchedAt:      DateTime.now(),
-        debugInfo:      debugLines.join('\n'),
       );
     } catch (e) {
       _error = e.toString();
