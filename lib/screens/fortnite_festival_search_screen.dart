@@ -7,6 +7,7 @@ import '../widgets/orbit_glass_card.dart';
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/festival_song_details_sheet.dart';
+import '../services/festival_api_service.dart';
 
 class FortniteFestivalSearchScreen extends StatefulWidget {
   final CollectionStore collection;
@@ -22,7 +23,7 @@ class _FortniteFestivalSearchScreenState
     extends State<FortniteFestivalSearchScreen> {
   final TextEditingController _controller = TextEditingController();
 
-  List<FestivalSongDetails> _songs = [];
+  List<FestivalSongDetails> _songs    = [];
   List<FestivalSongDetails> _filtered = [];
   bool _loading = true;
 
@@ -42,53 +43,66 @@ class _FortniteFestivalSearchScreenState
   Future<void> _load() async {
     setState(() => _loading = true);
     try {
-      final jsonStr = await rootBundle.loadString(
-        'assets/data/festival_songs.json',
-      );
-      final decoded = jsonDecode(jsonStr);
-
-      // ✅ Bugfix: Holt das Array aus dem Key 'songs', da die JSON kein reines Array ist
-      if (decoded is Map<String, dynamic> && decoded['songs'] is List) {
-        final songsList = decoded['songs'] as List;
-
-        _songs = songsList
-            .whereType<Map<String, dynamic>>()
-            .map(FestivalSongDetails.fromMap)
-            .where((s) => s.songId.trim().isNotEmpty)
-            .toList();
-
-        _songs.sort(
-          (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()),
-        );
-      }
-
-      _applyFilter();
-    } catch (_) {
-      _songs = [];
-      _filtered = [];
+      // Songs + API-Daten parallel laden
+      await Future.wait([
+        _loadSongs(),
+        FestivalApiService.instance.ensureLoaded(),
+      ]);
     } finally {
       if (mounted) setState(() => _loading = false);
     }
   }
 
+  Future<void> _loadSongs() async {
+    try {
+      final jsonStr = await rootBundle.loadString(
+        'assets/data/festival_songs.json',
+      );
+      final decoded = jsonDecode(jsonStr);
+
+      if (decoded is Map<String, dynamic> && decoded['songs'] is List) {
+        final songsList = decoded['songs'] as List;
+        _songs = songsList
+            .whereType<Map<String, dynamic>>()
+            .map(FestivalSongDetails.fromMap)
+            .where((s) => s.songId.trim().isNotEmpty)
+            .toList();
+        _songs.sort(
+            (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+        _filtered = List.of(_songs);
+      }
+    } catch (_) {
+      _songs    = [];
+      _filtered = [];
+    }
+  }
+
   void _applyFilter() {
     final q = _controller.text.trim().toLowerCase();
-    if (q.isEmpty) {
-      setState(() => _filtered = List.of(_songs));
-      return;
-    }
-
     setState(() {
-      _filtered = _songs.where((s) {
-        final blob = '${s.title} ${s.artist} ${s.songId}'.toLowerCase();
-        return blob.contains(q);
-      }).toList();
+      if (q.isEmpty) {
+        _filtered = List.of(_songs);
+      } else {
+        _filtered = _songs.where((s) {
+          final blob = '${s.title} ${s.artist} ${s.songId}'.toLowerCase();
+          return blob.contains(q);
+        }).toList();
+      }
     });
+  }
+
+  void _openDetails(FestivalSongDetails song) {
+    showFestivalSongDetailsSheet(
+      context,
+      song:       song,
+      collection: widget.collection,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: OrbitBackground(
         child: SafeArea(
           child: Padding(
@@ -96,6 +110,7 @@ class _FortniteFestivalSearchScreenState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // ── Header ───────────────────────────────
                 Row(
                   children: [
                     IconButton(
@@ -107,137 +122,85 @@ class _FortniteFestivalSearchScreenState
                       child: Text(
                         'Songs suchen',
                         style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w900,
                           color: Colors.white,
+                          letterSpacing: -0.3,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
+
+                // ── Suchfeld ──────────────────────────────
                 OrbitGlassCard(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Colors.white.withOpacity(0.65),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: TextField(
-                            controller: _controller,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            decoration: InputDecoration(
-                              hintText: 'Suche nach Song, Artist oder Song ID…',
-                              hintStyle: TextStyle(
-                                color: Colors.white.withOpacity(0.45),
-                              ),
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                        if (_controller.text.isNotEmpty)
-                          IconButton(
-                            onPressed: () {
-                              _controller.clear();
-                              _applyFilter();
-                            },
-                            icon: Icon(
-                              Icons.close,
-                              color: Colors.white.withOpacity(0.8),
-                            ),
-                          ),
-                      ],
+                  child: TextField(
+                    controller: _controller,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: 'Song, Artist oder ID…',
+                      hintStyle: TextStyle(color: Colors.white.withOpacity(0.40)),
+                      prefixIcon: Icon(Icons.search,
+                          color: Colors.white.withOpacity(0.55)),
+                      suffixIcon: _controller.text.isNotEmpty
+                          ? IconButton(
+                              icon: Icon(Icons.clear,
+                                  color: Colors.white.withOpacity(0.55)),
+                              onPressed: () => _controller.clear(),
+                            )
+                          : null,
+                      border:     InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
+
+                // ── Ergebnis-Zähler ───────────────────────
+                if (!_loading)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4, bottom: 6),
+                    child: Text(
+                      '${_filtered.length} Songs',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.40),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+
+                // ── Liste ─────────────────────────────────
                 Expanded(
                   child: _loading
-                      ? const Center(child: CircularProgressIndicator())
-                      : _filtered.isEmpty
-                      ? Center(
-                          child: Text(
-                            'Keine Treffer.',
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.65),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                              color: Color(0xFF9C6FFF)),
                         )
-                      : AnimatedBuilder(
-                          animation: widget.collection,
-                          builder: (context, _) {
-                            return ListView.separated(
+                      : _filtered.isEmpty
+                          ? Center(
+                              child: Text(
+                                'Keine Treffer.',
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.45)),
+                              ),
+                            )
+                          : ListView.separated(
                               physics: const BouncingScrollPhysics(),
                               itemCount: _filtered.length,
-                              separatorBuilder: (_, _) =>
-                                  const SizedBox(height: 10),
+                              separatorBuilder: (_, __) =>
+                                  const SizedBox(height: 8),
                               itemBuilder: (context, i) {
-                                final s = _filtered[i];
-                                final owned = widget.collection.isOwned(
-                                  CollectionStore.categoryFestivalSong,
-                                  s.songId,
-                                );
-                                return GestureDetector(
-                                  onTap: () => showFestivalSongDetailsSheet(
-                                    context,
-                                    song: s,
-                                    collection: widget.collection,
-                                  ),
-                                  child: OrbitGlassCard(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(12),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  s.title,
-                                                  style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 4),
-                                                Text(
-                                                  s.artist,
-                                                  style: TextStyle(
-                                                    color: Colors.white
-                                                        .withOpacity(0.7),
-                                                    fontSize: 14,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          if (owned)
-                                            const Icon(
-                                              Icons.check_circle,
-                                              color: Colors.greenAccent,
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                                final song = _filtered[i];
+                                return _SongTile(
+                                  song:       song,
+                                  collection: widget.collection,
+                                  onTap: () => _openDetails(song),
                                 );
                               },
-                            );
-                          },
-                        ),
+                            ),
                 ),
               ],
             ),
@@ -246,4 +209,175 @@ class _FortniteFestivalSearchScreenState
       ),
     );
   }
+}
+
+// ─────────────────────────────────────────────────────────
+// Song-Kachel in der Liste
+// ─────────────────────────────────────────────────────────
+class _SongTile extends StatelessWidget {
+  final FestivalSongDetails song;
+  final CollectionStore     collection;
+  final VoidCallback        onTap;
+
+  const _SongTile({
+    required this.song,
+    required this.collection,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: collection,
+      builder: (context, _) {
+        final owned  = collection.isOwned(CollectionStore.categoryFestivalSong, song.songId);
+        final wished = collection.isWished(CollectionStore.categoryFestivalSong, song.songId);
+
+        // Difficulty aus API holen (falls geladen)
+        final apiData = FestivalApiService.instance.lookup(song.songId);
+        final hasDiff = apiData != null && apiData.difficulty.hasAny;
+
+        return OrbitGlassCard(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(22),
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
+              child: Row(
+                children: [
+                  // Albumcover oder Musik-Icon
+                  _MiniAlbumCover(url: apiData?.albumArt),
+                  const SizedBox(width: 12),
+
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Titel
+                        Text(
+                          song.title.isEmpty ? '???' : song.title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 15,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 2),
+                        // Artist
+                        Text(
+                          song.artist.isEmpty ? '???' : song.artist,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.55),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 13,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
+                        // Mini Difficulty Bars (falls vorhanden)
+                        if (hasDiff) ...[
+                          const SizedBox(height: 6),
+                          _MiniDifficultyBars(difficulty: apiData!.difficulty),
+                        ],
+                      ],
+                    ),
+                  ),
+
+                  // Status-Icons
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (owned)
+                        Icon(Icons.check_circle,
+                            color: const Color(0xFF00E676), size: 18),
+                      if (wished)
+                        Icon(Icons.favorite,
+                            color: const Color(0xFFFF4081), size: 18),
+                    ],
+                  ),
+                  const SizedBox(width: 4),
+                  Icon(Icons.chevron_right,
+                      color: Colors.white.withOpacity(0.30), size: 20),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+// Mini Difficulty Bars in der Listenansicht
+// ─────────────────────────────────────────────────────────
+class _MiniDifficultyBars extends StatelessWidget {
+  final SongDifficulty difficulty;
+
+  const _MiniDifficultyBars({required this.difficulty});
+
+  @override
+  Widget build(BuildContext context) {
+    final instruments = [
+      (difficulty.vocals, const Color(0xFFFF6EC7)),  // Gesang pink
+      (difficulty.guitar, const Color(0xFFFFD600)),  // Lead gelb
+      (difficulty.bass,   const Color(0xFF40C4FF)),  // Bass blau
+      (difficulty.drums,  const Color(0xFFFF5252)),  // Drums rot
+    ];
+
+    return Row(
+      children: instruments.map((entry) {
+        final value = entry.$1;
+        final color = entry.$2;
+        if (value == 0) return const SizedBox.shrink();
+        return Padding(
+          padding: const EdgeInsets.only(right: 6),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(7, (i) => Container(
+              width: 5, height: 8,
+              margin: const EdgeInsets.symmetric(horizontal: 1),
+              decoration: BoxDecoration(
+                color: i < value ? color : color.withOpacity(0.12),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            )),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────
+// Mini Albumcover in der Liste
+// ─────────────────────────────────────────────────────────
+class _MiniAlbumCover extends StatelessWidget {
+  final String? url;
+  const _MiniAlbumCover({required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 48, height: 48,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white.withOpacity(0.07),
+        border: Border.all(color: Colors.white.withOpacity(0.10)),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(9),
+        child: (url != null && url!.isNotEmpty)
+            ? Image.network(url!, fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => _icon())
+            : _icon(),
+      ),
+    );
+  }
+
+  Widget _icon() => Icon(Icons.music_note,
+      color: Colors.white.withOpacity(0.30), size: 22);
 }
