@@ -13,6 +13,7 @@ class ShopEntry {
   final String? bundleName;
   final String sectionName;
   final String devName;
+  final String newDisplayAssetPath;
   final List<ShopTrack> tracks;
 
   const ShopEntry({
@@ -21,6 +22,7 @@ class ShopEntry {
     this.bundleName,
     required this.sectionName,
     required this.devName,
+    required this.newDisplayAssetPath,
     required this.tracks,
   });
 
@@ -29,18 +31,27 @@ class ShopEntry {
 
   String get displayName {
     if (isBundle) return bundleName!;
-    if (tracks.isNotEmpty) return tracks.first.name;
-    // devName als letzten Ausweg aufräumen (z.B. "BR.Pickaxe.FestivalPickaxe_001" → "FestivalPickaxe 001")
+    if (tracks.isNotEmpty) {
+      final n = tracks.first.name;
+      // Bereinige "[VIRTUAL]1 x ..." Einträge
+      if (n.startsWith('[VIRTUAL]')) {
+        final cleaned = n.replaceFirst(RegExp(r'\[VIRTUAL\]\d+ x '), '');
+        return cleaned;
+      }
+      return n;
+    }
     return devName.split('.').last.replaceAll('_', ' ');
   }
 
-  /// Bild: Aus Cosmetics-Map per Track-ID nachschlagen
   String? imageFor(Map<String, CosmeticImages> imgMap) {
     for (final track in tracks) {
+      // Direkt per ID suchen
       final ci = imgMap[track.id];
-      if (ci != null) {
-        return ci.featured ?? ci.icon ?? ci.smallIcon;
-      }
+      if (ci != null) return ci.featured ?? ci.icon ?? ci.smallIcon;
+
+      // Fallback: lowercase
+      final ciLower = imgMap[track.id.toLowerCase()];
+      if (ciLower != null) return ciLower.featured ?? ciLower.icon ?? ciLower.smallIcon;
     }
     return null;
   }
@@ -56,7 +67,6 @@ class ShopEntry {
     final bundle = j['bundle'];
     if (bundle is Map) bundleName = bundle['name'] as String?;
 
-    // Section-Name
     String sectionName = 'Shop';
     final section = j['section'];
     if (section is Map) {
@@ -69,7 +79,6 @@ class ShopEntry {
       if (cats is List && cats.isNotEmpty) sectionName = cats.first.toString();
     }
 
-    // tracks (die eigentlichen Items im Shop-Eintrag)
     final rawTracks = j['tracks'];
     final List<ShopTrack> tracks = rawTracks is List
         ? rawTracks
@@ -79,12 +88,13 @@ class ShopEntry {
         : [];
 
     return ShopEntry(
-      finalPrice:   _toInt(j['finalPrice'])   ?? _toInt(j['price'])   ?? 0,
-      regularPrice: _toInt(j['regularPrice']) ?? _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
-      bundleName:   bundleName,
-      sectionName:  sectionName,
-      devName:      j['devName'] as String? ?? '',
-      tracks:       tracks,
+      finalPrice:           _toInt(j['finalPrice'])   ?? _toInt(j['price'])   ?? 0,
+      regularPrice:         _toInt(j['regularPrice']) ?? _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
+      bundleName:           bundleName,
+      sectionName:          sectionName,
+      devName:              j['devName']              as String? ?? '',
+      newDisplayAssetPath:  j['newDisplayAssetPath']  as String? ?? '',
+      tracks:               tracks,
     );
   }
 }
@@ -124,10 +134,10 @@ class ShopTrack {
     }
 
     return ShopTrack(
-      id:           j['id']   as String? ?? '',
-      name:         j['name'] as String? ?? '???',
-      typeDisplay:  typeDisplay,
-      rarityValue:  rarityValue,
+      id:            j['id']   as String? ?? '',
+      name:          j['name'] as String? ?? '???',
+      typeDisplay:   typeDisplay,
+      rarityValue:   rarityValue,
       rarityDisplay: rarityDisplay,
     );
   }
@@ -154,14 +164,16 @@ class CosmeticImages {
 }
 
 class ShopData {
-  final List<ShopEntry> entries;
+  final List<ShopEntry>             entries;
   final Map<String, CosmeticImages> cosmeticImages;
-  final DateTime fetchedAt;
+  final DateTime                    fetchedAt;
+  final String                      debugInfo; // ← debug
 
   const ShopData({
     required this.entries,
     required this.cosmeticImages,
     required this.fetchedAt,
+    this.debugInfo = '',
   });
 
   Map<String, List<ShopEntry>> get bySection {
@@ -173,8 +185,6 @@ class ShopData {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Helpers
 // ─────────────────────────────────────────────────────────
 int? _toInt(dynamic v) {
   if (v == null) return null;
@@ -194,10 +204,8 @@ const Map<String, String> _headers = {
 // Service
 // ─────────────────────────────────────────────────────────
 class ShopService extends ChangeNotifier {
-  static const _shopUrl =
-      'https://fortnite-api.com/v2/shop?language=de';
-  static const _cosmeticsUrl =
-      'https://fortnite-api.com/v2/cosmetics/br?language=de';
+  static const _shopUrl      = 'https://fortnite-api.com/v2/shop?language=de';
+  static const _cosmeticsUrl = 'https://fortnite-api.com/v2/cosmetics/br?language=de';
 
   ShopData? _data;
   bool      _loading = false;
@@ -236,97 +244,89 @@ class ShopService extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // Shop + Cosmetics gleichzeitig laden
       final results = await Future.wait([
-        http.get(Uri.parse(_shopUrl),      headers: _headers)
-            .timeout(const Duration(seconds: 20)),
-        http.get(Uri.parse(_cosmeticsUrl), headers: _headers)
-            .timeout(const Duration(seconds: 45)),
+        http.get(Uri.parse(_shopUrl),      headers: _headers).timeout(const Duration(seconds: 20)),
+        http.get(Uri.parse(_cosmeticsUrl), headers: _headers).timeout(const Duration(seconds: 45)),
       ]);
 
       final shopRes      = results[0];
       final cosmeticsRes = results[1];
 
-      if (shopRes.statusCode != 200) {
-        throw Exception('Shop HTTP ${shopRes.statusCode}');
-      }
+      if (shopRes.statusCode != 200) throw Exception('Shop HTTP ${shopRes.statusCode}');
 
       // ── Shop parsen ──────────────────────────────────────
       final shopJson = jsonDecode(shopRes.body) as Map<String, dynamic>;
       final dataVal  = shopJson['data'];
-
       List<Map<String, dynamic>> rawEntries = [];
 
       if (dataVal is Map) {
         final shopMap    = Map<String, dynamic>.from(dataVal);
         final entriesRaw = shopMap['entries'];
         if (entriesRaw is List && entriesRaw.isNotEmpty) {
-          rawEntries = entriesRaw
-              .whereType<Map>()
-              .map((m) => Map<String, dynamic>.from(m))
-              .toList();
-        }
-        // Fallback: featured/daily
-        if (rawEntries.isEmpty) {
-          for (final key in ['featured', 'daily', 'specialFeatured', 'specialDaily']) {
-            final sec = shopMap[key];
-            if (sec is Map) {
-              final se = sec['entries'];
-              if (se is List) {
-                rawEntries.addAll(se
-                    .whereType<Map>()
-                    .map((m) => Map<String, dynamic>.from(m)));
-              }
-            }
-          }
+          rawEntries = entriesRaw.whereType<Map>()
+              .map((m) => Map<String, dynamic>.from(m)).toList();
         }
       } else if (dataVal is List) {
-        rawEntries = dataVal
-            .whereType<Map>()
-            .map((m) => Map<String, dynamic>.from(m))
-            .toList();
+        rawEntries = dataVal.whereType<Map>()
+            .map((m) => Map<String, dynamic>.from(m)).toList();
       }
 
       final entries = rawEntries.map(ShopEntry.fromJson).toList();
 
-      // ── Cosmetics-Bilder laden (id → Bilder) ────────────
+      // ── Cosmetics laden ──────────────────────────────────
       final cosmeticImages = <String, CosmeticImages>{};
 
       if (cosmeticsRes.statusCode == 200) {
         try {
           final cosJson = jsonDecode(cosmeticsRes.body) as Map<String, dynamic>;
           final cosData = cosJson['data'];
-
-          Iterable<dynamic> cosmetics;
-          if (cosData is List) {
-            cosmetics = cosData;
-          } else if (cosData is Map) {
-            final br = cosData['br'];
-            cosmetics = br is List
-                ? br
-                : cosData.values.expand((v) => v is List ? v : <dynamic>[]);
-          } else {
-            cosmetics = <dynamic>[];
-          }
+          Iterable<dynamic> cosmetics = cosData is List ? cosData : <dynamic>[];
 
           for (final raw in cosmetics) {
             if (raw is Map) {
               final id = raw['id'] as String?;
               if (id != null && id.isNotEmpty) {
-                cosmeticImages[id] = CosmeticImages.fromJson(
-                    Map<String, dynamic>.from(raw));
+                cosmeticImages[id] = CosmeticImages.fromJson(Map<String, dynamic>.from(raw));
               }
             }
           }
-        } catch (_) {
-          // nicht kritisch — Shop zeigt trotzdem an (ohne Bilder)
+        } catch (_) {}
+      }
+
+      // ── Gezielte ID-Debug ────────────────────────────────
+      final debugLines = <String>[];
+      debugLines.add('cosmetics geladen: ${cosmeticImages.length}');
+
+      // Zeige erste 3 Cosmetic-IDs
+      final firstCosIds = cosmeticImages.keys.take(3).toList();
+      debugLines.add('erste cos-IDs: $firstCosIds');
+
+      // Zeige erste 3 Track-IDs aus dem Shop
+      final firstTrackIds = <String>[];
+      final firstNewDisplays = <String>[];
+      for (final e in entries.take(5)) {
+        for (final t in e.tracks) {
+          if (firstTrackIds.length < 3) firstTrackIds.add(t.id);
         }
+        if (e.newDisplayAssetPath.isNotEmpty && firstNewDisplays.length < 2) {
+          firstNewDisplays.add(e.newDisplayAssetPath);
+        }
+      }
+      debugLines.add('track IDs: $firstTrackIds');
+      debugLines.add('newDisplayAssetPath: $firstNewDisplays');
+
+      // Prüfe ob erste track ID im cosmetics-Map ist
+      if (firstTrackIds.isNotEmpty) {
+        final id  = firstTrackIds.first;
+        final hit = cosmeticImages[id];
+        debugLines.add('ID "$id" → ${hit == null ? "FEHLT" : "GEFUNDEN icon=${hit.icon?.substring(0,50)}"}');
       }
 
       _data = ShopData(
         entries:        entries,
         cosmeticImages: cosmeticImages,
         fetchedAt:      DateTime.now(),
+        debugInfo:      debugLines.join('\n'),
       );
     } catch (e) {
       _error = e.toString();
