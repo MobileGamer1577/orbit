@@ -34,7 +34,6 @@ class FortniteShopScreen extends StatefulWidget {
 
 class _FortniteShopScreenState extends State<FortniteShopScreen> {
   late final ShopService _service;
-  bool _showDebug = true; // temporär an — nach dem Fix ausschalten
 
   @override
   void initState() {
@@ -69,7 +68,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
             children: [
               // ── Header ─────────────────────────────────
               Padding(
-                padding: const EdgeInsets.fromLTRB(4, 4, 8, 0),
+                padding: const EdgeInsets.fromLTRB(4, 4, 16, 0),
                 child: Row(
                   children: [
                     IconButton(
@@ -87,18 +86,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                           color: Colors.white,
                           letterSpacing: -0.3,
                         ),
-                      ),
-                    ),
-                    // Debug-Toggle
-                    IconButton(
-                      onPressed: () =>
-                          setState(() => _showDebug = !_showDebug),
-                      icon: Icon(
-                        Icons.bug_report_outlined,
-                        color: _showDebug
-                            ? const Color(0xFF9C6FFF)
-                            : Colors.white38,
-                        size: 22,
                       ),
                     ),
                     IconButton(
@@ -120,7 +107,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
               // ── Statuszeile ─────────────────────────────
               if (_service.data != null)
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 4),
+                  padding: const EdgeInsets.only(left: 20, bottom: 6),
                   child: Text(
                     'Aktualisiert: ${_formatTime(_service.data!.fetchedAt)}'
                     ' • ${_service.data!.entries.length} Einträge',
@@ -128,32 +115,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                       color: Colors.white.withOpacity(0.40),
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-
-              // ── Debug-Panel ─────────────────────────────
-              if (_showDebug && _service.data != null)
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.60),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                        color: const Color(0xFF9C6FFF).withOpacity(0.40)),
-                  ),
-                  child: Text(
-                    '${_service.data!.debugFirstEntry}\n'
-                    '${_service.data!.debugFirstItem}\n'
-                    '--- cosmetics ---\n'
-                    '${_service.data!.debugCosmeticsCount}',
-                    style: const TextStyle(
-                      color: Colors.white60,
-                      fontSize: 10,
-                      fontFamily: 'monospace',
-                      height: 1.5,
                     ),
                   ),
                 ),
@@ -237,6 +198,8 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 }
 
 // ─────────────────────────────────────────────────────────
+// Shop-Karte
+// ─────────────────────────────────────────────────────────
 class _ShopCard extends StatelessWidget {
   final ShopEntry                   entry;
   final Map<String, CosmeticImages> imgMap;
@@ -245,7 +208,7 @@ class _ShopCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final rarity      = entry.primaryItem?.rarityValue ?? 'common';
+    final rarity      = entry.primaryRarity;
     final accentColor = _rarityColor(rarity);
     final imageUrl    = entry.imageFor(imgMap);
 
@@ -260,18 +223,20 @@ class _ShopCard extends StatelessWidget {
             Colors.white.withOpacity(0.03),
           ],
         ),
-        border:
-            Border.all(color: accentColor.withOpacity(0.45), width: 1.2),
+        border: Border.all(
+            color: accentColor.withOpacity(0.45), width: 1.2),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(17),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // ── Bild ──────────────────────────────────────
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
                 children: [
+                  // Rarity-Hintergrund
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -284,12 +249,13 @@ class _ShopCard extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  // Item-Bild
                   if (imageUrl != null)
                     Image.network(
                       imageUrl,
                       fit: BoxFit.contain,
-                      errorBuilder: (_, __, ___) =>
-                          const _NoImage(),
+                      errorBuilder: (_, __, ___) => const _NoImage(),
                       loadingBuilder: (_, child, progress) =>
                           progress == null
                               ? child
@@ -306,12 +272,16 @@ class _ShopCard extends StatelessWidget {
                     )
                   else
                     const _NoImage(),
+
+                  // Sale-Badge
                   if (entry.isOnSale)
                     Positioned(
                       top: 7, right: 7,
                       child: _Badge(
                           label: 'SALE', color: Colors.red.shade600),
                     ),
+
+                  // Bundle-Badge
                   if (entry.isBundle)
                     Positioned(
                       top: 7, left: 7,
@@ -322,6 +292,8 @@ class _ShopCard extends StatelessWidget {
                 ],
               ),
             ),
+
+            // ── Info ───────────────────────────────────────
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
               child: Column(
@@ -338,11 +310,10 @@ class _ShopCard extends StatelessWidget {
                       height: 1.2,
                     ),
                   ),
-                  if (entry.primaryItem?.typeDisplay.isNotEmpty ==
-                      true) ...[
+                  if (entry.primaryTypeDisplay.isNotEmpty) ...[
                     const SizedBox(height: 2),
                     Text(
-                      entry.primaryItem!.typeDisplay,
+                      entry.primaryTypeDisplay,
                       style: TextStyle(
                         color: accentColor.withOpacity(0.85),
                         fontSize: 11,
@@ -405,12 +376,9 @@ class _Badge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
         decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(6),
-        ),
+            color: color, borderRadius: BorderRadius.circular(6)),
         child: Text(label,
             style: const TextStyle(
                 color: Colors.white,
@@ -423,14 +391,12 @@ class _Badge extends StatelessWidget {
 class _VBucksIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-        width: 16,
-        height: 16,
+        width: 16, height: 16,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: const Color(0xFF00C8FF).withOpacity(0.20),
           border: Border.all(
-              color: const Color(0xFF00C8FF).withOpacity(0.60),
-              width: 1),
+              color: const Color(0xFF00C8FF).withOpacity(0.60), width: 1),
         ),
         child: const Center(
           child: Text('V',
@@ -466,8 +432,7 @@ class _ErrorView extends StatelessWidget {
               const SizedBox(height: 8),
               Text(error,
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.40),
-                      fontSize: 12),
+                      color: Colors.white.withOpacity(0.40), fontSize: 12),
                   textAlign: TextAlign.center),
               const SizedBox(height: 24),
               FilledButton.icon(
