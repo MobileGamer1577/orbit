@@ -1,5 +1,9 @@
 import java.io.File
 
+val keyProperties = java.util.Properties()
+val keyPropertiesFile = rootProject.file("key.properties")
+if (keyPropertiesFile.exists()) keyProperties.load(keyPropertiesFile.inputStream())
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -28,9 +32,18 @@ android {
         jvmTarget = "17"
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = keyProperties["keyAlias"] as String
+            keyPassword = keyProperties["keyPassword"] as String
+            storeFile = file(keyProperties["storeFile"] as String)
+            storePassword = keyProperties["storePassword"] as String
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
@@ -69,15 +82,10 @@ val copyDebugApkToFlutterExpectedDir = tasks.register("copyDebugApkToFlutterExpe
     }
 }
 
-/*
-  WICHTIG: Nicht tasks.named("assembleDebug") benutzen (kann zu früh sein),
-  sondern robust an alle Tasks anhängen, sobald sie existieren.
-*/
 tasks.matching { it.name == "assembleDebug" }.configureEach {
     finalizedBy(copyDebugApkToFlutterExpectedDir)
 }
 
-// Falls Flutter/AGP bei dir den Task anders registriert, hilft oft auch das:
 tasks.matching { it.name.equals("assembleDebug", ignoreCase = true) }.configureEach {
     finalizedBy(copyDebugApkToFlutterExpectedDir)
 }
