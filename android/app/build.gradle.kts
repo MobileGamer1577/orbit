@@ -1,6 +1,7 @@
 import java.io.File
+import java.util.Properties
 
-val keyProperties = java.util.Properties()
+val keyProperties = Properties()
 val keyPropertiesFile = rootProject.file("key.properties")
 if (keyPropertiesFile.exists()) keyProperties.load(keyPropertiesFile.inputStream())
 
@@ -34,10 +35,10 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = keyProperties["keyAlias"] as String
-            keyPassword = keyProperties["keyPassword"] as String
-            storeFile = file(keyProperties["storeFile"] as String)
-            storePassword = keyProperties["storePassword"] as String
+            keyAlias = keyProperties["keyAlias"].toString()
+            keyPassword = keyProperties["keyPassword"].toString()
+            storeFile = file(keyProperties["storeFile"].toString())
+            storePassword = keyProperties["storePassword"].toString()
         }
     }
 
@@ -64,9 +65,11 @@ val copyDebugApkToFlutterExpectedDir = tasks.register("copyDebugApkToFlutterExpe
     doLast {
         flutterExpectedDir.mkdirs()
 
+        val buildDir = project.layout.buildDirectory.get().asFile
+
         val candidates = listOf(
-            File(project.buildDir, "outputs/flutter-apk/app-debug.apk"),
-            File(project.buildDir, "outputs/apk/debug/app-debug.apk")
+            File(buildDir, "outputs/flutter-apk/app-debug.apk"),
+            File(buildDir, "outputs/apk/debug/app-debug.apk")
         )
 
         val src = candidates.firstOrNull { it.exists() }
