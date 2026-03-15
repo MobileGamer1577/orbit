@@ -53,42 +53,50 @@ flutter {
     source = "../.."
 }
 
-/* =========================================================
-   FIX: Flutter findet manchmal das APK nicht (Output-Pfad).
-   Wir kopieren nach dem Debug-Build das APK zusätzlich nach:
-   <projectRoot>/build/app/outputs/flutter-apk/app-debug.apk
-========================================================= */
+// =========================================================
+// FIX: Flutter kann den APK-Output-Pfad nicht finden.
+// Wir kopieren nach dem Build die APK in den von Flutter
+// erwarteten Pfad: build/app/outputs/flutter-apk/
+// =========================================================
 
 val flutterExpectedDir = File(rootProject.projectDir, "../build/app/outputs/flutter-apk")
 
-val copyDebugApkToFlutterExpectedDir = tasks.register("copyDebugApkToFlutterExpectedDir") {
+// --- DEBUG ---
+val copyDebugApk = tasks.register("copyDebugApkToFlutterExpectedDir") {
     doLast {
         flutterExpectedDir.mkdirs()
-
         val buildDir = project.layout.buildDirectory.get().asFile
-
         val candidates = listOf(
             File(buildDir, "outputs/flutter-apk/app-debug.apk"),
             File(buildDir, "outputs/apk/debug/app-debug.apk")
         )
-
-        val src = candidates.firstOrNull { it.exists() }
-            ?: throw GradleException(
-                "APK nicht gefunden. Gesucht wurde:\n" +
-                    candidates.joinToString("\n") { " - ${it.absolutePath}" }
-            )
-
+        val src = candidates.firstOrNull { it.exists() } ?: return@doLast
         val dst = File(flutterExpectedDir, "app-debug.apk")
         src.copyTo(dst, overwrite = true)
-
-        println("✅ Copied APK for Flutter: ${src.absolutePath} -> ${dst.absolutePath}")
+        println("✅ Copied Debug APK: ${src.absolutePath} -> ${dst.absolutePath}")
     }
 }
 
-tasks.matching { it.name == "assembleDebug" }.configureEach {
-    finalizedBy(copyDebugApkToFlutterExpectedDir)
+tasks.matching { it.name.equals("assembleDebug", ignoreCase = true) }.configureEach {
+    finalizedBy(copyDebugApk)
 }
 
-tasks.matching { it.name.equals("assembleDebug", ignoreCase = true) }.configureEach {
-    finalizedBy(copyDebugApkToFlutterExpectedDir)
+// --- RELEASE ---
+val copyReleaseApk = tasks.register("copyReleaseApkToFlutterExpectedDir") {
+    doLast {
+        flutterExpectedDir.mkdirs()
+        val buildDir = project.layout.buildDirectory.get().asFile
+        val candidates = listOf(
+            File(buildDir, "outputs/flutter-apk/app-release.apk"),
+            File(buildDir, "outputs/apk/release/app-release.apk")
+        )
+        val src = candidates.firstOrNull { it.exists() } ?: return@doLast
+        val dst = File(flutterExpectedDir, "app-release.apk")
+        src.copyTo(dst, overwrite = true)
+        println("✅ Copied Release APK: ${src.absolutePath} -> ${dst.absolutePath}")
+    }
+}
+
+tasks.matching { it.name.equals("assembleRelease", ignoreCase = true) }.configureEach {
+    finalizedBy(copyReleaseApk)
 }

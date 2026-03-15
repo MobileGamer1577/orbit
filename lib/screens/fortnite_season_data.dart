@@ -39,8 +39,8 @@ final List<FortnitePassData> fortnitePasses = [
   FortnitePassData(
     name: 'Test Countdown',
     icon: Icons.music_note,
-    startDate: DateTime(1980, 1, 1),
-    endDate: DateTime(2026, 3, 12),
+    startDate: DateTime(1, 1, 1),
+    endDate: DateTime(2039, 1, 19),
     color: Color(0xFFF48FB1),
   ),
 ];
