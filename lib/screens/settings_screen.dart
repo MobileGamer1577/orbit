@@ -68,8 +68,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final url = Uri.parse(
       'https://github.com/MobileGamer1577/orbit/releases/latest',
     );
-    if (await canLaunchUrl(url)) {
-      launchUrl(url, mode: LaunchMode.externalApplication);
+    try {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('GitHub konnte nicht geöffnet werden.')),
+        );
+      }
     }
   }
 
