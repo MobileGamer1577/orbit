@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
-import 'fortnite_season_data.dart'; // ← Daten kommen von hier
+import 'fortnite_season_data.dart';
 
 class FortniteCountdownScreen extends StatefulWidget {
   const FortniteCountdownScreen({super.key});
@@ -63,6 +64,8 @@ class _FortniteCountdownScreenState extends State<FortniteCountdownScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: OrbitBackground(
@@ -79,10 +82,10 @@ class _FortniteCountdownScreenState extends State<FortniteCountdownScreen>
                       icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Countdowns',
-                        style: TextStyle(
+                        l10n.countdownTitle,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
@@ -92,7 +95,7 @@ class _FortniteCountdownScreenState extends State<FortniteCountdownScreen>
                   ],
                 ),
                 Text(
-                  'Fortnite Season Pässe',
+                  l10n.countdownSubtitle,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.55),
                     fontWeight: FontWeight.w600,
@@ -111,6 +114,7 @@ class _FortniteCountdownScreenState extends State<FortniteCountdownScreen>
                         builder: (context, _) => _PassCard(
                           pass: fortnitePasses[i],
                           animatedProgress: _animations[i].value,
+                          l10n: l10n,
                         ),
                       );
                     },
@@ -125,15 +129,16 @@ class _FortniteCountdownScreenState extends State<FortniteCountdownScreen>
   }
 }
 
-// ─────────────────────────────────────────
-// Pass Card – nicht anfassen!
-// ─────────────────────────────────────────
-
 class _PassCard extends StatelessWidget {
   final FortnitePassData pass;
   final double animatedProgress;
+  final AppLocalizations l10n;
 
-  const _PassCard({required this.pass, required this.animatedProgress});
+  const _PassCard({
+    required this.pass,
+    required this.animatedProgress,
+    required this.l10n,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -147,13 +152,13 @@ class _PassCard extends StatelessWidget {
     String statusText;
     if (expired) {
       statusColor = Colors.red.shade400;
-      statusText = 'Abgelaufen';
+      statusText = l10n.countdownExpired;
     } else if (remaining.inDays <= 3) {
       statusColor = Colors.orange.shade400;
-      statusText = 'Läuft bald ab!';
+      statusText = l10n.countdownExpiringSoon;
     } else {
       statusColor = pass.color;
-      statusText = 'Aktiv';
+      statusText = l10n.countdownActive;
     }
 
     return OrbitGlassCard(
@@ -245,7 +250,7 @@ class _PassCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Tage',
+                          l10n.countdownDays,
                           style: TextStyle(
                             color: pass.color.withOpacity(0.65),
                             fontSize: 10,
@@ -304,7 +309,7 @@ class _PassCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Tag $elapsed / $totalDays',
+                  l10n.countdownDayProgress(elapsed, totalDays),
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.4),
                     fontSize: 12,
@@ -323,7 +328,7 @@ class _PassCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              '${_fmt(pass.startDate)}  →  ${_fmt(pass.endDate)}',
+              '${_fmt(pass.startDate, l10n)}  →  ${_fmt(pass.endDate, l10n)}',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.28),
                 fontSize: 11,
@@ -335,11 +340,8 @@ class _PassCard extends StatelessWidget {
     );
   }
 
-  String _fmt(DateTime d) {
-    const m = [
-      'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez',
-    ];
-    return '${d.day.toString().padLeft(2, '0')}. ${m[d.month - 1]} ${d.year}';
+  String _fmt(DateTime d, AppLocalizations l10n) {
+    final months = l10n.monthNames;
+    return '${d.day.toString().padLeft(2, '0')}. ${months[d.month - 1]} ${d.year}';
   }
 }

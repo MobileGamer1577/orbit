@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../l10n/app_localizations.dart';
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/festival_song_details_sheet.dart';
@@ -21,7 +22,7 @@ class FortniteLockerScreen extends StatefulWidget {
 }
 
 class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
-  final TextEditingController _search     = TextEditingController();
+  final TextEditingController _search      = TextEditingController();
   final FocusNode             _searchFocus = FocusNode();
 
   List<FestivalSongDetails> _songs   = [];
@@ -103,6 +104,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final list = _filtered();
 
     return Scaffold(
@@ -122,10 +124,10 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                       icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Spind',
-                        style: TextStyle(
+                        l10n.lockerTitle,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
@@ -136,7 +138,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Festival-Songs • Schwierigkeit via API',
+                  l10n.lockerSubtitle,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.50),
                     fontWeight: FontWeight.w500,
@@ -152,7 +154,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                     focusNode:   _searchFocus,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      hintText: 'Song / Artist / ID suchen…',
+                      hintText: l10n.lockerSearchHint,
                       hintStyle:
                           TextStyle(color: Colors.white.withOpacity(0.40)),
                       prefixIcon: Icon(Icons.search,
@@ -176,6 +178,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                 _FilterRow(
                   value:     _filter,
                   onChanged: (v) => setState(() => _filter = v),
+                  l10n:      l10n,
                 ),
                 const SizedBox(height: 12),
 
@@ -189,7 +192,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                       : list.isEmpty
                           ? Center(
                               child: Text(
-                                'Keine Treffer.',
+                                l10n.noResults,
                                 style: TextStyle(
                                     color: Colors.white.withOpacity(0.45)),
                               ),
@@ -225,26 +228,28 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Filter-Tabs
-// ─────────────────────────────────────────────────────────
 class _FilterRow extends StatelessWidget {
-  final _LockerFilter              value;
+  final _LockerFilter               value;
   final ValueChanged<_LockerFilter> onChanged;
+  final AppLocalizations            l10n;
 
-  const _FilterRow({required this.value, required this.onChanged});
+  const _FilterRow({
+    required this.value,
+    required this.onChanged,
+    required this.l10n,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _Tab(label: 'Alle',        active: value == _LockerFilter.all,
+        _Tab(label: l10n.filterAll,      active: value == _LockerFilter.all,
              onTap: () => onChanged(_LockerFilter.all)),
         const SizedBox(width: 8),
-        _Tab(label: 'Im Besitz',   active: value == _LockerFilter.owned,
+        _Tab(label: l10n.filterOwned,    active: value == _LockerFilter.owned,
              onTap: () => onChanged(_LockerFilter.owned)),
         const SizedBox(width: 8),
-        _Tab(label: 'Wunschliste', active: value == _LockerFilter.wishlist,
+        _Tab(label: l10n.filterWishlist, active: value == _LockerFilter.wishlist,
              onTap: () => onChanged(_LockerFilter.wishlist)),
       ],
     );
@@ -283,9 +288,6 @@ class _Tab extends StatelessWidget {
       );
 }
 
-// ─────────────────────────────────────────────────────────
-// Locker-Kachel
-// ─────────────────────────────────────────────────────────
 class _LockerTile extends StatelessWidget {
   final FestivalSongDetails song;
   final CollectionStore     collection;
@@ -299,9 +301,9 @@ class _LockerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final owned  = collection.isOwned(CollectionStore.categoryFestivalSong, song.songId);
-    final wished = collection.isWished(CollectionStore.categoryFestivalSong, song.songId);
-    final api    = FestivalApiService.instance.lookup(song.songId);
+    final owned   = collection.isOwned(CollectionStore.categoryFestivalSong, song.songId);
+    final wished  = collection.isWished(CollectionStore.categoryFestivalSong, song.songId);
+    final api     = FestivalApiService.instance.lookup(song.songId);
     final hasDiff = api != null && api.difficulty.hasAny;
 
     return OrbitGlassCard(
@@ -312,10 +314,8 @@ class _LockerTile extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
           child: Row(
             children: [
-              // Albumcover
               _MiniAlbumCover(url: api?.albumArt),
               const SizedBox(width: 12),
-
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

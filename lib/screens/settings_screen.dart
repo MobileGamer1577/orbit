@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/update_service.dart';
 import '../storage/app_settings_store.dart';
 import '../storage/update_store.dart';
@@ -50,22 +51,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _checkUpdates() async {
     if (_checking) return;
     setState(() => _checking = true);
+    final l10n = context.l10n;
     try {
       final result = await UpdateService.checkForUpdates();
       if (!mounted) return;
       if (result.updateAvailable) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Update verfügbar: ${result.latest} 🚀')),
+          SnackBar(content: Text('${l10n.updateAvailableTitle(result.latest)} 🚀')),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Keine Updates gefunden ✅')),
+          SnackBar(content: Text(l10n.updateNoUpdate)),
         );
       }
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Update-Check fehlgeschlagen.')),
+          SnackBar(content: Text(l10n.updateFailed)),
         );
       }
     } finally {
@@ -82,7 +84,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('GitHub konnte nicht geöffnet werden.')),
+          SnackBar(content: Text(context.l10n.updateGithubFailed)),
         );
       }
     }
@@ -93,7 +95,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await box.clear();
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Fortschritt zurückgesetzt ✅')),
+      SnackBar(content: Text(context.l10n.resetProgressDone)),
     );
   }
 
@@ -113,13 +115,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     final String updateSubtitle;
     if (widget.updateStore.isChecking) {
-      updateSubtitle = 'Wird geprüft…';
+      updateSubtitle = l10n.updateChecking;
     } else if (widget.updateStore.updateAvailable) {
-      updateSubtitle = 'Update verfügbar: ${widget.updateStore.latest}';
+      updateSubtitle = l10n.updateAvailableTitle(widget.updateStore.latest);
     } else {
-      updateSubtitle = 'Aktuell ✅';
+      updateSubtitle = l10n.updateCurrent;
     }
 
     final lang = widget.settings.language;
@@ -131,9 +135,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: const Text(
-            'Einstellungen',
-            style: TextStyle(fontWeight: FontWeight.w800, color: Colors.white),
+          title: Text(
+            l10n.settingsTitle,
+            style: const TextStyle(
+                fontWeight: FontWeight.w800, color: Colors.white),
           ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
@@ -145,40 +150,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // ── Allgemein ──────────────────────────────
-                const _SectionTitle(title: 'Allgemein'),
+                _SectionTitle(title: l10n.sectionGeneral),
                 const SizedBox(height: 10),
                 _Tile(
                   icon: Icons.info_outline,
                   iconColor: const Color(0xFF9C6FFF),
-                  title: 'Version',
+                  title: l10n.version,
                   subtitle: _versionText,
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white24,
-                  ),
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
                   onTap: null,
                 ),
                 const SizedBox(height: 10),
                 _Tile(
                   icon: Icons.language,
                   iconColor: const Color(0xFF4CAF50),
-                  title: 'Sprache / Language',
+                  title: l10n.languageLabel,
                   subtitle: langLabel,
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white24,
-                  ),
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
                   onTap: _showLanguagePicker,
                 ),
 
                 // ── Updates ────────────────────────────────
                 const SizedBox(height: 22),
-                const _SectionTitle(title: 'Updates'),
+                _SectionTitle(title: l10n.sectionUpdates),
                 const SizedBox(height: 10),
                 _Tile(
                   icon: Icons.system_update_alt,
                   iconColor: const Color(0xFF00D4FF),
-                  title: 'Update-Status',
+                  title: l10n.updateStatus,
                   subtitle: updateSubtitle,
                   trailing: _checking
                       ? const SizedBox(
@@ -186,10 +185,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           height: 18,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Icon(
-                          Icons.chevron_right,
-                          color: Colors.white24,
-                        ),
+                      : const Icon(Icons.chevron_right, color: Colors.white24),
                   onTap: _checkUpdates,
                 ),
                 const SizedBox(height: 10),
@@ -198,7 +194,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     Expanded(
                       child: _ActionBtn(
                         icon: Icons.refresh,
-                        label: 'Check',
+                        label: l10n.updateCheckBtn,
                         onPressed: _checking ? null : _checkUpdates,
                       ),
                     ),
@@ -216,17 +212,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                 // ── Zurücksetzen ───────────────────────────
                 const SizedBox(height: 22),
-                const _SectionTitle(title: 'Zurücksetzen'),
+                _SectionTitle(title: l10n.sectionReset),
                 const SizedBox(height: 10),
                 _Tile(
                   icon: Icons.restart_alt,
                   iconColor: const Color(0xFFFF6B6B),
-                  title: 'Fortschritt zurücksetzen',
-                  subtitle: 'Checkbox-Status löschen',
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white24,
-                  ),
+                  title: l10n.resetProgress,
+                  subtitle: l10n.resetProgressSubtitle,
+                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
                   onTap: _resetTasks,
                 ),
               ],
@@ -253,6 +246,7 @@ class _LanguageSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final options = [
       {'code': 'de', 'flag': '🇩🇪', 'label': 'Deutsch'},
       {'code': 'en', 'flag': '🇬🇧', 'label': 'English'},
@@ -277,7 +271,7 @@ class _LanguageSheet extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           Text(
-            'Sprache / Language',
+            l10n.languageLabel,
             style: TextStyle(
               color: Colors.white.withOpacity(0.55),
               fontWeight: FontWeight.w700,
@@ -296,16 +290,10 @@ class _LanguageSheet extends StatelessWidget {
                 Navigator.pop(context);
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 16,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 child: Row(
                   children: [
-                    Text(
-                      opt['flag']!,
-                      style: const TextStyle(fontSize: 26),
-                    ),
+                    Text(opt['flag']!, style: const TextStyle(fontSize: 26)),
                     const SizedBox(width: 14),
                     Expanded(
                       child: Text(
@@ -314,19 +302,15 @@ class _LanguageSheet extends StatelessWidget {
                           color: isSelected
                               ? const Color(0xFF4CAF50)
                               : Colors.white,
-                          fontWeight: isSelected
-                              ? FontWeight.w800
-                              : FontWeight.w600,
+                          fontWeight:
+                              isSelected ? FontWeight.w800 : FontWeight.w600,
                           fontSize: 16,
                         ),
                       ),
                     ),
                     if (isSelected)
-                      const Icon(
-                        Icons.check_circle_rounded,
-                        color: Color(0xFF4CAF50),
-                        size: 22,
-                      ),
+                      const Icon(Icons.check_circle_rounded,
+                          color: Color(0xFF4CAF50), size: 22),
                   ],
                 ),
               ),
@@ -478,10 +462,7 @@ class _ActionBtn extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
       icon: Icon(icon, size: 17),
-      label: Text(
-        label,
-        style: const TextStyle(fontWeight: FontWeight.w700),
-      ),
+      label: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
     );
   }
 }

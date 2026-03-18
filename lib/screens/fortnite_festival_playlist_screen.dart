@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../widgets/orbit_glass_card.dart';
-
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 
@@ -12,6 +12,8 @@ class FortniteFestivalPlaylistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       body: OrbitBackground(
         child: SafeArea(
@@ -27,10 +29,10 @@ class FortniteFestivalPlaylistScreen extends StatelessWidget {
                       icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Playlist',
-                        style: TextStyle(
+                        l10n.festivalPlaylistTitle,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
@@ -44,7 +46,7 @@ class FortniteFestivalPlaylistScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Text(
-                      'Kommt bald ✅\n\nGeplant:\n• Playlist aus Weekly Rotation\n• Playlist aus deinen Owned-Songs\n• Playlist aus ALLEN Songs\n\n(Tipp: Owned/Wishlist kannst du schon in der Song-Suche setzen.)',
+                      l10n.festivalPlaylistBody,
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.75),
                         fontWeight: FontWeight.w700,

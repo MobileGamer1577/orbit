@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/in_app_update_service.dart';
 import '../services/update_service.dart';
 import '../storage/app_settings_store.dart';
@@ -45,8 +46,8 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
 
     try {
       final result = await UpdateService.checkForUpdates();
-
       if (!mounted) return;
+      final l10n = context.l10n;
 
       if (result.updateAvailable) {
         await _showUpdateDialog(
@@ -57,14 +58,14 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
       } else {
         if (showNoUpdateToast) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Keine Updates gefunden ✅')),
+            SnackBar(content: Text(l10n.updateNoUpdate)),
           );
         }
       }
     } catch (_) {
       if (showNoUpdateToast && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Update-Check fehlgeschlagen.')),
+          SnackBar(content: Text(context.l10n.updateFailed)),
         );
       }
     } finally {
@@ -77,24 +78,25 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
     required String notes,
     required String url,
   }) async {
+    final l10n = context.l10n;
     await showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text('Update verfügbar: $version'),
+        title: Text(l10n.updateAvailableTitle(version)),
         content: SingleChildScrollView(
-          child: Text(notes.isEmpty ? 'Release Notes fehlen.' : notes),
+          child: Text(notes.isEmpty ? l10n.updateDialogNotes : notes),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Später'),
+            child: Text(l10n.updateDialogLater),
           ),
           FilledButton(
             onPressed: () async {
               Navigator.pop(context);
               await InAppUpdateService.downloadAndInstallApk(apkUrl: url);
             },
-            child: const Text('Release öffnen'),
+            child: Text(l10n.updateDialogOpen),
           ),
         ],
       ),
@@ -137,6 +139,8 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       body: OrbitBackground(
         child: SafeArea(
@@ -190,7 +194,7 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
 
                 const SizedBox(height: 6),
                 Text(
-                  'Wähle ein Spiel',
+                  l10n.gameSelectSubtitle,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.55),
                     fontWeight: FontWeight.w600,
@@ -203,7 +207,7 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                 // Fortnite Card
                 _GameCard(
                   title: 'Fortnite',
-                  subtitle: 'Aufgaben • Season-Countdown • Item-Shop (bald)',
+                  subtitle: l10n.fortniteSubtitle,
                   accentColor: const Color(0xFF00D4FF),
                   secondaryColor: const Color(0xFF0070FF),
                   icon: Icons.bolt,
@@ -214,7 +218,7 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                 // BO7 Card
                 _GameCard(
                   title: 'Call of Duty: BO7',
-                  subtitle: 'Steam Erfolge • PlayStation Trophäen • Modi',
+                  subtitle: l10n.bo7Subtitle,
                   accentColor: const Color(0xFFFF6B35),
                   secondaryColor: const Color(0xFFCC2200),
                   icon: Icons.military_tech,
@@ -246,7 +250,7 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                       size: 18,
                     ),
                     label: Text(
-                      _checking ? 'Prüfe…' : 'Updates prüfen',
+                      _checking ? l10n.updateChecking2 : l10n.updateCheckButton,
                       style: const TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
@@ -260,9 +264,6 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Game Card mit Akzentfarbe pro Spiel
-// ─────────────────────────────────────────────────────────
 class _GameCard extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -290,7 +291,6 @@ class _GameCard extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
           child: Row(
             children: [
-              // Farbiges Icon-Badge
               Container(
                 width: 52,
                 height: 52,
@@ -312,8 +312,6 @@ class _GameCard extends StatelessWidget {
                 child: Icon(icon, color: accentColor, size: 26),
               ),
               const SizedBox(width: 16),
-
-              // Text
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -340,7 +338,6 @@ class _GameCard extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(width: 8),
               Icon(
                 Icons.chevron_right,

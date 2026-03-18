@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../storage/app_settings_store.dart';
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
@@ -27,6 +28,8 @@ class FortniteHubScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       backgroundColor: const Color(0xFF07020F),
       body: OrbitBackground(
@@ -64,7 +67,7 @@ class FortniteHubScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: Text(
-                    'Was willst du öffnen?',
+                    l10n.hubWhatOpen,
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.50),
                       fontWeight: FontWeight.w600,
@@ -82,8 +85,8 @@ class FortniteHubScreen extends StatelessWidget {
                       _HubCard(
                         icon: Icons.timer,
                         iconColor: const Color(0xFF00D4FF),
-                        title: 'Countdowns',
-                        subtitle: 'Season Pässe & Ablaufdaten',
+                        title: l10n.hubCountdowns,
+                        subtitle: l10n.hubCountdownsSubtitle,
                         onTap: () =>
                             _push(context, const FortniteCountdownScreen()),
                       ),
@@ -91,46 +94,41 @@ class FortniteHubScreen extends StatelessWidget {
                       _HubCard(
                         icon: Icons.checklist,
                         iconColor: const Color(0xFF9C6FFF),
-                        title: 'Aufträge',
-                        subtitle: 'BR, Reload, Ballistic, LEGO, OG…',
+                        title: l10n.hubQuests,
+                        subtitle: l10n.hubQuestsSubtitle,
                         onTap: () => _push(
                           context,
-                          const ModeSelectScreen(
+                          ModeSelectScreen(
                             gameId: 'fortnite',
-                            gameTitle: 'Aufträge',
+                            gameTitle: l10n.hubQuests,
                           ),
                         ),
                       ),
                       const SizedBox(height: 10),
-
-                      // ── Item Shop ── jetzt aktiv!
                       _HubCard(
                         icon: Icons.storefront,
                         iconColor: const Color(0xFFFFD600),
-                        title: 'Item-Shop',
-                        subtitle: 'Täglicher Shop • stündlich aktualisiert',
+                        title: l10n.hubItemShop,
+                        subtitle: l10n.hubItemShopSubtitle,
                         onTap: () =>
                             _push(context, const FortniteShopScreen()),
                       ),
-
                       const SizedBox(height: 10),
                       _HubCard(
                         icon: Icons.insights,
                         iconColor: const Color(0xFF00E676),
-                        title: 'Stats',
-                        subtitle: 'Kommt bald',
+                        title: l10n.hubStats,
+                        subtitle: l10n.hubStatsSubtitle,
                         onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Stats kommen bald ✅'),
-                          ),
+                          SnackBar(content: Text(l10n.hubStatsSoon)),
                         ),
                       ),
                       const SizedBox(height: 10),
                       _HubCard(
                         icon: Icons.inventory_2,
                         iconColor: const Color(0xFFFF81E0),
-                        title: 'Spind',
-                        subtitle: 'Alle Cosmetics (aktuell: Songs)',
+                        title: l10n.hubLocker,
+                        subtitle: l10n.hubLockerSubtitle,
                         onTap: () => _push(
                           context,
                           FortniteLockerScreen(collection: collection),
@@ -140,8 +138,8 @@ class FortniteHubScreen extends StatelessWidget {
                       _HubCard(
                         icon: Icons.music_note,
                         iconColor: const Color(0xFFFF6B6B),
-                        title: 'Festival',
-                        subtitle: 'Songs suchen & Playlist bauen',
+                        title: l10n.hubFestival,
+                        subtitle: l10n.hubFestivalSubtitle,
                         onTap: () => _push(
                           context,
                           FortniteFestivalHubScreen(collection: collection),
@@ -151,12 +149,10 @@ class FortniteHubScreen extends StatelessWidget {
                       _HubCard(
                         icon: Icons.public,
                         iconColor: const Color(0xFF64FFDA),
-                        title: 'Status',
-                        subtitle: 'Kommt bald (Server/Services)',
+                        title: l10n.hubServerStatus,
+                        subtitle: l10n.hubServerStatusSubtitle,
                         onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Status kommt bald ✅'),
-                          ),
+                          SnackBar(content: Text(l10n.hubServerStatusSoon)),
                         ),
                       ),
                     ],

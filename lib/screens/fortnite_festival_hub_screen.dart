@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../widgets/orbit_glass_card.dart';
-
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
 import 'fortnite_festival_playlist_screen.dart';
@@ -18,6 +18,8 @@ class FortniteFestivalHubScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       body: OrbitBackground(
         child: SafeArea(
@@ -47,7 +49,7 @@ class FortniteFestivalHubScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'Was willst du öffnen?',
+                  l10n.festivalWhatOpen,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.65),
                     fontWeight: FontWeight.w600,
@@ -57,8 +59,8 @@ class FortniteFestivalHubScreen extends StatelessWidget {
                 const SizedBox(height: 14),
                 _HubCard(
                   icon: Icons.search,
-                  title: 'Songs suchen',
-                  subtitle: 'Nach Song / Artist / Song-ID suchen',
+                  title: l10n.festivalSearchSongs,
+                  subtitle: l10n.festivalSearchSongsSubtitle,
                   onTap: () => _push(
                     context,
                     FortniteFestivalSearchScreen(collection: collection),
@@ -67,8 +69,8 @@ class FortniteFestivalHubScreen extends StatelessWidget {
                 const SizedBox(height: 12),
                 _HubCard(
                   icon: Icons.queue_music,
-                  title: 'Playlist erstellen',
-                  subtitle: 'Rotation • Besitz • Alle Songs (bald mehr)',
+                  title: l10n.festivalCreatePlaylist,
+                  subtitle: l10n.festivalCreatePlaylistSubtitle,
                   onTap: () => _push(
                     context,
                     FortniteFestivalPlaylistScreen(collection: collection),
@@ -81,15 +83,15 @@ class FortniteFestivalHubScreen extends StatelessWidget {
                       Icons.notifications,
                       color: Colors.white.withOpacity(0.85),
                     ),
-                    title: const Text(
-                      'Wishlist-Benachrichtigungen',
-                      style: TextStyle(
+                    title: Text(
+                      l10n.festivalWishlistNotifications,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
                     subtitle: Text(
-                      'Kommt später, sobald wir eine Shop-API haben',
+                      l10n.festivalWishlistNotificationsSubtitle,
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.7),
                         fontWeight: FontWeight.w600,
@@ -101,7 +103,7 @@ class FortniteFestivalHubScreen extends StatelessWidget {
                     ),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Kommt bald ✅')),
+                        SnackBar(content: Text(l10n.comingSoon)),
                       );
                     },
                   ),
@@ -132,7 +134,8 @@ class _HubCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return OrbitGlassCard(
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         leading: Icon(icon, color: Colors.white.withOpacity(0.92)),
         title: Text(
           title,

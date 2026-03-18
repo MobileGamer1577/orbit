@@ -2,14 +2,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
+import '../l10n/app_localizations.dart';
 import '../storage/task_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
 class TaskListScreen extends StatefulWidget {
   final String title;
-
-  /// Leer → Screen zeigt „Kommt bald".
   final String jsonAssetPath;
 
   const TaskListScreen({
@@ -55,7 +54,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // "Kommt bald"-Screen
+    final l10n = context.l10n;
+
+    // „Kommt bald"-Screen
     if (widget.jsonAssetPath.trim().isEmpty) {
       return Scaffold(
         backgroundColor: Colors.transparent,
@@ -80,7 +81,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            'Kommt bald ✅',
+                            l10n.taskComingSoon,
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.85),
                               fontSize: 17,
@@ -114,15 +115,14 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
     final visible = tasks.where((t) {
       final title = (t['title'] as String?) ?? '';
-      final desc = (t['description'] as String?) ?? '';
+      final desc  = (t['description'] as String?) ?? '';
       if (q.isEmpty) return true;
-      return title.toLowerCase().contains(q) ||
-          desc.toLowerCase().contains(q);
+      return title.toLowerCase().contains(q) || desc.toLowerCase().contains(q);
     }).toList();
 
     final doneCount =
         tasks.where((t) => TaskStore.isDone(t['id'] as String)).length;
-    final total = tasks.length;
+    final total    = tasks.length;
     final progress = total == 0 ? 0.0 : doneCount / total;
 
     return Scaffold(
@@ -197,7 +197,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                                 decoration: InputDecoration(
-                                  hintText: 'Suchen…',
+                                  hintText: l10n.taskSearchHint,
                                   hintStyle: TextStyle(
                                     color: Colors.white.withOpacity(0.40),
                                     fontSize: 15,
@@ -230,7 +230,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
                     const SizedBox(height: 6),
                     Text(
-                      '${visible.length} Aufträge',
+                      l10n.taskQuestCount(visible.length),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.38),
                         fontSize: 12,
@@ -250,11 +250,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
                   itemCount: visible.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 10),
                   itemBuilder: (context, i) {
-                    final task = visible[i];
-                    final id = task['id'] as String;
+                    final task  = visible[i];
+                    final id    = task['id'] as String;
                     final title = (task['title'] as String?) ?? '';
-                    final desc = (task['description'] as String?) ?? '';
-                    final done = TaskStore.isDone(id);
+                    final desc  = (task['description'] as String?) ?? '';
+                    final done  = TaskStore.isDone(id);
 
                     return _TaskCard(
                       title: title,
@@ -277,7 +277,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
 }
 
 // ──────────────────────────────────────────────
-// Header (Zurück + Titel)
+// Header
 // ──────────────────────────────────────────────
 class _Header extends StatelessWidget {
   final String title;
@@ -340,7 +340,6 @@ class _TaskCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Checkbox-Ersatz
               GestureDetector(
                 onTap: onToggle,
                 child: AnimatedContainer(
@@ -367,8 +366,6 @@ class _TaskCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 14),
-
-              // Text
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -392,7 +389,8 @@ class _TaskCard extends StatelessWidget {
                       Text(
                         desc,
                         style: TextStyle(
-                          color: Colors.white.withOpacity(done ? 0.30 : 0.55),
+                          color:
+                              Colors.white.withOpacity(done ? 0.30 : 0.55),
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
                           height: 1.35,

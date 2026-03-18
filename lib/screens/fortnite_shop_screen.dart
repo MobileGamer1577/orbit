@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/shop_service.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
@@ -54,10 +55,12 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   }
 
   String _formatTime(DateTime dt) =>
-      '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')} Uhr';
+      '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       backgroundColor: const Color(0xFF07020F),
       body: OrbitBackground(
@@ -76,10 +79,10 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                           color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Item Shop',
-                        style: TextStyle(
+                        l10n.shopTitle,
+                        style: const TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w900,
                           color: Colors.white,
@@ -106,8 +109,10 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, bottom: 6),
                   child: Text(
-                    'Aktualisiert: ${_formatTime(_service.data!.fetchedAt)}'
-                    ' • ${_service.data!.entries.length} Einträge',
+                    l10n.shopUpdatedAt(
+                      _formatTime(_service.data!.fetchedAt),
+                      _service.data!.entries.length,
+                    ),
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.40),
                       fontSize: 12,
@@ -116,7 +121,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                   ),
                 ),
 
-              Expanded(child: _buildBody()),
+              Expanded(child: _buildBody(l10n)),
             ],
           ),
         ),
@@ -124,25 +129,26 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(AppLocalizations l10n) {
     if (_service.loading && _service.data == null) {
-      return const Center(
+      return Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          CircularProgressIndicator(color: Color(0xFF9C6FFF)),
-          SizedBox(height: 16),
-          Text('Shop wird geladen…',
-              style: TextStyle(color: Colors.white54, fontSize: 15)),
+          const CircularProgressIndicator(color: Color(0xFF9C6FFF)),
+          const SizedBox(height: 16),
+          Text(l10n.shopLoading,
+              style: const TextStyle(color: Colors.white54, fontSize: 15)),
         ]),
       );
     }
 
     if (_service.error != null && _service.data == null) {
-      return _ErrorView(error: _service.error!, onRetry: _service.fetch);
+      return _ErrorView(
+          error: _service.error!, onRetry: _service.fetch, l10n: l10n);
     }
 
     if (_service.data == null || _service.data!.entries.isEmpty) {
       return _ErrorView(
-          error: 'Keine Einträge gefunden.', onRetry: _service.fetch);
+          error: l10n.shopEmpty, onRetry: _service.fetch, l10n: l10n);
     }
 
     final sections = _service.data!.bySection;
@@ -191,9 +197,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Shop-Karte
-// ─────────────────────────────────────────────────────────
 class _ShopCard extends StatelessWidget {
   final ShopEntry                   entry;
   final Map<String, CosmeticImages> imgMap;
@@ -225,7 +228,6 @@ class _ShopCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // ── Bild ──────────────────────────────────────
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
@@ -262,12 +264,10 @@ class _ShopCard extends StatelessWidget {
                     )
                   else
                     const _NoImage(),
-
                   if (entry.isOnSale)
                     Positioned(
                       top: 7, right: 7,
-                      child: _Badge(
-                          label: 'SALE', color: Colors.red.shade600),
+                      child: _Badge(label: 'SALE', color: Colors.red.shade600),
                     ),
                   if (entry.isBundle)
                     Positioned(
@@ -279,8 +279,6 @@ class _ShopCard extends StatelessWidget {
                 ],
               ),
             ),
-
-            // ── Info ───────────────────────────────────────
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
               child: Column(
@@ -345,7 +343,6 @@ class _ShopCard extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────
 class _NoImage extends StatelessWidget {
   const _NoImage();
   @override
@@ -396,9 +393,15 @@ class _VBucksIcon extends StatelessWidget {
 }
 
 class _ErrorView extends StatelessWidget {
-  final String       error;
-  final VoidCallback onRetry;
-  const _ErrorView({required this.error, required this.onRetry});
+  final String            error;
+  final VoidCallback      onRetry;
+  final AppLocalizations  l10n;
+
+  const _ErrorView({
+    required this.error,
+    required this.onRetry,
+    required this.l10n,
+  });
 
   @override
   Widget build(BuildContext context) => Center(
@@ -407,10 +410,10 @@ class _ErrorView extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.storefront_outlined,
+              const Icon(Icons.storefront_outlined,
                   color: Colors.white24, size: 52),
               const SizedBox(height: 16),
-              Text('Shop konnte nicht geladen werden',
+              Text(l10n.shopError,
                   style: TextStyle(
                       color: Colors.white.withOpacity(0.75),
                       fontSize: 17,
@@ -428,7 +431,7 @@ class _ErrorView extends StatelessWidget {
                 style: FilledButton.styleFrom(
                     backgroundColor: const Color(0xFF7C4DFF)),
                 icon: const Icon(Icons.refresh),
-                label: const Text('Erneut versuchen'),
+                label: Text(l10n.shopRetry),
               ),
             ],
           ),

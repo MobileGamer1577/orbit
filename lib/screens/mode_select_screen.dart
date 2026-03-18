@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 import 'task_list_screen.dart';
@@ -16,7 +17,8 @@ class ModeSelectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final modes = _modesFor(gameId);
+    final l10n  = context.l10n;
+    final modes = _modesFor(gameId, l10n);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -57,7 +59,7 @@ class ModeSelectScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: Text(
-                    'Wähle einen Modus',
+                    l10n.modeSelectSubtitle,
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.50),
                       fontWeight: FontWeight.w600,
@@ -67,7 +69,6 @@ class ModeSelectScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 14),
 
-                // Modus-Liste
                 Expanded(
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
@@ -102,98 +103,95 @@ class ModeSelectScreen extends StatelessWidget {
     );
   }
 
-  List<_Mode> _modesFor(String id) {
+  List<_Mode> _modesFor(String id, AppLocalizations l10n) {
     if (id == 'fortnite') {
-      return const [
+      return [
         _Mode(
-          title: 'Battle Royale',
-          subtitle: 'Aufträge für Battle Royale',
+          title: l10n.modeBRTitle,
+          subtitle: l10n.modeBRSubtitle,
           assetPath: 'assets/data/fortnite_br.json',
           icon: Icons.layers,
-          color: Color(0xFF00D4FF),
+          color: const Color(0xFF00D4FF),
         ),
         _Mode(
-          title: 'Fortnite Reload',
-          subtitle: 'Aufträge für Reload',
+          title: l10n.modeReloadTitle,
+          subtitle: l10n.modeReloadSubtitle,
           assetPath: 'assets/data/fortnite_reload.json',
           icon: Icons.restart_alt,
-          color: Color(0xFF00C8A0),
+          color: const Color(0xFF00C8A0),
         ),
         _Mode(
-          title: 'Ballistic',
-          subtitle: 'Aufträge für Ballistic',
+          title: l10n.modeBallisticTitle,
+          subtitle: l10n.modeBallisticSubtitle,
           assetPath: 'assets/data/fortnite_ballistic.json',
           icon: Icons.sports_martial_arts,
-          color: Color(0xFFFF6B6B),
+          color: const Color(0xFFFF6B6B),
         ),
         _Mode(
-          title: 'LEGO Fortnite',
-          subtitle: 'Aufträge für LEGO Fortnite',
+          title: l10n.modeLegoTitle,
+          subtitle: l10n.modeLegoSubtitle,
           assetPath: 'assets/data/fortnite_lego.json',
           icon: Icons.extension,
-          color: Color(0xFFFFD600),
+          color: const Color(0xFFFFD600),
         ),
         _Mode(
-          title: 'Delulu',
-          subtitle: 'Aufträge für Delulu',
+          title: l10n.modeDeluluTitle,
+          subtitle: l10n.modeDeluluSubtitle,
           assetPath: 'assets/data/fortnite_delulu.json',
           icon: Icons.auto_awesome,
-          color: Color(0xFFFF81E0),
+          color: const Color(0xFFFF81E0),
         ),
         _Mode(
-          title: 'Blitz Royale',
-          subtitle: 'Aufträge für Blitz Royale',
+          title: l10n.modeBlitzTitle,
+          subtitle: l10n.modeBlitzSubtitle,
           assetPath: 'assets/data/fortnite_blitz_royale.json',
           icon: Icons.flash_on,
-          color: Color(0xFFFFC107),
+          color: const Color(0xFFFFC107),
         ),
         _Mode(
-          title: 'OG',
-          subtitle: 'Aufträge für OG Fortnite',
+          title: l10n.modeOGTitle,
+          subtitle: l10n.modeOGSubtitle,
           assetPath: 'assets/data/fortnite_og.json',
           icon: Icons.history,
-          color: Color(0xFF9C6FFF),
+          color: const Color(0xFF9C6FFF),
         ),
       ];
     }
 
     // Black Ops 7
-    return const [
+    return [
       _Mode(
-        title: 'Koop & Endspiel',
-        subtitle: 'Weekly-Aufgaben (Soon) • Visitenkarten (Soon)',
+        title: l10n.modeBo7CoopTitle,
+        subtitle: l10n.modeBo7CoopSubtitle,
         assetPath: 'assets/data/bo7_koop_endspiel.json',
         icon: Icons.handshake,
-        color: Color(0xFF4CAF50),
+        color: const Color(0xFF4CAF50),
       ),
       _Mode(
-        title: 'Mehrspieler',
-        subtitle: 'Erfolge • Weekly-Aufgaben (Soon) • Tarnungen (Soon)',
+        title: l10n.modeBo7MPTitle,
+        subtitle: l10n.modeBo7MPSubtitle,
         assetPath: 'assets/data/bo7_mp.json',
         icon: Icons.sports_esports,
-        color: Color(0xFFFF6B35),
+        color: const Color(0xFFFF6B35),
       ),
       _Mode(
-        title: 'Zombies',
-        subtitle: 'Erfolge • Weekly-Aufgaben (Soon) • Tarnungen (Soon)',
+        title: l10n.modeBo7ZombiesTitle,
+        subtitle: l10n.modeBo7ZombiesSubtitle,
         assetPath: 'assets/data/bo7_zombies.json',
         icon: Icons.bug_report,
-        color: Color(0xFF76FF03),
+        color: const Color(0xFF76FF03),
       ),
       _Mode(
-        title: 'Warzone',
-        subtitle: 'Weekly-Aufgaben (Soon) • Visitenkarten (Soon)',
+        title: l10n.modeBo7WarzoneTitle,
+        subtitle: l10n.modeBo7WarzoneSubtitle,
         assetPath: 'assets/data/bo7_warzone.json',
         icon: Icons.public,
-        color: Color(0xFF00B0FF),
+        color: const Color(0xFF00B0FF),
       ),
     ];
   }
 }
 
-// ──────────────────────────────────────────────
-// Daten-Klasse
-// ──────────────────────────────────────────────
 class _Mode {
   final String title;
   final String subtitle;
@@ -210,9 +208,6 @@ class _Mode {
   });
 }
 
-// ──────────────────────────────────────────────
-// Modus-Karte
-// ──────────────────────────────────────────────
 class _ModeCard extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
@@ -238,7 +233,6 @@ class _ModeCard extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
           child: Row(
             children: [
-              // Farbiges Icon-Badge
               Container(
                 width: 44,
                 height: 44,
@@ -253,8 +247,6 @@ class _ModeCard extends StatelessWidget {
                 child: Icon(icon, color: iconColor, size: 22),
               ),
               const SizedBox(width: 14),
-
-              // Texte
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,7 +272,6 @@ class _ModeCard extends StatelessWidget {
                   ],
                 ),
               ),
-
               Icon(
                 Icons.chevron_right,
                 color: Colors.white.withOpacity(0.35),

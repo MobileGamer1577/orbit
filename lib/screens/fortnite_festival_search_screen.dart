@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../l10n/app_localizations.dart';
 import '../widgets/orbit_glass_card.dart';
 import '../storage/collection_store.dart';
 import '../theme/orbit_theme.dart';
@@ -43,7 +44,6 @@ class _FortniteFestivalSearchScreenState
   Future<void> _load() async {
     setState(() => _loading = true);
     try {
-      // Songs + API-Daten parallel laden
       await Future.wait([
         _loadSongs(),
         FestivalApiService.instance.ensureLoaded(),
@@ -101,6 +101,8 @@ class _FortniteFestivalSearchScreenState
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: OrbitBackground(
@@ -118,10 +120,10 @@ class _FortniteFestivalSearchScreenState
                       icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Songs suchen',
-                        style: TextStyle(
+                        l10n.festivalSearchTitle,
+                        style: const TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w900,
                           color: Colors.white,
@@ -139,8 +141,9 @@ class _FortniteFestivalSearchScreenState
                     controller: _controller,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      hintText: 'Song, Artist oder ID…',
-                      hintStyle: TextStyle(color: Colors.white.withOpacity(0.40)),
+                      hintText: l10n.festivalSearchHint,
+                      hintStyle:
+                          TextStyle(color: Colors.white.withOpacity(0.40)),
                       prefixIcon: Icon(Icons.search,
                           color: Colors.white.withOpacity(0.55)),
                       suffixIcon: _controller.text.isNotEmpty
@@ -150,7 +153,7 @@ class _FortniteFestivalSearchScreenState
                               onPressed: () => _controller.clear(),
                             )
                           : null,
-                      border:     InputBorder.none,
+                      border:        InputBorder.none,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -163,7 +166,7 @@ class _FortniteFestivalSearchScreenState
                   Padding(
                     padding: const EdgeInsets.only(left: 4, bottom: 6),
                     child: Text(
-                      '${_filtered.length} Songs',
+                      l10n.festivalSongCount(_filtered.length),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.40),
                         fontSize: 12,
@@ -182,7 +185,7 @@ class _FortniteFestivalSearchScreenState
                       : _filtered.isEmpty
                           ? Center(
                               child: Text(
-                                'Keine Treffer.',
+                                l10n.noResults,
                                 style: TextStyle(
                                     color: Colors.white.withOpacity(0.45)),
                               ),
@@ -211,9 +214,6 @@ class _FortniteFestivalSearchScreenState
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Song-Kachel in der Liste
-// ─────────────────────────────────────────────────────────
 class _SongTile extends StatelessWidget {
   final FestivalSongDetails song;
   final CollectionStore     collection;
@@ -232,8 +232,6 @@ class _SongTile extends StatelessWidget {
       builder: (context, _) {
         final owned  = collection.isOwned(CollectionStore.categoryFestivalSong, song.songId);
         final wished = collection.isWished(CollectionStore.categoryFestivalSong, song.songId);
-
-        // Difficulty aus API holen (falls geladen)
         final apiData = FestivalApiService.instance.lookup(song.songId);
         final hasDiff = apiData != null && apiData.difficulty.hasAny;
 
@@ -245,15 +243,12 @@ class _SongTile extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
               child: Row(
                 children: [
-                  // Albumcover oder Musik-Icon
                   _MiniAlbumCover(url: apiData?.albumArt),
                   const SizedBox(width: 12),
-
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Titel
                         Text(
                           song.title.isEmpty ? '???' : song.title,
                           style: const TextStyle(
@@ -265,7 +260,6 @@ class _SongTile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 2),
-                        // Artist
                         Text(
                           song.artist.isEmpty ? '???' : song.artist,
                           style: TextStyle(
@@ -276,8 +270,6 @@ class _SongTile extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-
-                        // Mini Difficulty Bars (falls vorhanden)
                         if (hasDiff) ...[
                           const SizedBox(height: 6),
                           _MiniDifficultyBars(difficulty: apiData!.difficulty),
@@ -285,17 +277,15 @@ class _SongTile extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // Status-Icons
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (owned)
-                        Icon(Icons.check_circle,
-                            color: const Color(0xFF00E676), size: 18),
+                        const Icon(Icons.check_circle,
+                            color: Color(0xFF00E676), size: 18),
                       if (wished)
-                        Icon(Icons.favorite,
-                            color: const Color(0xFFFF4081), size: 18),
+                        const Icon(Icons.favorite,
+                            color: Color(0xFFFF4081), size: 18),
                     ],
                   ),
                   const SizedBox(width: 4),
@@ -311,23 +301,18 @@ class _SongTile extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Mini Difficulty Bars in der Listenansicht
-// ─────────────────────────────────────────────────────────
 class _MiniDifficultyBars extends StatelessWidget {
   final SongDifficulty difficulty;
-
   const _MiniDifficultyBars({required this.difficulty});
 
   @override
   Widget build(BuildContext context) {
     final instruments = [
-      (difficulty.vocals, const Color(0xFFFF6EC7)),  // Gesang pink
-      (difficulty.guitar, const Color(0xFFFFD600)),  // Lead gelb
-      (difficulty.bass,   const Color(0xFF40C4FF)),  // Bass blau
-      (difficulty.drums,  const Color(0xFFFF5252)),  // Drums rot
+      (difficulty.vocals, const Color(0xFFFF6EC7)),
+      (difficulty.guitar, const Color(0xFFFFD600)),
+      (difficulty.bass,   const Color(0xFF40C4FF)),
+      (difficulty.drums,  const Color(0xFFFF5252)),
     ];
-
     return Row(
       children: instruments.map((entry) {
         final value = entry.$1;
@@ -352,9 +337,6 @@ class _MiniDifficultyBars extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────
-// Mini Albumcover in der Liste
-// ─────────────────────────────────────────────────────────
 class _MiniAlbumCover extends StatelessWidget {
   final String? url;
   const _MiniAlbumCover({required this.url});

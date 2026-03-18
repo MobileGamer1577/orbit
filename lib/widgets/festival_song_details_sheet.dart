@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/festival_api_service.dart';
 import '../storage/collection_store.dart';
 
@@ -40,7 +41,6 @@ class FestivalSongDetails {
       return s == 'true' || s == 'yes' || s == '1' || s == 'ja';
     }
 
-    // Hinweis: In der festival_songs.json ist "song" = Interpret und "artist" = Titel
     return FestivalSongDetails(
       title:       pick('artist'),
       artist:      pick('song'),
@@ -106,6 +106,7 @@ class _FestivalSongSheetState extends State<_FestivalSongSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n   = context.l10n;
     final song   = widget.song;
     final radius = BorderRadius.circular(22);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -134,7 +135,6 @@ class _FestivalSongSheetState extends State<_FestivalSongSheet> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Albumcover (aus API oder Platzhalter)
                         _AlbumCover(
                           url:     _apiData?.albumArt,
                           loading: _apiLoading,
@@ -163,25 +163,34 @@ class _FestivalSongSheetState extends State<_FestivalSongSheet> {
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              // Owned / Wished Chips
                               Wrap(
                                 spacing: 8,
                                 children: [
                                   _ActionChip(
-                                    icon:    owned ? Icons.check_circle : Icons.check_circle_outline,
-                                    label:   owned ? 'Im Besitz' : 'Besitzen',
-                                    active:  owned,
-                                    color:   const Color(0xFF00E676),
-                                    onTap:   () => widget.collection.toggleOwned(
-                                        CollectionStore.categoryFestivalSong, song.songId),
+                                    icon:   owned
+                                        ? Icons.check_circle
+                                        : Icons.check_circle_outline,
+                                    label:  owned
+                                        ? l10n.songOwned
+                                        : l10n.songOwn,
+                                    active: owned,
+                                    color:  const Color(0xFF00E676),
+                                    onTap:  () => widget.collection.toggleOwned(
+                                        CollectionStore.categoryFestivalSong,
+                                        song.songId),
                                   ),
                                   _ActionChip(
-                                    icon:    wished ? Icons.favorite : Icons.favorite_border,
-                                    label:   wished ? 'Auf Wunschliste' : 'Wunschliste',
-                                    active:  wished,
-                                    color:   const Color(0xFFFF4081),
-                                    onTap:   () => widget.collection.toggleWished(
-                                        CollectionStore.categoryFestivalSong, song.songId),
+                                    icon:   wished
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    label:  wished
+                                        ? l10n.songOnWishlist
+                                        : l10n.songWishlist,
+                                    active: wished,
+                                    color:  const Color(0xFFFF4081),
+                                    onTap:  () => widget.collection.toggleWished(
+                                        CollectionStore.categoryFestivalSong,
+                                        song.songId),
                                   ),
                                 ],
                               ),
@@ -196,16 +205,17 @@ class _FestivalSongSheetState extends State<_FestivalSongSheet> {
 
                     // ── Schwierigkeitsgrad ────────────────
                     const SizedBox(height: 14),
-                    _SectionLabel('Schwierigkeit'),
+                    _SectionLabel(l10n.songDifficulty),
                     const SizedBox(height: 10),
 
                     if (_apiLoading)
-                      _DifficultyLoading()
+                      _DifficultyLoading(l10n: l10n)
                     else if (_apiData != null && _apiData!.difficulty.hasAny)
-                      _DifficultyWidget(difficulty: _apiData!.difficulty)
+                      _DifficultyWidget(
+                          difficulty: _apiData!.difficulty, l10n: l10n)
                     else
                       Text(
-                        'Keine Daten verfügbar',
+                        l10n.songNoData,
                         style: TextStyle(
                             color: Colors.white.withOpacity(0.35),
                             fontSize: 13),
@@ -216,18 +226,22 @@ class _FestivalSongSheetState extends State<_FestivalSongSheet> {
 
                     // ── Song-Infos ────────────────────────
                     const SizedBox(height: 14),
-                    _SectionLabel('Details'),
+                    _SectionLabel(l10n.songDetails),
                     const SizedBox(height: 10),
 
-                    _InfoRow('Quelle',    song.source.isEmpty ? '—' : song.source),
+                    _InfoRow(l10n.songSource,
+                        song.source.isEmpty ? '—' : song.source),
                     if (song.bpm.isNotEmpty && song.bpm != '0')
-                      _InfoRow('BPM', song.bpm),
+                      _InfoRow(l10n.songBpm, song.bpm),
                     if (song.released.isNotEmpty)
-                      _InfoRow('Hinzugefügt', song.released),
+                      _InfoRow(l10n.songAdded, song.released),
                     if (_apiData != null && _apiData!.durationSeconds > 0)
-                      _InfoRow('Länge', _formatDuration(_apiData!.durationSeconds)),
-                    _InfoRow('Vocal Pro', song.hasVocalPro ? 'Ja ✓' : 'Nein'),
-                    _InfoRow('Song-ID', song.songId.isEmpty ? '—' : song.songId),
+                      _InfoRow(l10n.songDuration,
+                          _formatDuration(_apiData!.durationSeconds)),
+                    _InfoRow(l10n.songVocalPro,
+                        song.hasVocalPro ? l10n.songVocalProYes : l10n.songVocalProNo),
+                    _InfoRow(l10n.songId,
+                        song.songId.isEmpty ? '—' : song.songId),
 
                     const SizedBox(height: 8),
                   ],
@@ -248,50 +262,51 @@ class _FestivalSongSheetState extends State<_FestivalSongSheet> {
 }
 
 // ─────────────────────────────────────────────────────────
-// Difficulty-Widget — zeigt Striche pro Instrument
+// Difficulty-Widget
 // ─────────────────────────────────────────────────────────
 
 class _DifficultyWidget extends StatelessWidget {
-  final SongDifficulty difficulty;
+  final SongDifficulty   difficulty;
+  final AppLocalizations l10n;
 
-  const _DifficultyWidget({required this.difficulty});
+  const _DifficultyWidget({required this.difficulty, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
     final instruments = [
       _InstrumentData(
-        label:  'Gesang',
-        icon:   Icons.mic,
-        color:  const Color(0xFFFF6EC7),
-        value:  difficulty.vocals,
+        label: l10n.instrumentVocals,
+        icon:  Icons.mic,
+        color: const Color(0xFFFF6EC7),
+        value: difficulty.vocals,
       ),
       _InstrumentData(
-        label:  'Lead',
-        icon:   Icons.electric_bolt,
-        color:  const Color(0xFFFFD600),
-        value:  difficulty.guitar,
+        label: l10n.instrumentLead,
+        icon:  Icons.electric_bolt,
+        color: const Color(0xFFFFD600),
+        value: difficulty.guitar,
       ),
       _InstrumentData(
-        label:  'Bass',
-        icon:   Icons.queue_music,
-        color:  const Color(0xFF40C4FF),
-        value:  difficulty.bass,
+        label: l10n.instrumentBass,
+        icon:  Icons.queue_music,
+        color: const Color(0xFF40C4FF),
+        value: difficulty.bass,
       ),
       _InstrumentData(
-        label:  'Drums',
-        icon:   Icons.radio_button_checked,
-        color:  const Color(0xFFFF5252),
-        value:  difficulty.drums,
+        label: l10n.instrumentDrums,
+        icon:  Icons.radio_button_checked,
+        color: const Color(0xFFFF5252),
+        value: difficulty.drums,
       ),
     ];
 
-    // Nur Instrumente anzeigen die verfügbar sind (value > 0)
     final available = instruments.where((i) => i.value > 0).toList();
 
     if (available.isEmpty) {
       return Text(
-        'Keine Daten verfügbar',
-        style: TextStyle(color: Colors.white.withOpacity(0.35), fontSize: 13),
+        l10n.songNoData,
+        style:
+            TextStyle(color: Colors.white.withOpacity(0.35), fontSize: 13),
       );
     }
 
@@ -308,10 +323,8 @@ class _DifficultyWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
               children: [
-                // Instrument-Icon
                 Icon(inst.icon, color: inst.color, size: 18),
                 const SizedBox(width: 8),
-                // Label
                 SizedBox(
                   width: 52,
                   child: Text(
@@ -324,7 +337,6 @@ class _DifficultyWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                // Striche (Balken 1–7)
                 Expanded(
                   child: Row(
                     children: List.generate(7, (i) {
@@ -345,7 +357,6 @@ class _DifficultyWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                // Zahl
                 Text(
                   '${inst.value}/7',
                   style: TextStyle(
@@ -378,7 +389,7 @@ class _InstrumentData {
 }
 
 // ─────────────────────────────────────────────────────────
-// Kleine Hilfs-Widgets
+// Hilfs-Widgets
 // ─────────────────────────────────────────────────────────
 
 class _AlbumCover extends StatelessWidget {
@@ -390,8 +401,7 @@ class _AlbumCover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 72,
-      height: 72,
+      width: 72, height: 72,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Colors.white.withOpacity(0.07),
@@ -402,18 +412,14 @@ class _AlbumCover extends StatelessWidget {
         child: loading
             ? const Center(
                 child: SizedBox(
-                  width: 20,
-                  height: 20,
+                  width: 20, height: 20,
                   child: CircularProgressIndicator(
                       strokeWidth: 2, color: Color(0xFF9C6FFF)),
                 ),
               )
             : (url != null && url!.isNotEmpty)
-                ? Image.network(
-                    url!,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => _placeholder(),
-                  )
+                ? Image.network(url!, fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => _placeholder())
                 : _placeholder(),
       ),
     );
@@ -427,6 +433,9 @@ class _AlbumCover extends StatelessWidget {
 }
 
 class _DifficultyLoading extends StatelessWidget {
+  final AppLocalizations l10n;
+  const _DifficultyLoading({required this.l10n});
+
   @override
   Widget build(BuildContext context) => Row(
         children: [
@@ -436,18 +445,20 @@ class _DifficultyLoading extends StatelessWidget {
                 strokeWidth: 2, color: Color(0xFF9C6FFF)),
           ),
           const SizedBox(width: 10),
-          Text('Lade Schwierigkeitsdaten…',
-              style: TextStyle(
-                  color: Colors.white.withOpacity(0.45), fontSize: 13)),
+          Text(
+            l10n.songLoadingDifficulty,
+            style: TextStyle(
+                color: Colors.white.withOpacity(0.45), fontSize: 13),
+          ),
         ],
       );
 }
 
 class _ActionChip extends StatelessWidget {
-  final IconData icon;
-  final String   label;
-  final bool     active;
-  final Color    color;
+  final IconData     icon;
+  final String       label;
+  final bool         active;
+  final Color        color;
   final VoidCallback onTap;
 
   const _ActionChip({
@@ -466,14 +477,20 @@ class _ActionChip extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(999),
-            color:  active ? color.withOpacity(0.18) : Colors.white.withOpacity(0.07),
+            color: active
+                ? color.withOpacity(0.18)
+                : Colors.white.withOpacity(0.07),
             border: Border.all(
-                color: active ? color.withOpacity(0.55) : Colors.white.withOpacity(0.12)),
+                color: active
+                    ? color.withOpacity(0.55)
+                    : Colors.white.withOpacity(0.12)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 16, color: active ? color : Colors.white.withOpacity(0.60)),
+              Icon(icon,
+                  size: 16,
+                  color: active ? color : Colors.white.withOpacity(0.60)),
               const SizedBox(width: 6),
               Text(
                 label,
