@@ -30,7 +30,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
     _loadVersion();
+    widget.settings.addListener(_onSettingsChanged);
   }
+
+  @override
+  void dispose() {
+    widget.settings.removeListener(_onSettingsChanged);
+    super.dispose();
+  }
+
+  void _onSettingsChanged() => setState(() {});
 
   Future<void> _loadVersion() async {
     final info = await PackageInfo.fromPlatform();
@@ -88,13 +97,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Future<void> _resetSettings() async {
-    final settingsBox = await Hive.openBox('settings');
-    await settingsBox.clear();
-    widget.settings.reloadFromBox();
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Einstellungen zurückgesetzt ✅')),
+  Future<void> _showLanguagePicker() async {
+    final current = widget.settings.language;
+    await showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (_) => _LanguageSheet(
+        currentLanguage: current,
+        onSelected: (lang) async {
+          await widget.settings.setLanguage(lang);
+        },
+      ),
     );
   }
 
@@ -108,6 +121,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } else {
       updateSubtitle = 'Aktuell ✅';
     }
+
+    final lang = widget.settings.language;
+    final langLabel = lang == 'de' ? '🇩🇪  Deutsch' : '🇬🇧  English';
 
     return OrbitBackground(
       child: Scaffold(
@@ -141,6 +157,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     color: Colors.white24,
                   ),
                   onTap: null,
+                ),
+                const SizedBox(height: 10),
+                _Tile(
+                  icon: Icons.language,
+                  iconColor: const Color(0xFF4CAF50),
+                  title: 'Sprache / Language',
+                  subtitle: langLabel,
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
+                  onTap: _showLanguagePicker,
                 ),
 
                 // ── Updates ────────────────────────────────
@@ -201,22 +229,111 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   onTap: _resetTasks,
                 ),
-                const SizedBox(height: 10),
-                _Tile(
-                  icon: Icons.settings_backup_restore,
-                  iconColor: const Color(0xFFFFD600),
-                  title: 'Einstellungen zurücksetzen',
-                  subtitle: 'Settings auf Standard zurücksetzen',
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.white24,
-                  ),
-                  onTap: _resetSettings,
-                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+// ──────────────────────────────────────────────
+// Sprach-Auswahl Sheet
+// ──────────────────────────────────────────────
+
+class _LanguageSheet extends StatelessWidget {
+  final String currentLanguage;
+  final void Function(String) onSelected;
+
+  const _LanguageSheet({
+    required this.currentLanguage,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final options = [
+      {'code': 'de', 'flag': '🇩🇪', 'label': 'Deutsch'},
+      {'code': 'en', 'flag': '🇬🇧', 'label': 'English'},
+    ];
+
+    return Container(
+      margin: const EdgeInsets.fromLTRB(12, 0, 12, 24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.white.withOpacity(0.11),
+            Colors.white.withOpacity(0.05),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: Colors.white.withOpacity(0.12)),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 16),
+          Text(
+            'Sprache / Language',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.55),
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+              letterSpacing: 1.2,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Divider(color: Colors.white12, height: 1),
+          ...options.map((opt) {
+            final isSelected = opt['code'] == currentLanguage;
+            return InkWell(
+              borderRadius: BorderRadius.circular(14),
+              onTap: () {
+                onSelected(opt['code']!);
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      opt['flag']!,
+                      style: const TextStyle(fontSize: 26),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Text(
+                        opt['label']!,
+                        style: TextStyle(
+                          color: isSelected
+                              ? const Color(0xFF4CAF50)
+                              : Colors.white,
+                          fontWeight: isSelected
+                              ? FontWeight.w800
+                              : FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    if (isSelected)
+                      const Icon(
+                        Icons.check_circle_rounded,
+                        color: Color(0xFF4CAF50),
+                        size: 22,
+                      ),
+                  ],
+                ),
+              ),
+            );
+          }),
+          const SizedBox(height: 8),
+        ],
       ),
     );
   }

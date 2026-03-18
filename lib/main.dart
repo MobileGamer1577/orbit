@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'storage/app_settings_store.dart';
 import 'storage/collection_store.dart';
@@ -23,7 +24,7 @@ Future<void> main() async {
   ));
 }
 
-class OrbitApp extends StatelessWidget {
+class OrbitApp extends StatefulWidget {
   final AppSettingsStore settings;
   final UpdateStore updateStore;
   final CollectionStore collection;
@@ -36,19 +37,50 @@ class OrbitApp extends StatelessWidget {
   });
 
   @override
+  State<OrbitApp> createState() => _OrbitAppState();
+}
+
+class _OrbitAppState extends State<OrbitApp> {
+  @override
+  void initState() {
+    super.initState();
+    widget.settings.addListener(_onSettingsChanged);
+  }
+
+  @override
+  void dispose() {
+    widget.settings.removeListener(_onSettingsChanged);
+    super.dispose();
+  }
+
+  void _onSettingsChanged() => setState(() {});
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Orbit',
       debugShowCheckedModeBanner: false,
-      // ← Hintergrundfarbe der App selbst (sichtbar beim Screen-Wechsel)
       color: const Color(0xFF07020F),
       theme: OrbitTheme.light(),
       darkTheme: OrbitTheme.dark(),
       themeMode: ThemeMode.dark,
+
+      // ── Lokalisierung ────────────────────────────────────
+      locale: widget.settings.locale,
+      supportedLocales: const [
+        Locale('de'),
+        Locale('en'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+
       home: GameSelectScreen(
-        settings: settings,
-        updateStore: updateStore,
-        collection: collection,
+        settings: widget.settings,
+        updateStore: widget.updateStore,
+        collection: widget.collection,
       ),
     );
   }
