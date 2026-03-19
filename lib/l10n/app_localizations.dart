@@ -129,6 +129,8 @@ abstract class AppLocalizations {
   String get modeBlitzSubtitle;
   String get modeOGTitle;
   String get modeOGSubtitle;
+  String get modeKreativTitle;
+  String get modeKreativSubtitle;
 
   // BO7 Modes
   String get modeBo7CoopTitle;
@@ -311,6 +313,8 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override String get modeBlitzSubtitle => 'Aufträge für Blitz Royale';
   @override String get modeOGTitle    => 'OG';
   @override String get modeOGSubtitle => 'Aufträge für OG Fortnite';
+  @override String get modeKreativTitle    => 'Kreativ';
+  @override String get modeKreativSubtitle => 'Wöchentliche Aufträge für Kreativ-Inseln';
   @override String get modeBo7CoopTitle      => 'Koop & Endspiel';
   @override String get modeBo7CoopSubtitle   => 'Weekly-Aufgaben (Soon) • Visitenkarten (Soon)';
   @override String get modeBo7MPTitle        => 'Mehrspieler';
@@ -468,6 +472,8 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override String get modeBlitzSubtitle => 'Blitz Royale quests';
   @override String get modeOGTitle    => 'OG';
   @override String get modeOGSubtitle => 'OG Fortnite quests';
+  @override String get modeKreativTitle    => 'Creative';
+  @override String get modeKreativSubtitle => 'Weekly quests for Creative islands';
   @override String get modeBo7CoopTitle      => 'Co-op & Endgame';
   @override String get modeBo7CoopSubtitle   => 'Weekly challenges (Soon) • Calling cards (Soon)';
   @override String get modeBo7MPTitle        => 'Multiplayer';

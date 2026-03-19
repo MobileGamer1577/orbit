@@ -155,6 +155,13 @@ class ModeSelectScreen extends StatelessWidget {
           icon: Icons.history,
           color: const Color(0xFF9C6FFF),
         ),
+        _Mode(
+          title: l10n.modeKreativTitle,
+          subtitle: l10n.modeKreativSubtitle,
+          assetPath: 'assets/data/fortnite_kreativ.json',
+          icon: Icons.palette,
+          color: const Color(0xFFFF6B35),
+        ),
       ];
     }
 

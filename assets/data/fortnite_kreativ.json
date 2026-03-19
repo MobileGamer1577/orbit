@@ -1,0 +1,49 @@
+{
+  "phases": [
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Bonusziele", "en": "Weekly Bonus Goals" },
+      "quests": ["kreativ_bonus_w01","kreativ_bonus_w02","kreativ_bonus_w03","kreativ_bonus_w04","kreativ_bonus_w05","kreativ_bonus_w06","kreativ_bonus_w07","kreativ_bonus_w08","kreativ_bonus_w09","kreativ_bonus_w10","kreativ_bonus_w11","kreativ_bonus_w12","kreativ_bonus_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Überleben-Aufträge", "en": "Weekly Survival Quests" },
+      "quests": ["kreativ_ueberleben_w01","kreativ_ueberleben_w02","kreativ_ueberleben_w03","kreativ_ueberleben_w04","kreativ_ueberleben_w05","kreativ_ueberleben_w06","kreativ_ueberleben_w07","kreativ_ueberleben_w08","kreativ_ueberleben_w09","kreativ_ueberleben_w10","kreativ_ueberleben_w11","kreativ_ueberleben_w12","kreativ_ueberleben_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Rollenspiel-Aufträge", "en": "Weekly Roleplay Quests" },
+      "quests": ["kreativ_rollenspiel_w01","kreativ_rollenspiel_w02","kreativ_rollenspiel_w03","kreativ_rollenspiel_w04","kreativ_rollenspiel_w05","kreativ_rollenspiel_w06","kreativ_rollenspiel_w07","kreativ_rollenspiel_w08","kreativ_rollenspiel_w09","kreativ_rollenspiel_w10","kreativ_rollenspiel_w11","kreativ_rollenspiel_w12","kreativ_rollenspiel_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Kampf-Aufträge", "en": "Weekly Combat Quests" },
+      "quests": ["kreativ_kampf_w01","kreativ_kampf_w02","kreativ_kampf_w03","kreativ_kampf_w04","kreativ_kampf_w05","kreativ_kampf_w06","kreativ_kampf_w07","kreativ_kampf_w08","kreativ_kampf_w09","kreativ_kampf_w10","kreativ_kampf_w11","kreativ_kampf_w12","kreativ_kampf_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Battle Royale-Aufträge", "en": "Weekly Battle Royale Quests" },
+      "quests": ["kreativ_br_w01","kreativ_br_w02","kreativ_br_w03","kreativ_br_w04","kreativ_br_w05","kreativ_br_w06","kreativ_br_w07","kreativ_br_w08","kreativ_br_w09","kreativ_br_w10","kreativ_br_w11","kreativ_br_w12","kreativ_br_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Plattformer-Aufträge", "en": "Weekly Platformer Quests" },
+      "quests": ["kreativ_plattformer_w01","kreativ_plattformer_w02","kreativ_plattformer_w03","kreativ_plattformer_w04","kreativ_plattformer_w05","kreativ_plattformer_w06","kreativ_plattformer_w07","kreativ_plattformer_w08","kreativ_plattformer_w09","kreativ_plattformer_w10","kreativ_plattformer_w11","kreativ_plattformer_w12","kreativ_plattformer_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Tycoon-Aufträge", "en": "Weekly Tycoon Quests" },
+      "quests": ["kreativ_tycoon_w01","kreativ_tycoon_w02","kreativ_tycoon_w03","kreativ_tycoon_w04","kreativ_tycoon_w05","kreativ_tycoon_w06","kreativ_tycoon_w07","kreativ_tycoon_w08","kreativ_tycoon_w09","kreativ_tycoon_w10","kreativ_tycoon_w11","kreativ_tycoon_w12","kreativ_tycoon_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche \"Musik & Party\"-Aufträge", "en": "Weekly Music & Party Quests" },
+      "quests": ["kreativ_musik_w01","kreativ_musik_w02","kreativ_musik_w03","kreativ_musik_w04","kreativ_musik_w05","kreativ_musik_w06","kreativ_musik_w07","kreativ_musik_w08","kreativ_musik_w09","kreativ_musik_w10","kreativ_musik_w11","kreativ_musik_w12","kreativ_musik_w13"]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Fahren-Aufträge", "en": "Weekly Driving Quests" },
+      "quests": ["kreativ_fahren_w01","kreativ_fahren_w02","kreativ_fahren_w03","kreativ_fahren_w04","kreativ_fahren_w05","kreativ_fahren_w06","kreativ_fahren_w07","kreativ_fahren_w08","kreativ_fahren_w09","kreativ_fahren_w10","kreativ_fahren_w11","kreativ_fahren_w12","kreativ_fahren_w13"]
+    }
+  ]
+}
