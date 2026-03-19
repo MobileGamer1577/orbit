@@ -1,112 +1,38 @@
 {
   "phases": [
     {
-      "phase": 1,
+      "type": "normal",
       "label": { "de": "Ninjago-Herausforderungen", "en": "Ninjago Challenges" },
       "quests": ["lego_01","lego_02","lego_03","lego_04","lego_05","lego_06","lego_07","lego_08","lego_09","lego_10","lego_11","lego_12","lego_13","lego_14","lego_15","lego_16","lego_17","lego_18","lego_19"]
     },
     {
-      "phase": 2,
-      "label": { "de": "Ninjago Meilensteine Phase 1/20", "en": "Ninjago Milestones Phase 1/20" },
-      "quests": ["lego_ms_p01_01","lego_ms_p01_02","lego_ms_p01_03","lego_ms_p01_04"]
+      "type": "milestone",
+      "label": { "de": "Ninjago Meilensteine", "en": "Ninjago Milestones" },
+      "milestone_phases": [
+        { "quests": ["lego_ms_p01_01","lego_ms_p01_02","lego_ms_p01_03","lego_ms_p01_04"] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] }
+      ]
     },
     {
-      "phase": 3,
-      "label": { "de": "Ninjago Meilensteine Phase 2/20", "en": "Ninjago Milestones Phase 2/20" },
-      "quests": []
-    },
-    {
-      "phase": 4,
-      "label": { "de": "Ninjago Meilensteine Phase 3/20", "en": "Ninjago Milestones Phase 3/20" },
-      "quests": []
-    },
-    {
-      "phase": 5,
-      "label": { "de": "Ninjago Meilensteine Phase 4/20", "en": "Ninjago Milestones Phase 4/20" },
-      "quests": []
-    },
-    {
-      "phase": 6,
-      "label": { "de": "Ninjago Meilensteine Phase 5/20", "en": "Ninjago Milestones Phase 5/20" },
-      "quests": []
-    },
-    {
-      "phase": 7,
-      "label": { "de": "Ninjago Meilensteine Phase 6/20", "en": "Ninjago Milestones Phase 6/20" },
-      "quests": []
-    },
-    {
-      "phase": 8,
-      "label": { "de": "Ninjago Meilensteine Phase 7/20", "en": "Ninjago Milestones Phase 7/20" },
-      "quests": []
-    },
-    {
-      "phase": 9,
-      "label": { "de": "Ninjago Meilensteine Phase 8/20", "en": "Ninjago Milestones Phase 8/20" },
-      "quests": []
-    },
-    {
-      "phase": 10,
-      "label": { "de": "Ninjago Meilensteine Phase 9/20", "en": "Ninjago Milestones Phase 9/20" },
-      "quests": []
-    },
-    {
-      "phase": 11,
-      "label": { "de": "Ninjago Meilensteine Phase 10/20", "en": "Ninjago Milestones Phase 10/20" },
-      "quests": []
-    },
-    {
-      "phase": 12,
-      "label": { "de": "Ninjago Meilensteine Phase 11/20", "en": "Ninjago Milestones Phase 11/20" },
-      "quests": []
-    },
-    {
-      "phase": 13,
-      "label": { "de": "Ninjago Meilensteine Phase 12/20", "en": "Ninjago Milestones Phase 12/20" },
-      "quests": []
-    },
-    {
-      "phase": 14,
-      "label": { "de": "Ninjago Meilensteine Phase 13/20", "en": "Ninjago Milestones Phase 13/20" },
-      "quests": []
-    },
-    {
-      "phase": 15,
-      "label": { "de": "Ninjago Meilensteine Phase 14/20", "en": "Ninjago Milestones Phase 14/20" },
-      "quests": []
-    },
-    {
-      "phase": 16,
-      "label": { "de": "Ninjago Meilensteine Phase 15/20", "en": "Ninjago Milestones Phase 15/20" },
-      "quests": []
-    },
-    {
-      "phase": 17,
-      "label": { "de": "Ninjago Meilensteine Phase 16/20", "en": "Ninjago Milestones Phase 16/20" },
-      "quests": []
-    },
-    {
-      "phase": 18,
-      "label": { "de": "Ninjago Meilensteine Phase 17/20", "en": "Ninjago Milestones Phase 17/20" },
-      "quests": []
-    },
-    {
-      "phase": 19,
-      "label": { "de": "Ninjago Meilensteine Phase 18/20", "en": "Ninjago Milestones Phase 18/20" },
-      "quests": []
-    },
-    {
-      "phase": 20,
-      "label": { "de": "Ninjago Meilensteine Phase 19/20", "en": "Ninjago Milestones Phase 19/20" },
-      "quests": []
-    },
-    {
-      "phase": 21,
-      "label": { "de": "Ninjago Meilensteine Phase 20/20", "en": "Ninjago Milestones Phase 20/20" },
-      "quests": []
-    },
-    {
-      "phase": 22,
+      "type": "normal",
       "label": { "de": "Tränke sind da", "en": "Potions Are Here" },
       "quests": ["lego_24","lego_25","lego_26","lego_27","lego_28"]
     }

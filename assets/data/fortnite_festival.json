@@ -1,219 +1,71 @@
 {
   "phases": [
     {
-      "phase": 1,
+      "type": "normal",
       "label": { "de": "Hauptbühne – Starthilfe", "en": "Main Stage – Starter" },
       "quests": ["festival_hb_sh_01","festival_hb_sh_02","festival_hb_sh_03","festival_hb_sh_04","festival_hb_sh_05","festival_hb_sh_06"]
     },
     {
-      "phase": 2,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 1/20", "en": "Main Stage – Milestone Phase 1/20" },
-      "quests": ["festival_hb_ms_p01_01","festival_hb_ms_p01_02","festival_hb_ms_p01_03","festival_hb_ms_p01_04"]
+      "type": "milestone",
+      "label": { "de": "Hauptbühne – Meilenstein Aufträge", "en": "Main Stage – Milestone Quests" },
+      "milestone_phases": [
+        { "quests": ["festival_hb_ms_p01_01","festival_hb_ms_p01_02","festival_hb_ms_p01_03","festival_hb_ms_p01_04"] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] }
+      ]
     },
     {
-      "phase": 3,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 2/20", "en": "Main Stage – Milestone Phase 2/20" },
-      "quests": []
-    },
-    {
-      "phase": 4,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 3/20", "en": "Main Stage – Milestone Phase 3/20" },
-      "quests": []
-    },
-    {
-      "phase": 5,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 4/20", "en": "Main Stage – Milestone Phase 4/20" },
-      "quests": []
-    },
-    {
-      "phase": 6,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 5/20", "en": "Main Stage – Milestone Phase 5/20" },
-      "quests": []
-    },
-    {
-      "phase": 7,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 6/20", "en": "Main Stage – Milestone Phase 6/20" },
-      "quests": []
-    },
-    {
-      "phase": 8,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 7/20", "en": "Main Stage – Milestone Phase 7/20" },
-      "quests": []
-    },
-    {
-      "phase": 9,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 8/20", "en": "Main Stage – Milestone Phase 8/20" },
-      "quests": []
-    },
-    {
-      "phase": 10,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 9/20", "en": "Main Stage – Milestone Phase 9/20" },
-      "quests": []
-    },
-    {
-      "phase": 11,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 10/20", "en": "Main Stage – Milestone Phase 10/20" },
-      "quests": []
-    },
-    {
-      "phase": 12,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 11/20", "en": "Main Stage – Milestone Phase 11/20" },
-      "quests": []
-    },
-    {
-      "phase": 13,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 12/20", "en": "Main Stage – Milestone Phase 12/20" },
-      "quests": []
-    },
-    {
-      "phase": 14,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 13/20", "en": "Main Stage – Milestone Phase 13/20" },
-      "quests": []
-    },
-    {
-      "phase": 15,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 14/20", "en": "Main Stage – Milestone Phase 14/20" },
-      "quests": []
-    },
-    {
-      "phase": 16,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 15/20", "en": "Main Stage – Milestone Phase 15/20" },
-      "quests": []
-    },
-    {
-      "phase": 17,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 16/20", "en": "Main Stage – Milestone Phase 16/20" },
-      "quests": []
-    },
-    {
-      "phase": 18,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 17/20", "en": "Main Stage – Milestone Phase 17/20" },
-      "quests": []
-    },
-    {
-      "phase": 19,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 18/20", "en": "Main Stage – Milestone Phase 18/20" },
-      "quests": []
-    },
-    {
-      "phase": 20,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 19/20", "en": "Main Stage – Milestone Phase 19/20" },
-      "quests": []
-    },
-    {
-      "phase": 21,
-      "label": { "de": "Hauptbühne – Meilenstein Phase 20/20", "en": "Main Stage – Milestone Phase 20/20" },
-      "quests": []
-    },
-    {
-      "phase": 22,
+      "type": "normal",
       "label": { "de": "Hauptbühne – Woche 1", "en": "Main Stage – Week 1" },
       "quests": ["festival_hb_w1_01","festival_hb_w1_02","festival_hb_w1_03"]
     },
     {
-      "phase": 23,
+      "type": "normal",
       "label": { "de": "Battle-Bühne – Starthilfe", "en": "Battle Stage – Starter" },
       "quests": ["festival_bb_sh_01","festival_bb_sh_02"]
     },
     {
-      "phase": 24,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 1/20", "en": "Battle Stage – Milestone Phase 1/20" },
-      "quests": ["festival_bb_ms_p01_01"]
-    },
-    {
-      "phase": 25,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 2/20", "en": "Battle Stage – Milestone Phase 2/20" },
-      "quests": []
-    },
-    {
-      "phase": 26,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 3/20", "en": "Battle Stage – Milestone Phase 3/20" },
-      "quests": []
-    },
-    {
-      "phase": 27,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 4/20", "en": "Battle Stage – Milestone Phase 4/20" },
-      "quests": []
-    },
-    {
-      "phase": 28,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 5/20", "en": "Battle Stage – Milestone Phase 5/20" },
-      "quests": []
-    },
-    {
-      "phase": 29,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 6/20", "en": "Battle Stage – Milestone Phase 6/20" },
-      "quests": []
-    },
-    {
-      "phase": 30,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 7/20", "en": "Battle Stage – Milestone Phase 7/20" },
-      "quests": []
-    },
-    {
-      "phase": 31,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 8/20", "en": "Battle Stage – Milestone Phase 8/20" },
-      "quests": []
-    },
-    {
-      "phase": 32,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 9/20", "en": "Battle Stage – Milestone Phase 9/20" },
-      "quests": []
-    },
-    {
-      "phase": 33,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 10/20", "en": "Battle Stage – Milestone Phase 10/20" },
-      "quests": []
-    },
-    {
-      "phase": 34,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 11/20", "en": "Battle Stage – Milestone Phase 11/20" },
-      "quests": []
-    },
-    {
-      "phase": 35,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 12/20", "en": "Battle Stage – Milestone Phase 12/20" },
-      "quests": []
-    },
-    {
-      "phase": 36,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 13/20", "en": "Battle Stage – Milestone Phase 13/20" },
-      "quests": []
-    },
-    {
-      "phase": 37,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 14/20", "en": "Battle Stage – Milestone Phase 14/20" },
-      "quests": []
-    },
-    {
-      "phase": 38,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 15/20", "en": "Battle Stage – Milestone Phase 15/20" },
-      "quests": []
-    },
-    {
-      "phase": 39,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 16/20", "en": "Battle Stage – Milestone Phase 16/20" },
-      "quests": []
-    },
-    {
-      "phase": 40,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 17/20", "en": "Battle Stage – Milestone Phase 17/20" },
-      "quests": []
-    },
-    {
-      "phase": 41,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 18/20", "en": "Battle Stage – Milestone Phase 18/20" },
-      "quests": []
-    },
-    {
-      "phase": 42,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 19/20", "en": "Battle Stage – Milestone Phase 19/20" },
-      "quests": []
-    },
-    {
-      "phase": 43,
-      "label": { "de": "Battle-Bühne – Meilenstein Phase 20/20", "en": "Battle Stage – Milestone Phase 20/20" },
-      "quests": []
+      "type": "milestone",
+      "label": { "de": "Battle-Bühne – Meilenstein Aufträge", "en": "Battle Stage – Milestone Quests" },
+      "milestone_phases": [
+        { "quests": ["festival_bb_ms_p01_01"] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] },
+        { "quests": [] }
+      ]
     }
   ]
 }
