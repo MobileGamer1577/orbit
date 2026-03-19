@@ -2284,1174 +2284,1894 @@
       "description": "Ranked • 0/1"
     }
   },
-  "kreativ_bonus_w01": {
+  "kreativ_ms_bonus_p01": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 1 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 1 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w02": {
+  "kreativ_ms_bonus_p02": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 2 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 2 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w03": {
+  "kreativ_ms_bonus_p03": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 3 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 3 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w04": {
+  "kreativ_ms_bonus_p04": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 4 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 4 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w05": {
+  "kreativ_ms_bonus_p05": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 5 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 5 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w06": {
+  "kreativ_ms_bonus_p06": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 6 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 6 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w07": {
+  "kreativ_ms_bonus_p07": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 7 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 7 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w08": {
+  "kreativ_ms_bonus_p08": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 8 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 8 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w09": {
+  "kreativ_ms_bonus_p09": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 9 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 9 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w10": {
+  "kreativ_ms_bonus_p10": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 10 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 10 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w11": {
+  "kreativ_ms_bonus_p11": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 11 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 11 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w12": {
+  "kreativ_ms_bonus_p12": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 12 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 12 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_bonus_w13": {
+  "kreativ_ms_bonus_p13": {
     "de": {
       "title": "Schließe Wöchentliche Aufträge ab",
-      "description": "Wöchentliche Bonusziele • 20k XP • Woche 13 • 0/4"
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
     },
     "en": {
       "title": "Complete Weekly Quests",
-      "description": "Weekly Bonus Goals • 20k XP • Week 13 • 0/4"
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
     }
   },
-  "kreativ_ueberleben_w01": {
+  "kreativ_ms_ueberleben_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w02": {
+  "kreativ_ms_ueberleben_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w03": {
+  "kreativ_ms_ueberleben_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w04": {
+  "kreativ_ms_ueberleben_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w05": {
+  "kreativ_ms_ueberleben_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w06": {
+  "kreativ_ms_ueberleben_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w07": {
+  "kreativ_ms_ueberleben_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w08": {
+  "kreativ_ms_ueberleben_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w09": {
+  "kreativ_ms_ueberleben_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w10": {
+  "kreativ_ms_ueberleben_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w11": {
+  "kreativ_ms_ueberleben_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w12": {
+  "kreativ_ms_ueberleben_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_ueberleben_w13": {
+  "kreativ_ms_ueberleben_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
-      "description": "Wöchentliche Überleben-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Survival\" islands",
-      "description": "Weekly Survival Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w01": {
+  "kreativ_ms_ueberleben_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w02": {
+  "kreativ_ms_rollenspiel_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w03": {
+  "kreativ_ms_rollenspiel_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w04": {
+  "kreativ_ms_rollenspiel_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w05": {
+  "kreativ_ms_rollenspiel_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w06": {
+  "kreativ_ms_rollenspiel_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w07": {
+  "kreativ_ms_rollenspiel_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w08": {
+  "kreativ_ms_rollenspiel_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w09": {
+  "kreativ_ms_rollenspiel_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w10": {
+  "kreativ_ms_rollenspiel_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w11": {
+  "kreativ_ms_rollenspiel_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w12": {
+  "kreativ_ms_rollenspiel_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_rollenspiel_w13": {
+  "kreativ_ms_rollenspiel_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
-      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Roleplay\" islands",
-      "description": "Weekly Roleplay Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w01": {
+  "kreativ_ms_rollenspiel_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w02": {
+  "kreativ_ms_kampf_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w03": {
+  "kreativ_ms_kampf_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w04": {
+  "kreativ_ms_kampf_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w05": {
+  "kreativ_ms_kampf_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w06": {
+  "kreativ_ms_kampf_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w07": {
+  "kreativ_ms_kampf_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w08": {
+  "kreativ_ms_kampf_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w09": {
+  "kreativ_ms_kampf_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w10": {
+  "kreativ_ms_kampf_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w11": {
+  "kreativ_ms_kampf_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w12": {
+  "kreativ_ms_kampf_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_kampf_w13": {
+  "kreativ_ms_kampf_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
-      "description": "Wöchentliche Kampf-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Combat\" islands",
-      "description": "Weekly Combat Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w01": {
+  "kreativ_ms_kampf_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w02": {
+  "kreativ_ms_br_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w03": {
+  "kreativ_ms_br_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w04": {
+  "kreativ_ms_br_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w05": {
+  "kreativ_ms_br_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w06": {
+  "kreativ_ms_br_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w07": {
+  "kreativ_ms_br_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w08": {
+  "kreativ_ms_br_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w09": {
+  "kreativ_ms_br_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w10": {
+  "kreativ_ms_br_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w11": {
+  "kreativ_ms_br_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w12": {
+  "kreativ_ms_br_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_br_w13": {
+  "kreativ_ms_br_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
-      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Battle Royale\" islands",
-      "description": "Weekly Battle Royale Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w01": {
+  "kreativ_ms_br_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w02": {
+  "kreativ_ms_plattformer_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w03": {
+  "kreativ_ms_plattformer_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w04": {
+  "kreativ_ms_plattformer_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w05": {
+  "kreativ_ms_plattformer_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w06": {
+  "kreativ_ms_plattformer_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w07": {
+  "kreativ_ms_plattformer_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w08": {
+  "kreativ_ms_plattformer_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w09": {
+  "kreativ_ms_plattformer_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w10": {
+  "kreativ_ms_plattformer_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w11": {
+  "kreativ_ms_plattformer_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w12": {
+  "kreativ_ms_plattformer_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_plattformer_w13": {
+  "kreativ_ms_plattformer_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
-      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Platformer\" islands",
-      "description": "Weekly Platformer Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w01": {
+  "kreativ_ms_plattformer_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w02": {
+  "kreativ_ms_tycoon_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w03": {
+  "kreativ_ms_tycoon_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w04": {
+  "kreativ_ms_tycoon_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w05": {
+  "kreativ_ms_tycoon_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w06": {
+  "kreativ_ms_tycoon_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w07": {
+  "kreativ_ms_tycoon_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w08": {
+  "kreativ_ms_tycoon_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w09": {
+  "kreativ_ms_tycoon_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w10": {
+  "kreativ_ms_tycoon_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w11": {
+  "kreativ_ms_tycoon_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w12": {
+  "kreativ_ms_tycoon_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_tycoon_w13": {
+  "kreativ_ms_tycoon_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
-      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Tycoon\" islands",
-      "description": "Weekly Tycoon Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w01": {
+  "kreativ_ms_tycoon_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w02": {
+  "kreativ_ms_musik_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w03": {
+  "kreativ_ms_musik_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w04": {
+  "kreativ_ms_musik_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w05": {
+  "kreativ_ms_musik_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w06": {
+  "kreativ_ms_musik_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w07": {
+  "kreativ_ms_musik_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w08": {
+  "kreativ_ms_musik_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w09": {
+  "kreativ_ms_musik_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w10": {
+  "kreativ_ms_musik_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w11": {
+  "kreativ_ms_musik_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w12": {
+  "kreativ_ms_musik_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_musik_w13": {
+  "kreativ_ms_musik_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
-      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Music & Party\" islands",
-      "description": "Weekly Music & Party Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w01": {
+  "kreativ_ms_musik_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p01": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 1 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 1 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w02": {
+  "kreativ_ms_fahren_p02": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 2 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 2 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w03": {
+  "kreativ_ms_fahren_p03": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 3 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 3 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w04": {
+  "kreativ_ms_fahren_p04": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 4 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 4 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w05": {
+  "kreativ_ms_fahren_p05": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 5 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 5 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w06": {
+  "kreativ_ms_fahren_p06": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 6 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 6 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w07": {
+  "kreativ_ms_fahren_p07": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 7 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 7 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w08": {
+  "kreativ_ms_fahren_p08": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 8 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 8 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w09": {
+  "kreativ_ms_fahren_p09": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 9 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 9 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w10": {
+  "kreativ_ms_fahren_p10": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 10 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 10 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w11": {
+  "kreativ_ms_fahren_p11": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 11 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 11 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w12": {
+  "kreativ_ms_fahren_p12": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 12 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 12 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   },
-  "kreativ_fahren_w13": {
+  "kreativ_ms_fahren_p13": {
     "de": {
       "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
-      "description": "Wöchentliche Fahren-Aufträge • 5k XP • Woche 13 • 0/60.000"
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
     },
     "en": {
       "title": "Earn XP on Creator-made \"Driving\" islands",
-      "description": "Weekly Driving Quests • 5k XP • Week 13 • 0/60,000"
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
   }
 }
