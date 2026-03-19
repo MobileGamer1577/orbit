@@ -1,54 +1,9 @@
 {
-  "tasks": [
+  "phases": [
     {
-      "id": "blitz_01",
-      "title": "Eliminiere Spieler",
-      "description": "Starthilfe • 15k XP • 0/25"
-    },
-    {
-      "id": "blitz_02",
-      "title": "Sammle mythische oder exotische Waffen auf",
-      "description": "Starthilfe • 15k XP • 0/12"
-    },
-    {
-      "id": "blitz_03",
-      "title": "Überlebe Sturmphasen",
-      "description": "Starthilfe • 15k XP • 0/15"
-    },
-    {
-      "id": "blitz_04",
-      "title": "Betritt in verschiedenen Matches einen Riss",
-      "description": "Starthilfe • 15k XP • 0/3"
-    },
-    {
-      "id": "blitz_05",
-      "title": "Triff Spieler innerhalb von 15 Sekunden nach der Landung",
-      "description": "Starthilfe • 15k XP • 0/45"
-    },
-    {
-      "id": "blitz_06",
-      "title": "Füge Spielern Schaden mit mythischen oder exotischen Waffen zu",
-      "description": "Starthilfe • 15k XP • 0/5.000"
-    },
-    {
-      "id": "blitz_07",
-      "title": "Füge Spielern Schaden mit Schrotflinten oder Maschinenpistolen zu",
-      "description": "Starthilfe • 15k XP • 0/5.000"
-    },
-    {
-      "id": "blitz_08",
-      "title": "Wirf eine Schildblase sofort nach erhaltenem Schaden",
-      "description": "Starthilfe • 15k XP • 0/5"
-    },
-    {
-      "id": "blitz_09",
-      "title": "Füge Spielern Schaden zu, während du zu den letzten 10 zählst",
-      "description": "Starthilfe • 15k XP • 0/1.500"
-    },
-    {
-      "id": "blitz_10",
-      "title": "Durchbrich eine Tür, während du rutscht oder sprintest",
-      "description": "Starthilfe • 15k XP • 0/3"
+      "phase": 1,
+      "label": { "de": "Starthilfe", "en": "Starter" },
+      "quests": ["blitz_01","blitz_02","blitz_03","blitz_04","blitz_05","blitz_06","blitz_07","blitz_08","blitz_09","blitz_10"]
     }
   ]
 }

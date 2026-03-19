@@ -1,9 +1,9 @@
 {
-  "tasks": [
+  "phases": [
     {
-      "id": "ballistic_01",
-      "title": "Gewinne Runden in Ranked Ballistic",
-      "description": "Ranked • Pop-Corn (Dunkel) Lackierung • 0/50"
+      "phase": 1,
+      "label": { "de": "Ranked", "en": "Ranked" },
+      "quests": ["ballistic_01"]
     }
   ]
 }

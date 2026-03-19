@@ -7,6 +7,38 @@ import '../storage/task_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
+// ──────────────────────────────────────────────────────────────
+// Interne Datenmodelle
+// ──────────────────────────────────────────────────────────────
+
+class _QuestItem {
+  final String id;
+  final String title;
+  final String description;
+
+  const _QuestItem({
+    required this.id,
+    required this.title,
+    required this.description,
+  });
+}
+
+class _Phase {
+  final int    phase;
+  final String label;
+  final List<_QuestItem> quests;
+
+  const _Phase({
+    required this.phase,
+    required this.label,
+    required this.quests,
+  });
+}
+
+// ──────────────────────────────────────────────────────────────
+// Screen
+// ──────────────────────────────────────────────────────────────
+
 class TaskListScreen extends StatefulWidget {
   final String title;
   final String jsonAssetPath;
@@ -22,14 +54,23 @@ class TaskListScreen extends StatefulWidget {
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
-  Map<String, dynamic>? data;
-  String query = '';
+  List<_Phase> _phases   = [];
+  bool         _loading  = true;
+  bool         _empty    = false;   // leere phases-Liste
+  String       _query    = '';
   final TextEditingController _searchCtrl = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _load();
+    _searchCtrl.addListener(() => setState(() => _query = _searchCtrl.text));
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Hier laden, weil wir Locale brauchen → erst nach initState verfügbar
+    if (_loading) _load();
   }
 
   @override
@@ -38,26 +79,128 @@ class _TaskListScreenState extends State<TaskListScreen> {
     super.dispose();
   }
 
+  // ── Laden ──────────────────────────────────────────────────
+
   Future<void> _load() async {
     final path = widget.jsonAssetPath.trim();
     if (path.isEmpty) {
-      setState(() => data = null);
+      if (mounted) setState(() { _loading = false; _empty = true; });
       return;
     }
+
     try {
-      final raw = await rootBundle.loadString(path);
-      setState(() => data = (jsonDecode(raw) as Map).cast<String, dynamic>());
+      // Sprache aus aktuellem Locale (z.B. 'de' oder 'en')
+      final lang = Localizations.localeOf(context).languageCode;
+
+      // Beide Dateien parallel laden
+      final results = await Future.wait([
+        rootBundle.loadString(path),
+        rootBundle.loadString('assets/data/quests_database.json'),
+      ]);
+
+      final modeData = jsonDecode(results[0]) as Map<String, dynamic>;
+      final db       = jsonDecode(results[1]) as Map<String, dynamic>;
+
+      // Neues Format: { "phases": [...] }
+      if (modeData.containsKey('phases')) {
+        final rawPhases = modeData['phases'] as List;
+
+        if (rawPhases.isEmpty) {
+          if (mounted) setState(() { _loading = false; _empty = true; });
+          return;
+        }
+
+        final phases = rawPhases.map((p) {
+          // Phase-Label übersetzen
+          final labelMap = p['label'];
+          final String label;
+          if (labelMap is Map) {
+            label = (labelMap[lang] ?? labelMap['de'] ?? '') as String;
+          } else {
+            label = labelMap?.toString() ?? '';
+          }
+
+          // Aufträge aus DB laden
+          final questIds = (p['quests'] as List).cast<String>();
+          final quests = questIds.map((id) {
+            final entry = db[id];
+            if (entry == null) {
+              return _QuestItem(id: id, title: id, description: '');
+            }
+            final langData = (entry[lang] ?? entry['de']) as Map<String, dynamic>;
+            return _QuestItem(
+              id:          id,
+              title:       (langData['title']       as String?) ?? id,
+              description: (langData['description'] as String?) ?? '',
+            );
+          }).toList();
+
+          return _Phase(
+            phase:  (p['phase'] as num).toInt(),
+            label:  label,
+            quests: quests,
+          );
+        }).toList();
+
+        if (mounted) setState(() { _phases = phases; _loading = false; });
+
+      } else {
+        // Altes Format als Fallback: { "tasks": [...] } — bleibt kompatibel
+        final tasks = (modeData['tasks'] as List?)?.cast<Map>() ?? [];
+        final quests = tasks.map((t) => _QuestItem(
+          id:          (t['id'] as String?) ?? '',
+          title:       (t['title'] as String?) ?? '',
+          description: (t['description'] as String?) ?? '',
+        )).toList();
+
+        final phase = _Phase(phase: 1, label: '', quests: quests);
+        if (mounted) setState(() { _phases = [phase]; _loading = false; });
+      }
     } catch (_) {
-      setState(() => data = {});
+      if (mounted) setState(() { _loading = false; _empty = true; });
     }
   }
+
+  // ── Filter ─────────────────────────────────────────────────
+
+  List<_Phase> _filteredPhases() {
+    final q = _query.trim().toLowerCase();
+    if (q.isEmpty) return _phases;
+
+    return _phases.map((phase) {
+      final matching = phase.quests.where((quest) {
+        return quest.title.toLowerCase().contains(q) ||
+               quest.description.toLowerCase().contains(q);
+      }).toList();
+      return _Phase(phase: phase.phase, label: phase.label, quests: matching);
+    }).where((phase) => phase.quests.isNotEmpty).toList();
+  }
+
+  int get _totalQuests =>
+      _phases.fold(0, (sum, p) => sum + p.quests.length);
+
+  int get _doneQuests => _phases.fold(0, (sum, p) {
+    return sum + p.quests.where((q) => TaskStore.isDone(q.id)).length;
+  });
+
+  // ── Build ──────────────────────────────────────────────────
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    // „Kommt bald"-Screen
-    if (widget.jsonAssetPath.trim().isEmpty) {
+    // Ladeindikator
+    if (_loading) {
+      return const Scaffold(
+        backgroundColor: Color(0xFF10041E),
+        body: Center(
+          child: CircularProgressIndicator(color: Color(0xFF7C4DFF)),
+        ),
+      );
+    }
+
+    // „Kommt bald" — wenn Pfad leer oder phases leer
+    if (_empty || _phases.isEmpty) {
       return Scaffold(
         backgroundColor: Colors.transparent,
         body: OrbitBackground(
@@ -75,10 +218,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       padding: const EdgeInsets.all(20),
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.hourglass_top_rounded,
-                            color: Colors.white.withOpacity(0.70),
-                          ),
+                          Icon(Icons.hourglass_top_rounded,
+                              color: Colors.white.withOpacity(0.70)),
                           const SizedBox(width: 12),
                           Text(
                             l10n.taskComingSoon,
@@ -100,30 +241,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
       );
     }
 
-    // Lädt noch
-    if (data == null) {
-      return const Scaffold(
-        backgroundColor: Color(0xFF10041E),
-        body: Center(
-          child: CircularProgressIndicator(color: Color(0xFF7C4DFF)),
-        ),
-      );
-    }
-
-    final tasks = (data!['tasks'] as List).cast<Map>();
-    final q = query.trim().toLowerCase();
-
-    final visible = tasks.where((t) {
-      final title = (t['title'] as String?) ?? '';
-      final desc  = (t['description'] as String?) ?? '';
-      if (q.isEmpty) return true;
-      return title.toLowerCase().contains(q) || desc.toLowerCase().contains(q);
-    }).toList();
-
-    final doneCount =
-        tasks.where((t) => TaskStore.isDone(t['id'] as String)).length;
-    final total    = tasks.length;
-    final progress = total == 0 ? 0.0 : doneCount / total;
+    final filtered    = _filteredPhases();
+    final total       = _totalQuests;
+    final done        = _doneQuests;
+    final progress    = total == 0 ? 0.0 : done / total;
+    final visibleCount = filtered.fold(0, (s, p) => s + p.quests.length);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -132,18 +254,19 @@ class _TaskListScreenState extends State<TaskListScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ── Header ───────────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: _Header(title: widget.title),
               ),
 
-              // Fortschrittsbalken + Suchfeld
+              // ── Fortschritt + Suche ───────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Fortschritt
+                    // Gesamtfortschritt
                     Row(
                       children: [
                         Expanded(
@@ -154,14 +277,13 @@ class _TaskListScreenState extends State<TaskListScreen> {
                               minHeight: 7,
                               backgroundColor: Colors.white.withOpacity(0.12),
                               valueColor: const AlwaysStoppedAnimation(
-                                Color(0xFF9C6FFF),
-                              ),
+                                  Color(0xFF9C6FFF)),
                             ),
                           ),
                         ),
                         const SizedBox(width: 12),
                         Text(
-                          '$doneCount / $total',
+                          '$done / $total',
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.75),
                             fontWeight: FontWeight.w700,
@@ -177,51 +299,42 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       borderRadius: BorderRadius.circular(16),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 4,
-                        ),
+                            horizontal: 14, vertical: 4),
                         child: Row(
                           children: [
-                            Icon(
-                              Icons.search,
-                              color: Colors.white.withOpacity(0.55),
-                              size: 20,
-                            ),
+                            Icon(Icons.search,
+                                color: Colors.white.withOpacity(0.55),
+                                size: 20),
                             const SizedBox(width: 10),
                             Expanded(
                               child: TextField(
                                 controller: _searchCtrl,
                                 style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
                                 decoration: InputDecoration(
                                   hintText: l10n.taskSearchHint,
                                   hintStyle: TextStyle(
-                                    color: Colors.white.withOpacity(0.40),
-                                    fontSize: 15,
-                                  ),
+                                      color: Colors.white.withOpacity(0.40),
+                                      fontSize: 15),
                                   border: InputBorder.none,
                                   isDense: true,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10,
-                                  ),
+                                  contentPadding:
+                                      const EdgeInsets.symmetric(vertical: 10),
                                 ),
-                                onChanged: (v) => setState(() => query = v),
+                                onChanged: (_) => setState(() {}),
                               ),
                             ),
-                            if (query.isNotEmpty)
+                            if (_query.isNotEmpty)
                               GestureDetector(
                                 onTap: () {
                                   _searchCtrl.clear();
-                                  setState(() => query = '');
+                                  setState(() => _query = '');
                                 },
-                                child: Icon(
-                                  Icons.close,
-                                  color: Colors.white.withOpacity(0.45),
-                                  size: 18,
-                                ),
+                                child: Icon(Icons.close,
+                                    color: Colors.white.withOpacity(0.45),
+                                    size: 18),
                               ),
                           ],
                         ),
@@ -230,7 +343,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
                     const SizedBox(height: 6),
                     Text(
-                      l10n.taskQuestCount(visible.length),
+                      l10n.taskQuestCount(visibleCount),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.38),
                         fontSize: 12,
@@ -242,26 +355,18 @@ class _TaskListScreenState extends State<TaskListScreen> {
                 ),
               ),
 
-              // Aufgaben-Liste
+              // ── Phasen-Liste ──────────────────────────────
               Expanded(
-                child: ListView.separated(
+                child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                  itemCount: visible.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 10),
-                  itemBuilder: (context, i) {
-                    final task  = visible[i];
-                    final id    = task['id'] as String;
-                    final title = (task['title'] as String?) ?? '';
-                    final desc  = (task['description'] as String?) ?? '';
-                    final done  = TaskStore.isDone(id);
-
-                    return _TaskCard(
-                      title: title,
-                      desc: desc,
-                      done: done,
-                      onToggle: () async {
-                        await TaskStore.setDone(id, !done);
+                  itemCount: filtered.length,
+                  itemBuilder: (context, phaseIndex) {
+                    final phase = filtered[phaseIndex];
+                    return _PhaseSection(
+                      phase:   phase,
+                      onToggle: (id, current) async {
+                        await TaskStore.setDone(id, !current);
                         if (mounted) setState(() {});
                       },
                     );
@@ -276,9 +381,104 @@ class _TaskListScreenState extends State<TaskListScreen> {
   }
 }
 
-// ──────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
+// Phasen-Abschnitt mit Header + Karten
+// ──────────────────────────────────────────────────────────────
+
+class _PhaseSection extends StatelessWidget {
+  final _Phase phase;
+  final Future<void> Function(String id, bool currentDone) onToggle;
+
+  const _PhaseSection({required this.phase, required this.onToggle});
+
+  @override
+  Widget build(BuildContext context) {
+    final doneInPhase =
+        phase.quests.where((q) => TaskStore.isDone(q.id)).length;
+    final total = phase.quests.length;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // ── Phasen-Header ─────────────────────────────────
+        if (phase.label.isNotEmpty) ...[
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              // Phasen-Badge
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF7C4DFF).withOpacity(0.20),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: const Color(0xFF9C6FFF).withOpacity(0.40),
+                  ),
+                ),
+                child: Text(
+                  phase.label.toUpperCase(),
+                  style: TextStyle(
+                    color: const Color(0xFF9C6FFF).withOpacity(0.90),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              // Mini-Fortschritt der Phase
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: LinearProgressIndicator(
+                    value: total == 0 ? 0 : doneInPhase / total,
+                    minHeight: 4,
+                    backgroundColor: Colors.white.withOpacity(0.08),
+                    valueColor: const AlwaysStoppedAnimation(
+                        Color(0xFF9C6FFF)),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                '$doneInPhase/$total',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.40),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+        ] else
+          const SizedBox(height: 8),
+
+        // ── Auftrags-Karten ───────────────────────────────
+        ...phase.quests.asMap().entries.map((entry) {
+          final i    = entry.key;
+          final quest = entry.value;
+          final done  = TaskStore.isDone(quest.id);
+          return Padding(
+            padding: EdgeInsets.only(bottom: i < phase.quests.length - 1 ? 10 : 0),
+            child: _TaskCard(
+              title:    quest.title,
+              desc:     quest.description,
+              done:     done,
+              onToggle: () => onToggle(quest.id, done),
+            ),
+          );
+        }),
+      ],
+    );
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
 // Header
-// ──────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
+
 class _Header extends StatelessWidget {
   final String title;
   const _Header({required this.title});
@@ -289,10 +489,8 @@ class _Header extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white.withOpacity(0.90),
-          ),
+          icon: Icon(Icons.arrow_back,
+              color: Colors.white.withOpacity(0.90)),
         ),
         const SizedBox(width: 4),
         Expanded(
@@ -313,13 +511,14 @@ class _Header extends StatelessWidget {
   }
 }
 
-// ──────────────────────────────────────────────
-// Task Card
-// ──────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
+// Auftrags-Karte
+// ──────────────────────────────────────────────────────────────
+
 class _TaskCard extends StatelessWidget {
   final String title;
   final String desc;
-  final bool done;
+  final bool   done;
   final VoidCallback onToggle;
 
   const _TaskCard({
@@ -389,8 +588,8 @@ class _TaskCard extends StatelessWidget {
                       Text(
                         desc,
                         style: TextStyle(
-                          color:
-                              Colors.white.withOpacity(done ? 0.30 : 0.55),
+                          color: Colors.white
+                              .withOpacity(done ? 0.30 : 0.55),
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
                           height: 1.35,

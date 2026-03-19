@@ -1,144 +1,114 @@
 {
-  "tasks": [
+  "phases": [
     {
-      "id": "lego_01",
-      "title": "Besiege einen Feuerdrachen",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 1,
+      "label": { "de": "Ninjago-Herausforderungen", "en": "Ninjago Challenges" },
+      "quests": ["lego_01","lego_02","lego_03","lego_04","lego_05","lego_06","lego_07","lego_08","lego_09","lego_10","lego_11","lego_12","lego_13","lego_14","lego_15","lego_16","lego_17","lego_18","lego_19"]
     },
     {
-      "id": "lego_02",
-      "title": "Besiege Elementarbären",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 2,
+      "label": { "de": "Ninjago Meilensteine Phase 1/20", "en": "Ninjago Milestones Phase 1/20" },
+      "quests": ["lego_ms_p01_01","lego_ms_p01_02","lego_ms_p01_03","lego_ms_p01_04"]
     },
     {
-      "id": "lego_03",
-      "title": "Besiege Elementarroller",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 3,
+      "label": { "de": "Ninjago Meilensteine Phase 2/20", "en": "Ninjago Milestones Phase 2/20" },
+      "quests": []
     },
     {
-      "id": "lego_04",
-      "title": "Besiege Elementarwölfe",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 4,
+      "label": { "de": "Ninjago Meilensteine Phase 3/20", "en": "Ninjago Milestones Phase 3/20" },
+      "quests": []
     },
     {
-      "id": "lego_05",
-      "title": "Besiege Gegner mit Gegenangriff nach Nunchaku-Abwehr",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 5,
+      "label": { "de": "Ninjago Meilensteine Phase 4/20", "en": "Ninjago Milestones Phase 4/20" },
+      "quests": []
     },
     {
-      "id": "lego_06",
-      "title": "Besiege glockenförmige Verlorene Meister",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 6,
+      "label": { "de": "Ninjago Meilensteine Phase 5/20", "en": "Ninjago Milestones Phase 5/20" },
+      "quests": []
     },
     {
-      "id": "lego_07",
-      "title": "Besuche das Blitzheiligtum",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 7,
+      "label": { "de": "Ninjago Meilensteine Phase 6/20", "en": "Ninjago Milestones Phase 6/20" },
+      "quests": []
     },
     {
-      "id": "lego_08",
-      "title": "Besuche das Eisheiligtum",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 8,
+      "label": { "de": "Ninjago Meilensteine Phase 7/20", "en": "Ninjago Milestones Phase 7/20" },
+      "quests": []
     },
     {
-      "id": "lego_09",
-      "title": "Besuche das Erdheiligtum",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 9,
+      "label": { "de": "Ninjago Meilensteine Phase 8/20", "en": "Ninjago Milestones Phase 8/20" },
+      "quests": []
     },
     {
-      "id": "lego_10",
-      "title": "Füge Gegnern Schaden mit dem Nunchaku-Sprintangriff zu",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1.000"
+      "phase": 10,
+      "label": { "de": "Ninjago Meilensteine Phase 9/20", "en": "Ninjago Milestones Phase 9/20" },
+      "quests": []
     },
     {
-      "id": "lego_11",
-      "title": "Öffne tägliche Truhen",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 11,
+      "label": { "de": "Ninjago Meilensteine Phase 10/20", "en": "Ninjago Milestones Phase 10/20" },
+      "quests": []
     },
     {
-      "id": "lego_12",
-      "title": "Schließe Ninjago-Chaos-Herausforderungen ab",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/20"
+      "phase": 12,
+      "label": { "de": "Ninjago Meilensteine Phase 11/20", "en": "Ninjago Milestones Phase 11/20" },
+      "quests": []
     },
     {
-      "id": "lego_13",
-      "title": "Schließe Portale",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 13,
+      "label": { "de": "Ninjago Meilensteine Phase 12/20", "en": "Ninjago Milestones Phase 12/20" },
+      "quests": []
     },
     {
-      "id": "lego_14",
-      "title": "Stelle die Blitz-Spinjitzu-Meisterrolle her",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 14,
+      "label": { "de": "Ninjago Meilensteine Phase 13/20", "en": "Ninjago Milestones Phase 13/20" },
+      "quests": []
     },
     {
-      "id": "lego_15",
-      "title": "Stelle die Eis-Spinjitzu-Meisterrolle her",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 15,
+      "label": { "de": "Ninjago Meilensteine Phase 14/20", "en": "Ninjago Milestones Phase 14/20" },
+      "quests": []
     },
     {
-      "id": "lego_16",
-      "title": "Stelle die Erd-Spinjitzu-Meisterrolle her",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/1"
+      "phase": 16,
+      "label": { "de": "Ninjago Meilensteine Phase 15/20", "en": "Ninjago Milestones Phase 15/20" },
+      "quests": []
     },
     {
-      "id": "lego_17",
-      "title": "Stelle Ninja-Relikte her",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/5"
+      "phase": 17,
+      "label": { "de": "Ninjago Meilensteine Phase 16/20", "en": "Ninjago Milestones Phase 16/20" },
+      "quests": []
     },
     {
-      "id": "lego_18",
-      "title": "Stelle Nunchakus her",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/3"
+      "phase": 18,
+      "label": { "de": "Ninjago Meilensteine Phase 17/20", "en": "Ninjago Milestones Phase 17/20" },
+      "quests": []
     },
     {
-      "id": "lego_19",
-      "title": "Stelle Shuriken her",
-      "description": "Ninjago-Herausforderungen • 10k XP • 0/3"
+      "phase": 19,
+      "label": { "de": "Ninjago Meilensteine Phase 18/20", "en": "Ninjago Milestones Phase 18/20" },
+      "quests": []
     },
     {
-      "id": "lego_20",
-      "title": "Füge Blitzschaden zu – Teil 1",
-      "description": "Ninjago Meilensteine • 10k XP • 0/1.000"
+      "phase": 20,
+      "label": { "de": "Ninjago Meilensteine Phase 19/20", "en": "Ninjago Milestones Phase 19/20" },
+      "quests": []
     },
     {
-      "id": "lego_21",
-      "title": "Füge Eisschaden zu – Teil 1",
-      "description": "Ninjago Meilensteine • 10k XP • 0/1.000"
+      "phase": 21,
+      "label": { "de": "Ninjago Meilensteine Phase 20/20", "en": "Ninjago Milestones Phase 20/20" },
+      "quests": []
     },
     {
-      "id": "lego_22",
-      "title": "Füge Erdschaden zu – Teil 1",
-      "description": "Ninjago Meilensteine • 10k XP • 0/1.000"
-    },
-    {
-      "id": "lego_23",
-      "title": "Großwildjäger: Elementarwölfe",
-      "description": "Ninjago Meilensteine • 10k XP • 0/5"
-    },
-    {
-      "id": "lego_24",
-      "title": "Besiege 'Zerbrochene Seele'-Horden",
-      "description": "Tränke sind da • 20k XP • 0/50"
-    },
-    {
-      "id": "lego_25",
-      "title": "Besiege Gegner mit Heldenfähigkeiten",
-      "description": "Tränke sind da • 20k XP • 0/50"
-    },
-    {
-      "id": "lego_26",
-      "title": "Stelle Heldenfähigkeit-Gegenstände her",
-      "description": "Tränke sind da • 20k XP • 0/5"
-    },
-    {
-      "id": "lego_27",
-      "title": "Stelle Mahlzeiten im Ofen her",
-      "description": "Tränke sind da • 20k XP • 0/1"
-    },
-    {
-      "id": "lego_28",
-      "title": "Stelle Tränke her und verwende sie",
-      "description": "Tränke sind da • 20k XP • 0/50"
+      "phase": 22,
+      "label": { "de": "Tränke sind da", "en": "Potions Are Here" },
+      "quests": ["lego_24","lego_25","lego_26","lego_27","lego_28"]
     }
   ]
 }

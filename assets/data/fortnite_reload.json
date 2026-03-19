@@ -1,54 +1,9 @@
 {
-  "tasks": [
+  "phases": [
     {
-      "id": "reload_01",
-      "title": "Lande bei benannten Orten",
-      "description": "Surf City-Insel • 15k XP • 0/15"
-    },
-    {
-      "id": "reload_02",
-      "title": "Lege Distanz beim Rutschen zurück",
-      "description": "Surf City-Insel • 15k XP • 0/720"
-    },
-    {
-      "id": "reload_03",
-      "title": "Eliminiere Spieler, bevor du neustartest",
-      "description": "Surf City-Insel • 15k XP • 0/15"
-    },
-    {
-      "id": "reload_04",
-      "title": "Durchsuche Truhen oder Munitionskisten",
-      "description": "Surf City-Insel • 15k XP • 0/35"
-    },
-    {
-      "id": "reload_05",
-      "title": "Eliminiere Spieler",
-      "description": "Surf City-Insel • 15k XP • 0/30"
-    },
-    {
-      "id": "reload_06",
-      "title": "Füge Spielern im Verlauf eines Matches Schaden zu",
-      "description": "Surf City-Insel • 15k XP • 0/500"
-    },
-    {
-      "id": "reload_07",
-      "title": "Erledige gegnerische Teams komplett oder erhalte einen Neustart",
-      "description": "Surf City-Insel • 15k XP • 0/15"
-    },
-    {
-      "id": "reload_08",
-      "title": "Durchbrich Schilde von Spielern",
-      "description": "Surf City-Insel • 15k XP • 0/20"
-    },
-    {
-      "id": "reload_09",
-      "title": "Baue oder zerstöre Gebäude",
-      "description": "Surf City-Insel • 15k XP • 0/65"
-    },
-    {
-      "id": "reload_10",
-      "title": "Überlebe Sturmphasen",
-      "description": "Surf City-Insel • 15k XP • 0/25"
+      "phase": 1,
+      "label": { "de": "Surf City-Insel", "en": "Surf City Island" },
+      "quests": ["reload_01","reload_02","reload_03","reload_04","reload_05","reload_06","reload_07","reload_08","reload_09","reload_10"]
     }
   ]
 }
