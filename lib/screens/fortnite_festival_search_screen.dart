@@ -24,7 +24,7 @@ class _FortniteFestivalSearchScreenState
     extends State<FortniteFestivalSearchScreen> {
   final TextEditingController _controller = TextEditingController();
 
-  List<FestivalSongDetails> _songs    = [];
+  List<FestivalSongDetails> _songs = [];
   List<FestivalSongDetails> _filtered = [];
   bool _loading = true;
 
@@ -68,11 +68,12 @@ class _FortniteFestivalSearchScreenState
             .where((s) => s.songId.trim().isNotEmpty)
             .toList();
         _songs.sort(
-            (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+          (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()),
+        );
         _filtered = List.of(_songs);
       }
     } catch (_) {
-      _songs    = [];
+      _songs = [];
       _filtered = [];
     }
   }
@@ -94,7 +95,7 @@ class _FortniteFestivalSearchScreenState
   void _openDetails(FestivalSongDetails song) {
     showFestivalSongDetailsSheet(
       context,
-      song:       song,
+      song: song,
       collection: widget.collection,
     );
   }
@@ -142,18 +143,23 @@ class _FortniteFestivalSearchScreenState
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: l10n.festivalSearchHint,
-                      hintStyle:
-                          TextStyle(color: Colors.white.withOpacity(0.40)),
-                      prefixIcon: Icon(Icons.search,
-                          color: Colors.white.withOpacity(0.55)),
+                      hintStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.40),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white.withOpacity(0.55),
+                      ),
                       suffixIcon: _controller.text.isNotEmpty
                           ? IconButton(
-                              icon: Icon(Icons.clear,
-                                  color: Colors.white.withOpacity(0.55)),
+                              icon: Icon(
+                                Icons.clear,
+                                color: Colors.white.withOpacity(0.55),
+                              ),
                               onPressed: () => _controller.clear(),
                             )
                           : null,
-                      border:        InputBorder.none,
+                      border: InputBorder.none,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -180,30 +186,32 @@ class _FortniteFestivalSearchScreenState
                   child: _loading
                       ? const Center(
                           child: CircularProgressIndicator(
-                              color: Color(0xFF9C6FFF)),
+                            color: Color(0xFF9C6FFF),
+                          ),
                         )
                       : _filtered.isEmpty
-                          ? Center(
-                              child: Text(
-                                l10n.noResults,
-                                style: TextStyle(
-                                    color: Colors.white.withOpacity(0.45)),
-                              ),
-                            )
-                          : ListView.separated(
-                              physics: const BouncingScrollPhysics(),
-                              itemCount: _filtered.length,
-                              separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 8),
-                              itemBuilder: (context, i) {
-                                final song = _filtered[i];
-                                return _SongTile(
-                                  song:       song,
-                                  collection: widget.collection,
-                                  onTap: () => _openDetails(song),
-                                );
-                              },
+                      ? Center(
+                          child: Text(
+                            l10n.noResults,
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.45),
                             ),
+                          ),
+                        )
+                      : ListView.separated(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: _filtered.length,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 8),
+                          itemBuilder: (context, i) {
+                            final song = _filtered[i];
+                            return _SongTile(
+                              song: song,
+                              collection: widget.collection,
+                              onTap: () => _openDetails(song),
+                            );
+                          },
+                        ),
                 ),
               ],
             ),
@@ -216,8 +224,8 @@ class _FortniteFestivalSearchScreenState
 
 class _SongTile extends StatelessWidget {
   final FestivalSongDetails song;
-  final CollectionStore     collection;
-  final VoidCallback        onTap;
+  final CollectionStore collection;
+  final VoidCallback onTap;
 
   const _SongTile({
     required this.song,
@@ -230,8 +238,14 @@ class _SongTile extends StatelessWidget {
     return AnimatedBuilder(
       animation: collection,
       builder: (context, _) {
-        final owned  = collection.isOwned(CollectionStore.categoryFestivalSong, song.songId);
-        final wished = collection.isWished(CollectionStore.categoryFestivalSong, song.songId);
+        final owned = collection.isOwned(
+          CollectionStore.categoryFestivalSong,
+          song.songId,
+        );
+        final wished = collection.isWished(
+          CollectionStore.categoryFestivalSong,
+          song.songId,
+        );
         final apiData = FestivalApiService.instance.lookup(song.songId);
         final hasDiff = apiData != null && apiData.difficulty.hasAny;
 
@@ -272,7 +286,7 @@ class _SongTile extends StatelessWidget {
                         ),
                         if (hasDiff) ...[
                           const SizedBox(height: 6),
-                          _MiniDifficultyBars(difficulty: apiData!.difficulty),
+                          _MiniDifficultyBars(difficulty: apiData.difficulty),
                         ],
                       ],
                     ),
@@ -281,16 +295,25 @@ class _SongTile extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (owned)
-                        const Icon(Icons.check_circle,
-                            color: Color(0xFF00E676), size: 18),
+                        const Icon(
+                          Icons.check_circle,
+                          color: Color(0xFF00E676),
+                          size: 18,
+                        ),
                       if (wished)
-                        const Icon(Icons.favorite,
-                            color: Color(0xFFFF4081), size: 18),
+                        const Icon(
+                          Icons.favorite,
+                          color: Color(0xFFFF4081),
+                          size: 18,
+                        ),
                     ],
                   ),
                   const SizedBox(width: 4),
-                  Icon(Icons.chevron_right,
-                      color: Colors.white.withOpacity(0.30), size: 20),
+                  Icon(
+                    Icons.chevron_right,
+                    color: Colors.white.withOpacity(0.30),
+                    size: 20,
+                  ),
                 ],
               ),
             ),
@@ -310,8 +333,8 @@ class _MiniDifficultyBars extends StatelessWidget {
     final instruments = [
       (difficulty.vocals, const Color(0xFFFF6EC7)),
       (difficulty.guitar, const Color(0xFFFFD600)),
-      (difficulty.bass,   const Color(0xFF40C4FF)),
-      (difficulty.drums,  const Color(0xFFFF5252)),
+      (difficulty.bass, const Color(0xFF40C4FF)),
+      (difficulty.drums, const Color(0xFFFF5252)),
     ];
     return Row(
       children: instruments.map((entry) {
@@ -322,14 +345,18 @@ class _MiniDifficultyBars extends StatelessWidget {
           padding: const EdgeInsets.only(right: 6),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: List.generate(7, (i) => Container(
-              width: 5, height: 8,
-              margin: const EdgeInsets.symmetric(horizontal: 1),
-              decoration: BoxDecoration(
-                color: i < value ? color : color.withOpacity(0.12),
-                borderRadius: BorderRadius.circular(2),
+            children: List.generate(
+              7,
+              (i) => Container(
+                width: 5,
+                height: 8,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration: BoxDecoration(
+                  color: i < value ? color : color.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
-            )),
+            ),
           ),
         );
       }).toList(),
@@ -344,7 +371,8 @@ class _MiniAlbumCover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 48, height: 48,
+      width: 48,
+      height: 48,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white.withOpacity(0.07),
@@ -353,13 +381,16 @@ class _MiniAlbumCover extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(9),
         child: (url != null && url!.isNotEmpty)
-            ? Image.network(url!, fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => _icon())
+            ? Image.network(
+                url!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => _icon(),
+              )
             : _icon(),
       ),
     );
   }
 
-  Widget _icon() => Icon(Icons.music_note,
-      color: Colors.white.withOpacity(0.30), size: 22);
+  Widget _icon() =>
+      Icon(Icons.music_note, color: Colors.white.withOpacity(0.30), size: 22);
 }

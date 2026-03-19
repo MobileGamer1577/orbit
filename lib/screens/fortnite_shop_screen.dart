@@ -3,24 +3,23 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/shop_service.dart';
 import '../theme/orbit_theme.dart';
-import '../widgets/orbit_glass_card.dart';
 
 const _rarityColors = {
-  'common':        Color(0xFF8F8F8F),
-  'uncommon':      Color(0xFF2ECC40),
-  'rare':          Color(0xFF0077FF),
-  'epic':          Color(0xFF9B59B6),
-  'legendary':     Color(0xFFFF8C00),
-  'mythic':        Color(0xFFFFD700),
-  'exotic':        Color(0xFF00E5FF),
-  'transcendent':  Color(0xFFFF1744),
-  'slurp':         Color(0xFF00E5FF),
+  'common': Color(0xFF8F8F8F),
+  'uncommon': Color(0xFF2ECC40),
+  'rare': Color(0xFF0077FF),
+  'epic': Color(0xFF9B59B6),
+  'legendary': Color(0xFFFF8C00),
+  'mythic': Color(0xFFFFD700),
+  'exotic': Color(0xFF00E5FF),
+  'transcendent': Color(0xFFFF1744),
+  'slurp': Color(0xFF00E5FF),
   'gaminglegends': Color(0xFF6200EA),
-  'shadow':        Color(0xFF616161),
-  'icon':          Color(0xFF1DE9B6),
-  'marvel':        Color(0xFFFF1744),
-  'dc':            Color(0xFF1565C0),
-  'starwars':      Color(0xFFFFD600),
+  'shadow': Color(0xFF616161),
+  'icon': Color(0xFF1DE9B6),
+  'marvel': Color(0xFFFF1744),
+  'dc': Color(0xFF1565C0),
+  'starwars': Color(0xFFFFD600),
 };
 
 Color _rarityColor(String rarity) =>
@@ -75,8 +74,10 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back,
-                          color: Colors.white.withOpacity(0.90)),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white.withOpacity(0.90),
+                      ),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
@@ -94,11 +95,17 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                       onPressed: _service.loading ? null : _service.fetch,
                       icon: _service.loading
                           ? const SizedBox(
-                              width: 20, height: 20,
+                              width: 20,
+                              height: 20,
                               child: CircularProgressIndicator(
-                                  strokeWidth: 2, color: Colors.white))
-                          : Icon(Icons.refresh,
-                              color: Colors.white.withOpacity(0.80)),
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : Icon(
+                              Icons.refresh,
+                              color: Colors.white.withOpacity(0.80),
+                            ),
                     ),
                   ],
                 ),
@@ -132,27 +139,38 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   Widget _buildBody(AppLocalizations l10n) {
     if (_service.loading && _service.data == null) {
       return Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          const CircularProgressIndicator(color: Color(0xFF9C6FFF)),
-          const SizedBox(height: 16),
-          Text(l10n.shopLoading,
-              style: const TextStyle(color: Colors.white54, fontSize: 15)),
-        ]),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CircularProgressIndicator(color: Color(0xFF9C6FFF)),
+            const SizedBox(height: 16),
+            Text(
+              l10n.shopLoading,
+              style: const TextStyle(color: Colors.white54, fontSize: 15),
+            ),
+          ],
+        ),
       );
     }
 
     if (_service.error != null && _service.data == null) {
       return _ErrorView(
-          error: _service.error!, onRetry: _service.fetch, l10n: l10n);
+        error: _service.error!,
+        onRetry: _service.fetch,
+        l10n: l10n,
+      );
     }
 
     if (_service.data == null || _service.data!.entries.isEmpty) {
       return _ErrorView(
-          error: l10n.shopEmpty, onRetry: _service.fetch, l10n: l10n);
+        error: l10n.shopEmpty,
+        onRetry: _service.fetch,
+        l10n: l10n,
+      );
     }
 
     final sections = _service.data!.bySection;
-    final imgMap   = _service.data!.cosmeticImages;
+    final imgMap = _service.data!.cosmeticImages;
 
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
@@ -160,7 +178,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
       itemCount: sections.length,
       itemBuilder: (context, si) {
         final sectionName = sections.keys.elementAt(si);
-        final entries     = sections[sectionName]!;
+        final entries = sections[sectionName]!;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,8 +197,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
@@ -198,16 +215,16 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 }
 
 class _ShopCard extends StatelessWidget {
-  final ShopEntry                   entry;
+  final ShopEntry entry;
   final Map<String, CosmeticImages> imgMap;
 
   const _ShopCard({required this.entry, required this.imgMap});
 
   @override
   Widget build(BuildContext context) {
-    final rarity      = entry.primaryRarity;
+    final rarity = entry.primaryRarity;
     final accentColor = _rarityColor(rarity);
-    final imageUrl    = entry.imageFor(imgMap);
+    final imageUrl = entry.imageFor(imgMap);
 
     return Container(
       decoration: BoxDecoration(
@@ -220,8 +237,7 @@ class _ShopCard extends StatelessWidget {
             Colors.white.withOpacity(0.03),
           ],
         ),
-        border: Border.all(
-            color: accentColor.withOpacity(0.45), width: 1.2),
+        border: Border.all(color: accentColor.withOpacity(0.45), width: 1.2),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(17),
@@ -249,32 +265,35 @@ class _ShopCard extends StatelessWidget {
                       imageUrl,
                       fit: BoxFit.contain,
                       errorBuilder: (_, __, ___) => const _NoImage(),
-                      loadingBuilder: (_, child, progress) =>
-                          progress == null
-                              ? child
-                              : Center(
-                                  child: SizedBox(
-                                    width: 22, height: 22,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: accentColor.withOpacity(0.60),
-                                    ),
-                                  ),
+                      loadingBuilder: (_, child, progress) => progress == null
+                          ? child
+                          : Center(
+                              child: SizedBox(
+                                width: 22,
+                                height: 22,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: accentColor.withOpacity(0.60),
                                 ),
+                              ),
+                            ),
                     )
                   else
                     const _NoImage(),
                   if (entry.isOnSale)
                     Positioned(
-                      top: 7, right: 7,
+                      top: 7,
+                      right: 7,
                       child: _Badge(label: 'SALE', color: Colors.red.shade600),
                     ),
                   if (entry.isBundle)
                     Positioned(
-                      top: 7, left: 7,
+                      top: 7,
+                      left: 7,
                       child: _Badge(
-                          label: 'BUNDLE',
-                          color: Colors.purple.shade700),
+                        label: 'BUNDLE',
+                        color: Colors.purple.shade700,
+                      ),
                     ),
                 ],
               ),
@@ -347,55 +366,66 @@ class _NoImage extends StatelessWidget {
   const _NoImage();
   @override
   Widget build(BuildContext context) => const Icon(
-        Icons.image_not_supported_outlined,
-        color: Colors.white12,
-        size: 36,
-      );
+    Icons.image_not_supported_outlined,
+    color: Colors.white12,
+    size: 36,
+  );
 }
 
 class _Badge extends StatelessWidget {
   final String label;
-  final Color  color;
+  final Color color;
   const _Badge({required this.label, required this.color});
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-        decoration: BoxDecoration(
-            color: color, borderRadius: BorderRadius.circular(6)),
-        child: Text(label,
-            style: const TextStyle(
-                color: Colors.white,
-                fontSize: 9,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 0.8)),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(6),
+    ),
+    child: Text(
+      label,
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 9,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 0.8,
+      ),
+    ),
+  );
 }
 
 class _VBucksIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-        width: 16, height: 16,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: const Color(0xFF00C8FF).withOpacity(0.20),
-          border: Border.all(
-              color: const Color(0xFF00C8FF).withOpacity(0.60), width: 1),
+    width: 16,
+    height: 16,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: const Color(0xFF00C8FF).withOpacity(0.20),
+      border: Border.all(
+        color: const Color(0xFF00C8FF).withOpacity(0.60),
+        width: 1,
+      ),
+    ),
+    child: const Center(
+      child: Text(
+        'V',
+        style: TextStyle(
+          color: Color(0xFF00C8FF),
+          fontSize: 9,
+          fontWeight: FontWeight.w900,
         ),
-        child: const Center(
-          child: Text('V',
-              style: TextStyle(
-                  color: Color(0xFF00C8FF),
-                  fontSize: 9,
-                  fontWeight: FontWeight.w900)),
-        ),
-      );
+      ),
+    ),
+  );
 }
 
 class _ErrorView extends StatelessWidget {
-  final String            error;
-  final VoidCallback      onRetry;
-  final AppLocalizations  l10n;
+  final String error;
+  final VoidCallback onRetry;
+  final AppLocalizations l10n;
 
   const _ErrorView({
     required this.error,
@@ -405,36 +435,46 @@ class _ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.storefront_outlined,
-                  color: Colors.white24, size: 52),
-              const SizedBox(height: 16),
-              Text(l10n.shopError,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.75),
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700),
-                  textAlign: TextAlign.center),
-              const SizedBox(height: 8),
-              Text(error,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.40),
-                      fontSize: 12),
-                  textAlign: TextAlign.center),
-              const SizedBox(height: 24),
-              FilledButton.icon(
-                onPressed: onRetry,
-                style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF7C4DFF)),
-                icon: const Icon(Icons.refresh),
-                label: Text(l10n.shopRetry),
-              ),
-            ],
+    child: Padding(
+      padding: const EdgeInsets.all(32),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.storefront_outlined,
+            color: Colors.white24,
+            size: 52,
           ),
-        ),
-      );
+          const SizedBox(height: 16),
+          Text(
+            l10n.shopError,
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.75),
+              fontSize: 17,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            error,
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.40),
+              fontSize: 12,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+          FilledButton.icon(
+            onPressed: onRetry,
+            style: FilledButton.styleFrom(
+              backgroundColor: const Color(0xFF7C4DFF),
+            ),
+            icon: const Icon(Icons.refresh),
+            label: Text(l10n.shopRetry),
+          ),
+        ],
+      ),
+    ),
+  );
 }

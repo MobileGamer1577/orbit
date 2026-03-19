@@ -22,13 +22,13 @@ class FortniteLockerScreen extends StatefulWidget {
 }
 
 class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
-  final TextEditingController _search      = TextEditingController();
-  final FocusNode             _searchFocus = FocusNode();
+  final TextEditingController _search = TextEditingController();
+  final FocusNode _searchFocus = FocusNode();
 
-  List<FestivalSongDetails> _songs   = [];
-  bool                      _loading = true;
-  String                    _query   = '';
-  _LockerFilter             _filter  = _LockerFilter.all;
+  List<FestivalSongDetails> _songs = [];
+  bool _loading = true;
+  String _query = '';
+  _LockerFilter _filter = _LockerFilter.all;
 
   @override
   void initState() {
@@ -83,17 +83,22 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
   }
 
   List<FestivalSongDetails> _filtered() {
-    final q      = _query.toLowerCase();
-    final owned  = widget.collection.owned(CollectionStore.categoryFestivalSong);
-    final wished = widget.collection.wishlist(CollectionStore.categoryFestivalSong);
+    final q = _query.toLowerCase();
+    final owned = widget.collection.owned(CollectionStore.categoryFestivalSong);
+    final wished = widget.collection.wishlist(
+      CollectionStore.categoryFestivalSong,
+    );
 
     bool match(FestivalSongDetails s) {
       final blob = '${s.title} ${s.artist} ${s.songId}'.toLowerCase();
       if (q.isNotEmpty && !blob.contains(q)) return false;
       switch (_filter) {
-        case _LockerFilter.all:      return true;
-        case _LockerFilter.owned:    return owned.contains(s.songId);
-        case _LockerFilter.wishlist: return wished.contains(s.songId);
+        case _LockerFilter.all:
+          return true;
+        case _LockerFilter.owned:
+          return owned.contains(s.songId);
+        case _LockerFilter.wishlist:
+          return wished.contains(s.songId);
       }
     }
 
@@ -150,23 +155,28 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                 // ── Suchfeld ──────────────────────────────
                 OrbitGlassCard(
                   child: TextField(
-                    controller:  _search,
-                    focusNode:   _searchFocus,
+                    controller: _search,
+                    focusNode: _searchFocus,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: l10n.lockerSearchHint,
-                      hintStyle:
-                          TextStyle(color: Colors.white.withOpacity(0.40)),
-                      prefixIcon: Icon(Icons.search,
-                          color: Colors.white.withOpacity(0.55)),
+                      hintStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.40),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white.withOpacity(0.55),
+                      ),
                       suffixIcon: _query.isNotEmpty
                           ? IconButton(
-                              icon: Icon(Icons.clear,
-                                  color: Colors.white.withOpacity(0.55)),
+                              icon: Icon(
+                                Icons.clear,
+                                color: Colors.white.withOpacity(0.55),
+                              ),
                               onPressed: () => _search.clear(),
                             )
                           : null,
-                      border:        InputBorder.none,
+                      border: InputBorder.none,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -176,9 +186,9 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
 
                 // ── Filter-Tabs ───────────────────────────
                 _FilterRow(
-                  value:     _filter,
+                  value: _filter,
                   onChanged: (v) => setState(() => _filter = v),
-                  l10n:      l10n,
+                  l10n: l10n,
                 ),
                 const SizedBox(height: 12),
 
@@ -187,37 +197,39 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                   child: _loading
                       ? const Center(
                           child: CircularProgressIndicator(
-                              color: Color(0xFF9C6FFF)),
+                            color: Color(0xFF9C6FFF),
+                          ),
                         )
                       : list.isEmpty
-                          ? Center(
-                              child: Text(
-                                l10n.noResults,
-                                style: TextStyle(
-                                    color: Colors.white.withOpacity(0.45)),
-                              ),
-                            )
-                          : AnimatedBuilder(
-                              animation: widget.collection,
-                              builder: (context, _) => ListView.separated(
-                                physics: const BouncingScrollPhysics(),
-                                itemCount: list.length,
-                                separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 8),
-                                itemBuilder: (context, i) {
-                                  final song = list[i];
-                                  return _LockerTile(
-                                    song:       song,
-                                    collection: widget.collection,
-                                    onTap: () => showFestivalSongDetailsSheet(
-                                      context,
-                                      song:       song,
-                                      collection: widget.collection,
-                                    ),
-                                  );
-                                },
-                              ),
+                      ? Center(
+                          child: Text(
+                            l10n.noResults,
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.45),
                             ),
+                          ),
+                        )
+                      : AnimatedBuilder(
+                          animation: widget.collection,
+                          builder: (context, _) => ListView.separated(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: list.length,
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(height: 8),
+                            itemBuilder: (context, i) {
+                              final song = list[i];
+                              return _LockerTile(
+                                song: song,
+                                collection: widget.collection,
+                                onTap: () => showFestivalSongDetailsSheet(
+                                  context,
+                                  song: song,
+                                  collection: widget.collection,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                 ),
               ],
             ),
@@ -229,9 +241,9 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
 }
 
 class _FilterRow extends StatelessWidget {
-  final _LockerFilter               value;
+  final _LockerFilter value;
   final ValueChanged<_LockerFilter> onChanged;
-  final AppLocalizations            l10n;
+  final AppLocalizations l10n;
 
   const _FilterRow({
     required this.value,
@@ -243,55 +255,66 @@ class _FilterRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _Tab(label: l10n.filterAll,      active: value == _LockerFilter.all,
-             onTap: () => onChanged(_LockerFilter.all)),
+        _Tab(
+          label: l10n.filterAll,
+          active: value == _LockerFilter.all,
+          onTap: () => onChanged(_LockerFilter.all),
+        ),
         const SizedBox(width: 8),
-        _Tab(label: l10n.filterOwned,    active: value == _LockerFilter.owned,
-             onTap: () => onChanged(_LockerFilter.owned)),
+        _Tab(
+          label: l10n.filterOwned,
+          active: value == _LockerFilter.owned,
+          onTap: () => onChanged(_LockerFilter.owned),
+        ),
         const SizedBox(width: 8),
-        _Tab(label: l10n.filterWishlist, active: value == _LockerFilter.wishlist,
-             onTap: () => onChanged(_LockerFilter.wishlist)),
+        _Tab(
+          label: l10n.filterWishlist,
+          active: value == _LockerFilter.wishlist,
+          onTap: () => onChanged(_LockerFilter.wishlist),
+        ),
       ],
     );
   }
 }
 
 class _Tab extends StatelessWidget {
-  final String label; final bool active; final VoidCallback onTap;
+  final String label;
+  final bool active;
+  final VoidCallback onTap;
   const _Tab({required this.label, required this.active, required this.onTap});
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(999),
-            color: active
-                ? const Color(0xFF7C4DFF).withOpacity(0.28)
-                : Colors.white.withOpacity(0.07),
-            border: Border.all(
-              color: active
-                  ? const Color(0xFF9C6FFF).withOpacity(0.60)
-                  : Colors.white.withOpacity(0.10),
-            ),
-          ),
-          child: Text(
-            label,
-            style: TextStyle(
-              color: active ? Colors.white : Colors.white.withOpacity(0.55),
-              fontWeight: active ? FontWeight.w700 : FontWeight.w500,
-              fontSize: 13,
-            ),
-          ),
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        color: active
+            ? const Color(0xFF7C4DFF).withOpacity(0.28)
+            : Colors.white.withOpacity(0.07),
+        border: Border.all(
+          color: active
+              ? const Color(0xFF9C6FFF).withOpacity(0.60)
+              : Colors.white.withOpacity(0.10),
         ),
-      );
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          color: active ? Colors.white : Colors.white.withOpacity(0.55),
+          fontWeight: active ? FontWeight.w700 : FontWeight.w500,
+          fontSize: 13,
+        ),
+      ),
+    ),
+  );
 }
 
 class _LockerTile extends StatelessWidget {
   final FestivalSongDetails song;
-  final CollectionStore     collection;
-  final VoidCallback        onTap;
+  final CollectionStore collection;
+  final VoidCallback onTap;
 
   const _LockerTile({
     required this.song,
@@ -301,9 +324,15 @@ class _LockerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final owned   = collection.isOwned(CollectionStore.categoryFestivalSong, song.songId);
-    final wished  = collection.isWished(CollectionStore.categoryFestivalSong, song.songId);
-    final api     = FestivalApiService.instance.lookup(song.songId);
+    final owned = collection.isOwned(
+      CollectionStore.categoryFestivalSong,
+      song.songId,
+    );
+    final wished = collection.isWished(
+      CollectionStore.categoryFestivalSong,
+      song.songId,
+    );
+    final api = FestivalApiService.instance.lookup(song.songId);
     final hasDiff = api != null && api.difficulty.hasAny;
 
     return OrbitGlassCard(
@@ -343,7 +372,7 @@ class _LockerTile extends StatelessWidget {
                     ),
                     if (hasDiff) ...[
                       const SizedBox(height: 6),
-                      _MiniDiffBars(difficulty: api!.difficulty),
+                      _MiniDiffBars(difficulty: api.difficulty),
                     ],
                   ],
                 ),
@@ -352,16 +381,25 @@ class _LockerTile extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (owned)
-                    const Icon(Icons.check_circle,
-                        color: Color(0xFF00E676), size: 18),
+                    const Icon(
+                      Icons.check_circle,
+                      color: Color(0xFF00E676),
+                      size: 18,
+                    ),
                   if (wished)
-                    const Icon(Icons.favorite,
-                        color: Color(0xFFFF4081), size: 18),
+                    const Icon(
+                      Icons.favorite,
+                      color: Color(0xFFFF4081),
+                      size: 18,
+                    ),
                 ],
               ),
               const SizedBox(width: 4),
-              Icon(Icons.chevron_right,
-                  color: Colors.white.withOpacity(0.30), size: 20),
+              Icon(
+                Icons.chevron_right,
+                color: Colors.white.withOpacity(0.30),
+                size: 20,
+              ),
             ],
           ),
         ),
@@ -376,20 +414,24 @@ class _MiniAlbumCover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: 48, height: 48,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white.withOpacity(0.07),
-          border: Border.all(color: Colors.white.withOpacity(0.10)),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(9),
-          child: (url != null && url!.isNotEmpty)
-              ? Image.network(url!, fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => _icon())
-              : _icon(),
-        ),
-      );
+    width: 48,
+    height: 48,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.white.withOpacity(0.07),
+      border: Border.all(color: Colors.white.withOpacity(0.10)),
+    ),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(9),
+      child: (url != null && url!.isNotEmpty)
+          ? Image.network(
+              url!,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => _icon(),
+            )
+          : _icon(),
+    ),
+  );
 
   Widget _icon() =>
       Icon(Icons.music_note, color: Colors.white.withOpacity(0.30), size: 22);
@@ -404,8 +446,8 @@ class _MiniDiffBars extends StatelessWidget {
     final instruments = [
       (difficulty.vocals, const Color(0xFFFF6EC7)),
       (difficulty.guitar, const Color(0xFFFFD600)),
-      (difficulty.bass,   const Color(0xFF40C4FF)),
-      (difficulty.drums,  const Color(0xFFFF5252)),
+      (difficulty.bass, const Color(0xFF40C4FF)),
+      (difficulty.drums, const Color(0xFFFF5252)),
     ];
     return Row(
       children: instruments.map((e) {
@@ -414,14 +456,18 @@ class _MiniDiffBars extends StatelessWidget {
           padding: const EdgeInsets.only(right: 6),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: List.generate(7, (i) => Container(
-              width: 5, height: 8,
-              margin: const EdgeInsets.symmetric(horizontal: 1),
-              decoration: BoxDecoration(
-                color: i < e.$1 ? e.$2 : e.$2.withOpacity(0.12),
-                borderRadius: BorderRadius.circular(2),
+            children: List.generate(
+              7,
+              (i) => Container(
+                width: 5,
+                height: 8,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration: BoxDecoration(
+                  color: i < e.$1 ? e.$2 : e.$2.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
-            )),
+            ),
           ),
         );
       }).toList(),
