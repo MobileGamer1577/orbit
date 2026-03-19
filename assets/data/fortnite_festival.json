@@ -8,27 +8,9 @@
     {
       "type": "milestone",
       "label": { "de": "Hauptbühne – Meilenstein Aufträge", "en": "Main Stage – Milestone Quests" },
-      "milestone_phases": [
-        { "quests": ["festival_hb_ms_p01_01","festival_hb_ms_p01_02","festival_hb_ms_p01_03","festival_hb_ms_p01_04"] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] }
+      "quests": [
+        { "phases": ["festival_hb_ms_daily_p01","festival_hb_ms_daily_p02","festival_hb_ms_daily_p03","festival_hb_ms_daily_p04","festival_hb_ms_daily_p05","festival_hb_ms_daily_p06","festival_hb_ms_daily_p07","festival_hb_ms_daily_p08","festival_hb_ms_daily_p09","festival_hb_ms_daily_p10","festival_hb_ms_daily_p11","festival_hb_ms_daily_p12","festival_hb_ms_daily_p13","festival_hb_ms_daily_p14","festival_hb_ms_daily_p15","festival_hb_ms_daily_p16","festival_hb_ms_daily_p17","festival_hb_ms_daily_p18","festival_hb_ms_daily_p19","festival_hb_ms_daily_p20"] },
+        { "phases": ["festival_hb_ms_stars_p01","festival_hb_ms_stars_p02","festival_hb_ms_stars_p03","festival_hb_ms_stars_p04","festival_hb_ms_stars_p05","festival_hb_ms_stars_p06","festival_hb_ms_stars_p07","festival_hb_ms_stars_p08","festival_hb_ms_stars_p09","festival_hb_ms_stars_p10","festival_hb_ms_stars_p11","festival_hb_ms_stars_p12","festival_hb_ms_stars_p13","festival_hb_ms_stars_p14","festival_hb_ms_stars_p15","festival_hb_ms_stars_p16","festival_hb_ms_stars_p17","festival_hb_ms_stars_p18","festival_hb_ms_stars_p19","festival_hb_ms_stars_p20"] }
       ]
     },
     {
@@ -44,27 +26,8 @@
     {
       "type": "milestone",
       "label": { "de": "Battle-Bühne – Meilenstein Aufträge", "en": "Battle Stage – Milestone Quests" },
-      "milestone_phases": [
-        { "quests": ["festival_bb_ms_p01_01"] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] },
-        { "quests": [] }
+      "quests": [
+        { "phases": ["festival_bb_ms_rounds_p01","festival_bb_ms_rounds_p02","festival_bb_ms_rounds_p03","festival_bb_ms_rounds_p04","festival_bb_ms_rounds_p05","festival_bb_ms_rounds_p06","festival_bb_ms_rounds_p07","festival_bb_ms_rounds_p08","festival_bb_ms_rounds_p09","festival_bb_ms_rounds_p10","festival_bb_ms_rounds_p11","festival_bb_ms_rounds_p12","festival_bb_ms_rounds_p13","festival_bb_ms_rounds_p14","festival_bb_ms_rounds_p15","festival_bb_ms_rounds_p16","festival_bb_ms_rounds_p17","festival_bb_ms_rounds_p18","festival_bb_ms_rounds_p19","festival_bb_ms_rounds_p20"] }
       ]
     }
   ]

@@ -18,51 +18,61 @@ class _QuestItem {
   const _QuestItem({required this.id, required this.title, required this.description});
 }
 
-/// Normale Phase (Starthilfe, Wochenaufträge etc.)
+/// Normaler Auftrag (kein Meilenstein)
 class _NormalPhase {
   final String label;
   final List<_QuestItem> quests;
   const _NormalPhase({required this.label, required this.quests});
 }
 
-/// Meilenstein-Phase: enthält alle 20 Unter-Phasen
-class _MilestonePhase {
-  final String label;
-  /// Index 0 = Phase 1, Index 19 = Phase 20
-  final List<List<_QuestItem>> subPhases;
-  const _MilestonePhase({required this.label, required this.subPhases});
+/// Ein einzelner Meilenstein-Auftrag mit bis zu 20 Phasen.
+/// Jede Phase ist ein eigener Quest-Eintrag in der DB.
+/// Der Fortschritt ist unabhängig von anderen Meilenstein-Aufträgen.
+class _MilestoneQuest {
+  /// Alle Phasen dieses Auftrags (Index 0 = Phase 1, Index 19 = Phase 20)
+  final List<_QuestItem> phases;
 
-  /// Die erste Phase deren Aufträge NICHT alle erledigt sind
-  int get activeSubPhaseIndex {
-    for (int i = 0; i < subPhases.length; i++) {
-      final quests = subPhases[i];
-      if (quests.isEmpty) continue; // leere Phase überspringen
-      final allDone = quests.every((q) => TaskStore.isDone(q.id));
-      if (!allDone) return i;
+  const _MilestoneQuest({required this.phases});
+
+  int get totalPhases => phases.length;
+
+  /// Index der aktuell aktiven Phase (erste nicht abgehakte)
+  int get activePhaseIndex {
+    for (int i = 0; i < phases.length; i++) {
+      if (!TaskStore.isDone(phases[i].id)) return i;
     }
-    // Alle done → letzte Phase mit Inhalt zeigen
-    for (int i = subPhases.length - 1; i >= 0; i--) {
-      if (subPhases[i].isNotEmpty) return i;
-    }
-    return 0;
+    // Alle abgehakt → letzte Phase anzeigen
+    return phases.length - 1;
   }
 
-  int get totalSubPhases => subPhases.length;
+  _QuestItem get activePhase => phases[activePhaseIndex];
 
-  /// Alle Aufträge aus allen Unterphasen (für Gesamtfortschritt)
-  List<_QuestItem> get allQuests =>
-      subPhases.expand((q) => q).toList();
+  bool get allDone => phases.every((p) => TaskStore.isDone(p.id));
+
+  /// Fortschritt: Anzahl abgehakter Phasen
+  int get doneCount => phases.where((p) => TaskStore.isDone(p.id)).length;
 }
 
-// Ein Eintrag in der gerenderten Liste ist entweder normal oder milestone
+/// Eine Meilenstein-Sektion enthält mehrere unabhängige Meilenstein-Aufträge
+class _MilestoneSection {
+  final String label;
+  final List<_MilestoneQuest> quests;
+  const _MilestoneSection({required this.label, required this.quests});
+
+  /// Gesamt-Phasen über alle Aufträge (für den Header-Fortschritt)
+  int get totalPhases => quests.fold(0, (s, q) => s + q.totalPhases);
+  int get donePhases  => quests.fold(0, (s, q) => s + q.doneCount);
+}
+
+// Polymorphe Sections-Liste
 sealed class _Section {}
-class _NormalSection extends _Section {
+class _NormalSectionItem extends _Section {
   final _NormalPhase phase;
-  _NormalSection(this.phase);
+  _NormalSectionItem(this.phase);
 }
-class _MilestoneSection extends _Section {
-  final _MilestonePhase phase;
-  _MilestoneSection(this.phase);
+class _MilestoneSectionItem extends _Section {
+  final _MilestoneSection section;
+  _MilestoneSectionItem(this.section);
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -85,9 +95,9 @@ class TaskListScreen extends StatefulWidget {
 
 class _TaskListScreenState extends State<TaskListScreen> {
   List<_Section> _sections = [];
-  bool           _loading  = true;
-  bool           _empty    = false;
-  String         _query    = '';
+  bool _loading = true;
+  bool _empty   = false;
+  String _query = '';
   final TextEditingController _searchCtrl = TextEditingController();
 
   @override
@@ -139,7 +149,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
         );
       }
 
-      // Neues Format mit "phases" Array
       if (modeData.containsKey('phases')) {
         final rawPhases = modeData['phases'] as List;
 
@@ -154,24 +163,29 @@ class _TaskListScreenState extends State<TaskListScreen> {
           final type = (p['type'] as String?) ?? 'normal';
 
           if (type == 'milestone') {
-            // ── Meilenstein-Sektion ───────────────────────
+            // ── Meilenstein-Sektion ───────────────────────────────────
+            // "quests" ist eine Liste von Objekten mit "phases"-Array
             final labelMap = p['label'];
             final String label = labelMap is Map
                 ? ((labelMap[lang] ?? labelMap['de'] ?? '') as String)
                 : labelMap?.toString() ?? '';
 
-            final rawMilestones = p['milestone_phases'] as List;
-            final subPhases = rawMilestones.map((mp) {
-              final questIds = (mp['quests'] as List).cast<String>();
-              return questIds.map(questFromDb).toList();
+            final rawQuests = p['quests'] as List;
+            final milestoneQuests = rawQuests.map((q) {
+              final phaseIds = (q['phases'] as List).cast<String>();
+              return _MilestoneQuest(
+                phases: phaseIds.map(questFromDb).toList(),
+              );
             }).toList();
 
-            sections.add(_MilestoneSection(
-              _MilestonePhase(label: label, subPhases: subPhases),
-            ));
+            if (milestoneQuests.isNotEmpty) {
+              sections.add(_MilestoneSectionItem(
+                _MilestoneSection(label: label, quests: milestoneQuests),
+              ));
+            }
 
           } else {
-            // ── Normale Sektion ───────────────────────────
+            // ── Normale Sektion ───────────────────────────────────────
             final labelMap = p['label'];
             final String label = labelMap is Map
                 ? ((labelMap[lang] ?? labelMap['de'] ?? '') as String)
@@ -181,7 +195,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
             final quests   = questIds.map(questFromDb).toList();
 
             if (quests.isNotEmpty) {
-              sections.add(_NormalSection(
+              sections.add(_NormalSectionItem(
                 _NormalPhase(label: label, quests: quests),
               ));
             }
@@ -196,7 +210,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
         if (mounted) setState(() { _sections = sections; _loading = false; });
 
       } else {
-        // Altes Fallback-Format { "tasks": [...] }
+        // Altes Fallback-Format
         final tasks  = (modeData['tasks'] as List?)?.cast<Map>() ?? [];
         final quests = tasks.map((t) => _QuestItem(
           id:          (t['id'] as String?) ?? '',
@@ -205,7 +219,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
         )).toList();
 
         if (mounted) setState(() {
-          _sections = [_NormalSection(_NormalPhase(label: '', quests: quests))];
+          _sections = [_NormalSectionItem(_NormalPhase(label: '', quests: quests))];
           _loading  = false;
         });
       }
@@ -214,20 +228,45 @@ class _TaskListScreenState extends State<TaskListScreen> {
     }
   }
 
-  // ── Statistik ──────────────────────────────────────────────
+  // ── Gesamtfortschritt ──────────────────────────────────────
 
   int get _totalQuests => _sections.fold(0, (sum, s) => switch (s) {
-    _NormalSection    n => sum + n.phase.quests.length,
-    _MilestoneSection m => sum + m.phase.allQuests.length,
+    _NormalSectionItem    n => sum + n.phase.quests.length,
+    _MilestoneSectionItem m => sum + m.section.totalPhases,
   });
 
-  int get _doneQuests => _sections.fold(0, (sum, s) {
-    final quests = switch (s) {
-      _NormalSection    n => n.phase.quests,
-      _MilestoneSection m => m.phase.allQuests,
-    };
-    return sum + quests.where((q) => TaskStore.isDone(q.id)).length;
+  int get _doneQuests => _sections.fold(0, (sum, s) => switch (s) {
+    _NormalSectionItem    n => sum + n.phase.quests.where((q) => TaskStore.isDone(q.id)).length,
+    _MilestoneSectionItem m => sum + m.section.donePhases,
   });
+
+  // ── Sichtbare Aufträge zählen (für Suche) ─────────────────
+
+  int _visibleCount() {
+    final q = _query.trim().toLowerCase();
+    int count = 0;
+    for (final s in _sections) {
+      switch (s) {
+        case _NormalSectionItem n:
+          count += q.isEmpty
+              ? n.phase.quests.length
+              : n.phase.quests.where((quest) =>
+                  quest.title.toLowerCase().contains(q) ||
+                  quest.description.toLowerCase().contains(q)).length;
+        case _MilestoneSectionItem m:
+          // Für Meilensteine: aktive Phase jedes Auftrags prüfen
+          for (final mq in m.section.quests) {
+            final active = mq.activePhase;
+            if (q.isEmpty ||
+                active.title.toLowerCase().contains(q) ||
+                active.description.toLowerCase().contains(q)) {
+              count++;
+            }
+          }
+      }
+    }
+    return count;
+  }
 
   // ── Build ──────────────────────────────────────────────────
 
@@ -285,27 +324,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
     final done     = _doneQuests;
     final progress = total == 0 ? 0.0 : done / total;
 
-    // Für die Suchfunktion: alle sichtbaren Aufträge zählen
-    final q = _query.trim().toLowerCase();
-    int visibleCount = 0;
-    for (final s in _sections) {
-      switch (s) {
-        case _NormalSection n:
-          visibleCount += q.isEmpty
-              ? n.phase.quests.length
-              : n.phase.quests.where((quest) =>
-                  quest.title.toLowerCase().contains(q) ||
-                  quest.description.toLowerCase().contains(q)).length;
-        case _MilestoneSection m:
-          final activeQuests = m.phase.subPhases[m.phase.activeSubPhaseIndex];
-          visibleCount += q.isEmpty
-              ? activeQuests.length
-              : activeQuests.where((quest) =>
-                  quest.title.toLowerCase().contains(q) ||
-                  quest.description.toLowerCase().contains(q)).length;
-      }
-    }
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: OrbitBackground(
@@ -313,13 +331,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Header ───────────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: _Header(title: widget.title),
               ),
 
-              // ── Fortschritt + Suche ───────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                 child: Column(
@@ -334,8 +350,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                               value: progress,
                               minHeight: 7,
                               backgroundColor: Colors.white.withOpacity(0.12),
-                              valueColor: const AlwaysStoppedAnimation(
-                                  Color(0xFF9C6FFF)),
+                              valueColor: const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
                             ),
                           ),
                         ),
@@ -349,12 +364,10 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       ],
                     ),
                     const SizedBox(height: 12),
-
                     OrbitGlassCard(
                       borderRadius: BorderRadius.circular(16),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
                         child: Row(
                           children: [
                             Icon(Icons.search,
@@ -374,8 +387,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                                       fontSize: 15),
                                   border: InputBorder.none,
                                   isDense: true,
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(vertical: 10),
+                                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
                                 ),
                                 onChanged: (_) => setState(() {}),
                               ),
@@ -394,9 +406,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
                         ),
                       ),
                     ),
-
                     const SizedBox(height: 6),
-                    Text(l10n.taskQuestCount(visibleCount),
+                    Text(l10n.taskQuestCount(_visibleCount()),
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.38),
                           fontSize: 12,
@@ -407,7 +418,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
                 ),
               ),
 
-              // ── Sections-Liste ────────────────────────────
               Expanded(
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
@@ -416,16 +426,10 @@ class _TaskListScreenState extends State<TaskListScreen> {
                   itemBuilder: (context, i) {
                     final section = _sections[i];
                     return switch (section) {
-                      _NormalSection    n => _NormalSectionWidget(
-                          phase:   n.phase,
-                          query:   _query,
-                          onToggle: _toggle,
-                        ),
-                      _MilestoneSection m => _MilestoneSectionWidget(
-                          phase:   m.phase,
-                          query:   _query,
-                          onToggle: _toggle,
-                        ),
+                      _NormalSectionItem    n => _NormalSectionWidget(
+                          phase: n.phase, query: _query, onToggle: _toggle),
+                      _MilestoneSectionItem m => _MilestoneSectionWidget(
+                          section: m.section, query: _query, onToggle: _toggle),
                     };
                   },
                 ),
@@ -453,9 +457,7 @@ class _NormalSectionWidget extends StatelessWidget {
   final Future<void> Function(String, bool) onToggle;
 
   const _NormalSectionWidget({
-    required this.phase,
-    required this.query,
-    required this.onToggle,
+    required this.phase, required this.query, required this.onToggle,
   });
 
   @override
@@ -481,18 +483,14 @@ class _NormalSectionWidget extends StatelessWidget {
           const SizedBox(height: 10),
         ] else
           const SizedBox(height: 8),
-
         ...visible.asMap().entries.map((entry) {
-          final quest = entry.value;
+          final quest  = entry.value;
           final isDone = TaskStore.isDone(quest.id);
           return Padding(
-            padding: EdgeInsets.only(
-                bottom: entry.key < visible.length - 1 ? 10 : 0),
+            padding: EdgeInsets.only(bottom: entry.key < visible.length - 1 ? 10 : 0),
             child: _TaskCard(
-              title:    quest.title,
-              desc:     quest.description,
-              done:     isDone,
-              onToggle: () => onToggle(quest.id, isDone),
+              title: quest.title, desc: quest.description,
+              done: isDone, onToggle: () => onToggle(quest.id, isDone),
             ),
           );
         }),
@@ -502,68 +500,54 @@ class _NormalSectionWidget extends StatelessWidget {
 }
 
 // ──────────────────────────────────────────────────────────────
-// Meilenstein-Sektion — zeigt immer nur aktive Phase
+// Meilenstein-Sektion
+// Alle Aufträge gleichzeitig sichtbar, jeder mit eigenem Phase-Badge
 // ──────────────────────────────────────────────────────────────
 
 class _MilestoneSectionWidget extends StatelessWidget {
-  final _MilestonePhase phase;
+  final _MilestoneSection section;
   final String query;
   final Future<void> Function(String, bool) onToggle;
 
   const _MilestoneSectionWidget({
-    required this.phase,
-    required this.query,
-    required this.onToggle,
+    required this.section, required this.query, required this.onToggle,
   });
 
   @override
   Widget build(BuildContext context) {
-    final activeIndex  = phase.activeSubPhaseIndex;
-    final activeQuests = phase.subPhases[activeIndex];
-    final totalPhases  = phase.totalSubPhases;
-
-    // Gesamtfortschritt über alle Phasen
-    final allQuests = phase.allQuests;
-    final doneAll   = allQuests.where((q) => TaskStore.isDone(q.id)).length;
-    final totalAll  = allQuests.length;
-
     final q = query.trim().toLowerCase();
-    final visible = q.isEmpty
-        ? activeQuests
-        : activeQuests.where((quest) =>
-            quest.title.toLowerCase().contains(q) ||
-            quest.description.toLowerCase().contains(q)).toList();
 
-    // Aktive Phase komplett abgehakt?
-    final activeAllDone = activeQuests.isNotEmpty &&
-        activeQuests.every((quest) => TaskStore.isDone(quest.id));
+    // Aufträge filtern (nach aktiver Phase suchen)
+    final visible = section.quests.where((mq) {
+      if (q.isEmpty) return true;
+      final active = mq.activePhase;
+      return active.title.toLowerCase().contains(q) ||
+             active.description.toLowerCase().contains(q);
+    }).toList();
+
+    if (visible.isEmpty) return const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
 
-        // ── Meilenstein-Header ────────────────────────────
+        // ── Sektion-Header mit Gesamtfortschritt ──────────
         Row(
           children: [
-            // Badge mit Label
             Flexible(
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color: const Color(0xFFFFD600).withOpacity(0.15),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: const Color(0xFFFFD600).withOpacity(0.40),
-                  ),
+                  border: Border.all(color: const Color(0xFFFFD600).withOpacity(0.40)),
                 ),
                 child: Text(
-                  phase.label.toUpperCase(),
+                  section.label.toUpperCase(),
                   style: TextStyle(
                     color: const Color(0xFFFFD600).withOpacity(0.90),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 1.2,
+                    fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 1.2,
                   ),
                 ),
               ),
@@ -573,141 +557,185 @@ class _MilestoneSectionWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
                 child: LinearProgressIndicator(
-                  value: totalAll == 0 ? 0 : doneAll / totalAll,
+                  value: section.totalPhases == 0 ? 0 : section.donePhases / section.totalPhases,
                   minHeight: 4,
                   backgroundColor: Colors.white.withOpacity(0.08),
-                  valueColor:
-                      const AlwaysStoppedAnimation(Color(0xFFFFD600)),
+                  valueColor: const AlwaysStoppedAnimation(Color(0xFFFFD600)),
                 ),
               ),
             ),
             const SizedBox(width: 8),
             Text(
-              '$doneAll/$totalAll',
+              '${section.donePhases}/${section.totalPhases}',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.40),
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
+                fontSize: 11, fontWeight: FontWeight.w600,
               ),
             ),
-          ],
-        ),
-
-        const SizedBox(height: 8),
-
-        // ── Phase X/20 Indikator ──────────────────────────
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                color: activeAllDone
-                    ? const Color(0xFF00E676).withOpacity(0.15)
-                    : Colors.white.withOpacity(0.07),
-                borderRadius: BorderRadius.circular(999),
-                border: Border.all(
-                  color: activeAllDone
-                      ? const Color(0xFF00E676).withOpacity(0.50)
-                      : Colors.white.withOpacity(0.15),
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    activeAllDone ? Icons.check_circle : Icons.flag_rounded,
-                    size: 13,
-                    color: activeAllDone
-                        ? const Color(0xFF00E676)
-                        : Colors.white.withOpacity(0.55),
-                  ),
-                  const SizedBox(width: 5),
-                  Text(
-                    'Phase ${activeIndex + 1} / $totalPhases',
-                    style: TextStyle(
-                      color: activeAllDone
-                          ? const Color(0xFF00E676)
-                          : Colors.white.withOpacity(0.65),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            if (activeAllDone && activeIndex < totalPhases - 1) ...[
-              const SizedBox(width: 8),
-              Text(
-                '→ Phase ${activeIndex + 2} freigeschaltet!',
-                style: TextStyle(
-                  color: const Color(0xFF00E676).withOpacity(0.80),
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
           ],
         ),
 
         const SizedBox(height: 10),
 
-        // ── Aufträge der aktiven Phase ────────────────────
-        if (activeQuests.isEmpty)
-          Padding(
-            padding: const EdgeInsets.only(top: 4, bottom: 8),
-            child: OrbitGlassCard(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Icon(Icons.lock_outline,
-                      color: Colors.white.withOpacity(0.35), size: 18),
-                  const SizedBox(width: 10),
-                  Text(
-                    'Noch keine Aufträge für diese Phase.',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.40),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
+        // ── Alle Meilenstein-Aufträge ─────────────────────
+        ...visible.asMap().entries.map((entry) {
+          final mq     = entry.value;
+          final active = mq.activePhase;
+          final isDone = TaskStore.isDone(active.id);
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: entry.key < visible.length - 1 ? 10 : 0),
+            child: _MilestoneTaskCard(
+              title:       active.title,
+              desc:        active.description,
+              done:        isDone,
+              allDone:     mq.allDone,
+              phaseIndex:  mq.activePhaseIndex,
+              totalPhases: mq.totalPhases,
+              onToggle:    () => onToggle(active.id, isDone),
             ),
-          )
-        else
-          ...visible.asMap().entries.map((entry) {
-            final quest  = entry.value;
-            final isDone = TaskStore.isDone(quest.id);
-            return Padding(
-              padding: EdgeInsets.only(
-                  bottom: entry.key < visible.length - 1 ? 10 : 0),
-              child: _TaskCard(
-                title:    quest.title,
-                desc:     quest.description,
-                done:     isDone,
-                onToggle: () => onToggle(quest.id, isDone),
-              ),
-            );
-          }),
+          );
+        }),
       ],
     );
   }
 }
 
 // ──────────────────────────────────────────────────────────────
-// Phasen-Header (für normale Sektionen)
+// Meilenstein-Auftrags-Karte (mit Phase-Badge)
+// ──────────────────────────────────────────────────────────────
+
+class _MilestoneTaskCard extends StatelessWidget {
+  final String title;
+  final String desc;
+  final bool   done;
+  final bool   allDone;
+  final int    phaseIndex;
+  final int    totalPhases;
+  final VoidCallback onToggle;
+
+  const _MilestoneTaskCard({
+    required this.title, required this.desc,
+    required this.done, required this.allDone,
+    required this.phaseIndex, required this.totalPhases,
+    required this.onToggle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final phaseColor = allDone
+        ? const Color(0xFF00E676)
+        : const Color(0xFFFFD600);
+
+    return OrbitGlassCard(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(22),
+        onTap: onToggle,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 12, 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Checkbox
+              GestureDetector(
+                onTap: onToggle,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  curve: Curves.easeOut,
+                  width: 26, height: 26,
+                  margin: const EdgeInsets.only(top: 2),
+                  decoration: BoxDecoration(
+                    color: done
+                        ? const Color(0xFFFFD600).withOpacity(0.80)
+                        : Colors.white.withOpacity(0.08),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: done
+                          ? const Color(0xFFFFD600)
+                          : Colors.white.withOpacity(0.22),
+                      width: 1.5,
+                    ),
+                  ),
+                  child: done
+                      ? const Icon(Icons.check, size: 16, color: Colors.white)
+                      : null,
+                ),
+              ),
+              const SizedBox(width: 12),
+
+              // Titel + Beschreibung
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Phase-Badge
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: phaseColor.withOpacity(0.15),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color: phaseColor.withOpacity(0.45)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            allDone ? Icons.check_circle : Icons.flag_rounded,
+                            size: 10, color: phaseColor,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            'Phase ${phaseIndex + 1} / $totalPhases',
+                            style: TextStyle(
+                              color: phaseColor,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Titel
+                    Text(
+                      title,
+                      style: TextStyle(
+                        color: done ? Colors.white.withOpacity(0.45) : Colors.white,
+                        fontSize: 15, fontWeight: FontWeight.w700,
+                        decoration: done ? TextDecoration.lineThrough : TextDecoration.none,
+                        decorationColor: Colors.white.withOpacity(0.35),
+                      ),
+                    ),
+                    if (desc.trim().isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        desc,
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(done ? 0.30 : 0.55),
+                          fontSize: 13, fontWeight: FontWeight.w500, height: 1.35,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// Phasen-Header (normale Sektionen)
 // ──────────────────────────────────────────────────────────────
 
 class _PhaseHeader extends StatelessWidget {
   final String label;
-  final int done;
-  final int total;
-
-  const _PhaseHeader({
-    required this.label,
-    required this.done,
-    required this.total,
-  });
+  final int done, total;
+  const _PhaseHeader({required this.label, required this.done, required this.total});
 
   @override
   Widget build(BuildContext context) {
@@ -718,17 +746,13 @@ class _PhaseHeader extends StatelessWidget {
           decoration: BoxDecoration(
             color: const Color(0xFF7C4DFF).withOpacity(0.20),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: const Color(0xFF9C6FFF).withOpacity(0.40),
-            ),
+            border: Border.all(color: const Color(0xFF9C6FFF).withOpacity(0.40)),
           ),
           child: Text(
             label.toUpperCase(),
             style: TextStyle(
               color: const Color(0xFF9C6FFF).withOpacity(0.90),
-              fontSize: 10,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1.2,
+              fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 1.2,
             ),
           ),
         ),
@@ -740,20 +764,16 @@ class _PhaseHeader extends StatelessWidget {
               value: total == 0 ? 0 : done / total,
               minHeight: 4,
               backgroundColor: Colors.white.withOpacity(0.08),
-              valueColor:
-                  const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
+              valueColor: const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
             ),
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          '$done/$total',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.40),
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        Text('$done/$total',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.40),
+              fontSize: 11, fontWeight: FontWeight.w600,
+            )),
       ],
     );
   }
@@ -773,20 +793,16 @@ class _Header extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.arrow_back,
-              color: Colors.white.withOpacity(0.90)),
+          icon: Icon(Icons.arrow_back, color: Colors.white.withOpacity(0.90)),
         ),
         const SizedBox(width: 4),
         Expanded(
           child: Text(
             title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+            maxLines: 1, overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              letterSpacing: -0.3,
+              fontSize: 22, fontWeight: FontWeight.w900,
+              color: Colors.white, letterSpacing: -0.3,
             ),
           ),
         ),
@@ -796,20 +812,17 @@ class _Header extends StatelessWidget {
 }
 
 // ──────────────────────────────────────────────────────────────
-// Auftrags-Karte
+// Normale Auftrags-Karte
 // ──────────────────────────────────────────────────────────────
 
 class _TaskCard extends StatelessWidget {
-  final String title;
-  final String desc;
+  final String title, desc;
   final bool done;
   final VoidCallback onToggle;
 
   const _TaskCard({
-    required this.title,
-    required this.desc,
-    required this.done,
-    required this.onToggle,
+    required this.title, required this.desc,
+    required this.done, required this.onToggle,
   });
 
   @override
@@ -828,8 +841,7 @@ class _TaskCard extends StatelessWidget {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 180),
                   curve: Curves.easeOut,
-                  width: 26,
-                  height: 26,
+                  width: 26, height: 26,
                   margin: const EdgeInsets.only(top: 1),
                   decoration: BoxDecoration(
                     color: done
@@ -856,14 +868,9 @@ class _TaskCard extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: done
-                            ? Colors.white.withOpacity(0.45)
-                            : Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        decoration: done
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
+                        color: done ? Colors.white.withOpacity(0.45) : Colors.white,
+                        fontSize: 15, fontWeight: FontWeight.w700,
+                        decoration: done ? TextDecoration.lineThrough : TextDecoration.none,
                         decorationColor: Colors.white.withOpacity(0.35),
                       ),
                     ),
@@ -872,11 +879,8 @@ class _TaskCard extends StatelessWidget {
                       Text(
                         desc,
                         style: TextStyle(
-                          color: Colors.white
-                              .withOpacity(done ? 0.30 : 0.55),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          height: 1.35,
+                          color: Colors.white.withOpacity(done ? 0.30 : 0.55),
+                          fontSize: 13, fontWeight: FontWeight.w500, height: 1.35,
                         ),
                       ),
                     ],

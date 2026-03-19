@@ -1,5 +1,5 @@
 {
-  "_comment": "ID-Schema: {modus}_{bereich}_{typ}_{phase?}_{nr}",
+  "_comment": "ID-Schema: {modus}_{bereich}_{typ}_{auftrag}_{phase}",
   "_kuerzel": {
     "blitz":       "Blitz Royale",
     "delulu":      "Delulu",
@@ -12,7 +12,7 @@
     "sh":          "Starthilfe",
     "ms":          "Meilenstein",
     "w1-w8":       "Woche 1-8",
-    "p01-p20":     "Meilenstein Phase 01-20"
+    "p01-p20":     "Phase 01-20 eines einzelnen Meilenstein-Auftrags"
   },
 
   "blitz_01": {
@@ -173,22 +173,100 @@
     "de": { "title": "Stelle Shuriken her", "description": "Ninjago-Herausforderungen • 10k XP • 0/3" },
     "en": { "title": "Craft shurikens", "description": "Ninjago Challenges • 10k XP • 0/3" }
   },
-  "lego_ms_p01_01": {
-    "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • Phase 1/20 • 10k XP • 0/1.000" },
-    "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • Phase 1/20 • 10k XP • 0/1,000" }
+
+  "lego_ms_blitz_p01": {
+    "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/1.000" },
+    "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/1,000" }
   },
-  "lego_ms_p01_02": {
-    "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • Phase 1/20 • 10k XP • 0/1.000" },
-    "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • Phase 1/20 • 10k XP • 0/1,000" }
+  "lego_ms_blitz_p02": {
+    "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/2.000" },
+    "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/2,000" }
   },
-  "lego_ms_p01_03": {
-    "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • Phase 1/20 • 10k XP • 0/1.000" },
-    "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • Phase 1/20 • 10k XP • 0/1,000" }
+  "lego_ms_blitz_p03": {
+    "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/3.000" },
+    "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/3,000" }
   },
-  "lego_ms_p01_04": {
-    "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • Phase 1/20 • 10k XP • 0/5" },
-    "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • Phase 1/20 • 10k XP • 0/5" }
-  },
+  "lego_ms_blitz_p04": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/4.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/4,000" } },
+  "lego_ms_blitz_p05": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/5.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/5,000" } },
+  "lego_ms_blitz_p06": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/6.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/6,000" } },
+  "lego_ms_blitz_p07": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/7.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/7,000" } },
+  "lego_ms_blitz_p08": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/8.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/8,000" } },
+  "lego_ms_blitz_p09": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/9.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/9,000" } },
+  "lego_ms_blitz_p10": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/10.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/10,000" } },
+  "lego_ms_blitz_p11": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/11.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/11,000" } },
+  "lego_ms_blitz_p12": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/12.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/12,000" } },
+  "lego_ms_blitz_p13": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/13.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/13,000" } },
+  "lego_ms_blitz_p14": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/14.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/14,000" } },
+  "lego_ms_blitz_p15": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/15.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/15,000" } },
+  "lego_ms_blitz_p16": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/16.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/16,000" } },
+  "lego_ms_blitz_p17": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/17.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/17,000" } },
+  "lego_ms_blitz_p18": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/18.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/18,000" } },
+  "lego_ms_blitz_p19": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/19.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/19,000" } },
+  "lego_ms_blitz_p20": { "de": { "title": "Füge Blitzschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/20.000" }, "en": { "title": "Deal lightning damage", "description": "Ninjago Milestones • 10k XP • 0/20,000" } },
+
+  "lego_ms_eis_p01": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/1.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/1,000" } },
+  "lego_ms_eis_p02": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/2.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/2,000" } },
+  "lego_ms_eis_p03": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/3.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/3,000" } },
+  "lego_ms_eis_p04": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/4.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/4,000" } },
+  "lego_ms_eis_p05": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/5.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/5,000" } },
+  "lego_ms_eis_p06": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/6.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/6,000" } },
+  "lego_ms_eis_p07": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/7.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/7,000" } },
+  "lego_ms_eis_p08": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/8.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/8,000" } },
+  "lego_ms_eis_p09": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/9.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/9,000" } },
+  "lego_ms_eis_p10": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/10.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/10,000" } },
+  "lego_ms_eis_p11": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/11.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/11,000" } },
+  "lego_ms_eis_p12": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/12.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/12,000" } },
+  "lego_ms_eis_p13": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/13.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/13,000" } },
+  "lego_ms_eis_p14": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/14.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/14,000" } },
+  "lego_ms_eis_p15": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/15.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/15,000" } },
+  "lego_ms_eis_p16": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/16.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/16,000" } },
+  "lego_ms_eis_p17": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/17.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/17,000" } },
+  "lego_ms_eis_p18": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/18.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/18,000" } },
+  "lego_ms_eis_p19": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/19.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/19,000" } },
+  "lego_ms_eis_p20": { "de": { "title": "Füge Eisschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/20.000" }, "en": { "title": "Deal ice damage", "description": "Ninjago Milestones • 10k XP • 0/20,000" } },
+
+  "lego_ms_erde_p01": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/1.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/1,000" } },
+  "lego_ms_erde_p02": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/2.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/2,000" } },
+  "lego_ms_erde_p03": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/3.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/3,000" } },
+  "lego_ms_erde_p04": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/4.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/4,000" } },
+  "lego_ms_erde_p05": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/5.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/5,000" } },
+  "lego_ms_erde_p06": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/6.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/6,000" } },
+  "lego_ms_erde_p07": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/7.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/7,000" } },
+  "lego_ms_erde_p08": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/8.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/8,000" } },
+  "lego_ms_erde_p09": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/9.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/9,000" } },
+  "lego_ms_erde_p10": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/10.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/10,000" } },
+  "lego_ms_erde_p11": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/11.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/11,000" } },
+  "lego_ms_erde_p12": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/12.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/12,000" } },
+  "lego_ms_erde_p13": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/13.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/13,000" } },
+  "lego_ms_erde_p14": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/14.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/14,000" } },
+  "lego_ms_erde_p15": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/15.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/15,000" } },
+  "lego_ms_erde_p16": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/16.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/16,000" } },
+  "lego_ms_erde_p17": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/17.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/17,000" } },
+  "lego_ms_erde_p18": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/18.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/18,000" } },
+  "lego_ms_erde_p19": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/19.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/19,000" } },
+  "lego_ms_erde_p20": { "de": { "title": "Füge Erdschaden zu", "description": "Ninjago Meilensteine • 10k XP • 0/20.000" }, "en": { "title": "Deal earth damage", "description": "Ninjago Milestones • 10k XP • 0/20,000" } },
+
+  "lego_ms_wolf_p01": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/5" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/5" } },
+  "lego_ms_wolf_p02": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/10" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/10" } },
+  "lego_ms_wolf_p03": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/15" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/15" } },
+  "lego_ms_wolf_p04": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/20" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/20" } },
+  "lego_ms_wolf_p05": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/25" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/25" } },
+  "lego_ms_wolf_p06": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/30" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/30" } },
+  "lego_ms_wolf_p07": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/35" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/35" } },
+  "lego_ms_wolf_p08": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/40" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/40" } },
+  "lego_ms_wolf_p09": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/45" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/45" } },
+  "lego_ms_wolf_p10": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/50" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/50" } },
+  "lego_ms_wolf_p11": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/55" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/55" } },
+  "lego_ms_wolf_p12": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/60" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/60" } },
+  "lego_ms_wolf_p13": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/65" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/65" } },
+  "lego_ms_wolf_p14": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/70" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/70" } },
+  "lego_ms_wolf_p15": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/75" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/75" } },
+  "lego_ms_wolf_p16": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/80" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/80" } },
+  "lego_ms_wolf_p17": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/85" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/85" } },
+  "lego_ms_wolf_p18": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/90" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/90" } },
+  "lego_ms_wolf_p19": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/95" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/95" } },
+  "lego_ms_wolf_p20": { "de": { "title": "Großwildjäger: Elementarwölfe", "description": "Ninjago Meilensteine • 10k XP • 0/100" }, "en": { "title": "Big game hunter: Elemental wolves", "description": "Ninjago Milestones • 10k XP • 0/100" } },
+
   "lego_24": {
     "de": { "title": "Besiege 'Zerbrochene Seele'-Horden", "description": "Tränke sind da • 20k XP • 0/50" },
     "en": { "title": "Defeat 'Broken Soul' hordes", "description": "Potions Are Here • 20k XP • 0/50" }
@@ -210,203 +288,118 @@
     "en": { "title": "Craft and use potions", "description": "Potions Are Here • 20k XP • 0/50" }
   },
 
-  "reload_01": {
-    "de": { "title": "Lande bei benannten Orten", "description": "Surf City-Insel • 15k XP • 0/15" },
-    "en": { "title": "Land at named locations", "description": "Surf City Island • 15k XP • 0/15" }
-  },
-  "reload_02": {
-    "de": { "title": "Lege Distanz beim Rutschen zurück", "description": "Surf City-Insel • 15k XP • 0/720" },
-    "en": { "title": "Travel distance while sliding", "description": "Surf City Island • 15k XP • 0/720" }
-  },
-  "reload_03": {
-    "de": { "title": "Eliminiere Spieler, bevor du neustartest", "description": "Surf City-Insel • 15k XP • 0/15" },
-    "en": { "title": "Eliminate players before restarting", "description": "Surf City Island • 15k XP • 0/15" }
-  },
-  "reload_04": {
-    "de": { "title": "Durchsuche Truhen oder Munitionskisten", "description": "Surf City-Insel • 15k XP • 0/35" },
-    "en": { "title": "Search chests or ammo boxes", "description": "Surf City Island • 15k XP • 0/35" }
-  },
-  "reload_05": {
-    "de": { "title": "Eliminiere Spieler", "description": "Surf City-Insel • 15k XP • 0/30" },
-    "en": { "title": "Eliminate players", "description": "Surf City Island • 15k XP • 0/30" }
-  },
-  "reload_06": {
-    "de": { "title": "Füge Spielern im Verlauf eines Matches Schaden zu", "description": "Surf City-Insel • 15k XP • 0/500" },
-    "en": { "title": "Deal damage to players in a single match", "description": "Surf City Island • 15k XP • 0/500" }
-  },
-  "reload_07": {
-    "de": { "title": "Erledige gegnerische Teams komplett oder erhalte einen Neustart", "description": "Surf City-Insel • 15k XP • 0/15" },
-    "en": { "title": "Eliminate enemy teams completely or get a restart", "description": "Surf City Island • 15k XP • 0/15" }
-  },
-  "reload_08": {
-    "de": { "title": "Durchbrich Schilde von Spielern", "description": "Surf City-Insel • 15k XP • 0/20" },
-    "en": { "title": "Break shields of players", "description": "Surf City Island • 15k XP • 0/20" }
-  },
-  "reload_09": {
-    "de": { "title": "Baue oder zerstöre Gebäude", "description": "Surf City-Insel • 15k XP • 0/65" },
-    "en": { "title": "Build or destroy structures", "description": "Surf City Island • 15k XP • 0/65" }
-  },
-  "reload_10": {
-    "de": { "title": "Überlebe Sturmphasen", "description": "Surf City-Insel • 15k XP • 0/25" },
-    "en": { "title": "Survive storm phases", "description": "Surf City Island • 15k XP • 0/25" }
-  },
+  "reload_01": { "de": { "title": "Lande bei benannten Orten", "description": "Surf City-Insel • 15k XP • 0/15" }, "en": { "title": "Land at named locations", "description": "Surf City Island • 15k XP • 0/15" } },
+  "reload_02": { "de": { "title": "Lege Distanz beim Rutschen zurück", "description": "Surf City-Insel • 15k XP • 0/720" }, "en": { "title": "Travel distance while sliding", "description": "Surf City Island • 15k XP • 0/720" } },
+  "reload_03": { "de": { "title": "Eliminiere Spieler, bevor du neustartest", "description": "Surf City-Insel • 15k XP • 0/15" }, "en": { "title": "Eliminate players before restarting", "description": "Surf City Island • 15k XP • 0/15" } },
+  "reload_04": { "de": { "title": "Durchsuche Truhen oder Munitionskisten", "description": "Surf City-Insel • 15k XP • 0/35" }, "en": { "title": "Search chests or ammo boxes", "description": "Surf City Island • 15k XP • 0/35" } },
+  "reload_05": { "de": { "title": "Eliminiere Spieler", "description": "Surf City-Insel • 15k XP • 0/30" }, "en": { "title": "Eliminate players", "description": "Surf City Island • 15k XP • 0/30" } },
+  "reload_06": { "de": { "title": "Füge Spielern im Verlauf eines Matches Schaden zu", "description": "Surf City-Insel • 15k XP • 0/500" }, "en": { "title": "Deal damage to players in a single match", "description": "Surf City Island • 15k XP • 0/500" } },
+  "reload_07": { "de": { "title": "Erledige gegnerische Teams komplett oder erhalte einen Neustart", "description": "Surf City-Insel • 15k XP • 0/15" }, "en": { "title": "Eliminate enemy teams completely or get a restart", "description": "Surf City Island • 15k XP • 0/15" } },
+  "reload_08": { "de": { "title": "Durchbrich Schilde von Spielern", "description": "Surf City-Insel • 15k XP • 0/20" }, "en": { "title": "Break shields of players", "description": "Surf City Island • 15k XP • 0/20" } },
+  "reload_09": { "de": { "title": "Baue oder zerstöre Gebäude", "description": "Surf City-Insel • 15k XP • 0/65" }, "en": { "title": "Build or destroy structures", "description": "Surf City Island • 15k XP • 0/65" } },
+  "reload_10": { "de": { "title": "Überlebe Sturmphasen", "description": "Surf City-Insel • 15k XP • 0/25" }, "en": { "title": "Survive storm phases", "description": "Surf City Island • 15k XP • 0/25" } },
 
   "ballistic_01": {
     "de": { "title": "Gewinne Runden in Ranked Ballistic", "description": "Ranked • Pop-Corn (Dunkel) Lackierung • 0/50" },
     "en": { "title": "Win rounds in Ranked Ballistic", "description": "Ranked • Pop-Corn (Dark) Wrap • 0/50" }
   },
 
-  "festival_hb_sh_01": {
-    "de": { "title": "Spiele Noten", "description": "Hauptbühne • Starthilfe • 0/50" },
-    "en": { "title": "Play notes", "description": "Main Stage • Starter • 0/50" }
-  },
-  "festival_hb_sh_02": {
-    "de": { "title": "Beende einen Song", "description": "Hauptbühne • Starthilfe • 0/1" },
-    "en": { "title": "Finish a song", "description": "Main Stage • Starter • 0/1" }
-  },
-  "festival_hb_sh_03": {
-    "de": { "title": "Erziele Punkte", "description": "Hauptbühne • Starthilfe • 0/1.000" },
-    "en": { "title": "Score points", "description": "Main Stage • Starter • 0/1,000" }
-  },
-  "festival_hb_sh_04": {
-    "de": { "title": "Aktiviere Glanzleistung", "description": "Hauptbühne • Starthilfe • 0/4" },
-    "en": { "title": "Activate Overdrive", "description": "Main Stage • Starter • 0/4" }
-  },
-  "festival_hb_sh_05": {
-    "de": { "title": "Beende eine Setliste mit 3+ Songs", "description": "Hauptbühne • Starthilfe • 0/1" },
-    "en": { "title": "Finish a setlist with 3+ songs", "description": "Main Stage • Starter • 0/1" }
-  },
-  "festival_hb_sh_06": {
-    "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Starthilfe • 0/9" },
-    "en": { "title": "Earn stars", "description": "Main Stage • Starter • 0/9" }
-  },
+  "festival_hb_sh_01": { "de": { "title": "Spiele Noten", "description": "Hauptbühne • Starthilfe • 0/50" }, "en": { "title": "Play notes", "description": "Main Stage • Starter • 0/50" } },
+  "festival_hb_sh_02": { "de": { "title": "Beende einen Song", "description": "Hauptbühne • Starthilfe • 0/1" }, "en": { "title": "Finish a song", "description": "Main Stage • Starter • 0/1" } },
+  "festival_hb_sh_03": { "de": { "title": "Erziele Punkte", "description": "Hauptbühne • Starthilfe • 0/1.000" }, "en": { "title": "Score points", "description": "Main Stage • Starter • 0/1,000" } },
+  "festival_hb_sh_04": { "de": { "title": "Aktiviere Glanzleistung", "description": "Hauptbühne • Starthilfe • 0/4" }, "en": { "title": "Activate Overdrive", "description": "Main Stage • Starter • 0/4" } },
+  "festival_hb_sh_05": { "de": { "title": "Beende eine Setliste mit 3+ Songs", "description": "Hauptbühne • Starthilfe • 0/1" }, "en": { "title": "Finish a setlist with 3+ songs", "description": "Main Stage • Starter • 0/1" } },
+  "festival_hb_sh_06": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Starthilfe • 0/9" }, "en": { "title": "Earn stars", "description": "Main Stage • Starter • 0/9" } },
 
-  "festival_hb_ms_p01_01": {
-    "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/4" },
-    "en": { "title": "Complete daily quests", "description": "Main Stage • Milestone Phase 1/20 • 0/4" }
-  },
-  "festival_hb_ms_p01_02": {
-    "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/10" },
-    "en": { "title": "Earn stars", "description": "Main Stage • Milestone Phase 1/20 • 0/10" }
-  },
-  "festival_hb_ms_p01_03": {
-    "de": { "title": "Verdiene Bandsterne (Mehrspieler Hauptbühne)", "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/5" },
-    "en": { "title": "Earn band stars (Multiplayer Main Stage)", "description": "Main Stage • Milestone Phase 1/20 • 0/5" }
-  },
-  "festival_hb_ms_p01_04": {
-    "de": { "title": "Beende eine Setliste mit 2+ Songs auf der Hauptbühne", "description": "Hauptbühne • Meilenstein Phase 1/20 • 0/3" },
-    "en": { "title": "Finish a setlist with 2+ songs on the Main Stage", "description": "Main Stage • Milestone Phase 1/20 • 0/3" }
-  },
+  "festival_hb_ms_daily_p01": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/4" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/4" } },
+  "festival_hb_ms_daily_p02": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/8" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/8" } },
+  "festival_hb_ms_daily_p03": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/12" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/12" } },
+  "festival_hb_ms_daily_p04": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/16" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/16" } },
+  "festival_hb_ms_daily_p05": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/20" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/20" } },
+  "festival_hb_ms_daily_p06": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/24" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/24" } },
+  "festival_hb_ms_daily_p07": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/28" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/28" } },
+  "festival_hb_ms_daily_p08": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/32" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/32" } },
+  "festival_hb_ms_daily_p09": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/36" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/36" } },
+  "festival_hb_ms_daily_p10": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/40" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/40" } },
+  "festival_hb_ms_daily_p11": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/44" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/44" } },
+  "festival_hb_ms_daily_p12": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/48" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/48" } },
+  "festival_hb_ms_daily_p13": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/52" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/52" } },
+  "festival_hb_ms_daily_p14": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/56" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/56" } },
+  "festival_hb_ms_daily_p15": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/60" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/60" } },
+  "festival_hb_ms_daily_p16": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/64" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/64" } },
+  "festival_hb_ms_daily_p17": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/68" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/68" } },
+  "festival_hb_ms_daily_p18": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/72" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/72" } },
+  "festival_hb_ms_daily_p19": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/76" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/76" } },
+  "festival_hb_ms_daily_p20": { "de": { "title": "Schließe tägliche Aufträge ab", "description": "Hauptbühne • Meilensteine • 0/80" }, "en": { "title": "Complete daily quests", "description": "Main Stage • Milestones • 0/80" } },
 
-  "festival_hb_w1_01": {
-    "de": { "title": "Verdiene 2+ Sterne mit Spotlight-/vorgestellten Songs", "description": "Hauptbühne • Woche 1 • 0/7" },
-    "en": { "title": "Earn 2+ stars with Spotlight/featured songs", "description": "Main Stage • Week 1 • 0/7" }
-  },
-  "festival_hb_w1_02": {
-    "de": { "title": "Spiele Noten nach 2+ verdienten Sternen", "description": "Hauptbühne • Woche 1 • 0/2.500" },
-    "en": { "title": "Play notes after earning 2+ stars", "description": "Main Stage • Week 1 • 0/2,500" }
-  },
-  "festival_hb_w1_03": {
-    "de": { "title": "Verdiene Punkte mit Multiplikator ×3", "description": "Hauptbühne • Woche 1 • 0/150.000" },
-    "en": { "title": "Earn points with ×3 multiplier", "description": "Main Stage • Week 1 • 0/150,000" }
-  },
+  "festival_hb_ms_stars_p01": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/10" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/10" } },
+  "festival_hb_ms_stars_p02": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/20" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/20" } },
+  "festival_hb_ms_stars_p03": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/30" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/30" } },
+  "festival_hb_ms_stars_p04": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/40" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/40" } },
+  "festival_hb_ms_stars_p05": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/50" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/50" } },
+  "festival_hb_ms_stars_p06": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/60" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/60" } },
+  "festival_hb_ms_stars_p07": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/70" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/70" } },
+  "festival_hb_ms_stars_p08": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/80" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/80" } },
+  "festival_hb_ms_stars_p09": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/90" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/90" } },
+  "festival_hb_ms_stars_p10": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/100" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/100" } },
+  "festival_hb_ms_stars_p11": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/110" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/110" } },
+  "festival_hb_ms_stars_p12": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/120" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/120" } },
+  "festival_hb_ms_stars_p13": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/130" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/130" } },
+  "festival_hb_ms_stars_p14": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/140" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/140" } },
+  "festival_hb_ms_stars_p15": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/150" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/150" } },
+  "festival_hb_ms_stars_p16": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/160" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/160" } },
+  "festival_hb_ms_stars_p17": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/170" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/170" } },
+  "festival_hb_ms_stars_p18": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/180" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/180" } },
+  "festival_hb_ms_stars_p19": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/190" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/190" } },
+  "festival_hb_ms_stars_p20": { "de": { "title": "Verdiene Sterne", "description": "Hauptbühne • Meilensteine • 0/200" }, "en": { "title": "Earn stars", "description": "Main Stage • Milestones • 0/200" } },
 
-  "festival_bb_sh_01": {
-    "de": { "title": "Führe Angriffe auf der Battle-Bühne aus", "description": "Battle-Bühne • Starthilfe • 0/4" },
-    "en": { "title": "Perform attacks on the Battle Stage", "description": "Battle Stage • Starter • 0/4" }
-  },
-  "festival_bb_sh_02": {
-    "de": { "title": "Beende Runden auf der Battle-Bühne", "description": "Battle-Bühne • Starthilfe • 0/2" },
-    "en": { "title": "Finish rounds on the Battle Stage", "description": "Battle Stage • Starter • 0/2" }
-  },
+  "festival_hb_w1_01": { "de": { "title": "Verdiene 2+ Sterne mit Spotlight-/vorgestellten Songs", "description": "Hauptbühne • Woche 1 • 0/7" }, "en": { "title": "Earn 2+ stars with Spotlight/featured songs", "description": "Main Stage • Week 1 • 0/7" } },
+  "festival_hb_w1_02": { "de": { "title": "Spiele Noten nach 2+ verdienten Sternen", "description": "Hauptbühne • Woche 1 • 0/2.500" }, "en": { "title": "Play notes after earning 2+ stars", "description": "Main Stage • Week 1 • 0/2,500" } },
+  "festival_hb_w1_03": { "de": { "title": "Verdiene Punkte mit Multiplikator ×3", "description": "Hauptbühne • Woche 1 • 0/150.000" }, "en": { "title": "Earn points with ×3 multiplier", "description": "Main Stage • Week 1 • 0/150,000" } },
 
-  "festival_bb_ms_p01_01": {
-    "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilenstein Phase 1/20 • 0/3" },
-    "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestone Phase 1/20 • 0/3" }
-  },
+  "festival_bb_sh_01": { "de": { "title": "Führe Angriffe auf der Battle-Bühne aus", "description": "Battle-Bühne • Starthilfe • 0/4" }, "en": { "title": "Perform attacks on the Battle Stage", "description": "Battle Stage • Starter • 0/4" } },
+  "festival_bb_sh_02": { "de": { "title": "Beende Runden auf der Battle-Bühne", "description": "Battle-Bühne • Starthilfe • 0/2" }, "en": { "title": "Finish rounds on the Battle Stage", "description": "Battle Stage • Starter • 0/2" } },
 
-  "rr_w1_01": {
-    "de": { "title": "Erhalte einen Startlinien-Boost von ≥50 %", "description": "Woche 1 • 12.000 XP • 0/10" },
-    "en": { "title": "Get a starting line boost of ≥50%", "description": "Week 1 • 12,000 XP • 0/10" }
-  },
-  "rr_w1_02": {
-    "de": { "title": "Aktiviere den Turbo", "description": "Woche 1 • 12.000 XP • 0/30" },
-    "en": { "title": "Activate turbo", "description": "Week 1 • 12,000 XP • 0/30" }
-  },
-  "rr_w1_03": {
-    "de": { "title": "Fahre oder drifte eine Gesamtstrecke", "description": "Woche 1 • 12.000 XP • 0/150.000" },
-    "en": { "title": "Drive or drift a total distance", "description": "Week 1 • 12,000 XP • 0/150,000" }
-  },
-  "rr_w1_04": {
-    "de": { "title": "Aktiviere Windschattenfahren", "description": "Woche 1 • 12.000 XP • 0/10" },
-    "en": { "title": "Activate slipstreaming", "description": "Week 1 • 12,000 XP • 0/10" }
-  },
-  "rr_w1_05": {
-    "de": { "title": "Überwinde eine Strecke mit Turbo", "description": "Woche 1 • 12.000 XP • 0/45.000" },
-    "en": { "title": "Cover a distance with turbo", "description": "Week 1 • 12,000 XP • 0/45,000" }
-  },
-  "rr_w1_06": {
-    "de": { "title": "Beende Rennen", "description": "Woche 1 • 12.000 XP • 0/15" },
-    "en": { "title": "Finish races", "description": "Week 1 • 12,000 XP • 0/15" }
-  },
-  "rr_w1_07": {
-    "de": { "title": "Erreiche Startlinien-Boost-Prozentsatz", "description": "Woche 1 • 12.000 XP • 0/600 %" },
-    "en": { "title": "Reach starting line boost percentage", "description": "Week 1 • 12,000 XP • 0/600%" }
-  },
-  "rr_w1_08": {
-    "de": { "title": "Beende Rennen mit 250 % Bodendösen", "description": "Woche 1 • 12.000 XP • 0/10" },
-    "en": { "title": "Finish races with 250% ground boosters", "description": "Week 1 • 12,000 XP • 0/10" }
-  },
-  "rr_w2": {
-    "de": { "title": "Woche 2 freischalten", "description": "Voraussetzung • Schließe 6 Woche-1-Aufträge ab" },
-    "en": { "title": "Unlock Week 2", "description": "Requirement • Complete 6 Week 1 quests" }
-  },
-  "rr_w3": {
-    "de": { "title": "Woche 3 freischalten", "description": "Voraussetzung • Schließe 6 Woche-2-Aufträge ab" },
-    "en": { "title": "Unlock Week 3", "description": "Requirement • Complete 6 Week 2 quests" }
-  },
-  "rr_w4": {
-    "de": { "title": "Woche 4 freischalten", "description": "Voraussetzung • Schließe 6 Woche-3-Aufträge ab" },
-    "en": { "title": "Unlock Week 4", "description": "Requirement • Complete 6 Week 3 quests" }
-  },
-  "rr_w5": {
-    "de": { "title": "Woche 5 freischalten", "description": "Voraussetzung • Schließe 6 Woche-4-Aufträge ab" },
-    "en": { "title": "Unlock Week 5", "description": "Requirement • Complete 6 Week 4 quests" }
-  },
-  "rr_w6": {
-    "de": { "title": "Woche 6 freischalten", "description": "Voraussetzung • Schließe 6 Woche-5-Aufträge ab" },
-    "en": { "title": "Unlock Week 6", "description": "Requirement • Complete 6 Week 5 quests" }
-  },
-  "rr_w7": {
-    "de": { "title": "Woche 7 freischalten", "description": "Voraussetzung • Schließe 6 Woche-6-Aufträge ab" },
-    "en": { "title": "Unlock Week 7", "description": "Requirement • Complete 6 Week 6 quests" }
-  },
-  "rr_w8": {
-    "de": { "title": "Woche 8 freischalten", "description": "Voraussetzung • Schließe 6 Woche-7-Aufträge ab" },
-    "en": { "title": "Unlock Week 8", "description": "Requirement • Complete 6 Week 7 quests" }
-  },
-  "rr_ranked_gold": {
-    "de": { "title": "Beende ein Ranked-Rennen mit Rang Gold", "description": "Ranked • 0/1" },
-    "en": { "title": "Finish a Ranked race at Gold rank", "description": "Ranked • 0/1" }
-  },
-  "rr_ranked_platin": {
-    "de": { "title": "Beende ein Ranked-Rennen mit Rang Platin", "description": "Ranked • 0/1" },
-    "en": { "title": "Finish a Ranked race at Platinum rank", "description": "Ranked • 0/1" }
-  },
-  "rr_ranked_diamant": {
-    "de": { "title": "Beende ein Ranked-Rennen mit Rang Diamant", "description": "Ranked • 0/1" },
-    "en": { "title": "Finish a Ranked race at Diamond rank", "description": "Ranked • 0/1" }
-  },
-  "rr_ranked_elite": {
-    "de": { "title": "Beende ein Ranked-Rennen mit Rang Elite", "description": "Ranked • 0/1" },
-    "en": { "title": "Finish a Ranked race at Elite rank", "description": "Ranked • 0/1" }
-  },
-  "rr_ranked_champion": {
-    "de": { "title": "Beende ein Ranked-Rennen mit Rang Champion", "description": "Ranked • 0/1" },
-    "en": { "title": "Finish a Ranked race at Champion rank", "description": "Ranked • 0/1" }
-  },
-  "rr_ranked_unreal": {
-    "de": { "title": "Beende ein Ranked-Rennen mit Rang Unreal", "description": "Ranked • 0/1" },
-    "en": { "title": "Finish a Ranked race at Unreal rank", "description": "Ranked • 0/1" }
-  }
+  "festival_bb_ms_rounds_p01": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/3" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/3" } },
+  "festival_bb_ms_rounds_p02": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/6" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/6" } },
+  "festival_bb_ms_rounds_p03": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/9" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/9" } },
+  "festival_bb_ms_rounds_p04": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/12" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/12" } },
+  "festival_bb_ms_rounds_p05": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/15" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/15" } },
+  "festival_bb_ms_rounds_p06": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/18" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/18" } },
+  "festival_bb_ms_rounds_p07": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/21" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/21" } },
+  "festival_bb_ms_rounds_p08": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/24" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/24" } },
+  "festival_bb_ms_rounds_p09": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/27" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/27" } },
+  "festival_bb_ms_rounds_p10": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/30" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/30" } },
+  "festival_bb_ms_rounds_p11": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/33" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/33" } },
+  "festival_bb_ms_rounds_p12": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/36" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/36" } },
+  "festival_bb_ms_rounds_p13": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/39" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/39" } },
+  "festival_bb_ms_rounds_p14": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/42" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/42" } },
+  "festival_bb_ms_rounds_p15": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/45" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/45" } },
+  "festival_bb_ms_rounds_p16": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/48" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/48" } },
+  "festival_bb_ms_rounds_p17": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/51" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/51" } },
+  "festival_bb_ms_rounds_p18": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/54" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/54" } },
+  "festival_bb_ms_rounds_p19": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/57" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/57" } },
+  "festival_bb_ms_rounds_p20": { "de": { "title": "Überlebe Runden auf der Battle-Bühne", "description": "Battle-Bühne • Meilensteine • 0/60" }, "en": { "title": "Survive rounds on the Battle Stage", "description": "Battle Stage • Milestones • 0/60" } },
+
+  "rr_w1_01": { "de": { "title": "Erhalte einen Startlinien-Boost von ≥50 %", "description": "Woche 1 • 12.000 XP • 0/10" }, "en": { "title": "Get a starting line boost of ≥50%", "description": "Week 1 • 12,000 XP • 0/10" } },
+  "rr_w1_02": { "de": { "title": "Aktiviere den Turbo", "description": "Woche 1 • 12.000 XP • 0/30" }, "en": { "title": "Activate turbo", "description": "Week 1 • 12,000 XP • 0/30" } },
+  "rr_w1_03": { "de": { "title": "Fahre oder drifte eine Gesamtstrecke", "description": "Woche 1 • 12.000 XP • 0/150.000" }, "en": { "title": "Drive or drift a total distance", "description": "Week 1 • 12,000 XP • 0/150,000" } },
+  "rr_w1_04": { "de": { "title": "Aktiviere Windschattenfahren", "description": "Woche 1 • 12.000 XP • 0/10" }, "en": { "title": "Activate slipstreaming", "description": "Week 1 • 12,000 XP • 0/10" } },
+  "rr_w1_05": { "de": { "title": "Überwinde eine Strecke mit Turbo", "description": "Woche 1 • 12.000 XP • 0/45.000" }, "en": { "title": "Cover a distance with turbo", "description": "Week 1 • 12,000 XP • 0/45,000" } },
+  "rr_w1_06": { "de": { "title": "Beende Rennen", "description": "Woche 1 • 12.000 XP • 0/15" }, "en": { "title": "Finish races", "description": "Week 1 • 12,000 XP • 0/15" } },
+  "rr_w1_07": { "de": { "title": "Erreiche Startlinien-Boost-Prozentsatz", "description": "Woche 1 • 12.000 XP • 0/600 %" }, "en": { "title": "Reach starting line boost percentage", "description": "Week 1 • 12,000 XP • 0/600%" } },
+  "rr_w1_08": { "de": { "title": "Beende Rennen mit 250 % Bodendösen", "description": "Woche 1 • 12.000 XP • 0/10" }, "en": { "title": "Finish races with 250% ground boosters", "description": "Week 1 • 12,000 XP • 0/10" } },
+  "rr_w2": { "de": { "title": "Woche 2 freischalten", "description": "Voraussetzung • Schließe 6 Woche-1-Aufträge ab" }, "en": { "title": "Unlock Week 2", "description": "Requirement • Complete 6 Week 1 quests" } },
+  "rr_w3": { "de": { "title": "Woche 3 freischalten", "description": "Voraussetzung • Schließe 6 Woche-2-Aufträge ab" }, "en": { "title": "Unlock Week 3", "description": "Requirement • Complete 6 Week 2 quests" } },
+  "rr_w4": { "de": { "title": "Woche 4 freischalten", "description": "Voraussetzung • Schließe 6 Woche-3-Aufträge ab" }, "en": { "title": "Unlock Week 4", "description": "Requirement • Complete 6 Week 3 quests" } },
+  "rr_w5": { "de": { "title": "Woche 5 freischalten", "description": "Voraussetzung • Schließe 6 Woche-4-Aufträge ab" }, "en": { "title": "Unlock Week 5", "description": "Requirement • Complete 6 Week 4 quests" } },
+  "rr_w6": { "de": { "title": "Woche 6 freischalten", "description": "Voraussetzung • Schließe 6 Woche-5-Aufträge ab" }, "en": { "title": "Unlock Week 6", "description": "Requirement • Complete 6 Week 5 quests" } },
+  "rr_w7": { "de": { "title": "Woche 7 freischalten", "description": "Voraussetzung • Schließe 6 Woche-6-Aufträge ab" }, "en": { "title": "Unlock Week 7", "description": "Requirement • Complete 6 Week 6 quests" } },
+  "rr_w8": { "de": { "title": "Woche 8 freischalten", "description": "Voraussetzung • Schließe 6 Woche-7-Aufträge ab" }, "en": { "title": "Unlock Week 8", "description": "Requirement • Complete 6 Week 7 quests" } },
+  "rr_ranked_gold": { "de": { "title": "Beende ein Ranked-Rennen mit Rang Gold", "description": "Ranked • 0/1" }, "en": { "title": "Finish a Ranked race at Gold rank", "description": "Ranked • 0/1" } },
+  "rr_ranked_platin": { "de": { "title": "Beende ein Ranked-Rennen mit Rang Platin", "description": "Ranked • 0/1" }, "en": { "title": "Finish a Ranked race at Platinum rank", "description": "Ranked • 0/1" } },
+  "rr_ranked_diamant": { "de": { "title": "Beende ein Ranked-Rennen mit Rang Diamant", "description": "Ranked • 0/1" }, "en": { "title": "Finish a Ranked race at Diamond rank", "description": "Ranked • 0/1" } },
+  "rr_ranked_elite": { "de": { "title": "Beende ein Ranked-Rennen mit Rang Elite", "description": "Ranked • 0/1" }, "en": { "title": "Finish a Ranked race at Elite rank", "description": "Ranked • 0/1" } },
+  "rr_ranked_champion": { "de": { "title": "Beende ein Ranked-Rennen mit Rang Champion", "description": "Ranked • 0/1" }, "en": { "title": "Finish a Ranked race at Champion rank", "description": "Ranked • 0/1" } },
+  "rr_ranked_unreal": { "de": { "title": "Beende ein Ranked-Rennen mit Rang Unreal", "description": "Ranked • 0/1" }, "en": { "title": "Finish a Ranked race at Unreal rank", "description": "Ranked • 0/1" } }
 }
