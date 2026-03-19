@@ -149,6 +149,12 @@ GoogleService-Info.plist
 orbit_ai/
 
 # =============================
+# Orbit – Lokale Tools
+# =============================
+_backups/
+backup_orbit.ps1
+
+# =============================
 # Exceptions
 # =============================
 !**/ios/**/default.mode1v3
