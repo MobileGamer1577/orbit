@@ -13,7 +13,10 @@ class ShopEntry {
   final String? bundleName;
   final String sectionName;
   final String devName;
-  final List<ShopTrack> tracks;
+  final String displayName;
+  final String? imageUrl;        // direkt aus dem Entry – kein extra API-Call
+  final String rarityValue;
+  final String typeDisplay;
 
   const ShopEntry({
     required this.finalPrice,
@@ -21,154 +24,140 @@ class ShopEntry {
     this.bundleName,
     required this.sectionName,
     required this.devName,
-    required this.tracks,
+    required this.displayName,
+    this.imageUrl,
+    required this.rarityValue,
+    required this.typeDisplay,
   });
 
   bool get isBundle => bundleName != null && bundleName!.isNotEmpty;
-  bool get isOnSale => finalPrice < regularPrice;
-
-  String get displayName {
-    if (isBundle) return bundleName!;
-    if (tracks.isNotEmpty) {
-      final n = tracks.first.name;
-      // "[VIRTUAL]1 x Songname for 500 V-Bucks" → "Songname"
-      if (n.startsWith('[VIRTUAL]')) {
-        final m = RegExp(r'\[VIRTUAL\]\d+ x (.+?) for \d+').firstMatch(n);
-        if (m != null) return m.group(1)!;
-        return n.replaceFirst(RegExp(r'\[VIRTUAL\]\d+ x '), '');
-      }
-      return n;
-    }
-    // devName als Fallback, z.B. "BR.Pickaxe.FestivalPickaxe_001" → "FestivalPickaxe 001"
-    final last = devName.split('.').last;
-    return last.replaceAll('_', ' ');
-  }
-
-  String? imageFor(Map<String, CosmeticImages> imgMap) {
-    for (final track in tracks) {
-      final ci = imgMap[track.id];
-      if (ci != null) return ci.featured ?? ci.icon ?? ci.smallIcon;
-    }
-    return null;
-  }
-
-  String get primaryRarity =>
-      tracks.isNotEmpty ? tracks.first.rarityValue : 'common';
-
-  String get primaryTypeDisplay =>
-      tracks.isNotEmpty ? tracks.first.typeDisplay : '';
+  bool get isOnSale  => finalPrice < regularPrice;
 
   factory ShopEntry.fromJson(Map<String, dynamic> j) {
+    // ── Section-Name aus layout.name ──────────────────────
+    String sectionName = 'Shop';
+    final layout = j['layout'];
+    if (layout is Map) {
+      final n = layout['name'] as String?;
+      if (n != null && n.isNotEmpty) sectionName = n;
+    }
+
+    // ── Bundle-Name ───────────────────────────────────────
     String? bundleName;
     final bundle = j['bundle'];
     if (bundle is Map) bundleName = bundle['name'] as String?;
 
-    String sectionName = 'Shop';
-    final section = j['section'];
-    if (section is Map) {
-      sectionName = (section['name'] as String?) ?? 'Shop';
-    } else if (section is String && section.isNotEmpty) {
-      sectionName = section;
+    // ── brItems (normale BR-Cosmetics) ────────────────────
+    final rawBr   = j['brItems'];
+    final brItems = rawBr is List
+        ? rawBr.whereType<Map>().toList()
+        : <Map>[];
+
+    // ── tracks (Festival-Songs) ───────────────────────────
+    final rawTracks = j['tracks'];
+    final tracks    = rawTracks is List
+        ? rawTracks.whereType<Map>().toList()
+        : <Map>[];
+
+    // ── Display-Name ──────────────────────────────────────
+    // Priorität: Bundle → brItem → Track → devName bereinigt
+    String displayName = '';
+    if (bundleName != null && bundleName.isNotEmpty) {
+      displayName = bundleName;
+    } else if (brItems.isNotEmpty) {
+      displayName = (brItems.first['name'] as String?) ?? '';
+    } else if (tracks.isNotEmpty) {
+      final t      = tracks.first;
+      final title  = (t['title']  as String?) ?? '';
+      final artist = (t['artist'] as String?) ?? '';
+      displayName  = artist.isNotEmpty ? '$title – $artist' : title;
     }
-    if (sectionName == 'Shop') {
-      final cats = j['categories'];
-      if (cats is List && cats.isNotEmpty) sectionName = cats.first.toString();
+    if (displayName.isEmpty) {
+      // devName bereinigen: "[VIRTUAL]1 x NAME for NNN MtxCurrency" → NAME
+      final dev = (j['devName'] as String?) ?? '';
+      final match = RegExp(
+              r'\[VIRTUAL\]\d+\s*x\s*(.+?)\s+for\s+\d+',
+              caseSensitive: false)
+          .firstMatch(dev);
+      displayName = match != null ? match.group(1)! : dev;
     }
 
-    final rawTracks = j['tracks'];
-    final List<ShopTrack> tracks = rawTracks is List
-        ? rawTracks
-            .whereType<Map>()
-            .map((m) => ShopTrack.fromJson(Map<String, dynamic>.from(m)))
-            .toList()
-        : [];
+    // ── Bild ──────────────────────────────────────────────
+    // Priorität: newDisplayAsset.renderImages[0] → brItem.featured/icon → track.albumArt
+    String? imageUrl;
+
+    // 1) newDisplayAsset → renderImages
+    final nda = j['newDisplayAsset'];
+    if (nda is Map) {
+      final renders = nda['renderImages'];
+      if (renders is List && renders.isNotEmpty) {
+        final first = renders.first;
+        if (first is Map) {
+          imageUrl = first['image'] as String?;
+        }
+      }
+    }
+
+    // 2) brItem-Bild
+    if (imageUrl == null && brItems.isNotEmpty) {
+      final imgs = brItems.first['images'];
+      if (imgs is Map) {
+        imageUrl = (imgs['featured'] as String?)
+            ?? (imgs['icon'] as String?)
+            ?? (imgs['smallIcon'] as String?);
+      }
+    }
+
+    // 3) Track albumArt
+    if (imageUrl == null && tracks.isNotEmpty) {
+      imageUrl = tracks.first['albumArt'] as String?;
+    }
+
+    // ── Rarity + Typ ─────────────────────────────────────
+    String rarityValue   = 'common';
+    String typeDisplay   = '';
+    if (brItems.isNotEmpty) {
+      final rarity = brItems.first['rarity'];
+      if (rarity is Map) {
+        rarityValue = (rarity['value']        as String?) ?? 'common';
+      }
+      final type = brItems.first['type'];
+      if (type is Map) {
+        typeDisplay = (type['displayValue'] as String?)
+            ?? (type['value'] as String?) ?? '';
+      }
+    }
 
     return ShopEntry(
       finalPrice:   _toInt(j['finalPrice'])   ?? _toInt(j['price'])   ?? 0,
       regularPrice: _toInt(j['regularPrice']) ?? _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
       bundleName:   bundleName,
       sectionName:  sectionName,
-      devName:      j['devName'] as String? ?? '',
-      tracks:       tracks,
+      devName:      (j['devName'] as String?) ?? '',
+      displayName:  displayName,
+      imageUrl:     imageUrl,
+      rarityValue:  rarityValue,
+      typeDisplay:  typeDisplay,
     );
   }
 }
 
-class ShopTrack {
-  final String id;
-  final String name;
-  final String typeDisplay;
-  final String rarityValue;
-  final String rarityDisplay;
-
-  const ShopTrack({
-    required this.id,
-    required this.name,
-    required this.typeDisplay,
-    required this.rarityValue,
-    required this.rarityDisplay,
-  });
-
-  factory ShopTrack.fromJson(Map<String, dynamic> j) {
-    String typeDisplay = '';
-    final type = j['type'];
-    if (type is Map) {
-      typeDisplay = ((type['displayValue'] ?? type['value']) as String?) ?? '';
-    } else if (type is String) {
-      typeDisplay = type;
-    }
-
-    String rarityValue   = 'common';
-    String rarityDisplay = '';
-    final rarity = j['rarity'];
-    if (rarity is Map) {
-      rarityValue   = (rarity['value']        as String?) ?? 'common';
-      rarityDisplay = (rarity['displayValue'] as String?) ?? '';
-    } else if (rarity is String) {
-      rarityValue = rarity;
-    }
-
-    return ShopTrack(
-      id:            j['id']   as String? ?? '',
-      name:          j['name'] as String? ?? '???',
-      typeDisplay:   typeDisplay,
-      rarityValue:   rarityValue,
-      rarityDisplay: rarityDisplay,
-    );
-  }
-}
-
-class CosmeticImages {
-  final String? smallIcon;
-  final String? icon;
-  final String? featured;
-
-  const CosmeticImages({this.smallIcon, this.icon, this.featured});
-
-  factory CosmeticImages.fromJson(Map<String, dynamic> j) {
-    final images = j['images'];
-    if (images is Map) {
-      return CosmeticImages(
-        smallIcon: images['smallIcon'] as String?,
-        icon:      images['icon']      as String?,
-        featured:  images['featured']  as String?,
-      );
-    }
-    return const CosmeticImages();
-  }
+// ─────────────────────────────────────────────────────────
+int? _toInt(dynamic v) {
+  if (v == null)    return null;
+  if (v is int)     return v;
+  if (v is double)  return v.toInt();
+  if (v is String)  return int.tryParse(v);
+  return null;
 }
 
 class ShopData {
-  final List<ShopEntry>             entries;
-  final Map<String, CosmeticImages> cosmeticImages;
-  final DateTime                    fetchedAt;
+  final List<ShopEntry> entries;
+  final DateTime        fetchedAt;
 
-  const ShopData({
-    required this.entries,
-    required this.cosmeticImages,
-    required this.fetchedAt,
-  });
+  const ShopData({required this.entries, required this.fetchedAt});
 
+  /// Entries gruppiert nach Section – in der Reihenfolge wie sie kommen
   Map<String, List<ShopEntry>> get bySection {
     final map = <String, List<ShopEntry>>{};
     for (final e in entries) {
@@ -179,29 +168,16 @@ class ShopData {
 }
 
 // ─────────────────────────────────────────────────────────
-int? _toInt(dynamic v) {
-  if (v == null) return null;
-  if (v is int) return v;
-  if (v is double) return v.toInt();
-  if (v is String) return int.tryParse(v);
-  return null;
-}
-
-const Map<String, String> _headers = {
-  'Authorization': '135f01ed-1a5e-40df-b8b6-4b2c97f47151',
-  'Accept':        'application/json',
-  'User-Agent':    'Orbit/1.0',
-};
-
-// ─────────────────────────────────────────────────────────
 // Service
 // ─────────────────────────────────────────────────────────
 class ShopService extends ChangeNotifier {
-  // Shop-Endpoint
-  static const _shopUrl = 'https://fortnite-api.com/v2/shop?language=de';
+  static const _shopUrl = 'https://fortnite-api.com/v2/shop';
 
-  // ALLE Cosmetic-Typen in einem Call (br + tracks + instruments + lego + cars + beans + …)
-  static const _cosmeticsUrl = 'https://fortnite-api.com/v2/cosmetics?language=de';
+  static const Map<String, String> _headers = {
+    'Authorization': '135f01ed-1a5e-40df-b8b6-4b2c97f47151',
+    'Accept':        'application/json',
+    'User-Agent':    'Orbit/1.0',
+  };
 
   ShopData? _data;
   bool      _loading = false;
@@ -240,78 +216,31 @@ class ShopService extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // Shop + alle Cosmetics gleichzeitig laden
-      final results = await Future.wait([
-        http.get(Uri.parse(_shopUrl),      headers: _headers)
-            .timeout(const Duration(seconds: 20)),
-        http.get(Uri.parse(_cosmeticsUrl), headers: _headers)
-            .timeout(const Duration(seconds: 60)),
-      ]);
+      final res = await http
+          .get(Uri.parse(_shopUrl), headers: _headers)
+          .timeout(const Duration(seconds: 20));
 
-      final shopRes      = results[0];
-      final cosmeticsRes = results[1];
+      if (res.statusCode != 200) {
+        throw Exception('HTTP ${res.statusCode}');
+      }
 
-      if (shopRes.statusCode != 200) throw Exception('Shop HTTP ${shopRes.statusCode}');
+      final shopJson   = jsonDecode(res.body) as Map<String, dynamic>;
+      final dataVal    = shopJson['data'];
 
-      // ── Shop parsen ──────────────────────────────────────
-      final shopJson = jsonDecode(shopRes.body) as Map<String, dynamic>;
-      final dataVal  = shopJson['data'];
-      List<Map<String, dynamic>> rawEntries = [];
-
+      List<dynamic> rawEntries = [];
       if (dataVal is Map) {
-        final shopMap    = Map<String, dynamic>.from(dataVal);
-        final entriesRaw = shopMap['entries'];
-        if (entriesRaw is List && entriesRaw.isNotEmpty) {
-          rawEntries = entriesRaw.whereType<Map>()
-              .map((m) => Map<String, dynamic>.from(m)).toList();
-        }
+        final e = dataVal['entries'];
+        if (e is List) rawEntries = e;
       } else if (dataVal is List) {
-        rawEntries = dataVal.whereType<Map>()
-            .map((m) => Map<String, dynamic>.from(m)).toList();
+        rawEntries = dataVal;
       }
 
-      final entries = rawEntries.map(ShopEntry.fromJson).toList();
+      final entries = rawEntries
+          .whereType<Map>()
+          .map((m) => ShopEntry.fromJson(Map<String, dynamic>.from(m)))
+          .toList();
 
-      // ── ALLE Cosmetic-Typen in eine Map laden ────────────
-      // /v2/cosmetics gibt: { br: [...], tracks: [...], instruments: [...], lego: [...], ... }
-      // Wir iterieren über ALLE Arrays, damit sid_XXX, CID_XXX, EID_XXX etc. alle abgedeckt sind.
-      final cosmeticImages = <String, CosmeticImages>{};
-
-      if (cosmeticsRes.statusCode == 200) {
-        try {
-          final cosJson = jsonDecode(cosmeticsRes.body) as Map<String, dynamic>;
-          final cosData = cosJson['data'];
-
-          Iterable<dynamic> allItems;
-          if (cosData is List) {
-            // Flache Liste
-            allItems = cosData;
-          } else if (cosData is Map) {
-            // Alle Arrays zusammenfassen: br, tracks, instruments, lego, cars, beans, sparks, …
-            allItems = cosData.values.expand((v) => v is List ? v : <dynamic>[]);
-          } else {
-            allItems = <dynamic>[];
-          }
-
-          for (final raw in allItems) {
-            if (raw is Map) {
-              final id = raw['id'] as String?;
-              if (id != null && id.isNotEmpty) {
-                cosmeticImages[id] = CosmeticImages.fromJson(
-                    Map<String, dynamic>.from(raw));
-              }
-            }
-          }
-        } catch (_) {
-          // nicht kritisch
-        }
-      }
-
-      _data = ShopData(
-        entries:        entries,
-        cosmeticImages: cosmeticImages,
-        fetchedAt:      DateTime.now(),
-      );
+      _data = ShopData(entries: entries, fetchedAt: DateTime.now());
     } catch (e) {
       _error = e.toString();
     } finally {
