@@ -10,13 +10,9 @@ import '../theme/orbit_theme.dart';
 
 enum _Filter {
   all,
-  // Battle Royale
   outfit, emote, pickaxe, backbling, glider, sidekick, shoe, wrap, bundle,
-  // Rocket Racing
   car, decal, wheel, trail, boost,
-  // Festival
   jamTrack, instrument,
-  // LEGO
   build, decor,
 }
 
@@ -42,7 +38,6 @@ const Map<_Filter, String> _filterLabel = {
   _Filter.decor:     'Decors',
 };
 
-// Gruppen: (Gruppenname, Filter-Liste)
 const _filterGroups = [
   ('', [_Filter.all]),
   ('BR', [
@@ -56,50 +51,65 @@ const _filterGroups = [
 ];
 
 bool _matchesFilter(ShopEntry e, _Filter f) {
+  final tv      = e.typeValue.toLowerCase();
+  final section = e.sectionName.toLowerCase();
+
   switch (f) {
     case _Filter.all:       return true;
-    case _Filter.outfit:    return e.typeValue == 'outfit';
-    case _Filter.emote:     return e.typeValue == 'emote';
-    case _Filter.pickaxe:   return e.typeValue == 'pickaxe';
-    case _Filter.backbling: return e.typeValue == 'backpack';
-    case _Filter.glider:    return e.typeValue == 'glider';
-    case _Filter.sidekick:  return e.typeValue == 'pet' || e.typeValue == 'sidekick';
-    case _Filter.shoe:      return e.typeValue == 'shoe';
-    case _Filter.wrap:      return e.typeValue == 'wrap';
+    case _Filter.outfit:    return tv == 'outfit';
+    case _Filter.emote:     return tv == 'emote';
+    case _Filter.pickaxe:   return tv == 'pickaxe';
+    case _Filter.backbling: return tv == 'backpack';
+    case _Filter.glider:    return tv == 'glider';
+    case _Filter.sidekick:  return tv == 'pet' || tv == 'sidekick';
+    case _Filter.shoe:      return tv == 'shoe';
+    case _Filter.wrap:      return tv == 'wrap';
     case _Filter.bundle:    return e.isBundle;
-    // Rocket Racing — type.value can vary; section name is the safer fallback
+
     case _Filter.car:
-      return e.typeValue.contains('vehicle_body') ||
-          e.typeValue == 'car' ||
-          (e.sectionName.toLowerCase().contains('racing') && e.typeValue.isEmpty);
+      return tv.contains('vehicle_body') || tv == 'car' ||
+          (section.contains('racing') && tv.isEmpty);
     case _Filter.decal:
-      return e.typeValue.contains('vehicle_decal') || e.typeValue == 'decal';
+      return tv.contains('vehicle_decal') || tv == 'decal';
     case _Filter.wheel:
-      return e.typeValue.contains('vehicle_wheel') || e.typeValue == 'wheel';
+      return tv.contains('vehicle_wheel') || tv == 'wheel';
     case _Filter.trail:
-      return e.typeValue.contains('vehicle_trail') || e.typeValue == 'trail';
+      return tv.contains('vehicle_trail') || tv == 'trail';
     case _Filter.boost:
-      return e.typeValue.contains('vehicle_boost') || e.typeValue == 'boost';
-    // Festival
+      return tv.contains('vehicle_boost') || tv == 'boost';
+
     case _Filter.jamTrack:
       return e.hasTracks;
+
+    // Instrumente: guitar / bass / drums / microphone / keyboard / keytar
+    // und als Fallback: Section-Name enthält "instrument" oder "jam stage"
     case _Filter.instrument:
-      return e.typeValue == 'instrument' ||
-          e.typeValue.contains('guitar') ||
-          e.typeValue.contains('bass') ||
-          e.typeValue.contains('drum') ||
-          e.typeValue.contains('mic');
-    // LEGO
+      if (e.hasTracks) return false; // Songs sind kein Instrument
+      return tv == 'guitar'     ||
+             tv == 'bass'       ||
+             tv == 'drums'      ||
+             tv == 'drum'       ||
+             tv == 'microphone' ||
+             tv == 'mic'        ||
+             tv == 'keyboard'   ||
+             tv == 'keytar'     ||
+             tv == 'instrument' ||
+             section.contains('instrument') ||
+             section.contains('jam stage');
+
+    // LEGO Builds
     case _Filter.build:
-      return e.typeValue.contains('lego_build') ||
-          e.typeValue == 'build' ||
-          (e.sectionName.toLowerCase().contains('lego') &&
-              !e.typeValue.contains('decor'));
+      return tv.contains('build')   ||
+             (tv.contains('juno') && !tv.contains('decor')) ||
+             (section.contains('lego') && !tv.contains('decor'));
+
+    // LEGO Decors: type.value enthält "decor" oder "prop"
+    // Fallback: Section enthält "lego" und nichts anderes greift
     case _Filter.decor:
-      return e.typeValue.contains('lego_decor') ||
-          e.typeValue == 'decor' ||
-          (e.sectionName.toLowerCase().contains('lego') &&
-              e.typeValue.contains('decor'));
+      return tv.contains('decor') ||
+             tv.contains('prop')  ||
+             (section.contains('lego') &&
+              (tv.isEmpty || tv.contains('decor') || tv.contains('prop')));
   }
 }
 
@@ -229,7 +239,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   String _formatTime(DateTime dt) =>
       '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
 
-  // ── Daten aufbereiten ─────────────────────────────────
   List<ShopEntry> _getFiltered() {
     final all = _service.data?.entries ?? [];
     var result = all.where((e) => _matchesFilter(e, _filter)).toList();
@@ -239,7 +248,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 
   bool get _isDefault => _filter == _Filter.all && _sort == _Sort.shopOrder;
 
-  // ── Sort-Sheet ────────────────────────────────────────
   void _showSortSheet() {
     showModalBottomSheet(
       context: context,
@@ -265,7 +273,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── Fester Header (Back + Titel + Refresh) ──
+              // Header
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 4, 16, 0),
                 child: Row(
@@ -277,25 +285,18 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                     ),
                     const SizedBox(width: 4),
                     Expanded(
-                      child: Text(
-                        l10n.shopTitle,
-                        style: const TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
-                          letterSpacing: -0.3,
-                        ),
-                      ),
+                      child: Text(l10n.shopTitle,
+                          style: const TextStyle(
+                            fontSize: 26, fontWeight: FontWeight.w900,
+                            color: Colors.white, letterSpacing: -0.3)),
                     ),
                     IconButton(
                       onPressed: _service.loading ? null : _service.fetch,
                       icon: _service.loading
                           ? const SizedBox(
-                              width: 20,
-                              height: 20,
+                              width: 20, height: 20,
                               child: CircularProgressIndicator(
-                                  strokeWidth: 2, color: Colors.white),
-                            )
+                                  strokeWidth: 2, color: Colors.white))
                           : Icon(Icons.refresh,
                               color: Colors.white.withOpacity(0.80)),
                     ),
@@ -303,7 +304,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                 ),
               ),
 
-              // ── Status-Zeile ────────────────────────────
               if (_service.data != null)
                 Padding(
                   padding: const EdgeInsets.only(left: 20, bottom: 4),
@@ -313,14 +313,11 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
                       _service.data!.entries.length,
                     ),
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.40),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+                        color: Colors.white.withOpacity(0.40),
+                        fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ),
 
-              // ── Inhalt (mit scrollendem Filter+Sort) ────
               Expanded(child: _buildBody(l10n)),
             ],
           ),
@@ -329,7 +326,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
     );
   }
 
-  // ─────────────────────────────────────────────────────
   Widget _buildBody(AppLocalizations l10n) {
     if (_service.loading && _service.data == null) {
       return Center(
@@ -358,42 +354,37 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        // ── Filter-Chips (scrollt weg) ──────────────────
         SliverToBoxAdapter(
           child: _FilterRow(
-            current: _filter,
-            onChanged: (f) => setState(() => _filter = f),
-          ),
+              current: _filter,
+              onChanged: (f) => setState(() => _filter = f)),
         ),
-
-        // ── Sort-Zeile (scrollt weg) ────────────────────
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 6, 16, 4),
             child: _SortRow(
-              sort: _sort,
-              count: filtered.length,
-              onTap: _showSortSheet,
-            ),
+                sort: _sort, count: filtered.length, onTap: _showSortSheet),
           ),
         ),
-
-        // ── Inhalt ──────────────────────────────────────
         if (filtered.isEmpty)
           SliverFillRemaining(
             child: Center(
-              child: Text(
-                l10n.noResults,
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.45), fontSize: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.filter_alt_off_outlined,
+                      color: Colors.white.withOpacity(0.20), size: 48),
+                  const SizedBox(height: 12),
+                  Text(l10n.noResults,
+                      style: TextStyle(
+                          color: Colors.white.withOpacity(0.45), fontSize: 16)),
+                ],
               ),
             ),
           )
         else if (_isDefault)
-          // Nach Sektionen gegliedert (Standard)
           ..._buildSectionSlivers(_service.data!.bySection)
         else
-          // Flache Liste (bei aktivem Filter oder Sort)
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
             sliver: SliverGrid(
@@ -416,30 +407,21 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
   List<Widget> _buildSectionSlivers(Map<String, List<ShopEntry>> sections) {
     final slivers = <Widget>[];
     for (final sec in sections.entries) {
-      // Section-Header
       slivers.add(SliverToBoxAdapter(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 20, 16, 10),
-          child: Text(
-            sec.key.toUpperCase(),
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.45),
-              fontSize: 11,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.5,
-            ),
-          ),
+          child: Text(sec.key.toUpperCase(),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.45),
+                fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.5)),
         ),
       ));
-      // Grid
       slivers.add(SliverPadding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         sliver: SliverGrid(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 0.72,
+            mainAxisSpacing: 12, crossAxisSpacing: 12, childAspectRatio: 0.72,
           ),
           delegate: SliverChildBuilderDelegate(
             (context, i) => _ShopCard(entry: sec.value[i]),
@@ -460,7 +442,6 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
 class _FilterRow extends StatelessWidget {
   final _Filter current;
   final ValueChanged<_Filter> onChanged;
-
   const _FilterRow({required this.current, required this.onChanged});
 
   @override
@@ -472,38 +453,28 @@ class _FilterRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         itemCount: _filterGroups.length,
         itemBuilder: (context, gi) {
-          final group = _filterGroups[gi];
+          final group      = _filterGroups[gi];
           final groupLabel = group.$1;
-          final filters   = group.$2;
-
+          final filters    = group.$2;
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Gruppen-Separator (außer bei der ersten Gruppe)
               if (gi > 0)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: Container(
-                    width: 1,
-                    height: 24,
-                    color: Colors.white.withOpacity(0.15),
-                  ),
+                      width: 1, height: 24,
+                      color: Colors.white.withOpacity(0.15)),
                 ),
-              // Gruppen-Label
               if (groupLabel.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(right: 6),
-                  child: Text(
-                    groupLabel,
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.35),
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.8,
-                    ),
-                  ),
+                  child: Text(groupLabel,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.35),
+                        fontSize: 10, fontWeight: FontWeight.w700,
+                        letterSpacing: 0.8)),
                 ),
-              // Filter-Chips
               ...filters.map((f) {
                 final active = current == f;
                 return Padding(
@@ -525,17 +496,15 @@ class _FilterRow extends StatelessWidget {
                               : Colors.white.withOpacity(0.12),
                         ),
                       ),
-                      child: Text(
-                        _filterLabel[f]!,
-                        style: TextStyle(
-                          color: active
-                              ? Colors.white
-                              : Colors.white.withOpacity(0.60),
-                          fontSize: 12,
-                          fontWeight:
-                              active ? FontWeight.w700 : FontWeight.w500,
-                        ),
-                      ),
+                      child: Text(_filterLabel[f]!,
+                          style: TextStyle(
+                            color: active
+                                ? Colors.white
+                                : Colors.white.withOpacity(0.60),
+                            fontSize: 12,
+                            fontWeight:
+                                active ? FontWeight.w700 : FontWeight.w500,
+                          )),
                     ),
                   ),
                 );
@@ -556,7 +525,6 @@ class _SortRow extends StatelessWidget {
   final _Sort sort;
   final int count;
   final VoidCallback onTap;
-
   const _SortRow({required this.sort, required this.count, required this.onTap});
 
   @override
@@ -576,23 +544,15 @@ class _SortRow extends StatelessWidget {
                 size: 16, color: Colors.white.withOpacity(0.50)),
             const SizedBox(width: 8),
             Expanded(
-              child: Text(
-                _sortLabel[sort]!,
+              child: Text(_sortLabel[sort]!,
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.70),
+                    fontSize: 13, fontWeight: FontWeight.w600)),
+            ),
+            Text('$count',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.70),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            Text(
-              '$count',
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.35),
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+                    color: Colors.white.withOpacity(0.35),
+                    fontSize: 12, fontWeight: FontWeight.w500)),
             const SizedBox(width: 6),
             Icon(Icons.keyboard_arrow_down_rounded,
                 size: 18, color: Colors.white.withOpacity(0.40)),
@@ -604,28 +564,33 @@ class _SortRow extends StatelessWidget {
 }
 
 // ══════════════════════════════════════════════════════════════
-// SORT-BOTTOM-SHEET
+// SORT-BOTTOM-SHEET — dunkel, gut lesbar, mit Icons
 // ══════════════════════════════════════════════════════════════
 
 class _SortSheet extends StatelessWidget {
   final _Sort current;
   final ValueChanged<_Sort> onSelected;
-
   const _SortSheet({required this.current, required this.onSelected});
+
+  static const _icons = {
+    _Sort.shopOrder:   Icons.storefront_outlined,
+    _Sort.newestFirst: Icons.new_releases_outlined,
+    _Sort.oldestFirst: Icons.history,
+    _Sort.series:      Icons.collections_bookmark_outlined,
+    _Sort.rarity:      Icons.auto_awesome_outlined,
+    _Sort.priceLow:    Icons.arrow_upward,
+    _Sort.priceHigh:   Icons.arrow_downward,
+    _Sort.nameAZ:      Icons.sort_by_alpha,
+    _Sort.nameZA:      Icons.sort_by_alpha,
+  };
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(12, 0, 12, 24),
+      // ← Solider dunkler Hintergrund — kein Durchscheinen
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.white.withOpacity(0.11),
-            Colors.white.withOpacity(0.05),
-          ],
-        ),
+        color: const Color(0xFF1A1026),
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: Colors.white.withOpacity(0.12)),
       ),
@@ -637,40 +602,60 @@ class _SortSheet extends StatelessWidget {
             'SORTIERUNG',
             style: TextStyle(
               color: Colors.white.withOpacity(0.40),
-              fontSize: 11,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.5,
-            ),
+              fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.5),
           ),
           const SizedBox(height: 8),
-          const Divider(color: Colors.white12, height: 1),
+          Divider(color: Colors.white.withOpacity(0.10), height: 1),
           ..._Sort.values.map((s) {
             final isSelected = s == current;
-            return InkWell(
-              onTap: () => onSelected(s),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 14),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        _sortLabel[s]!,
-                        style: TextStyle(
+            return Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(8),
+                onTap: () => onSelected(s),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 13),
+                  child: Row(
+                    children: [
+                      // Icon-Box
+                      Container(
+                        width: 34, height: 34,
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? const Color(0xFF9C6FFF).withOpacity(0.20)
+                              : Colors.white.withOpacity(0.06),
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                        child: Icon(
+                          _icons[s]!,
+                          size: 17,
                           color: isSelected
                               ? const Color(0xFF9C6FFF)
-                              : Colors.white.withOpacity(0.80),
-                          fontWeight: isSelected
-                              ? FontWeight.w800
-                              : FontWeight.w500,
-                          fontSize: 15,
+                              : Colors.white.withOpacity(0.50),
                         ),
                       ),
-                    ),
-                    if (isSelected)
-                      const Icon(Icons.check_circle_rounded,
-                          color: Color(0xFF9C6FFF), size: 20),
-                  ],
+                      const SizedBox(width: 14),
+                      // Label — immer weiß auf dunklem Hintergrund
+                      Expanded(
+                        child: Text(
+                          _sortLabel[s]!,
+                          style: TextStyle(
+                            color: isSelected
+                                ? Colors.white
+                                : Colors.white.withOpacity(0.80),
+                            fontWeight: isSelected
+                                ? FontWeight.w800
+                                : FontWeight.w500,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                      if (isSelected)
+                        const Icon(Icons.check_circle_rounded,
+                            color: Color(0xFF9C6FFF), size: 20),
+                    ],
+                  ),
                 ),
               ),
             );
@@ -698,13 +683,9 @@ class _ShopCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          begin: Alignment.topLeft, end: Alignment.bottomRight,
           colors: [
-            Colors.white.withOpacity(0.09),
-            Colors.white.withOpacity(0.03),
-          ],
-        ),
+            Colors.white.withOpacity(0.09), Colors.white.withOpacity(0.03)]),
         border: Border.all(color: accentColor.withOpacity(0.45), width: 1.2),
       ),
       child: ClipRRect(
@@ -738,27 +719,19 @@ class _ShopCard extends StatelessWidget {
                           ? child
                           : Center(
                               child: SizedBox(
-                                width: 22,
-                                height: 22,
+                                width: 22, height: 22,
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  color: accentColor.withOpacity(0.60),
-                                ),
-                              ),
-                            ),
+                                  color: accentColor.withOpacity(0.60)))),
                     )
                   else
                     const _NoImage(),
                   if (entry.isOnSale)
-                    Positioned(
-                      top: 7, right: 7,
-                      child: _Badge(label: 'SALE', color: Colors.red.shade600),
-                    ),
+                    Positioned(top: 7, right: 7,
+                        child: _Badge(label: 'SALE', color: Colors.red.shade600)),
                   if (entry.isBundle)
-                    Positioned(
-                      top: 7, left: 7,
-                      child: _Badge(label: 'BUNDLE', color: Colors.purple.shade700),
-                    ),
+                    Positioned(top: 7, left: 7,
+                        child: _Badge(label: 'BUNDLE', color: Colors.purple.shade700)),
                 ],
               ),
             ),
@@ -769,50 +742,33 @@ class _ShopCard extends StatelessWidget {
                 children: [
                   Text(
                     entry.displayName.isEmpty ? '???' : entry.displayName,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2, overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 13,
-                      height: 1.2,
-                    ),
-                  ),
+                        color: Colors.white, fontWeight: FontWeight.w800,
+                        fontSize: 13, height: 1.2)),
                   if (entry.typeDisplay.isNotEmpty) ...[
                     const SizedBox(height: 2),
-                    Text(
-                      entry.typeDisplay,
-                      style: TextStyle(
-                        color: accentColor.withOpacity(0.85),
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    Text(entry.typeDisplay,
+                        style: TextStyle(
+                            color: accentColor.withOpacity(0.85),
+                            fontSize: 11, fontWeight: FontWeight.w600)),
                   ],
                   const SizedBox(height: 6),
                   Row(
                     children: [
                       _VBucksIcon(),
                       const SizedBox(width: 5),
-                      Text(
-                        '${entry.finalPrice}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 14,
-                        ),
-                      ),
+                      Text('${entry.finalPrice}',
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900, fontSize: 14)),
                       if (entry.isOnSale) ...[
                         const SizedBox(width: 6),
-                        Text(
-                          '${entry.regularPrice}',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.38),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 11,
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                        ),
+                        Text('${entry.regularPrice}',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.38),
+                              fontWeight: FontWeight.w600, fontSize: 11,
+                              decoration: TextDecoration.lineThrough)),
                       ],
                     ],
                   ),
@@ -834,10 +790,8 @@ class _NoImage extends StatelessWidget {
   const _NoImage();
   @override
   Widget build(BuildContext context) => Icon(
-        Icons.image_not_supported_outlined,
-        color: Colors.white.withOpacity(0.15),
-        size: 36,
-      );
+      Icons.image_not_supported_outlined,
+      color: Colors.white.withOpacity(0.15), size: 36);
 }
 
 class _Badge extends StatelessWidget {
@@ -846,43 +800,28 @@ class _Badge extends StatelessWidget {
   const _Badge({required this.label, required this.color});
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: Text(
-          label,
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
+      child: Text(label,
           style: const TextStyle(
-            color: Colors.white,
-            fontSize: 9,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 0.8,
-          ),
-        ),
-      );
+              color: Colors.white, fontSize: 9,
+              fontWeight: FontWeight.w900, letterSpacing: 0.8)));
 }
 
 class _VBucksIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-        width: 16,
-        height: 16,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: const Color(0xFF00C8FF).withOpacity(0.20),
-          border: Border.all(
-              color: const Color(0xFF00C8FF).withOpacity(0.60), width: 1),
-        ),
-        child: const Center(
+      width: 16, height: 16,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: const Color(0xFF00C8FF).withOpacity(0.20),
+        border: Border.all(
+            color: const Color(0xFF00C8FF).withOpacity(0.60), width: 1)),
+      child: const Center(
           child: Text('V',
               style: TextStyle(
-                color: Color(0xFF00C8FF),
-                fontSize: 9,
-                fontWeight: FontWeight.w900,
-              )),
-        ),
-      );
+                  color: Color(0xFF00C8FF), fontSize: 9,
+                  fontWeight: FontWeight.w900))));
 }
 
 class _ErrorView extends StatelessWidget {
@@ -893,40 +832,32 @@ class _ErrorView extends StatelessWidget {
       {required this.error, required this.onRetry, required this.l10n});
   @override
   Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.storefront_outlined,
-                  color: Colors.white24, size: 52),
-              const SizedBox(height: 16),
-              Text(
-                l10n.shopError,
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.storefront_outlined,
+                color: Colors.white24, size: 52),
+            const SizedBox(height: 16),
+            Text(l10n.shopError,
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.75),
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                error,
+                    color: Colors.white.withOpacity(0.75),
+                    fontSize: 17, fontWeight: FontWeight.w700),
+                textAlign: TextAlign.center),
+            const SizedBox(height: 8),
+            Text(error,
                 style: TextStyle(
                     color: Colors.white.withOpacity(0.40), fontSize: 12),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 24),
-              FilledButton.icon(
-                onPressed: onRetry,
-                style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF7C4DFF)),
-                icon: const Icon(Icons.refresh),
-                label: Text(l10n.shopRetry),
-              ),
-            ],
-          ),
+                textAlign: TextAlign.center),
+            const SizedBox(height: 24),
+            FilledButton.icon(
+              onPressed: onRetry,
+              style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFF7C4DFF)),
+              icon: const Icon(Icons.refresh),
+              label: Text(l10n.shopRetry)),
+          ],
         ),
-      );
+      ));
 }
