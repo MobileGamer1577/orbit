@@ -61,8 +61,6 @@ class FortniteKreativMapsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: OrbitBackground(
@@ -120,8 +118,7 @@ class FortniteKreativMapsScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                   itemCount: _maps.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 14),
-                  itemBuilder: (context, i) =>
-                      _MapCard(map: _maps[i]),
+                  itemBuilder: (context, i) => _MapCard(map: _maps[i]),
                 ),
               ),
             ],
@@ -163,10 +160,7 @@ class _MapCard extends StatelessWidget {
             height: 4,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  map.accentColor,
-                  map.accentColor.withOpacity(0.3),
-                ],
+                colors: [map.accentColor, map.accentColor.withOpacity(0.3)],
               ),
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(22),
@@ -216,7 +210,9 @@ class _MapCard extends StatelessWidget {
                   onTap: () => _copyCode(context),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 9),
+                      horizontal: 12,
+                      vertical: 9,
+                    ),
                     decoration: BoxDecoration(
                       color: map.accentColor.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(10),
@@ -227,11 +223,7 @@ class _MapCard extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
-                          Icons.tag,
-                          size: 15,
-                          color: map.accentColor,
-                        ),
+                        Icon(Icons.tag, size: 15, color: map.accentColor),
                         const SizedBox(width: 6),
                         Text(
                           map.islandCode,
@@ -274,25 +266,31 @@ class _MapCard extends StatelessWidget {
                 Wrap(
                   spacing: 6,
                   runSpacing: 6,
-                  children: map.tags.map((tag) => Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 9, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.07),
-                      borderRadius: BorderRadius.circular(999),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.12),
-                      ),
-                    ),
-                    child: Text(
-                      tag,
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.55),
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  )).toList(),
+                  children: map.tags
+                      .map(
+                        (tag) => Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 9,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.07),
+                            borderRadius: BorderRadius.circular(999),
+                            border: Border.all(
+                              color: Colors.white.withOpacity(0.12),
+                            ),
+                          ),
+                          child: Text(
+                            tag,
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.55),
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ],
             ),
