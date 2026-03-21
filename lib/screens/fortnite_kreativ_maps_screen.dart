@@ -12,7 +12,6 @@ class _KreativMap {
   final String name;
   final String creator;
   final String islandCode;
-  final String description;
   final List<String> tags;
   final Color accentColor;
 
@@ -20,7 +19,6 @@ class _KreativMap {
     required this.name,
     required this.creator,
     required this.islandCode,
-    required this.description,
     required this.tags,
     required this.accentColor,
   });
@@ -35,8 +33,6 @@ final List<_KreativMap> _maps = [
     name: 'Klau die Dinos 🦕 [Galaxy-Event 🦅]',
     creator: 'NBRSTUDIOS',
     islandCode: '1499-6977-1308',
-    description:
-        'Macht euch bereit für ein episches Abenteuer, in dem ihr die Dinosaurier anderer Spieler stehlt, um eure eigene urzeitliche Sammlung aufzubauen! Kauft Dinosaurier, um Gewinne zu erzielen und exklusive Vorteile durch Reinkarnationen freizuschalten. Sammelt seltene Dinosaurier und seht zu, wie euer urzeitliches Imperium wächst!',
     tags: ['simulator', 'tycoon', 'casual', 'just for fun'],
     accentColor: Color(0xFFFF4444),
   ),
@@ -44,8 +40,6 @@ final List<_KreativMap> _maps = [
     name: 'Monsterklau 👻 [ADM-ABUSE]',
     creator: 'NBRSTUDIOS',
     islandCode: '4262-1024-3421',
-    description:
-        'ADM ABUSE EVENT! • UPSIDE DOWN EVENT! • BLOOD MOON EVENT! • LUCKY BLOCK EVENT! • TRADE SYSTEM! • EARN CASH OFFLINE! • REBIRTH TO GAIN POWERFUL PERKS!',
     tags: ['simulator', 'tycoon', 'casual', 'just for fun'],
     accentColor: Color(0xFF9C6FFF),
   ),
@@ -242,21 +236,6 @@ class _MapCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-
-                const SizedBox(height: 12),
-
-                // ── Beschreibung ──────────────────────────
-                Text(
-                  map.description,
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.60),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    height: 1.45,
-                  ),
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
                 ),
 
                 const SizedBox(height: 12),
