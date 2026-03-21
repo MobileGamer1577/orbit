@@ -118,7 +118,7 @@ bool _matchesFilter(ShopEntry e, _Filter f) {
 // ══════════════════════════════════════════════════════════════
 
 enum _Sort {
-  shopOrder, newestFirst, oldestFirst, series, rarity,
+  shopOrder, newestFirst, oldestFirst,
   priceLow, priceHigh, nameAZ, nameZA,
 }
 
@@ -126,8 +126,6 @@ const Map<_Sort, String> _sortLabel = {
   _Sort.shopOrder:   'Shop Order',
   _Sort.newestFirst: 'Newest First',
   _Sort.oldestFirst: 'Oldest First',
-  _Sort.series:      'Series',
-  _Sort.rarity:      'Rarity',
   _Sort.priceLow:    'Price: Low to High',
   _Sort.priceHigh:   'Price: High to Low',
   _Sort.nameAZ:      'Name: A–Z',
@@ -157,14 +155,6 @@ void _sortList(List<ShopEntry> list, _Sort sort) {
         if (a.inDate == null) return 1;
         if (b.inDate == null) return -1;
         return a.inDate!.compareTo(b.inDate!);
-      });
-    case _Sort.series:
-      list.sort((a, b) => a.seriesValue.compareTo(b.seriesValue));
-    case _Sort.rarity:
-      list.sort((a, b) {
-        final ra = _rarityOrder[a.rarityValue] ?? 0;
-        final rb = _rarityOrder[b.rarityValue] ?? 0;
-        return rb.compareTo(ra);
       });
     case _Sort.priceLow:
       list.sort((a, b) => a.finalPrice.compareTo(b.finalPrice));
@@ -577,8 +567,6 @@ class _SortSheet extends StatelessWidget {
     _Sort.shopOrder:   Icons.storefront_outlined,
     _Sort.newestFirst: Icons.new_releases_outlined,
     _Sort.oldestFirst: Icons.history,
-    _Sort.series:      Icons.collections_bookmark_outlined,
-    _Sort.rarity:      Icons.auto_awesome_outlined,
     _Sort.priceLow:    Icons.arrow_upward,
     _Sort.priceHigh:   Icons.arrow_downward,
     _Sort.nameAZ:      Icons.sort_by_alpha,
@@ -591,7 +579,6 @@ class _SortSheet extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.fromLTRB(12, 0, 12, 24),
-      // Maximale Höhe = 75 % des Screens → Rest ist scrollbar
       constraints: BoxConstraints(maxHeight: screenH * 0.75),
       decoration: BoxDecoration(
         color: const Color(0xFF1A1026),
@@ -640,7 +627,7 @@ class _SortSheet extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(9),
                                 ),
                                 child: Icon(
-                                  _icons[s]!,
+                                  _icons[s] ?? Icons.sort,
                                   size: 17,
                                   color: isSelected
                                       ? const Color(0xFF9C6FFF)
