@@ -252,6 +252,7 @@ class _FortniteShopScreenState extends State<FortniteShopScreen> {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
+      isScrollControlled: true,
       builder: (_) => _SortSheet(
         current: _sort,
         onSelected: (s) {
@@ -586,9 +587,12 @@ class _SortSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenH = MediaQuery.of(context).size.height;
+
     return Container(
       margin: const EdgeInsets.fromLTRB(12, 0, 12, 24),
-      // ← Solider dunkler Hintergrund — kein Durchscheinen
+      // Maximale Höhe = 75 % des Screens → Rest ist scrollbar
+      constraints: BoxConstraints(maxHeight: screenH * 0.75),
       decoration: BoxDecoration(
         color: const Color(0xFF1A1026),
         borderRadius: BorderRadius.circular(22),
@@ -597,6 +601,7 @@ class _SortSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // ── Fester Header ──────────────────────────────
           const SizedBox(height: 16),
           Text(
             'SORTIERUNG',
@@ -606,61 +611,71 @@ class _SortSheet extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Divider(color: Colors.white.withOpacity(0.10), height: 1),
-          ..._Sort.values.map((s) {
-            final isSelected = s == current;
-            return Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(8),
-                onTap: () => onSelected(s),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 13),
-                  child: Row(
-                    children: [
-                      // Icon-Box
-                      Container(
-                        width: 34, height: 34,
-                        decoration: BoxDecoration(
-                          color: isSelected
-                              ? const Color(0xFF9C6FFF).withOpacity(0.20)
-                              : Colors.white.withOpacity(0.06),
-                          borderRadius: BorderRadius.circular(9),
-                        ),
-                        child: Icon(
-                          _icons[s]!,
-                          size: 17,
-                          color: isSelected
-                              ? const Color(0xFF9C6FFF)
-                              : Colors.white.withOpacity(0.50),
-                        ),
-                      ),
-                      const SizedBox(width: 14),
-                      // Label — immer weiß auf dunklem Hintergrund
-                      Expanded(
-                        child: Text(
-                          _sortLabel[s]!,
-                          style: TextStyle(
-                            color: isSelected
-                                ? Colors.white
-                                : Colors.white.withOpacity(0.80),
-                            fontWeight: isSelected
-                                ? FontWeight.w800
-                                : FontWeight.w500,
-                            fontSize: 15,
+
+          // ── Scrollbare Optionen ────────────────────────
+          Flexible(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ..._Sort.values.map((s) {
+                    final isSelected = s == current;
+                    return Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(8),
+                        onTap: () => onSelected(s),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 13),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 34, height: 34,
+                                decoration: BoxDecoration(
+                                  color: isSelected
+                                      ? const Color(0xFF9C6FFF).withOpacity(0.20)
+                                      : Colors.white.withOpacity(0.06),
+                                  borderRadius: BorderRadius.circular(9),
+                                ),
+                                child: Icon(
+                                  _icons[s]!,
+                                  size: 17,
+                                  color: isSelected
+                                      ? const Color(0xFF9C6FFF)
+                                      : Colors.white.withOpacity(0.50),
+                                ),
+                              ),
+                              const SizedBox(width: 14),
+                              Expanded(
+                                child: Text(
+                                  _sortLabel[s]!,
+                                  style: TextStyle(
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Colors.white.withOpacity(0.80),
+                                    fontWeight: isSelected
+                                        ? FontWeight.w800
+                                        : FontWeight.w500,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                              if (isSelected)
+                                const Icon(Icons.check_circle_rounded,
+                                    color: Color(0xFF9C6FFF), size: 20),
+                            ],
                           ),
                         ),
                       ),
-                      if (isSelected)
-                        const Icon(Icons.check_circle_rounded,
-                            color: Color(0xFF9C6FFF), size: 20),
-                    ],
-                  ),
-                ),
+                    );
+                  }),
+                  const SizedBox(height: 8),
+                ],
               ),
-            );
-          }),
-          const SizedBox(height: 8),
+            ),
+          ),
         ],
       ),
     );
