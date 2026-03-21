@@ -171,6 +171,21 @@ abstract class AppLocalizations {
   String get instrumentBass;
   String get instrumentDrums;
 
+  // ── Kreativ Maps ──────────────────────────────────────────
+  String get kreativMapCodes;
+  String get kreativMapCodesCount;
+  String get kreativMapUpdates;
+  String get kreativMapCountdowns;
+  String get kreativMapCodeHint;
+  String get kreativEvery;
+  String get kreativEveryDay;
+  String kreativEveryHours(int h);
+  String get kreativNextIn;
+  String get kreativNoEvents;
+  String get kreativToday;
+  String get kreativTomorrow;
+  List<String> get weekdayNames;
+
   // ── Update Dialog ─────────────────────────────────────────
   String updateAvailableTitle(String version);
 }
@@ -497,6 +512,42 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get instrumentDrums => 'Drums';
 
+  // Kreativ Maps
+  @override
+  String get kreativMapCodes => 'Codes';
+  @override
+  String get kreativMapCodesCount => 'Island-Code(s)';
+  @override
+  String get kreativMapUpdates => 'Updates';
+  @override
+  String get kreativMapCountdowns => 'Countdowns';
+  @override
+  String get kreativMapCodeHint => 'Antippen um den Code zu kopieren';
+  @override
+  String get kreativEvery => 'Jeden';
+  @override
+  String get kreativEveryDay => 'Täglich';
+  @override
+  String kreativEveryHours(int h) => 'Alle ${h}h';
+  @override
+  String get kreativNextIn => 'in';
+  @override
+  String get kreativNoEvents => 'Keine Events konfiguriert';
+  @override
+  String get kreativToday => 'Heute';
+  @override
+  String get kreativTomorrow => 'Morgen';
+  @override
+  List<String> get weekdayNames => const [
+    'Mo',
+    'Di',
+    'Mi',
+    'Do',
+    'Fr',
+    'Sa',
+    'So',
+  ];
+
   @override
   String updateAvailableTitle(String version) => 'Update verfügbar: $version';
 }
@@ -799,6 +850,42 @@ class _AppLocalizationsEn extends AppLocalizations {
   String get instrumentBass => 'Bass';
   @override
   String get instrumentDrums => 'Drums';
+
+  // Kreativ Maps
+  @override
+  String get kreativMapCodes => 'Codes';
+  @override
+  String get kreativMapCodesCount => 'Island Code(s)';
+  @override
+  String get kreativMapUpdates => 'Updates';
+  @override
+  String get kreativMapCountdowns => 'Countdowns';
+  @override
+  String get kreativMapCodeHint => 'Tap to copy the code';
+  @override
+  String get kreativEvery => 'Every';
+  @override
+  String get kreativEveryDay => 'Daily';
+  @override
+  String kreativEveryHours(int h) => 'Every ${h}h';
+  @override
+  String get kreativNextIn => 'in';
+  @override
+  String get kreativNoEvents => 'No events configured';
+  @override
+  String get kreativToday => 'Today';
+  @override
+  String get kreativTomorrow => 'Tomorrow';
+  @override
+  List<String> get weekdayNames => const [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ];
 
   @override
   String updateAvailableTitle(String version) => 'Update available: $version';
