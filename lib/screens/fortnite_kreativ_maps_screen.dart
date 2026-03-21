@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../l10n/app_localizations.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
