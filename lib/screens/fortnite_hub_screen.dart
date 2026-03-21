@@ -8,6 +8,7 @@ import '../widgets/orbit_glass_card.dart';
 
 import 'fortnite_countdown_screen.dart';
 import 'fortnite_festival_hub_screen.dart';
+import 'fortnite_kreativ_maps_screen.dart';
 import 'fortnite_locker_screen.dart';
 import 'fortnite_shop_screen.dart';
 import 'mode_select_screen.dart';
@@ -143,6 +144,17 @@ class FortniteHubScreen extends StatelessWidget {
                         onTap: () => _push(
                           context,
                           FortniteFestivalHubScreen(collection: collection),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      _HubCard(
+                        icon: Icons.palette,
+                        iconColor: const Color(0xFFFF8C00),
+                        title: l10n.hubKreativMaps,
+                        subtitle: l10n.hubKreativMapsSubtitle,
+                        onTap: () => _push(
+                          context,
+                          const FortniteKreativMapsScreen(),
                         ),
                       ),
                       const SizedBox(height: 10),
