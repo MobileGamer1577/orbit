@@ -78,6 +78,21 @@ abstract class AppLocalizations {
   String get hubServerStatusSubtitle;
   String get hubServerStatusSoon;
 
+  // ── Kreativ Maps ──────────────────────────────────────────
+  String get kreativMapCountdowns;
+  String get kreativMapCodes;
+  String get kreativMapCodesCount;
+  String get kreativMapUpdates;
+  String get kreativMapCodeHint;
+  String get kreativNoEvents;
+  String get kreativToday;
+  String get kreativTomorrow;
+  String get kreativNextIn;
+  String get kreativEvery;
+  String get kreativEveryDay;
+  String kreativEveryHours(int h);
+  List<String> get weekdayNames;
+
   // ── Countdown ─────────────────────────────────────────────
   String get countdownTitle;
   String get countdownSubtitle;
@@ -299,7 +314,8 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get hubCosmeticsAll => 'Alle Cosmetics';
   @override
-  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
+  String get hubCosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubCosmetics => 'Cosmetics & Spind';
   @override
@@ -309,11 +325,13 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get cosmeticsMyLocker => 'Mein Spind';
   @override
-  String get cosmeticsMyLockerSubtitle => 'Gespeicherte Songs, Wunschliste & mehr';
+  String get cosmeticsMyLockerSubtitle =>
+      'Gespeicherte Songs, Wunschliste & mehr';
   @override
   String get cosmeticsAll => 'Alle Cosmetics';
   @override
-  String get cosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
+  String get cosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubFestival => 'Festival';
   @override
@@ -329,7 +347,41 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get hubServerStatusSoon => 'Status kommt bald ✅';
 
-  // Countdown
+  // Kreativ Maps
+  @override
+  String get kreativMapCountdowns => 'Event-Countdowns';
+  @override
+  String get kreativMapCodes => 'Island-Codes';
+  @override
+  String get kreativMapCodesCount => 'Codes';
+  @override
+  String get kreativMapUpdates => 'Updates';
+  @override
+  String get kreativMapCodeHint => 'Tippe auf den Code um ihn zu kopieren';
+  @override
+  String get kreativNoEvents => 'Keine Events konfiguriert.';
+  @override
+  String get kreativToday => 'Heute';
+  @override
+  String get kreativTomorrow => 'Morgen';
+  @override
+  String get kreativNextIn => 'in';
+  @override
+  String get kreativEvery => 'Jeden';
+  @override
+  String get kreativEveryDay => 'Täglich';
+  @override
+  String kreativEveryHours(int h) => 'Alle $h Stunden';
+  @override
+  List<String> get weekdayNames => const [
+    'Montag',
+    'Dienstag',
+    'Mittwoch',
+    'Donnerstag',
+    'Freitag',
+    'Samstag',
+    'Sonntag',
+  ];
   @override
   String get countdownTitle => 'Countdowns';
   @override
@@ -409,9 +461,11 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get lockerSubtitleWishlist => 'Songs auf deiner Wunschliste';
   @override
-  String get lockerEmptyOwned => 'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
+  String get lockerEmptyOwned =>
+      'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
   @override
-  String get lockerEmptyWishlist => 'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
+  String get lockerEmptyWishlist =>
+      'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
   @override
   String get lockerSearchHint => 'Song / Artist / ID suchen…';
   @override
@@ -634,7 +688,8 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get hubCosmeticsAll => 'All Cosmetics';
   @override
-  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
+  String get hubCosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubCosmetics => 'Cosmetics & Locker';
   @override
@@ -648,7 +703,8 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get cosmeticsAll => 'All Cosmetics';
   @override
-  String get cosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
+  String get cosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubFestival => 'Festival';
   @override
@@ -663,6 +719,42 @@ class _AppLocalizationsEn extends AppLocalizations {
   String get hubServerStatusSubtitle => 'Coming soon (server/services)';
   @override
   String get hubServerStatusSoon => 'Status coming soon ✅';
+
+  // Kreativ Maps
+  @override
+  String get kreativMapCountdowns => 'Event Countdowns';
+  @override
+  String get kreativMapCodes => 'Island Codes';
+  @override
+  String get kreativMapCodesCount => 'Codes';
+  @override
+  String get kreativMapUpdates => 'Updates';
+  @override
+  String get kreativMapCodeHint => 'Tap the code to copy it';
+  @override
+  String get kreativNoEvents => 'No events configured.';
+  @override
+  String get kreativToday => 'Today';
+  @override
+  String get kreativTomorrow => 'Tomorrow';
+  @override
+  String get kreativNextIn => 'in';
+  @override
+  String get kreativEvery => 'Every';
+  @override
+  String get kreativEveryDay => 'Daily';
+  @override
+  String kreativEveryHours(int h) => 'Every $h hours';
+  @override
+  List<String> get weekdayNames => const [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
 
   // Countdown
   @override
@@ -743,9 +835,11 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get lockerSubtitleWishlist => 'Songs on your wishlist';
   @override
-  String get lockerEmptyOwned => 'No songs owned yet.\nOpen a song and tap "Own".';
+  String get lockerEmptyOwned =>
+      'No songs owned yet.\nOpen a song and tap "Own".';
   @override
-  String get lockerEmptyWishlist => 'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
+  String get lockerEmptyWishlist =>
+      'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
   @override
   String get lockerSearchHint => 'Search song / artist / ID…';
   @override
