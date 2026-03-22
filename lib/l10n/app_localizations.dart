@@ -59,6 +59,10 @@ abstract class AppLocalizations {
   String get hubStatsSoon;
   String get hubLocker;
   String get hubLockerSubtitle;
+  String get hubWishlist;
+  String get hubWishlistSubtitle;
+  String get hubCosmeticsAll;
+  String get hubCosmeticsAllSubtitle;
   String get hubCosmetics;
   String get hubCosmeticsSubtitle;
   String get cosmeticsWhatOpen;
@@ -107,6 +111,10 @@ abstract class AppLocalizations {
   // ── Locker ────────────────────────────────────────────────
   String get lockerTitle;
   String get lockerSubtitle;
+  String get lockerSubtitleOwned;
+  String get lockerSubtitleWishlist;
+  String get lockerEmptyOwned;
+  String get lockerEmptyWishlist;
   String get lockerSearchHint;
   String get filterAll;
   String get filterOwned;
@@ -283,7 +291,15 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get hubLocker => 'Spind';
   @override
-  String get hubLockerSubtitle => 'Festival-Songs & Wunschliste';
+  String get hubLockerSubtitle => 'Deine gespeicherten Songs';
+  @override
+  String get hubWishlist => 'Wunschliste';
+  @override
+  String get hubWishlistSubtitle => 'Songs die du haben möchtest';
+  @override
+  String get hubCosmeticsAll => 'Alle Cosmetics';
+  @override
+  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubCosmetics => 'Cosmetics & Spind';
   @override
@@ -388,6 +404,14 @@ class _AppLocalizationsDe extends AppLocalizations {
   String get lockerTitle => 'Spind';
   @override
   String get lockerSubtitle => 'Festival-Songs • Schwierigkeit via API';
+  @override
+  String get lockerSubtitleOwned => 'Songs die du im Besitz hast';
+  @override
+  String get lockerSubtitleWishlist => 'Songs auf deiner Wunschliste';
+  @override
+  String get lockerEmptyOwned => 'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
+  @override
+  String get lockerEmptyWishlist => 'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
   @override
   String get lockerSearchHint => 'Song / Artist / ID suchen…';
   @override
@@ -602,7 +626,15 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get hubLocker => 'Locker';
   @override
-  String get hubLockerSubtitle => 'Festival songs & wishlist';
+  String get hubLockerSubtitle => 'Your saved songs';
+  @override
+  String get hubWishlist => 'Wishlist';
+  @override
+  String get hubWishlistSubtitle => 'Songs you want to get';
+  @override
+  String get hubCosmeticsAll => 'All Cosmetics';
+  @override
+  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubCosmetics => 'Cosmetics & Locker';
   @override
@@ -706,6 +738,14 @@ class _AppLocalizationsEn extends AppLocalizations {
   String get lockerTitle => 'Locker';
   @override
   String get lockerSubtitle => 'Festival songs • Difficulty via API';
+  @override
+  String get lockerSubtitleOwned => 'Songs you own';
+  @override
+  String get lockerSubtitleWishlist => 'Songs on your wishlist';
+  @override
+  String get lockerEmptyOwned => 'No songs owned yet.\nOpen a song and tap "Own".';
+  @override
+  String get lockerEmptyWishlist => 'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
   @override
   String get lockerSearchHint => 'Search song / artist / ID…';
   @override

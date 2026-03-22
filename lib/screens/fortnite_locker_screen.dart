@@ -10,12 +10,31 @@ import '../widgets/festival_song_details_sheet.dart';
 import '../widgets/orbit_glass_card.dart';
 import '../services/festival_api_service.dart';
 
+// ─────────────────────────────────────────────────────────────
+// Public enum – wird auch in FortniteHubScreen verwendet
+// ─────────────────────────────────────────────────────────────
+
+enum LockerMode { all, owned, wishlist }
+
+// ─────────────────────────────────────────────────────────────
+// Interner Filter (nur bei mode == all sichtbar)
+// ─────────────────────────────────────────────────────────────
+
 enum _LockerFilter { all, owned, wishlist }
 
 class FortniteLockerScreen extends StatefulWidget {
   final CollectionStore collection;
 
-  const FortniteLockerScreen({super.key, required this.collection});
+  /// Wenn [mode] auf owned oder wishlist gesetzt wird:
+  /// - Filter-Tabs werden ausgeblendet
+  /// - Liste zeigt direkt nur die passenden Songs
+  final LockerMode mode;
+
+  const FortniteLockerScreen({
+    super.key,
+    required this.collection,
+    this.mode = LockerMode.all,
+  });
 
   @override
   State<FortniteLockerScreen> createState() => _FortniteLockerScreenState();
@@ -28,11 +47,17 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
   List<FestivalSongDetails> _songs = [];
   bool _loading = true;
   String _query = '';
-  _LockerFilter _filter = _LockerFilter.all;
+  late _LockerFilter _filter;
 
   @override
   void initState() {
     super.initState();
+    // Startfilter aus übergebenem Mode ableiten
+    _filter = switch (widget.mode) {
+      LockerMode.owned    => _LockerFilter.owned,
+      LockerMode.wishlist => _LockerFilter.wishlist,
+      LockerMode.all      => _LockerFilter.all,
+    };
     _loadAll();
     _search.addListener(() => setState(() => _query = _search.text.trim()));
   }
@@ -84,10 +109,8 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
 
   List<FestivalSongDetails> _filtered() {
     final q = _query.toLowerCase();
-    final owned = widget.collection.owned(CollectionStore.categoryFestivalSong);
-    final wished = widget.collection.wishlist(
-      CollectionStore.categoryFestivalSong,
-    );
+    final owned   = widget.collection.owned(CollectionStore.categoryFestivalSong);
+    final wished  = widget.collection.wishlist(CollectionStore.categoryFestivalSong);
 
     bool match(FestivalSongDetails s) {
       final blob = '${s.title} ${s.artist} ${s.songId}'.toLowerCase();
@@ -106,6 +129,20 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
     list.sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
     return list;
   }
+
+  // ── Titel & Untertitel je nach Mode ─────────────────────────
+
+  String _screenTitle(AppLocalizations l10n) => switch (widget.mode) {
+    LockerMode.owned    => l10n.lockerTitle,
+    LockerMode.wishlist => l10n.filterWishlist,
+    LockerMode.all      => l10n.lockerTitle,
+  };
+
+  String _screenSubtitle(AppLocalizations l10n) => switch (widget.mode) {
+    LockerMode.owned    => l10n.lockerSubtitleOwned,
+    LockerMode.wishlist => l10n.lockerSubtitleWishlist,
+    LockerMode.all      => l10n.lockerSubtitle,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -130,25 +167,29 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                     ),
                     const SizedBox(width: 6),
                     Expanded(
-                      child: Text(
-                        l10n.lockerTitle,
-                        style: const TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _screenTitle(l10n),
+                            style: const TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            _screenSubtitle(l10n),
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.50),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  l10n.lockerSubtitle,
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.50),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 13,
-                  ),
                 ),
                 const SizedBox(height: 14),
 
@@ -184,13 +225,15 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                 ),
                 const SizedBox(height: 10),
 
-                // ── Filter-Tabs ───────────────────────────
-                _FilterRow(
-                  value: _filter,
-                  onChanged: (v) => setState(() => _filter = v),
-                  l10n: l10n,
-                ),
-                const SizedBox(height: 12),
+                // ── Filter-Tabs (nur bei mode == all) ─────
+                if (widget.mode == LockerMode.all) ...[
+                  _FilterRow(
+                    value: _filter,
+                    onChanged: (v) => setState(() => _filter = v),
+                    l10n: l10n,
+                  ),
+                  const SizedBox(height: 12),
+                ],
 
                 // ── Liste ─────────────────────────────────
                 Expanded(
@@ -201,14 +244,7 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
                           ),
                         )
                       : list.isEmpty
-                      ? Center(
-                          child: Text(
-                            l10n.noResults,
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.45),
-                            ),
-                          ),
-                        )
+                      ? _EmptyState(mode: widget.mode, l10n: l10n)
                       : AnimatedBuilder(
                           animation: widget.collection,
                           builder: (context, _) => ListView.separated(
@@ -239,6 +275,56 @@ class _FortniteLockerScreenState extends State<FortniteLockerScreen> {
     );
   }
 }
+
+// ─────────────────────────────────────────────────────────────
+// Empty-State mit hilfreicher Nachricht je nach Mode
+// ─────────────────────────────────────────────────────────────
+
+class _EmptyState extends StatelessWidget {
+  final LockerMode mode;
+  final AppLocalizations l10n;
+  const _EmptyState({required this.mode, required this.l10n});
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = switch (mode) {
+      LockerMode.owned    => Icons.inventory_2_outlined,
+      LockerMode.wishlist => Icons.favorite_border,
+      LockerMode.all      => Icons.search_off,
+    };
+    final text = switch (mode) {
+      LockerMode.owned    => l10n.lockerEmptyOwned,
+      LockerMode.wishlist => l10n.lockerEmptyWishlist,
+      LockerMode.all      => l10n.noResults,
+    };
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: Colors.white.withOpacity(0.20), size: 52),
+            const SizedBox(height: 16),
+            Text(
+              text,
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.45),
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// Filter-Row (nur bei LockerMode.all)
+// ─────────────────────────────────────────────────────────────
 
 class _FilterRow extends StatelessWidget {
   final _LockerFilter value;
@@ -310,6 +396,10 @@ class _Tab extends StatelessWidget {
     ),
   );
 }
+
+// ─────────────────────────────────────────────────────────────
+// Locker-Tile
+// ─────────────────────────────────────────────────────────────
 
 class _LockerTile extends StatelessWidget {
   final FestivalSongDetails song;
