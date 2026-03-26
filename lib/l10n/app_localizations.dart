@@ -223,7 +223,6 @@ abstract class AppLocalizations {
   String get rarityExotic;
 
   // ── Hub ───────────────────────────────────────────────────
-  String get hubCosmeticsSubtitle;
 
   // ── Update Dialog ─────────────────────────────────────────
   String updateAvailableTitle(String version);
@@ -341,8 +340,6 @@ class _AppLocalizationsDe extends AppLocalizations {
   String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubCosmetics => 'Cosmetics & Spind';
-  @override
-  String get hubCosmeticsSubtitle => 'Mein Spind & alle Cosmetics durchsuchen';
   @override
   String get cosmeticsWhatOpen => 'Was möchtest du sehen?';
   @override
@@ -743,8 +740,6 @@ class _AppLocalizationsEn extends AppLocalizations {
   String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubCosmetics => 'Cosmetics & Locker';
-  @override
-  String get hubCosmeticsSubtitle => 'My Locker & browse all cosmetics';
   @override
   String get cosmeticsWhatOpen => 'What do you want to see?';
   @override
