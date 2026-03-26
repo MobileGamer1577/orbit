@@ -5,8 +5,7 @@ import 'package:hive/hive.dart';
 /// - owned items (things you have)
 /// - wishlist items (things you want)
 ///
-/// We keep it generic, so Festival Songs can reuse it now,
-/// and later the Fortnite Locker / Cosmetics can reuse the same store.
+/// Generic category-based store — Festival Songs and Cosmetics both use this.
 ///
 /// Data model in Hive:
 /// box 'collection_state'
@@ -15,8 +14,9 @@ import 'package:hive/hive.dart';
 class CollectionStore extends ChangeNotifier {
   static const String _boxName = 'collection_state';
 
-  /// Category keys (keep them stable!)
+  /// Category-Schlüssel (stabil halten!)
   static const String categoryFestivalSong = 'festival_song';
+  static const String categoryCosmetic     = 'cosmetic';
 
   Box get _box => Hive.box(_boxName);
 

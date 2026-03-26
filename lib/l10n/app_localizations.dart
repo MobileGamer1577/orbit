@@ -201,6 +201,30 @@ abstract class AppLocalizations {
   String get instrumentBass;
   String get instrumentDrums;
 
+  // ── Cosmetic Detail ───────────────────────────────────────
+  String get cosmeticIntroduced;
+  String get cosmeticLastSeen;
+  String get cosmeticRarity;
+  String get cosmeticDescription;
+  String get cosmeticSet;
+  String get cosmeticSeries;
+  String get cosmeticsSubtitleOwned;
+  String get cosmeticsSubtitleWishlist;
+  String get cosmeticsLockerEmpty;
+  String get cosmeticsWishlistEmpty;
+
+  // ── Rarity Labels ─────────────────────────────────────────
+  String get rarityCommon;
+  String get rarityUncommon;
+  String get rarityRare;
+  String get rarityEpic;
+  String get rarityLegendary;
+  String get rarityMythic;
+  String get rarityExotic;
+
+  // ── Hub ───────────────────────────────────────────────────
+  String get hubCosmeticsSubtitle;
+
   // ── Update Dialog ─────────────────────────────────────────
   String updateAvailableTitle(String version);
 }
@@ -314,8 +338,7 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get hubCosmeticsAll => 'Alle Cosmetics';
   @override
-  String get hubCosmeticsAllSubtitle =>
-      'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
+  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubCosmetics => 'Cosmetics & Spind';
   @override
@@ -325,13 +348,11 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get cosmeticsMyLocker => 'Mein Spind';
   @override
-  String get cosmeticsMyLockerSubtitle =>
-      'Gespeicherte Songs, Wunschliste & mehr';
+  String get cosmeticsMyLockerSubtitle => 'Gespeicherte Songs, Wunschliste & mehr';
   @override
   String get cosmeticsAll => 'Alle Cosmetics';
   @override
-  String get cosmeticsAllSubtitle =>
-      'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
+  String get cosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubFestival => 'Festival';
   @override
@@ -374,13 +395,8 @@ class _AppLocalizationsDe extends AppLocalizations {
   String kreativEveryHours(int h) => 'Alle $h Stunden';
   @override
   List<String> get weekdayNames => const [
-    'Montag',
-    'Dienstag',
-    'Mittwoch',
-    'Donnerstag',
-    'Freitag',
-    'Samstag',
-    'Sonntag',
+    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag',
+    'Freitag', 'Samstag', 'Sonntag',
   ];
   @override
   String get countdownTitle => 'Countdowns';
@@ -461,11 +477,9 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get lockerSubtitleWishlist => 'Songs auf deiner Wunschliste';
   @override
-  String get lockerEmptyOwned =>
-      'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
+  String get lockerEmptyOwned => 'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
   @override
-  String get lockerEmptyWishlist =>
-      'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
+  String get lockerEmptyWishlist => 'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
   @override
   String get lockerSearchHint => 'Song / Artist / ID suchen…';
   @override
@@ -596,6 +610,44 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get instrumentDrums => 'Drums';
 
+  // Cosmetic Detail
+  @override
+  String get cosmeticIntroduced => 'Eingeführt';
+  @override
+  String get cosmeticLastSeen => 'Zuletzt gesehen';
+  @override
+  String get cosmeticRarity => 'Seltenheit';
+  @override
+  String get cosmeticDescription => 'Beschreibung';
+  @override
+  String get cosmeticSet => 'Set';
+  @override
+  String get cosmeticSeries => 'Serie';
+  @override
+  String get cosmeticsSubtitleOwned => 'Gespeicherte Cosmetics';
+  @override
+  String get cosmeticsSubtitleWishlist => 'Cosmetics auf deiner Wunschliste';
+  @override
+  String get cosmeticsLockerEmpty => 'Noch keine Cosmetics im Spind.\nÖffne „Alle Cosmetics" und tippe auf ein Item.';
+  @override
+  String get cosmeticsWishlistEmpty => 'Keine Cosmetics auf der Wunschliste.\nÖffne „Alle Cosmetics" und tippe auf ein Item.';
+  @override
+  String get rarityCommon => 'Gemein';
+  @override
+  String get rarityUncommon => 'Ungewöhnlich';
+  @override
+  String get rarityRare => 'Selten';
+  @override
+  String get rarityEpic => 'Episch';
+  @override
+  String get rarityLegendary => 'Legendär';
+  @override
+  String get rarityMythic => 'Mythisch';
+  @override
+  String get rarityExotic => 'Exotisch';
+  @override
+  String get hubCosmeticsSubtitle => 'Spind • Wunschliste • Alle Cosmetics';
+
   @override
   String updateAvailableTitle(String version) => 'Update verfügbar: $version';
 }
@@ -688,8 +740,7 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get hubCosmeticsAll => 'All Cosmetics';
   @override
-  String get hubCosmeticsAllSubtitle =>
-      'BR, Jam Tracks, Instruments, Cars, LEGO & more';
+  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubCosmetics => 'Cosmetics & Locker';
   @override
@@ -703,8 +754,7 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get cosmeticsAll => 'All Cosmetics';
   @override
-  String get cosmeticsAllSubtitle =>
-      'BR, Jam Tracks, Instruments, Cars, LEGO & more';
+  String get cosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubFestival => 'Festival';
   @override
@@ -747,13 +797,8 @@ class _AppLocalizationsEn extends AppLocalizations {
   String kreativEveryHours(int h) => 'Every $h hours';
   @override
   List<String> get weekdayNames => const [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+    'Friday', 'Saturday', 'Sunday',
   ];
 
   // Countdown
@@ -835,11 +880,9 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get lockerSubtitleWishlist => 'Songs on your wishlist';
   @override
-  String get lockerEmptyOwned =>
-      'No songs owned yet.\nOpen a song and tap "Own".';
+  String get lockerEmptyOwned => 'No songs owned yet.\nOpen a song and tap "Own".';
   @override
-  String get lockerEmptyWishlist =>
-      'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
+  String get lockerEmptyWishlist => 'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
   @override
   String get lockerSearchHint => 'Search song / artist / ID…';
   @override
@@ -968,6 +1011,44 @@ class _AppLocalizationsEn extends AppLocalizations {
   String get instrumentBass => 'Bass';
   @override
   String get instrumentDrums => 'Drums';
+
+  // Cosmetic Detail
+  @override
+  String get cosmeticIntroduced => 'Introduced';
+  @override
+  String get cosmeticLastSeen => 'Last seen';
+  @override
+  String get cosmeticRarity => 'Rarity';
+  @override
+  String get cosmeticDescription => 'Description';
+  @override
+  String get cosmeticSet => 'Set';
+  @override
+  String get cosmeticSeries => 'Series';
+  @override
+  String get cosmeticsSubtitleOwned => 'Saved cosmetics';
+  @override
+  String get cosmeticsSubtitleWishlist => 'Cosmetics on your wishlist';
+  @override
+  String get cosmeticsLockerEmpty => 'No cosmetics in your locker yet.\nOpen "All Cosmetics" and tap an item.';
+  @override
+  String get cosmeticsWishlistEmpty => 'No cosmetics on your wishlist.\nOpen "All Cosmetics" and tap an item.';
+  @override
+  String get rarityCommon => 'Common';
+  @override
+  String get rarityUncommon => 'Uncommon';
+  @override
+  String get rarityRare => 'Rare';
+  @override
+  String get rarityEpic => 'Epic';
+  @override
+  String get rarityLegendary => 'Legendary';
+  @override
+  String get rarityMythic => 'Mythic';
+  @override
+  String get rarityExotic => 'Exotic';
+  @override
+  String get hubCosmeticsSubtitle => 'Locker • Wishlist • All Cosmetics';
 
   @override
   String updateAvailableTitle(String version) => 'Update available: $version';

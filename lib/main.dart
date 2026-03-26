@@ -13,6 +13,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   await Hive.openBox('task_state');
   await Hive.openBox('collection_state');
+  await Hive.openBox('cosmetic_meta');   // ← NEU: Cosmetic-Metadaten
 
   final settings = await AppSettingsStore.create();
   final updateStore = UpdateStore();
@@ -66,7 +67,6 @@ class _OrbitAppState extends State<OrbitApp> {
       darkTheme: OrbitTheme.dark(),
       themeMode: ThemeMode.dark,
 
-      // ── Lokalisierung ────────────────────────────────────
       locale: widget.settings.locale,
       supportedLocales: const [
         Locale('de'),
