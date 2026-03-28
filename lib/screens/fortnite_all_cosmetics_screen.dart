@@ -11,19 +11,10 @@ import '../widgets/cosmetic_detail_sheet.dart';
 import '../widgets/orbit_glass_card.dart';
 
 // ══════════════════════════════════════════════════════════════
-// KATEGORIE
+// KATEGORIE (intern, kein UI mehr)
 // ══════════════════════════════════════════════════════════════
 
 enum _CosmeticCategory { br, tracks, instruments, cars, lego, beans }
-
-const Map<_CosmeticCategory, String> _catLabel = {
-  _CosmeticCategory.br:          'Battle Royale',
-  _CosmeticCategory.tracks:      'Jam Tracks',
-  _CosmeticCategory.instruments: 'Instruments',
-  _CosmeticCategory.cars:        'Cars',
-  _CosmeticCategory.lego:        'LEGO',
-  _CosmeticCategory.beans:       'Beans',
-};
 
 const Map<_CosmeticCategory, String> _catEndpoint = {
   _CosmeticCategory.br:          'https://fortnite-api.com/v2/cosmetics/br',
@@ -32,15 +23,6 @@ const Map<_CosmeticCategory, String> _catEndpoint = {
   _CosmeticCategory.cars:        'https://fortnite-api.com/v2/cosmetics/cars',
   _CosmeticCategory.lego:        'https://fortnite-api.com/v2/cosmetics/lego',
   _CosmeticCategory.beans:       'https://fortnite-api.com/v2/cosmetics/beans',
-};
-
-const Map<_CosmeticCategory, IconData> _catIcon = {
-  _CosmeticCategory.br:          Icons.shield_outlined,
-  _CosmeticCategory.tracks:      Icons.music_note,
-  _CosmeticCategory.instruments: Icons.piano_outlined,
-  _CosmeticCategory.cars:        Icons.directions_car_outlined,
-  _CosmeticCategory.lego:        Icons.extension_outlined,
-  _CosmeticCategory.beans:       Icons.person_outline,
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -78,7 +60,7 @@ class _FortniteAllCosmeticsScreenState
     extends State<FortniteAllCosmeticsScreen> {
   static const _apiKey = '135f01ed-1a5e-40df-b8b6-4b2c97f47151';
 
-  _CosmeticCategory _category = _CosmeticCategory.br;
+  final _CosmeticCategory _category = _CosmeticCategory.br;
   List<CosmeticItem> _items   = [];
   List<CosmeticItem> _filtered = [];
   bool    _loading = false;
@@ -161,12 +143,6 @@ class _FortniteAllCosmeticsScreenState
     }
   }
 
-  void _switchCategory(_CosmeticCategory cat) {
-    if (cat == _category) return;
-    setState(() { _category = cat; _items = []; _filtered = []; _query = ''; _searchCtrl.clear(); });
-    _loadCategory(cat);
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -195,48 +171,7 @@ class _FortniteAllCosmeticsScreenState
                 ),
               ),
 
-              // ── Kategorie-Chips ─────────────────────────
-              SizedBox(
-                height: 44,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  children: _CosmeticCategory.values.map((cat) {
-                    final active = _category == cat;
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: GestureDetector(
-                        onTap: () => _switchCategory(cat),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 160),
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: active
-                                ? const Color(0xFF7C4DFF).withOpacity(0.85)
-                                : Colors.white.withOpacity(0.07),
-                            borderRadius: BorderRadius.circular(999),
-                            border: Border.all(
-                              color: active ? const Color(0xFF9C6FFF) : Colors.white.withOpacity(0.12)),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(_catIcon[cat]!, size: 14,
-                                  color: active ? Colors.white : Colors.white.withOpacity(0.55)),
-                              const SizedBox(width: 6),
-                              Text(_catLabel[cat]!, style: TextStyle(
-                                color: active ? Colors.white : Colors.white.withOpacity(0.60),
-                                fontSize: 12, fontWeight: active ? FontWeight.w700 : FontWeight.w500)),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-
-              const SizedBox(height: 10),
+              const SizedBox(height: 4),
 
               // ── Suchfeld ────────────────────────────────
               Padding(
@@ -246,7 +181,7 @@ class _FortniteAllCosmeticsScreenState
                     controller: _searchCtrl,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      hintText: '${_catLabel[_category]} suchen…',
+                      hintText: 'Cosmetics suchen…',
                       hintStyle: TextStyle(color: Colors.white.withOpacity(0.40)),
                       prefixIcon: Icon(Icons.search, color: Colors.white.withOpacity(0.55)),
                       suffixIcon: _query.isNotEmpty
@@ -363,7 +298,6 @@ class _CosmeticCard extends StatelessWidget {
                                       strokeWidth: 2, color: accent.withOpacity(0.60)))))
                     else
                       const _NoImage(),
-                    // Owned/Wished Badges
                     if (owned || wished)
                       Positioned(
                         top: 6, right: 6,

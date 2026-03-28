@@ -9,9 +9,9 @@ class CosmeticItem {
   final String rarityValue;
   final String? imageUrl;
   final String? description;
-  final String? introduction;  // "Eingeführt in Kapitel 1, Season 1"
+  final String? introduction;  // "Introduced in Chapter X, Season Y."
   final String? addedDate;     // ISO 8601
-  final String? lastSeen;      // ISO 8601 (letzter shopHistory-Eintrag)
+  final String? lastSeen;      // ISO 8601
   final String? setName;
   final String? seriesName;
 
@@ -63,6 +63,30 @@ class CosmeticItem {
 
   String toJsonString() => jsonEncode(toJson());
 
+  // ── Hilfsmethode: Set-Name aus API-Text extrahieren ──────
+  // "Part of the Rowdy Reputation set." → "Rowdy Reputation"
+  static String? _parseSetName(Map<dynamic, dynamic>? set_) {
+    if (set_ == null) return null;
+    // Versuche erst den sauberen value-Feld
+    final value = set_['value'] as String?;
+    final text  = set_['text']  as String?;
+    // text wie "Part of the Rowdy Reputation set." aufräumen
+    if (text != null && text.isNotEmpty) {
+      var name = text.trim();
+      if (name.toLowerCase().startsWith('part of the ')) {
+        name = name.substring('part of the '.length);
+      }
+      if (name.toLowerCase().endsWith(' set.')) {
+        name = name.substring(0, name.length - ' set.'.length);
+      } else if (name.endsWith('.')) {
+        name = name.substring(0, name.length - 1);
+      }
+      name = name.trim();
+      if (name.isNotEmpty) return name;
+    }
+    return (value != null && value.isNotEmpty) ? value : null;
+  }
+
   // ── API-Parser ───────────────────────────────────────────
 
   factory CosmeticItem.fromBrApi(Map<String, dynamic> j) {
@@ -87,7 +111,7 @@ class CosmeticItem {
       introduction: intro?['text']          as String?,
       addedDate:    j['added']              as String?,
       lastSeen:     (hist != null && hist.isNotEmpty) ? hist.last as String? : null,
-      setName:      set_?['text']           as String?,
+      setName:      _parseSetName(set_),
       seriesName:   series?['text']         as String?,
     );
   }
