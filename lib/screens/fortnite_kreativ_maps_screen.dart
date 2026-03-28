@@ -41,6 +41,7 @@ class _MapEvent {
     required this.recurrence,
     this.weekday,
     this.hour,
+    // ignore: unused_element_parameter
     this.minute = 0,
     this.intervalHours,
   });
@@ -169,6 +170,94 @@ final List<_KreativMap> _maps = [
             'Stehlt die Dinosaurier anderer Spieler! Kauft und sammelt Dinos '
             'um Gewinne zu erzielen. Schaltet durch Reinkarnationen exklusive '
             'Vorteile frei und baut euer urzeitliches Imperium aus.',
+      ),
+      _MapCode(label: 'Secret Code', code: '0264', description: 'Raptor Squad'),
+      _MapCode(
+        label: 'Secret Code',
+        code: '034971',
+        description: 'Random Jurassic egg',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '049562',
+        description: 'Random Reindeerceratops',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '0682',
+        description: 'Angelic Mammoth',
+      ),
+      _MapCode(label: 'Secret Code', code: '103961', description: 'Prime rex'),
+      _MapCode(
+        label: 'Secret Code',
+        code: '110452',
+        description: 'Raptor Squad',
+      ),
+      _MapCode(label: 'Secret Code', code: '141516', description: '???'),
+      _MapCode(
+        label: 'Secret Code',
+        code: '150919',
+        description: 'Fusion Skip',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '153596',
+        description: 'Chocolate Dodo',
+      ),
+      _MapCode(label: 'Secret Code', code: '197365', description: 'Egg'),
+      _MapCode(label: 'Secret Code', code: '2068', description: 'Carno'),
+      _MapCode(
+        label: 'Secret Code',
+        code: '207430',
+        description: 'Storm Tapejara',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '237045',
+        description: 'Jurassic Egg',
+      ),
+      _MapCode(label: 'Secret Code', code: '3961', description: 'T- Rex'),
+      _MapCode(label: 'Secret Code', code: '593927', description: 'Mammoth'),
+      _MapCode(
+        label: 'Secret Code',
+        code: '596025',
+        description: 'Reindeer Spino',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '6525',
+        description: 'Infernal Mammoth',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '676767',
+        description: 'Fusion Skip',
+      ),
+      _MapCode(label: 'Secret Code', code: '860912', description: 'Dodo'),
+      _MapCode(
+        label: 'Secret Code',
+        code: '9078',
+        description: 'Angelic Indominus',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '929078',
+        description: 'Jurassic Egg',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '934062',
+        description: 'Random Carno',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '963062',
+        description: 'Skeleton Rex',
+      ),
+      _MapCode(
+        label: 'Secret Code',
+        code: '967126',
+        description: 'Jurassic Egg',
       ),
       // ← Weiteren Code hier einfügen:
       // _MapCode(
