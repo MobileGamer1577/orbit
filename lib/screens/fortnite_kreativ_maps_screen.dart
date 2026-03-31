@@ -106,6 +106,11 @@ class _MapCode {
     required this.code,
     required this.description,
   });
+
+  /// Insel-Codes (z. B. "1499-6977-1308") können kopiert werden.
+  /// Secret Codes müssen manuell im Fortnite-Menü eingegeben werden
+  /// und sind daher nicht kopierbar.
+  bool get copyable => !label.toLowerCase().contains('secret');
 }
 
 // ── Map ────────────────────────────────────────────────────────
@@ -272,34 +277,34 @@ final List<_KreativMap> _maps = [
       _MapEvent(
         name: '🌌 Galaxy Event',
         color: Color(0xFF00D4FF),
-        recurrence: _Recurrence.weeklyOnDay,
-        weekday: 7, // Sonntag
+        recurrence: _Recurrence.daily,
         hour: 19,
       ),
       _MapEvent(
         name: '🥚 Lucky Egg Event',
         color: Color(0xFFFFD600),
         recurrence: _Recurrence.everyNHours,
-        intervalHours: 9,
+        intervalHours: 4,
       ),
       _MapEvent(
-        name: '☠️ Apocalypse Event',
+        name: '🐇 Easter Event',
         color: Color(0xFFFF6B35),
-        recurrence: _Recurrence.daily,
+        recurrence: _Recurrence.weeklyOnDay,
+        weekday: 7, // Sonntag
         hour: 18,
       ),
       _MapEvent(
         name: '💘 Valentine\'s Event',
         color: Color(0xFFFF4081),
         recurrence: _Recurrence.daily,
-        hour: 16,
+        hour: 21,
       ),
       _MapEvent(
         name: '🏹 Hunting Night',
         color: Color(0xFF9C6FFF),
         recurrence: _Recurrence.weeklyOnDay,
         weekday: 3, // Mittwoch
-        hour: 22,
+        hour: 23,
       ),
       // ← Weiteres Event hier einfügen
     ],
@@ -565,27 +570,6 @@ class _MapCard extends StatelessWidget {
                               letterSpacing: 0.5,
                             ),
                           ),
-                          if (map.codes.length > 1) ...[
-                            const SizedBox(width: 8),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: map.accentColor.withOpacity(0.20),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Text(
-                                '+${map.codes.length - 1}',
-                                style: TextStyle(
-                                  color: map.accentColor,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ],
                         ],
                       ),
                     ),
@@ -1149,49 +1133,94 @@ class _CodesScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
 
-                            // Code (antippen = kopieren)
-                            GestureDetector(
-                              onTap: () => _copyCode(context, mc.code),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 14,
-                                  vertical: 12,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: map.accentColor.withOpacity(0.12),
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                    color: map.accentColor.withOpacity(0.40),
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.tag,
-                                      size: 18,
-                                      color: map.accentColor,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Expanded(
-                                      child: Text(
-                                        mc.code,
-                                        style: TextStyle(
-                                          color: map.accentColor,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w900,
-                                          letterSpacing: 1,
+                            // Code – nur Insel-Codes sind kopierbar.
+                            // Secret Codes müssen manuell im Fortnite-Menü
+                            // eingegeben werden (kein normales Eingabefeld).
+                            mc.copyable
+                                ? GestureDetector(
+                                    onTap: () => _copyCode(context, mc.code),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 14,
+                                        vertical: 12,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: map.accentColor.withOpacity(
+                                          0.12,
+                                        ),
+                                        borderRadius: BorderRadius.circular(12),
+                                        border: Border.all(
+                                          color: map.accentColor.withOpacity(
+                                            0.40,
+                                          ),
                                         ),
                                       ),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.tag,
+                                            size: 18,
+                                            color: map.accentColor,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                            child: Text(
+                                              mc.code,
+                                              style: TextStyle(
+                                                color: map.accentColor,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w900,
+                                                letterSpacing: 1,
+                                              ),
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.copy_rounded,
+                                            size: 18,
+                                            color: map.accentColor.withOpacity(
+                                              0.70,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    Icon(
-                                      Icons.copy_rounded,
-                                      size: 18,
-                                      color: map.accentColor.withOpacity(0.70),
+                                  )
+                                : Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 14,
+                                      vertical: 12,
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.06),
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
+                                        color: Colors.white.withOpacity(0.14),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.tag,
+                                          size: 18,
+                                          color: Colors.white.withOpacity(0.50),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Text(
+                                            mc.code,
+                                            style: TextStyle(
+                                              color: Colors.white.withOpacity(
+                                                0.80,
+                                              ),
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900,
+                                              letterSpacing: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                             const SizedBox(height: 12),
 
                             // Beschreibung
@@ -1206,13 +1235,15 @@ class _CodesScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 8),
 
-                            Text(
-                              l10n.kreativMapCodeHint,
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.28),
-                                fontSize: 11,
+                            // Hinweis nur für kopierbare Codes anzeigen
+                            if (mc.copyable)
+                              Text(
+                                l10n.kreativMapCodeHint,
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.28),
+                                  fontSize: 11,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),
