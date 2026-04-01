@@ -19,14 +19,14 @@ final List<FortnitePassData> fortnitePasses = [
     name: 'LEGO Pass',
     icon: Icons.widgets,
     startDate: DateTime(2025, 12, 11),
-    endDate: DateTime(2026, 4, 1),
+    endDate: DateTime(2026, 4, 16),
     color: Color(0xFF66BB6A),
   ),
   FortnitePassData(
     name: 'OG Pass',
     icon: Icons.bolt,
-    startDate: DateTime(2025, 12, 11),
-    endDate: DateTime(2026, 4, 1),
+    startDate: DateTime(2026, 4, 1),
+    endDate: DateTime(2026, 4, 2),
     color: Color(0xFFCE93D8),
   ),
   FortnitePassData(
