@@ -1,3 +1,46 @@
 {
-  "phases": []
+  "phases": [
+    {
+      "type": "normal",
+      "label": { "de": "Starthilfe – Woche 1", "en": "Kickstart – Week 1" },
+      "quests": [
+        "br_w0_01","br_w0_02","br_w0_03","br_w0_04","br_w0_05",
+        "br_w0_06","br_w0_07","br_w0_08","br_w0_09"
+      ]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Highlights – Woche 2", "en": "Weekly Highlights – Week 2" },
+      "quests": [
+        "br_w1_01","br_w1_02","br_w1_03","br_w1_04","br_w1_05"
+      ]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Highlights – Woche 3", "en": "Weekly Highlights – Week 3" },
+      "quests": [
+        "br_w2_01","br_w2_02","br_w2_03","br_w2_04","br_w2_05"
+      ]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Pfad des Wanderers – Story-Aufträge", "en": "Path of the Voyager – Story Quests" },
+      "quests": [
+        "br_story_01","br_story_02","br_story_03","br_story_04",
+        "br_story_05","br_story_06","br_story_07","br_story_08","br_story_09"
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Meilensteine", "en": "Milestones" },
+      "quests": [
+        { "phases": ["br_ms_bus_p01","br_ms_bus_p02","br_ms_bus_p03","br_ms_bus_p04","br_ms_bus_p05","br_ms_bus_p06","br_ms_bus_p07","br_ms_bus_p08","br_ms_bus_p09","br_ms_bus_p10","br_ms_bus_p11","br_ms_bus_p12","br_ms_bus_p13","br_ms_bus_p14","br_ms_bus_p15","br_ms_bus_p16","br_ms_bus_p17","br_ms_bus_p18","br_ms_bus_p19","br_ms_bus_p20"] },
+        { "phases": ["br_ms_elim_p01","br_ms_elim_p02","br_ms_elim_p03","br_ms_elim_p04","br_ms_elim_p05","br_ms_elim_p06","br_ms_elim_p07","br_ms_elim_p08","br_ms_elim_p09","br_ms_elim_p10","br_ms_elim_p11","br_ms_elim_p12","br_ms_elim_p13","br_ms_elim_p14","br_ms_elim_p15","br_ms_elim_p16","br_ms_elim_p17","br_ms_elim_p18","br_ms_elim_p19","br_ms_elim_p20"] },
+        { "phases": ["br_ms_gold_p01","br_ms_gold_p02","br_ms_gold_p03","br_ms_gold_p04","br_ms_gold_p05","br_ms_gold_p06","br_ms_gold_p07","br_ms_gold_p08","br_ms_gold_p09","br_ms_gold_p10","br_ms_gold_p11","br_ms_gold_p12","br_ms_gold_p13","br_ms_gold_p14","br_ms_gold_p15","br_ms_gold_p16","br_ms_gold_p17","br_ms_gold_p18","br_ms_gold_p19","br_ms_gold_p20"] },
+        { "phases": ["br_ms_storm_p01","br_ms_storm_p02","br_ms_storm_p03","br_ms_storm_p04","br_ms_storm_p05","br_ms_storm_p06","br_ms_storm_p07","br_ms_storm_p08","br_ms_storm_p09","br_ms_storm_p10","br_ms_storm_p11","br_ms_storm_p12","br_ms_storm_p13","br_ms_storm_p14","br_ms_storm_p15","br_ms_storm_p16","br_ms_storm_p17","br_ms_storm_p18","br_ms_storm_p19","br_ms_storm_p20"] },
+        { "phases": ["br_ms_dmg_p01","br_ms_dmg_p02","br_ms_dmg_p03","br_ms_dmg_p04","br_ms_dmg_p05","br_ms_dmg_p06","br_ms_dmg_p07","br_ms_dmg_p08","br_ms_dmg_p09","br_ms_dmg_p10","br_ms_dmg_p11","br_ms_dmg_p12","br_ms_dmg_p13","br_ms_dmg_p14","br_ms_dmg_p15","br_ms_dmg_p16","br_ms_dmg_p17","br_ms_dmg_p18","br_ms_dmg_p19","br_ms_dmg_p20"] },
+        { "phases": ["br_ms_survive_p01","br_ms_survive_p02","br_ms_survive_p03","br_ms_survive_p04","br_ms_survive_p05","br_ms_survive_p06","br_ms_survive_p07","br_ms_survive_p08","br_ms_survive_p09","br_ms_survive_p10","br_ms_survive_p11","br_ms_survive_p12","br_ms_survive_p13","br_ms_survive_p14","br_ms_survive_p15","br_ms_survive_p16","br_ms_survive_p17","br_ms_survive_p18","br_ms_survive_p19","br_ms_survive_p20"] }
+      ]
+    }
+  ]
 }

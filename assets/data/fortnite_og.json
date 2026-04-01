@@ -1,3 +1,34 @@
 {
-  "phases": []
+  "phases": [
+    {
+      "type": "normal",
+      "label": { "de": "Starthilfe – OG", "en": "Kickstart – OG" },
+      "quests": [
+        "og_w0_01","og_w0_02","og_w0_03","og_w0_04","og_w0_05"
+      ]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Highlights – OG Woche 2", "en": "Weekly Highlights – OG Week 2" },
+      "quests": [
+        "og_w1_01","og_w1_02","og_w1_03","og_w1_04","og_w1_05"
+      ]
+    },
+    {
+      "type": "normal",
+      "label": { "de": "Wöchentliche Highlights – OG Woche 3", "en": "Weekly Highlights – OG Week 3" },
+      "quests": [
+        "og_w2_01","og_w2_02","og_w2_03","og_w2_04","og_w2_05"
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "OG Meilensteine", "en": "OG Milestones" },
+      "quests": [
+        { "phases": ["og_ms_elim_p01","og_ms_elim_p02","og_ms_elim_p03","og_ms_elim_p04","og_ms_elim_p05","og_ms_elim_p06","og_ms_elim_p07","og_ms_elim_p08","og_ms_elim_p09","og_ms_elim_p10","og_ms_elim_p11","og_ms_elim_p12","og_ms_elim_p13","og_ms_elim_p14","og_ms_elim_p15","og_ms_elim_p16","og_ms_elim_p17","og_ms_elim_p18","og_ms_elim_p19","og_ms_elim_p20"] },
+        { "phases": ["og_ms_dmg_p01","og_ms_dmg_p02","og_ms_dmg_p03","og_ms_dmg_p04","og_ms_dmg_p05","og_ms_dmg_p06","og_ms_dmg_p07","og_ms_dmg_p08","og_ms_dmg_p09","og_ms_dmg_p10","og_ms_dmg_p11","og_ms_dmg_p12","og_ms_dmg_p13","og_ms_dmg_p14","og_ms_dmg_p15","og_ms_dmg_p16","og_ms_dmg_p17","og_ms_dmg_p18","og_ms_dmg_p19","og_ms_dmg_p20"] },
+        { "phases": ["og_ms_storm_p01","og_ms_storm_p02","og_ms_storm_p03","og_ms_storm_p04","og_ms_storm_p05","og_ms_storm_p06","og_ms_storm_p07","og_ms_storm_p08","og_ms_storm_p09","og_ms_storm_p10","og_ms_storm_p11","og_ms_storm_p12","og_ms_storm_p13","og_ms_storm_p14","og_ms_storm_p15","og_ms_storm_p16","og_ms_storm_p17","og_ms_storm_p18","og_ms_storm_p19","og_ms_storm_p20"] }
+      ]
+    }
+  ]
 }

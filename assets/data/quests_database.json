@@ -4173,5 +4173,2235 @@
       "title": "Earn XP on Creator-made \"Driving\" islands",
       "description": "Weekly Driving Quests • 5k XP • 0/60,000"
     }
+  },
+  "br_w0_01": {
+    "de": {
+      "title": "Besuche Zero Point Shards für The Foundation",
+      "description": "Starthilfe • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Visit Zero Point Shards for The Foundation",
+      "description": "Kickstart • 20k XP • 0/3"
+    }
+  },
+  "br_w0_02": {
+    "de": {
+      "title": "Aktiviere einen Holotisch, um The Foundation mit einem Seven Secure Server zu verbinden",
+      "description": "Starthilfe • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Power on a Holotable to help The Foundation connect to a Seven Secure Server",
+      "description": "Kickstart • 20k XP • 0/1"
+    }
+  },
+  "br_w0_03": {
+    "de": {
+      "title": "Benutze den Jam Track Player",
+      "description": "Starthilfe • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Use the Jam Track Player",
+      "description": "Kickstart • 20k XP • 0/1"
+    }
+  },
+  "br_w0_04": {
+    "de": {
+      "title": "Lande bei Frigid Fortress, Dark Dominion und New Sanctuary",
+      "description": "Starthilfe • 20k XP • 0/3 Orte"
+    },
+    "en": {
+      "title": "Land at Frigid Fortress, Dark Dominion, and New Sanctuary",
+      "description": "Kickstart • 20k XP • 0/3 locations"
+    }
+  },
+  "br_w0_05": {
+    "de": {
+      "title": "Erziele Kopfschüsse auf gegnerische Spieler",
+      "description": "Starthilfe • 20k XP • 0/5"
+    },
+    "en": {
+      "title": "Headshot enemy players",
+      "description": "Kickstart • 20k XP • 0/5"
+    }
+  },
+  "br_w0_06": {
+    "de": {
+      "title": "Sammle Munition",
+      "description": "Starthilfe • 20k XP • 0/500"
+    },
+    "en": {
+      "title": "Collect ammo",
+      "description": "Kickstart • 20k XP • 0/500"
+    }
+  },
+  "br_w0_07": {
+    "de": {
+      "title": "Füge Spielern Schaden zu, bevor die erste Sturmphase endet",
+      "description": "Starthilfe • 20k XP • 0/250"
+    },
+    "en": {
+      "title": "Damage players before the first Storm Phase closes",
+      "description": "Kickstart • 20k XP • 0/250"
+    }
+  },
+  "br_w0_08": {
+    "de": {
+      "title": "Benutze den Skyline Deployer",
+      "description": "Starthilfe • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Use the Skyline Deployer",
+      "description": "Kickstart • 20k XP • 0/3"
+    }
+  },
+  "br_w0_09": {
+    "de": {
+      "title": "Sammle Items aus Truhen für The Foundation",
+      "description": "Starthilfe • 20k XP • 0/25"
+    },
+    "en": {
+      "title": "Collect items from chests for The Foundation",
+      "description": "Kickstart • 20k XP • 0/25"
+    }
+  },
+  "br_w1_01": {
+    "de": {
+      "title": "Eliminiere einen Spieler mit einer Mythic- oder Exotic-Waffe",
+      "description": "Woche 2 • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Eliminate a player with a Mythic or Exotic weapon",
+      "description": "Week 2 • 20k XP • 0/1"
+    }
+  },
+  "br_w1_02": {
+    "de": {
+      "title": "Kaufe Items bei Automaten oder NSCs",
+      "description": "Woche 2 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Purchase items from vending machines or NPCs",
+      "description": "Week 2 • 20k XP • 0/3"
+    }
+  },
+  "br_w1_03": {
+    "de": {
+      "title": "Besiege den Eiskönig",
+      "description": "Woche 2 • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Defeat the Ice King",
+      "description": "Week 2 • 20k XP • 0/1"
+    }
+  },
+  "br_w1_04": {
+    "de": {
+      "title": "Überlebe bis zu den letzten 10 Spielern",
+      "description": "Woche 2 • 20k XP • 0/3 Matches"
+    },
+    "en": {
+      "title": "Outlast players to reach the top 10",
+      "description": "Week 2 • 20k XP • 0/3 matches"
+    }
+  },
+  "br_w1_05": {
+    "de": {
+      "title": "Zerstöre Strukturen",
+      "description": "Woche 2 • 20k XP • 0/100"
+    },
+    "en": {
+      "title": "Destroy structures",
+      "description": "Week 2 • 20k XP • 0/100"
+    }
+  },
+  "br_w2_01": {
+    "de": {
+      "title": "Besuche Aussichtspunkte (Wasserfall, Leuchtturm, Battlewood-Schild)",
+      "description": "Woche 3 • 20k XP • 0/3 Orte"
+    },
+    "en": {
+      "title": "Visit vantage points (waterfall, lighthouse, Battlewood sign)",
+      "description": "Week 3 • 20k XP • 0/3 locations"
+    }
+  },
+  "br_w2_02": {
+    "de": {
+      "title": "Finde The Foundations verlorenen Helm und Cape",
+      "description": "Woche 3 • 20k XP • 0/2 Gegenstände"
+    },
+    "en": {
+      "title": "Find The Foundation's lost helmet and cape",
+      "description": "Week 3 • 20k XP • 0/2 items"
+    }
+  },
+  "br_w2_03": {
+    "de": {
+      "title": "Frage The Order, Jones oder The Visitor nach The Foundation",
+      "description": "Woche 3 • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Ask The Order, Jones, or The Visitor about The Foundation",
+      "description": "Week 3 • 20k XP • 0/1"
+    }
+  },
+  "br_w2_04": {
+    "de": {
+      "title": "Zerstöre 3 Kommunikationsrepeater bei Frigid Fortress",
+      "description": "Woche 3 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Destroy 3 comms repeaters at Frigid Fortress",
+      "description": "Week 3 • 20k XP • 0/3"
+    }
+  },
+  "br_w2_05": {
+    "de": {
+      "title": "Füge Gegnern Schaden mit Fernkampfwaffen zu",
+      "description": "Woche 3 • 20k XP • 0/500"
+    },
+    "en": {
+      "title": "Deal damage to opponents with ranged weapons",
+      "description": "Week 3 • 20k XP • 0/500"
+    }
+  },
+  "br_story_01": {
+    "de": {
+      "title": "Finde und sammle alle Chaoswürfel",
+      "description": "Pfad des Wanderers • 80.000 XP • 0/70"
+    },
+    "en": {
+      "title": "Find and collect all Chaos Cubes",
+      "description": "Path of the Voyager • 80,000 XP • 0/70"
+    }
+  },
+  "br_story_02": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Dark Dominion",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Dark Dominion",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_03": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Battlewood Boulevard",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Battlewood Boulevard",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_04": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Painted Palms",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Painted Palms",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_05": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Wonkeeland",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Wonkeeland",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_06": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Sus Studios",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Sus Studios",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_07": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Humble Hills",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Humble Hills",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_08": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Fore Fields",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Fore Fields",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_09": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Latte Landing",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Latte Landing",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_ms_bus_p01": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/10"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/10"
+    }
+  },
+  "br_ms_bus_p02": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/20"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/20"
+    }
+  },
+  "br_ms_bus_p03": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/30"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/30"
+    }
+  },
+  "br_ms_bus_p04": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/40"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/40"
+    }
+  },
+  "br_ms_bus_p05": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/50"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/50"
+    }
+  },
+  "br_ms_bus_p06": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/60"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/60"
+    }
+  },
+  "br_ms_bus_p07": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/70"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/70"
+    }
+  },
+  "br_ms_bus_p08": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/80"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/80"
+    }
+  },
+  "br_ms_bus_p09": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/90"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/90"
+    }
+  },
+  "br_ms_bus_p10": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/100"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/100"
+    }
+  },
+  "br_ms_bus_p11": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/110"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/110"
+    }
+  },
+  "br_ms_bus_p12": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/120"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/120"
+    }
+  },
+  "br_ms_bus_p13": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/130"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/130"
+    }
+  },
+  "br_ms_bus_p14": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/140"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/140"
+    }
+  },
+  "br_ms_bus_p15": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/150"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/150"
+    }
+  },
+  "br_ms_bus_p16": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/160"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/160"
+    }
+  },
+  "br_ms_bus_p17": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/170"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/170"
+    }
+  },
+  "br_ms_bus_p18": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/180"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/180"
+    }
+  },
+  "br_ms_bus_p19": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/190"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/190"
+    }
+  },
+  "br_ms_bus_p20": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/200"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/200"
+    }
+  },
+  "br_ms_elim_p01": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/25"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/25"
+    }
+  },
+  "br_ms_elim_p02": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/50"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/50"
+    }
+  },
+  "br_ms_elim_p03": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/75"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/75"
+    }
+  },
+  "br_ms_elim_p04": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/100"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/100"
+    }
+  },
+  "br_ms_elim_p05": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/125"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/125"
+    }
+  },
+  "br_ms_elim_p06": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/150"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/150"
+    }
+  },
+  "br_ms_elim_p07": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/175"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/175"
+    }
+  },
+  "br_ms_elim_p08": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/200"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/200"
+    }
+  },
+  "br_ms_elim_p09": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/225"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/225"
+    }
+  },
+  "br_ms_elim_p10": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/250"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/250"
+    }
+  },
+  "br_ms_elim_p11": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/275"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/275"
+    }
+  },
+  "br_ms_elim_p12": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/300"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/300"
+    }
+  },
+  "br_ms_elim_p13": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/325"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/325"
+    }
+  },
+  "br_ms_elim_p14": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/350"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/350"
+    }
+  },
+  "br_ms_elim_p15": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/375"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/375"
+    }
+  },
+  "br_ms_elim_p16": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/400"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/400"
+    }
+  },
+  "br_ms_elim_p17": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/425"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/425"
+    }
+  },
+  "br_ms_elim_p18": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/450"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/450"
+    }
+  },
+  "br_ms_elim_p19": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/475"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/475"
+    }
+  },
+  "br_ms_elim_p20": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/500"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/500"
+    }
+  },
+  "br_ms_gold_p01": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/500"
+    }
+  },
+  "br_ms_gold_p02": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/1.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/1,000"
+    }
+  },
+  "br_ms_gold_p03": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/1.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/1,500"
+    }
+  },
+  "br_ms_gold_p04": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/2.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/2,000"
+    }
+  },
+  "br_ms_gold_p05": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/2.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/2,500"
+    }
+  },
+  "br_ms_gold_p06": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/3.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/3,000"
+    }
+  },
+  "br_ms_gold_p07": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/3.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/3,500"
+    }
+  },
+  "br_ms_gold_p08": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/4.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/4,000"
+    }
+  },
+  "br_ms_gold_p09": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/4.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/4,500"
+    }
+  },
+  "br_ms_gold_p10": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/5.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/5,000"
+    }
+  },
+  "br_ms_gold_p11": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/5.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/5,500"
+    }
+  },
+  "br_ms_gold_p12": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/6.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/6,000"
+    }
+  },
+  "br_ms_gold_p13": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/6.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/6,500"
+    }
+  },
+  "br_ms_gold_p14": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/7.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/7,000"
+    }
+  },
+  "br_ms_gold_p15": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/7.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/7,500"
+    }
+  },
+  "br_ms_gold_p16": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/8.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/8,000"
+    }
+  },
+  "br_ms_gold_p17": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/8.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/8,500"
+    }
+  },
+  "br_ms_gold_p18": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/9.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/9,000"
+    }
+  },
+  "br_ms_gold_p19": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/9.500"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/9,500"
+    }
+  },
+  "br_ms_gold_p20": {
+    "de": {
+      "title": "Gib Goldbarren aus",
+      "description": "Meilensteine • 5k XP • 0/10.000"
+    },
+    "en": {
+      "title": "Spend Gold Bars",
+      "description": "Milestones • 5k XP • 0/10,000"
+    }
+  },
+  "br_ms_storm_p01": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/25"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/25"
+    }
+  },
+  "br_ms_storm_p02": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/50"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/50"
+    }
+  },
+  "br_ms_storm_p03": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/75"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/75"
+    }
+  },
+  "br_ms_storm_p04": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/100"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/100"
+    }
+  },
+  "br_ms_storm_p05": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/125"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/125"
+    }
+  },
+  "br_ms_storm_p06": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/150"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/150"
+    }
+  },
+  "br_ms_storm_p07": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/175"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/175"
+    }
+  },
+  "br_ms_storm_p08": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/200"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/200"
+    }
+  },
+  "br_ms_storm_p09": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/225"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/225"
+    }
+  },
+  "br_ms_storm_p10": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/250"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/250"
+    }
+  },
+  "br_ms_storm_p11": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/275"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/275"
+    }
+  },
+  "br_ms_storm_p12": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/300"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/300"
+    }
+  },
+  "br_ms_storm_p13": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/325"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/325"
+    }
+  },
+  "br_ms_storm_p14": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/350"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/350"
+    }
+  },
+  "br_ms_storm_p15": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/375"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/375"
+    }
+  },
+  "br_ms_storm_p16": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/400"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/400"
+    }
+  },
+  "br_ms_storm_p17": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/425"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/425"
+    }
+  },
+  "br_ms_storm_p18": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/450"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/450"
+    }
+  },
+  "br_ms_storm_p19": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/475"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/475"
+    }
+  },
+  "br_ms_storm_p20": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/500"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/500"
+    }
+  },
+  "br_ms_dmg_p01": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/5.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/5,000"
+    }
+  },
+  "br_ms_dmg_p02": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/10.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/10,000"
+    }
+  },
+  "br_ms_dmg_p03": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/15.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/15,000"
+    }
+  },
+  "br_ms_dmg_p04": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/20.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/20,000"
+    }
+  },
+  "br_ms_dmg_p05": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/25.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/25,000"
+    }
+  },
+  "br_ms_dmg_p06": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/30.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/30,000"
+    }
+  },
+  "br_ms_dmg_p07": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/35.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/35,000"
+    }
+  },
+  "br_ms_dmg_p08": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/40.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/40,000"
+    }
+  },
+  "br_ms_dmg_p09": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/45.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/45,000"
+    }
+  },
+  "br_ms_dmg_p10": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/50.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/50,000"
+    }
+  },
+  "br_ms_dmg_p11": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/55.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/55,000"
+    }
+  },
+  "br_ms_dmg_p12": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/60,000"
+    }
+  },
+  "br_ms_dmg_p13": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/65.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/65,000"
+    }
+  },
+  "br_ms_dmg_p14": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/70.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/70,000"
+    }
+  },
+  "br_ms_dmg_p15": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/75.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/75,000"
+    }
+  },
+  "br_ms_dmg_p16": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/80.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/80,000"
+    }
+  },
+  "br_ms_dmg_p17": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/85.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/85,000"
+    }
+  },
+  "br_ms_dmg_p18": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/90.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/90,000"
+    }
+  },
+  "br_ms_dmg_p19": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/95.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/95,000"
+    }
+  },
+  "br_ms_dmg_p20": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/100.000"
+    },
+    "en": {
+      "title": "Deal Damage to Opponents",
+      "description": "Milestones • 5k XP • 0/100,000"
+    }
+  },
+  "br_ms_survive_p01": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/750"
+    }
+  },
+  "br_ms_survive_p02": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/1.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/1,500"
+    }
+  },
+  "br_ms_survive_p03": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/2.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/2,250"
+    }
+  },
+  "br_ms_survive_p04": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/3.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/3,000"
+    }
+  },
+  "br_ms_survive_p05": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/3.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/3,750"
+    }
+  },
+  "br_ms_survive_p06": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/4.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/4,500"
+    }
+  },
+  "br_ms_survive_p07": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/5.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/5,250"
+    }
+  },
+  "br_ms_survive_p08": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/6.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/6,000"
+    }
+  },
+  "br_ms_survive_p09": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/6.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/6,750"
+    }
+  },
+  "br_ms_survive_p10": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/7.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/7,500"
+    }
+  },
+  "br_ms_survive_p11": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/8.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/8,250"
+    }
+  },
+  "br_ms_survive_p12": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/9.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/9,000"
+    }
+  },
+  "br_ms_survive_p13": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/9.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/9,750"
+    }
+  },
+  "br_ms_survive_p14": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/10.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/10,500"
+    }
+  },
+  "br_ms_survive_p15": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/11.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/11,250"
+    }
+  },
+  "br_ms_survive_p16": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/12.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/12,000"
+    }
+  },
+  "br_ms_survive_p17": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/12.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/12,750"
+    }
+  },
+  "br_ms_survive_p18": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/13.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/13,500"
+    }
+  },
+  "br_ms_survive_p19": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/14.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/14,250"
+    }
+  },
+  "br_ms_survive_p20": {
+    "de": {
+      "title": "Überlebe andere Spieler",
+      "description": "Meilensteine • 5k XP • 0/15.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/15,000"
+    }
+  },
+  "og_w0_01": {
+    "de": {
+      "title": "Lande an benannten Orten in OG",
+      "description": "OG Starthilfe • 20k XP • 0/3 Orte"
+    },
+    "en": {
+      "title": "Land at named locations in OG",
+      "description": "OG Kickstart • 20k XP • 0/3 locations"
+    }
+  },
+  "og_w0_02": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten in OG",
+      "description": "OG Starthilfe • 20k XP • 0/20"
+    },
+    "en": {
+      "title": "Search chests or ammo boxes in OG",
+      "description": "OG Kickstart • 20k XP • 0/20"
+    }
+  },
+  "og_w0_03": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Starthilfe • 20k XP • 0/10"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Kickstart • 20k XP • 0/10"
+    }
+  },
+  "og_w0_04": {
+    "de": {
+      "title": "Füge Spielern Schaden in OG zu",
+      "description": "OG Starthilfe • 20k XP • 0/1.000"
+    },
+    "en": {
+      "title": "Deal damage to players in OG",
+      "description": "OG Kickstart • 20k XP • 0/1,000"
+    }
+  },
+  "og_w0_05": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Starthilfe • 20k XP • 0/15"
+    },
+    "en": {
+      "title": "Survive storm phases in OG",
+      "description": "OG Kickstart • 20k XP • 0/15"
+    }
+  },
+  "og_w1_01": {
+    "de": {
+      "title": "Sammle Seltene oder bessere Waffen in OG",
+      "description": "OG Woche 2 • 20k XP • 0/5"
+    },
+    "en": {
+      "title": "Collect Rare or better weapons in OG",
+      "description": "OG Week 2 • 20k XP • 0/5"
+    }
+  },
+  "og_w1_02": {
+    "de": {
+      "title": "Öffne Vorratslieferungen in OG",
+      "description": "OG Woche 2 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Open Supply Drops in OG",
+      "description": "OG Week 2 • 20k XP • 0/3"
+    }
+  },
+  "og_w1_03": {
+    "de": {
+      "title": "Eliminiere Spieler mit Schrotflinten in OG",
+      "description": "OG Woche 2 • 20k XP • 0/5"
+    },
+    "en": {
+      "title": "Eliminate players with shotguns in OG",
+      "description": "OG Week 2 • 20k XP • 0/5"
+    }
+  },
+  "og_w1_04": {
+    "de": {
+      "title": "Lande im Bus-Absprungpunkt und überlebe 5 Minuten in OG",
+      "description": "OG Woche 2 • 20k XP • 0/3 Matches"
+    },
+    "en": {
+      "title": "Land at the bus drop point and survive 5 minutes in OG",
+      "description": "OG Week 2 • 20k XP • 0/3 matches"
+    }
+  },
+  "og_w1_05": {
+    "de": {
+      "title": "Baue oder zerstöre Strukturen in OG",
+      "description": "OG Woche 2 • 20k XP • 0/50"
+    },
+    "en": {
+      "title": "Build or destroy structures in OG",
+      "description": "OG Week 2 • 20k XP • 0/50"
+    }
+  },
+  "og_w2_01": {
+    "de": {
+      "title": "Füge Spielern Schaden aus der Luft zu in OG",
+      "description": "OG Woche 3 • 20k XP • 0/500"
+    },
+    "en": {
+      "title": "Deal damage to players from above in OG",
+      "description": "OG Week 3 • 20k XP • 0/500"
+    }
+  },
+  "og_w2_02": {
+    "de": {
+      "title": "Besuche verschiedene named Locations in OG",
+      "description": "OG Woche 3 • 20k XP • 0/5 Orte"
+    },
+    "en": {
+      "title": "Visit different named locations in OG",
+      "description": "OG Week 3 • 20k XP • 0/5 locations"
+    }
+  },
+  "og_w2_03": {
+    "de": {
+      "title": "Eliminiere Spieler mit Sniper Rifles in OG",
+      "description": "OG Woche 3 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Eliminate players with Sniper Rifles in OG",
+      "description": "OG Week 3 • 20k XP • 0/3"
+    }
+  },
+  "og_w2_04": {
+    "de": {
+      "title": "Durchsuche Truhen an 3 verschiedenen benannten Orten in OG",
+      "description": "OG Woche 3 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Search chests at 3 different named locations in OG",
+      "description": "OG Week 3 • 20k XP • 0/3"
+    }
+  },
+  "og_w2_05": {
+    "de": {
+      "title": "Erreiche Top 5 in OG",
+      "description": "OG Woche 3 • 20k XP • 0/3 Matches"
+    },
+    "en": {
+      "title": "Reach top 5 in OG",
+      "description": "OG Week 3 • 20k XP • 0/3 matches"
+    }
+  },
+  "og_ms_elim_p01": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/25"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/25"
+    }
+  },
+  "og_ms_elim_p02": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/50"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/50"
+    }
+  },
+  "og_ms_elim_p03": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/75"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/75"
+    }
+  },
+  "og_ms_elim_p04": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/100"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/100"
+    }
+  },
+  "og_ms_elim_p05": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/125"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/125"
+    }
+  },
+  "og_ms_elim_p06": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/150"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/150"
+    }
+  },
+  "og_ms_elim_p07": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/175"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/175"
+    }
+  },
+  "og_ms_elim_p08": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/200"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/200"
+    }
+  },
+  "og_ms_elim_p09": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/225"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/225"
+    }
+  },
+  "og_ms_elim_p10": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/250"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/250"
+    }
+  },
+  "og_ms_elim_p11": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/275"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/275"
+    }
+  },
+  "og_ms_elim_p12": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/300"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/300"
+    }
+  },
+  "og_ms_elim_p13": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/325"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/325"
+    }
+  },
+  "og_ms_elim_p14": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/350"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/350"
+    }
+  },
+  "og_ms_elim_p15": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/375"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/375"
+    }
+  },
+  "og_ms_elim_p16": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/400"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/400"
+    }
+  },
+  "og_ms_elim_p17": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/425"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/425"
+    }
+  },
+  "og_ms_elim_p18": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/450"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/450"
+    }
+  },
+  "og_ms_elim_p19": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/475"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/475"
+    }
+  },
+  "og_ms_elim_p20": {
+    "de": {
+      "title": "Eliminiere Spieler in OG",
+      "description": "OG Meilensteine • 5k XP • 0/500"
+    },
+    "en": {
+      "title": "Eliminate players in OG",
+      "description": "OG Milestones • 5k XP • 0/500"
+    }
+  },
+  "og_ms_dmg_p01": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/5.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/5,000"
+    }
+  },
+  "og_ms_dmg_p02": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/10.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/10,000"
+    }
+  },
+  "og_ms_dmg_p03": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/15.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/15,000"
+    }
+  },
+  "og_ms_dmg_p04": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/20.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/20,000"
+    }
+  },
+  "og_ms_dmg_p05": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/25.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/25,000"
+    }
+  },
+  "og_ms_dmg_p06": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/30.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/30,000"
+    }
+  },
+  "og_ms_dmg_p07": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/35.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/35,000"
+    }
+  },
+  "og_ms_dmg_p08": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/40.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/40,000"
+    }
+  },
+  "og_ms_dmg_p09": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/45.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/45,000"
+    }
+  },
+  "og_ms_dmg_p10": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/50.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/50,000"
+    }
+  },
+  "og_ms_dmg_p11": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/55.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/55,000"
+    }
+  },
+  "og_ms_dmg_p12": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/60,000"
+    }
+  },
+  "og_ms_dmg_p13": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/65.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/65,000"
+    }
+  },
+  "og_ms_dmg_p14": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/70.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/70,000"
+    }
+  },
+  "og_ms_dmg_p15": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/75.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/75,000"
+    }
+  },
+  "og_ms_dmg_p16": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/80.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/80,000"
+    }
+  },
+  "og_ms_dmg_p17": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/85.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/85,000"
+    }
+  },
+  "og_ms_dmg_p18": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/90.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/90,000"
+    }
+  },
+  "og_ms_dmg_p19": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/95.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/95,000"
+    }
+  },
+  "og_ms_dmg_p20": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu in OG",
+      "description": "OG Meilensteine • 5k XP • 0/100.000"
+    },
+    "en": {
+      "title": "Deal damage to opponents in OG",
+      "description": "OG Milestones • 5k XP • 0/100,000"
+    }
+  },
+  "og_ms_storm_p01": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/25"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/25"
+    }
+  },
+  "og_ms_storm_p02": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/50"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/50"
+    }
+  },
+  "og_ms_storm_p03": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/75"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/75"
+    }
+  },
+  "og_ms_storm_p04": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/100"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/100"
+    }
+  },
+  "og_ms_storm_p05": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/125"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/125"
+    }
+  },
+  "og_ms_storm_p06": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/150"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/150"
+    }
+  },
+  "og_ms_storm_p07": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/175"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/175"
+    }
+  },
+  "og_ms_storm_p08": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/200"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/200"
+    }
+  },
+  "og_ms_storm_p09": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/225"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/225"
+    }
+  },
+  "og_ms_storm_p10": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/250"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/250"
+    }
+  },
+  "og_ms_storm_p11": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/275"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/275"
+    }
+  },
+  "og_ms_storm_p12": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/300"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/300"
+    }
+  },
+  "og_ms_storm_p13": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/325"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/325"
+    }
+  },
+  "og_ms_storm_p14": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/350"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/350"
+    }
+  },
+  "og_ms_storm_p15": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/375"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/375"
+    }
+  },
+  "og_ms_storm_p16": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/400"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/400"
+    }
+  },
+  "og_ms_storm_p17": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/425"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/425"
+    }
+  },
+  "og_ms_storm_p18": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/450"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/450"
+    }
+  },
+  "og_ms_storm_p19": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/475"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/475"
+    }
+  },
+  "og_ms_storm_p20": {
+    "de": {
+      "title": "Überlebe Sturmphasen in OG",
+      "description": "OG Meilensteine • 5k XP • 0/500"
+    },
+    "en": {
+      "title": "Survive Storm Phases in OG",
+      "description": "OG Milestones • 5k XP • 0/500"
+    }
   }
 }
