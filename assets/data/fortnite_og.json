@@ -2,32 +2,25 @@
   "phases": [
     {
       "type": "normal",
-      "label": { "de": "Starthilfe – OG", "en": "Kickstart – OG" },
+      "label": { "de": "Woche 0 – OG", "en": "Week 0 – OG" },
       "quests": [
-        "og_w0_01","og_w0_02","og_w0_03","og_w0_04","og_w0_05"
+        "og_w0_01","og_w0_02","og_w0_03","og_w0_04"
       ]
     },
     {
       "type": "normal",
-      "label": { "de": "Wöchentliche Highlights – OG Woche 2", "en": "Weekly Highlights – OG Week 2" },
+      "label": { "de": "Die größten Hits aus Saison 8", "en": "Season 8 Greatest Hits" },
       "quests": [
-        "og_w1_01","og_w1_02","og_w1_03","og_w1_04","og_w1_05"
-      ]
-    },
-    {
-      "type": "normal",
-      "label": { "de": "Wöchentliche Highlights – OG Woche 3", "en": "Weekly Highlights – OG Week 3" },
-      "quests": [
-        "og_w2_01","og_w2_02","og_w2_03","og_w2_04","og_w2_05"
+        "og_dgh_01","og_dgh_02","og_dgh_03","og_dgh_04","og_dgh_05","og_dgh_06","og_dgh_07","og_dgh_08","og_dgh_09","og_dgh_10"
       ]
     },
     {
       "type": "milestone",
       "label": { "de": "OG Meilensteine", "en": "OG Milestones" },
       "quests": [
-        { "phases": ["og_ms_elim_p01","og_ms_elim_p02","og_ms_elim_p03","og_ms_elim_p04","og_ms_elim_p05","og_ms_elim_p06","og_ms_elim_p07","og_ms_elim_p08","og_ms_elim_p09","og_ms_elim_p10","og_ms_elim_p11","og_ms_elim_p12","og_ms_elim_p13","og_ms_elim_p14","og_ms_elim_p15","og_ms_elim_p16","og_ms_elim_p17","og_ms_elim_p18","og_ms_elim_p19","og_ms_elim_p20"] },
-        { "phases": ["og_ms_dmg_p01","og_ms_dmg_p02","og_ms_dmg_p03","og_ms_dmg_p04","og_ms_dmg_p05","og_ms_dmg_p06","og_ms_dmg_p07","og_ms_dmg_p08","og_ms_dmg_p09","og_ms_dmg_p10","og_ms_dmg_p11","og_ms_dmg_p12","og_ms_dmg_p13","og_ms_dmg_p14","og_ms_dmg_p15","og_ms_dmg_p16","og_ms_dmg_p17","og_ms_dmg_p18","og_ms_dmg_p19","og_ms_dmg_p20"] },
-        { "phases": ["og_ms_storm_p01","og_ms_storm_p02","og_ms_storm_p03","og_ms_storm_p04","og_ms_storm_p05","og_ms_storm_p06","og_ms_storm_p07","og_ms_storm_p08","og_ms_storm_p09","og_ms_storm_p10","og_ms_storm_p11","og_ms_storm_p12","og_ms_storm_p13","og_ms_storm_p14","og_ms_storm_p15","og_ms_storm_p16","og_ms_storm_p17","og_ms_storm_p18","og_ms_storm_p19","og_ms_storm_p20"] }
+        { "phases": ["og_ms_1_p01","og_ms_1_p02","og_ms_1_p03","og_ms_1_p04","og_ms_1_p05","og_ms_1_p06","og_ms_1_p07","og_ms_1_p08","og_ms_1_p09","og_ms_1_p10","og_ms_1_p11","og_ms_1_p12","og_ms_1_p13","og_ms_1_p14","og_ms_1_p15","og_ms_1_p16","og_ms_1_p17","og_ms_1_p18","og_ms_1_p19","og_ms_1_p20"] },
+        { "phases": ["og_ms_2_p01","og_ms_2_p02","og_ms_2_p03","og_ms_2_p04","og_ms_2_p05","og_ms_2_p06","og_ms_2_p07","og_ms_2_p08","og_ms_2_p09","og_ms_2_p10","og_ms_2_p11","og_ms_2_p12","og_ms_2_p13","og_ms_2_p14","og_ms_2_p15","og_ms_2_p16","og_ms_2_p17","og_ms_2_p18","og_ms_2_p19","og_ms_2_p20"] },
+        { "phases": ["og_ms_3_p01","og_ms_3_p02","og_ms_3_p03","og_ms_3_p04","og_ms_3_p05","og_ms_3_p06","og_ms_3_p07","og_ms_3_p08","og_ms_3_p09","og_ms_3_p10","og_ms_3_p11","og_ms_3_p12","og_ms_3_p13","og_ms_3_p14","og_ms_3_p15","og_ms_3_p16","og_ms_3_p17","og_ms_3_p18","og_ms_3_p19","og_ms_3_p20"] }
       ]
     }
   ]

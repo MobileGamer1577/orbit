@@ -1,9 +1,1 @@
-{
-  "phases": [
-    {
-      "phase": 1,
-      "label": { "de": "Ranked", "en": "Ranked" },
-      "quests": ["ballistic_01"]
-    }
-  ]
-}
+{ "tasks": [] }
