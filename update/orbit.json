@@ -1,12 +1,6 @@
 {
   "latest": "0.3.1-beta",
   "build": "11",
-  "notes": "Fixed milestone quest progression display in the tracker (e.g., showing 10/20 instead of 0/20).
-
-Fixed translations and restored visibility for Battle Royale quests.
-
-Updated OG quest data for the new season so progress can be tracked again.
-
-Removed outdated quests for LEGO, Festival, Battle Stage, Ballistic, and Rocket Racing to match current and upcoming Fortnite vaulting updates.",
+  "notes": "Fixed milestone quest progression display in the tracker (e.g., showing 10/20 instead of 0/20). Fixed translations and restored visibility for Battle Royale quests. Updated OG quest data for the new season so progress can be tracked again. Removed outdated quests for LEGO, Festival, Battle Stage, Ballistic, and Rocket Racing to match current and upcoming Fortnite vaulting updates.",
   "url": "https://github.com/MobileGamer1577/orbit/releases/latest"
 }
