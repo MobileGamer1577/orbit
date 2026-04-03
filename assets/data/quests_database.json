@@ -3495,191 +3495,191 @@
   "br_ms_survive_p02": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/1.500"
+      "description": "Meilensteine • 5k XP • 750/1.500"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/1,500"
+      "description": "Milestones • 5k XP • 750/1,500"
     }
   },
   "br_ms_survive_p03": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/2.250"
+      "description": "Meilensteine • 5k XP • 1.500/2.250"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/2,250"
+      "description": "Milestones • 5k XP • 1,500/2,250"
     }
   },
   "br_ms_survive_p04": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/3.000"
+      "description": "Meilensteine • 5k XP • 2.250/3.000"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/3,000"
+      "description": "Milestones • 5k XP • 2,250/3,000"
     }
   },
   "br_ms_survive_p05": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/3.750"
+      "description": "Meilensteine • 5k XP • 3.000/3.750"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/3,750"
+      "description": "Milestones • 5k XP • 3,000/3,750"
     }
   },
   "br_ms_survive_p06": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/4.500"
+      "description": "Meilensteine • 5k XP • 3.750/4.500"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/4,500"
+      "description": "Milestones • 5k XP • 3,750/4,500"
     }
   },
   "br_ms_survive_p07": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/5.250"
+      "description": "Meilensteine • 5k XP • 4.500/5.250"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/5,250"
+      "description": "Milestones • 5k XP • 4,500/5,250"
     }
   },
   "br_ms_survive_p08": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/6.000"
+      "description": "Meilensteine • 5k XP • 5.250/6.000"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/6,000"
+      "description": "Milestones • 5k XP • 5,250/6,000"
     }
   },
   "br_ms_survive_p09": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/6.750"
+      "description": "Meilensteine • 5k XP • 6.000/6.750"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/6,750"
+      "description": "Milestones • 5k XP • 6,000/6,750"
     }
   },
   "br_ms_survive_p10": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/7.500"
+      "description": "Meilensteine • 5k XP • 6.750/7.500"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/7,500"
+      "description": "Milestones • 5k XP • 6,750/7,500"
     }
   },
   "br_ms_survive_p11": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/8.250"
+      "description": "Meilensteine • 5k XP • 7.500/8.250"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/8,250"
+      "description": "Milestones • 5k XP • 7,500/8,250"
     }
   },
   "br_ms_survive_p12": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/9.000"
+      "description": "Meilensteine • 5k XP • 8.250/9.000"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/9,000"
+      "description": "Milestones • 5k XP • 8,250/9,000"
     }
   },
   "br_ms_survive_p13": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/9.750"
+      "description": "Meilensteine • 5k XP • 9.000/9.750"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/9,750"
+      "description": "Milestones • 5k XP • 9,000/9,750"
     }
   },
   "br_ms_survive_p14": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/10.500"
+      "description": "Meilensteine • 5k XP • 9.750/10.500"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/10,500"
+      "description": "Milestones • 5k XP • 9,750/10,500"
     }
   },
   "br_ms_survive_p15": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/11.250"
+      "description": "Meilensteine • 5k XP • 10.500/11.250"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/11,250"
+      "description": "Milestones • 5k XP • 10,500/11,250"
     }
   },
   "br_ms_survive_p16": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/12.000"
+      "description": "Meilensteine • 5k XP • 11.250/12.000"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/12,000"
+      "description": "Milestones • 5k XP • 11,250/12,000"
     }
   },
   "br_ms_survive_p17": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/12.750"
+      "description": "Meilensteine • 5k XP • 12.000/12.750"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/12,750"
+      "description": "Milestones • 5k XP • 12,000/12,750"
     }
   },
   "br_ms_survive_p18": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/13.500"
+      "description": "Meilensteine • 5k XP • 12.750/13.500"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/13,500"
+      "description": "Milestones • 5k XP • 12,750/13,500"
     }
   },
   "br_ms_survive_p19": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/14.250"
+      "description": "Meilensteine • 5k XP • 13.500/14.250"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/14,250"
+      "description": "Milestones • 5k XP • 13,500/14,250"
     }
   },
   "br_ms_survive_p20": {
     "de": {
       "title": "Lebe länger als die anderen Spieler",
-      "description": "Meilensteine • 5k XP • 0/15.000"
+      "description": "Meilensteine • 5k XP • 14.250/15.000"
     },
     "en": {
       "title": "Outlast Players",
-      "description": "Milestones • 5k XP • 0/15,000"
+      "description": "Milestones • 5k XP • 14,250/15,000"
     }
   },
   "og_w0_01": {
