@@ -1,0 +1,9 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "label": { "de": "Starthilfe", "en": "Starter" },
+      "quests": ["delulu_01","delulu_02","delulu_03","delulu_04","delulu_05","delulu_06","delulu_07","delulu_08","delulu_09","delulu_10"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "_comment": "Bestenliste für Klau die Dinos. Felder: name (Spielername), rebirths (Anzahl Rebirths). Sortierung im Screen: absteigend nach rebirths.",
+
+  "entries": [
+    { "name": "Sehnix0219",       "rebirths": 3500 },
+    { "name": "LYZe_Natsu",     "rebirths": 3000 },
+    { "name": "Beloved-BeautYx",    "rebirths": 1276 },
+    { "name": "ClariCesafira098",  "rebirths": 1008  },
+    { "name": "F.A.L.S.",    "rebirths": 1005  },
+    { "name": "Pda7392-n1njA",  "rebirths": 1000  },
+    { "name": "MerCurio",   "rebirths": 701  },
+    { "name": "Lollibean",    "rebirths": 700  }
+  ]
+}

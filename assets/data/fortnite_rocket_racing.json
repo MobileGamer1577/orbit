@@ -1,0 +1,19 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "label": { "de": "Woche 1", "en": "Week 1" },
+      "quests": ["rr_w1_01","rr_w1_02","rr_w1_03","rr_w1_04","rr_w1_05","rr_w1_06","rr_w1_07","rr_w1_08"]
+    },
+    {
+      "phase": 2,
+      "label": { "de": "Wochen freischalten", "en": "Unlock Weeks" },
+      "quests": ["rr_w2","rr_w3","rr_w4","rr_w5","rr_w6","rr_w7","rr_w8"]
+    },
+    {
+      "phase": 3,
+      "label": { "de": "Ranked", "en": "Ranked" },
+      "quests": ["rr_ranked_gold","rr_ranked_platin","rr_ranked_diamant","rr_ranked_elite","rr_ranked_champion","rr_ranked_unreal"]
+    }
+  ]
+}

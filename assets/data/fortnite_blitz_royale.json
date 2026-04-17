@@ -1,0 +1,9 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "label": { "de": "Starthilfe", "en": "Starter" },
+      "quests": ["blitz_01","blitz_02","blitz_03","blitz_04","blitz_05","blitz_06","blitz_07","blitz_08","blitz_09","blitz_10"]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "_comment": "Zentrale Dino-Datenbank. Key = Dino-ID aus dino_dex.json.",
+  "_rarities": "common | rare | epic | legendary | mythic | jurassic",
+  "_variants": "Varianten = normale Dinos in anderem Look (Lava, Galaxy, etc.) — gleiche Basis-Rarity, eigene IDs",
+
+  "_section_normal": "════ NORMALE DINOS ════",
+
+  "_common": "── Common ──",
+  "dino_placerias":          { "name": "Placerias",          "rarity": "common"    },
+  "dino_elasmosaurus":       { "name": "Elasmosaurus",       "rarity": "common"    },
+  "dino_purusaurus":         { "name": "Purusaurus",         "rarity": "common"    },
+  "dino_lambeosaurus":       { "name": "Lambeosaurus",       "rarity": "common"    },
+  "dino_dimorphodon":        { "name": "Dimorphodon",        "rarity": "common"    },
+  "dino_raptor":             { "name": "Raptor",             "rarity": "common"    },
+  "dino_stegosaurus":        { "name": "Stegosaurus",        "rarity": "common"    },
+
+  "_rare": "── Rare ──",
+  "dino_lystrosaurus":       { "name": "Lystrosaurus",       "rarity": "rare"      },
+  "dino_pesiasaurus":        { "name": "Pesiasaurus",        "rarity": "rare"      },
+  "dino_dodo":               { "name": "Dodo",               "rarity": "rare"      },
+  "dino_pachycephalosaurus": { "name": "Pachycephalosaurus", "rarity": "rare"      },
+  "dino_mozazaur":           { "name": "Mozazaur",           "rarity": "rare"      },
+  "dino_ankylosaurus":       { "name": "Ankylosaurus",       "rarity": "rare"      },
+
+  "_epic": "── Epic ──",
+  "dino_hadrosaurus":        { "name": "Hadrosaurus",        "rarity": "epic"      },
+  "dino_dylaphosaurus":      { "name": "Dylaphosaurus",      "rarity": "epic"      },
+  "dino_triceratops":        { "name": "Triceratops",        "rarity": "epic"      },
+  "dino_spinosaurus":        { "name": "Spinosaurus",        "rarity": "epic"      },
+  "dino_isaurus":            { "name": "Isaurus",            "rarity": "epic"      },
+
+  "_legendary": "── Legendary ──",
+  "dino_irritator":          { "name": "Irritator",          "rarity": "legendary" },
+  "dino_gigantspinosaurus":  { "name": "Gigantspinosaurus",  "rarity": "legendary" },
+  "dino_diabloceratops":     { "name": "Diabloceratops",     "rarity": "legendary" },
+  "dino_eurhinosaurus":      { "name": "Eurhinosaurus",      "rarity": "legendary" },
+  "dino_giraffatitan":       { "name": "Giraffatitan",       "rarity": "legendary" },
+  "dino_hesperosaurus":      { "name": "Hesperosaurus",      "rarity": "legendary" },
+  "dino_carcha":             { "name": "Carcha",             "rarity": "legendary" },
+
+  "_mythic": "── Mythic ──",
+  "dino_ichtyosaur":         { "name": "Ichtyosaur",         "rarity": "mythic"    },
+  "dino_gorgonops":          { "name": "Gorgonops",          "rarity": "mythic"    },
+  "dino_amargasaurus":       { "name": "Amargasaurus",       "rarity": "mythic"    },
+  "dino_saurolophus":        { "name": "Saurolophus",        "rarity": "mythic"    },
+  "dino_tupuxuara":          { "name": "Tupuxuara",          "rarity": "mythic"    },
+
+  "_jurassic": "── Jurassic (höchste Seltenheit, gehören zu Normal) ──",
+  "dino_brontosaurus":       { "name": "Brontosaurus",       "rarity": "jurassic"  },
+  "dino_pteranodon":         { "name": "Pteranodon",         "rarity": "jurassic"  },
+  "dino_megalodon":          { "name": "Megalodon",          "rarity": "jurassic"  },
+  "dino_trex":               { "name": "T-Rex",              "rarity": "jurassic"  },
+  "dino_duck_rex":           { "name": "Duck Rex",           "rarity": "jurassic"  },
+  "dino_indomi":             { "name": "Indomi",             "rarity": "jurassic"  },
+  "dino_musk_ox":            { "name": "Musk Ox",            "rarity": "jurassic"  },
+  "dino_smilodon":           { "name": "Smilodon",           "rarity": "jurassic"  },
+  "dino_mammot":             { "name": "Mammot",             "rarity": "jurassic"  },
+  "dino_prime_rex":          { "name": "Prime Rex",          "rarity": "jurassic"  },
+  "dino_raptor_squad":       { "name": "Raptor Squad",       "rarity": "jurassic"  },
+  "dino_skelet":             { "name": "Skelet",             "rarity": "jurassic"  },
+  "dino_mozazaur_x":         { "name": "Mozazaur X",         "rarity": "jurassic"  },
+  "dino_stegoc":             { "name": "Stegoc",             "rarity": "jurassic"  },
+  "dino_indora":             { "name": "Indora",             "rarity": "jurassic"  },
+  "dino_x_dyla":             { "name": "X Dyla",             "rarity": "jurassic"  },
+  "dino_reindeerceratops":   { "name": "Reindeerceratops",   "rarity": "jurassic"  },
+  "dino_reindeerspino":      { "name": "Reindeerspino",      "rarity": "jurassic"  },
+  "dino_carnotauro":         { "name": "Carnotauro",         "rarity": "jurassic"  },
+  "dino_brachiosaurus":      { "name": "Brachiosaurus",      "rarity": "jurassic"  },
+  "dino_tepajara":           { "name": "Tepajara",           "rarity": "jurassic"  },
+  "dino_spikel":             { "name": "Spikel",             "rarity": "jurassic"  },
+  "dino_scorpius_rex":       { "name": "Scorpius Rex",       "rarity": "jurassic"  },
+
+  "_section_lava": "════ LAVA VARIANTEN ════",
+  "_lava_comment": "✏️ Lava-Versionen der normalen Dinos hier eintragen",
+  "lava_raptor":             { "name": "Lava Raptor",        "rarity": "epic"      },
+  "lava_carno":              { "name": "Lava Carno",         "rarity": "rare"      },
+  "lava_spino":              { "name": "Lava Spino",         "rarity": "epic"      },
+  "lava_mammoth":            { "name": "Lava Mammoth",       "rarity": "legendary" },
+  "lava_trex":               { "name": "Lava T-Rex",         "rarity": "legendary" },
+
+  "_section_glacial": "════ GLACIAL VARIANTEN ════",
+  "_glacial_comment": "✏️ Glacial-Versionen hier eintragen",
+
+  "_section_darkness": "════ DARKNESS VARIANTEN ════",
+  "_darkness_comment": "✏️ Darkness-Versionen hier eintragen",
+
+  "_section_phantom": "════ PHANTOM VARIANTEN ════",
+  "_phantom_comment": "✏️ Phantom-Versionen hier eintragen",
+
+  "_section_blossom": "════ BLOSSOM VARIANTEN ════",
+  "_blossom_comment": "✏️ Blossom-Versionen hier eintragen",
+
+  "_section_chocolate": "════ CHOCOLATE VARIANTEN ════",
+  "_choc_comment": "✏️ Chocolate-Versionen hier eintragen",
+  "choc_dodo":               { "name": "Chocolate Dodo",    "rarity": "rare"      },
+
+  "_section_gifts": "════ GIFTS & EVENTS ════",
+  "_gifts_comment": "✏️ Saisonale Event-Dinos hier eintragen",
+
+  "_section_valentines": "════ VALENTINE'S VARIANTEN ════",
+  "_val_comment": "✏️ Valentine's-Versionen hier eintragen",
+
+  "_section_rainbow": "════ RAINBOW VARIANTEN ════",
+  "_rainbow_comment": "✏️ Rainbow-Versionen hier eintragen",
+
+  "_section_storm": "════ STORM VARIANTEN ════",
+  "_storm_comment": "✏️ Storm-Versionen hier eintragen",
+  "storm_tapejara":          { "name": "Storm Tapejara",     "rarity": "legendary" },
+
+  "_section_galaxy": "════ GALAXY VARIANTEN ════",
+  "_galaxy_comment": "✏️ Galaxy-Versionen hier eintragen",
+
+  "_section_infernal": "════ INFERNAL VARIANTEN ════",
+  "_infernal_comment": "✏️ Infernal-Versionen hier eintragen",
+  "infernal_mammoth":        { "name": "Infernal Mammoth",   "rarity": "mythic"    },
+  "infernal_trex":           { "name": "Infernal T-Rex",     "rarity": "mythic"    },
+
+  "_section_angelic": "════ ANGELIC VARIANTEN ════",
+  "_angelic_comment": "✏️ Angelic-Versionen hier eintragen",
+  "angelic_mammoth":         { "name": "Angelic Mammoth",    "rarity": "legendary" },
+  "angelic_indominus":       { "name": "Angelic Indominus",  "rarity": "mythic"    },
+
+  "_section_secret": "════ SECRET DINOS ════",
+  "_secret_comment": "✏️ Secret-Dinos (Error 404, Kraken und deren Varianten) hier eintragen",
+  "secret_error404":         { "name": "Error 404",          "rarity": "jurassic"  },
+  "secret_kraken":           { "name": "Kraken",             "rarity": "jurassic"  }
+}

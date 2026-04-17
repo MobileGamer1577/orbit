@@ -1,0 +1,4875 @@
+{
+  "_comment": "ID-Schema: {modus}_{bereich}_{typ}_{auftrag}_{phase}",
+  "_kuerzel": {
+    "blitz": "Blitz Royale",
+    "delulu": "Delulu",
+    "lego": "LEGO Fortnite",
+    "reload": "Fortnite Reload",
+    "festival_hb": "Festival – Hauptbühne",
+    "sh": "Starthilfe",
+    "ms": "Meilenstein",
+    "dgh": "Die größten Hits aus Saison 8",
+    "w1-w8": "Woche 1-8",
+    "p01-p20": "Phase 01-20 eines einzelnen Meilenstein-Auftrags"
+  },
+  "blitz_01": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Starthilfe • 15k XP • 0/25"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Starter • 15k XP • 0/25"
+    }
+  },
+  "blitz_02": {
+    "de": {
+      "title": "Sammle mythische oder exotische Waffen auf",
+      "description": "Starthilfe • 15k XP • 0/12"
+    },
+    "en": {
+      "title": "Pick up mythic or exotic weapons",
+      "description": "Starter • 15k XP • 0/12"
+    }
+  },
+  "blitz_03": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Starthilfe • 15k XP • 0/15"
+    },
+    "en": {
+      "title": "Survive storm phases",
+      "description": "Starter • 15k XP • 0/15"
+    }
+  },
+  "blitz_04": {
+    "de": {
+      "title": "Betritt in verschiedenen Matches einen Riss",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Enter a rift in different matches",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "blitz_05": {
+    "de": {
+      "title": "Triff Spieler innerhalb von 15 Sekunden nach der Landung",
+      "description": "Starthilfe • 15k XP • 0/45"
+    },
+    "en": {
+      "title": "Hit players within 15 seconds of landing",
+      "description": "Starter • 15k XP • 0/45"
+    }
+  },
+  "blitz_06": {
+    "de": {
+      "title": "Füge Spielern Schaden mit mythischen oder exotischen Waffen zu",
+      "description": "Starthilfe • 15k XP • 0/5.000"
+    },
+    "en": {
+      "title": "Deal damage to players with mythic or exotic weapons",
+      "description": "Starter • 15k XP • 0/5,000"
+    }
+  },
+  "blitz_07": {
+    "de": {
+      "title": "Füge Spielern Schaden mit Schrotflinten oder Maschinenpistolen zu",
+      "description": "Starthilfe • 15k XP • 0/5.000"
+    },
+    "en": {
+      "title": "Deal damage to players with shotguns or SMGs",
+      "description": "Starter • 15k XP • 0/5,000"
+    }
+  },
+  "blitz_08": {
+    "de": {
+      "title": "Wirf eine Schildblase sofort nach erhaltenem Schaden",
+      "description": "Starthilfe • 15k XP • 0/5"
+    },
+    "en": {
+      "title": "Throw a shield bubble immediately after taking damage",
+      "description": "Starter • 15k XP • 0/5"
+    }
+  },
+  "blitz_09": {
+    "de": {
+      "title": "Füge Spielern Schaden zu, während du zu den letzten 10 zählst",
+      "description": "Starthilfe • 15k XP • 0/1.500"
+    },
+    "en": {
+      "title": "Deal damage to players while in the last 10",
+      "description": "Starter • 15k XP • 0/1,500"
+    }
+  },
+  "blitz_10": {
+    "de": {
+      "title": "Durchbrich eine Tür, während du rutscht oder sprintest",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Break through a door while sliding or sprinting",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "delulu_01": {
+    "de": {
+      "title": "Verbringe Zeit in einer Freundschaftszonenblase",
+      "description": "Starthilfe • 15k XP • 0/30"
+    },
+    "en": {
+      "title": "Spend time in a friendship zone bubble",
+      "description": "Starter • 15k XP • 0/30"
+    }
+  },
+  "delulu_02": {
+    "de": {
+      "title": "Durchsuche Vorratslieferungen oder Truhen (kooperativ)",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Search supply drops or chests (cooperative)",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "delulu_03": {
+    "de": {
+      "title": "Belebe verschiedene Spieler wieder",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Revive different players",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "delulu_04": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu, während du in einem Team bist",
+      "description": "Starthilfe • 15k XP • 0/1.000"
+    },
+    "en": {
+      "title": "Deal damage to enemies while in a team",
+      "description": "Starter • 15k XP • 0/1,000"
+    }
+  },
+  "delulu_05": {
+    "de": {
+      "title": "Suche als Geist einen Spieler in verschiedenen Matches heim",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Haunt a player as a ghost in different matches",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "delulu_06": {
+    "de": {
+      "title": "Benutze ein Emote in 10m Umkreis eines anderen Spielers",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Use an emote within 10m of another player",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "delulu_07": {
+    "de": {
+      "title": "Gehöre zu den letzten 10 Spielern im Team",
+      "description": "Starthilfe • 15k XP • 0/2"
+    },
+    "en": {
+      "title": "Be among the last 10 players on the team",
+      "description": "Starter • 15k XP • 0/2"
+    }
+  },
+  "delulu_08": {
+    "de": {
+      "title": "Tritt in verschiedenen Matches Teams vor der zweiten Sturmphase bei",
+      "description": "Starthilfe • 15k XP • 0/2"
+    },
+    "en": {
+      "title": "Join teams before the second storm phase in different matches",
+      "description": "Starter • 15k XP • 0/2"
+    }
+  },
+  "delulu_09": {
+    "de": {
+      "title": "Unterstütze einen Spieler als Geist in verschiedenen Matches",
+      "description": "Starthilfe • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Support a player as a ghost in different matches",
+      "description": "Starter • 15k XP • 0/3"
+    }
+  },
+  "delulu_10": {
+    "de": {
+      "title": "Besuche benannte Orte, während du in einem Team bist",
+      "description": "Starthilfe • 15k XP • 0/10"
+    },
+    "en": {
+      "title": "Visit named locations while in a team",
+      "description": "Starter • 15k XP • 0/10"
+    }
+  },
+  "reload_01": {
+    "de": {
+      "title": "Lande bei benannten Orten",
+      "description": "Surf City-Insel • 15k XP • 0/15"
+    },
+    "en": {
+      "title": "Land at named locations",
+      "description": "Surf City Island • 15k XP • 0/15"
+    }
+  },
+  "reload_02": {
+    "de": {
+      "title": "Lege Distanz beim Rutschen zurück",
+      "description": "Surf City-Insel • 15k XP • 0/720"
+    },
+    "en": {
+      "title": "Travel distance while sliding",
+      "description": "Surf City Island • 15k XP • 0/720"
+    }
+  },
+  "reload_03": {
+    "de": {
+      "title": "Eliminiere Spieler, bevor du neustartest",
+      "description": "Surf City-Insel • 15k XP • 0/15"
+    },
+    "en": {
+      "title": "Eliminate players before restarting",
+      "description": "Surf City Island • 15k XP • 0/15"
+    }
+  },
+  "reload_04": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "Surf City-Insel • 15k XP • 0/35"
+    },
+    "en": {
+      "title": "Search chests or ammo boxes",
+      "description": "Surf City Island • 15k XP • 0/35"
+    }
+  },
+  "reload_05": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Surf City-Insel • 15k XP • 0/30"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Surf City Island • 15k XP • 0/30"
+    }
+  },
+  "reload_06": {
+    "de": {
+      "title": "Füge Spielern im Verlauf eines Matches Schaden zu",
+      "description": "Surf City-Insel • 15k XP • 0/500"
+    },
+    "en": {
+      "title": "Deal damage to players in a single match",
+      "description": "Surf City Island • 15k XP • 0/500"
+    }
+  },
+  "reload_07": {
+    "de": {
+      "title": "Erledige gegnerische Teams komplett oder erhalte einen Neustart",
+      "description": "Surf City-Insel • 15k XP • 0/15"
+    },
+    "en": {
+      "title": "Eliminate enemy teams completely or get a restart",
+      "description": "Surf City Island • 15k XP • 0/15"
+    }
+  },
+  "reload_08": {
+    "de": {
+      "title": "Durchbrich Schilde von Spielern",
+      "description": "Surf City-Insel • 15k XP • 0/20"
+    },
+    "en": {
+      "title": "Break shields of players",
+      "description": "Surf City Island • 15k XP • 0/20"
+    }
+  },
+  "reload_09": {
+    "de": {
+      "title": "Baue oder zerstöre Gebäude",
+      "description": "Surf City-Insel • 15k XP • 0/65"
+    },
+    "en": {
+      "title": "Build or destroy structures",
+      "description": "Surf City Island • 15k XP • 0/65"
+    }
+  },
+  "reload_10": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Surf City-Insel • 15k XP • 0/25"
+    },
+    "en": {
+      "title": "Survive storm phases",
+      "description": "Surf City Island • 15k XP • 0/25"
+    }
+  },
+  "kreativ_ms_bonus_p01": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p02": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p03": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p04": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p05": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p06": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p07": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p08": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p09": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p10": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p11": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p12": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_bonus_p13": {
+    "de": {
+      "title": "Schließe Wöchentliche Aufträge ab",
+      "description": "Wöchentliche Bonusziele • 20k XP • 0/4"
+    },
+    "en": {
+      "title": "Complete Weekly Quests",
+      "description": "Weekly Bonus Goals • 20k XP • 0/4"
+    }
+  },
+  "kreativ_ms_ueberleben_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_ueberleben_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Überleben\"-Inseln",
+      "description": "Wöchentliche Überleben-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Survival\" islands",
+      "description": "Weekly Survival Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_rollenspiel_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Rollenspiel\"-Inseln",
+      "description": "Wöchentliche Rollenspiel-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Roleplay\" islands",
+      "description": "Weekly Roleplay Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_kampf_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Kampf\"-Inseln",
+      "description": "Wöchentliche Kampf-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Combat\" islands",
+      "description": "Weekly Combat Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_br_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Battle Royale\"-Inseln",
+      "description": "Wöchentliche Battle Royale-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Battle Royale\" islands",
+      "description": "Weekly Battle Royale Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_plattformer_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Plattformer\"-Inseln",
+      "description": "Wöchentliche Plattformer-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Platformer\" islands",
+      "description": "Weekly Platformer Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_tycoon_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Tycoon\"-Inseln",
+      "description": "Wöchentliche Tycoon-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Tycoon\" islands",
+      "description": "Weekly Tycoon Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_musik_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Musik & Party\"-Inseln",
+      "description": "Wöchentliche Musik & Party-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Music & Party\" islands",
+      "description": "Weekly Music & Party Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p01": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p02": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p03": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p04": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p05": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p06": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p07": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p08": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p09": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p10": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p11": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p12": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p13": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p14": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p15": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p16": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p17": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p18": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p19": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p20": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p21": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "kreativ_ms_fahren_p22": {
+    "de": {
+      "title": "Verdiene EP auf von Creators erstellten \"Fahren\"-Inseln",
+      "description": "Wöchentliche Fahren-Aufträge • 5k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Earn XP on Creator-made \"Driving\" islands",
+      "description": "Weekly Driving Quests • 5k XP • 0/60,000"
+    }
+  },
+  "br_w0_01": {
+    "de": {
+      "title": "Besuche Zero Point Shards für The Foundation",
+      "description": "Starthilfe • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Visit Zero Point Shards for The Foundation",
+      "description": "Kickstart • 20k XP • 0/3"
+    }
+  },
+  "br_w0_02": {
+    "de": {
+      "title": "Aktiviere einen Holotisch, um The Foundation mit einem Seven Secure Server zu verbinden",
+      "description": "Starthilfe • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Power on a Holotable to help The Foundation connect to a Seven Secure Server",
+      "description": "Kickstart • 20k XP • 0/1"
+    }
+  },
+  "br_w0_03": {
+    "de": {
+      "title": "Benutze den Jam Track Player",
+      "description": "Starthilfe • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Use the Jam Track Player",
+      "description": "Kickstart • 20k XP • 0/1"
+    }
+  },
+  "br_w0_04": {
+    "de": {
+      "title": "Lande bei Frigid Fortress, Dark Dominion und New Sanctuary",
+      "description": "Starthilfe • 20k XP • 0/3 Orte"
+    },
+    "en": {
+      "title": "Land at Frigid Fortress, Dark Dominion, and New Sanctuary",
+      "description": "Kickstart • 20k XP • 0/3 locations"
+    }
+  },
+  "br_w0_05": {
+    "de": {
+      "title": "Erziele Kopfschüsse auf gegnerische Spieler",
+      "description": "Starthilfe • 20k XP • 0/5"
+    },
+    "en": {
+      "title": "Headshot enemy players",
+      "description": "Kickstart • 20k XP • 0/5"
+    }
+  },
+  "br_w0_06": {
+    "de": {
+      "title": "Sammle Munition",
+      "description": "Starthilfe • 20k XP • 0/500"
+    },
+    "en": {
+      "title": "Collect ammo",
+      "description": "Kickstart • 20k XP • 0/500"
+    }
+  },
+  "br_w0_07": {
+    "de": {
+      "title": "Füge Spielern Schaden zu, bevor die erste Sturmphase endet",
+      "description": "Starthilfe • 20k XP • 0/250"
+    },
+    "en": {
+      "title": "Damage players before the first Storm Phase closes",
+      "description": "Kickstart • 20k XP • 0/250"
+    }
+  },
+  "br_w0_08": {
+    "de": {
+      "title": "Benutze den Skyline Deployer",
+      "description": "Starthilfe • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Use the Skyline Deployer",
+      "description": "Kickstart • 20k XP • 0/3"
+    }
+  },
+  "br_w0_09": {
+    "de": {
+      "title": "Sammle Items aus Truhen für The Foundation",
+      "description": "Starthilfe • 20k XP • 0/25"
+    },
+    "en": {
+      "title": "Collect items from chests for The Foundation",
+      "description": "Kickstart • 20k XP • 0/25"
+    }
+  },
+  "br_w1_01": {
+    "de": {
+      "title": "Eliminiere einen Spieler mit einer Mythic- oder Exotic-Waffe",
+      "description": "Woche 2 • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Eliminate a player with a Mythic or Exotic weapon",
+      "description": "Week 2 • 20k XP • 0/1"
+    }
+  },
+  "br_w1_02": {
+    "de": {
+      "title": "Kaufe Items bei Automaten oder NSCs",
+      "description": "Woche 2 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Purchase items from vending machines or NPCs",
+      "description": "Week 2 • 20k XP • 0/3"
+    }
+  },
+  "br_w1_03": {
+    "de": {
+      "title": "Besiege den Eiskönig",
+      "description": "Woche 2 • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Defeat the Ice King",
+      "description": "Week 2 • 20k XP • 0/1"
+    }
+  },
+  "br_w1_04": {
+    "de": {
+      "title": "Überlebe bis zu den letzten 10 Spielern",
+      "description": "Woche 2 • 20k XP • 0/3 Matches"
+    },
+    "en": {
+      "title": "Outlast players to reach the top 10",
+      "description": "Week 2 • 20k XP • 0/3 matches"
+    }
+  },
+  "br_w1_05": {
+    "de": {
+      "title": "Zerstöre Strukturen",
+      "description": "Woche 2 • 20k XP • 0/100"
+    },
+    "en": {
+      "title": "Destroy structures",
+      "description": "Week 2 • 20k XP • 0/100"
+    }
+  },
+  "br_w2_01": {
+    "de": {
+      "title": "Besuche Aussichtspunkte (Wasserfall, Leuchtturm, Battlewood-Schild)",
+      "description": "Woche 3 • 20k XP • 0/3 Orte"
+    },
+    "en": {
+      "title": "Visit vantage points (waterfall, lighthouse, Battlewood sign)",
+      "description": "Week 3 • 20k XP • 0/3 locations"
+    }
+  },
+  "br_w2_02": {
+    "de": {
+      "title": "Finde The Foundations verlorenen Helm und Cape",
+      "description": "Woche 3 • 20k XP • 0/2 Gegenstände"
+    },
+    "en": {
+      "title": "Find The Foundation's lost helmet and cape",
+      "description": "Week 3 • 20k XP • 0/2 items"
+    }
+  },
+  "br_w2_03": {
+    "de": {
+      "title": "Frage The Order, Jones oder The Visitor nach The Foundation",
+      "description": "Woche 3 • 20k XP • 0/1"
+    },
+    "en": {
+      "title": "Ask The Order, Jones, or The Visitor about The Foundation",
+      "description": "Week 3 • 20k XP • 0/1"
+    }
+  },
+  "br_w2_04": {
+    "de": {
+      "title": "Zerstöre 3 Kommunikationsrepeater bei Frigid Fortress",
+      "description": "Woche 3 • 20k XP • 0/3"
+    },
+    "en": {
+      "title": "Destroy 3 comms repeaters at Frigid Fortress",
+      "description": "Week 3 • 20k XP • 0/3"
+    }
+  },
+  "br_w2_05": {
+    "de": {
+      "title": "Füge Gegnern Schaden mit Fernkampfwaffen zu",
+      "description": "Woche 3 • 20k XP • 0/500"
+    },
+    "en": {
+      "title": "Deal damage to opponents with ranged weapons",
+      "description": "Week 3 • 20k XP • 0/500"
+    }
+  },
+  "br_story_01": {
+    "de": {
+      "title": "Finde und sammle alle Chaoswürfel",
+      "description": "Pfad des Wanderers • 80.000 XP • 0/70"
+    },
+    "en": {
+      "title": "Find and collect all Chaos Cubes",
+      "description": "Path of the Voyager • 80,000 XP • 0/70"
+    }
+  },
+  "br_story_02": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Dark Dominion",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Dark Dominion",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_03": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Battlewood Boulevard",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Battlewood Boulevard",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_04": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Painted Palms",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Painted Palms",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_05": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Wonkeeland",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Wonkeeland",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_06": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Sus Studios",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Sus Studios",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_07": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Humble Hills",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Humble Hills",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_08": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Fore Fields",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Fore Fields",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_story_09": {
+    "de": {
+      "title": "Finde Chaoswürfel in oder um Latte Landing",
+      "description": "Pfad des Wanderers • 4.000 XP pro Würfel • 0/5"
+    },
+    "en": {
+      "title": "Find Chaos Cubes in or around Latte Landing",
+      "description": "Path of the Voyager • 4,000 XP per cube • 0/5"
+    }
+  },
+  "br_ms_bus_p01": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 0/10"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 0/10"
+    }
+  },
+  "br_ms_bus_p02": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 10/20"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 10/20"
+    }
+  },
+  "br_ms_bus_p03": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 20/30"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 20/30"
+    }
+  },
+  "br_ms_bus_p04": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 30/40"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 30/40"
+    }
+  },
+  "br_ms_bus_p05": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 40/50"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 40/50"
+    }
+  },
+  "br_ms_bus_p06": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 50/60"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 50/60"
+    }
+  },
+  "br_ms_bus_p07": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 60/70"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 60/70"
+    }
+  },
+  "br_ms_bus_p08": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 70/80"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 70/80"
+    }
+  },
+  "br_ms_bus_p09": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 80/90"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 80/90"
+    }
+  },
+  "br_ms_bus_p10": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 90/100"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 90/100"
+    }
+  },
+  "br_ms_bus_p11": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 100/110"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 100/110"
+    }
+  },
+  "br_ms_bus_p12": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 110/120"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 110/120"
+    }
+  },
+  "br_ms_bus_p13": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 120/130"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 120/130"
+    }
+  },
+  "br_ms_bus_p14": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 130/140"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 130/140"
+    }
+  },
+  "br_ms_bus_p15": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 140/150"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 140/150"
+    }
+  },
+  "br_ms_bus_p16": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 150/160"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 150/160"
+    }
+  },
+  "br_ms_bus_p17": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 160/170"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 160/170"
+    }
+  },
+  "br_ms_bus_p18": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 170/180"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 170/180"
+    }
+  },
+  "br_ms_bus_p19": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 180/190"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 180/190"
+    }
+  },
+  "br_ms_bus_p20": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "Meilensteine • 5k XP • 190/200"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "Milestones • 5k XP • 190/200"
+    }
+  },
+  "br_ms_elim_p01": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 0/25"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 0/25"
+    }
+  },
+  "br_ms_elim_p02": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 25/50"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 25/50"
+    }
+  },
+  "br_ms_elim_p03": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 50/75"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 50/75"
+    }
+  },
+  "br_ms_elim_p04": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 75/100"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 75/100"
+    }
+  },
+  "br_ms_elim_p05": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 100/125"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 100/125"
+    }
+  },
+  "br_ms_elim_p06": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 125/150"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 125/150"
+    }
+  },
+  "br_ms_elim_p07": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 150/175"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 150/175"
+    }
+  },
+  "br_ms_elim_p08": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 175/200"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 175/200"
+    }
+  },
+  "br_ms_elim_p09": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 200/225"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 200/225"
+    }
+  },
+  "br_ms_elim_p10": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 225/250"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 225/250"
+    }
+  },
+  "br_ms_elim_p11": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 250/275"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 250/275"
+    }
+  },
+  "br_ms_elim_p12": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 275/300"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 275/300"
+    }
+  },
+  "br_ms_elim_p13": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 300/325"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 300/325"
+    }
+  },
+  "br_ms_elim_p14": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 325/350"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 325/350"
+    }
+  },
+  "br_ms_elim_p15": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 350/375"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 350/375"
+    }
+  },
+  "br_ms_elim_p16": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 375/400"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 375/400"
+    }
+  },
+  "br_ms_elim_p17": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 400/425"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 400/425"
+    }
+  },
+  "br_ms_elim_p18": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 425/450"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 425/450"
+    }
+  },
+  "br_ms_elim_p19": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 450/475"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 450/475"
+    }
+  },
+  "br_ms_elim_p20": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "Meilensteine • 5k XP • 475/500"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "Milestones • 5k XP • 475/500"
+    }
+  },
+  "br_ms_gold_p01": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 0/500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 0/500"
+    }
+  },
+  "br_ms_gold_p02": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 500/1.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 500/1,000"
+    }
+  },
+  "br_ms_gold_p03": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 1.000/1.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 1,000/1,500"
+    }
+  },
+  "br_ms_gold_p04": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 1.500/2.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 1,500/2,000"
+    }
+  },
+  "br_ms_gold_p05": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 2.000/2.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 2,000/2,500"
+    }
+  },
+  "br_ms_gold_p06": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 2.500/3.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 2,500/3,000"
+    }
+  },
+  "br_ms_gold_p07": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 3.000/3.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 3,000/3,500"
+    }
+  },
+  "br_ms_gold_p08": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 3.000/4.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 3,000/4,000"
+    }
+  },
+  "br_ms_gold_p09": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 4.000/4.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 4,000/4,500"
+    }
+  },
+  "br_ms_gold_p10": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 4.500/5.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 4,500/5,000"
+    }
+  },
+  "br_ms_gold_p11": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 5.000/5.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 5,000/5,500"
+    }
+  },
+  "br_ms_gold_p12": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 5.500/6.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 5,500/6,000"
+    }
+  },
+  "br_ms_gold_p13": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 6.000/6.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 6,000/6,500"
+    }
+  },
+  "br_ms_gold_p14": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 6.500/7.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 6,500/7,000"
+    }
+  },
+  "br_ms_gold_p15": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 7.000/7.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 7,000/7,500"
+    }
+  },
+  "br_ms_gold_p16": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 7.500/8.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 7,500/8,000"
+    }
+  },
+  "br_ms_gold_p17": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 8.000/8.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 8,000/8,500"
+    }
+  },
+  "br_ms_gold_p18": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 8.500/9.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 8,500/9,000"
+    }
+  },
+  "br_ms_gold_p19": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 9.000/9.500"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 9,000/9,500"
+    }
+  },
+  "br_ms_gold_p20": {
+    "de": {
+      "title": "Gib Gold aus",
+      "description": "Meilensteine • 5k XP • 9.500/10.000"
+    },
+    "en": {
+      "title": "Spend Gold",
+      "description": "Milestones • 5k XP • 9,500/10,000"
+    }
+  },
+  "br_ms_storm_p01": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 0/25"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 0/25"
+    }
+  },
+  "br_ms_storm_p02": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 25/50"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 25/50"
+    }
+  },
+  "br_ms_storm_p03": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 50/75"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 50/75"
+    }
+  },
+  "br_ms_storm_p04": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 75/100"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 75/100"
+    }
+  },
+  "br_ms_storm_p05": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 100/125"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 100/125"
+    }
+  },
+  "br_ms_storm_p06": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 125/150"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 125/150"
+    }
+  },
+  "br_ms_storm_p07": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 150/175"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 150/175"
+    }
+  },
+  "br_ms_storm_p08": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 175/200"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 175/200"
+    }
+  },
+  "br_ms_storm_p09": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 200/225"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 200/225"
+    }
+  },
+  "br_ms_storm_p10": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 225/250"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 225/250"
+    }
+  },
+  "br_ms_storm_p11": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 250/275"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 250/275"
+    }
+  },
+  "br_ms_storm_p12": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 275/300"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 275/300"
+    }
+  },
+  "br_ms_storm_p13": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 300/325"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 300/325"
+    }
+  },
+  "br_ms_storm_p14": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 325/350"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 325/350"
+    }
+  },
+  "br_ms_storm_p15": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 350/375"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 350/375"
+    }
+  },
+  "br_ms_storm_p16": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 375/400"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 375/400"
+    }
+  },
+  "br_ms_storm_p17": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 400/425"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 400/425"
+    }
+  },
+  "br_ms_storm_p18": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 425/450"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 425/450"
+    }
+  },
+  "br_ms_storm_p19": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP •450/475"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 450/475"
+    }
+  },
+  "br_ms_storm_p20": {
+    "de": {
+      "title": "Überlebe Sturmphasen",
+      "description": "Meilensteine • 5k XP • 475/500"
+    },
+    "en": {
+      "title": "Survive Storm Phases",
+      "description": "Milestones • 5k XP • 475/500"
+    }
+  },
+  "br_ms_dmg_p01": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 0/5.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 0/5,000"
+    }
+  },
+  "br_ms_dmg_p02": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 5.000/10.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 5,000/10,000"
+    }
+  },
+  "br_ms_dmg_p03": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 10.000/15.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 10,000/15,000"
+    }
+  },
+  "br_ms_dmg_p04": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 15.000/20.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 15,000/20,000"
+    }
+  },
+  "br_ms_dmg_p05": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 20.000/25.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 20,000/25,000"
+    }
+  },
+  "br_ms_dmg_p06": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 25.000/30.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 25,000/30,000"
+    }
+  },
+  "br_ms_dmg_p07": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 30.000/35.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 30,000/35,000"
+    }
+  },
+  "br_ms_dmg_p08": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 35.000/40.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 35,000/40,000"
+    }
+  },
+  "br_ms_dmg_p09": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 40.000/45.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 40,000/45,000"
+    }
+  },
+  "br_ms_dmg_p10": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 45.000/50.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 45,000/50,000"
+    }
+  },
+  "br_ms_dmg_p11": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 50.000/55.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 50,000/55,000"
+    }
+  },
+  "br_ms_dmg_p12": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 55.000/60.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 55,000/60,000"
+    }
+  },
+  "br_ms_dmg_p13": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 60.000/65.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 60,000/65,000"
+    }
+  },
+  "br_ms_dmg_p14": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 65.000/70.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 65,000/70,000"
+    }
+  },
+  "br_ms_dmg_p15": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 70.000/75.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 70,000/75,000"
+    }
+  },
+  "br_ms_dmg_p16": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 75.000/80.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 75,000/80,000"
+    }
+  },
+  "br_ms_dmg_p17": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 80.000/85.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 80,000/85,000"
+    }
+  },
+  "br_ms_dmg_p18": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 85.000/90.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 85,000/90,000"
+    }
+  },
+  "br_ms_dmg_p19": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 90.000/95.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 90,000/95,000"
+    }
+  },
+  "br_ms_dmg_p20": {
+    "de": {
+      "title": "Füge Gegnern Schaden zu",
+      "description": "Meilensteine • 5k XP • 95.000/100.000"
+    },
+    "en": {
+      "title": "Damage Opponents",
+      "description": "Milestones • 5k XP • 95,000/100,000"
+    }
+  },
+  "br_ms_survive_p01": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 0/750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 0/750"
+    }
+  },
+  "br_ms_survive_p02": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 750/1.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 750/1,500"
+    }
+  },
+  "br_ms_survive_p03": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 1.500/2.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 1,500/2,250"
+    }
+  },
+  "br_ms_survive_p04": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 2.250/3.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 2,250/3,000"
+    }
+  },
+  "br_ms_survive_p05": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 3.000/3.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 3,000/3,750"
+    }
+  },
+  "br_ms_survive_p06": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 3.750/4.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 3,750/4,500"
+    }
+  },
+  "br_ms_survive_p07": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 4.500/5.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 4,500/5,250"
+    }
+  },
+  "br_ms_survive_p08": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 5.250/6.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 5,250/6,000"
+    }
+  },
+  "br_ms_survive_p09": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 6.000/6.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 6,000/6,750"
+    }
+  },
+  "br_ms_survive_p10": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 6.750/7.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 6,750/7,500"
+    }
+  },
+  "br_ms_survive_p11": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 7.500/8.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 7,500/8,250"
+    }
+  },
+  "br_ms_survive_p12": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 8.250/9.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 8,250/9,000"
+    }
+  },
+  "br_ms_survive_p13": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 9.000/9.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 9,000/9,750"
+    }
+  },
+  "br_ms_survive_p14": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 9.750/10.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 9,750/10,500"
+    }
+  },
+  "br_ms_survive_p15": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 10.500/11.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 10,500/11,250"
+    }
+  },
+  "br_ms_survive_p16": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 11.250/12.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 11,250/12,000"
+    }
+  },
+  "br_ms_survive_p17": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 12.000/12.750"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 12,000/12,750"
+    }
+  },
+  "br_ms_survive_p18": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 12.750/13.500"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 12,750/13,500"
+    }
+  },
+  "br_ms_survive_p19": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 13.500/14.250"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 13,500/14,250"
+    }
+  },
+  "br_ms_survive_p20": {
+    "de": {
+      "title": "Lebe länger als die anderen Spieler",
+      "description": "Meilensteine • 5k XP • 14.250/15.000"
+    },
+    "en": {
+      "title": "Outlast Players",
+      "description": "Milestones • 5k XP • 14,250/15,000"
+    }
+  },
+  "og_w0_01": {
+    "de": {
+      "title": "Eliminiere Spieler mit Schrotflinten",
+      "description": "OG Woche 0 • 10k XP • 0/5"
+    },
+    "en": {
+      "title": "Eliminate players with shotguns",
+      "description": "OG Week 0 • 10k XP • 0/5"
+    }
+  },
+  "og_w0_02": {
+    "de": {
+      "title": "Füge Spielern Schaden mit Pistolen zu",
+      "description": "OG Woche 0 • 10k XP • 0/400"
+    },
+    "en": {
+      "title": "Damage players with pistols",
+      "description": "OG Week 0 • 10k XP • 0/400"
+    }
+  },
+  "og_w0_03": {
+    "de": {
+      "title": "Besuche Lazy Lagoon und Sunny Steps",
+      "description": "OG Woche 0 • 10k XP • 0/2"
+    },
+    "en": {
+      "title": "Visit Lazy Lagoon and Sunny Steps",
+      "description": "OG Week 0 • 10k XP • 0/2"
+    }
+  },
+  "og_w0_04": {
+    "de": {
+      "title": "Lege Distanz mit Fahrzeugen zurück",
+      "description": "OG Woche 0 • 10k XP • 0/1.000"
+    },
+    "en": {
+      "title": "Travel distance in vehicles",
+      "description": "OG Week 0 • 10k XP • 0/1,000"
+    }
+  },
+  "og_w1_01": {
+    "de": {
+      "title": "1",
+      "description": "OG Woche 1 • 10k XP • 0/?"
+    },
+    "en": {
+      "title": "1",
+      "description": "OG Week 1 • 10k XP • 0/?"
+    }
+  },
+  "og_w1_02": {
+    "de": {
+      "title": "2",
+      "description": "OG Woche 1 • 10k XP • 0/?"
+    },
+    "en": {
+      "title": "2",
+      "description": "OG Week 1 • 10k XP • 0/?"
+    }
+  },
+  "og_w1_03": {
+    "de": {
+      "title": "?",
+      "description": "OG Woche 1 • 10k XP • 0/?"
+    },
+    "en": {
+      "title": "?",
+      "description": "OG Week 1 • 10k XP • 0/?"
+    }
+  },
+  "og_w1_04": {
+    "de": {
+      "title": "?",
+      "description": "OG Woche 1 • 10k XP • 0/?"
+    },
+    "en": {
+      "title": "?",
+      "description": "OG Week 1 • 10k XP • 0/?"
+    }
+  },
+  "og_w1_05": {
+    "de": {
+      "title": "?",
+      "description": "OG Woche 1 • 10k XP • 0/?"
+    },
+    "en": {
+      "title": "?",
+      "description": "OG Week 1 • 10k XP • 0/?"
+    }
+  },
+  "og_dgh_01": {
+    "de": {
+      "title": "Durchsuche Truhen bei Lazy Lagoon oder Sunny Steps",
+      "description": "OG DGH • 15k XP • 0/10"
+    },
+    "en": {
+      "title": "Search chests at Lazy Lagoon or Sunny Steps",
+      "description": "OG DGH • 15k XP • 0/10"
+    }
+  },
+  "og_dgh_02": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG DGH • 15k XP • 0/5"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG DGH • 15k XP • 0/5"
+    }
+  },
+  "og_dgh_03": {
+    "de": {
+      "title": "Eliminiere Spieler bei benannten Orten",
+      "description": "OG DGH • 15k XP • 0/10"
+    },
+    "en": {
+      "title": "Eliminate players at Named Locations",
+      "description": "OG DGH • 15k XP • 0/10"
+    }
+  },
+  "og_dgh_04": {
+    "de": {
+      "title": "Besuche verschiedene Piratenlager",
+      "description": "OG DGH • 15k XP • 0/4"
+    },
+    "en": {
+      "title": "Visit different pirate camps",
+      "description": "OG DGH • 15k XP • 0/4"
+    }
+  },
+  "og_dgh_05": {
+    "de": {
+      "title": "Füge Spielern Schaden mit der Steinstoßpistole zu",
+      "description": "OG DGH • 15k XP • 0/150"
+    },
+    "en": {
+      "title": "Damage players with the Flint-Knock Pistol",
+      "description": "OG DGH • 15k XP • 0/150"
+    }
+  },
+  "og_dgh_06": {
+    "de": {
+      "title": "Kaufe einen Gegenstand bei einem Verkaufsautomaten",
+      "description": "OG DGH • 15k XP • 0/1"
+    },
+    "en": {
+      "title": "Purchase an item from a vending machine",
+      "description": "OG DGH • 15k XP • 0/1"
+    }
+  },
+  "og_dgh_07": {
+    "de": {
+      "title": "Lege Distanz durch Abfeuern aus einer Piratenkanone zurück",
+      "description": "OG DGH • 15k XP • 0/200"
+    },
+    "en": {
+      "title": "Travel distance launching from a Pirate Cannon",
+      "description": "OG DGH • 15k XP • 0/200"
+    }
+  },
+  "og_dgh_08": {
+    "de": {
+      "title": "Triff einen gegnerischen Spieler mit einer Impulsgranate",
+      "description": "OG DGH • 15k XP • 0/1"
+    },
+    "en": {
+      "title": "Hit an enemy player with an Impulse Grenade",
+      "description": "OG DGH • 15k XP • 0/1"
+    }
+  },
+  "og_dgh_09": {
+    "de": {
+      "title": "Durchsuche eine vergrabene Schatztruhe",
+      "description": "OG DGH • 15k XP • 0/1"
+    },
+    "en": {
+      "title": "Search a buried treasure chest",
+      "description": "OG DGH • 15k XP • 0/1"
+    }
+  },
+  "og_dgh_10": {
+    "de": {
+      "title": "Überlebe Sturmphasen, während deine Kondition und Schilde voll sind",
+      "description": "OG DGH • 15k XP • 0/3"
+    },
+    "en": {
+      "title": "Survive Storm Phases while at full health and shields",
+      "description": "OG DGH • 15k XP • 0/3"
+    }
+  },
+  "og_ms_1_p01": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/3"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/3"
+    }
+  },
+  "og_ms_1_p02": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/3"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/3"
+    }
+  },
+  "og_ms_1_p03": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/75"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/75"
+    }
+  },
+  "og_ms_1_p04": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/100"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/100"
+    }
+  },
+  "og_ms_1_p05": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/125"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/125"
+    }
+  },
+  "og_ms_1_p06": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/150"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/150"
+    }
+  },
+  "og_ms_1_p07": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/175"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/175"
+    }
+  },
+  "og_ms_1_p08": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/200"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/200"
+    }
+  },
+  "og_ms_1_p09": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/225"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/225"
+    }
+  },
+  "og_ms_1_p10": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/250"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/250"
+    }
+  },
+  "og_ms_1_p11": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/275"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/275"
+    }
+  },
+  "og_ms_1_p12": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/300"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/300"
+    }
+  },
+  "og_ms_1_p13": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/325"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/325"
+    }
+  },
+  "og_ms_1_p14": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/350"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/350"
+    }
+  },
+  "og_ms_1_p15": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/375"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/375"
+    }
+  },
+  "og_ms_1_p16": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/400"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/400"
+    }
+  },
+  "og_ms_1_p17": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/425"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/425"
+    }
+  },
+  "og_ms_1_p18": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/450"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/450"
+    }
+  },
+  "og_ms_1_p19": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/475"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/475"
+    }
+  },
+  "og_ms_1_p20": {
+    "de": {
+      "title": "Danke dem Busfahrer",
+      "description": "OG Meilensteine • 10k XP • 0/500"
+    },
+    "en": {
+      "title": "Thank the Bus Driver",
+      "description": "OG Milestones • 10k XP • 0/500"
+    }
+  },
+  "og_ms_2_p01": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/15"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/15"
+    }
+  },
+  "og_ms_2_p02": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/10.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/10,000"
+    }
+  },
+  "og_ms_2_p03": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/15.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/15,000"
+    }
+  },
+  "og_ms_2_p04": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/20.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/20,000"
+    }
+  },
+  "og_ms_2_p05": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/25.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/25,000"
+    }
+  },
+  "og_ms_2_p06": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/30.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/30,000"
+    }
+  },
+  "og_ms_2_p07": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/35.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/35,000"
+    }
+  },
+  "og_ms_2_p08": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/40.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/40,000"
+    }
+  },
+  "og_ms_2_p09": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/45.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/45,000"
+    }
+  },
+  "og_ms_2_p10": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/50.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/50,000"
+    }
+  },
+  "og_ms_2_p11": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/55.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/55,000"
+    }
+  },
+  "og_ms_2_p12": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/60.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/60,000"
+    }
+  },
+  "og_ms_2_p13": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/65.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/65,000"
+    }
+  },
+  "og_ms_2_p14": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/70.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/70,000"
+    }
+  },
+  "og_ms_2_p15": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/75.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/75,000"
+    }
+  },
+  "og_ms_2_p16": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/80.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/80,000"
+    }
+  },
+  "og_ms_2_p17": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/85.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/85,000"
+    }
+  },
+  "og_ms_2_p18": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/90.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/90,000"
+    }
+  },
+  "og_ms_2_p19": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/95.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/95,000"
+    }
+  },
+  "og_ms_2_p20": {
+    "de": {
+      "title": "Durchsuche Truhen oder Munitionskisten",
+      "description": "OG Meilensteine • 10k XP • 0/100.000"
+    },
+    "en": {
+      "title": "Search Chests or Ammo Crates",
+      "description": "OG Milestones • 10k XP • 0/100,000"
+    }
+  },
+  "og_ms_3_p01": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/10"
+    },
+    "en": {
+      "title": "Eliminate Players in OG",
+      "description": "OG Milestones • 10k XP • 0/10"
+    }
+  },
+  "og_ms_3_p02": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/50"
+    },
+    "en": {
+      "title": "Eliminate Players in OG",
+      "description": "OG Milestones • 10k XP • 0/50"
+    }
+  },
+  "og_ms_3_p03": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/75"
+    },
+    "en": {
+      "title": "Eliminate Players in OG",
+      "description": "OG Milestones • 10k XP • 0/75"
+    }
+  },
+  "og_ms_3_p04": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/100"
+    },
+    "en": {
+      "title": "Eliminate Players in OG",
+      "description": "OG Milestones • 10k XP • 0/100"
+    }
+  },
+  "og_ms_3_p05": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/125"
+    },
+    "en": {
+      "title": "Eliminate Players in OG",
+      "description": "OG Milestones • 10k XP • 0/125"
+    }
+  },
+  "og_ms_3_p06": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/150"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/150"
+    }
+  },
+  "og_ms_3_p07": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/175"
+    },
+    "en": {
+      "title": "Eliminate players",
+      "description": "OG Milestones • 10k XP • 0/175"
+    }
+  },
+  "og_ms_3_p08": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/200"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/200"
+    }
+  },
+  "og_ms_3_p09": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/225"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/225"
+    }
+  },
+  "og_ms_3_p10": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/250"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/250"
+    }
+  },
+  "og_ms_3_p11": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/275"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/275"
+    }
+  },
+  "og_ms_3_p12": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/300"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/300"
+    }
+  },
+  "og_ms_3_p13": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/325"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/325"
+    }
+  },
+  "og_ms_3_p14": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/350"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/350"
+    }
+  },
+  "og_ms_3_p15": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/375"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/375"
+    }
+  },
+  "og_ms_3_p16": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/400"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/400"
+    }
+  },
+  "og_ms_3_p17": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/425"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/425"
+    }
+  },
+  "og_ms_3_p18": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/450"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/450"
+    }
+  },
+  "og_ms_3_p19": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/475"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/475"
+    }
+  },
+  "og_ms_3_p20": {
+    "de": {
+      "title": "Eliminiere Spieler",
+      "description": "OG Meilensteine • 10k XP • 0/500"
+    },
+    "en": {
+      "title": "Eliminate Players",
+      "description": "OG Milestones • 10k XP • 0/500"
+    }
+  },
+  "og_ms_4_p01": {
+    "de": {
+      "title": "Füge Spielern Schaden zu",
+      "description": "OG Meilensteine • 10k XP • 0/12.000"
+    },
+    "en": {
+      "title": "Damage players",
+      "description": "OG Milestones • 10k XP • 0/12,000"
+    }
+  },
+  "og_ms_4_p02": {
+    "de": {
+      "title": "Füge Spielern Schaden zu",
+      "description": "OG Meilensteine • 10k XP • 0/12.750"
+    },
+    "en": {
+      "title": "Damage players",
+      "description": "OG Milestones • 10k XP • 0/12,750"
+    }
+  },
+  "og_ms_4_p03": {
+    "de": {
+      "title": "Füge Spielern Schaden zu",
+      "description": "OG Meilensteine • 10k XP • 0/13.500"
+    },
+    "en": {
+      "title": "Damage players",
+      "description": "OG Milestones • 10k XP • 0/13,500"
+    }
+  },
+  "og_ms_4_p04": {
+    "de": {
+      "title": "Füge Spielern Schaden zu",
+      "description": "OG Meilensteine • 10k XP • 0/14.250"
+    },
+    "en": {
+      "title": "Damage players",
+      "description": "OG Milestones • 10k XP • 0/14,250"
+    }
+  },
+  "og_ms_4_p05": {
+    "de": {
+      "title": "Füge Spielern Schaden zu",
+      "description": "OG Meilensteine • 10k XP • 0/15.000"
+    },
+    "en": {
+      "title": "Damage players",
+      "description": "OG Milestones • 10k XP • 0/15,000"
+    },
+    "og_ms_4_p06": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/15.750"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/15,750"
+      }
+    },
+    "og_ms_4_p07": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/16.500"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/16,500"
+      }
+    },
+    "og_ms_4_p08": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/17.250"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/17,250"
+      }
+    },
+    "og_ms_4_p09": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/18.000"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/18,000"
+      }
+    },
+    "og_ms_4_p10": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/18.750"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/18,750"
+      }
+    },
+    "og_ms_4_p11": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/19.500"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/19,500"
+      }
+    },
+    "og_ms_4_p12": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/20.250"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/20,250"
+      }
+    },
+    "og_ms_4_p13": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/21.000"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/21,000"
+      }
+    },
+    "og_ms_4_p14": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/21.750"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/21,750"
+      }
+    },
+    "og_ms_4_p15": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/22.500"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/22,500"
+      }
+    },
+    "og_ms_4_p16": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/23.250"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/23,250"
+      }
+    },
+    "og_ms_4_p17": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/24.000"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/24,000"
+      }
+    },
+    "og_ms_4_p18": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/24.750"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/24,750"
+      }
+    },
+    "og_ms_4_p19": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/25.500"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/25,500"
+      }
+    },
+    "og_ms_4_p20": {
+      "de": {
+        "title": "Füge Spielern Schaden zu",
+        "description": "OG Meilensteine • 10k XP • 0/26.250"
+      },
+      "en": {
+        "title": "Damage players",
+        "description": "OG Milestones • 10k XP • 0/26,250"
+      }
+    },
+    "og_ms_5_p01": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/50"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/50"
+      }
+    },
+    "og_ms_5_p02": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/50"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/50"
+      }
+    },
+    "og_ms_5_p03": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/75"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/75"
+      }
+    },
+    "og_ms_5_p04": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/100"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/100"
+      }
+    },
+    "og_ms_5_p05": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/125"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/125"
+      }
+    },
+    "og_ms_5_p06": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/150"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/150"
+      }
+    },
+    "og_ms_5_p07": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/175"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/175"
+      }
+    },
+    "og_ms_5_p08": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/200"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/200"
+      }
+    },
+    "og_ms_5_p09": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/225"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/225"
+      }
+    },
+    "og_ms_5_p10": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/250"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/250"
+      }
+    },
+    "og_ms_5_p11": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/275"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/275"
+      }
+    },
+    "og_ms_5_p12": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/300"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/300"
+      }
+    },
+    "og_ms_5_p13": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/325"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/325"
+      }
+    },
+    "og_ms_5_p14": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/350"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/350"
+      }
+    },
+    "og_ms_5_p15": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/375"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/375"
+      }
+    },
+    "og_ms_5_p16": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/400"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/400"
+      }
+    },
+    "og_ms_5_p17": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/425"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/425"
+      }
+    },
+    "og_ms_5_p18": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/450"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/450"
+      }
+    },
+    "og_ms_5_p19": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/475"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/475"
+      }
+    },
+    "og_ms_5_p20": {
+      "de": {
+        "title": "Sammle Gegenstände ein",
+        "description": "OG Meilensteine • 10k XP • 0/500"
+      },
+      "en": {
+        "title": "Collect Items",
+        "description": "OG Milestones • 10k XP • 0/500"
+      }
+    }
+  }
+}

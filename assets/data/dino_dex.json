@@ -1,0 +1,170 @@
+{
+  "_comment": "Dino Dex – Kategorien = Dino-Typen (Normal, Lava, Galaxy...). Seltenheit steht in dinos_database.json.",
+  "_hint": "✏️ Neue Dinos: ID in dinos_database.json eintragen, dann ID hier in die richtige Kategorie",
+
+  "categories": [
+    {
+      "id": "normal",
+      "label": { "de": "Normal", "en": "Normal" },
+      "icon": "🦕",
+      "dinos": [
+        "dino_placerias",
+        "dino_elasmosaurus",
+        "dino_purusaurus",
+        "dino_lambeosaurus",
+        "dino_dimorphodon",
+        "dino_raptor",
+        "dino_stegosaurus",
+        "dino_lystrosaurus",
+        "dino_pesiasaurus",
+        "dino_dodo",
+        "dino_pachycephalosaurus",
+        "dino_mozazaur",
+        "dino_ankylosaurus",
+        "dino_hadrosaurus",
+        "dino_dylaphosaurus",
+        "dino_triceratops",
+        "dino_spinosaurus",
+        "dino_isaurus",
+        "dino_irritator",
+        "dino_gigantspinosaurus",
+        "dino_diabloceratops",
+        "dino_eurhinosaurus",
+        "dino_giraffatitan",
+        "dino_hesperosaurus",
+        "dino_carcha",
+        "dino_ichtyosaur",
+        "dino_gorgonops",
+        "dino_amargasaurus",
+        "dino_saurolophus",
+        "dino_tupuxuara",
+        "dino_brontosaurus",
+        "dino_pteranodon",
+        "dino_megalodon",
+        "dino_trex",
+        "dino_duck_rex",
+        "dino_indomi",
+        "dino_musk_ox",
+        "dino_smilodon",
+        "dino_mammot",
+        "dino_prime_rex",
+        "dino_raptor_squad",
+        "dino_skelet",
+        "dino_mozazaur_x",
+        "dino_stegoc",
+        "dino_indora",
+        "dino_x_dyla",
+        "dino_reindeerceratops",
+        "dino_reindeerspino",
+        "dino_carnotauro",
+        "dino_brachiosaurus",
+        "dino_tepajara",
+        "dino_spikel",
+        "dino_scorpius_rex"
+      ]
+    },
+    {
+      "id": "lava",
+      "label": { "de": "Lava", "en": "Lava" },
+      "icon": "🌋",
+      "dinos": [
+        "lava_raptor",
+        "lava_carno",
+        "lava_spino",
+        "lava_mammoth",
+        "lava_trex"
+      ]
+    },
+    {
+      "id": "glacial",
+      "label": { "de": "Glacial", "en": "Glacial" },
+      "icon": "❄️",
+      "dinos": []
+    },
+    {
+      "id": "darkness",
+      "label": { "de": "Darkness", "en": "Darkness" },
+      "icon": "🌑",
+      "dinos": []
+    },
+    {
+      "id": "phantom",
+      "label": { "de": "Phantom", "en": "Phantom" },
+      "icon": "👻",
+      "dinos": []
+    },
+    {
+      "id": "blossom",
+      "label": { "de": "Blossom", "en": "Blossom" },
+      "icon": "🌸",
+      "dinos": []
+    },
+    {
+      "id": "chocolate",
+      "label": { "de": "Chocolate", "en": "Chocolate" },
+      "icon": "🍫",
+      "dinos": [
+        "choc_dodo"
+      ]
+    },
+    {
+      "id": "gifts",
+      "label": { "de": "Gifts & Events", "en": "Gifts & Events" },
+      "icon": "🎁",
+      "dinos": []
+    },
+    {
+      "id": "valentines",
+      "label": { "de": "Valentine's", "en": "Valentine's" },
+      "icon": "💝",
+      "dinos": []
+    },
+    {
+      "id": "rainbow",
+      "label": { "de": "Rainbow", "en": "Rainbow" },
+      "icon": "🌈",
+      "dinos": []
+    },
+    {
+      "id": "storm",
+      "label": { "de": "Storm", "en": "Storm" },
+      "icon": "⛈️",
+      "dinos": [
+        "storm_tapejara"
+      ]
+    },
+    {
+      "id": "galaxy",
+      "label": { "de": "Galaxy", "en": "Galaxy" },
+      "icon": "🌌",
+      "dinos": []
+    },
+    {
+      "id": "infernal",
+      "label": { "de": "Infernal", "en": "Infernal" },
+      "icon": "🔥",
+      "dinos": [
+        "infernal_mammoth",
+        "infernal_trex"
+      ]
+    },
+    {
+      "id": "angelic",
+      "label": { "de": "Angelic", "en": "Angelic" },
+      "icon": "👼",
+      "dinos": [
+        "angelic_mammoth",
+        "angelic_indominus"
+      ]
+    },
+    {
+      "id": "secret",
+      "label": { "de": "Secret", "en": "Secret" },
+      "icon": "🔒",
+      "dinos": [
+        "secret_error404",
+        "secret_kraken"
+      ]
+    }
+  ]
+}

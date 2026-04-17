@@ -1,0 +1,67 @@
+{
+  "phases": [
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Bonusziele", "en": "Weekly Bonus Goals" },
+      "quests": [
+        { "phases": ["kreativ_ms_bonus_p01","kreativ_ms_bonus_p02","kreativ_ms_bonus_p03","kreativ_ms_bonus_p04","kreativ_ms_bonus_p05","kreativ_ms_bonus_p06","kreativ_ms_bonus_p07","kreativ_ms_bonus_p08","kreativ_ms_bonus_p09","kreativ_ms_bonus_p10","kreativ_ms_bonus_p11","kreativ_ms_bonus_p12","kreativ_ms_bonus_p13"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Überleben-Aufträge", "en": "Weekly Survival Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_ueberleben_p01","kreativ_ms_ueberleben_p02","kreativ_ms_ueberleben_p03","kreativ_ms_ueberleben_p04","kreativ_ms_ueberleben_p05","kreativ_ms_ueberleben_p06","kreativ_ms_ueberleben_p07","kreativ_ms_ueberleben_p08","kreativ_ms_ueberleben_p09","kreativ_ms_ueberleben_p10","kreativ_ms_ueberleben_p11","kreativ_ms_ueberleben_p12","kreativ_ms_ueberleben_p13","kreativ_ms_ueberleben_p14","kreativ_ms_ueberleben_p15","kreativ_ms_ueberleben_p16","kreativ_ms_ueberleben_p17","kreativ_ms_ueberleben_p18","kreativ_ms_ueberleben_p19","kreativ_ms_ueberleben_p20","kreativ_ms_ueberleben_p21","kreativ_ms_ueberleben_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Rollenspiel-Aufträge", "en": "Weekly Roleplay Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_rollenspiel_p01","kreativ_ms_rollenspiel_p02","kreativ_ms_rollenspiel_p03","kreativ_ms_rollenspiel_p04","kreativ_ms_rollenspiel_p05","kreativ_ms_rollenspiel_p06","kreativ_ms_rollenspiel_p07","kreativ_ms_rollenspiel_p08","kreativ_ms_rollenspiel_p09","kreativ_ms_rollenspiel_p10","kreativ_ms_rollenspiel_p11","kreativ_ms_rollenspiel_p12","kreativ_ms_rollenspiel_p13","kreativ_ms_rollenspiel_p14","kreativ_ms_rollenspiel_p15","kreativ_ms_rollenspiel_p16","kreativ_ms_rollenspiel_p17","kreativ_ms_rollenspiel_p18","kreativ_ms_rollenspiel_p19","kreativ_ms_rollenspiel_p20","kreativ_ms_rollenspiel_p21","kreativ_ms_rollenspiel_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Kampf-Aufträge", "en": "Weekly Combat Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_kampf_p01","kreativ_ms_kampf_p02","kreativ_ms_kampf_p03","kreativ_ms_kampf_p04","kreativ_ms_kampf_p05","kreativ_ms_kampf_p06","kreativ_ms_kampf_p07","kreativ_ms_kampf_p08","kreativ_ms_kampf_p09","kreativ_ms_kampf_p10","kreativ_ms_kampf_p11","kreativ_ms_kampf_p12","kreativ_ms_kampf_p13","kreativ_ms_kampf_p14","kreativ_ms_kampf_p15","kreativ_ms_kampf_p16","kreativ_ms_kampf_p17","kreativ_ms_kampf_p18","kreativ_ms_kampf_p19","kreativ_ms_kampf_p20","kreativ_ms_kampf_p21","kreativ_ms_kampf_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Battle Royale-Aufträge", "en": "Weekly Battle Royale Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_br_p01","kreativ_ms_br_p02","kreativ_ms_br_p03","kreativ_ms_br_p04","kreativ_ms_br_p05","kreativ_ms_br_p06","kreativ_ms_br_p07","kreativ_ms_br_p08","kreativ_ms_br_p09","kreativ_ms_br_p10","kreativ_ms_br_p11","kreativ_ms_br_p12","kreativ_ms_br_p13","kreativ_ms_br_p14","kreativ_ms_br_p15","kreativ_ms_br_p16","kreativ_ms_br_p17","kreativ_ms_br_p18","kreativ_ms_br_p19","kreativ_ms_br_p20","kreativ_ms_br_p21","kreativ_ms_br_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Plattformer-Aufträge", "en": "Weekly Platformer Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_plattformer_p01","kreativ_ms_plattformer_p02","kreativ_ms_plattformer_p03","kreativ_ms_plattformer_p04","kreativ_ms_plattformer_p05","kreativ_ms_plattformer_p06","kreativ_ms_plattformer_p07","kreativ_ms_plattformer_p08","kreativ_ms_plattformer_p09","kreativ_ms_plattformer_p10","kreativ_ms_plattformer_p11","kreativ_ms_plattformer_p12","kreativ_ms_plattformer_p13","kreativ_ms_plattformer_p14","kreativ_ms_plattformer_p15","kreativ_ms_plattformer_p16","kreativ_ms_plattformer_p17","kreativ_ms_plattformer_p18","kreativ_ms_plattformer_p19","kreativ_ms_plattformer_p20","kreativ_ms_plattformer_p21","kreativ_ms_plattformer_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "Wöchentliche Tycoon-Aufträge", "en": "Weekly Tycoon Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_tycoon_p01","kreativ_ms_tycoon_p02","kreativ_ms_tycoon_p03","kreativ_ms_tycoon_p04","kreativ_ms_tycoon_p05","kreativ_ms_tycoon_p06","kreativ_ms_tycoon_p07","kreativ_ms_tycoon_p08","kreativ_ms_tycoon_p09","kreativ_ms_tycoon_p10","kreativ_ms_tycoon_p11","kreativ_ms_tycoon_p12","kreativ_ms_tycoon_p13","kreativ_ms_tycoon_p14","kreativ_ms_tycoon_p15","kreativ_ms_tycoon_p16","kreativ_ms_tycoon_p17","kreativ_ms_tycoon_p18","kreativ_ms_tycoon_p19","kreativ_ms_tycoon_p20","kreativ_ms_tycoon_p21","kreativ_ms_tycoon_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "W\u00f6chentliche \"Musik & Party\"-Auftr\u00e4ge", "en": "Weekly Music & Party Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_musik_p01","kreativ_ms_musik_p02","kreativ_ms_musik_p03","kreativ_ms_musik_p04","kreativ_ms_musik_p05","kreativ_ms_musik_p06","kreativ_ms_musik_p07","kreativ_ms_musik_p08","kreativ_ms_musik_p09","kreativ_ms_musik_p10","kreativ_ms_musik_p11","kreativ_ms_musik_p12","kreativ_ms_musik_p13","kreativ_ms_musik_p14","kreativ_ms_musik_p15","kreativ_ms_musik_p16","kreativ_ms_musik_p17","kreativ_ms_musik_p18","kreativ_ms_musik_p19","kreativ_ms_musik_p20","kreativ_ms_musik_p21","kreativ_ms_musik_p22"] }
+      ]
+    },
+    {
+      "type": "milestone",
+      "label": { "de": "W\u00f6chentliche Fahren-Auftr\u00e4ge", "en": "Weekly Driving Quests" },
+      "quests": [
+        { "phases": ["kreativ_ms_fahren_p01","kreativ_ms_fahren_p02","kreativ_ms_fahren_p03","kreativ_ms_fahren_p04","kreativ_ms_fahren_p05","kreativ_ms_fahren_p06","kreativ_ms_fahren_p07","kreativ_ms_fahren_p08","kreativ_ms_fahren_p09","kreativ_ms_fahren_p10","kreativ_ms_fahren_p11","kreativ_ms_fahren_p12","kreativ_ms_fahren_p13","kreativ_ms_fahren_p14","kreativ_ms_fahren_p15","kreativ_ms_fahren_p16","kreativ_ms_fahren_p17","kreativ_ms_fahren_p18","kreativ_ms_fahren_p19","kreativ_ms_fahren_p20","kreativ_ms_fahren_p21","kreativ_ms_fahren_p22"] }
+      ]
+    }
+  ]
+}

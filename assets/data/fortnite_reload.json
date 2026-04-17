@@ -1,0 +1,9 @@
+{
+  "phases": [
+    {
+      "phase": 1,
+      "label": { "de": "Surf City-Insel", "en": "Surf City Island" },
+      "quests": ["reload_01","reload_02","reload_03","reload_04","reload_05","reload_06","reload_07","reload_08","reload_09","reload_10"]
+    }
+  ]
+}
