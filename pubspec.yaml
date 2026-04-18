@@ -8,6 +8,11 @@ environment:
   sdk: ^3.10.8
 
 dependencies:
+
+  # Link öffnen
+  url_launcher: ^6.3.2   # ← NEU: Für OAuth-Browser-Login
+
+  # ??????
   flutter:
     sdk: flutter
 
@@ -17,9 +22,6 @@ dependencies:
   intl: any
 
   cupertino_icons: ^1.0.8
-
-  # Link öffnen
-  url_launcher: ^6.3.2
 
   # Version automatisch aus App-Metadaten lesen
   package_info_plus: ^8.0.2

@@ -271,7 +271,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
 
-                // ── Verbindungen ───────────────────────────────────
+                // ── Verbindungen ─────────────────────────────
                 const SizedBox(height: 22),
                 _SectionTitle(title: 'Verbindungen'),
                 const SizedBox(height: 10),

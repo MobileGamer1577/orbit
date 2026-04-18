@@ -50,15 +50,17 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
     super.didChangeDependencies();
     final lang = Localizations.localeOf(context).languageCode;
     _manager = QuestManager(
-      gameId:   widget.gameId,
-      modeId:   widget.modeId,
+      gameId: widget.gameId,
+      modeId: widget.modeId,
       language: lang,
     );
     _manager.addListener(_onUpdate);
     _manager.load();
   }
 
-  void _onUpdate() { if (mounted) setState(() {}); }
+  void _onUpdate() {
+    if (mounted) setState(() {});
+  }
 
   @override
   void dispose() {
@@ -71,18 +73,29 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
   List<QuestSection> _filtered() {
     final q = _query.trim().toLowerCase();
     if (q.isEmpty) return _manager.sections;
-    return _manager.sections.map((sec) {
-      final visible = sec.quests.where((quest) =>
-        quest.title.toLowerCase().contains(q) ||
-        quest.description.toLowerCase().contains(q)).toList();
-      if (visible.isEmpty) return null;
-      return QuestSection(label: sec.label, isMilestone: sec.isMilestone, quests: visible);
-    }).whereType<QuestSection>().toList();
+    return _manager.sections
+        .map((sec) {
+          final visible = sec.quests
+              .where(
+                (quest) =>
+                    quest.title.toLowerCase().contains(q) ||
+                    quest.description.toLowerCase().contains(q),
+              )
+              .toList();
+          if (visible.isEmpty) return null;
+          return QuestSection(
+            label: sec.label,
+            isMilestone: sec.isMilestone,
+            quests: visible,
+          );
+        })
+        .whereType<QuestSection>()
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    final l10n    = context.l10n;
+    final l10n = context.l10n;
     final sections = _filtered();
 
     return Scaffold(
@@ -92,7 +105,6 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // ── Header ─────────────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 4, 16, 0),
@@ -100,8 +112,10 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back,
-                          color: Colors.white.withOpacity(0.90)),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white.withOpacity(0.90),
+                      ),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
@@ -121,11 +135,17 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
                       IconButton(
                         icon: _manager.isRefreshing
                             ? const SizedBox(
-                                width: 18, height: 18,
+                                width: 18,
+                                height: 18,
                                 child: CircularProgressIndicator(
-                                    strokeWidth: 2, color: Colors.white54))
-                            : Icon(Icons.refresh,
-                                color: Colors.white.withOpacity(0.70)),
+                                  strokeWidth: 2,
+                                  color: Colors.white54,
+                                ),
+                              )
+                            : Icon(
+                                Icons.refresh,
+                                color: Colors.white.withOpacity(0.70),
+                              ),
                         onPressed: () => _manager.forceRefresh(),
                       ),
                   ],
@@ -142,17 +162,24 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
                   borderRadius: BorderRadius.circular(16),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 4),
+                      horizontal: 14,
+                      vertical: 4,
+                    ),
                     child: Row(
                       children: [
-                        Icon(Icons.search,
-                            color: Colors.white.withOpacity(0.55), size: 20),
+                        Icon(
+                          Icons.search,
+                          color: Colors.white.withOpacity(0.55),
+                          size: 20,
+                        ),
                         const SizedBox(width: 10),
                         Expanded(
                           child: TextField(
                             controller: _searchCtrl,
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 15),
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
                             decoration: InputDecoration(
                               hintText: l10n.taskSearchHint,
                               hintStyle: TextStyle(
@@ -162,7 +189,8 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
                               border: InputBorder.none,
                               isDense: true,
                               contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10),
+                                vertical: 10,
+                              ),
                             ),
                           ),
                         ),
@@ -172,9 +200,11 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
                               _searchCtrl.clear();
                               setState(() => _query = '');
                             },
-                            child: Icon(Icons.close,
-                                color: Colors.white.withOpacity(0.45),
-                                size: 18),
+                            child: Icon(
+                              Icons.close,
+                              color: Colors.white.withOpacity(0.45),
+                              size: 18,
+                            ),
                           ),
                       ],
                     ),
@@ -187,7 +217,8 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
                   padding: const EdgeInsets.only(left: 20, bottom: 4, top: 2),
                   child: Text(
                     l10n.taskQuestCount(
-                        sections.fold(0, (s, sec) => s + sec.quests.length)),
+                      sections.fold(0, (s, sec) => s + sec.quests.length),
+                    ),
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.38),
                       fontSize: 12,
@@ -215,14 +246,22 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
       case QuestLoadState.error:
         // ── Spezielle Fälle ───────────────────────────────
         if (_manager.errorMessage == 'no_account') {
-          return _NoAccountWidget(
-            onConnected: () => _manager.forceRefresh(),
-          );
+          return _NoAccountWidget(onConnected: () => _manager.forceRefresh());
         }
         if (_manager.errorMessage == 'account_invalid') {
           return _InvalidAccountWidget(
             onReconnect: () async {
               await _manager.forceRefresh();
+            },
+          );
+        }
+        if (_manager.errorMessage == 'token_expired') {
+          return _TokenExpiredWidget(
+            onRelogin: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ConnectionsScreen()),
+              ).then((_) => _manager.forceRefresh());
             },
           );
         }
@@ -235,14 +274,18 @@ class _ApiQuestListScreenState extends State<ApiQuestListScreen> {
       case QuestLoadState.refreshing:
         if (!_manager.hasData) {
           return Center(
-            child: Text(l10n.taskComingSoon,
-                style: TextStyle(color: Colors.white.withOpacity(0.45))),
+            child: Text(
+              l10n.taskComingSoon,
+              style: TextStyle(color: Colors.white.withOpacity(0.45)),
+            ),
           );
         }
         if (sections.isEmpty) {
           return Center(
-            child: Text(l10n.noResults,
-                style: TextStyle(color: Colors.white.withOpacity(0.45))),
+            child: Text(
+              l10n.noResults,
+              style: TextStyle(color: Colors.white.withOpacity(0.45)),
+            ),
           );
         }
         return _QuestList(sections: sections, manager: _manager);
@@ -267,15 +310,20 @@ class _NoAccountWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 72, height: 72,
+              width: 72,
+              height: 72,
               decoration: BoxDecoration(
                 color: const Color(0xFF00D4FF).withOpacity(0.12),
                 shape: BoxShape.circle,
                 border: Border.all(
-                    color: const Color(0xFF00D4FF).withOpacity(0.35)),
+                  color: const Color(0xFF00D4FF).withOpacity(0.35),
+                ),
               ),
-              child: const Icon(Icons.link_off,
-                  color: Color(0xFF00D4FF), size: 32),
+              child: const Icon(
+                Icons.link_off,
+                color: Color(0xFF00D4FF),
+                size: 32,
+              ),
             ),
             const SizedBox(height: 20),
             const Text(
@@ -303,17 +351,19 @@ class _NoAccountWidget extends StatelessWidget {
               onPressed: () async {
                 await Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (_) => const ConnectionsScreen()),
+                  MaterialPageRoute(builder: (_) => const ConnectionsScreen()),
                 );
                 onConnected();
               },
               style: FilledButton.styleFrom(
                 backgroundColor: const Color(0xFF00D4FF).withOpacity(0.80),
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 24, vertical: 14),
+                  horizontal: 24,
+                  vertical: 14,
+                ),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(14),
+                ),
               ),
               icon: const Icon(Icons.link, size: 18),
               label: const Text(
@@ -344,20 +394,29 @@ class _InvalidAccountWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.person_off_outlined,
-                color: Colors.white24, size: 52),
+            const Icon(
+              Icons.person_off_outlined,
+              color: Colors.white24,
+              size: 52,
+            ),
             const SizedBox(height: 16),
             const Text(
               'Account nicht mehr gültig',
               style: TextStyle(
-                  color: Colors.white, fontSize: 17, fontWeight: FontWeight.w700),
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
               'Die gespeicherte Account-ID ist nicht mehr gültig. '
               'Bitte verbinde deinen Account erneut.',
-              style: TextStyle(color: Colors.white.withOpacity(0.55), fontSize: 13),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.55),
+                fontSize: 13,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -367,7 +426,8 @@ class _InvalidAccountWidget extends StatelessWidget {
                 MaterialPageRoute(builder: (_) => const ConnectionsScreen()),
               ).then((_) => onReconnect()),
               style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF7C4DFF)),
+                backgroundColor: const Color(0xFF7C4DFF),
+              ),
               icon: const Icon(Icons.link),
               label: const Text('Neu verbinden'),
             ),
@@ -388,7 +448,7 @@ class _ProgressHeader extends StatelessWidget {
 
   String _fmt(int xp) {
     if (xp >= 1000000) return '${(xp / 1000000).toStringAsFixed(1)}M';
-    if (xp >= 1000)    return '${(xp / 1000).toStringAsFixed(0)}k';
+    if (xp >= 1000) return '${(xp / 1000).toStringAsFixed(0)}k';
     return '$xp';
   }
 
@@ -409,32 +469,46 @@ class _ProgressHeader extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      Icon(Icons.checklist, size: 18,
-                          color: const Color(0xFF9C6FFF).withOpacity(0.80)),
+                      Icon(
+                        Icons.checklist,
+                        size: 18,
+                        color: const Color(0xFF9C6FFF).withOpacity(0.80),
+                      ),
                       const SizedBox(width: 6),
                       Text(
                         '${manager.doneQuestCount} / ${manager.totalQuestCount}',
                         style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w800,
-                            fontSize: 16),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 16,
+                        ),
                       ),
                       const SizedBox(width: 4),
-                      Text('Aufträge',
-                          style: TextStyle(
-                              color: Colors.white.withOpacity(0.55), fontSize: 13)),
+                      Text(
+                        'Aufträge',
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.55),
+                          fontSize: 13,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.bolt, size: 18,
-                        color: const Color(0xFFFFD600).withOpacity(0.90)),
+                    Icon(
+                      Icons.bolt,
+                      size: 18,
+                      color: const Color(0xFFFFD600).withOpacity(0.90),
+                    ),
                     const SizedBox(width: 4),
                     Text(
                       '${_fmt(manager.earnedXp)} / ${_fmt(manager.totalXp)} XP',
                       style: const TextStyle(
-                          color: Color(0xFFFFD600),
-                          fontWeight: FontWeight.w800, fontSize: 15),
+                        color: Color(0xFFFFD600),
+                        fontWeight: FontWeight.w800,
+                        fontSize: 15,
+                      ),
                     ),
                   ],
                 ),
@@ -447,8 +521,7 @@ class _ProgressHeader extends StatelessWidget {
                 value: progress.clamp(0.0, 1.0),
                 minHeight: 7,
                 backgroundColor: Colors.white.withOpacity(0.12),
-                valueColor:
-                    const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
+                valueColor: const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
               ),
             ),
           ],
@@ -490,7 +563,7 @@ class _SectionWidget extends StatelessWidget {
     for (final q in section.quests) {
       if (q.isMilestone) {
         total += q.stages.length.clamp(1, 999);
-        done  += q.stages
+        done += q.stages
             .where((s) => manager.isStageChecked(q.id, s.stage))
             .length;
       } else {
@@ -511,7 +584,8 @@ class _SectionWidget extends StatelessWidget {
                 color: const Color(0xFF7C4DFF).withOpacity(0.20),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                    color: const Color(0xFF9C6FFF).withOpacity(0.40)),
+                  color: const Color(0xFF9C6FFF).withOpacity(0.40),
+                ),
               ),
               child: Text(
                 section.label.toUpperCase(),
@@ -531,23 +605,25 @@ class _SectionWidget extends StatelessWidget {
                   value: total == 0 ? 0 : done / total,
                   minHeight: 4,
                   backgroundColor: Colors.white.withOpacity(0.08),
-                  valueColor:
-                      const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
+                  valueColor: const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
                 ),
               ),
             ),
             const SizedBox(width: 8),
-            Text('$done/$total',
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.40),
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600)),
+            Text(
+              '$done/$total',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.40),
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 10),
         ...section.quests.asMap().entries.map((e) {
           final last = e.key == section.quests.length - 1;
-          final q    = e.value;
+          final q = e.value;
           return Padding(
             padding: EdgeInsets.only(bottom: last ? 0 : 10),
             child: q.isMilestone
@@ -587,26 +663,29 @@ class _NormalCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(quest.title,
-                        style: TextStyle(
-                          color: done
-                              ? Colors.white.withOpacity(0.45)
-                              : Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          decoration: done ? TextDecoration.lineThrough : null,
-                          decorationColor: Colors.white.withOpacity(0.35),
-                        )),
+                    Text(
+                      quest.title,
+                      style: TextStyle(
+                        color: done
+                            ? Colors.white.withOpacity(0.45)
+                            : Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        decoration: done ? TextDecoration.lineThrough : null,
+                        decorationColor: Colors.white.withOpacity(0.35),
+                      ),
+                    ),
                     if (quest.description.trim().isNotEmpty) ...[
                       const SizedBox(height: 4),
-                      Text(quest.description,
-                          style: TextStyle(
-                            color: Colors.white
-                                .withOpacity(done ? 0.30 : 0.55),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                            height: 1.35,
-                          )),
+                      Text(
+                        quest.description,
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(done ? 0.30 : 0.55),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          height: 1.35,
+                        ),
+                      ),
                     ],
                     if (quest.xp > 0) ...[
                       const SizedBox(height: 5),
@@ -638,14 +717,16 @@ class _MilestoneCard extends StatelessWidget {
           onTap: () => manager.setChecked(quest.id, !done),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 14, 12, 14),
-            child: Row(children: [
-              _Checkbox(done: done, color: const Color(0xFFFFD600)),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(quest.title,
+            child: Row(
+              children: [
+                _Checkbox(done: done, color: const Color(0xFFFFD600)),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        quest.title,
                         style: TextStyle(
                           color: done
                               ? Colors.white.withOpacity(0.45)
@@ -653,28 +734,32 @@ class _MilestoneCard extends StatelessWidget {
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                           decoration: done ? TextDecoration.lineThrough : null,
-                        )),
-                    if (quest.xp > 0) ...[
-                      const SizedBox(height: 5),
-                      _XpBadge(xp: quest.xp, earned: done),
+                        ),
+                      ),
+                      if (quest.xp > 0) ...[
+                        const SizedBox(height: 5),
+                        _XpBadge(xp: quest.xp, earned: done),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-            ]),
+              ],
+            ),
           ),
         ),
       );
     }
 
-    int activeIdx = quest.stages
-        .indexWhere((s) => !manager.isStageChecked(quest.id, s.stage));
+    int activeIdx = quest.stages.indexWhere(
+      (s) => !manager.isStageChecked(quest.id, s.stage),
+    );
     if (activeIdx == -1) activeIdx = quest.stages.length - 1;
 
-    final allDone = activeIdx == quest.stages.length - 1 &&
+    final allDone =
+        activeIdx == quest.stages.length - 1 &&
         manager.isStageChecked(quest.id, quest.stages.last.stage);
-    final stage   = quest.stages[activeIdx];
-    final isDone  = manager.isStageChecked(quest.id, stage.stage);
+    final stage = quest.stages[activeIdx];
+    final isDone = manager.isStageChecked(quest.id, stage.stage);
     final phaseColor = allDone
         ? const Color(0xFF00E676)
         : const Color(0xFFFFD600);
@@ -682,8 +767,7 @@ class _MilestoneCard extends StatelessWidget {
     return OrbitGlassCard(
       child: InkWell(
         borderRadius: BorderRadius.circular(22),
-        onTap: () =>
-            manager.setStageChecked(quest.id, stage.stage, !isDone),
+        onTap: () => manager.setStageChecked(quest.id, stage.stage, !isDone),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 12, 12),
           child: Row(
@@ -698,52 +782,57 @@ class _MilestoneCard extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(bottom: 5),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 3),
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: phaseColor.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(6),
-                        border: Border.all(
-                            color: phaseColor.withOpacity(0.45)),
+                        border: Border.all(color: phaseColor.withOpacity(0.45)),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            allDone
-                                ? Icons.check_circle
-                                : Icons.flag_rounded,
-                            size: 10, color: phaseColor),
+                            allDone ? Icons.check_circle : Icons.flag_rounded,
+                            size: 10,
+                            color: phaseColor,
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             'Phase ${stage.stage} / ${quest.stages.length}',
                             style: TextStyle(
-                                color: phaseColor,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w800)),
+                              color: phaseColor,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                    Text(quest.title,
-                        style: TextStyle(
-                          color: isDone
-                              ? Colors.white.withOpacity(0.45)
-                              : Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          decoration:
-                              isDone ? TextDecoration.lineThrough : null,
-                          decorationColor: Colors.white.withOpacity(0.35),
-                        )),
+                    Text(
+                      quest.title,
+                      style: TextStyle(
+                        color: isDone
+                            ? Colors.white.withOpacity(0.45)
+                            : Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        decoration: isDone ? TextDecoration.lineThrough : null,
+                        decorationColor: Colors.white.withOpacity(0.35),
+                      ),
+                    ),
                     if (stage.description.trim().isNotEmpty) ...[
                       const SizedBox(height: 4),
-                      Text(stage.description,
-                          style: TextStyle(
-                            color: Colors.white
-                                .withOpacity(isDone ? 0.30 : 0.55),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                            height: 1.35,
-                          )),
+                      Text(
+                        stage.description,
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(isDone ? 0.30 : 0.55),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          height: 1.35,
+                        ),
+                      ),
                     ],
                     if (quest.xp > 0) ...[
                       const SizedBox(height: 5),
@@ -760,12 +849,60 @@ class _MilestoneCard extends StatelessWidget {
   }
 }
 
+class _TokenExpiredWidget extends StatelessWidget {
+  final VoidCallback onRelogin;
+  const _TokenExpiredWidget({required this.onRelogin});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.lock_clock, color: Colors.white24, size: 52),
+            const SizedBox(height: 16),
+            const Text(
+              'Anmeldung abgelaufen',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Dein Fortnite-Login ist abgelaufen.\n'
+              'Bitte melde dich erneut an.',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.55),
+                fontSize: 13,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            FilledButton.icon(
+              onPressed: onRelogin,
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF00D4FF).withOpacity(0.80),
+              ),
+              icon: const Icon(Icons.login),
+              label: const Text('Erneut anmelden'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 // ══════════════════════════════════════════════════════════════
 //  KLEINE HILFS-WIDGETS
 // ══════════════════════════════════════════════════════════════
 
 class _Checkbox extends StatelessWidget {
-  final bool  done;
+  final bool done;
   final Color color;
   const _Checkbox({required this.done, required this.color});
 
@@ -773,7 +910,8 @@ class _Checkbox extends StatelessWidget {
   Widget build(BuildContext context) => AnimatedContainer(
     duration: const Duration(milliseconds: 180),
     curve: Curves.easeOut,
-    width: 26, height: 26,
+    width: 26,
+    height: 26,
     margin: const EdgeInsets.only(top: 1),
     decoration: BoxDecoration(
       color: done ? color.withOpacity(0.85) : Colors.white.withOpacity(0.08),
@@ -783,33 +921,35 @@ class _Checkbox extends StatelessWidget {
         width: 1.5,
       ),
     ),
-    child: done
-        ? const Icon(Icons.check, size: 16, color: Colors.white)
-        : null,
+    child: done ? const Icon(Icons.check, size: 16, color: Colors.white) : null,
   );
 }
 
 class _XpBadge extends StatelessWidget {
-  final int  xp;
+  final int xp;
   final bool earned;
   const _XpBadge({required this.xp, required this.earned});
 
   String _fmt(int v) {
     if (v >= 1000000) return '${(v / 1000000).toStringAsFixed(1)}M';
-    if (v >= 1000)    return '${(v / 1000).toStringAsFixed(0)}k';
+    if (v >= 1000) return '${(v / 1000).toStringAsFixed(0)}k';
     return '$v';
   }
 
   @override
   Widget build(BuildContext context) {
     final c = earned ? const Color(0xFF00E676) : const Color(0xFFFFD600);
-    return Row(mainAxisSize: MainAxisSize.min, children: [
-      Icon(Icons.bolt, size: 13, color: c),
-      const SizedBox(width: 3),
-      Text('${_fmt(xp)} XP',
-          style: TextStyle(
-              color: c, fontSize: 12, fontWeight: FontWeight.w700)),
-    ]);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.bolt, size: 13, color: c),
+        const SizedBox(width: 3),
+        Text(
+          '${_fmt(xp)} XP',
+          style: TextStyle(color: c, fontSize: 12, fontWeight: FontWeight.w700),
+        ),
+      ],
+    );
   }
 }
 
@@ -826,24 +966,36 @@ class _ErrorWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.cloud_off_rounded,
-                color: Colors.white24, size: 52),
+            const Icon(
+              Icons.cloud_off_rounded,
+              color: Colors.white24,
+              size: 52,
+            ),
             const SizedBox(height: 16),
-            const Text('Quests konnten nicht geladen werden',
-                style: TextStyle(
-                    color: Colors.white, fontSize: 17,
-                    fontWeight: FontWeight.w700),
-                textAlign: TextAlign.center),
+            const Text(
+              'Quests konnten nicht geladen werden',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 8),
-            Text(message,
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.40), fontSize: 12),
-                textAlign: TextAlign.center),
+            Text(
+              message,
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.40),
+                fontSize: 12,
+              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 24),
             FilledButton.icon(
               onPressed: onRetry,
               style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF7C4DFF)),
+                backgroundColor: const Color(0xFF7C4DFF),
+              ),
               icon: const Icon(Icons.refresh),
               label: const Text('Erneut versuchen'),
             ),
