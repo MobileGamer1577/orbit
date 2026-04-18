@@ -874,8 +874,7 @@ class _TokenExpiredWidget extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Dein Fortnite-Login ist abgelaufen.\n'
-              'Bitte melde dich erneut an.',
+              'Dein Fortnite-Login ist abgelaufen.\nBitte melde dich erneut an.',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.55),
                 fontSize: 13,

@@ -91,7 +91,7 @@ class FortniteQuestApiService {
           // Token abgelaufen → einmal refreshen und nochmal probieren
           dev.log('🔄 Token abgelaufen, versuche Refresh…',
               name: 'OrbitQuestAPI');
-          final refreshed = await FortniteOAuthService.instance.refreshToken();
+          final refreshed = await FortniteOAuthService.instance.refreshDevice();
           if (!refreshed) {
             return QuestApiResponse.error('token_expired');
           }
@@ -134,7 +134,7 @@ class FortniteQuestApiService {
     }
     // Token abgelaufen → refresh versuchen
     dev.log('🔄 Token nicht mehr gültig, refresh…', name: 'OrbitQuestAPI');
-    final refreshed = await FortniteOAuthService.instance.refreshToken();
+    final refreshed = await FortniteOAuthService.instance.refreshDevice();
     if (refreshed) return AccountStore.fortniteToken;
     return null;
   }

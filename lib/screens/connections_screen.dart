@@ -1,5 +1,5 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../services/fortnite_oauth_service.dart';
@@ -12,27 +12,25 @@ import '../widgets/orbit_glass_card.dart';
 //  🔗 CONNECTIONS SCREEN
 //  Datei: lib/screens/connections_screen.dart
 //
-//  Erreichbar über: Einstellungen → Verbindungen
-//  Oder direkt aus ApiQuestListScreen wenn kein Account verbunden.
-//
-//  ── LOGIN-FLOW ────────────────────────────────────────────
+//  ── LOGIN-FLOW (Device Code Flow) ────────────────────────
 //
 //  1. "Mit Fortnite verbinden" drücken
-//     → App holt die Epic-Login-URL von api-fortnite.com
-//     → URL öffnet sich im Browser
+//     → App ruft GET /api/v1/oauth/get-token ab
+//     → Bekommt flowId + Login-URL zurück
 //
-//  2. Im Browser: Epic-Account-Daten eingeben → Anmelden
-//     → Epic zeigt nach der Anmeldung einen Authorization Code
+//  2. Login-URL öffnet sich im Browser
+//     → Nutzer meldet sich mit Epic-Account an
+//     → Kein Code-Kopieren nötig!
 //
-//  3. Zurück in der App: Code in das Feld einfügen → "Verbinden"
-//     → App tauscht den Code gegen ein OAuth-Token
-//     → Account-ID + Token werden lokal gespeichert
+//  3. App pollt automatisch alle 3 Sekunden im Hintergrund
+//     → POST /api/v1/oauth/complete { flowId }
+//     → Wenn Nutzer angemeldet ist: Token direkt gespeichert
 //
-//  ── WARUM DIESER FLOW? ────────────────────────────────────
+//  ── RE-LOGIN (automatisch, kein Browser) ─────────────────
 //
-//  Der Quests-Endpunkt GET /api/v2/quests/{accountId} braucht
-//  den Header "x-fortnite-token" — das ist ein nutzerspezifischer
-//  OAuth-Token von Epic Games. Ohne echten Login kein Token.
+//  Die App speichert deviceId + secret nach dem ersten Login.
+//  Damit kann sie den Token im Hintergrund erneuern ohne dass
+//  der Nutzer irgendetwas tun muss.
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -53,8 +51,7 @@ class _ConnectionsScreenState extends State<ConnectionsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              // ── Header ─────────────────────────────────────
+              // ── Header ───────────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 4, 16, 0),
                 child: Row(
@@ -118,7 +115,7 @@ class _ConnectionsScreenState extends State<ConnectionsScreen> {
 }
 
 // ══════════════════════════════════════════════════════════════
-//  FORTNITE CARD — mit OAuth-Login-Flow
+//  FORTNITE CARD — Device Code Flow mit Auto-Polling
 // ══════════════════════════════════════════════════════════════
 
 class _FortniteCard extends StatefulWidget {
@@ -132,110 +129,140 @@ class _FortniteCard extends StatefulWidget {
 class _FortniteCardState extends State<_FortniteCard> {
   static const _accent = Color(0xFF00D4FF);
 
-  // Steps: 'idle' → 'step1_opening' → 'step2_code' → 'step3_connecting' → 'done'
-  String _step = 'idle';
+  // Status: 'idle' | 'starting' | 'waiting' | 'done'
+  String  _step     = 'idle';
   String? _errorMsg;
+  String? _flowId;
   String? _loginUrl;
 
-  final _codeCtrl = TextEditingController();
+  Timer? _pollTimer;
+  int    _pollCount = 0;
+  static const int _maxPolls = 120; // 120 × 3s = 6 Minuten Timeout
 
   @override
   void dispose() {
-    _codeCtrl.dispose();
+    _pollTimer?.cancel();
     super.dispose();
   }
 
-  // ── SCHRITT 1: Login-URL holen + Browser öffnen ──────────
-  Future<void> _startLogin() async {
-    setState(() { _step = 'step1_opening'; _errorMsg = null; });
+  // ── LOGIN STARTEN ─────────────────────────────────────────
 
-    final url = await FortniteOAuthService.instance.getAuthorizeUrl();
+  Future<void> _startLogin() async {
+    setState(() { _step = 'starting'; _errorMsg = null; });
+
+    final flow = await FortniteOAuthService.instance.startDeviceFlow();
 
     if (!mounted) return;
 
-    if (url == null) {
+    if (flow == null) {
       setState(() {
         _step     = 'idle';
-        _errorMsg = 'Verbindung zur API fehlgeschlagen. Prüfe deine Internetverbindung.';
+        _errorMsg = 'Verbindung zur API fehlgeschlagen.\n'
+                    'Stelle sicher, dass der API-Key in api_keys.dart korrekt ist.';
       });
       return;
     }
 
-    _loginUrl = url;
+    _flowId   = flow.flowId;
+    _loginUrl = flow.url;
 
     // Browser öffnen
-    final uri = Uri.parse(url);
     try {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } catch (_) {
-      // Fallback: URL in Clipboard kopieren
-      await Clipboard.setData(ClipboardData(text: url));
-    }
+      await launchUrl(Uri.parse(flow.url), mode: LaunchMode.externalApplication);
+    } catch (_) {}
 
-    setState(() { _step = 'step2_code'; });
+    setState(() { _step = 'waiting'; _pollCount = 0; });
+    _startPolling();
   }
 
-  // ── SCHRITT 2: URL nochmal öffnen ────────────────────────
+  // ── AUTO-POLLING ─────────────────────────────────────────
+
+  void _startPolling() {
+    _pollTimer?.cancel();
+    _pollTimer = Timer.periodic(const Duration(seconds: 3), (_) async {
+      if (!mounted) { _pollTimer?.cancel(); return; }
+
+      _pollCount++;
+      if (_pollCount > _maxPolls) {
+        _pollTimer?.cancel();
+        if (mounted) {
+          setState(() {
+            _step     = 'idle';
+            _errorMsg = 'Zeitüberschreitung. Bitte erneut versuchen.';
+            _flowId   = null;
+            _loginUrl = null;
+          });
+        }
+        return;
+      }
+
+      final r = await FortniteOAuthService.instance.pollCompletion(_flowId!);
+
+      if (!mounted) return;
+
+      if (r.isPending) return; // Weiter warten
+
+      _pollTimer?.cancel();
+
+      if (r.isError) {
+        setState(() {
+          _step     = 'idle';
+          _errorMsg = r.errorMessage ?? 'Unbekannter Fehler';
+          _flowId   = null;
+        });
+        return;
+      }
+
+      // ✅ Erfolgreich eingeloggt!
+      final result = r.result!;
+      final accountId   = result.accountId   ?? 'unknown';
+      final displayName = result.displayName ?? 'Fortnite-Account';
+
+      await AccountStore.saveFortnite(
+        accountId:    accountId,
+        displayName:  displayName,
+        token:        result.token!,
+        tokenExpiry:  result.tokenExpiry,
+        deviceId:     result.deviceId,
+        deviceSecret: result.deviceSecret,
+      );
+
+      setState(() { _step = 'done'; });
+      widget.onChanged();
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('✅ Mit $displayName verbunden!'),
+          behavior: SnackBarBehavior.floating,
+        ));
+      }
+    });
+  }
+
+  // ── POLLING ABBRECHEN ────────────────────────────────────
+
+  void _cancelLogin() {
+    _pollTimer?.cancel();
+    setState(() {
+      _step     = 'idle';
+      _errorMsg = null;
+      _flowId   = null;
+      _loginUrl = null;
+    });
+  }
+
+  // ── BROWSER NOCHMAL ÖFFNEN ───────────────────────────────
+
   Future<void> _reopenBrowser() async {
     if (_loginUrl == null) return;
     try {
       await launchUrl(Uri.parse(_loginUrl!),
           mode: LaunchMode.externalApplication);
-    } catch (_) {
-      await Clipboard.setData(ClipboardData(text: _loginUrl!));
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('URL in Zwischenablage kopiert'),
-          behavior: SnackBarBehavior.floating,
-        ));
-      }
-    }
+    } catch (_) {}
   }
 
-  // ── SCHRITT 3: Code gegen Token tauschen ─────────────────
-  Future<void> _exchangeCode() async {
-    final code = _codeCtrl.text.trim();
-    if (code.isEmpty) return;
+  // ── VERBINDUNG TRENNEN ───────────────────────────────────
 
-    setState(() { _step = 'step3_connecting'; _errorMsg = null; });
-
-    final result = await FortniteOAuthService.instance.exchangeCode(code);
-
-    if (!mounted) return;
-
-    if (result == null || !result.isSuccess) {
-      setState(() {
-        _step     = 'step2_code';
-        _errorMsg = result?.errorMessage ??
-            'Code ungültig oder abgelaufen. Starte den Login neu.';
-      });
-      return;
-    }
-
-    // Token + AccountId speichern
-    final accountId   = result.accountId   ?? 'unknown';
-    final displayName = result.displayName ?? 'Fortnite-Account';
-
-    await AccountStore.saveFortnite(
-      accountId:   accountId,
-      displayName: displayName,
-      token:       result.token!,
-      tokenExpiry: result.tokenExpiry,
-    );
-
-    _codeCtrl.clear();
-    setState(() { _step = 'done'; });
-    widget.onChanged();
-
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('✅ Mit $displayName verbunden!'),
-        behavior: SnackBarBehavior.floating,
-      ));
-    }
-  }
-
-  // ── Verbindung trennen ────────────────────────────────────
   Future<void> _disconnect() async {
     final ok = await showDialog<bool>(
       context: context,
@@ -263,9 +290,11 @@ class _FortniteCardState extends State<_FortniteCard> {
     );
     if (ok != true) return;
     await AccountStore.clearFortnite();
-    setState(() { _step = 'idle'; _errorMsg = null; _codeCtrl.clear(); });
+    setState(() { _step = 'idle'; _errorMsg = null; });
     widget.onChanged();
   }
+
+  // ── BUILD ─────────────────────────────────────────────────
 
   @override
   Widget build(BuildContext context) {
@@ -276,8 +305,7 @@ class _FortniteCardState extends State<_FortniteCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          // ── Karten-Header ──────────────────────────────────
+          // ── Karten-Header ─────────────────────────────────
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 12, 16),
             child: Row(
@@ -287,7 +315,8 @@ class _FortniteCardState extends State<_FortniteCard> {
                   decoration: BoxDecoration(
                     color: _accent.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: _accent.withOpacity(0.35), width: 1.2),
+                    border: Border.all(
+                        color: _accent.withOpacity(0.35), width: 1.2),
                   ),
                   child: const Icon(Icons.bolt, color: _accent, size: 24),
                 ),
@@ -322,10 +351,13 @@ class _FortniteCardState extends State<_FortniteCard> {
             ),
           ),
 
-          // ── Login-Steps ────────────────────────────────────
+          // ── Login-Inhalt (nur wenn nicht verbunden) ───────
           if (!isConnected) ...[
-            Container(height: 1, color: Colors.white.withOpacity(0.07),
-                margin: const EdgeInsets.symmetric(horizontal: 16)),
+            Container(
+              height: 1,
+              color: Colors.white.withOpacity(0.07),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+            ),
             const SizedBox(height: 14),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -340,17 +372,16 @@ class _FortniteCardState extends State<_FortniteCard> {
   Widget _buildLoginContent() {
     switch (_step) {
 
-      // ── Idle: Start-Button ───────────────────────────────
+      // ── Idle: Start-Button ─────────────────────────────
       case 'idle':
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _InfoRow(
-              icon: Icons.info_outline,
+            _InfoBox(
               text: 'Du wirst zur Epic Games Anmeldeseite weitergeleitet. '
-                    'Melde dich dort an und kopiere danach den angezeigten Code.',
+                    'Melde dich dort an — die App erkennt es automatisch.',
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 12),
             if (_errorMsg != null) ...[
               _ErrorText(_errorMsg!),
               const SizedBox(height: 10),
@@ -358,154 +389,34 @@ class _FortniteCardState extends State<_FortniteCard> {
             _BigButton(
               label: 'Mit Fortnite verbinden',
               icon: Icons.open_in_browser,
-              color: const Color(0xFF00D4FF),
+              color: _accent,
               onTap: _startLogin,
             ),
           ],
         );
 
-      // ── Schritt 1: Browser wird geöffnet ────────────────
-      case 'step1_opening':
-        return const Center(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                CircularProgressIndicator(
-                    strokeWidth: 2, color: Color(0xFF00D4FF)),
-                SizedBox(height: 12),
-                Text('Browser wird geöffnet…',
-                    style: TextStyle(
-                        color: Colors.white54, fontSize: 13)),
-              ],
-            ),
-          ),
-        );
+      // ── Starting: Lädt ─────────────────────────────────
+      case 'starting':
+        return _CenteredLoader(label: 'Verbindung wird hergestellt…');
 
-      // ── Schritt 2: Code eingeben ─────────────────────────
-      case 'step2_code':
+      // ── Waiting: Pollt ─────────────────────────────────
+      case 'waiting':
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Schritt-Anzeige
-            _StepBadge(step: 1, label: 'Browser geöffnet ✓'),
-            const SizedBox(height: 12),
-            _StepBadge(step: 2, label: 'Code aus dem Browser kopieren'),
+            _WaitingBox(onReopen: _reopenBrowser),
             const SizedBox(height: 14),
-            _InfoRow(
-              icon: Icons.content_paste,
-              text: 'Kopiere den Authorization Code von der Seite '
-                    'und füge ihn unten ein.',
-            ),
-            const SizedBox(height: 12),
-
-            // Code-Eingabe
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.07),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: _errorMsg != null
-                      ? Colors.redAccent.withOpacity(0.60)
-                      : Colors.white.withOpacity(0.14),
-                ),
-              ),
-              child: TextField(
-                controller: _codeCtrl,
-                style: const TextStyle(color: Colors.white, fontSize: 14,
-                    fontFamily: 'monospace'),
-                decoration: InputDecoration(
-                  hintText: 'Authorization Code hier einfügen…',
-                  hintStyle: TextStyle(
-                    color: Colors.white.withOpacity(0.30), fontSize: 13),
-                  prefixIcon: Icon(Icons.vpn_key_outlined,
-                      color: Colors.white.withOpacity(0.45)),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.content_paste,
-                        color: Colors.white.withOpacity(0.45), size: 18),
-                    onPressed: () async {
-                      final data = await Clipboard.getData(Clipboard.kTextPlain);
-                      if (data?.text != null) {
-                        _codeCtrl.text = data!.text!;
-                      }
-                    },
-                    tooltip: 'Einfügen',
-                  ),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                ),
-                maxLines: 3,
-                minLines: 1,
-              ),
-            ),
-
-            if (_errorMsg != null) ...[
-              const SizedBox(height: 8),
-              _ErrorText(_errorMsg!),
-            ],
-            const SizedBox(height: 12),
-
-            // Buttons
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: _reopenBrowser,
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                          color: Colors.white.withOpacity(0.20)),
-                      foregroundColor: Colors.white70,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                    ),
-                    icon: const Icon(Icons.refresh, size: 16),
-                    label: const Text('Browser',
-                        style: TextStyle(fontSize: 13)),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  flex: 2,
-                  child: _BigButton(
-                    label: 'Verbinden',
-                    icon: Icons.link,
-                    color: const Color(0xFF00D4FF),
-                    onTap: _exchangeCode,
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 10),
+            _PollIndicator(pollCount: _pollCount, maxPolls: _maxPolls),
+            const SizedBox(height: 14),
             Center(
               child: TextButton(
-                onPressed: () => setState(() {
-                  _step = 'idle'; _errorMsg = null; _codeCtrl.clear();
-                }),
+                onPressed: _cancelLogin,
                 child: Text('Abbrechen',
                     style: TextStyle(
                         color: Colors.white.withOpacity(0.40), fontSize: 12)),
               ),
             ),
           ],
-        );
-
-      // ── Schritt 3: Code wird getauscht ───────────────────
-      case 'step3_connecting':
-        return const Center(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                CircularProgressIndicator(
-                    strokeWidth: 2, color: Color(0xFF00D4FF)),
-                SizedBox(height: 12),
-                Text('Account wird verbunden…',
-                    style: TextStyle(color: Colors.white54, fontSize: 13)),
-              ],
-            ),
-          ),
         );
 
       default:
@@ -518,10 +429,9 @@ class _FortniteCardState extends State<_FortniteCard> {
 //  KLEINE HILFS-WIDGETS
 // ══════════════════════════════════════════════════════════════
 
-class _InfoRow extends StatelessWidget {
-  final IconData icon;
+class _InfoBox extends StatelessWidget {
   final String text;
-  const _InfoRow({required this.icon, required this.text});
+  const _InfoBox({required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -535,7 +445,7 @@ class _InfoRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: const Color(0xFF00D4FF), size: 16),
+          const Icon(Icons.info_outline, color: Color(0xFF00D4FF), size: 16),
           const SizedBox(width: 8),
           Expanded(
             child: Text(text,
@@ -549,34 +459,102 @@ class _InfoRow extends StatelessWidget {
   }
 }
 
-class _StepBadge extends StatelessWidget {
-  final int step;
-  final String label;
-  const _StepBadge({required this.step, required this.label});
+class _WaitingBox extends StatelessWidget {
+  final VoidCallback onReopen;
+  const _WaitingBox({required this.onReopen});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.green.withOpacity(0.07),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.green.withOpacity(0.25)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.open_in_browser, color: Colors.greenAccent, size: 16),
+              const SizedBox(width: 8),
+              Text('Browser geöffnet',
+                  style: TextStyle(
+                    color: Colors.greenAccent, fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  )),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Melde dich im Browser mit deinem Epic-Account an.\n'
+            'Die App erkennt es automatisch — du musst nichts eingeben.',
+            style: TextStyle(
+                color: Colors.white.withOpacity(0.65), fontSize: 13, height: 1.4),
+          ),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onTap: onReopen,
+            child: Text(
+              'Browser nicht geöffnet? Hier tippen.',
+              style: TextStyle(
+                color: const Color(0xFF00D4FF).withOpacity(0.80),
+                fontSize: 12, decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PollIndicator extends StatelessWidget {
+  final int pollCount;
+  final int maxPolls;
+  const _PollIndicator({required this.pollCount, required this.maxPolls});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          width: 22, height: 22,
-          decoration: BoxDecoration(
-            color: const Color(0xFF00D4FF).withOpacity(0.20),
-            shape: BoxShape.circle,
-          ),
-          child: Center(
-            child: Text('$step',
-                style: const TextStyle(
-                    color: Color(0xFF00D4FF),
-                    fontSize: 11, fontWeight: FontWeight.w800)),
-          ),
+        const SizedBox(
+          width: 16, height: 16,
+          child: CircularProgressIndicator(
+            strokeWidth: 2, color: Color(0xFF00D4FF)),
         ),
-        const SizedBox(width: 8),
-        Text(label,
-            style: TextStyle(
-                color: Colors.white.withOpacity(0.75),
-                fontSize: 13, fontWeight: FontWeight.w600)),
+        const SizedBox(width: 10),
+        Text(
+          'Warte auf Anmeldung im Browser…',
+          style: TextStyle(
+              color: Colors.white.withOpacity(0.55), fontSize: 13),
+        ),
       ],
+    );
+  }
+}
+
+class _CenteredLoader extends StatelessWidget {
+  final String label;
+  const _CenteredLoader({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CircularProgressIndicator(
+                strokeWidth: 2, color: Color(0xFF00D4FF)),
+            const SizedBox(height: 12),
+            Text(label,
+                style: TextStyle(color: Colors.white54, fontSize: 13)),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -589,7 +567,8 @@ class _ErrorText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(msg,
         style: const TextStyle(
-            color: Colors.redAccent, fontSize: 13, fontWeight: FontWeight.w500));
+            color: Colors.redAccent, fontSize: 13,
+            fontWeight: FontWeight.w500, height: 1.4));
   }
 }
 
@@ -598,10 +577,8 @@ class _BigButton extends StatelessWidget {
   final IconData icon;
   final Color color;
   final VoidCallback onTap;
-  const _BigButton({
-    required this.label, required this.icon,
-    required this.color, required this.onTap,
-  });
+  const _BigButton({required this.label, required this.icon,
+      required this.color, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -613,11 +590,13 @@ class _BigButton extends StatelessWidget {
           backgroundColor: color.withOpacity(0.80),
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 14),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)),
         ),
         icon: Icon(icon, size: 18),
         label: Text(label,
-            style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+            style: const TextStyle(
+                fontWeight: FontWeight.w800, fontSize: 15)),
       ),
     );
   }
@@ -640,7 +619,8 @@ class _DisconnectBtn extends StatelessWidget {
         ),
         child: const Text('Trennen',
             style: TextStyle(
-                color: Colors.redAccent, fontSize: 12, fontWeight: FontWeight.w700)),
+                color: Colors.redAccent, fontSize: 12,
+                fontWeight: FontWeight.w700)),
       ),
     );
   }
@@ -648,9 +628,9 @@ class _DisconnectBtn extends StatelessWidget {
 
 class _ComingSoonCard extends StatelessWidget {
   final IconData icon;
-  final Color iconColor;
-  final String title;
-  final String subtitle;
+  final Color    iconColor;
+  final String   title;
+  final String   subtitle;
 
   const _ComingSoonCard({
     required this.icon, required this.iconColor,
@@ -669,9 +649,11 @@ class _ComingSoonCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: iconColor.withOpacity(0.08),
                 borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: iconColor.withOpacity(0.15), width: 1.2),
+                border: Border.all(
+                    color: iconColor.withOpacity(0.15), width: 1.2),
               ),
-              child: Icon(icon, color: iconColor.withOpacity(0.40), size: 24),
+              child: Icon(icon,
+                  color: iconColor.withOpacity(0.40), size: 24),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -685,7 +667,8 @@ class _ComingSoonCard extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(subtitle,
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.30), fontSize: 13)),
+                          color: Colors.white.withOpacity(0.30),
+                          fontSize: 13)),
                 ],
               ),
             ),
