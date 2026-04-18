@@ -1,386 +1,291 @@
 import 'dart:convert';
 import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
+import '../config/api_keys.dart';
 import '../models/api_quest.dart';
+import '../storage/account_store.dart';
 
 // ══════════════════════════════════════════════════════════════
 //
-//  🌐 FORTNITE QUEST API SERVICE  —  VOLLSTÄNDIGE IMPLEMENTIERUNG
+//  🌐 FORTNITE QUEST API SERVICE
 //  Datei: lib/services/fortnite_quest_api_service.dart
 //
-//  API-Anbieter : https://prod.api-fortnite.com
-//  Dashboard    : https://www.api-fortnite.com/login
-//  Swagger-Docs : https://prod.api-fortnite.com/swagger/index.html
+//  Endpunkt: GET /api/v3/quests/{accountId}
+//  API: https://prod.api-fortnite.com
 //
-//  ┌─────────────────────────────────────────────────────────┐
-//  │  WIE DIESE DATEI FUNKTIONIERT                           │
-//  │                                                         │
-//  │  1. fetchQuests() aufrufen                              │
-//  │  2. Service versucht 3 Endpunkte nacheinander:          │
-//  │     a) /api/v2/challenges  (allgemeine Challenges)      │
-//  │     b) /api/v1/challenges  (ältere Version)             │
-//  │     c) /api/v1/quests      (Quest-Liste)                │
-//  │  3. Antwort wird geparst + in ApiQuest-Objekte gewandelt│
-//  │  4. Fehler werden sauber zurückgegeben                  │
-//  └─────────────────────────────────────────────────────────┘
+//  ── WARUM ES VORHER NICHT FUNKTIONIERT HAT ────────────────
 //
-//  ✏️  WAS DU ANPASSEN MUSST (wenn die API sich ändert):
-//    → _endpoints Liste in fetchQuests()
-//    → _parseResponse() wenn sich die JSON-Struktur ändert
-//    → Bei einem neuen API-Key: nur _apiKey ändern
+//  Der Endpunkt braucht ZWINGEND eine accountId im Pfad.
+//  Ohne sie → HTTP 404.
+//  Die accountId wird über ConnectionsScreen einmalig gespeichert.
 //
-//  ── WO WIRD DIESE KLASSE AUFGERUFEN? ─────────────────────
-//    lib/services/quest_manager.dart → load() → _refreshFromApi()
+//  ── ABLAUF ────────────────────────────────────────────────
+//
+//  1. AccountStore.fortniteAccountId lesen
+//  2. Wenn leer → Fehler-Code 'no_account' (UI zeigt Verbinden-Button)
+//  3. GET /api/v3/quests/{accountId}
+//  4. JSON parsen → ApiQuest-Liste
 //
 //  ── DEBUGGING ─────────────────────────────────────────────
-//    setze _debugMode = true für JSON-Ausgabe im Log
-//    Android Studio → Logcat → Filter: "OrbitQuestAPI"
+//
+//  _debugMode = true → rohe API-Antwort im Logcat
+//  Android Studio → Logcat → Filter: "OrbitQuestAPI"
 //
 // ══════════════════════════════════════════════════════════════
 
 class FortniteQuestApiService {
 
-  // ── Konfiguration ──────────────────────────────────────────
-  //
-  //  ✏️  HIER DEINEN API-KEY EINTRAGEN (einmal, fertig):
-  //
-  static const String _apiKey =
-      '6cc5760588143c03d7df36cf43b68bc8186eaf144a77f82eff20206eb4b5a47d';
-
-  static const String _baseUrl = 'https://prod.api-fortnite.com';
-
-  /// Timeout pro Request (nicht zu kurz — API kann langsam sein)
+  static const String _baseUrl   = 'https://prod.api-fortnite.com';
   static const Duration _timeout = Duration(seconds: 25);
 
-  /// true → gibt die rohe API-Antwort im Debug-Log aus
-  /// Aktiviere dies wenn die Quests nicht geladen werden!
+  /// true → rohe API-Antwort im Logcat ausgeben
   static const bool _debugMode = true;
 
-  // ── Singleton ─────────────────────────────────────────────
   static final FortniteQuestApiService instance =
       FortniteQuestApiService._();
   FortniteQuestApiService._();
 
   // ──────────────────────────────────────────────────────────
   //
-  //  📡 HAUPT-METHODE: Quests laden
+  //  🔍 ACCOUNT-LOOKUP
   //
-  //  Probiert 3 Endpunkte automatisch nacheinander durch.
-  //  Bei Erfolg wird die Antwort geparst und zurückgegeben.
-  //  Beim Fehlschlagen aller Endpunkte: QuestApiResponse.error()
+  //  Wird aus dem ConnectionsScreen aufgerufen.
+  //  Endpunkt: GET /api/v1/account/displayName/{displayName}
+  //
+  //  Gibt null zurück wenn der Account nicht gefunden wurde.
+  //
+  // ──────────────────────────────────────────────────────────
+
+  Future<({String accountId, String displayName})?> lookupAccount(
+    String displayName,
+  ) async {
+    final uri = Uri.parse(
+      '$_baseUrl/api/v1/account/displayName/${Uri.encodeComponent(displayName.trim())}',
+    );
+
+    dev.log('🔍 Suche Account: "$displayName"', name: 'OrbitQuestAPI');
+
+    try {
+      final res = await http
+          .get(uri, headers: _headers())
+          .timeout(_timeout);
+
+      dev.log('📥 HTTP ${res.statusCode}', name: 'OrbitQuestAPI');
+      if (_debugMode) _logPreview(res.body, 'Account-Antwort');
+
+      if (res.statusCode != 200) return null;
+
+      final json = jsonDecode(res.body);
+      String? id;
+      String? name;
+
+      if (json is Map) {
+        // Format A: { "id": "...", "displayName": "..." }
+        id   = json['id']          as String?;
+        name = json['displayName'] as String?;
+
+        // Format B: { "account": { "id": "...", ... } }
+        if (id == null) {
+          final acc = json['account'] as Map?;
+          id   = acc?['id']          as String?;
+          name = acc?['displayName'] as String?;
+        }
+
+        // Format C: { "data": { "id": "...", ... } }
+        if (id == null) {
+          final data = json['data'] as Map?;
+          id   = data?['id']          as String?;
+          name = data?['displayName'] as String?;
+        }
+      }
+
+      if (id != null && id.isNotEmpty) {
+        dev.log('✅ Account: ${name ?? displayName} ($id)', name: 'OrbitQuestAPI');
+        return (accountId: id, displayName: name ?? displayName);
+      }
+
+      dev.log('❌ Kein Account für "$displayName"', name: 'OrbitQuestAPI');
+      return null;
+
+    } catch (e) {
+      dev.log('❌ Account-Suche Fehler: $e', name: 'OrbitQuestAPI');
+      return null;
+    }
+  }
+
+  // ──────────────────────────────────────────────────────────
+  //
+  //  📡 QUESTS LADEN
+  //
+  //  Liest die accountId aus AccountStore.
+  //  Wenn kein Account verbunden: Fehlercode 'no_account' →
+  //  ApiQuestListScreen zeigt dann den Verbinden-Button.
   //
   // ──────────────────────────────────────────────────────────
 
   Future<QuestApiResponse> fetchQuests({String language = 'en'}) async {
+    final accountId = AccountStore.fortniteAccountId;
 
-    // ── Endpunkte die nacheinander probiert werden ─────────
-    //
-    // ✏️  REIHENFOLGE ANPASSEN wenn ein bestimmter Endpunkt
-    //     bevorzugt werden soll. Erster erfolgreicher gewinnt.
-    //
-    final endpoints = [
-      // Endpunkt 1: Aktuelle Season-Challenges (allgemein)
-      _buildUri('/api/v2/challenges', language: language),
-
-      // Endpunkt 2: Ältere Version
-      _buildUri('/api/v1/challenges', language: language),
-
-      // Endpunkt 3: Quests-Endpunkt (generell, ohne accountId)
-      _buildUri('/api/v1/quests', language: language),
-
-      // Endpunkt 4: Player-Quests ohne Account (manche APIs
-      //             geben allgemeine Daten zurück wenn kein
-      //             accountId angegeben wird)
-      _buildUri('/api/v3/quests', language: language),
-    ];
-
-    String lastError = 'Kein Endpunkt erreichbar';
-
-    for (final uri in endpoints) {
-      try {
-        dev.log('🔍 Versuche: $uri', name: 'OrbitQuestAPI');
-
-        final response = await http
-            .get(uri, headers: _buildHeaders())
-            .timeout(_timeout);
-
-        dev.log('📥 HTTP ${response.statusCode} von $uri',
-            name: 'OrbitQuestAPI');
-
-        if (_debugMode) {
-          // Ersten 500 Zeichen der Antwort ausgeben
-          final preview = response.body.length > 500
-              ? '${response.body.substring(0, 500)}...'
-              : response.body;
-          dev.log('📄 Antwort-Preview:\n$preview', name: 'OrbitQuestAPI');
-        }
-
-        if (response.statusCode == 200) {
-          final result = _parseResponse(response.body, language: language);
-          if (result.success && result.quests.isNotEmpty) {
-            dev.log(
-                '✅ ${result.quests.length} Quests geladen von $uri',
-                name: 'OrbitQuestAPI');
-            return result;
-          }
-          // 200 aber keine Quests → nächsten Endpunkt versuchen
-          lastError = result.error ?? 'Keine Quests in Antwort';
-          dev.log('⚠️  Keine Quests gefunden: $lastError',
-              name: 'OrbitQuestAPI');
-
-        } else if (response.statusCode == 401 || response.statusCode == 403) {
-          // Auth-Fehler → kein Sinn, andere Endpunkte zu versuchen
-          lastError = 'API-Key ungültig (HTTP ${response.statusCode}).\n'
-              'Prüfe: fortnite_quest_api_service.dart → _apiKey';
-          dev.log('❌ Auth-Fehler: $lastError', name: 'OrbitQuestAPI');
-          break;
-
-        } else {
-          lastError = 'HTTP ${response.statusCode} von $uri';
-          dev.log('⚠️  $lastError', name: 'OrbitQuestAPI');
-        }
-
-      } on Exception catch (e) {
-        lastError = e.toString();
-        dev.log('❌ Exception bei $uri: $e', name: 'OrbitQuestAPI');
-      }
+    // Kein Account verbunden → spezieller Fehlercode
+    if (accountId == null || accountId.isEmpty) {
+      return QuestApiResponse.error('no_account');
     }
 
-    dev.log('❌ Alle Endpunkte fehlgeschlagen. Letzter Fehler: $lastError',
-        name: 'OrbitQuestAPI');
-    return QuestApiResponse.error(lastError);
-  }
-
-  // ──────────────────────────────────────────────────────────
-  //  URI bauen
-  // ──────────────────────────────────────────────────────────
-
-  Uri _buildUri(String path, {String language = 'en'}) {
-    // Sprache für die API formatieren
-    // api-fortnite.com nutzt oft 'en-US' / 'de-DE' Format
     final langCode = language == 'de' ? 'de-DE' : 'en-US';
+    final uri = Uri.parse('$_baseUrl/api/v3/quests/$accountId')
+        .replace(queryParameters: {'language': langCode, 'lang': language});
 
-    return Uri.parse('$_baseUrl$path').replace(
-      queryParameters: {
-        'language': langCode,
-        // Manche Endpunkte brauchen 'lang' statt 'language'
-        'lang': language,
-        // Aktuelle Season anfordern
-        'season': 'current',
-      },
-    );
+    dev.log('📡 Lade Quests: $uri', name: 'OrbitQuestAPI');
+
+    try {
+      final res = await http
+          .get(uri, headers: _headers())
+          .timeout(_timeout);
+
+      dev.log('📥 HTTP ${res.statusCode}', name: 'OrbitQuestAPI');
+      if (_debugMode) _logPreview(res.body, 'Quests-Antwort');
+
+      switch (res.statusCode) {
+        case 200:
+          return _parseResponse(res.body, language: language);
+
+        case 401:
+        case 403:
+          return QuestApiResponse.error(
+            'API-Key ungültig (HTTP ${res.statusCode}).\n'
+            'Prüfe: lib/config/api_keys.dart → ApiKeys.apiFortnite',
+          );
+
+        case 404:
+          return QuestApiResponse.error(
+            'account_invalid', // Spezieller Fehlercode — zeigt "Neu verbinden"
+          );
+
+        default:
+          return QuestApiResponse.error('HTTP ${res.statusCode}');
+      }
+
+    } on Exception catch (e) {
+      return QuestApiResponse.error('Netzwerkfehler: $e');
+    }
   }
 
   // ──────────────────────────────────────────────────────────
-  //
-  //  🔑 HTTP HEADERS
-  //
-  //  api-fortnite.com akzeptiert den API-Key in diesen Formen.
-  //  Alle drei werden gesetzt — der Server nimmt was er kennt.
-  //
+  //  JSON-Parsing (mehrere Formate werden unterstützt)
   // ──────────────────────────────────────────────────────────
 
-  Map<String, String> _buildHeaders() {
-    return {
-      // Standard Bearer Token (häufigste Form)
-      'Authorization': 'Bearer $_apiKey',
-      // Alternative: direkter API-Key Header
-      'X-Api-Key': _apiKey,
-      // Weitere übliche Varianten
-      'api-key': _apiKey,
-
-      'Accept':       'application/json',
-      'Content-Type': 'application/json',
-      'User-Agent':   'Orbit-App/0.3.1',
-    };
-  }
-
-  // ──────────────────────────────────────────────────────────
-  //
-  //  🔍 JSON-PARSING
-  //
-  //  Diese Funktion versteht mehrere verschiedene JSON-Strukturen
-  //  gleichzeitig. Egal wie die API antwortet — wir fangen es ab.
-  //
-  //  ✏️  DEBUGGING wenn Quests nicht erscheinen:
-  //    1. _debugMode = true setzen
-  //    2. App starten → Aufträge öffnen
-  //    3. In Android Studio Logcat nach "OrbitQuestAPI" filtern
-  //    4. Die "📄 Antwort-Preview" zeigt die echte API-Struktur
-  //    5. Hier anpassen falls nötig
-  //
-  //  Unterstützte JSON-Strukturen:
-  //
-  //  STRUKTUR A: Flache Liste unter bekanntem Key
-  //  { "result": true, "challenges": [ {...}, {...} ] }
-  //  { "result": true, "quests": [ {...}, {...} ] }
-  //  { "data": [ {...}, {...} ] }
-  //
-  //  STRUKTUR B: Nach Typ gruppiert
-  //  { "weekly": [...], "daily": [...], "battlePass": [...] }
-  //
-  //  STRUKTUR C: Nach Modus gruppiert
-  //  { "br": [...], "og": [...], "reload": [...] }
-  //
-  //  STRUKTUR D: Direkt als Array
-  //  [ { "id": "...", "title": "...", ... }, ... ]
-  //
-  // ──────────────────────────────────────────────────────────
-
-  QuestApiResponse _parseResponse(
-    String body, {
-    String language = 'en',
-  }) {
+  QuestApiResponse _parseResponse(String body, {String language = 'en'}) {
     try {
       final decoded = jsonDecode(body);
 
-      // ── STRUKTUR D: Direkt als JSON-Array ─────────────────
       if (decoded is List) {
-        return _parseQuestList(
+        return _fromList(
             decoded.whereType<Map<String, dynamic>>().toList(), language);
       }
 
       if (decoded is! Map<String, dynamic>) {
-        return QuestApiResponse.error('Unerwartetes JSON-Format: ${decoded.runtimeType}');
+        return QuestApiResponse.error(
+            'Unbekanntes JSON-Format: ${decoded.runtimeType}');
       }
 
       final json = decoded;
 
-      // Erfolg prüfen (API kann verschiedene Statusfelder haben)
-      final rawSuccess = json['result'] ?? json['success'] ??
-                         json['ok'] ?? json['status'];
-      if (rawSuccess == false || rawSuccess == 'error') {
-        final msg = json['error']   as String? ??
-                    json['message'] as String? ??
-                    'API meldet Fehler';
-        return QuestApiResponse.error(msg);
+      // Fehler aus der API selbst
+      final ok = json['result'] ?? json['success'] ?? json['ok'];
+      if (ok == false || ok == 'error') {
+        return QuestApiResponse.error(
+          json['error'] as String? ??
+          json['message'] as String? ??
+          'API meldet Fehler.',
+        );
       }
 
-      // ── STRUKTUR A: Flache Liste ───────────────────────────
-      for (final key in ['challenges', 'quests', 'data', 'items',
-                         'bundle', 'results']) {
+      // Format A: bekannte List-Keys
+      for (final key in ['quests', 'challenges', 'data', 'items']) {
         final raw = json[key];
         if (raw is List && raw.isNotEmpty) {
-          dev.log('📦 Struktur A: Key="$key" mit ${raw.length} Einträgen',
+          dev.log('📦 Format A key="$key" ${raw.length} Einträge',
               name: 'OrbitQuestAPI');
-          return _parseQuestList(
+          return _fromList(
               raw.whereType<Map<String, dynamic>>().toList(), language);
         }
       }
 
-      // ── STRUKTUR B: Nach Quest-Typ gruppiert ───────────────
-      const typeKeys = [
+      // Format B: Nach Typ gruppiert (weekly, daily, ...)
+      final typeKeys = [
         'weekly', 'daily', 'battlePass', 'story', 'milestone',
         'punchcard', 'seasonal', 'limited', 'event',
-        'weekly_challenges', 'daily_challenges',
       ];
-      final combinedB = <Map<String, dynamic>>[];
+      final combined = <Map<String, dynamic>>[];
       for (final key in typeKeys) {
-        final raw = json[key];
-        if (raw is List) {
-          for (final item in raw) {
+        if (json[key] is List) {
+          for (final item in (json[key] as List)) {
             if (item is Map<String, dynamic>) {
-              // Section-Feld aus dem Gruppenkey ableiten falls fehlt
-              final withSection = Map<String, dynamic>.from(item);
-              withSection.putIfAbsent('section', () => _sectionFromKey(key));
-              combinedB.add(withSection);
+              final entry = Map<String, dynamic>.from(item);
+              entry.putIfAbsent('section', () => _sectionLabel(key));
+              combined.add(entry);
             }
           }
         }
       }
-      if (combinedB.isNotEmpty) {
-        dev.log('📦 Struktur B: ${combinedB.length} Quests aus Typ-Gruppen',
-            name: 'OrbitQuestAPI');
-        return _parseQuestList(combinedB, language);
+      if (combined.isNotEmpty) {
+        dev.log('📦 Format B ${combined.length} Quests', name: 'OrbitQuestAPI');
+        return _fromList(combined, language);
       }
 
-      // ── STRUKTUR C: Nach Spielmodus gruppiert ──────────────
-      const modeKeys = [
-        'br', 'og', 'reload', 'lego', 'festival', 'blitz',
-        'creative', 'reload', 'ballistic', 'delulu',
-        'battle_royale', 'battleRoyale',
-      ];
-      final combinedC = <Map<String, dynamic>>[];
-      for (final key in modeKeys) {
-        final raw = json[key];
-        if (raw is List) {
-          for (final item in raw) {
-            if (item is Map<String, dynamic>) {
-              final withMode = Map<String, dynamic>.from(item);
-              withMode.putIfAbsent('gameMode', () => key);
-              combinedC.add(withMode);
-            }
-          }
-        }
-      }
-      if (combinedC.isNotEmpty) {
-        dev.log('📦 Struktur C: ${combinedC.length} Quests aus Modus-Gruppen',
-            name: 'OrbitQuestAPI');
-        return _parseQuestList(combinedC, language);
-      }
-
-      // ── Nichts gefunden: Debug-Info ausgeben ───────────────
-      dev.log(
-        '❓ Unbekannte JSON-Struktur. Vorhandene Keys: ${json.keys.join(', ')}\n'
-        '   → Bitte in fortnite_quest_api_service.dart → '
-        '_parseResponse() anpassen.',
-        name: 'OrbitQuestAPI',
-      );
+      dev.log('❓ Unbekannte Struktur. Keys: ${json.keys.join(", ")}',
+          name: 'OrbitQuestAPI');
       return QuestApiResponse.error(
         'Unbekannte API-Struktur.\n'
         'Keys: ${json.keys.join(", ")}\n'
-        'Aktiviere _debugMode=true in fortnite_quest_api_service.dart '
-        'und schaue ins Logcat.',
+        'Setze _debugMode=true in fortnite_quest_api_service.dart.',
       );
 
     } on FormatException catch (e) {
-      return QuestApiResponse.error('JSON-Parse-Fehler: $e');
+      return QuestApiResponse.error('JSON-Fehler: $e');
     } catch (e) {
-      return QuestApiResponse.error('Unerwarteter Fehler beim Parsen: $e');
+      return QuestApiResponse.error('Parse-Fehler: $e');
     }
   }
 
-  // ──────────────────────────────────────────────────────────
-  //  Liste von Maps → Liste von ApiQuest-Objekten
-  // ──────────────────────────────────────────────────────────
-
-  QuestApiResponse _parseQuestList(
-    List<Map<String, dynamic>> rawList,
-    String language,
-  ) {
-    final quests = rawList
+  QuestApiResponse _fromList(List<Map<String, dynamic>> raw, String language) {
+    final quests = raw
         .map((q) => ApiQuest.fromApiJson(q, language))
         .where((q) => q.id.isNotEmpty || q.title.isNotEmpty)
         .toList();
-
-    dev.log('✅ ${quests.length} Quests erfolgreich geparst',
-        name: 'OrbitQuestAPI');
-
+    dev.log('✅ ${quests.length} Quests geparst', name: 'OrbitQuestAPI');
     if (quests.isEmpty) {
-      return QuestApiResponse.error('API hat geantwortet, aber keine Quests gefunden.');
+      return QuestApiResponse.error('API antwortet, aber keine Quests gefunden.');
     }
-
     return QuestApiResponse(success: true, quests: quests);
   }
 
   // ──────────────────────────────────────────────────────────
-  //  Hilfsfunktion: API-Key aus Quest-Typ ableiten
+  //  Hilfsmethoden
   // ──────────────────────────────────────────────────────────
 
-  String _sectionFromKey(String key) {
-    const labels = {
-      'weekly':             'Wöchentlich',
-      'weekly_challenges':  'Wöchentlich',
-      'daily':              'Täglich',
-      'daily_challenges':   'Täglich',
-      'battlePass':         'Battle Pass',
-      'story':              'Story',
-      'milestone':          'Meilensteine',
-      'punchcard':          'Stempelkarte',
-      'seasonal':           'Saisonal',
-      'limited':            'Begrenzt',
-      'event':              'Event',
+  Map<String, String> _headers() => {
+    'Authorization': 'Bearer ${ApiKeys.apiFortnite}',
+    'X-Api-Key':     ApiKeys.apiFortnite,
+    'api-key':       ApiKeys.apiFortnite,
+    'Accept':        'application/json',
+    'Content-Type':  'application/json',
+    'User-Agent':    'Orbit-App/0.3.1',
+  };
+
+  String _sectionLabel(String key) {
+    const m = {
+      'weekly':    'Wöchentlich',
+      'daily':     'Täglich',
+      'battlePass':'Battle Pass',
+      'story':     'Story',
+      'milestone': 'Meilensteine',
     };
-    return labels[key] ?? key;
+    return m[key] ?? key;
+  }
+
+  void _logPreview(String body, String label) {
+    final preview = body.length > 600 ? '${body.substring(0, 600)}...' : body;
+    dev.log('📄 $label:\n$preview', name: 'OrbitQuestAPI');
   }
 }

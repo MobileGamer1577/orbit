@@ -1,0 +1,18 @@
+// lib/config/api_keys.dart.example
+//
+// ANLEITUNG:
+//   1. Diese Datei kopieren als:  lib/config/api_keys.dart
+//   2. Echte API-Keys eintragen
+//   3. api_keys.dart ist in .gitignore → wird nie hochgeladen
+//
+// Diese .example Datei ist sicher zum Hochladen auf GitHub.
+
+class ApiKeys {
+  ApiKeys._();
+
+  // fortnite-api.com  →  https://fortnite-api.com/dashboard
+  static const String fortniteApiCom = 'DEIN_KEY_HIER';
+
+  // prod.api-fortnite.com  →  https://www.api-fortnite.com/login
+  static const String apiFortnite = 'DEIN_KEY_HIER';
+}
