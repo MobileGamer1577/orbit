@@ -10,6 +10,8 @@ import '../storage/quest_cache_store.dart'; // ← NEU: Quest-Cache
 import '../storage/update_store.dart';
 import '../theme/orbit_theme.dart';
 import 'dev_screen.dart';
+import 'connections_screen.dart';
+import '../storage/account_store.dart';
 
 class SettingsScreen extends StatefulWidget {
   final AppSettingsStore settings;
@@ -267,6 +269,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                   ],
+                ),
+
+                // ── Verbindungen ───────────────────────────────────
+                const SizedBox(height: 22),
+                _SectionTitle(title: 'Verbindungen'),
+                const SizedBox(height: 10),
+                _Tile(
+                  icon: Icons.link,
+                  iconColor: const Color(0xFF00D4FF),
+                  title: 'Verbindungen',
+                  subtitle: AccountStore.isFortniteConnected
+                      ? 'Fortnite: ${AccountStore.fortniteDisplayName}'
+                      : 'Keine Verbindungen eingerichtet',
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ConnectionsScreen(),
+                    ),
+                  ).then((_) => setState(() {})),
                 ),
 
                 // ── Zurücksetzen ───────────────────────────

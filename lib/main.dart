@@ -13,9 +13,10 @@ Future<void> main() async {
   await Hive.initFlutter();
 
   // ── Bestehende Hive Boxes ────────────────────────────────
-  await Hive.openBox('task_state');         // Quest-Häkchen + API-Häkchen
-  await Hive.openBox('collection_state');  // Cosmetics / Festival Locker
-  await Hive.openBox('cosmetic_meta');     // Cosmetic-Metadaten
+  await Hive.openBox('task_state'); // Quest-Häkchen + API-Häkchen
+  await Hive.openBox('collection_state'); // Cosmetics / Festival Locker
+  await Hive.openBox('cosmetic_meta'); // Cosmetic-Metadaten
+  await Hive.openBox('account_store'); // ← NEU: Für Fortnite-Account
 
   // ── NEU: Quest-API Cache ─────────────────────────────────
   //
@@ -26,17 +27,19 @@ Future<void> main() async {
   //    'data:fortnite'      → JSON der Fortnite-Quests
   //    'timestamp:fortnite' → Zeitpunkt des letzten Ladens
   //
-  await Hive.openBox('quest_cache');        // ← NEU: API-Quest-Cache
+  await Hive.openBox('quest_cache'); // ← NEU: API-Quest-Cache
 
-  final settings    = await AppSettingsStore.create();
+  final settings = await AppSettingsStore.create();
   final updateStore = UpdateStore();
-  final collection  = CollectionStore();
+  final collection = CollectionStore();
 
-  runApp(OrbitApp(
-    settings:    settings,
-    updateStore: updateStore,
-    collection:  collection,
-  ));
+  runApp(
+    OrbitApp(
+      settings: settings,
+      updateStore: updateStore,
+      collection: collection,
+    ),
+  );
 }
 
 class OrbitApp extends StatefulWidget {
@@ -76,15 +79,12 @@ class _OrbitAppState extends State<OrbitApp> {
       title: 'Orbit',
       debugShowCheckedModeBanner: false,
       color: const Color(0xFF07020F),
-      theme:      OrbitTheme.light(),
-      darkTheme:  OrbitTheme.dark(),
-      themeMode:  ThemeMode.dark,
+      theme: OrbitTheme.light(),
+      darkTheme: OrbitTheme.dark(),
+      themeMode: ThemeMode.dark,
 
-      locale:             widget.settings.locale,
-      supportedLocales: const [
-        Locale('de'),
-        Locale('en'),
-      ],
+      locale: widget.settings.locale,
+      supportedLocales: const [Locale('de'), Locale('en')],
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -93,9 +93,9 @@ class _OrbitAppState extends State<OrbitApp> {
       ],
 
       home: GameSelectScreen(
-        settings:    widget.settings,
+        settings: widget.settings,
         updateStore: widget.updateStore,
-        collection:  widget.collection,
+        collection: widget.collection,
       ),
     );
   }

@@ -1,40 +1,40 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../config/api_keys.dart';
 
 /// Schwierigkeitsgrad eines Songs pro Instrument (0 = nicht verfügbar, 1–7 Striche)
 class SongDifficulty {
-  final int vocals;      // Gesang
-  final int guitar;      // Lead-Gitarre
-  final int bass;        // Bass
-  final int drums;       // Schlagzeug
+  final int vocals; // Gesang
+  final int guitar; // Lead-Gitarre
+  final int bass; // Bass
+  final int drums; // Schlagzeug
   final int plasticGuitar; // Pro-Gitarre (falls vorhanden)
-  final int plasticBass;   // Pro-Bass
-  final int plasticDrums;  // Pro-Schlagzeug
+  final int plasticBass; // Pro-Bass
+  final int plasticDrums; // Pro-Schlagzeug
 
   const SongDifficulty({
-    this.vocals      = 0,
-    this.guitar      = 0,
-    this.bass        = 0,
-    this.drums       = 0,
+    this.vocals = 0,
+    this.guitar = 0,
+    this.bass = 0,
+    this.drums = 0,
     this.plasticGuitar = 0,
-    this.plasticBass   = 0,
-    this.plasticDrums  = 0,
+    this.plasticBass = 0,
+    this.plasticDrums = 0,
   });
 
   /// Gibt true zurück wenn mindestens ein Instrument vorhanden ist
-  bool get hasAny =>
-      vocals > 0 || guitar > 0 || bass > 0 || drums > 0;
+  bool get hasAny => vocals > 0 || guitar > 0 || bass > 0 || drums > 0;
 
   factory SongDifficulty.fromJson(Map<String, dynamic> j) {
     int pick(String key) => (j[key] as num?)?.toInt() ?? 0;
     return SongDifficulty(
-      vocals:        pick('vocals'),
-      guitar:        pick('guitar'),
-      bass:          pick('bass'),
-      drums:         pick('drums'),
+      vocals: pick('vocals'),
+      guitar: pick('guitar'),
+      bass: pick('bass'),
+      drums: pick('drums'),
       plasticGuitar: pick('plasticGuitar'),
-      plasticBass:   pick('plasticBass'),
-      plasticDrums:  pick('plasticDrums'),
+      plasticBass: pick('plasticBass'),
+      plasticDrums: pick('plasticDrums'),
     );
   }
 }
@@ -44,7 +44,7 @@ class TrackApiData {
   final String id;
   final String name;
   final String artist;
-  final String albumArt;   // Albumcover-URL
+  final String albumArt; // Albumcover-URL
   final SongDifficulty difficulty;
   final int durationSeconds;
 
@@ -60,10 +60,11 @@ class TrackApiData {
   factory TrackApiData.fromJson(Map<String, dynamic> j) {
     // Bilder
     final images = j['images'] as Map<String, dynamic>?;
-    final albumArt = images?['album']     as String?
-                  ?? images?['icon']      as String?
-                  ?? images?['featured']  as String?
-                  ?? '';
+    final albumArt =
+        images?['album'] as String? ??
+        images?['icon'] as String? ??
+        images?['featured'] as String? ??
+        '';
 
     // Difficulty
     final diffRaw = j['difficulty'];
@@ -72,11 +73,11 @@ class TrackApiData {
         : const SongDifficulty();
 
     return TrackApiData(
-      id:              (j['id']     as String?) ?? '',
-      name:            (j['name']   as String?) ?? '',
-      artist:          (j['artist'] as String?) ?? '',
-      albumArt:        albumArt,
-      difficulty:      diff,
+      id: (j['id'] as String?) ?? '',
+      name: (j['name'] as String?) ?? '',
+      artist: (j['artist'] as String?) ?? '',
+      albumArt: albumArt,
+      difficulty: diff,
       durationSeconds: (j['duration'] as num?)?.toInt() ?? 0,
     );
   }
@@ -85,7 +86,7 @@ class TrackApiData {
 /// Singleton-Service: lädt /v2/cosmetics/tracks einmalig und cached
 class FestivalApiService {
   static const _url = 'https://fortnite-api.com/v2/cosmetics/tracks';
-  static const _apiKey = '135f01ed-1a5e-40df-b8b6-4b2c97f47151';
+  static const _apiKey = ApiKeys.fortniteApiCom;
 
   static FestivalApiService? _instance;
   static FestivalApiService get instance =>
@@ -117,19 +118,21 @@ class FestivalApiService {
     }
     _loading = true;
     try {
-      final res = await http.get(
-        Uri.parse(_url),
-        headers: {
-          'Authorization': _apiKey,
-          'Accept': 'application/json',
-          'User-Agent': 'Orbit/1.0',
-        },
-      ).timeout(const Duration(seconds: 30));
+      final res = await http
+          .get(
+            Uri.parse(_url),
+            headers: {
+              'Authorization': _apiKey,
+              'Accept': 'application/json',
+              'User-Agent': 'Orbit/1.0',
+            },
+          )
+          .timeout(const Duration(seconds: 30));
 
       if (res.statusCode == 200) {
-        final json   = jsonDecode(res.body) as Map<String, dynamic>;
-        final data   = json['data'];
-        final list   = data is List ? data : <dynamic>[];
+        final json = jsonDecode(res.body) as Map<String, dynamic>;
+        final data = json['data'];
+        final list = data is List ? data : <dynamic>[];
 
         final map = <String, TrackApiData>{};
         for (final raw in list) {

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import '../config/api_keys.dart';
 
 class ShopEntry {
   final int finalPrice;
@@ -53,12 +54,12 @@ class ShopEntry {
     if (bundle is Map) bundleName = bundle['name'] as String?;
 
     final rawBr = j['brItems'];
-    final brItems =
-        rawBr is List ? rawBr.whereType<Map>().toList() : <Map>[];
+    final brItems = rawBr is List ? rawBr.whereType<Map>().toList() : <Map>[];
 
     final rawTracks = j['tracks'];
-    final tracks =
-        rawTracks is List ? rawTracks.whereType<Map>().toList() : <Map>[];
+    final tracks = rawTracks is List
+        ? rawTracks.whereType<Map>().toList()
+        : <Map>[];
 
     String displayName = '';
     if (bundleName != null && bundleName.isNotEmpty) {
@@ -73,9 +74,10 @@ class ShopEntry {
     }
     if (displayName.isEmpty) {
       final dev = (j['devName'] as String?) ?? '';
-      final match =
-          RegExp(r'\[VIRTUAL\]\d+\s*x\s*(.+?)\s+for\s+\d+', caseSensitive: false)
-              .firstMatch(dev);
+      final match = RegExp(
+        r'\[VIRTUAL\]\d+\s*x\s*(.+?)\s+for\s+\d+',
+        caseSensitive: false,
+      ).firstMatch(dev);
       displayName = match != null ? match.group(1)! : dev;
     }
 
@@ -91,7 +93,8 @@ class ShopEntry {
     if (imageUrl == null && brItems.isNotEmpty) {
       final imgs = brItems.first['images'];
       if (imgs is Map) {
-        imageUrl = (imgs['featured'] as String?) ??
+        imageUrl =
+            (imgs['featured'] as String?) ??
             (imgs['icon'] as String?) ??
             (imgs['smallIcon'] as String?);
       }
@@ -109,7 +112,9 @@ class ShopEntry {
       final type = brItems.first['type'];
       if (type is Map) {
         typeDisplay =
-            (type['displayValue'] as String?) ?? (type['value'] as String?) ?? '';
+            (type['displayValue'] as String?) ??
+            (type['value'] as String?) ??
+            '';
         typeValue = (type['value'] as String?) ?? '';
       }
     }
@@ -132,7 +137,8 @@ class ShopEntry {
 
     return ShopEntry(
       finalPrice: _toInt(j['finalPrice']) ?? _toInt(j['price']) ?? 0,
-      regularPrice: _toInt(j['regularPrice']) ??
+      regularPrice:
+          _toInt(j['regularPrice']) ??
           _toInt(j['finalPrice']) ??
           _toInt(j['price']) ??
           0,
@@ -177,7 +183,7 @@ class ShopData {
 class ShopService extends ChangeNotifier {
   static const _shopUrl = 'https://fortnite-api.com/v2/shop';
   static const Map<String, String> _headers = {
-    'Authorization': '135f01ed-1a5e-40df-b8b6-4b2c97f47151',
+    'Authorization': ApiKeys.fortniteApiCom,
     'Accept': 'application/json',
     'User-Agent': 'Orbit/1.0',
   };
