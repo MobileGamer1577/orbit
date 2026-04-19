@@ -161,8 +161,21 @@ class FortniteOAuthService {
       if (result == null)
         return OAuthPollResult.error('Token konnte nicht gelesen werden');
       return OAuthPollResult.success(result);
+    } on http.ClientException catch (e) {
+      // "Software caused connection abort" tritt auf wenn Android die
+      // HTTP-Verbindung abbricht sobald der User vom Browser zurueckkommt.
+      // Das ist kein echter Fehler — einfach weiterpollen.
+      dev.log('⚠️ poll ClientException (ignoriert): $e', name: 'OrbitOAuth');
+      return OAuthPollResult.pending();
+    } on TimeoutException catch (_) {
+      dev.log('⚠️ poll Timeout (ignoriert)', name: 'OrbitOAuth');
+      return OAuthPollResult.pending();
     } catch (e) {
-      return OAuthPollResult.error('Netzwerkfehler: $e');
+      // Alle anderen Exceptions (SocketException, etc.) ebenfalls pending —
+      // der Login-Flow soll nicht wegen eines kurzen Verbindungsabbruchs
+      // beim App-Wechsel abbrechen.
+      dev.log('⚠️ poll Exception (ignoriert): $e', name: 'OrbitOAuth');
+      return OAuthPollResult.pending();
     }
   }
 
