@@ -55,12 +55,12 @@ class AccountStore {
   }
 
   /// true wenn Token vorhanden UND noch mind. 5 Minuten gültig
+  /// true wenn ein Token vorhanden ist.
+  /// Wir prüfen Ablauf NICHT vorab — stattdessen wird bei HTTP 401
+  /// automatisch ein stiller Re-Login gemacht (refresh-device).
   static bool get isFortniteTokenValid {
-    final token  = fortniteToken;
-    final expiry = fortniteTokenExpiry;
-    if (token == null || token.isEmpty) return false;
-    if (expiry == null) return true;
-    return expiry.isAfter(DateTime.now().add(const Duration(minutes: 5)));
+    final token = fortniteToken;
+    return token != null && token.isNotEmpty;
   }
 
   /// true wenn stiller Re-Login möglich (deviceId + secret vorhanden)
