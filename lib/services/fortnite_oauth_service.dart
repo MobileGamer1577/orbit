@@ -10,35 +10,10 @@ import '../storage/account_store.dart';
 //  🔑 FORTNITE OAUTH SERVICE
 //  Datei: lib/services/fortnite_oauth_service.dart
 //
-//  ── DEVICE CODE FLOW (der richtige Flow für mobile Apps) ──
-//
-//  1. GET  /api/v1/oauth/get-token
-//     → Gibt flowId + eine Epic-Login-URL zurück
-//     → Kein redirectUri, kein Code-Kopieren nötig
-//
-//  2. App öffnet URL im Browser, User meldet sich an
-//
-//  3. App pollt automatisch alle 3s:
-//     POST /api/v1/oauth/complete  { flowId }
-//     → 202 = noch ausstehend (weiter pollen)
-//     → 200 = fertig! Token + DeviceAuth zurück
-//
-//  4. Speichern: token, accountId, deviceId, secret
-//
-//  5. Stiller Re-Login (kein Browser nötig):
-//     POST /api/v1/oauth/refresh-device { accountId, deviceId, secret }
-//
-//  ── WARUM NICHT authorize-url? ────────────────────────────
-//
-//  authorize-url braucht eine redirectUri die die App abfangen
-//  muss (Deep Link). Der Device Code Flow ist viel einfacher:
-//  kein manuelles Code-Kopieren, kein Deep Link nötig,
-//  automatisches Polling im Hintergrund.
-//
 // ══════════════════════════════════════════════════════════════
 
 class FortniteOAuthService {
-  static const String _base    = 'https://prod.api-fortnite.com';
+  static const String _base = 'https://prod.api-fortnite.com';
   static const Duration _timeout = Duration(seconds: 20);
 
   static final FortniteOAuthService instance = FortniteOAuthService._();
@@ -46,73 +21,116 @@ class FortniteOAuthService {
 
   // ──────────────────────────────────────────────────────────
   //  SCHRITT 1: Device Flow starten
-  //
-  //  Gibt flowId + die URL zurück die der Nutzer öffnen soll.
-  //  Danach: pollCompletion() aufrufen.
   // ──────────────────────────────────────────────────────────
 
   Future<DeviceFlowStart?> startDeviceFlow() async {
     dev.log('🔑 Starte Device Code Flow…', name: 'OrbitOAuth');
     try {
       final res = await http
-          .get(
-            Uri.parse('$_base/api/v1/oauth/get-token'),
-            headers: _headers(),
-          )
+          .get(Uri.parse('$_base/api/v1/oauth/get-token'), headers: _headers())
           .timeout(_timeout);
 
-      dev.log('🔑 get-token → HTTP ${res.statusCode}\n${res.body}',
-          name: 'OrbitOAuth');
+      // ── IMMER den vollen Body loggen ──────────────────────
+      dev.log(
+        '🔑 get-token → HTTP ${res.statusCode}\n'
+        'Body: ${res.body}',
+        name: 'OrbitOAuth',
+      );
 
       if (res.statusCode != 200) {
-        dev.log('❌ get-token Fehler: HTTP ${res.statusCode}', name: 'OrbitOAuth');
-        return null;
+        dev.log(
+          '❌ get-token Fehler: HTTP ${res.statusCode}',
+          name: 'OrbitOAuth',
+        );
+        // Fehlermeldung mit echtem Status-Code zurückgeben
+        return DeviceFlowStart.error('HTTP ${res.statusCode}: ${res.body}');
       }
 
-      final json = jsonDecode(res.body);
-      if (json is! Map<String, dynamic>) return null;
+      final decoded = jsonDecode(res.body);
 
-      // flowId + url aus der Antwort lesen
-      final flowId = json['flowId']  as String? ??
-                     json['flow_id'] as String? ??
-                     json['id']      as String?;
+      // Manchmal ist alles in 'data' gewrappt
+      final json =
+          (decoded is Map<String, dynamic> && decoded.containsKey('data'))
+          ? (decoded['data'] as Map<String, dynamic>? ?? decoded)
+          : (decoded is Map<String, dynamic> ? decoded : null);
 
-      final url = json['url']            as String? ??
-                  json['verificationUrl'] as String? ??
-                  json['verification_url'] as String? ??
-                  json['loginUrl']        as String? ??
-                  json['login_url']       as String?;
-
-      // Manchmal steckt alles in 'data'
-      if (flowId == null || url == null) {
-        final data = json['data'] as Map<String, dynamic>?;
-        if (data != null) {
-          final fId = data['flowId']  as String? ?? data['flow_id'] as String?;
-          final fUrl = data['url']    as String? ?? data['verificationUrl'] as String?;
-          if (fId != null && fUrl != null) {
-            dev.log('✅ Device Flow gestartet (data): flowId=$fId', name: 'OrbitOAuth');
-            return DeviceFlowStart(flowId: fId, url: fUrl);
-          }
-        }
-        dev.log('❌ Konnte flowId/url nicht lesen. Keys: ${json.keys}',
-            name: 'OrbitOAuth');
-        return null;
+      if (json == null) {
+        dev.log('❌ Unerwartetes JSON-Format: $decoded', name: 'OrbitOAuth');
+        return DeviceFlowStart.error('Unerwartetes Antwort-Format');
       }
 
-      dev.log('✅ Device Flow gestartet: flowId=$flowId', name: 'OrbitOAuth');
+      dev.log(
+        '🔍 JSON-Keys in Antwort: ${json.keys.toList()}',
+        name: 'OrbitOAuth',
+      );
+
+      // ── flowId: viele mögliche Feldnamen ─────────────────
+      final flowId = _findString(json, [
+        'flowId',
+        'flow_id',
+        'id',
+        'token',
+        'code',
+        'sessionId',
+        'session_id',
+      ]);
+
+      // ── url: viele mögliche Feldnamen ───────────────────
+      final url =
+          _findString(json, [
+            'url',
+            'verificationUrl',
+            'verification_url',
+            'loginUrl',
+            'login_url',
+            'authUrl',
+            'auth_url',
+            'redirectUrl',
+            'redirect_url',
+            'link',
+            'href',
+            'uri',
+          ]) ??
+          _findUrlAnywhere(json);
+
+      if (flowId == null) {
+        dev.log(
+          '❌ Kein flowId gefunden. Alle Felder:\n${_prettyKeys(json)}',
+          name: 'OrbitOAuth',
+        );
+        return DeviceFlowStart.error(
+          'Feld "flowId" nicht in API-Antwort gefunden.\n'
+          'Felder: ${json.keys.take(8).join(', ')}',
+        );
+      }
+
+      if (url == null) {
+        dev.log(
+          '❌ Keine URL gefunden. Alle Felder:\n${_prettyKeys(json)}',
+          name: 'OrbitOAuth',
+        );
+        return DeviceFlowStart.error(
+          'Feld "url" nicht in API-Antwort gefunden.\n'
+          'Felder: ${json.keys.take(8).join(', ')}',
+        );
+      }
+
+      dev.log(
+        '✅ Device Flow gestartet: flowId=$flowId url=$url',
+        name: 'OrbitOAuth',
+      );
       return DeviceFlowStart(flowId: flowId, url: url);
-
+    } on http.ClientException catch (e) {
+      dev.log('❌ Netzwerkfehler: $e', name: 'OrbitOAuth');
+      return DeviceFlowStart.error('Netzwerkfehler: $e');
     } catch (e) {
       dev.log('❌ startDeviceFlow Fehler: $e', name: 'OrbitOAuth');
-      return null;
+      return DeviceFlowStart.error('Fehler: $e');
     }
   }
 
   // ──────────────────────────────────────────────────────────
   //  SCHRITT 2: Auf Nutzer-Login warten (Polling)
-  //
-  //  Gibt null zurück wenn noch ausstehend (202).
-  //  Gibt OAuthResult zurück wenn fertig (200) oder Fehler.
   // ──────────────────────────────────────────────────────────
 
   Future<OAuthPollResult> pollCompletion(String flowId) async {
@@ -120,36 +138,29 @@ class FortniteOAuthService {
       final res = await http
           .post(
             Uri.parse('$_base/api/v1/oauth/complete'),
-            headers: {
-              ..._headers(),
-              'Content-Type': 'application/json',
-            },
+            headers: {..._headers(), 'Content-Type': 'application/json'},
             body: jsonEncode({'flowId': flowId}),
           )
           .timeout(_timeout);
 
       dev.log('🔄 poll complete → HTTP ${res.statusCode}', name: 'OrbitOAuth');
 
-      if (res.statusCode == 202) {
-        // Noch ausstehend — weiter pollen
-        return OAuthPollResult.pending();
-      }
-
-      if (res.statusCode == 429) {
-        // Rate limited — kurze Pause, dann weiter
-        return OAuthPollResult.rateLimited();
-      }
+      if (res.statusCode == 202) return OAuthPollResult.pending();
+      if (res.statusCode == 429) return OAuthPollResult.rateLimited();
 
       if (res.statusCode != 200) {
-        dev.log('❌ poll → HTTP ${res.statusCode}\n${res.body}', name: 'OrbitOAuth');
+        dev.log(
+          '❌ poll → HTTP ${res.statusCode}\n${res.body}',
+          name: 'OrbitOAuth',
+        );
         return OAuthPollResult.error('HTTP ${res.statusCode}');
       }
 
       dev.log('✅ poll → Login erfolgreich!\n${res.body}', name: 'OrbitOAuth');
       final result = _parseTokenResponse(res.body);
-      if (result == null) return OAuthPollResult.error('Token konnte nicht gelesen werden');
+      if (result == null)
+        return OAuthPollResult.error('Token konnte nicht gelesen werden');
       return OAuthPollResult.success(result);
-
     } catch (e) {
       return OAuthPollResult.error('Netzwerkfehler: $e');
     }
@@ -157,18 +168,18 @@ class FortniteOAuthService {
 
   // ──────────────────────────────────────────────────────────
   //  Stiller Re-Login (kein Browser nötig)
-  //
-  //  Nutzt deviceId + secret aus AccountStore.
-  //  Gibt true zurück wenn Token erfolgreich erneuert.
   // ──────────────────────────────────────────────────────────
 
   Future<bool> refreshDevice() async {
     final accountId = AccountStore.fortniteAccountId;
-    final deviceId  = AccountStore.fortniteDeviceId;
-    final secret    = AccountStore.fortniteDeviceSecret;
+    final deviceId = AccountStore.fortniteDeviceId;
+    final secret = AccountStore.fortniteDeviceSecret;
 
     if (accountId == null || deviceId == null || secret == null) {
-      dev.log('❌ refreshDevice: keine Device-Daten gespeichert', name: 'OrbitOAuth');
+      dev.log(
+        '❌ refreshDevice: keine Device-Daten gespeichert',
+        name: 'OrbitOAuth',
+      );
       return false;
     }
 
@@ -178,14 +189,11 @@ class FortniteOAuthService {
       final res = await http
           .post(
             Uri.parse('$_base/api/v1/oauth/refresh-device'),
-            headers: {
-              ..._headers(),
-              'Content-Type': 'application/json',
-            },
+            headers: {..._headers(), 'Content-Type': 'application/json'},
             body: jsonEncode({
               'accountId': accountId,
-              'deviceId':  deviceId,
-              'secret':    secret,
+              'deviceId': deviceId,
+              'secret': secret,
             }),
           )
           .timeout(_timeout);
@@ -197,14 +205,13 @@ class FortniteOAuthService {
       final result = _parseTokenResponse(res.body);
       if (result?.token != null) {
         await AccountStore.updateToken(
-          token:       result!.token!,
+          token: result!.token!,
           tokenExpiry: result.tokenExpiry,
         );
         dev.log('✅ Token still erneuert', name: 'OrbitOAuth');
         return true;
       }
       return false;
-
     } catch (e) {
       dev.log('❌ refreshDevice Fehler: $e', name: 'OrbitOAuth');
       return false;
@@ -213,53 +220,46 @@ class FortniteOAuthService {
 
   // ──────────────────────────────────────────────────────────
   //  Token-Response parsen
-  //  (wird aus pollCompletion + refreshDevice genutzt)
   // ──────────────────────────────────────────────────────────
 
   OAuthResult? _parseTokenResponse(String body) {
     try {
       var json = jsonDecode(body);
-
-      // Manchmal steckt alles in 'data'
       if (json is Map<String, dynamic> && json.containsKey('data')) {
         json = json['data'] ?? json;
       }
-
       if (json is! Map<String, dynamic>) return null;
 
-      // Token
-      final token = json['token']        as String? ??
-                    json['access_token'] as String? ??
-                    json['accessToken']  as String?;
+      final token = _findString(json, ['token', 'access_token', 'accessToken']);
 
-      // Account-ID
-      final accountId = json['accountId']  as String? ??
-                        json['account_id'] as String? ??
-                        json['id']         as String?;
+      final accountId = _findString(json, ['accountId', 'account_id', 'id']);
+      final displayName = _findString(json, [
+        'displayName',
+        'display_name',
+        'username',
+        'name',
+      ]);
 
-      // Anzeigename
-      final displayName = json['displayName']  as String? ??
-                          json['display_name'] as String? ??
-                          json['username']     as String?;
-
-      // DeviceAuth für stillen Re-Login
       String? deviceId;
       String? deviceSecret;
       final deviceAuth = json['deviceAuth'] as Map<String, dynamic>?;
       if (deviceAuth != null) {
-        deviceId     = deviceAuth['deviceId']  as String? ?? deviceAuth['device_id'] as String?;
-        deviceSecret = deviceAuth['secret']    as String?;
+        deviceId =
+            deviceAuth['deviceId'] as String? ??
+            deviceAuth['device_id'] as String?;
+        deviceSecret = deviceAuth['secret'] as String?;
       } else {
-        // Manchmal direkt im Root
-        deviceId     = json['deviceId']  as String? ?? json['device_id'] as String?;
-        deviceSecret = json['secret']    as String?;
+        deviceId = json['deviceId'] as String? ?? json['device_id'] as String?;
+        deviceSecret = json['secret'] as String?;
       }
 
-      // Ablaufzeit
       DateTime? expiry;
-      final expiresAt = json['expiresAt']  as String? ?? json['expires_at'] as String?;
+      final expiresAt =
+          json['expiresAt'] as String? ?? json['expires_at'] as String?;
       if (expiresAt != null) {
-        try { expiry = DateTime.parse(expiresAt); } catch (_) {}
+        try {
+          expiry = DateTime.parse(expiresAt);
+        } catch (_) {}
       }
       final expiresIn = json['expiresIn'] as int? ?? json['expires_in'] as int?;
       if (expiry == null && expiresIn != null) {
@@ -267,30 +267,62 @@ class FortniteOAuthService {
       }
 
       if (token == null || token.isEmpty) {
-        dev.log('❌ Kein Token in Antwort. Keys: ${json.keys}', name: 'OrbitOAuth');
+        dev.log(
+          '❌ Kein Token in Antwort. Keys: ${json.keys}',
+          name: 'OrbitOAuth',
+        );
         return null;
       }
 
       return OAuthResult(
-        token:        token,
-        accountId:    accountId,
-        displayName:  displayName,
-        tokenExpiry:  expiry,
-        deviceId:     deviceId,
+        token: token,
+        accountId: accountId,
+        displayName: displayName,
+        tokenExpiry: expiry,
+        deviceId: deviceId,
         deviceSecret: deviceSecret,
       );
-
     } catch (e) {
       dev.log('❌ _parseTokenResponse Fehler: $e', name: 'OrbitOAuth');
       return null;
     }
   }
 
+  // ──────────────────────────────────────────────────────────
+  //  Hilfsmethoden
+  // ──────────────────────────────────────────────────────────
+
+  /// Sucht den ersten nicht-leeren String-Wert für die gegebenen Keys.
+  String? _findString(Map<String, dynamic> json, List<String> keys) {
+    for (final k in keys) {
+      final v = json[k];
+      if (v is String && v.isNotEmpty) return v;
+    }
+    return null;
+  }
+
+  /// Sucht irgendwo im JSON nach einem String-Wert der wie eine URL aussieht.
+  String? _findUrlAnywhere(Map<String, dynamic> json) {
+    for (final v in json.values) {
+      if (v is String &&
+          (v.startsWith('http://') || v.startsWith('https://'))) {
+        return v;
+      }
+    }
+    return null;
+  }
+
+  String _prettyKeys(Map<String, dynamic> json) {
+    return json.entries
+        .map((e) => '  "${e.key}": ${e.value.runtimeType}')
+        .join('\n');
+  }
+
   Map<String, String> _headers() => {
     'Authorization': 'Bearer ${ApiKeys.apiFortnite}',
-    'X-Api-Key':     ApiKeys.apiFortnite,
-    'api-key':       ApiKeys.apiFortnite,
-    'Accept':        'application/json',
+    'X-Api-Key': ApiKeys.apiFortnite,
+    'api-key': ApiKeys.apiFortnite,
+    'Accept': 'application/json',
   };
 }
 
@@ -299,22 +331,38 @@ class FortniteOAuthService {
 // ══════════════════════════════════════════════════════════════
 
 class DeviceFlowStart {
-  final String flowId;
-  final String url;
-  const DeviceFlowStart({required this.flowId, required this.url});
+  final String? flowId;
+  final String? url;
+  final String? errorDetails; // null = kein Fehler
+
+  const DeviceFlowStart({
+    required this.flowId,
+    required this.url,
+    this.errorDetails,
+  });
+
+  /// Erstellt ein Fehler-Objekt mit Diagnosetext
+  factory DeviceFlowStart.error(String details) =>
+      DeviceFlowStart(flowId: null, url: null, errorDetails: details);
+
+  bool get hasError => errorDetails != null;
 }
 
 class OAuthResult {
-  final String?   token;
-  final String?   accountId;
-  final String?   displayName;
+  final String? token;
+  final String? accountId;
+  final String? displayName;
   final DateTime? tokenExpiry;
-  final String?   deviceId;
-  final String?   deviceSecret;
+  final String? deviceId;
+  final String? deviceSecret;
 
   const OAuthResult({
-    this.token, this.accountId, this.displayName,
-    this.tokenExpiry, this.deviceId, this.deviceSecret,
+    this.token,
+    this.accountId,
+    this.displayName,
+    this.tokenExpiry,
+    this.deviceId,
+    this.deviceSecret,
   });
 }
 
@@ -323,17 +371,25 @@ enum _PollStatus { pending, success, error, rateLimited }
 class OAuthPollResult {
   final _PollStatus _status;
   final OAuthResult? result;
-  final String?      errorMessage;
+  final String? errorMessage;
 
-  OAuthPollResult._({required _PollStatus status, this.result, this.errorMessage})
-      : _status = status;
+  OAuthPollResult._({
+    required _PollStatus status,
+    this.result,
+    this.errorMessage,
+  }) : _status = status;
 
-  factory OAuthPollResult.pending()              => OAuthPollResult._(status: _PollStatus.pending);
-  factory OAuthPollResult.rateLimited()          => OAuthPollResult._(status: _PollStatus.rateLimited);
-  factory OAuthPollResult.success(OAuthResult r) => OAuthPollResult._(status: _PollStatus.success, result: r);
-  factory OAuthPollResult.error(String msg)      => OAuthPollResult._(status: _PollStatus.error, errorMessage: msg);
+  factory OAuthPollResult.pending() =>
+      OAuthPollResult._(status: _PollStatus.pending);
+  factory OAuthPollResult.rateLimited() =>
+      OAuthPollResult._(status: _PollStatus.rateLimited);
+  factory OAuthPollResult.success(OAuthResult r) =>
+      OAuthPollResult._(status: _PollStatus.success, result: r);
+  factory OAuthPollResult.error(String msg) =>
+      OAuthPollResult._(status: _PollStatus.error, errorMessage: msg);
 
-  bool get isPending     => _status == _PollStatus.pending || _status == _PollStatus.rateLimited;
-  bool get isSuccess     => _status == _PollStatus.success;
-  bool get isError       => _status == _PollStatus.error;
+  bool get isPending =>
+      _status == _PollStatus.pending || _status == _PollStatus.rateLimited;
+  bool get isSuccess => _status == _PollStatus.success;
+  bool get isError => _status == _PollStatus.error;
 }

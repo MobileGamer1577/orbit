@@ -58,8 +58,10 @@ class _ConnectionsScreenState extends State<ConnectionsScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back,
-                          color: Colors.white.withOpacity(0.90)),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white.withOpacity(0.90),
+                      ),
                     ),
                     const SizedBox(width: 4),
                     const Expanded(
@@ -69,14 +71,17 @@ class _ConnectionsScreenState extends State<ConnectionsScreen> {
                           Text(
                             'Verbindungen',
                             style: TextStyle(
-                              fontSize: 26, fontWeight: FontWeight.w900,
-                              color: Colors.white, letterSpacing: -0.3,
+                              fontSize: 26,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                              letterSpacing: -0.3,
                             ),
                           ),
                           Text(
                             'Verbinde deine Spiel-Accounts',
                             style: TextStyle(
-                              fontSize: 13, color: Colors.white54,
+                              fontSize: 13,
+                              color: Colors.white54,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -130,13 +135,13 @@ class _FortniteCardState extends State<_FortniteCard> {
   static const _accent = Color(0xFF00D4FF);
 
   // Status: 'idle' | 'starting' | 'waiting' | 'done'
-  String  _step     = 'idle';
+  String _step = 'idle';
   String? _errorMsg;
   String? _flowId;
   String? _loginUrl;
 
   Timer? _pollTimer;
-  int    _pollCount = 0;
+  int _pollCount = 0;
   static const int _maxPolls = 120; // 120 × 3s = 6 Minuten Timeout
 
   @override
@@ -148,30 +153,38 @@ class _FortniteCardState extends State<_FortniteCard> {
   // ── LOGIN STARTEN ─────────────────────────────────────────
 
   Future<void> _startLogin() async {
-    setState(() { _step = 'starting'; _errorMsg = null; });
+    setState(() {
+      _step = 'starting';
+      _errorMsg = null;
+    });
 
     final flow = await FortniteOAuthService.instance.startDeviceFlow();
 
     if (!mounted) return;
 
-    if (flow == null) {
+    if (flow == null || flow.hasError) {
       setState(() {
-        _step     = 'idle';
-        _errorMsg = 'Verbindung zur API fehlgeschlagen.\n'
-                    'Stelle sicher, dass der API-Key in api_keys.dart korrekt ist.';
+        _step = 'idle';
+        _errorMsg = flow?.errorDetails ?? 'Verbindung zur API fehlgeschlagen.';
       });
       return;
     }
 
-    _flowId   = flow.flowId;
+    _flowId = flow.flowId;
     _loginUrl = flow.url;
 
     // Browser öffnen
     try {
-      await launchUrl(Uri.parse(flow.url), mode: LaunchMode.externalApplication);
+      await launchUrl(
+        Uri.parse(flow.url!),
+        mode: LaunchMode.externalApplication,
+      );
     } catch (_) {}
 
-    setState(() { _step = 'waiting'; _pollCount = 0; });
+    setState(() {
+      _step = 'waiting';
+      _pollCount = 0;
+    });
     _startPolling();
   }
 
@@ -180,16 +193,19 @@ class _FortniteCardState extends State<_FortniteCard> {
   void _startPolling() {
     _pollTimer?.cancel();
     _pollTimer = Timer.periodic(const Duration(seconds: 3), (_) async {
-      if (!mounted) { _pollTimer?.cancel(); return; }
+      if (!mounted) {
+        _pollTimer?.cancel();
+        return;
+      }
 
       _pollCount++;
       if (_pollCount > _maxPolls) {
         _pollTimer?.cancel();
         if (mounted) {
           setState(() {
-            _step     = 'idle';
+            _step = 'idle';
             _errorMsg = 'Zeitüberschreitung. Bitte erneut versuchen.';
-            _flowId   = null;
+            _flowId = null;
             _loginUrl = null;
           });
         }
@@ -206,35 +222,39 @@ class _FortniteCardState extends State<_FortniteCard> {
 
       if (r.isError) {
         setState(() {
-          _step     = 'idle';
+          _step = 'idle';
           _errorMsg = r.errorMessage ?? 'Unbekannter Fehler';
-          _flowId   = null;
+          _flowId = null;
         });
         return;
       }
 
       // ✅ Erfolgreich eingeloggt!
       final result = r.result!;
-      final accountId   = result.accountId   ?? 'unknown';
+      final accountId = result.accountId ?? 'unknown';
       final displayName = result.displayName ?? 'Fortnite-Account';
 
       await AccountStore.saveFortnite(
-        accountId:    accountId,
-        displayName:  displayName,
-        token:        result.token!,
-        tokenExpiry:  result.tokenExpiry,
-        deviceId:     result.deviceId,
+        accountId: accountId,
+        displayName: displayName,
+        token: result.token!,
+        tokenExpiry: result.tokenExpiry,
+        deviceId: result.deviceId,
         deviceSecret: result.deviceSecret,
       );
 
-      setState(() { _step = 'done'; });
+      setState(() {
+        _step = 'done';
+      });
       widget.onChanged();
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('✅ Mit $displayName verbunden!'),
-          behavior: SnackBarBehavior.floating,
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('✅ Mit $displayName verbunden!'),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
       }
     });
   }
@@ -244,9 +264,9 @@ class _FortniteCardState extends State<_FortniteCard> {
   void _cancelLogin() {
     _pollTimer?.cancel();
     setState(() {
-      _step     = 'idle';
+      _step = 'idle';
       _errorMsg = null;
-      _flowId   = null;
+      _flowId = null;
       _loginUrl = null;
     });
   }
@@ -256,8 +276,10 @@ class _FortniteCardState extends State<_FortniteCard> {
   Future<void> _reopenBrowser() async {
     if (_loginUrl == null) return;
     try {
-      await launchUrl(Uri.parse(_loginUrl!),
-          mode: LaunchMode.externalApplication);
+      await launchUrl(
+        Uri.parse(_loginUrl!),
+        mode: LaunchMode.externalApplication,
+      );
     } catch (_) {}
   }
 
@@ -268,8 +290,10 @@ class _FortniteCardState extends State<_FortniteCard> {
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: const Color(0xFF1A1026),
-        title: const Text('Verbindung trennen?',
-            style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Verbindung trennen?',
+          style: TextStyle(color: Colors.white),
+        ),
         content: Text(
           'Die Fortnite-Verbindung wird getrennt. '
           'Gespeicherte Quest-Fortschritte bleiben erhalten.',
@@ -290,7 +314,10 @@ class _FortniteCardState extends State<_FortniteCard> {
     );
     if (ok != true) return;
     await AccountStore.clearFortnite();
-    setState(() { _step = 'idle'; _errorMsg = null; });
+    setState(() {
+      _step = 'idle';
+      _errorMsg = null;
+    });
     widget.onChanged();
   }
 
@@ -311,12 +338,15 @@ class _FortniteCardState extends State<_FortniteCard> {
             child: Row(
               children: [
                 Container(
-                  width: 48, height: 48,
+                  width: 48,
+                  height: 48,
                   decoration: BoxDecoration(
                     color: _accent.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(
-                        color: _accent.withOpacity(0.35), width: 1.2),
+                      color: _accent.withOpacity(0.35),
+                      width: 1.2,
+                    ),
                   ),
                   child: const Icon(Icons.bolt, color: _accent, size: 24),
                 ),
@@ -325,11 +355,14 @@ class _FortniteCardState extends State<_FortniteCard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Fortnite',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800, fontSize: 17,
-                          )),
+                      const Text(
+                        'Fortnite',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 17,
+                        ),
+                      ),
                       const SizedBox(height: 3),
                       Text(
                         isConnected
@@ -339,14 +372,14 @@ class _FortniteCardState extends State<_FortniteCard> {
                           color: isConnected
                               ? const Color(0xFF00E676)
                               : Colors.white.withOpacity(0.50),
-                          fontSize: 13, fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ],
                   ),
                 ),
-                if (isConnected)
-                  _DisconnectBtn(onTap: _disconnect),
+                if (isConnected) _DisconnectBtn(onTap: _disconnect),
               ],
             ),
           ),
@@ -371,15 +404,15 @@ class _FortniteCardState extends State<_FortniteCard> {
 
   Widget _buildLoginContent() {
     switch (_step) {
-
       // ── Idle: Start-Button ─────────────────────────────
       case 'idle':
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _InfoBox(
-              text: 'Du wirst zur Epic Games Anmeldeseite weitergeleitet. '
-                    'Melde dich dort an — die App erkennt es automatisch.',
+              text:
+                  'Du wirst zur Epic Games Anmeldeseite weitergeleitet. '
+                  'Melde dich dort an — die App erkennt es automatisch.',
             ),
             const SizedBox(height: 12),
             if (_errorMsg != null) ...[
@@ -411,9 +444,13 @@ class _FortniteCardState extends State<_FortniteCard> {
             Center(
               child: TextButton(
                 onPressed: _cancelLogin,
-                child: Text('Abbrechen',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.40), fontSize: 12)),
+                child: Text(
+                  'Abbrechen',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.40),
+                    fontSize: 12,
+                  ),
+                ),
               ),
             ),
           ],
@@ -448,10 +485,14 @@ class _InfoBox extends StatelessWidget {
           const Icon(Icons.info_outline, color: Color(0xFF00D4FF), size: 16),
           const SizedBox(width: 8),
           Expanded(
-            child: Text(text,
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.70),
-                    fontSize: 13, height: 1.4)),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.70),
+                fontSize: 13,
+                height: 1.4,
+              ),
+            ),
           ),
         ],
       ),
@@ -477,13 +518,20 @@ class _WaitingBox extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.open_in_browser, color: Colors.greenAccent, size: 16),
+              const Icon(
+                Icons.open_in_browser,
+                color: Colors.greenAccent,
+                size: 16,
+              ),
               const SizedBox(width: 8),
-              Text('Browser geöffnet',
-                  style: TextStyle(
-                    color: Colors.greenAccent, fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  )),
+              Text(
+                'Browser geöffnet',
+                style: TextStyle(
+                  color: Colors.greenAccent,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -491,7 +539,10 @@ class _WaitingBox extends StatelessWidget {
             'Melde dich im Browser mit deinem Epic-Account an.\n'
             'Die App erkennt es automatisch — du musst nichts eingeben.',
             style: TextStyle(
-                color: Colors.white.withOpacity(0.65), fontSize: 13, height: 1.4),
+              color: Colors.white.withOpacity(0.65),
+              fontSize: 13,
+              height: 1.4,
+            ),
           ),
           const SizedBox(height: 10),
           GestureDetector(
@@ -500,7 +551,8 @@ class _WaitingBox extends StatelessWidget {
               'Browser nicht geöffnet? Hier tippen.',
               style: TextStyle(
                 color: const Color(0xFF00D4FF).withOpacity(0.80),
-                fontSize: 12, decoration: TextDecoration.underline,
+                fontSize: 12,
+                decoration: TextDecoration.underline,
               ),
             ),
           ),
@@ -520,15 +572,17 @@ class _PollIndicator extends StatelessWidget {
     return Row(
       children: [
         const SizedBox(
-          width: 16, height: 16,
+          width: 16,
+          height: 16,
           child: CircularProgressIndicator(
-            strokeWidth: 2, color: Color(0xFF00D4FF)),
+            strokeWidth: 2,
+            color: Color(0xFF00D4FF),
+          ),
         ),
         const SizedBox(width: 10),
         Text(
           'Warte auf Anmeldung im Browser…',
-          style: TextStyle(
-              color: Colors.white.withOpacity(0.55), fontSize: 13),
+          style: TextStyle(color: Colors.white.withOpacity(0.55), fontSize: 13),
         ),
       ],
     );
@@ -548,10 +602,11 @@ class _CenteredLoader extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const CircularProgressIndicator(
-                strokeWidth: 2, color: Color(0xFF00D4FF)),
+              strokeWidth: 2,
+              color: Color(0xFF00D4FF),
+            ),
             const SizedBox(height: 12),
-            Text(label,
-                style: TextStyle(color: Colors.white54, fontSize: 13)),
+            Text(label, style: TextStyle(color: Colors.white54, fontSize: 13)),
           ],
         ),
       ),
@@ -565,10 +620,15 @@ class _ErrorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(msg,
-        style: const TextStyle(
-            color: Colors.redAccent, fontSize: 13,
-            fontWeight: FontWeight.w500, height: 1.4));
+    return Text(
+      msg,
+      style: const TextStyle(
+        color: Colors.redAccent,
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        height: 1.4,
+      ),
+    );
   }
 }
 
@@ -577,8 +637,12 @@ class _BigButton extends StatelessWidget {
   final IconData icon;
   final Color color;
   final VoidCallback onTap;
-  const _BigButton({required this.label, required this.icon,
-      required this.color, required this.onTap});
+  const _BigButton({
+    required this.label,
+    required this.icon,
+    required this.color,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -591,12 +655,14 @@ class _BigButton extends StatelessWidget {
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12)),
+            borderRadius: BorderRadius.circular(12),
+          ),
         ),
         icon: Icon(icon, size: 18),
-        label: Text(label,
-            style: const TextStyle(
-                fontWeight: FontWeight.w800, fontSize: 15)),
+        label: Text(
+          label,
+          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+        ),
       ),
     );
   }
@@ -617,10 +683,14 @@ class _DisconnectBtn extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.red.withOpacity(0.35)),
         ),
-        child: const Text('Trennen',
-            style: TextStyle(
-                color: Colors.redAccent, fontSize: 12,
-                fontWeight: FontWeight.w700)),
+        child: const Text(
+          'Trennen',
+          style: TextStyle(
+            color: Colors.redAccent,
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
     );
   }
@@ -628,13 +698,15 @@ class _DisconnectBtn extends StatelessWidget {
 
 class _ComingSoonCard extends StatelessWidget {
   final IconData icon;
-  final Color    iconColor;
-  final String   title;
-  final String   subtitle;
+  final Color iconColor;
+  final String title;
+  final String subtitle;
 
   const _ComingSoonCard({
-    required this.icon, required this.iconColor,
-    required this.title, required this.subtitle,
+    required this.icon,
+    required this.iconColor,
+    required this.title,
+    required this.subtitle,
   });
 
   @override
@@ -645,30 +717,39 @@ class _ComingSoonCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 48, height: 48,
+              width: 48,
+              height: 48,
               decoration: BoxDecoration(
                 color: iconColor.withOpacity(0.08),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
-                    color: iconColor.withOpacity(0.15), width: 1.2),
+                  color: iconColor.withOpacity(0.15),
+                  width: 1.2,
+                ),
               ),
-              child: Icon(icon,
-                  color: iconColor.withOpacity(0.40), size: 24),
+              child: Icon(icon, color: iconColor.withOpacity(0.40), size: 24),
             ),
             const SizedBox(width: 14),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.45),
-                          fontWeight: FontWeight.w800, fontSize: 17)),
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.45),
+                      fontWeight: FontWeight.w800,
+                      fontSize: 17,
+                    ),
+                  ),
                   const SizedBox(height: 3),
-                  Text(subtitle,
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.30),
-                          fontSize: 13)),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.30),
+                      fontSize: 13,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -679,10 +760,14 @@ class _ComingSoonCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.white.withOpacity(0.10)),
               ),
-              child: Text('Bald',
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.30),
-                      fontSize: 12, fontWeight: FontWeight.w700)),
+              child: Text(
+                'Bald',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.30),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ],
         ),
