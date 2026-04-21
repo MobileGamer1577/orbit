@@ -11,138 +11,108 @@ import '../storage/account_store.dart';
 //  🌐 FORTNITE QUEST API SERVICE
 //  Datei: lib/services/fortnite_quest_api_service.dart
 //
-//  ── WARUM ES VORHER NICHT FUNKTIONIERT HAT ────────────────
+//  Endpunkt: GET /api/v3/quests/{accountId}
 //
-//  Problem 1: Falscher Endpunkt — wir nutzten /api/v3/quests
-//             aber der richtige ist /api/v2/quests/{accountId}
+//  Strategie:
+//    1. Versuch: Nur API-Key (kein x-fortnite-token)
+//    2. Versuch: API-Key + x-fortnite-token (falls 401)
+//    3. Versuch: Token erneuern via refresh-device, nochmal (falls 401)
 //
-//  Problem 2: Fehlender Header — der Endpunkt braucht zwingend
-//             "x-fortnite-token: <oauth-token>" im Request.
-//             Das ist kein API-Key, sondern ein nutzerspezifischer
-//             OAuth-Token von Epic Games.
-//
-//  ── LÖSUNG ────────────────────────────────────────────────
-//
-//  Der Nutzer loggt sich einmalig über den ConnectionsScreen ein.
-//  Das OAuth-Token wird in AccountStore gespeichert.
-//  Dieser Service liest das Token und nutzt es als Header.
-//  Bei Ablauf wird das Token automatisch erneuert.
-//
-//  ── DEBUGGING ─────────────────────────────────────────────
-//
-//  _debugMode = true → rohe API-Antwort im Logcat
-//  Android Studio → Logcat → Filter: "OrbitQuestAPI"
+//  Debugging:
+//    _debugMode = true → Logcat Filter: "OrbitQuestAPI"
 //
 // ══════════════════════════════════════════════════════════════
 
 class FortniteQuestApiService {
-  static const String _baseUrl = 'https://prod.api-fortnite.com';
+  static const String _baseUrl   = 'https://prod.api-fortnite.com';
   static const Duration _timeout = Duration(seconds: 25);
 
   /// true → rohe API-Antwort im Logcat ausgeben
   static const bool _debugMode = true;
 
-  static final FortniteQuestApiService instance = FortniteQuestApiService._();
+  static final FortniteQuestApiService instance =
+      FortniteQuestApiService._();
   FortniteQuestApiService._();
 
   // ──────────────────────────────────────────────────────────
   //  QUESTS LADEN
   //
-  //  Benötigt: AccountStore.fortniteAccountId + fortniteToken
-  //  Endpunkt: GET /api/v2/quests/{accountId}
-  //  Header:   x-fortnite-token: <token>
+  //  Endpunkt: GET /api/v3/quests/{accountId}
   // ──────────────────────────────────────────────────────────
 
   Future<QuestApiResponse> fetchQuests({String language = 'en'}) async {
+
     // 1. Kein Account verbunden?
     final accountId = AccountStore.fortniteAccountId;
     if (accountId == null || accountId.isEmpty) {
       return QuestApiResponse.error('no_account');
     }
 
-    // 2. Token prüfen & ggf. erneuern
-    final token = await _getValidToken();
-    if (token == null) {
-      return QuestApiResponse.error('token_expired');
-    }
+    // 2. Token laden (optional — wir versuchen erst ohne)
+    final token = AccountStore.fortniteToken;
 
     // 3. Request bauen
     final langCode = language == 'de' ? 'de-DE' : 'en-US';
-    final uri = Uri.parse(
-      '$_baseUrl/api/v2/quests/$accountId',
-    ).replace(queryParameters: {'language': langCode, 'lang': language});
+    final uri = Uri.parse('$_baseUrl/api/v3/quests/$accountId')
+        .replace(queryParameters: {'language': langCode, 'lang': language});
 
     dev.log('📡 Lade Quests: $uri', name: 'OrbitQuestAPI');
 
     try {
-      final res = await http
-          .get(uri, headers: _headers(token))
+      // ── Versuch 1: Nur API-Key ──────────────────────────
+      var res = await http
+          .get(uri, headers: _headersApiKeyOnly())
           .timeout(_timeout);
 
-      dev.log('📥 HTTP ${res.statusCode}', name: 'OrbitQuestAPI');
-      if (_debugMode) _logPreview(res.body, 'Quests-Antwort');
+      dev.log('📥 V1 (API-Key only): HTTP ${res.statusCode}', name: 'OrbitQuestAPI');
+      if (_debugMode) _logPreview(res.body, 'V1 Antwort');
 
+      // ── Versuch 2: API-Key + fortnite-token ─────────────
+      if (res.statusCode == 401 && token != null && token.isNotEmpty) {
+        dev.log('🔄 V2: Versuche mit fortnite-token…', name: 'OrbitQuestAPI');
+        res = await http
+            .get(uri, headers: _headers(token))
+            .timeout(_timeout);
+        dev.log('📥 V2 (mit token): HTTP ${res.statusCode}', name: 'OrbitQuestAPI');
+        if (_debugMode) _logPreview(res.body, 'V2 Antwort');
+      }
+
+      // ── Versuch 3: Token erneuern ────────────────────────
+      if (res.statusCode == 401) {
+        dev.log('🔄 V3: Token erneuern via refresh-device…', name: 'OrbitQuestAPI');
+        final refreshed = await FortniteOAuthService.instance.refreshDevice();
+        if (refreshed) {
+          final newToken = AccountStore.fortniteToken;
+          if (newToken != null) {
+            res = await http
+                .get(uri, headers: _headers(newToken))
+                .timeout(_timeout);
+            dev.log('📥 V3 (refresh): HTTP ${res.statusCode}', name: 'OrbitQuestAPI');
+            if (_debugMode) _logPreview(res.body, 'V3 Antwort');
+          }
+        }
+      }
+
+      // ── Antwort auswerten ────────────────────────────────
       switch (res.statusCode) {
         case 200:
           return _parseResponse(res.body, language: language);
-
         case 401:
-          // Token abgelaufen → einmal refreshen und nochmal probieren
-          dev.log(
-            '🔄 Token abgelaufen, versuche Refresh…',
-            name: 'OrbitQuestAPI',
-          );
-          final refreshed = await FortniteOAuthService.instance.refreshDevice();
-          if (!refreshed) {
-            return QuestApiResponse.error('token_expired');
-          }
-          // Zweiter Versuch nach Refresh
-          final newToken = AccountStore.fortniteToken;
-          if (newToken == null) return QuestApiResponse.error('token_expired');
-          final res2 = await http
-              .get(uri, headers: _headers(newToken))
-              .timeout(_timeout);
-          if (res2.statusCode == 200) {
-            return _parseResponse(res2.body, language: language);
-          }
           return QuestApiResponse.error('token_expired');
-
         case 403:
           return QuestApiResponse.error(
             'Zugriff verweigert (HTTP 403).\n'
             'Prüfe deinen API-Key in lib/config/api_keys.dart.',
           );
-
         case 404:
           return QuestApiResponse.error('account_invalid');
-
         default:
           return QuestApiResponse.error('HTTP ${res.statusCode}');
       }
+
     } on Exception catch (e) {
       return QuestApiResponse.error('Netzwerkfehler: $e');
     }
-  }
-
-  // ──────────────────────────────────────────────────────────
-  //  Token validieren / erneuern
-  // ──────────────────────────────────────────────────────────
-
-  Future<String?> _getValidToken() async {
-    final token = AccountStore.fortniteToken;
-    if (token != null && token.isNotEmpty) {
-      // Token direkt verwenden — Ablauf wird nicht vorab geprüft.
-      // Bei HTTP 401 macht fetchQuests() automatisch einen refresh-device.
-      return token;
-    }
-    // Kein Token → stiller Re-Login versuchen
-    dev.log(
-      '🔄 Kein Token vorhanden, versuche refresh-device…',
-      name: 'OrbitQuestAPI',
-    );
-    final refreshed = await FortniteOAuthService.instance.refreshDevice();
-    if (refreshed) return AccountStore.fortniteToken;
-    return null;
   }
 
   // ──────────────────────────────────────────────────────────
@@ -155,15 +125,12 @@ class FortniteQuestApiService {
 
       if (decoded is List) {
         return _fromList(
-          decoded.whereType<Map<String, dynamic>>().toList(),
-          language,
-        );
+            decoded.whereType<Map<String, dynamic>>().toList(), language);
       }
 
       if (decoded is! Map<String, dynamic>) {
         return QuestApiResponse.error(
-          'Unbekanntes JSON-Format: ${decoded.runtimeType}',
-        );
+            'Unbekanntes JSON-Format: ${decoded.runtimeType}');
       }
 
       final json = decoded;
@@ -172,9 +139,7 @@ class FortniteQuestApiService {
       final ok = json['result'] ?? json['success'] ?? json['ok'];
       if (ok == false || ok == 'error') {
         return QuestApiResponse.error(
-          json['error'] as String? ??
-              json['message'] as String? ??
-              'API-Fehler',
+          json['error'] as String? ?? json['message'] as String? ?? 'API-Fehler',
         );
       }
 
@@ -182,28 +147,17 @@ class FortniteQuestApiService {
       for (final key in ['quests', 'challenges', 'data', 'items']) {
         final raw = json[key];
         if (raw is List && raw.isNotEmpty) {
-          dev.log(
-            '📦 Format A key="$key" ${raw.length} Einträge',
-            name: 'OrbitQuestAPI',
-          );
+          dev.log('📦 Format A key="$key" ${raw.length} Einträge',
+              name: 'OrbitQuestAPI');
           return _fromList(
-            raw.whereType<Map<String, dynamic>>().toList(),
-            language,
-          );
+              raw.whereType<Map<String, dynamic>>().toList(), language);
         }
       }
 
       // Format B: Nach Typ gruppiert (weekly, daily, ...)
       final typeKeys = [
-        'weekly',
-        'daily',
-        'battlePass',
-        'story',
-        'milestone',
-        'punchcard',
-        'seasonal',
-        'limited',
-        'event',
+        'weekly', 'daily', 'battlePass', 'story', 'milestone',
+        'punchcard', 'seasonal', 'limited', 'event',
       ];
       final combined = <Map<String, dynamic>>[];
       for (final key in typeKeys) {
@@ -222,14 +176,13 @@ class FortniteQuestApiService {
         return _fromList(combined, language);
       }
 
-      dev.log(
-        '❓ Unbekannte Struktur. Keys: ${json.keys.join(", ")}',
-        name: 'OrbitQuestAPI',
-      );
+      dev.log('❓ Unbekannte Struktur. Keys: ${json.keys.join(", ")}',
+          name: 'OrbitQuestAPI');
       return QuestApiResponse.error(
         'Unbekannte API-Struktur.\nKeys: ${json.keys.join(", ")}\n'
-        'Setze _debugMode=true in fortnite_quest_api_service.dart.',
+        'Logcat Filter: "OrbitQuestAPI" für Details.',
       );
+
     } on FormatException catch (e) {
       return QuestApiResponse.error('JSON-Fehler: $e');
     } catch (e) {
@@ -245,8 +198,7 @@ class FortniteQuestApiService {
     dev.log('✅ ${quests.length} Quests geparst', name: 'OrbitQuestAPI');
     if (quests.isEmpty) {
       return QuestApiResponse.error(
-        'API antwortet, aber keine Quests gefunden.',
-      );
+          'API antwortet, aber keine Quests gefunden.');
     }
     return QuestApiResponse(success: true, quests: quests);
   }
@@ -255,22 +207,32 @@ class FortniteQuestApiService {
   //  Hilfsmethoden
   // ──────────────────────────────────────────────────────────
 
-  Map<String, String> _headers(String fortniteToken) => {
+  /// Nur API-Key — kein user-spezifischer Token.
+  Map<String, String> _headersApiKeyOnly() => {
     'Authorization': 'Bearer ${ApiKeys.apiFortnite}',
-    'X-Api-Key': ApiKeys.apiFortnite,
-    'api-key': ApiKeys.apiFortnite,
-    'x-fortnite-token': fortniteToken, // ← Das war der fehlende Header!
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
+    'X-Api-Key':     ApiKeys.apiFortnite,
+    'api-key':       ApiKeys.apiFortnite,
+    'Accept':        'application/json',
+    'Content-Type':  'application/json',
+  };
+
+  /// API-Key + x-fortnite-token.
+  Map<String, String> _headers(String fortniteToken) => {
+    'Authorization':    'Bearer ${ApiKeys.apiFortnite}',
+    'X-Api-Key':        ApiKeys.apiFortnite,
+    'api-key':          ApiKeys.apiFortnite,
+    'x-fortnite-token': fortniteToken,
+    'Accept':           'application/json',
+    'Content-Type':     'application/json',
   };
 
   String _sectionLabel(String key) {
     const m = {
-      'weekly': 'Wöchentlich',
-      'daily': 'Täglich',
+      'weekly':     'Wöchentlich',
+      'daily':      'Täglich',
       'battlePass': 'Battle Pass',
-      'story': 'Story',
-      'milestone': 'Meilensteine',
+      'story':      'Story',
+      'milestone':  'Meilensteine',
     };
     return m[key] ?? key;
   }
