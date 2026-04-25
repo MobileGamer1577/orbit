@@ -11,7 +11,7 @@ import '../storage/account_store.dart';
 //  🌐 FORTNITE QUEST API SERVICE
 //  Datei: lib/services/fortnite_quest_api_service.dart
 //
-//  Endpunkt: GET /api/v3/quests/{accountId}
+//  Endpunkt: GET /api/v2/quests/{accountId}
 //
 //  Strategie:
 //    1. Versuch: Nur API-Key (kein x-fortnite-token)
@@ -37,7 +37,7 @@ class FortniteQuestApiService {
   // ──────────────────────────────────────────────────────────
   //  QUESTS LADEN
   //
-  //  Endpunkt: GET /api/v3/quests/{accountId}
+  //  Endpunkt: GET /api/v2/quests/{accountId}
   // ──────────────────────────────────────────────────────────
 
   Future<QuestApiResponse> fetchQuests({String language = 'en'}) async {
@@ -53,7 +53,7 @@ class FortniteQuestApiService {
 
     // 3. Request bauen
     final langCode = language == 'de' ? 'de-DE' : 'en-US';
-    final uri = Uri.parse('$_baseUrl/api/v3/quests/$accountId')
+    final uri = Uri.parse('$_baseUrl/api/v2/quests/$accountId')
         .replace(queryParameters: {'language': langCode, 'lang': language});
 
     dev.log('📡 Lade Quests: $uri', name: 'OrbitQuestAPI');
