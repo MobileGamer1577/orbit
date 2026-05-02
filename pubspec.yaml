@@ -10,7 +10,10 @@ environment:
 dependencies:
 
   # Link öffnen
-  url_launcher: ^6.3.2   # ← NEU: Für OAuth-Browser-Login
+  url_launcher: ^6.3.2
+
+  # In-App WebView für Epic Games Login
+  webview_flutter: ^4.9.0
 
   # ??????
   flutter:
