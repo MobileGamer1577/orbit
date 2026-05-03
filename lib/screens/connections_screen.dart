@@ -14,7 +14,7 @@ import 'fortnite_login_webview.dart';
 //  ── LOGIN-FLOW ────────────────────────────────────────────
 //
 //  1. "Mit Fortnite verbinden" drücken
-//     → GET /api/v1/oauth/authorize-url → Login-URL
+//     → URL wird direkt gebaut (kein API-Call, kein Pro-Plan nötig)
 //
 //  2. Epic-Login in In-App-WebView öffnen
 //     → Nutzer meldet sich mit Epic-Account an
@@ -22,10 +22,7 @@ import 'fortnite_login_webview.dart';
 //
 //  3. POST /api/v1/oauth/link { "code": "..." }
 //     → Token + DeviceAuth → lokal gespeichert
-//
-//  ── RE-LOGIN (automatisch, kein Browser) ─────────────────
-//
-//  deviceId + secret → POST /api/v1/oauth/refresh-device
+//     Fallback: POST /api/v1/oauth/exchange-code
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -129,35 +126,20 @@ class _FortniteCard extends StatefulWidget {
 class _FortniteCardState extends State<_FortniteCard> {
   static const _accent = Color(0xFF00D4FF);
 
-  bool _loading = false;
+  bool    _loading = false;
   String? _error;
 
   // ── LOGIN ─────────────────────────────────────────────────
 
   Future<void> _startLogin() async {
-    setState(() {
-      _loading = true;
-      _error = null;
-    });
+    setState(() { _loading = true; _error = null; });
 
-    // Schritt 1: Login-URL holen
-    final loginUrl = await FortniteOAuthService.instance.getAuthorizeUrl();
-
-    if (!mounted) return;
-
-    if (loginUrl == null) {
-      setState(() {
-        _loading = false;
-        _error =
-            'Login-URL konnte nicht geladen werden.\n'
-            'Bitte prüfe deine Internetverbindung.';
-      });
-      return;
-    }
+    // URL direkt bauen — kein API-Call, kein Pro-Plan nötig
+    final loginUrl = FortniteOAuthService.instance.buildAuthorizeUrl();
 
     setState(() => _loading = false);
 
-    // Schritt 2: WebView öffnen → Code abfangen
+    // WebView öffnen → Code abfangen
     final code = await Navigator.push<String?>(
       context,
       MaterialPageRoute(
@@ -167,12 +149,9 @@ class _FortniteCardState extends State<_FortniteCard> {
 
     if (!mounted || code == null) return; // Abgebrochen
 
-    setState(() {
-      _loading = true;
-      _error = null;
-    });
+    setState(() { _loading = true; _error = null; });
 
-    // Schritt 3: Code gegen Token tauschen
+    // Code gegen Token tauschen
     final result = await FortniteOAuthService.instance.linkWithCode(code);
 
     if (!mounted) return;
@@ -180,18 +159,18 @@ class _FortniteCardState extends State<_FortniteCard> {
     if (result == null || result.token == null) {
       setState(() {
         _loading = false;
-        _error = 'Anmeldung fehlgeschlagen.\nBitte versuche es erneut.';
+        _error   = 'Anmeldung fehlgeschlagen.\nBitte versuche es erneut.';
       });
       return;
     }
 
     // Speichern
     await AccountStore.saveFortnite(
-      accountId: result.accountId ?? 'unknown',
-      displayName: result.displayName ?? 'Fortnite-Account',
-      token: result.token!,
-      tokenExpiry: result.tokenExpiry,
-      deviceId: result.deviceId,
+      accountId:    result.accountId    ?? 'unknown',
+      displayName:  result.displayName  ?? 'Fortnite-Account',
+      token:        result.token!,
+      tokenExpiry:  result.tokenExpiry,
+      deviceId:     result.deviceId,
       deviceSecret: result.deviceSecret,
     );
 
@@ -201,7 +180,9 @@ class _FortniteCardState extends State<_FortniteCard> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('✅ Mit ${result.displayName ?? "Fortnite"} verbunden!'),
+        content: Text(
+          '✅ Mit ${result.displayName ?? "Fortnite"} verbunden!',
+        ),
         behavior: SnackBarBehavior.floating,
       ),
     );
@@ -229,7 +210,9 @@ class _FortniteCardState extends State<_FortniteCard> {
             child: const Text('Abbrechen'),
           ),
           FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: Colors.redAccent),
+            style: FilledButton.styleFrom(
+              backgroundColor: Colors.redAccent,
+            ),
             onPressed: () => Navigator.pop(context, true),
             child: const Text('Trennen'),
           ),
@@ -238,9 +221,7 @@ class _FortniteCardState extends State<_FortniteCard> {
     );
     if (ok != true) return;
     await AccountStore.clearFortnite();
-    setState(() {
-      _error = null;
-    });
+    setState(() { _error = null; });
     widget.onChanged();
   }
 
@@ -318,7 +299,10 @@ class _FortniteCardState extends State<_FortniteCard> {
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
               child: _loading
                   ? _LoadingView()
-                  : _LoginView(error: _error, onConnect: _startLogin),
+                  : _LoginView(
+                      error:     _error,
+                      onConnect: _startLogin,
+                    ),
             ),
           ],
         ],
@@ -328,11 +312,11 @@ class _FortniteCardState extends State<_FortniteCard> {
 }
 
 // ──────────────────────────────────────────────────────────────
-//  Login-Ansicht (idle/error)
+//  Login-Ansicht
 // ──────────────────────────────────────────────────────────────
 
 class _LoginView extends StatelessWidget {
-  final String? error;
+  final String?      error;
   final VoidCallback onConnect;
 
   const _LoginView({required this.error, required this.onConnect});
@@ -384,7 +368,9 @@ class _LoginView extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.redAccent.withOpacity(0.10),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.redAccent.withOpacity(0.35)),
+              border: Border.all(
+                color: Colors.redAccent.withOpacity(0.35),
+              ),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -450,7 +436,10 @@ class _LoadingView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF00D4FF)),
+            CircularProgressIndicator(
+              strokeWidth: 2,
+              color: Color(0xFF00D4FF),
+            ),
             SizedBox(height: 12),
             Text(
               'Verbindung wird hergestellt…',
@@ -501,9 +490,9 @@ class _DisconnectBtn extends StatelessWidget {
 
 class _ComingSoonCard extends StatelessWidget {
   final IconData icon;
-  final Color iconColor;
-  final String title;
-  final String subtitle;
+  final Color    iconColor;
+  final String   title;
+  final String   subtitle;
 
   const _ComingSoonCard({
     required this.icon,
@@ -530,7 +519,11 @@ class _ComingSoonCard extends StatelessWidget {
                   width: 1.2,
                 ),
               ),
-              child: Icon(icon, color: iconColor.withOpacity(0.40), size: 24),
+              child: Icon(
+                icon,
+                color: iconColor.withOpacity(0.40),
+                size: 24,
+              ),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -557,11 +550,15 @@ class _ComingSoonCard extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 5,
+              ),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.white.withOpacity(0.10)),
+                border:
+                    Border.all(color: Colors.white.withOpacity(0.10)),
               ),
               child: Text(
                 'Bald',
