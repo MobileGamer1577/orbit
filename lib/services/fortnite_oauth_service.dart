@@ -25,11 +25,11 @@ import '../storage/account_store.dart';
 // ══════════════════════════════════════════════════════════════
 
 // Fortnite Client-ID (öffentlich bekannt, aus dem Spiel selbst)
-const _kEpicClientId = 'ec684b8c687f479fadea3cb2ad83f5c6';
-const _kRedirectUri  = 'https://localhost/callback';
+const _kEpicClientId = '34a02cf8f4414e29b15921876da36f9a';
+const _kRedirectUri = 'https://localhost/callback';
 
 class FortniteOAuthService {
-  static const String _base     = 'https://prod.api-fortnite.com';
+  static const String _base = 'https://prod.api-fortnite.com';
   static const Duration _timeout = Duration(seconds: 20);
 
   static final FortniteOAuthService instance = FortniteOAuthService._();
@@ -45,10 +45,10 @@ class FortniteOAuthService {
 
   String buildAuthorizeUrl() {
     final uri = Uri.https('www.epicgames.com', '/id/authorize', {
-      'client_id':     _kEpicClientId,
+      'client_id': _kEpicClientId,
       'response_type': 'code',
-      'redirect_uri':  _kRedirectUri,
-      'scope':         'basic_profile friends_list presence',
+      'redirect_uri': _kRedirectUri,
+      'scope': 'basic_profile friends_list presence',
     });
     dev.log('🔗 Authorize URL: $uri', name: 'OrbitOAuth');
     return uri.toString();
@@ -69,10 +69,7 @@ class FortniteOAuthService {
           .post(
             Uri.parse('$_base/api/v1/oauth/link'),
             headers: {..._headers(), 'Content-Type': 'application/json'},
-            body: jsonEncode({
-              'code':         code,
-              'redirect_uri': _kRedirectUri,
-            }),
+            body: jsonEncode({'code': code, 'redirect_uri': _kRedirectUri}),
           )
           .timeout(_timeout);
 
@@ -90,10 +87,7 @@ class FortniteOAuthService {
           .post(
             Uri.parse('$_base/api/v1/oauth/exchange-code'),
             headers: {..._headers(), 'Content-Type': 'application/json'},
-            body: jsonEncode({
-              'code':         code,
-              'redirect_uri': _kRedirectUri,
-            }),
+            body: jsonEncode({'code': code, 'redirect_uri': _kRedirectUri}),
           )
           .timeout(_timeout);
 
@@ -117,8 +111,8 @@ class FortniteOAuthService {
 
   Future<bool> refreshDevice() async {
     final accountId = AccountStore.fortniteAccountId;
-    final deviceId  = AccountStore.fortniteDeviceId;
-    final secret    = AccountStore.fortniteDeviceSecret;
+    final deviceId = AccountStore.fortniteDeviceId;
+    final secret = AccountStore.fortniteDeviceSecret;
 
     if (accountId == null || deviceId == null || secret == null) {
       dev.log('❌ refreshDevice: keine Device-Daten', name: 'OrbitOAuth');
@@ -133,8 +127,8 @@ class FortniteOAuthService {
             headers: {..._headers(), 'Content-Type': 'application/json'},
             body: jsonEncode({
               'accountId': accountId,
-              'deviceId':  deviceId,
-              'secret':    secret,
+              'deviceId': deviceId,
+              'secret': secret,
             }),
           )
           .timeout(_timeout);
@@ -145,7 +139,7 @@ class FortniteOAuthService {
       final result = _parseResult(res.body);
       if (result?.token != null) {
         await AccountStore.updateToken(
-          token:       result!.token!,
+          token: result!.token!,
           tokenExpiry: result.tokenExpiry,
         );
         dev.log('✅ Token still erneuert', name: 'OrbitOAuth');
@@ -176,10 +170,13 @@ class FortniteOAuthService {
         return null;
       }
 
-      final token       = findStr(['token', 'access_token', 'accessToken']);
-      final accountId   = findStr(['accountId', 'account_id', 'id']);
+      final token = findStr(['token', 'access_token', 'accessToken']);
+      final accountId = findStr(['accountId', 'account_id', 'id']);
       final displayName = findStr([
-        'displayName', 'display_name', 'username', 'name',
+        'displayName',
+        'display_name',
+        'username',
+        'name',
       ]);
 
       // DeviceAuth
@@ -187,24 +184,25 @@ class FortniteOAuthService {
       String? deviceSecret;
       final deviceAuth = json['deviceAuth'] as Map?;
       if (deviceAuth != null) {
-        deviceId     = deviceAuth['deviceId']  as String? ??
-                       deviceAuth['device_id'] as String?;
-        deviceSecret = deviceAuth['secret']    as String?;
+        deviceId =
+            deviceAuth['deviceId'] as String? ??
+            deviceAuth['device_id'] as String?;
+        deviceSecret = deviceAuth['secret'] as String?;
       } else {
-        deviceId     = json['deviceId']  as String? ??
-                       json['device_id'] as String?;
-        deviceSecret = json['secret']    as String?;
+        deviceId = json['deviceId'] as String? ?? json['device_id'] as String?;
+        deviceSecret = json['secret'] as String?;
       }
 
       // Token-Ablaufzeit
       DateTime? expiry;
-      final expiresAt = json['expiresAt']  as String? ??
-                        json['expires_at'] as String?;
+      final expiresAt =
+          json['expiresAt'] as String? ?? json['expires_at'] as String?;
       if (expiresAt != null) {
-        try { expiry = DateTime.parse(expiresAt); } catch (_) {}
+        try {
+          expiry = DateTime.parse(expiresAt);
+        } catch (_) {}
       }
-      final expiresIn = json['expiresIn'] as int? ??
-                        json['expires_in'] as int?;
+      final expiresIn = json['expiresIn'] as int? ?? json['expires_in'] as int?;
       if (expiry == null && expiresIn != null) {
         expiry = DateTime.now().add(Duration(seconds: expiresIn));
       }
@@ -221,11 +219,11 @@ class FortniteOAuthService {
       );
 
       return OAuthResult(
-        token:        token,
-        accountId:    accountId,
-        displayName:  displayName,
-        tokenExpiry:  expiry,
-        deviceId:     deviceId,
+        token: token,
+        accountId: accountId,
+        displayName: displayName,
+        tokenExpiry: expiry,
+        deviceId: deviceId,
         deviceSecret: deviceSecret,
       );
     } catch (e) {
@@ -236,19 +234,19 @@ class FortniteOAuthService {
 
   Map<String, String> _headers() => {
     'Authorization': 'Bearer ${ApiKeys.apiFortnite}',
-    'X-Api-Key':     ApiKeys.apiFortnite,
-    'api-key':       ApiKeys.apiFortnite,
-    'Accept':        'application/json',
+    'X-Api-Key': ApiKeys.apiFortnite,
+    'api-key': ApiKeys.apiFortnite,
+    'Accept': 'application/json',
   };
 }
 
 class OAuthResult {
-  final String?   token;
-  final String?   accountId;
-  final String?   displayName;
+  final String? token;
+  final String? accountId;
+  final String? displayName;
   final DateTime? tokenExpiry;
-  final String?   deviceId;
-  final String?   deviceSecret;
+  final String? deviceId;
+  final String? deviceSecret;
 
   const OAuthResult({
     this.token,
