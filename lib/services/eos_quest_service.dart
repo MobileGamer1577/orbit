@@ -19,11 +19,11 @@ import '../storage/account_store.dart';
 // ══════════════════════════════════════════════════════════════
 
 // Fortnite Live Client-Credentials (aus dem Spiel selbst, öffentlich bekannt)
-const _kClientId     = 'ec684b8c687f479fadea3cb2ad83f5c6';
+const _kClientId = '34a02cf8f4414e29b15921876da36f9a';
 const _kClientSecret = 'e1f31c211f284131862627d37a13fc84d';
 const _kDeploymentId = '62a9473a2dca46b29ccf17577fcf42d7';
 
-const _kEosAuthUrl   = 'https://api.epicgames.dev/auth/v1/oauth/token';
+const _kEosAuthUrl = 'https://api.epicgames.dev/auth/v1/oauth/token';
 const _kQuestBaseUrl =
     'https://fngw-svc-ds-livefn.ol.epicgames.com/api/quest/v3';
 
@@ -34,8 +34,8 @@ const Duration _timeout = Duration(seconds: 25);
 // ──────────────────────────────────────────────────────────────
 
 class EosQuestResult {
-  final bool        success;
-  final String?     error;
+  final bool success;
+  final String? error;
   final List<EosQuest> quests;
   final Map<String, dynamic>? rawResponse; // für Debugging
 
@@ -51,10 +51,10 @@ class EosQuestResult {
 }
 
 class EosQuest {
-  final String   templateId;
-  final String   state;      // 'Active', 'Claimed', etc.
+  final String templateId;
+  final String state; // 'Active', 'Claimed', etc.
   final List<EosObjective> objectives;
-  final String   challengeBundleId;
+  final String challengeBundleId;
 
   /// Anzeige-Name aus templateId extrahiert (best-effort)
   String get displayName {
@@ -75,10 +75,10 @@ class EosQuest {
   factory EosQuest.fromJson(Map<String, dynamic> j) {
     final rawObjectives = j['objectives'] as List? ?? [];
     return EosQuest(
-      templateId:        (j['templateId'] as String?) ?? '',
-      state:             (j['state']      as String?) ?? '',
+      templateId: (j['templateId'] as String?) ?? '',
+      state: (j['state'] as String?) ?? '',
       challengeBundleId: (j['challengeBundleId'] as String?) ?? '',
-      objectives:        rawObjectives
+      objectives: rawObjectives
           .whereType<Map<String, dynamic>>()
           .map(EosObjective.fromJson)
           .toList(),
@@ -88,8 +88,8 @@ class EosQuest {
 
 class EosObjective {
   final String statName;
-  final int    quantity;
-  final int    stage;
+  final int quantity;
+  final int stage;
 
   const EosObjective({
     required this.statName,
@@ -99,8 +99,8 @@ class EosObjective {
 
   factory EosObjective.fromJson(Map<String, dynamic> j) => EosObjective(
     statName: (j['statName'] as String?) ?? '',
-    quantity: (j['quantity'] as int?)    ?? 0,
-    stage:    (j['stage']    as int?)    ?? -1,
+    quantity: (j['quantity'] as int?) ?? 0,
+    stage: (j['stage'] as int?) ?? -1,
   );
 }
 
@@ -121,23 +121,24 @@ class EosQuestService {
 
     // Basic Auth: base64(clientId:clientSecret)
     final credentials = base64Encode(
-        utf8.encode('$_kClientId:$_kClientSecret'));
+      utf8.encode('$_kClientId:$_kClientSecret'),
+    );
 
     try {
       final res = await http
           .post(
             Uri.parse(_kEosAuthUrl),
             headers: {
-              'Authorization':  'Basic $credentials',
-              'Content-Type':   'application/x-www-form-urlencoded',
-              'Accept':         'application/json',
+              'Authorization': 'Basic $credentials',
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json',
             },
             body: {
-              'grant_type':          'external_auth',
-              'external_auth_type':  'epicgames_access_token',
+              'grant_type': 'external_auth',
+              'external_auth_type': 'epicgames_access_token',
               'external_auth_token': epicToken,
-              'deployment_id':       _kDeploymentId,
-              'nonce':               'orbit_${DateTime.now().millisecondsSinceEpoch}',
+              'deployment_id': _kDeploymentId,
+              'nonce': 'orbit_${DateTime.now().millisecondsSinceEpoch}',
             },
           )
           .timeout(_timeout);
@@ -181,10 +182,7 @@ class EosQuestService {
       return EosQuestResult.err('no_account');
     }
 
-    dev.log(
-      '📡 EOS Quests für accountId=$accountId',
-      name: 'OrbitEOS',
-    );
+    dev.log('📡 EOS Quests für accountId=$accountId', name: 'OrbitEOS');
 
     // EOS Token holen
     final eosToken = await _getEosToken(epicToken);
@@ -206,7 +204,7 @@ class EosQuestService {
             Uri.parse(url),
             headers: {
               'Authorization': 'Bearer $eosToken',
-              'Accept':        'application/json',
+              'Accept': 'application/json',
             },
           )
           .timeout(_timeout);
@@ -229,7 +227,7 @@ class EosQuestService {
 
       final json = jsonDecode(res.body) as Map<String, dynamic>;
       final questProgress = json['questProgress'] as Map<String, dynamic>?;
-      final rawQuests     = questProgress?['quests'] as List? ?? [];
+      final rawQuests = questProgress?['quests'] as List? ?? [];
 
       final quests = rawQuests
           .whereType<Map<String, dynamic>>()
@@ -238,11 +236,7 @@ class EosQuestService {
 
       dev.log('✅ ${quests.length} Quests geladen', name: 'OrbitEOS');
 
-      return EosQuestResult(
-        success:     true,
-        quests:      quests,
-        rawResponse: json,
-      );
+      return EosQuestResult(success: true, quests: quests, rawResponse: json);
     } catch (e) {
       return EosQuestResult.err('Netzwerkfehler: $e');
     }
