@@ -226,6 +226,29 @@ abstract class AppLocalizations {
 
   // ── Update Dialog ─────────────────────────────────────────
   String updateAvailableTitle(String version);
+
+  // ── Guides Hub ────────────────────────────────────────────
+  String get hubGuides;
+  String get hubGuidesSubtitle;
+  String get guidesWhatOpen;
+  String get guidesStealTheDino;
+  String get guidesStealTheDinoSubtitle;
+  String get guidesBrainrotCodes;
+  String get guidesBrainrotCodesSubtitle;
+  String get guidesXpCalc;
+  String get guidesXpCalcSubtitle;
+
+  // ── XP Calculator ─────────────────────────────────────────
+  String get xpCalcCurrentLevel;
+  String get xpCalcTargetLevel;
+  String get xpCalcCalculate;
+  String xpCalcDailyXp(String xp);
+  String xpCalcTotalXp(String xp);
+  String xpCalcSeasonInfo(int percent, int days);
+  String get xpCalcPlaytime;
+  String get xpCalcWeeklyLimit;
+  String get xpCalcNoLimit;
+  String get xpCalcApprox;
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -337,7 +360,8 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get hubCosmeticsAll => 'Alle Cosmetics';
   @override
-  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
+  String get hubCosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubCosmetics => 'Cosmetics & Spind';
   @override
@@ -345,11 +369,13 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get cosmeticsMyLocker => 'Mein Spind';
   @override
-  String get cosmeticsMyLockerSubtitle => 'Gespeicherte Songs, Wunschliste & mehr';
+  String get cosmeticsMyLockerSubtitle =>
+      'Gespeicherte Songs, Wunschliste & mehr';
   @override
   String get cosmeticsAll => 'Alle Cosmetics';
   @override
-  String get cosmeticsAllSubtitle => 'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
+  String get cosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instrumente, Cars, LEGO & mehr';
   @override
   String get hubFestival => 'Festival';
   @override
@@ -392,8 +418,13 @@ class _AppLocalizationsDe extends AppLocalizations {
   String kreativEveryHours(int h) => 'Alle $h Stunden';
   @override
   List<String> get weekdayNames => const [
-    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag',
-    'Freitag', 'Samstag', 'Sonntag',
+    'Montag',
+    'Dienstag',
+    'Mittwoch',
+    'Donnerstag',
+    'Freitag',
+    'Samstag',
+    'Sonntag',
   ];
   @override
   String get countdownTitle => 'Countdowns';
@@ -474,9 +505,11 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get lockerSubtitleWishlist => 'Songs auf deiner Wunschliste';
   @override
-  String get lockerEmptyOwned => 'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
+  String get lockerEmptyOwned =>
+      'Noch keine Songs im Besitz.\nÖffne einen Song und tippe auf „Besitzen".';
   @override
-  String get lockerEmptyWishlist => 'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
+  String get lockerEmptyWishlist =>
+      'Keine Songs auf der Wunschliste.\nÖffne einen Song und tippe auf „Wunschliste".';
   @override
   String get lockerSearchHint => 'Song / Artist / ID suchen…';
   @override
@@ -625,9 +658,11 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get cosmeticsSubtitleWishlist => 'Cosmetics auf deiner Wunschliste';
   @override
-  String get cosmeticsLockerEmpty => 'Noch keine Cosmetics im Spind.\nÖffne „Alle Cosmetics" und tippe auf ein Item.';
+  String get cosmeticsLockerEmpty =>
+      'Noch keine Cosmetics im Spind.\nÖffne „Alle Cosmetics" und tippe auf ein Item.';
   @override
-  String get cosmeticsWishlistEmpty => 'Keine Cosmetics auf der Wunschliste.\nÖffne „Alle Cosmetics" und tippe auf ein Item.';
+  String get cosmeticsWishlistEmpty =>
+      'Keine Cosmetics auf der Wunschliste.\nÖffne „Alle Cosmetics" und tippe auf ein Item.';
   @override
   String get rarityCommon => 'Gemein';
   @override
@@ -647,6 +682,51 @@ class _AppLocalizationsDe extends AppLocalizations {
 
   @override
   String updateAvailableTitle(String version) => 'Update verfügbar: $version';
+
+  // ── Guides Hub (NEU) ──────────────────────────────────────
+  @override
+  String get hubGuides => 'Guides';
+  @override
+  String get hubGuidesSubtitle => 'Kreativ Maps • Codes • XP Rechner';
+  @override
+  String get guidesWhatOpen => 'Was willst du öffnen?';
+  @override
+  String get guidesStealTheDino => 'Steal the Dino Map';
+  @override
+  String get guidesStealTheDinoSubtitle => 'Codes • Events • Dino Dex • Stats';
+  @override
+  String get guidesBrainrotCodes => 'Brainrot Codes';
+  @override
+  String get guidesBrainrotCodesSubtitle =>
+      'Steal the Brainrot • Codes abhaken';
+  @override
+  String get guidesXpCalc => 'XP Taschenrechner';
+  @override
+  String get guidesXpCalcSubtitle => 'Level-Fortschritt & Spielzeit-XP';
+
+  // ── XP Calculator (NEU) ───────────────────────────────────
+  @override
+  String get xpCalcCurrentLevel => 'Aktuelles Level';
+  @override
+  String get xpCalcTargetLevel => 'Wunsch-Level';
+  @override
+  String get xpCalcCalculate => 'Berechnen';
+  @override
+  String xpCalcDailyXp(String xp) => 'Du brauchst \$xp XP täglich';
+  @override
+  String xpCalcTotalXp(String xp) => 'Gesamt: \$xp XP benötigt';
+  @override
+  String xpCalcSeasonInfo(int percent, int days) =>
+      'Die aktuelle Season ist zu \$percent% abgeschlossen. Es verbleiben \$days Tage.';
+  @override
+  String get xpCalcPlaytime => 'Spielzeit XP';
+  @override
+  String get xpCalcWeeklyLimit => 'Wöch. Limit';
+  @override
+  String get xpCalcNoLimit => 'Kein Limit';
+  @override
+  String get xpCalcApprox =>
+      '* Werte sind Näherungswerte. Echte Fortnite-Werte können abweichen.';
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -737,7 +817,8 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get hubCosmeticsAll => 'All Cosmetics';
   @override
-  String get hubCosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
+  String get hubCosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubCosmetics => 'Cosmetics & Locker';
   @override
@@ -749,7 +830,8 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get cosmeticsAll => 'All Cosmetics';
   @override
-  String get cosmeticsAllSubtitle => 'BR, Jam Tracks, Instruments, Cars, LEGO & more';
+  String get cosmeticsAllSubtitle =>
+      'BR, Jam Tracks, Instruments, Cars, LEGO & more';
   @override
   String get hubFestival => 'Festival';
   @override
@@ -792,8 +874,13 @@ class _AppLocalizationsEn extends AppLocalizations {
   String kreativEveryHours(int h) => 'Every $h hours';
   @override
   List<String> get weekdayNames => const [
-    'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-    'Friday', 'Saturday', 'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
   ];
 
   // Countdown
@@ -875,9 +962,11 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get lockerSubtitleWishlist => 'Songs on your wishlist';
   @override
-  String get lockerEmptyOwned => 'No songs owned yet.\nOpen a song and tap "Own".';
+  String get lockerEmptyOwned =>
+      'No songs owned yet.\nOpen a song and tap "Own".';
   @override
-  String get lockerEmptyWishlist => 'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
+  String get lockerEmptyWishlist =>
+      'No songs on the wishlist.\nOpen a song and tap "Wishlist".';
   @override
   String get lockerSearchHint => 'Search song / artist / ID…';
   @override
@@ -1025,9 +1114,11 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get cosmeticsSubtitleWishlist => 'Cosmetics on your wishlist';
   @override
-  String get cosmeticsLockerEmpty => 'No cosmetics in your locker yet.\nOpen "All Cosmetics" and tap an item.';
+  String get cosmeticsLockerEmpty =>
+      'No cosmetics in your locker yet.\nOpen "All Cosmetics" and tap an item.';
   @override
-  String get cosmeticsWishlistEmpty => 'No cosmetics on your wishlist.\nOpen "All Cosmetics" and tap an item.';
+  String get cosmeticsWishlistEmpty =>
+      'No cosmetics on your wishlist.\nOpen "All Cosmetics" and tap an item.';
   @override
   String get rarityCommon => 'Common';
   @override
@@ -1047,4 +1138,48 @@ class _AppLocalizationsEn extends AppLocalizations {
 
   @override
   String updateAvailableTitle(String version) => 'Update available: $version';
+
+  // ── Guides Hub (NEW) ──────────────────────────────────────
+  @override
+  String get hubGuides => 'Guides';
+  @override
+  String get hubGuidesSubtitle => 'Kreativ Maps • Codes • XP Calculator';
+  @override
+  String get guidesWhatOpen => 'What do you want to open?';
+  @override
+  String get guidesStealTheDino => 'Steal the Dino Map';
+  @override
+  String get guidesStealTheDinoSubtitle => 'Codes • Events • Dino Dex • Stats';
+  @override
+  String get guidesBrainrotCodes => 'Brainrot Codes';
+  @override
+  String get guidesBrainrotCodesSubtitle => 'Steal the Brainrot • Track codes';
+  @override
+  String get guidesXpCalc => 'XP Calculator';
+  @override
+  String get guidesXpCalcSubtitle => 'Season progress & playtime XP';
+
+  // ── XP Calculator (NEW) ───────────────────────────────────
+  @override
+  String get xpCalcCurrentLevel => 'Current Level';
+  @override
+  String get xpCalcTargetLevel => 'Target Level';
+  @override
+  String get xpCalcCalculate => 'Calculate';
+  @override
+  String xpCalcDailyXp(String xp) => 'You need \$xp XP daily';
+  @override
+  String xpCalcTotalXp(String xp) => 'Total: \$xp XP required';
+  @override
+  String xpCalcSeasonInfo(int percent, int days) =>
+      'The current season is \$percent% complete. There are \$days days remaining.';
+  @override
+  String get xpCalcPlaytime => 'Playtime XP';
+  @override
+  String get xpCalcWeeklyLimit => 'Weekly Limit';
+  @override
+  String get xpCalcNoLimit => 'No limit';
+  @override
+  String get xpCalcApprox =>
+      '* Values are approximate and may differ from actual Fortnite XP amounts.';
 }

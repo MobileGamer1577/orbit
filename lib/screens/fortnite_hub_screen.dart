@@ -8,7 +8,9 @@ import '../widgets/orbit_glass_card.dart';
 
 import 'fortnite_countdown_screen.dart';
 import 'fortnite_festival_hub_screen.dart';
-import 'fortnite_kreativ_maps_screen.dart';
+// ── GEÄNDERT: FortniteKreativMapsScreen wird jetzt über FortniteGuidesHubScreen
+//             geöffnet – daher hier durch den neuen Guides-Hub ersetzt.
+import 'fortnite_guides_hub_screen.dart'; // war: fortnite_kreativ_maps_screen.dart
 import 'fortnite_cosmetics_hub_screen.dart';
 import 'fortnite_shop_screen.dart';
 import 'mode_select_screen.dart';
@@ -83,7 +85,6 @@ class FortniteHubScreen extends StatelessWidget {
                           onTap: () => _push(context, const FortniteShopScreen())),
                       const SizedBox(height: 10),
 
-                      // ── Ein Button für Spind + Wishlist + Alle Cosmetics ──
                       _HubCard(
                         icon: Icons.inventory_2,
                         iconColor: const Color(0xFFFF81E0),
@@ -105,9 +106,16 @@ class FortniteHubScreen extends StatelessWidget {
                               SnackBar(content: Text(l10n.hubStatsSoon)))),
                       const SizedBox(height: 10),
 
-                      _HubCard(icon: Icons.palette, iconColor: const Color(0xFFFF8C00),
-                          title: l10n.hubKreativMaps, subtitle: l10n.hubKreativMapsSubtitle,
-                          onTap: () => _push(context, const FortniteKreativMapsScreen())),
+                      // ── GEÄNDERT: War "Kreativ Maps" (Icons.palette) →
+                      //              Jetzt "Guides" (Icons.auto_stories) mit
+                      //              Navigation zu FortniteGuidesHubScreen
+                      _HubCard(
+                        icon: Icons.auto_stories,          // war: Icons.palette
+                        iconColor: const Color(0xFFFF8C00), // war: Color(0xFFFF8C00)
+                        title: l10n.hubGuides,              // war: l10n.hubKreativMaps
+                        subtitle: l10n.hubGuidesSubtitle,   // war: l10n.hubKreativMapsSubtitle
+                        onTap: () => _push(context, const FortniteGuidesHubScreen()), // war: FortniteKreativMapsScreen
+                      ),
                       const SizedBox(height: 10),
 
                       _HubCard(icon: Icons.public, iconColor: const Color(0xFF64FFDA),

@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'dino_dex_screen.dart'; // ← NEU
-import 'dino_stats_screen.dart'; // ← NEU
+import 'dino_dex_screen.dart';
+import 'dino_stats_screen.dart';
 
 import '../l10n/app_localizations.dart';
 import '../theme/orbit_theme.dart';
@@ -19,24 +19,14 @@ enum _Recurrence { weeklyOnDay, daily, everyNHours }
 // MODELLE
 // ══════════════════════════════════════════════════════════════
 
-// ── Event ──────────────────────────────────────────────────────
-//
-// ✏️  WO EVENTS HINZUFÜGEN?
-//    In der _maps-Liste weiter unten → in events: [ ... ] einfügen.
-//
-// Recurrence-Typen:
-//   _Recurrence.weeklyOnDay  → weekday (1=Mo 2=Di 3=Mi 4=Do 5=Fr 6=Sa 7=So) + hour + minute
-//   _Recurrence.daily        → hour + minute (jeden Tag)
-//   _Recurrence.everyNHours  → intervalHours (alle X Stunden ab Mitternacht)
-//
 class _MapEvent {
   final String name;
   final Color color;
   final _Recurrence recurrence;
-  final int? weekday; // 1=Mo … 7=So (nur bei weeklyOnDay)
-  final int? hour; // Stunde 0-23
-  final int? minute; // Minute 0-59 (Standard: 0)
-  final int? intervalHours; // Intervall in Stunden (nur bei everyNHours)
+  final int? weekday;
+  final int? hour;
+  final int? minute;
+  final int? intervalHours;
 
   const _MapEvent({
     required this.name,
@@ -49,7 +39,6 @@ class _MapEvent {
     this.intervalHours,
   });
 
-  /// Berechnet automatisch den nächsten Zeitpunkt dieses Events
   DateTime get nextOccurrence {
     final now = DateTime.now();
     switch (recurrence) {
@@ -89,16 +78,6 @@ class _MapEvent {
       '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}';
 }
 
-// ── Code ───────────────────────────────────────────────────────
-//
-// ✏️  WO CODES + BESCHREIBUNGEN HINZUFÜGEN?
-//    In der _maps-Liste weiter unten → in codes: [ ... ] einfügen.
-//
-// Felder:
-//   label       → Kurzer Name, z. B. "Hauptinsel" oder "Event-Insel"
-//   code        → Island-Code, z. B. "1499-6977-1308"
-//   description → Was man dort findet/macht (erscheint im Codes-Screen)
-//
 class _MapCode {
   final String label;
   final String code;
@@ -110,17 +89,9 @@ class _MapCode {
     required this.description,
   });
 
-  /// Insel-Codes (z. B. "1499-6977-1308") können kopiert werden.
-  /// Secret Codes müssen manuell im Fortnite-Menü eingegeben werden
-  /// und sind daher nicht kopierbar.
   bool get copyable => !label.toLowerCase().contains('secret');
 }
 
-// ── Map ────────────────────────────────────────────────────────
-//
-// ✏️  WO NEUE MAPS HINZUFÜGEN?
-//    In der _maps-Liste weiter unten → neuen _KreativMap-Block einfügen.
-//
 class _KreativMap {
   final String name;
   final String creator;
@@ -128,8 +99,6 @@ class _KreativMap {
   final List<String> tags;
   final Color accentColor;
   final List<_MapEvent> events;
-
-  /// true → zeigt einen "Dino Dex"-Button im Detail-Screen
   final bool showDinoDex;
 
   const _KreativMap({
@@ -145,21 +114,12 @@ class _KreativMap {
 
 // ══════════════════════════════════════════════════════════════
 //
-//  ✏️  HIER ALLES BEARBEITEN — MAPS · CODES · EVENTS
+//  ✏️  MAPS-LISTE — hier Maps, Codes und Events verwalten
 //
-//  ┌──────────────────────────────────────────────────────────┐
-//  │  NEUE MAP hinzufügen:                                    │
-//  │    Kopiere einen _KreativMap-Block und füge ihn          │
-//  │    VOR dem Kommentar "← NEUE MAP HIER" ein.             │
-//  │                                                          │
-//  │  NEUEN CODE hinzufügen:                                  │
-//  │    In codes: [ ... ] → _MapCode(label:, code:, desc:)    │
-//  │                                                          │
-//  │  NEUES EVENT hinzufügen:                                 │
-//  │    In events: [ ... ] → _MapEvent(name:, color:, ...)    │
-//  │                                                          │
-//  │  WOCHENTAGE: 1=Mo 2=Di 3=Mi 4=Do 5=Fr 6=Sa 7=So         │
-//  └──────────────────────────────────────────────────────────┘
+//  CHANGELOG:
+//    - "Monsterklau 👻 [ADM-ABUSE]" wurde entfernt.
+//      Der Eintrag wird jetzt über FortniteGuidesHubScreen →
+//      "Steal the Dino Map" erreicht (nur noch Klau die Dinos).
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -173,7 +133,6 @@ final List<_KreativMap> _maps = [
     accentColor: const Color(0xFFFF4444),
     tags: const ['simulator', 'tycoon', 'casual', 'just for fun'],
 
-    // ✏️ CODES – hier bearbeiten oder neue hinzufügen:
     codes: const [
       _MapCode(
         label: 'Hauptinsel',
@@ -184,102 +143,31 @@ final List<_KreativMap> _maps = [
             'Vorteile frei und baut euer urzeitliches Imperium aus.',
       ),
       _MapCode(label: 'Secret Code', code: '0264', description: 'Raptor Squad'),
-      _MapCode(
-        label: 'Secret Code',
-        code: '034971',
-        description: 'Random Jurassic egg',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '049562',
-        description: 'Random Reindeerceratops',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '0682',
-        description: 'Angelic Mammoth',
-      ),
+      _MapCode(label: 'Secret Code', code: '034971', description: 'Random Jurassic egg'),
+      _MapCode(label: 'Secret Code', code: '049562', description: 'Random Reindeerceratops'),
+      _MapCode(label: 'Secret Code', code: '0682', description: 'Angelic Mammoth'),
       _MapCode(label: 'Secret Code', code: '103961', description: 'Prime rex'),
-      _MapCode(
-        label: 'Secret Code',
-        code: '110452',
-        description: 'Raptor Squad',
-      ),
+      _MapCode(label: 'Secret Code', code: '110452', description: 'Raptor Squad'),
       _MapCode(label: 'Secret Code', code: '141516', description: '???'),
-      _MapCode(
-        label: 'Secret Code',
-        code: '150919',
-        description: 'Fusion Skip',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '153596',
-        description: 'Chocolate Dodo',
-      ),
+      _MapCode(label: 'Secret Code', code: '150919', description: 'Fusion Skip'),
+      _MapCode(label: 'Secret Code', code: '153596', description: 'Chocolate Dodo'),
       _MapCode(label: 'Secret Code', code: '197365', description: 'Egg'),
       _MapCode(label: 'Secret Code', code: '2068', description: 'Carno'),
-      _MapCode(
-        label: 'Secret Code',
-        code: '207430',
-        description: 'Storm Tapejara',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '237045',
-        description: 'Jurassic Egg',
-      ),
+      _MapCode(label: 'Secret Code', code: '207430', description: 'Storm Tapejara'),
+      _MapCode(label: 'Secret Code', code: '237045', description: 'Jurassic Egg'),
       _MapCode(label: 'Secret Code', code: '3961', description: 'T- Rex'),
       _MapCode(label: 'Secret Code', code: '593927', description: 'Mammoth'),
-      _MapCode(
-        label: 'Secret Code',
-        code: '596025',
-        description: 'Reindeer Spino',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '6525',
-        description: 'Infernal Mammoth',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '676767',
-        description: 'Fusion Skip',
-      ),
+      _MapCode(label: 'Secret Code', code: '596025', description: 'Reindeer Spino'),
+      _MapCode(label: 'Secret Code', code: '6525', description: 'Infernal Mammoth'),
+      _MapCode(label: 'Secret Code', code: '676767', description: 'Fusion Skip'),
       _MapCode(label: 'Secret Code', code: '860912', description: 'Dodo'),
-      _MapCode(
-        label: 'Secret Code',
-        code: '9078',
-        description: 'Angelic Indominus',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '929078',
-        description: 'Jurassic Egg',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '934062',
-        description: 'Random Carno',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '963062',
-        description: 'Skeleton Rex',
-      ),
-      _MapCode(
-        label: 'Secret Code',
-        code: '967126',
-        description: 'Jurassic Egg',
-      ),
-      // ← Weiteren Code hier einfügen:
-      // _MapCode(
-      //   label: 'Event-Insel',
-      //   code: 'XXXX-XXXX-XXXX',
-      //   description: 'Beschreibung was auf dieser Insel passiert...',
-      // ),
+      _MapCode(label: 'Secret Code', code: '9078', description: 'Angelic Indominus'),
+      _MapCode(label: 'Secret Code', code: '929078', description: 'Jurassic Egg'),
+      _MapCode(label: 'Secret Code', code: '934062', description: 'Random Carno'),
+      _MapCode(label: 'Secret Code', code: '963062', description: 'Skeleton Rex'),
+      _MapCode(label: 'Secret Code', code: '967126', description: 'Jurassic Egg'),
     ],
 
-    // ✏️ EVENTS – hier bearbeiten oder neue hinzufügen:
     events: const [
       _MapEvent(
         name: '🌌 Galaxy Event',
@@ -297,7 +185,7 @@ final List<_KreativMap> _maps = [
         name: '🐇 Easter Event',
         color: Color(0xFFFF6B35),
         recurrence: _Recurrence.weeklyOnDay,
-        weekday: 7, // Sonntag
+        weekday: 7,
         hour: 18,
       ),
       _MapEvent(
@@ -310,71 +198,23 @@ final List<_KreativMap> _maps = [
         name: '🏹 Hunting Night',
         color: Color(0xFF9C6FFF),
         recurrence: _Recurrence.weeklyOnDay,
-        weekday: 3, // Mittwoch
+        weekday: 3,
         hour: 23,
       ),
-      // ← Weiteres Event hier einfügen
     ],
     showDinoDex: true,
   ),
 
-  // ┌──────────────────────────────────────────────────────────┐
-  // │ MAP 2: Monsterklau                                       │
-  // └──────────────────────────────────────────────────────────┘
-  _KreativMap(
-    name: 'Monsterklau 👻 [ADM-ABUSE]',
-    creator: 'NBRSTUDIOS',
-    accentColor: const Color(0xFF9C6FFF),
-    tags: const ['simulator', 'tycoon', 'casual', 'just for fun'],
-
-    // ✏️ CODES:
-    codes: const [
-      _MapCode(
-        label: 'Hauptinsel',
-        code: '4262-1024-3421',
-        description:
-            'Stehlt Monster anderer Spieler! ADM ABUSE-, Upside Down-, '
-            'Blood Moon-, Lucky Block-Events – plus Trade System und '
-            'Offline-Einnahmen. Schaltet durch Reinkarnationen Perks frei!',
-      ),
-      // ← Weiteren Code hier einfügen
-    ],
-
-    // ✏️ EVENTS:
-    events: const [
-      _MapEvent(
-        name: '👾 ADM ABUSE Event',
-        color: Color(0xFF9C6FFF),
-        recurrence: _Recurrence.weeklyOnDay,
-        weekday: 6, // Samstag
-        hour: 19,
-      ),
-      // ← Weiteres Event hier einfügen
-    ],
-  ),
-
-  // ← NEUE MAP HIER EINFÜGEN (Vorlage kopieren & anpassen):
+  // ── NEUE MAP HIER EINFÜGEN ────────────────────────────────
   // _KreativMap(
   //   name: 'Map-Name 🗺️',
   //   creator: 'Creator-Name',
   //   accentColor: const Color(0xFF00E676),
   //   tags: const ['tag1', 'tag2'],
   //   codes: const [
-  //     _MapCode(
-  //       label: 'Hauptinsel',
-  //       code: 'XXXX-XXXX-XXXX',
-  //       description: 'Was macht man auf dieser Insel?',
-  //     ),
+  //     _MapCode(label: 'Hauptinsel', code: 'XXXX-XXXX-XXXX', description: '...'),
   //   ],
-  //   events: const [
-  //     _MapEvent(
-  //       name: '🎉 Event-Name',
-  //       color: Color(0xFF00E676),
-  //       recurrence: _Recurrence.weeklyOnDay,
-  //       weekday: 6, // Samstag
-  //       hour: 19,
-  //     ),
-  //   ],
+  //   events: const [],
   // ),
 ];
 
@@ -402,10 +242,7 @@ class FortniteKreativMapsScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white.withOpacity(0.90),
-                      ),
+                      icon: Icon(Icons.arrow_back, color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
@@ -415,18 +252,14 @@ class FortniteKreativMapsScreen extends StatelessWidget {
                           Text(
                             l10n.hubKreativMaps,
                             style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                              letterSpacing: -0.3,
+                              fontSize: 26, fontWeight: FontWeight.w900,
+                              color: Colors.white, letterSpacing: -0.3,
                             ),
                           ),
                           Text(
                             l10n.hubKreativMapsSubtitle,
                             style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white54,
+                              fontSize: 13, fontWeight: FontWeight.w500, color: Colors.white54,
                             ),
                           ),
                         ],
@@ -472,7 +305,6 @@ class _MapCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Nächstes Event berechnen
     _MapEvent? nextEvent;
     Duration? nextDur;
     if (map.events.isNotEmpty) {
@@ -489,16 +321,13 @@ class _MapCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Farbiger Balken oben
             Container(
               height: 4,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [map.accentColor, map.accentColor.withOpacity(0.3)],
                 ),
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(22),
-                ),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
               ),
             ),
             Padding(
@@ -506,149 +335,85 @@ class _MapCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Name + Chevron
                   Row(
                     children: [
                       Expanded(
-                        child: Text(
-                          map.name,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w900,
-                            height: 1.2,
-                          ),
-                        ),
+                        child: Text(map.name,
+                            style: const TextStyle(color: Colors.white, fontSize: 17,
+                                fontWeight: FontWeight.w900, height: 1.2)),
                       ),
-                      Icon(
-                        Icons.chevron_right,
-                        color: Colors.white.withOpacity(0.35),
-                        size: 20,
-                      ),
+                      Icon(Icons.chevron_right,
+                          color: Colors.white.withOpacity(0.35), size: 20),
                     ],
                   ),
                   const SizedBox(height: 4),
-
-                  // Creator
                   Row(
                     children: [
-                      Icon(
-                        Icons.person_outline,
-                        size: 13,
-                        color: Colors.white.withOpacity(0.45),
-                      ),
+                      Icon(Icons.person_outline, size: 13,
+                          color: Colors.white.withOpacity(0.45)),
                       const SizedBox(width: 4),
-                      Text(
-                        map.creator,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.50),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      Text(map.creator,
+                          style: TextStyle(color: Colors.white.withOpacity(0.50),
+                              fontSize: 12, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   const SizedBox(height: 12),
-
-                  // Erster Code (Vorschau)
                   if (map.codes.isNotEmpty)
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 9,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
                       decoration: BoxDecoration(
                         color: map.accentColor.withOpacity(0.12),
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: map.accentColor.withOpacity(0.35),
-                        ),
+                        border: Border.all(color: map.accentColor.withOpacity(0.35)),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(Icons.tag, size: 15, color: map.accentColor),
                           const SizedBox(width: 6),
-                          Text(
-                            map.codes.first.code,
-                            style: TextStyle(
-                              color: map.accentColor,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
+                          Text(map.codes.first.code,
+                              style: TextStyle(color: map.accentColor, fontSize: 15,
+                                  fontWeight: FontWeight.w800, letterSpacing: 0.5)),
                         ],
                       ),
                     ),
-
-                  // Nächstes Event (Vorschau)
                   if (nextEvent != null) ...[
                     const SizedBox(height: 10),
                     Row(
                       children: [
                         Container(
-                          width: 8,
-                          height: 8,
+                          width: 8, height: 8,
                           decoration: BoxDecoration(
-                            color: nextEvent.color,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: nextEvent.color.withOpacity(0.6),
-                                blurRadius: 4,
-                              ),
-                            ],
+                            color: nextEvent.color, shape: BoxShape.circle,
+                            boxShadow: [BoxShadow(color: nextEvent.color.withOpacity(0.6), blurRadius: 4)],
                           ),
                         ),
                         const SizedBox(width: 7),
                         Expanded(
                           child: Text(
                             '${nextEvent.name}  ·  in ${_fmtDuration(nextDur!)}',
-                            style: TextStyle(
-                              color: nextEvent.color,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: nextEvent.color, fontSize: 12,
+                                fontWeight: FontWeight.w700),
+                            maxLines: 1, overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
                     ),
                   ],
-
                   const SizedBox(height: 12),
-
-                  // Tags
                   Wrap(
-                    spacing: 6,
-                    runSpacing: 6,
-                    children: map.tags
-                        .map(
-                          (tag) => Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 9,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.07),
-                              borderRadius: BorderRadius.circular(999),
-                              border: Border.all(
-                                color: Colors.white.withOpacity(0.12),
-                              ),
-                            ),
-                            child: Text(
-                              tag,
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.55),
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
+                    spacing: 6, runSpacing: 6,
+                    children: map.tags.map((tag) => Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.07),
+                        borderRadius: BorderRadius.circular(999),
+                        border: Border.all(color: Colors.white.withOpacity(0.12)),
+                      ),
+                      child: Text(tag,
+                          style: TextStyle(color: Colors.white.withOpacity(0.55),
+                              fontSize: 11, fontWeight: FontWeight.w600)),
+                    )).toList(),
                   ),
                 ],
               ),
@@ -661,7 +426,7 @@ class _MapCard extends StatelessWidget {
 }
 
 // ══════════════════════════════════════════════════════════════
-// DETAIL-SCREEN (Hub mit 3 Buttons)
+// DETAIL-SCREEN
 // ══════════════════════════════════════════════════════════════
 
 class _MapDetailScreen extends StatelessWidget {
@@ -697,25 +462,13 @@ class _MapDetailScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white.withOpacity(0.90),
-                      ),
+                      icon: Icon(Icons.arrow_back, color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
-                      child: Text(
-                        map.name,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
-                          letterSpacing: -0.3,
-                          height: 1.2,
-                        ),
-                      ),
+                      child: Text(map.name, maxLines: 2, overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900,
+                              color: Colors.white, letterSpacing: -0.3, height: 1.2)),
                     ),
                   ],
                 ),
@@ -723,20 +476,12 @@ class _MapDetailScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 16, bottom: 6),
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.person_outline,
-                        size: 13,
-                        color: Colors.white.withOpacity(0.45),
-                      ),
+                      Icon(Icons.person_outline, size: 13,
+                          color: Colors.white.withOpacity(0.45)),
                       const SizedBox(width: 4),
-                      Text(
-                        map.creator,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.50),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      Text(map.creator,
+                          style: TextStyle(color: Colors.white.withOpacity(0.50),
+                              fontSize: 13, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),
@@ -753,8 +498,7 @@ class _MapDetailScreen extends StatelessWidget {
                         subtitle: countdownSubtitle,
                         onTap: map.events.isEmpty
                             ? () => ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(l10n.comingSoon)),
-                              )
+                                SnackBar(content: Text(l10n.comingSoon)))
                             : () => _push(context, _CountdownScreen(map: map)),
                       ),
                       const SizedBox(height: 10),
@@ -767,8 +511,7 @@ class _MapDetailScreen extends StatelessWidget {
                             : l10n.comingSoon,
                         onTap: map.codes.isEmpty
                             ? () => ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(l10n.comingSoon)),
-                              )
+                                SnackBar(content: Text(l10n.comingSoon)))
                             : () => _push(context, _CodesScreen(map: map)),
                       ),
                       const SizedBox(height: 10),
@@ -778,8 +521,7 @@ class _MapDetailScreen extends StatelessWidget {
                         title: l10n.kreativMapUpdates,
                         subtitle: l10n.comingSoon,
                         onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(l10n.comingSoon)),
-                        ),
+                          SnackBar(content: Text(l10n.comingSoon))),
                       ),
                       if (map.showDinoDex) ...[
                         const SizedBox(height: 10),
@@ -790,17 +532,14 @@ class _MapDetailScreen extends StatelessWidget {
                           subtitle: 'Alle Dinos abhaken',
                           onTap: () => _push(context, const DinoDexScreen()),
                         ),
-                        if (map.showDinoDex) ...[
-                          const SizedBox(height: 10),
-                          _DetailCard(
-                            icon: Icons.bar_chart,
-                            iconColor: const Color(0xFF9C6FFF),
-                            title: '📊 Stats',
-                            subtitle: 'Fortschritt & Bestenliste',
-                            onTap: () =>
-                                _push(context, const DinoStatsHubScreen()),
-                          ),
-                        ],
+                        const SizedBox(height: 10),
+                        _DetailCard(
+                          icon: Icons.bar_chart,
+                          iconColor: const Color(0xFF9C6FFF),
+                          title: '📊 Stats',
+                          subtitle: 'Fortschritt & Bestenliste',
+                          onTap: () => _push(context, const DinoStatsHubScreen()),
+                        ),
                       ],
                     ],
                   ),
@@ -815,13 +554,12 @@ class _MapDetailScreen extends StatelessWidget {
 }
 
 // ══════════════════════════════════════════════════════════════
-// COUNTDOWN-SCREEN (Live-Timer, auto-aktualisierend)
+// COUNTDOWN-SCREEN
 // ══════════════════════════════════════════════════════════════
 
 class _CountdownScreen extends StatefulWidget {
   final _KreativMap map;
   const _CountdownScreen({required this.map});
-
   @override
   State<_CountdownScreen> createState() => _CountdownScreenState();
 }
@@ -862,35 +600,20 @@ class _CountdownScreenState extends State<_CountdownScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white.withOpacity(0.90),
-                      ),
+                      icon: Icon(Icons.arrow_back, color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            l10n.kreativMapCountdowns,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                              letterSpacing: -0.3,
-                            ),
-                          ),
-                          Text(
-                            widget.map.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.white54,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          Text(l10n.kreativMapCountdowns,
+                              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900,
+                                  color: Colors.white, letterSpacing: -0.3)),
+                          Text(widget.map.name, maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 13, color: Colors.white54,
+                                  fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -900,29 +623,19 @@ class _CountdownScreenState extends State<_CountdownScreen> {
               const SizedBox(height: 8),
               Expanded(
                 child: widget.map.events.isEmpty
-                    ? Center(
-                        child: Text(
-                          l10n.kreativNoEvents,
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.40),
-                            fontSize: 16,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      )
+                    ? Center(child: Text(l10n.kreativNoEvents,
+                        style: TextStyle(color: Colors.white.withOpacity(0.40), fontSize: 16),
+                        textAlign: TextAlign.center))
                     : ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                         itemCount: sorted.length,
                         separatorBuilder: (_, __) => const SizedBox(height: 14),
-                        itemBuilder: (context, i) {
-                          final event = sorted[i];
-                          return _EventCard(
-                            event: event,
-                            scheduleLabel: event.scheduleLabel(l10n),
-                            l10n: l10n,
-                          );
-                        },
+                        itemBuilder: (context, i) => _EventCard(
+                          event: sorted[i],
+                          scheduleLabel: sorted[i].scheduleLabel(l10n),
+                          l10n: l10n,
+                        ),
                       ),
               ),
             ],
@@ -937,12 +650,7 @@ class _EventCard extends StatelessWidget {
   final _MapEvent event;
   final String scheduleLabel;
   final AppLocalizations l10n;
-
-  const _EventCard({
-    required this.event,
-    required this.scheduleLabel,
-    required this.l10n,
-  });
+  const _EventCard({required this.event, required this.scheduleLabel, required this.l10n});
 
   String _fmtDate(DateTime d) {
     final now = DateTime.now();
@@ -968,95 +676,45 @@ class _EventCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                // Dot
-                Container(
-                  width: 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: c,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(color: c.withOpacity(0.6), blurRadius: 6),
-                    ],
-                  ),
-                ),
+                Container(width: 10, height: 10,
+                    decoration: BoxDecoration(color: c, shape: BoxShape.circle,
+                        boxShadow: [BoxShadow(color: c.withOpacity(0.6), blurRadius: 6)])),
                 const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    event.name,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-                // Countdown-Badge
+                Expanded(child: Text(event.name,
+                    style: const TextStyle(color: Colors.white, fontSize: 16,
+                        fontWeight: FontWeight.w800))),
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 7,
-                  ),
-                  decoration: BoxDecoration(
-                    color: c.withOpacity(0.15),
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: c.withOpacity(0.40)),
-                  ),
-                  child: Text(
-                    'in ${_fmtDuration(dur)}',
-                    style: TextStyle(
-                      color: c,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                  decoration: BoxDecoration(color: c.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: c.withOpacity(0.40))),
+                  child: Text('in ${_fmtDuration(dur)}',
+                      style: TextStyle(color: c, fontSize: 14, fontWeight: FontWeight.w900)),
                 ),
               ],
             ),
             const SizedBox(height: 10),
             Container(height: 1, color: Colors.white.withOpacity(0.07)),
             const SizedBox(height: 10),
-            // Zeitplan
-            Row(
-              children: [
-                Icon(
-                  Icons.repeat,
-                  size: 14,
-                  color: Colors.white.withOpacity(0.40),
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  scheduleLabel,
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.55),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
+            Row(children: [
+              Icon(Icons.repeat, size: 14, color: Colors.white.withOpacity(0.40)),
+              const SizedBox(width: 6),
+              Text(scheduleLabel, style: TextStyle(color: Colors.white.withOpacity(0.55),
+                  fontSize: 13, fontWeight: FontWeight.w600)),
+            ]),
             const SizedBox(height: 5),
-            // Nächster Zeitpunkt
-            Row(
-              children: [
-                Icon(
-                  Icons.calendar_today_outlined,
-                  size: 13,
-                  color: Colors.white.withOpacity(0.35),
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  '${_fmtDate(next)}  ·  '
-                  '${next.hour.toString().padLeft(2, '0')}:'
-                  '${next.minute.toString().padLeft(2, '0')}',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.40),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
+            Row(children: [
+              Icon(Icons.calendar_today_outlined, size: 13,
+                  color: Colors.white.withOpacity(0.35)),
+              const SizedBox(width: 6),
+              Text(
+                '${_fmtDate(next)}  ·  '
+                '${next.hour.toString().padLeft(2, '0')}:'
+                '${next.minute.toString().padLeft(2, '0')}',
+                style: TextStyle(color: Colors.white.withOpacity(0.40),
+                    fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+            ]),
           ],
         ),
       ),
@@ -1074,13 +732,11 @@ class _CodesScreen extends StatelessWidget {
 
   void _copyCode(BuildContext context, String code) {
     Clipboard.setData(ClipboardData(text: code));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$code  ✓'),
-        duration: const Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('$code  ✓'),
+      duration: const Duration(seconds: 2),
+      behavior: SnackBarBehavior.floating,
+    ));
   }
 
   @override
@@ -1100,35 +756,19 @@ class _CodesScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white.withOpacity(0.90),
-                      ),
+                      icon: Icon(Icons.arrow_back, color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            l10n.kreativMapCodes,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                              letterSpacing: -0.3,
-                            ),
-                          ),
-                          Text(
-                            map.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 13,
-                              color: Colors.white54,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          Text(l10n.kreativMapCodes,
+                              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900,
+                                  color: Colors.white, letterSpacing: -0.3)),
+                          Text(map.name, maxLines: 1, overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 13, color: Colors.white54,
+                                  fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -1150,129 +790,58 @@ class _CodesScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Label
-                            Text(
-                              mc.label.toUpperCase(),
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.45),
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 1.2,
-                              ),
-                            ),
+                            Text(mc.label.toUpperCase(),
+                                style: TextStyle(color: Colors.white.withOpacity(0.45),
+                                    fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.2)),
                             const SizedBox(height: 10),
-
-                            // Code – nur Insel-Codes sind kopierbar.
-                            // Secret Codes müssen manuell im Fortnite-Menü
-                            // eingegeben werden (kein normales Eingabefeld).
                             mc.copyable
                                 ? GestureDetector(
                                     onTap: () => _copyCode(context, mc.code),
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 14,
-                                        vertical: 12,
-                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                                       decoration: BoxDecoration(
-                                        color: map.accentColor.withOpacity(
-                                          0.12,
-                                        ),
+                                        color: map.accentColor.withOpacity(0.12),
                                         borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(
-                                          color: map.accentColor.withOpacity(
-                                            0.40,
-                                          ),
-                                        ),
+                                        border: Border.all(color: map.accentColor.withOpacity(0.40)),
                                       ),
                                       child: Row(
                                         children: [
-                                          Icon(
-                                            Icons.tag,
-                                            size: 18,
-                                            color: map.accentColor,
-                                          ),
+                                          Icon(Icons.tag, size: 18, color: map.accentColor),
                                           const SizedBox(width: 10),
-                                          Expanded(
-                                            child: Text(
-                                              mc.code,
-                                              style: TextStyle(
-                                                color: map.accentColor,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w900,
-                                                letterSpacing: 1,
-                                              ),
-                                            ),
-                                          ),
-                                          Icon(
-                                            Icons.copy_rounded,
-                                            size: 18,
-                                            color: map.accentColor.withOpacity(
-                                              0.70,
-                                            ),
-                                          ),
+                                          Expanded(child: Text(mc.code,
+                                              style: TextStyle(color: map.accentColor, fontSize: 20,
+                                                  fontWeight: FontWeight.w900, letterSpacing: 1))),
+                                          Icon(Icons.copy_rounded, size: 18,
+                                              color: map.accentColor.withOpacity(0.70)),
                                         ],
                                       ),
                                     ),
                                   )
                                 : Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                      vertical: 12,
-                                    ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                                     decoration: BoxDecoration(
                                       color: Colors.white.withOpacity(0.06),
                                       borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(
-                                        color: Colors.white.withOpacity(0.14),
-                                      ),
+                                      border: Border.all(color: Colors.white.withOpacity(0.14)),
                                     ),
                                     child: Row(
                                       children: [
-                                        Icon(
-                                          Icons.tag,
-                                          size: 18,
-                                          color: Colors.white.withOpacity(0.50),
-                                        ),
+                                        Icon(Icons.tag, size: 18, color: Colors.white.withOpacity(0.50)),
                                         const SizedBox(width: 10),
-                                        Expanded(
-                                          child: Text(
-                                            mc.code,
-                                            style: TextStyle(
-                                              color: Colors.white.withOpacity(
-                                                0.80,
-                                              ),
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w900,
-                                              letterSpacing: 1,
-                                            ),
-                                          ),
-                                        ),
+                                        Expanded(child: Text(mc.code,
+                                            style: TextStyle(color: Colors.white.withOpacity(0.80),
+                                                fontSize: 20, fontWeight: FontWeight.w900, letterSpacing: 1))),
                                       ],
                                     ),
                                   ),
                             const SizedBox(height: 12),
-
-                            // Beschreibung
-                            Text(
-                              mc.description,
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.70),
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                height: 1.5,
-                              ),
-                            ),
+                            Text(mc.description,
+                                style: TextStyle(color: Colors.white.withOpacity(0.70),
+                                    fontSize: 13, fontWeight: FontWeight.w500, height: 1.5)),
                             const SizedBox(height: 8),
-
-                            // Hinweis nur für kopierbare Codes anzeigen
                             if (mc.copyable)
-                              Text(
-                                l10n.kreativMapCodeHint,
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.28),
-                                  fontSize: 11,
-                                ),
-                              ),
+                              Text(l10n.kreativMapCodeHint,
+                                  style: TextStyle(color: Colors.white.withOpacity(0.28), fontSize: 11)),
                           ],
                         ),
                       ),
@@ -1300,11 +869,8 @@ class _DetailCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const _DetailCard({
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
+    required this.icon, required this.iconColor,
+    required this.title, required this.subtitle, required this.onTap,
   });
 
   @override
@@ -1318,15 +884,11 @@ class _DetailCard extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 44,
-                height: 44,
+                width: 44, height: 44,
                 decoration: BoxDecoration(
                   color: iconColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(13),
-                  border: Border.all(
-                    color: iconColor.withOpacity(0.30),
-                    width: 1.2,
-                  ),
+                  border: Border.all(color: iconColor.withOpacity(0.30), width: 1.2),
                 ),
                 child: Icon(icon, color: iconColor, size: 22),
               ),
@@ -1335,33 +897,16 @@ class _DetailCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 16,
-                      ),
-                    ),
+                    Text(title, style: const TextStyle(color: Colors.white,
+                        fontWeight: FontWeight.w800, fontSize: 16)),
                     const SizedBox(height: 3),
-                    Text(
-                      subtitle,
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.55),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    Text(subtitle, style: TextStyle(color: Colors.white.withOpacity(0.55),
+                        fontWeight: FontWeight.w500, fontSize: 13),
+                        maxLines: 1, overflow: TextOverflow.ellipsis),
                   ],
                 ),
               ),
-              Icon(
-                Icons.chevron_right,
-                color: Colors.white.withOpacity(0.35),
-                size: 22,
-              ),
+              Icon(Icons.chevron_right, color: Colors.white.withOpacity(0.35), size: 22),
             ],
           ),
         ),
