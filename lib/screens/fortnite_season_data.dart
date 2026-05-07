@@ -33,7 +33,7 @@ final List<FortnitePassData> fortnitePasses = [
     name: 'Festival Pass',
     icon: Icons.music_note,
     startDate: DateTime(2026, 4, 16),
-    endDate: DateTime(2026, 6, 15),
+    endDate: DateTime(2026, 7, 29),
     color: Color(0xFFF48FB1),
   ),
   FortnitePassData(
