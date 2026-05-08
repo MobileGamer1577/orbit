@@ -712,12 +712,12 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get xpCalcCalculate => 'Berechnen';
   @override
-  String xpCalcDailyXp(String xp) => 'Du brauchst \$xp XP täglich';
+  String xpCalcDailyXp(String xp) => 'Du brauchst $xp XP täglich';
   @override
-  String xpCalcTotalXp(String xp) => 'Gesamt: \$xp XP benötigt';
+  String xpCalcTotalXp(String xp) => 'Gesamt: $xp XP benötigt';
   @override
   String xpCalcSeasonInfo(int percent, int days) =>
-      'Die aktuelle Season ist zu \$percent% abgeschlossen. Es verbleiben \$days Tage.';
+      'Die aktuelle Season ist zu $percent% abgeschlossen. Es verbleiben $days Tage.';
   @override
   String get xpCalcPlaytime => 'Spielzeit XP';
   @override
@@ -1167,12 +1167,15 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get xpCalcCalculate => 'Calculate';
   @override
-  String xpCalcDailyXp(String xp) => 'You need \$xp XP daily';
   @override
-  String xpCalcTotalXp(String xp) => 'Total: \$xp XP required';
+  String xpCalcDailyXp(String xp) => 'You need $xp XP daily';
+
+  @override
+  String xpCalcTotalXp(String xp) => 'Total: $xp XP required';
+
   @override
   String xpCalcSeasonInfo(int percent, int days) =>
-      'The current season is \$percent% complete. There are \$days days remaining.';
+      'The current season is $percent% complete. There are $days days remaining.';
   @override
   String get xpCalcPlaytime => 'Playtime XP';
   @override
