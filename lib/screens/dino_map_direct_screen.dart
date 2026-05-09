@@ -188,6 +188,22 @@ const List<_MapEvent> _kEvents = [
 //  SCREEN
 // ══════════════════════════════════════════════════════════════
 
+String _fmtDuration(Duration d) {
+  if (d.inSeconds <= 0) return '0m';
+
+  final days = d.inDays;
+  final hours = d.inHours % 24;
+  final minutes = d.inMinutes % 60;
+
+  final parts = <String>[];
+
+  if (days > 0) parts.add('${days}d');
+  if (hours > 0) parts.add('${hours}h');
+  if (minutes > 0) parts.add('${minutes}m');
+
+  return parts.join(' ');
+}
+
 class DinoMapDirectScreen extends StatelessWidget {
   const DinoMapDirectScreen({super.key});
 
