@@ -1,8 +1,8 @@
-name: Orbit
+﻿name: Orbit
 description: Orbit – Fortnite & BO7 Tracker
 publish_to: "none"
 
-version: 0.3.1-beta+33
+version: 0.3.1-beta+34
 
 environment:
   sdk: ^3.10.8
