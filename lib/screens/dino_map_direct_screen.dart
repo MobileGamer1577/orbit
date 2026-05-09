@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import 'dino_dex_screen.dart';
 import 'dino_stats_screen.dart';
-import 'fortnite_kreativ_maps_screen.dart' show _fmtDuration; // Hilfsfunktion wiederverwenden
 
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
@@ -113,8 +112,16 @@ const List<_MapCode> _kCodes = [
         'Vorteile frei und baut euer urzeitliches Imperium aus.',
   ),
   _MapCode(label: 'Secret Code', code: '0264', description: 'Raptor Squad'),
-  _MapCode(label: 'Secret Code', code: '034971', description: 'Random Jurassic egg'),
-  _MapCode(label: 'Secret Code', code: '049562', description: 'Random Reindeerceratops'),
+  _MapCode(
+    label: 'Secret Code',
+    code: '034971',
+    description: 'Random Jurassic egg',
+  ),
+  _MapCode(
+    label: 'Secret Code',
+    code: '049562',
+    description: 'Random Reindeerceratops',
+  ),
   _MapCode(label: 'Secret Code', code: '0682', description: 'Angelic Mammoth'),
   _MapCode(label: 'Secret Code', code: '103961', description: 'Prime rex'),
   _MapCode(label: 'Secret Code', code: '110452', description: 'Raptor Squad'),
@@ -131,7 +138,11 @@ const List<_MapCode> _kCodes = [
   _MapCode(label: 'Secret Code', code: '6525', description: 'Infernal Mammoth'),
   _MapCode(label: 'Secret Code', code: '676767', description: 'Fusion Skip'),
   _MapCode(label: 'Secret Code', code: '860912', description: 'Dodo'),
-  _MapCode(label: 'Secret Code', code: '9078', description: 'Angelic Indominus'),
+  _MapCode(
+    label: 'Secret Code',
+    code: '9078',
+    description: 'Angelic Indominus',
+  ),
   _MapCode(label: 'Secret Code', code: '929078', description: 'Jurassic Egg'),
   _MapCode(label: 'Secret Code', code: '934062', description: 'Random Carno'),
   _MapCode(label: 'Secret Code', code: '963062', description: 'Skeleton Rex'),
@@ -189,8 +200,7 @@ class DinoMapDirectScreen extends StatelessWidget {
 
     // Nächstes Event berechnen für Countdown-Karte
     final nextEvent = _kEvents.isNotEmpty
-        ? _kEvents.reduce(
-            (a, b) => a.timeUntilNext < b.timeUntilNext ? a : b)
+        ? _kEvents.reduce((a, b) => a.timeUntilNext < b.timeUntilNext ? a : b)
         : null;
 
     final countdownSubtitle = nextEvent != null
@@ -309,8 +319,7 @@ class DinoMapDirectScreen extends StatelessWidget {
                         iconColor: const Color(0xFF9C6FFF),
                         title: '📊 Stats',
                         subtitle: 'Fortschritt & Bestenliste',
-                        onTap: () =>
-                            _push(context, const DinoStatsHubScreen()),
+                        onTap: () => _push(context, const DinoStatsHubScreen()),
                       ),
                     ],
                   ),
@@ -566,8 +575,10 @@ class _EventCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 7,
+                  ),
                   decoration: BoxDecoration(
                     color: c.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(10),
@@ -589,7 +600,11 @@ class _EventCard extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                Icon(Icons.repeat, size: 14, color: Colors.white.withOpacity(0.40)),
+                Icon(
+                  Icons.repeat,
+                  size: 14,
+                  color: Colors.white.withOpacity(0.40),
+                ),
                 const SizedBox(width: 6),
                 Text(
                   scheduleLabel,
@@ -638,11 +653,13 @@ class _CodesScreen extends StatelessWidget {
 
   void _copyCode(BuildContext context, String code) {
     Clipboard.setData(ClipboardData(text: code));
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('$code  ✓'),
-      duration: const Duration(seconds: 2),
-      behavior: SnackBarBehavior.floating,
-    ));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$code  ✓'),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 
   @override
@@ -722,28 +739,28 @@ class _CodesScreen extends StatelessWidget {
                             const SizedBox(height: 10),
                             mc.copyable
                                 ? GestureDetector(
-                                    onTap: () =>
-                                        _copyCode(context, mc.code),
+                                    onTap: () => _copyCode(context, mc.code),
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 14,
                                         vertical: 12,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: _kAccentColor
-                                            .withOpacity(0.12),
-                                        borderRadius:
-                                            BorderRadius.circular(12),
+                                        color: _kAccentColor.withOpacity(0.12),
+                                        borderRadius: BorderRadius.circular(12),
                                         border: Border.all(
-                                          color: _kAccentColor
-                                              .withOpacity(0.40),
+                                          color: _kAccentColor.withOpacity(
+                                            0.40,
+                                          ),
                                         ),
                                       ),
                                       child: Row(
                                         children: [
-                                          Icon(Icons.tag,
-                                              size: 18,
-                                              color: _kAccentColor),
+                                          Icon(
+                                            Icons.tag,
+                                            size: 18,
+                                            color: _kAccentColor,
+                                          ),
                                           const SizedBox(width: 10),
                                           Expanded(
                                             child: Text(
@@ -759,8 +776,9 @@ class _CodesScreen extends StatelessWidget {
                                           Icon(
                                             Icons.copy_rounded,
                                             size: 18,
-                                            color: _kAccentColor
-                                                .withOpacity(0.70),
+                                            color: _kAccentColor.withOpacity(
+                                              0.70,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -772,13 +790,10 @@ class _CodesScreen extends StatelessWidget {
                                       vertical: 12,
                                     ),
                                     decoration: BoxDecoration(
-                                      color:
-                                          Colors.white.withOpacity(0.06),
-                                      borderRadius:
-                                          BorderRadius.circular(12),
+                                      color: Colors.white.withOpacity(0.06),
+                                      borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
-                                        color:
-                                            Colors.white.withOpacity(0.14),
+                                        color: Colors.white.withOpacity(0.14),
                                       ),
                                     ),
                                     child: Row(
@@ -786,16 +801,16 @@ class _CodesScreen extends StatelessWidget {
                                         Icon(
                                           Icons.tag,
                                           size: 18,
-                                          color: Colors.white
-                                              .withOpacity(0.50),
+                                          color: Colors.white.withOpacity(0.50),
                                         ),
                                         const SizedBox(width: 10),
                                         Expanded(
                                           child: Text(
                                             mc.code,
                                             style: TextStyle(
-                                              color: Colors.white
-                                                  .withOpacity(0.80),
+                                              color: Colors.white.withOpacity(
+                                                0.80,
+                                              ),
                                               fontSize: 20,
                                               fontWeight: FontWeight.w900,
                                               letterSpacing: 1,
