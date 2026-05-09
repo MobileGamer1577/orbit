@@ -238,6 +238,10 @@ abstract class AppLocalizations {
   String get guidesXpCalc;
   String get guidesXpCalcSubtitle;
 
+  // ── Droid Tycoon (NEU) ────────────────────────────────────
+  String get guidesDroidTycoon;
+  String get guidesDroidTycoonSubtitle;
+
   // ── XP Calculator ─────────────────────────────────────────
   String get xpCalcCurrentLevel;
   String get xpCalcTargetLevel;
@@ -683,7 +687,7 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String updateAvailableTitle(String version) => 'Update verfügbar: $version';
 
-  // ── Guides Hub (NEU) ──────────────────────────────────────
+  // ── Guides Hub ────────────────────────────────────────────
   @override
   String get hubGuides => 'Guides';
   @override
@@ -704,7 +708,13 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get guidesXpCalcSubtitle => 'Level-Fortschritt & Spielzeit-XP';
 
-  // ── XP Calculator (NEU) ───────────────────────────────────
+  // ── Droid Tycoon (NEU) ────────────────────────────────────
+  @override
+  String get guidesDroidTycoon => 'Star Wars Droid Tycoon';
+  @override
+  String get guidesDroidTycoonSubtitle => 'Rebirth Guide • Credits & Droids';
+
+  // ── XP Calculator ─────────────────────────────────────────
   @override
   String get xpCalcCurrentLevel => 'Aktuelles Level';
   @override
@@ -1139,11 +1149,11 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String updateAvailableTitle(String version) => 'Update available: $version';
 
-  // ── Guides Hub (NEW) ──────────────────────────────────────
+  // ── Guides Hub ────────────────────────────────────────────
   @override
   String get hubGuides => 'Guides';
   @override
-  String get hubGuidesSubtitle => 'Kreativ Maps • Codes • XP Calculator';
+  String get hubGuidesSubtitle => 'Creative Maps • Codes • XP Calculator';
   @override
   String get guidesWhatOpen => 'What do you want to open?';
   @override
@@ -1159,7 +1169,13 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get guidesXpCalcSubtitle => 'Season progress & playtime XP';
 
-  // ── XP Calculator (NEW) ───────────────────────────────────
+  // ── Droid Tycoon (NEU) ────────────────────────────────────
+  @override
+  String get guidesDroidTycoon => 'Star Wars Droid Tycoon';
+  @override
+  String get guidesDroidTycoonSubtitle => 'Rebirth Guide • Credits & Droids';
+
+  // ── XP Calculator ─────────────────────────────────────────
   @override
   String get xpCalcCurrentLevel => 'Current Level';
   @override
@@ -1167,12 +1183,9 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get xpCalcCalculate => 'Calculate';
   @override
-  @override
   String xpCalcDailyXp(String xp) => 'You need $xp XP daily';
-
   @override
   String xpCalcTotalXp(String xp) => 'Total: $xp XP required';
-
   @override
   String xpCalcSeasonInfo(int percent, int days) =>
       'The current season is $percent% complete. There are $days days remaining.';

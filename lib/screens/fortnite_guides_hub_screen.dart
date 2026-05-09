@@ -4,10 +4,10 @@ import '../l10n/app_localizations.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
-// ── Imports für die drei Unterbereiche ──────────────────────────
-import 'fortnite_kreativ_maps_screen.dart'; // Steal the Dino Map (bestehend)
-import 'fortnite_brainrot_codes_screen.dart'; // NEU: Brainrot Codes
-import 'fortnite_xp_calculator_screen.dart'; // NEU: XP Taschenrechner
+import 'dino_map_direct_screen.dart';   // NEU: direkt zum Dino-Detail
+import 'fortnite_brainrot_codes_screen.dart';
+import 'fortnite_xp_calculator_screen.dart';
+import 'droid_tycoon_screen.dart';       // NEU: Star Wars Droid Tycoon
 
 // ══════════════════════════════════════════════════════════════
 //
@@ -15,19 +15,15 @@ import 'fortnite_xp_calculator_screen.dart'; // NEU: XP Taschenrechner
 //  Datei: lib/screens/fortnite_guides_hub_screen.dart
 //
 //  Drehscheibe für alle Guide-Inhalte:
-//    • Steal the Dino Map  → FortniteKreativMapsScreen (bestehend)
-//    • Brainrot Codes      → FortniteBrainrotCodesScreen (NEU)
-//    • XP Taschenrechner   → FortniteXpCalculatorScreen (NEU)
-//
-//  ✏️  NEUEN GUIDE HINZUFÜGEN:
-//    1. Neuen Screen erstellen
-//    2. Import oben ergänzen
-//    3. Neuen _GuideCard-Block in build() einfügen
+//    • Steal the Dino Map  → DinoMapDirectScreen (direkt, kein Umweg)
+//    • Brainrot Codes      → FortniteBrainrotCodesScreen
+//    • XP Taschenrechner   → FortniteXpCalculatorScreen
+//    • Droid Tycoon        → DroidTycoonScreen (NEU)
 //
 //  CHANGELOG:
-//    - Erstellt als Ersatz für den direkten "Kreativ Maps"-Button
-//      im FortniteHubScreen (der nun "Guides" heißt)
-//    - Monsterklau wurde aus FortniteKreativMapsScreen entfernt
+//    - "Steal the Dino Map" öffnet jetzt direkt DinoMapDirectScreen
+//      statt des alten FortniteKreativMapsScreen (Kartenübersicht).
+//    - "Star Wars Droid Tycoon" Rebirth Guide hinzugefügt.
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -92,20 +88,19 @@ class FortniteGuidesHubScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     children: [
                       // ── A) Steal the Dino Map ────────────
-                      // Öffnet FortniteKreativMapsScreen (Monsterklau entfernt,
-                      // nur noch "Klau die Dinos" mit Codes / Events / Dino Dex)
+                      // Öffnet jetzt DIREKT DinoMapDirectScreen
+                      // (kein Umweg über FortniteKreativMapsScreen mehr)
                       _GuideCard(
                         icon: Icons.map_outlined,
                         iconColor: const Color(0xFF00E676),
                         title: l10n.guidesStealTheDino,
                         subtitle: l10n.guidesStealTheDinoSubtitle,
                         onTap: () =>
-                            _push(context, const FortniteKreativMapsScreen()),
+                            _push(context, const DinoMapDirectScreen()),
                       ),
                       const SizedBox(height: 12),
 
                       // ── B) Brainrot Codes ─────────────────
-                      // NEU: Island-Code + Liste abhakbarer Codes
                       _GuideCard(
                         icon: Icons.vpn_key_outlined,
                         iconColor: const Color(0xFFFF8C00),
@@ -117,7 +112,6 @@ class FortniteGuidesHubScreen extends StatelessWidget {
                       const SizedBox(height: 12),
 
                       // ── C) XP Taschenrechner ─────────────
-                      // NEU: Season-Fortschritt + Level-Rechner + Spielzeit-XP
                       _GuideCard(
                         icon: Icons.calculate_outlined,
                         iconColor: const Color(0xFF9C6FFF),
@@ -125,6 +119,17 @@ class FortniteGuidesHubScreen extends StatelessWidget {
                         subtitle: l10n.guidesXpCalcSubtitle,
                         onTap: () =>
                             _push(context, const FortniteXpCalculatorScreen()),
+                      ),
+                      const SizedBox(height: 12),
+
+                      // ── D) Star Wars Droid Tycoon (NEU) ──
+                      _GuideCard(
+                        icon: Icons.rocket_launch_outlined,
+                        iconColor: const Color(0xFF00BFFF),
+                        title: l10n.guidesDroidTycoon,
+                        subtitle: l10n.guidesDroidTycoonSubtitle,
+                        onTap: () =>
+                            _push(context, const DroidTycoonScreen()),
                       ),
                     ],
                   ),
@@ -167,7 +172,6 @@ class _GuideCard extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(14, 18, 12, 18),
           child: Row(
             children: [
-              // Icon-Container
               Container(
                 width: 52,
                 height: 52,
@@ -182,8 +186,6 @@ class _GuideCard extends StatelessWidget {
                 child: Icon(icon, color: iconColor, size: 26),
               ),
               const SizedBox(width: 16),
-
-              // Titel + Untertitel
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
