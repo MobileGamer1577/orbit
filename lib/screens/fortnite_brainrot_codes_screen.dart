@@ -45,47 +45,57 @@ const String _kPageTitle = 'Steal the Brainrot Codes April 2026';
 const List<_BrainrotCode> _kCodes = [
   _BrainrotCode(
     id: 'stb_001',
-    code: '1234',
-    description: 'Starter Egg',
+    code: '371134',
+    description: 'Spawn Ferinsini Luckini',
   ),
   _BrainrotCode(
     id: 'stb_002',
-    code: '5678',
-    description: 'Random Brainrot',
+    code: '519284',
+    description: 'Spawns Crystal Llama Rot',
   ),
   _BrainrotCode(
     id: 'stb_003',
-    code: '9012',
-    description: 'Sigma Egg',
+    code: '463827',
+    description: 'Machine Luck Boost',
   ),
   _BrainrotCode(
     id: 'stb_004',
-    code: '3456',
-    description: 'Rare Brainrot',
+    code: '736621',
+    description: 'Eternal Machine Luck Boost',
   ),
   _BrainrotCode(
     id: 'stb_005',
-    code: '7890',
-    description: 'Mystery Box',
+    code: '482913',
+    description: 'Eternal Machine Cooldown Skip',
   ),
   _BrainrotCode(
     id: 'stb_006',
-    code: '112233',
-    description: 'Jurassic Brainrot Egg',
+    code: '913134',
+    description: 'Spawn Lovely Llama Rot',
   ),
   _BrainrotCode(
     id: 'stb_007',
-    code: '445566',
-    description: 'Fusion Skip',
+    code: '015001',
+    description: 'Spawn Lovely Llama Rot',
   ),
   _BrainrotCode(
     id: 'stb_008',
-    code: '778899',
-    description: 'Epic Brainrot',
+    code: '871485',
+    description: 'Spawn Toxic Llama Rot',
+  ),
+  _BrainrotCode(
+    id: 'stb_009',
+    code: '994817',
+    description: 'Christmas Craft Machine Brainrot Recovery',
+  ),
+  _BrainrotCode(
+    id: 'stb_010',
+    code: '987651',
+    description: 'Spawn Toxic Llama rot',
   ),
   // ← NEUEN CODE HIER EINFÜGEN:
   // _BrainrotCode(
-  //   id: 'stb_009',        // Eindeutige ID (nie ändern!)
+  //   id: 'stb_010',        // Eindeutige ID (nie ändern!)
   //   code: 'DEIN_CODE',    // Der einzugebende Code
   //   description: 'Was dieser Code bringt',
   // ),
@@ -124,7 +134,6 @@ class FortniteBrainrotCodesScreen extends StatefulWidget {
 
 class _FortniteBrainrotCodesScreenState
     extends State<FortniteBrainrotCodesScreen> {
-
   // ── Insel-Code kopieren ───────────────────────────────────
 
   void _copyIslandCode() {
@@ -229,10 +238,7 @@ class _FortniteBrainrotCodesScreenState
                     // ── 1. Insel-Code (kopierbar) ────────────
                     _SectionLabel('INSEL CODE'),
                     const SizedBox(height: 8),
-                    _IslandCodeCard(
-                      code: _kIslandCode,
-                      onTap: _copyIslandCode,
-                    ),
+                    _IslandCodeCard(code: _kIslandCode, onTap: _copyIslandCode),
 
                     const SizedBox(height: 20),
 
