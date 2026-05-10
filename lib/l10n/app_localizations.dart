@@ -238,10 +238,6 @@ abstract class AppLocalizations {
   String get guidesXpCalc;
   String get guidesXpCalcSubtitle;
 
-  // ── Droid Tycoon (NEU) ────────────────────────────────────
-  String get guidesDroidTycoon;
-  String get guidesDroidTycoonSubtitle;
-
   // ── XP Calculator ─────────────────────────────────────────
   String get xpCalcCurrentLevel;
   String get xpCalcTargetLevel;
@@ -253,6 +249,28 @@ abstract class AppLocalizations {
   String get xpCalcWeeklyLimit;
   String get xpCalcNoLimit;
   String get xpCalcApprox;
+
+  // ── Droid Tycoon ──────────────────────────────────────────
+  String get guidesDroidTycoon;
+  String get guidesDroidTycoonSubtitle;
+
+  // ── Animationen ───────────────────────────────────────────
+  String get sectionAnimations;
+  String get animationsTitle;
+  String get animationsSubtitleOn;
+  String get animationsSubtitleOff;
+  String get animAllTitle;
+  String get animAllSubtitle;
+  String get animSectionIndividual;
+  String get animRainbowTitle;
+  String get animRainbowSubtitle;
+  String get animJurassicTitle;
+  String get animJurassicSubtitle;
+  String get animCountdownTitle;
+  String get animCountdownSubtitle;
+  String get animShopTitle;
+  String get animShopSubtitle;
+  String get animHint;
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -687,7 +705,7 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String updateAvailableTitle(String version) => 'Update verfügbar: $version';
 
-  // ── Guides Hub ────────────────────────────────────────────
+  // ── Guides Hub (NEU) ──────────────────────────────────────
   @override
   String get hubGuides => 'Guides';
   @override
@@ -708,13 +726,7 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get guidesXpCalcSubtitle => 'Level-Fortschritt & Spielzeit-XP';
 
-  // ── Droid Tycoon (NEU) ────────────────────────────────────
-  @override
-  String get guidesDroidTycoon => 'Star Wars Droid Tycoon';
-  @override
-  String get guidesDroidTycoonSubtitle => 'Rebirth Guide • Credits & Droids';
-
-  // ── XP Calculator ─────────────────────────────────────────
+  // ── XP Calculator (NEU) ───────────────────────────────────
   @override
   String get xpCalcCurrentLevel => 'Aktuelles Level';
   @override
@@ -737,6 +749,47 @@ class _AppLocalizationsDe extends AppLocalizations {
   @override
   String get xpCalcApprox =>
       '* Werte sind Näherungswerte. Echte Fortnite-Werte können abweichen.';
+
+  // ── Droid Tycoon ──────────────────────────────────────────
+  @override
+  String get guidesDroidTycoon => 'Star Wars Droid Tycoon';
+  @override
+  String get guidesDroidTycoonSubtitle => 'Rebirth Guide • Credits & Droids';
+
+  // ── Animationen ───────────────────────────────────────────
+  @override
+  String get sectionAnimations => 'Animationen';
+  @override
+  String get animationsTitle => 'Animationen';
+  @override
+  String get animationsSubtitleOn => 'Alle Animationen aktiv';
+  @override
+  String get animationsSubtitleOff => 'Alle Animationen deaktiviert';
+  @override
+  String get animAllTitle => 'Alle Animationen';
+  @override
+  String get animAllSubtitle => 'Master-Schalter für alle Animationen';
+  @override
+  String get animSectionIndividual => 'Einzelne Animationen';
+  @override
+  String get animRainbowTitle => 'Rainbow-Animation';
+  @override
+  String get animRainbowSubtitle => 'Farbverlauf bei Droid Tycoon Rainbow-Droids';
+  @override
+  String get animJurassicTitle => 'Jurassic-Shimmer';
+  @override
+  String get animJurassicSubtitle => 'Glitzer-Effekt bei Jurassic-Dinos im Dino Dex';
+  @override
+  String get animCountdownTitle => 'Countdown-Balken';
+  @override
+  String get animCountdownSubtitle => 'Animierter Fortschrittsbalken in Countdowns';
+  @override
+  String get animShopTitle => 'Shop-Animationen';
+  @override
+  String get animShopSubtitle => 'Animierte Badges im Item Shop';
+  @override
+  String get animHint =>
+      'Das Deaktivieren von Animationen kann die Akku-Laufzeit verbessern und die App flüssiger machen.';
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -1149,11 +1202,11 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String updateAvailableTitle(String version) => 'Update available: $version';
 
-  // ── Guides Hub ────────────────────────────────────────────
+  // ── Guides Hub (NEW) ──────────────────────────────────────
   @override
   String get hubGuides => 'Guides';
   @override
-  String get hubGuidesSubtitle => 'Creative Maps • Codes • XP Calculator';
+  String get hubGuidesSubtitle => 'Kreativ Maps • Codes • XP Calculator';
   @override
   String get guidesWhatOpen => 'What do you want to open?';
   @override
@@ -1169,13 +1222,7 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get guidesXpCalcSubtitle => 'Season progress & playtime XP';
 
-  // ── Droid Tycoon (NEU) ────────────────────────────────────
-  @override
-  String get guidesDroidTycoon => 'Star Wars Droid Tycoon';
-  @override
-  String get guidesDroidTycoonSubtitle => 'Rebirth Guide • Credits & Droids';
-
-  // ── XP Calculator ─────────────────────────────────────────
+  // ── XP Calculator (NEW) ───────────────────────────────────
   @override
   String get xpCalcCurrentLevel => 'Current Level';
   @override
@@ -1183,9 +1230,12 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get xpCalcCalculate => 'Calculate';
   @override
+  @override
   String xpCalcDailyXp(String xp) => 'You need $xp XP daily';
+
   @override
   String xpCalcTotalXp(String xp) => 'Total: $xp XP required';
+
   @override
   String xpCalcSeasonInfo(int percent, int days) =>
       'The current season is $percent% complete. There are $days days remaining.';
@@ -1198,4 +1248,45 @@ class _AppLocalizationsEn extends AppLocalizations {
   @override
   String get xpCalcApprox =>
       '* Values are approximate and may differ from actual Fortnite XP amounts.';
+
+  // ── Droid Tycoon ──────────────────────────────────────────
+  @override
+  String get guidesDroidTycoon => 'Star Wars Droid Tycoon';
+  @override
+  String get guidesDroidTycoonSubtitle => 'Rebirth Guide • Credits & Droids';
+
+  // ── Animationen ───────────────────────────────────────────
+  @override
+  String get sectionAnimations => 'Animations';
+  @override
+  String get animationsTitle => 'Animations';
+  @override
+  String get animationsSubtitleOn => 'All animations active';
+  @override
+  String get animationsSubtitleOff => 'All animations disabled';
+  @override
+  String get animAllTitle => 'All Animations';
+  @override
+  String get animAllSubtitle => 'Master switch for all animations';
+  @override
+  String get animSectionIndividual => 'Individual Animations';
+  @override
+  String get animRainbowTitle => 'Rainbow Animation';
+  @override
+  String get animRainbowSubtitle => 'Color cycle on Droid Tycoon Rainbow Droids';
+  @override
+  String get animJurassicTitle => 'Jurassic Shimmer';
+  @override
+  String get animJurassicSubtitle => 'Shimmer effect on Jurassic Dinos in Dino Dex';
+  @override
+  String get animCountdownTitle => 'Countdown Bar';
+  @override
+  String get animCountdownSubtitle => 'Animated progress bar in countdowns';
+  @override
+  String get animShopTitle => 'Shop Animations';
+  @override
+  String get animShopSubtitle => 'Animated badges in the Item Shop';
+  @override
+  String get animHint =>
+      'Disabling animations can improve battery life and make the app run smoother.';
 }
