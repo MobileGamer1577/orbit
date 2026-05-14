@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
+import '../storage/app_settings_store.dart';
 import '../storage/task_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
@@ -34,16 +36,9 @@ import '../widgets/orbit_glass_card.dart';
 // ══════════════════════════════════════════════════════════════
 
 // ──────────────────────────────────────────────────────────────
-//
-//  🎨 SELTENHEITS-SYSTEM — zentral definiert
-//
-//  Alles über Seltenheiten steht hier an einer Stelle.
-//  Farben, Sortier-Reihenfolge und Anzeige-Namen.
-//  Nirgendwo sonst hardcoden!
-//
+//  🎨 SELTENHEITS-SYSTEM
 // ──────────────────────────────────────────────────────────────
 
-/// Sortier-Reihenfolge der Seltenheiten (Index 0 = niedrigste)
 const _rarityOrder = [
   'common',
   'rare',
@@ -53,17 +48,15 @@ const _rarityOrder = [
   'jurassic',
 ];
 
-/// Farben pro Seltenheit
 const _rarityColors = {
-  'common': Color(0xFF2ECC40), // Grün
-  'rare': Color(0xFF0077FF), // Blau
-  'epic': Color(0xFF9B59B6), // Lila
-  'legendary': Color(0xFFFFD700), // Gold
-  'mythic': Color(0xFFFF1744), // Rot
-  'jurassic': Color(0xFFCCCCCC), // Grau (Basis — Badge ist animiert)
+  'common': Color(0xFF2ECC40),
+  'rare': Color(0xFF0077FF),
+  'epic': Color(0xFF9B59B6),
+  'legendary': Color(0xFFFFD700),
+  'mythic': Color(0xFFFF1744),
+  'jurassic': Color(0xFFCCCCCC),
 };
 
-/// Anzeige-Namen pro Seltenheit
 const _rarityLabels = {
   'common': 'Common',
   'rare': 'Rare',
@@ -73,17 +66,12 @@ const _rarityLabels = {
   'jurassic': 'Jurassic',
 };
 
-/// Gibt die Farbe einer Seltenheit zurück.
-/// Unbekannte Seltenheiten → Grau als Fallback.
 Color _rarityColor(String rarity) =>
     _rarityColors[rarity.toLowerCase()] ?? const Color(0xFF8F8F8F);
 
-/// Gibt den Anzeige-Namen einer Seltenheit zurück.
 String _rarityLabel(String rarity) =>
     _rarityLabels[rarity.toLowerCase()] ?? rarity;
 
-/// Gibt den Sortier-Index einer Seltenheit zurück.
-/// Unbekannte Seltenheiten → am Ende der Liste.
 int _rarityIndex(String rarity) {
   final i = _rarityOrder.indexOf(rarity.toLowerCase());
   return i == -1 ? 999 : i;
@@ -157,8 +145,7 @@ class _DinoDexScreenState extends State<DinoDexScreen> {
 
   Future<void> _load() async {
     try {
-      final lang = 'de';
-
+      const lang = 'de';
       final results = await Future.wait([
         rootBundle.loadString('assets/data/dino_dex.json'),
         rootBundle.loadString('assets/data/dinos_database.json'),
@@ -382,16 +369,6 @@ class DinoListScreen extends StatefulWidget {
 }
 
 class _DinoListScreenState extends State<DinoListScreen> {
-  /// Sortierung — GLOBAL:
-  ///
-  ///   Gruppe 1: Alle NICHT abgehakten Dinos
-  ///             → sortiert nach Seltenheit (common → jurassic)
-  ///
-  ///   Gruppe 2: Alle abgehakten Dinos
-  ///             → sortiert nach Seltenheit (common → jurassic)
-  ///
-  ///   Damit wandert jeder abgehakte Dino ans Ende,
-  ///   unabhängig davon wie selten er ist.
   List<_DinoEntry> _buildSortedList() {
     final entries = widget.category.dinoIds.map((id) {
       final data = widget.dinoDb[id] as Map<String, dynamic>?;
@@ -405,15 +382,9 @@ class _DinoListScreenState extends State<DinoListScreen> {
     entries.sort((a, b) {
       final aDone = TaskStore.isDone('dino:${a.id}') ? 1 : 0;
       final bDone = TaskStore.isDone('dino:${b.id}') ? 1 : 0;
-
-      // 1. GLOBAL: unchecked (0) vor checked (1)
       if (aDone != bDone) return aDone.compareTo(bDone);
-
-      // 2. Innerhalb der Gruppe: Seltenheit (common → jurassic)
       final ri = _rarityIndex(a.rarity).compareTo(_rarityIndex(b.rarity));
       if (ri != 0) return ri;
-
-      // 3. Alphabetisch als Tiebreaker
       return a.name.toLowerCase().compareTo(b.name.toLowerCase());
     });
 
@@ -528,9 +499,7 @@ class _DinoListScreenState extends State<DinoListScreen> {
 }
 
 // ──────────────────────────────────────────────────────────────
-//
-//  🦖 _DinoTile — Ein einzelner Dino-Eintrag
-//
+//  🦖 _DinoTile
 // ──────────────────────────────────────────────────────────────
 
 class _DinoTile extends StatefulWidget {
@@ -556,13 +525,15 @@ class _DinoTileState extends State<_DinoTile> {
     final color = _rarityColor(widget.dino.rarity);
     final isJurassic = widget.dino.rarity.toLowerCase() == 'jurassic';
 
-    // ── Dino-Name: Shimmer für Jurassic (nicht abgehakt), sonst normal ──
-    final Widget nameWidget = (isJurassic && !widget.isDone)
+    // animJurassic aus AppSettingsStore lesen
+    final animJurassic = context.watch<AppSettingsStore>().animJurassic;
+
+    // Dino-Name: Shimmer nur wenn Jurassic + nicht abgehakt + Animation an
+    final Widget nameWidget = (isJurassic && !widget.isDone && animJurassic)
         ? _JurassicShimmer(
             child: Text(
               widget.dino.name,
               style: const TextStyle(
-                // ShaderMask überschreibt diese Farbe mit dem Shimmer-Gradient
                 color: Colors.white,
                 fontWeight: FontWeight.w800,
                 fontSize: 15,
@@ -613,12 +584,11 @@ class _DinoTileState extends State<_DinoTile> {
           ),
           child: Row(
             children: [
-              // ── Seltenheits-Farbstreifen ────────────────
+              // Seltenheits-Farbstreifen
               Container(
                 width: 4,
                 height: 44,
                 decoration: BoxDecoration(
-                  // Jurassic: statischer grau→weiß Verlauf (kein Shimmer nötig)
                   gradient: isJurassic
                       ? const LinearGradient(
                           begin: Alignment.topCenter,
@@ -632,21 +602,22 @@ class _DinoTileState extends State<_DinoTile> {
               ),
               const SizedBox(width: 14),
 
-              // ── Name + Badge ─────────────────────────────
+              // Name + Badge
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     nameWidget,
                     const SizedBox(height: 5),
-                    isJurassic
+                    // Badge: Shimmer nur wenn Animation an
+                    (isJurassic && animJurassic)
                         ? const _JurassicBadge()
                         : _StaticBadge(rarity: widget.dino.rarity),
                   ],
                 ),
               ),
 
-              // ── Checkbox ────────────────────────────────
+              // Checkbox
               AnimatedContainer(
                 duration: const Duration(milliseconds: 180),
                 curve: Curves.easeOut,
@@ -677,7 +648,7 @@ class _DinoTileState extends State<_DinoTile> {
 }
 
 // ──────────────────────────────────────────────────────────────
-//  🏷  _StaticBadge — Farbiger Badge für alle außer Jurassic
+//  🏷  _StaticBadge
 // ──────────────────────────────────────────────────────────────
 
 class _StaticBadge extends StatelessWidget {
@@ -710,25 +681,7 @@ class _StaticBadge extends StatelessWidget {
 }
 
 // ──────────────────────────────────────────────────────────────
-//
-//  ✨ _JurassicShimmer — Wiederverwendbarer Shimmer-Wrapper
-//
-//  Lässt einen Lichtstreifen von links nach rechts laufen.
-//  Verwendet ShaderMask mit einem animierten LinearGradient.
-//
-//  Funktioniert so:
-//    • AnimationController läuft 0.0 → 1.0 in einer Loop
-//      (KEIN reverse — nur links → rechts, dann Neustart)
-//    • Der Gradient-Ursprung (begin/end) verschiebt sich mit:
-//        begin = Alignment(-3 + 6t, 0)
-//        end   = Alignment(-2 + 6t, 0)
-//      → t=0:   Gradient komplett links  → Widget zeigt Grau
-//      → t≈0.5: Highlight mittig sichtbar → weiß
-//      → t=1:   Gradient komplett rechts → Widget zeigt Grau
-//    • tileMode: clamp → außerhalb → nächste Farbe (grau)
-//    • blendMode: srcIn → ShaderMask nur auf Child-Pixel
-//    • RepaintBoundary: nur dieses Widget neu zeichnen
-//
+//  ✨ _JurassicShimmer
 // ──────────────────────────────────────────────────────────────
 
 class _JurassicShimmer extends StatefulWidget {
@@ -749,7 +702,7 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
     _ctrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2200),
-    )..repeat(); // ← NUR vorwärts — links → rechts, dann Neustart
+    )..repeat();
   }
 
   @override
@@ -765,9 +718,6 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
         animation: _ctrl,
         builder: (context, child) {
           final t = _ctrl.value;
-          // Gradient-Fenster wandert von links (-3→-2) nach rechts (3→4).
-          // Alignment(-1,0) = linke Kante des Widgets
-          // Alignment( 1,0) = rechte Kante des Widgets
           final begin = Alignment(-3.0 + 6.0 * t, 0);
           final end = Alignment(-2.0 + 6.0 * t, 0);
 
@@ -776,9 +726,9 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
               begin: begin,
               end: end,
               colors: const [
-                Color(0xFF777777), // grau — links (Ruhezustand)
-                Color(0xFFFFFFFF), // weiß — Mitte (Highlight)
-                Color(0xFF777777), // grau — rechts (Ruhezustand)
+                Color(0xFF777777),
+                Color(0xFFFFFFFF),
+                Color(0xFF777777),
               ],
               tileMode: TileMode.clamp,
             ).createShader(bounds),
@@ -793,10 +743,7 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
 }
 
 // ──────────────────────────────────────────────────────────────
-//  🏷  _JurassicBadge — Shimmer-Badge für Jurassic-Seltenheit
-//
-//  Verwendet _JurassicShimmer, damit Shimmer-Logik nur
-//  an einer Stelle definiert ist.
+//  🏷  _JurassicBadge
 // ──────────────────────────────────────────────────────────────
 
 class _JurassicBadge extends StatelessWidget {
@@ -808,7 +755,6 @@ class _JurassicBadge extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         decoration: BoxDecoration(
-          // Hintergrund + Border sind weiß — ShaderMask färbt sie grau/weiß
           color: Colors.white.withOpacity(0.10),
           borderRadius: BorderRadius.circular(6),
           border: Border.all(color: Colors.white, width: 1),
@@ -816,7 +762,6 @@ class _JurassicBadge extends StatelessWidget {
         child: const Text(
           'JURASSIC',
           style: TextStyle(
-            // ShaderMask überschreibt diese Farbe mit dem Shimmer-Gradient
             color: Colors.white,
             fontSize: 10,
             fontWeight: FontWeight.w900,
