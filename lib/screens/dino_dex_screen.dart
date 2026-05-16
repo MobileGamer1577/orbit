@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 import '../storage/app_settings_store.dart';
 import '../storage/task_store.dart';
@@ -126,7 +125,8 @@ class _DinoEntry {
 // ══════════════════════════════════════════════════════════════
 
 class DinoDexScreen extends StatefulWidget {
-  const DinoDexScreen({super.key});
+  final AppSettingsStore? settings;
+  const DinoDexScreen({super.key, this.settings});
 
   @override
   State<DinoDexScreen> createState() => _DinoDexScreenState();
@@ -258,6 +258,7 @@ class _DinoDexScreenState extends State<DinoDexScreen> {
                                 builder: (_) => DinoListScreen(
                                   category: cat,
                                   dinoDb: _dinoDb,
+                                  settings: widget.settings,
                                 ),
                               ),
                             ).then((_) => setState(() {})),
@@ -357,11 +358,14 @@ class _CategoryCard extends StatelessWidget {
 class DinoListScreen extends StatefulWidget {
   final _DinoCategory category;
   final Map<String, dynamic> dinoDb;
+  final AppSettingsStore?
+  settings; // optional; wird von DinoDexScreen nicht übergeben
 
   const DinoListScreen({
     super.key,
     required this.category,
     required this.dinoDb,
+    this.settings,
   });
 
   @override
@@ -369,6 +373,32 @@ class DinoListScreen extends StatefulWidget {
 }
 
 class _DinoListScreenState extends State<DinoListScreen> {
+  // Animations-Flag — wird aus AppSettingsStore gelesen
+  bool _animJurassic = true;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.settings != null) {
+      _animJurassic = widget.settings!.animJurassic;
+      widget.settings!.addListener(_onSettingsChanged);
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.settings?.removeListener(_onSettingsChanged);
+    super.dispose();
+  }
+
+  void _onSettingsChanged() {
+    if (mounted) {
+      setState(() {
+        _animJurassic = widget.settings!.animJurassic;
+      });
+    }
+  }
+
   List<_DinoEntry> _buildSortedList() {
     final entries = widget.category.dinoIds.map((id) {
       final data = widget.dinoDb[id] as Map<String, dynamic>?;
@@ -485,6 +515,7 @@ class _DinoListScreenState extends State<DinoListScreen> {
                           return _DinoTile(
                             dino: dino,
                             isDone: isDone,
+                            animJurassic: _animJurassic,
                             onToggle: () => _toggle(dino.id),
                           );
                         },
@@ -505,11 +536,13 @@ class _DinoListScreenState extends State<DinoListScreen> {
 class _DinoTile extends StatefulWidget {
   final _DinoEntry dino;
   final bool isDone;
+  final bool animJurassic;
   final VoidCallback onToggle;
 
   const _DinoTile({
     required this.dino,
     required this.isDone,
+    required this.animJurassic,
     required this.onToggle,
   });
 
@@ -525,11 +558,9 @@ class _DinoTileState extends State<_DinoTile> {
     final color = _rarityColor(widget.dino.rarity);
     final isJurassic = widget.dino.rarity.toLowerCase() == 'jurassic';
 
-    // animJurassic aus AppSettingsStore lesen
-    final animJurassic = context.watch<AppSettingsStore>().animJurassic;
-
-    // Dino-Name: Shimmer nur wenn Jurassic + nicht abgehakt + Animation an
-    final Widget nameWidget = (isJurassic && !widget.isDone && animJurassic)
+    // Shimmer nur wenn: Jurassic + nicht abgehakt + Animation an
+    final Widget nameWidget =
+        (isJurassic && !widget.isDone && widget.animJurassic)
         ? _JurassicShimmer(
             child: Text(
               widget.dino.name,
@@ -609,8 +640,7 @@ class _DinoTileState extends State<_DinoTile> {
                   children: [
                     nameWidget,
                     const SizedBox(height: 5),
-                    // Badge: Shimmer nur wenn Animation an
-                    (isJurassic && animJurassic)
+                    (isJurassic && widget.animJurassic)
                         ? const _JurassicBadge()
                         : _StaticBadge(rarity: widget.dino.rarity),
                   ],
@@ -659,7 +689,6 @@ class _StaticBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = _rarityColor(rarity);
     final label = _rarityLabel(rarity);
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
@@ -720,7 +749,6 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
           final t = _ctrl.value;
           final begin = Alignment(-3.0 + 6.0 * t, 0);
           final end = Alignment(-2.0 + 6.0 * t, 0);
-
           return ShaderMask(
             shaderCallback: (bounds) => LinearGradient(
               begin: begin,

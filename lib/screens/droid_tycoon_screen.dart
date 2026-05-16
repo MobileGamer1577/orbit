@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../storage/app_settings_store.dart';
 import '../theme/orbit_theme.dart';
@@ -218,14 +217,43 @@ const List<_Rebirth> _kRebirths = [
 //  SCREEN
 // ══════════════════════════════════════════════════════════════
 
-class DroidTycoonScreen extends StatelessWidget {
-  const DroidTycoonScreen({super.key});
+class DroidTycoonScreen extends StatefulWidget {
+  final AppSettingsStore? settings;
+
+  const DroidTycoonScreen({super.key, this.settings});
+
+  @override
+  State<DroidTycoonScreen> createState() => _DroidTycoonScreenState();
+}
+
+class _DroidTycoonScreenState extends State<DroidTycoonScreen> {
+  bool _animRainbow = true;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.settings != null) {
+      _animRainbow = widget.settings!.animRainbow;
+      widget.settings!.addListener(_onSettingsChanged);
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.settings?.removeListener(_onSettingsChanged);
+    super.dispose();
+  }
+
+  void _onSettingsChanged() {
+    if (mounted) {
+      setState(() {
+        _animRainbow = widget.settings!.animRainbow;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    // animRainbow einmalig hier lesen — wird an Kindwidgets weitergegeben
-    final animRainbow = context.watch<AppSettingsStore>().animRainbow;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: OrbitBackground(
@@ -288,8 +316,8 @@ class DroidTycoonScreen extends StatelessWidget {
                       label: 'Diamond',
                     ),
                     const SizedBox(width: 12),
-                    // Legende-Dot: animiert wenn an, statisch wenn aus
-                    animRainbow
+                    // Legende-Dot: animiert wenn an, statisch lila wenn aus
+                    _animRainbow
                         ? const _RainbowLegendDot()
                         : _LegendDot(
                             color: const Color(0xFF9C6FFF),
@@ -310,7 +338,7 @@ class DroidTycoonScreen extends StatelessWidget {
                   separatorBuilder: (_, __) => const SizedBox(height: 10),
                   itemBuilder: (context, i) => _RebirthCard(
                     rebirth: _kRebirths[i],
-                    animRainbow: animRainbow,
+                    animRainbow: _animRainbow,
                   ),
                 ),
               ),
@@ -432,7 +460,6 @@ class _RebirthCard extends StatelessWidget {
       (r) => rebirth.droids.any((d) => d.rarity == r),
       orElse: () => 'basic',
     );
-
     final accentColor = topRarity == 'rainbow'
         ? const Color(0xFF9C6FFF)
         : (_rarityColors[topRarity] ?? const Color(0xFF8F8F8F));
@@ -529,18 +556,15 @@ class _RebirthCard extends StatelessWidget {
 class _DroidChip extends StatelessWidget {
   final _Droid droid;
   final bool animRainbow;
-
   const _DroidChip({required this.droid, required this.animRainbow});
 
   @override
   Widget build(BuildContext context) {
     if (droid.rarity == 'rainbow') {
-      // Animation an → bunter Chip, aus → statischer lila Chip
       return animRainbow
           ? _RainbowDroidChip(name: droid.name)
           : _StaticRainbowChip(name: droid.name);
     }
-
     final color = _rarityColors[droid.rarity] ?? const Color(0xFF8F8F8F);
     final label = _rarityLabels[droid.rarity] ?? droid.rarity;
 
@@ -577,14 +601,13 @@ class _DroidChip extends StatelessWidget {
   }
 }
 
-// Statischer Rainbow-Chip (Animation aus)
 class _StaticRainbowChip extends StatelessWidget {
   final String name;
   const _StaticRainbowChip({required this.name});
 
   @override
   Widget build(BuildContext context) {
-    const color = Color(0xFF9C6FFF); // Lila als statische Farbe
+    const color = Color(0xFF9C6FFF);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
@@ -618,11 +641,9 @@ class _StaticRainbowChip extends StatelessWidget {
   }
 }
 
-// Animierter Rainbow-Chip
 class _RainbowDroidChip extends StatefulWidget {
   final String name;
   const _RainbowDroidChip({required this.name});
-
   @override
   State<_RainbowDroidChip> createState() => _RainbowDroidChipState();
 }
@@ -664,7 +685,6 @@ class _RainbowDroidChipState extends State<_RainbowDroidChip>
             0.85,
             1.0,
           ).toColor();
-
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
