@@ -29,10 +29,10 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String _versionText = '…';
-  bool   _checking    = false;
+  bool _checking = false;
 
   // ── DEV MODE TAP SYSTEM ───────────────────────────────────
-  int       _devTapCount  = 0;
+  int _devTapCount = 0;
   final int _devTapTarget = 8;
   DateTime? _lastTapTime;
 
@@ -48,18 +48,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final remaining = _devTapTarget - _devTapCount;
     if (_devTapCount >= 4 && remaining > 0) {
       ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Noch $remaining Taps…'),
-        duration: const Duration(milliseconds: 800),
-        behavior: SnackBarBehavior.floating,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Noch $remaining Taps…'),
+          duration: const Duration(milliseconds: 800),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
 
     if (_devTapCount >= _devTapTarget) {
       _devTapCount = 0;
       _lastTapTime = null;
       Navigator.push(
-          context, MaterialPageRoute(builder: (_) => const DevScreen()));
+        context,
+        MaterialPageRoute(builder: (_) => const DevScreen()),
+      );
     }
   }
 
@@ -92,17 +96,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
       final result = await UpdateService.checkForUpdates();
       if (!mounted) return;
       if (result.updateAvailable) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('${l10n.updateAvailableTitle(result.latest)} 🚀'),
-        ));
-      } else {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(l10n.updateNoUpdate)));
+          SnackBar(
+            content: Text('${l10n.updateAvailableTitle(result.latest)} 🚀'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.updateNoUpdate)));
       }
     } catch (_) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(context.l10n.updateFailed)));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.updateFailed)));
       }
     } finally {
       if (mounted) setState(() => _checking = false);
@@ -111,13 +119,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _openGithubLatest() async {
     final url = Uri.parse(
-        'https://github.com/MobileGamer1577/orbit/releases/latest');
+      'https://github.com/MobileGamer1577/orbit/releases/latest',
+    );
     try {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(context.l10n.updateGithubFailed)));
+          SnackBar(content: Text(context.l10n.updateGithubFailed)),
+        );
       }
     }
   }
@@ -126,16 +136,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final box = await Hive.openBox('task_state');
     await box.clear();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.resetProgressDone)));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(context.l10n.resetProgressDone)));
   }
 
   Future<void> _clearQuestCache() async {
     await QuestCacheStore.clearAll();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Quest-Cache geleert ✅ — beim nächsten Öffnen neu laden'),
-    ));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Quest-Cache geleert ✅ — beim nächsten Öffnen neu laden'),
+      ),
+    );
   }
 
   Future<void> _showLanguagePicker() async {
@@ -152,7 +165,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  // ── Animations-Screen öffnen ──────────────────────────────
   void _openAnimations() {
     Navigator.push(
       context,
@@ -175,10 +187,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       updateSubtitle = l10n.updateCurrent;
     }
 
-    final lang      = widget.settings.language;
+    final lang = widget.settings.language;
     final langLabel = lang == 'de' ? '🇩🇪  Deutsch' : '🇬🇧  English';
 
-    // Animations-Subtitle: zeigt ob Master an/aus ist
     final animSubtitle = widget.settings.animAll
         ? l10n.animationsSubtitleOn
         : l10n.animationsSubtitleOff;
@@ -189,9 +200,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(l10n.settingsTitle,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w800, color: Colors.white)),
+          title: Text(
+            l10n.settingsTitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+            ),
+          ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: SafeArea(
@@ -201,7 +216,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 // ── Allgemein ────────────────────────────
                 _SectionTitle(title: l10n.sectionGeneral),
                 const SizedBox(height: 10),
@@ -210,7 +224,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconColor: const Color(0xFF9C6FFF),
                   title: l10n.version,
                   subtitle: _versionText,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _onVersionTap,
                 ),
                 const SizedBox(height: 10),
@@ -219,7 +236,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconColor: const Color(0xFF4CAF50),
                   title: l10n.languageLabel,
                   subtitle: langLabel,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _showLanguagePicker,
                 ),
 
@@ -232,7 +252,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconColor: const Color(0xFFFFD600),
                   title: l10n.animationsTitle,
                   subtitle: animSubtitle,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _openAnimations,
                 ),
 
@@ -247,30 +270,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: updateSubtitle,
                   trailing: _checking
                       ? const SizedBox(
-                          width: 18, height: 18,
-                          child: CircularProgressIndicator(strokeWidth: 2))
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
                       : const Icon(Icons.chevron_right, color: Colors.white24),
                   onTap: _checkUpdates,
                 ),
                 const SizedBox(height: 10),
-                Row(children: [
-                  Expanded(
-                    child: _ActionBtn(
-                      icon: Icons.refresh,
-                      label: l10n.updateCheckBtn,
-                      onPressed: _checking ? null : _checkUpdates,
+                Row(
+                  children: [
+                    Expanded(
+                      child: _ActionBtn(
+                        icon: Icons.refresh,
+                        label: l10n.updateCheckBtn,
+                        onPressed: _checking ? null : _checkUpdates,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _ActionBtn(
-                      icon: Icons.open_in_new,
-                      label: 'GitHub',
-                      onPressed: _openGithubLatest,
-                      accent: true,
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _ActionBtn(
+                        icon: Icons.open_in_new,
+                        label: 'GitHub',
+                        onPressed: _openGithubLatest,
+                        accent: true,
+                      ),
                     ),
-                  ),
-                ]),
+                  ],
+                ),
 
                 // ── Verbindungen ──────────────────────────
                 const SizedBox(height: 22),
@@ -283,10 +310,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: AccountStore.isFortniteConnected
                       ? 'Fortnite: ${AccountStore.fortniteDisplayName}'
                       : 'Keine Verbindungen eingerichtet',
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const ConnectionsScreen()),
+                    MaterialPageRoute(
+                      builder: (_) => const ConnectionsScreen(),
+                    ),
                   ).then((_) => setState(() {})),
                 ),
 
@@ -299,7 +331,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconColor: const Color(0xFFFF6B6B),
                   title: l10n.resetProgress,
                   subtitle: l10n.resetProgressSubtitle,
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _resetTasks,
                 ),
                 const SizedBox(height: 10),
@@ -308,7 +343,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconColor: const Color(0xFFFF8C00),
                   title: 'Quest-Cache leeren',
                   subtitle: 'Erzwingt Neu-Download der Quests von der API',
-                  trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+                  trailing: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white24,
+                  ),
                   onTap: _clearQuestCache,
                 ),
               ],
@@ -349,7 +387,7 @@ class _AnimationsScreenState extends State<_AnimationsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n     = context.l10n;
+    final l10n = context.l10n;
     final settings = widget.settings;
     final masterOn = settings.animAll;
 
@@ -359,9 +397,13 @@ class _AnimationsScreenState extends State<_AnimationsScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text(l10n.animationsTitle,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w800, color: Colors.white)),
+          title: Text(
+            l10n.animationsTitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+            ),
+          ),
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: SafeArea(
@@ -371,14 +413,13 @@ class _AnimationsScreenState extends State<_AnimationsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 // ── Master-Schalter ───────────────────────
                 _AnimToggleTile(
-                  icon:     Icons.auto_awesome,
+                  icon: Icons.auto_awesome,
                   iconColor: const Color(0xFFFFD600),
-                  title:    l10n.animAllTitle,
+                  title: l10n.animAllTitle,
                   subtitle: l10n.animAllSubtitle,
-                  value:    masterOn,
+                  value: masterOn,
                   isMaster: true,
                   onChanged: (v) => settings.setAnimAll(v),
                 ),
@@ -387,51 +428,39 @@ class _AnimationsScreenState extends State<_AnimationsScreen> {
                 _SectionTitle(title: l10n.animSectionIndividual),
                 const SizedBox(height: 10),
 
-                // ── Rainbow (Droid Tycoon + Jurassic) ────
+                // ── Rainbow (Droid Tycoon) ────────────────
                 _AnimToggleTile(
-                  icon:      Icons.colorize,
+                  icon: Icons.colorize,
                   iconColor: const Color(0xFF00E5FF),
-                  title:     l10n.animRainbowTitle,
-                  subtitle:  l10n.animRainbowSubtitle,
-                  value:     settings.animRainbowRaw,
-                  disabled:  !masterOn,
+                  title: l10n.animRainbowTitle,
+                  subtitle: l10n.animRainbowSubtitle,
+                  value: settings.animRainbowRaw,
+                  disabled: !masterOn,
                   onChanged: (v) => settings.setAnimRainbow(v),
                 ),
                 const SizedBox(height: 10),
 
                 // ── Jurassic-Shimmer ──────────────────────
                 _AnimToggleTile(
-                  icon:      Icons.diamond_outlined,
+                  icon: Icons.diamond_outlined,
                   iconColor: const Color(0xFFCCCCCC),
-                  title:     l10n.animJurassicTitle,
-                  subtitle:  l10n.animJurassicSubtitle,
-                  value:     settings.animJurassicRaw,
-                  disabled:  !masterOn,
+                  title: l10n.animJurassicTitle,
+                  subtitle: l10n.animJurassicSubtitle,
+                  value: settings.animJurassicRaw,
+                  disabled: !masterOn,
                   onChanged: (v) => settings.setAnimJurassic(v),
                 ),
                 const SizedBox(height: 10),
 
                 // ── Countdown-Balken ──────────────────────
                 _AnimToggleTile(
-                  icon:      Icons.timer_outlined,
+                  icon: Icons.timer_outlined,
                   iconColor: const Color(0xFF00D4FF),
-                  title:     l10n.animCountdownTitle,
-                  subtitle:  l10n.animCountdownSubtitle,
-                  value:     settings.animCountdownRaw,
-                  disabled:  !masterOn,
+                  title: l10n.animCountdownTitle,
+                  subtitle: l10n.animCountdownSubtitle,
+                  value: settings.animCountdownRaw,
+                  disabled: !masterOn,
                   onChanged: (v) => settings.setAnimCountdown(v),
-                ),
-                const SizedBox(height: 10),
-
-                // ── Shop-Badges ───────────────────────────
-                _AnimToggleTile(
-                  icon:      Icons.storefront_outlined,
-                  iconColor: const Color(0xFFFF8C00),
-                  title:     l10n.animShopTitle,
-                  subtitle:  l10n.animShopSubtitle,
-                  value:     settings.animShopRaw,
-                  disabled:  !masterOn,
-                  onChanged: (v) => settings.setAnimShop(v),
                 ),
 
                 const SizedBox(height: 24),
@@ -447,17 +476,20 @@ class _AnimationsScreenState extends State<_AnimationsScreen> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.info_outline,
-                          size: 16,
-                          color: Colors.white.withOpacity(0.40)),
+                      Icon(
+                        Icons.info_outline,
+                        size: 16,
+                        color: Colors.white.withOpacity(0.40),
+                      ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           l10n.animHint,
                           style: TextStyle(
-                              color: Colors.white.withOpacity(0.45),
-                              fontSize: 12,
-                              height: 1.5),
+                            color: Colors.white.withOpacity(0.45),
+                            fontSize: 12,
+                            height: 1.5,
+                          ),
                         ),
                       ),
                     ],
@@ -473,17 +505,17 @@ class _AnimationsScreenState extends State<_AnimationsScreen> {
 }
 
 // ──────────────────────────────────────────────────────────────
-//  _AnimToggleTile — Toggle-Zeile für eine Animation
+//  _AnimToggleTile
 // ──────────────────────────────────────────────────────────────
 
 class _AnimToggleTile extends StatelessWidget {
   final IconData icon;
-  final Color    iconColor;
-  final String   title;
-  final String   subtitle;
-  final bool     value;
-  final bool     isMaster;
-  final bool     disabled;   // wenn Master aus → Einzelschalter ausgegraut
+  final Color iconColor;
+  final String title;
+  final String subtitle;
+  final bool value;
+  final bool isMaster;
+  final bool disabled;
   final ValueChanged<bool> onChanged;
 
   const _AnimToggleTile({
@@ -500,8 +532,8 @@ class _AnimToggleTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveColor = disabled ? iconColor.withOpacity(0.30) : iconColor;
-    final textOpacity    = disabled ? 0.35 : 1.0;
-    final subOpacity     = disabled ? 0.25 : 0.50;
+    final textOpacity = disabled ? 0.35 : 1.0;
+    final subOpacity = disabled ? 0.25 : 0.50;
 
     return Material(
       color: Colors.transparent,
@@ -531,12 +563,15 @@ class _AnimToggleTile extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 38, height: 38,
+                width: 38,
+                height: 38,
                 decoration: BoxDecoration(
                   color: effectiveColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(11),
                   border: Border.all(
-                      color: effectiveColor.withOpacity(0.28), width: 1.1),
+                    color: effectiveColor.withOpacity(0.28),
+                    width: 1.1,
+                  ),
                 ),
                 child: Icon(icon, size: 19, color: effectiveColor),
               ),
@@ -545,17 +580,23 @@ class _AnimToggleTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title,
-                        style: TextStyle(
-                            color: Colors.white.withOpacity(textOpacity),
-                            fontWeight: FontWeight.w800,
-                            fontSize: 15)),
+                    Text(
+                      title,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(textOpacity),
+                        fontWeight: FontWeight.w800,
+                        fontSize: 15,
+                      ),
+                    ),
                     const SizedBox(height: 3),
-                    Text(subtitle,
-                        style: TextStyle(
-                            color: Colors.white.withOpacity(subOpacity),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500)),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(subOpacity),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -595,7 +636,7 @@ class _LanguageSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n   = context.l10n;
+    final l10n = context.l10n;
     final options = [
       {'code': 'de', 'flag': '🇩🇪', 'label': 'Deutsch'},
       {'code': 'en', 'flag': '🇬🇧', 'label': 'English'},
@@ -619,12 +660,15 @@ class _LanguageSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 16),
-          Text(l10n.languageLabel,
-              style: TextStyle(
-                  color: Colors.white.withOpacity(0.55),
-                  fontWeight: FontWeight.w700,
-                  fontSize: 13,
-                  letterSpacing: 1.2)),
+          Text(
+            l10n.languageLabel,
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.55),
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+              letterSpacing: 1.2,
+            ),
+          ),
           const SizedBox(height: 10),
           const Divider(color: Colors.white12, height: 1),
           ...options.map((opt) {
@@ -637,26 +681,33 @@ class _LanguageSheet extends StatelessWidget {
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 16),
+                  horizontal: 20,
+                  vertical: 16,
+                ),
                 child: Row(
                   children: [
-                    Text(opt['flag']!,
-                        style: const TextStyle(fontSize: 26)),
+                    Text(opt['flag']!, style: const TextStyle(fontSize: 26)),
                     const SizedBox(width: 14),
                     Expanded(
-                      child: Text(opt['label']!,
-                          style: TextStyle(
-                              color: isSelected
-                                  ? const Color(0xFF4CAF50)
-                                  : Colors.white,
-                              fontWeight: isSelected
-                                  ? FontWeight.w800
-                                  : FontWeight.w600,
-                              fontSize: 16)),
+                      child: Text(
+                        opt['label']!,
+                        style: TextStyle(
+                          color: isSelected
+                              ? const Color(0xFF4CAF50)
+                              : Colors.white,
+                          fontWeight: isSelected
+                              ? FontWeight.w800
+                              : FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                     if (isSelected)
-                      const Icon(Icons.check_circle_rounded,
-                          color: Color(0xFF4CAF50), size: 22),
+                      const Icon(
+                        Icons.check_circle_rounded,
+                        color: Color(0xFF4CAF50),
+                        size: 22,
+                      ),
                   ],
                 ),
               ),
@@ -681,19 +732,20 @@ class _SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) => Text(
     title.toUpperCase(),
     style: TextStyle(
-        color: Colors.white.withOpacity(0.40),
-        fontWeight: FontWeight.w700,
-        fontSize: 11,
-        letterSpacing: 1.5),
+      color: Colors.white.withOpacity(0.40),
+      fontWeight: FontWeight.w700,
+      fontSize: 11,
+      letterSpacing: 1.5,
+    ),
   );
 }
 
 class _Tile extends StatelessWidget {
   final IconData icon;
-  final Color    iconColor;
-  final String   title;
-  final String   subtitle;
-  final Widget   trailing;
+  final Color iconColor;
+  final String title;
+  final String subtitle;
+  final Widget trailing;
   final VoidCallback? onTap;
 
   const _Tile({
@@ -728,12 +780,15 @@ class _Tile extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 38, height: 38,
+              width: 38,
+              height: 38,
               decoration: BoxDecoration(
                 color: iconColor.withOpacity(0.15),
                 borderRadius: BorderRadius.circular(11),
                 border: Border.all(
-                    color: iconColor.withOpacity(0.28), width: 1.1),
+                  color: iconColor.withOpacity(0.28),
+                  width: 1.1,
+                ),
               ),
               child: Icon(icon, size: 19, color: iconColor),
             ),
@@ -742,17 +797,23 @@ class _Tile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 15)),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 15,
+                    ),
+                  ),
                   const SizedBox(height: 3),
-                  Text(subtitle,
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.50),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500)),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.50),
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -767,9 +828,9 @@ class _Tile extends StatelessWidget {
 
 class _ActionBtn extends StatelessWidget {
   final IconData icon;
-  final String   label;
+  final String label;
   final VoidCallback? onPressed;
-  final bool     accent;
+  final bool accent;
 
   const _ActionBtn({
     required this.icon,
@@ -787,13 +848,10 @@ class _ActionBtn extends StatelessWidget {
           ? Colors.white.withOpacity(0.08)
           : Colors.transparent,
       padding: const EdgeInsets.symmetric(vertical: 13),
-      side: BorderSide(
-          color: Colors.white.withOpacity(accent ? 0.18 : 0.14)),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14)),
+      side: BorderSide(color: Colors.white.withOpacity(accent ? 0.18 : 0.14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     ),
     icon: Icon(icon, size: 17),
-    label: Text(label,
-        style: const TextStyle(fontWeight: FontWeight.w700)),
+    label: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
   );
 }

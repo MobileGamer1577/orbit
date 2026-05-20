@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
+import '../storage/app_settings_store.dart';
 import '../theme/orbit_theme.dart';
 import '../widgets/orbit_glass_card.dart';
 
-import 'dino_map_direct_screen.dart';   // NEU: direkt zum Dino-Detail
+import 'dino_map_direct_screen.dart';
 import 'fortnite_brainrot_codes_screen.dart';
 import 'fortnite_xp_calculator_screen.dart';
-import 'droid_tycoon_screen.dart';       // NEU: Star Wars Droid Tycoon
+import 'droid_tycoon_screen.dart';
 
 // ══════════════════════════════════════════════════════════════
 //
 //  🗺  GUIDES HUB SCREEN
 //  Datei: lib/screens/fortnite_guides_hub_screen.dart
 //
-//  Drehscheibe für alle Guide-Inhalte:
-//    • Steal the Dino Map  → DinoMapDirectScreen (direkt, kein Umweg)
-//    • Brainrot Codes      → FortniteBrainrotCodesScreen
-//    • XP Taschenrechner   → FortniteXpCalculatorScreen
-//    • Droid Tycoon        → DroidTycoonScreen (NEU)
-//
-//  CHANGELOG:
-//    - "Steal the Dino Map" öffnet jetzt direkt DinoMapDirectScreen
-//      statt des alten FortniteKreativMapsScreen (Kartenübersicht).
-//    - "Star Wars Droid Tycoon" Rebirth Guide hinzugefügt.
+//  Drehscheibe für alle Guide-Inhalte.
+//  settings wird jetzt durchgereicht damit Animationen
+//  in DinoMapDirectScreen/DinoDexScreen/DroidTycoonScreen
+//  korrekt aus den Einstellungen gelesen werden.
 //
 // ══════════════════════════════════════════════════════════════
 
 class FortniteGuidesHubScreen extends StatelessWidget {
-  const FortniteGuidesHubScreen({super.key});
+  final AppSettingsStore? settings;
+
+  const FortniteGuidesHubScreen({super.key, this.settings});
 
   void _push(BuildContext context, Widget page) =>
       Navigator.push(context, MaterialPageRoute(builder: (_) => page));
@@ -88,15 +85,15 @@ class FortniteGuidesHubScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     children: [
                       // ── A) Steal the Dino Map ────────────
-                      // Öffnet jetzt DIREKT DinoMapDirectScreen
-                      // (kein Umweg über FortniteKreativMapsScreen mehr)
                       _GuideCard(
                         icon: Icons.map_outlined,
                         iconColor: const Color(0xFF00E676),
                         title: l10n.guidesStealTheDino,
                         subtitle: l10n.guidesStealTheDinoSubtitle,
-                        onTap: () =>
-                            _push(context, const DinoMapDirectScreen()),
+                        onTap: () => _push(
+                          context,
+                          DinoMapDirectScreen(settings: settings),
+                        ),
                       ),
                       const SizedBox(height: 12),
 
@@ -122,14 +119,16 @@ class FortniteGuidesHubScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 12),
 
-                      // ── D) Star Wars Droid Tycoon (NEU) ──
+                      // ── D) Star Wars Droid Tycoon ─────────
                       _GuideCard(
                         icon: Icons.rocket_launch_outlined,
                         iconColor: const Color(0xFF00BFFF),
                         title: l10n.guidesDroidTycoon,
                         subtitle: l10n.guidesDroidTycoonSubtitle,
-                        onTap: () =>
-                            _push(context, const DroidTycoonScreen()),
+                        onTap: () => _push(
+                          context,
+                          DroidTycoonScreen(settings: settings),
+                        ),
                       ),
                     ],
                   ),
@@ -144,7 +143,7 @@ class FortniteGuidesHubScreen extends StatelessWidget {
 }
 
 // ──────────────────────────────────────────────────────────────
-//  _GuideCard — Einheitliche Karte für jeden Guide-Eintrag
+//  _GuideCard
 // ──────────────────────────────────────────────────────────────
 
 class _GuideCard extends StatelessWidget {
