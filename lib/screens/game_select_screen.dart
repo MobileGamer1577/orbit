@@ -12,7 +12,9 @@ import '../widgets/orbit_glass_card.dart';
 
 // ✏️  Wenn du ein neues Spiel MIT eigenem Hub-Screen hinzufügst,
 //     musst du den Import hier ergänzen:
+
 import 'fortnite_hub_screen.dart';
+import 'opsucht_hub_screen.dart'; // ← NEU: OpSucht Hub
 // import 'meinspiel_hub_screen.dart'; // ← Beispiel für neues Spiel
 import 'mode_select_screen.dart';
 import 'settings_screen.dart';
@@ -115,7 +117,6 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
   //  ⚠️  widget.settings und widget.collection sind die
   //      App-weiten Stores. Übergib sie immer weiter, wenn
   //      dein Hub-Screen sie braucht (z.B. für Spind/Wishlist).
-  //
   // ──────────────────────────────────────────────────────────
 
   void _openGame(GameDefinition game) {
@@ -124,10 +125,8 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => ModeSelectScreen(
-            gameId: game.id,
-            gameTitle: game.title,
-          ),
+          builder: (_) =>
+              ModeSelectScreen(gameId: game.id, gameTitle: game.title),
         ),
       );
       return;
@@ -135,8 +134,8 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
 
     // Spiel mit eigenem Hub → spezifische Navigation
     // ✏️  HIER neuen case eintragen für Spiele mit Hub:
-    switch (game.id) {
 
+    switch (game.id) {
       case 'fortnite':
         Navigator.push(
           context,
@@ -148,6 +147,15 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
           ),
         );
         return;
+
+      // ── NEU: OpSucht Hub ─────────────────────────────────
+      case 'opsucht':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const OpSuchtHubScreen()),
+        );
+        return;
+      // ─────────────────────────────────────────────────────
 
       // ✏️  Neues Spiel mit Hub — Vorlage:
       // case 'minecraft':
@@ -161,17 +169,14 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
       //     ),
       //   );
       //   return;
-
     }
 
     // Sicherheitsnetz: Hub eingetragen aber kein case → zu Modi
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => ModeSelectScreen(
-          gameId: game.id,
-          gameTitle: game.title,
-        ),
+        builder: (_) =>
+            ModeSelectScreen(gameId: game.id, gameTitle: game.title),
       ),
     );
   }
@@ -195,16 +200,16 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
         );
       } else {
         if (showNoUpdateToast) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(l10n.updateNoUpdate)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(l10n.updateNoUpdate)));
         }
       }
     } catch (_) {
       if (showNoUpdateToast && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(context.l10n.updateFailed)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.updateFailed)));
       }
     } finally {
       if (mounted) setState(() => _checking = false);
@@ -325,17 +330,19 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                 const SizedBox(height: 20),
 
                 // Spiele-Karten aus Registry — automatisch generiert
-                ...GameRegistry.games.map((game) => Padding(
-                  padding: const EdgeInsets.only(bottom: 14),
-                  child: _GameCard(
-                    title: game.title,
-                    subtitle: game.subtitle,
-                    accentColor: game.accentColor,
-                    secondaryColor: game.secondaryColor,
-                    icon: game.icon,
-                    onTap: () => _openGame(game),
+                ...GameRegistry.games.map(
+                  (game) => Padding(
+                    padding: const EdgeInsets.only(bottom: 14),
+                    child: _GameCard(
+                      title: game.title,
+                      subtitle: game.subtitle,
+                      accentColor: game.accentColor,
+                      secondaryColor: game.secondaryColor,
+                      icon: game.icon,
+                      onTap: () => _openGame(game),
+                    ),
                   ),
-                )),
+                ),
 
                 const Spacer(),
 
@@ -352,9 +359,7 @@ class _GameSelectScreenState extends State<GameSelectScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
-                        side: BorderSide(
-                          color: Colors.white.withOpacity(0.12),
-                        ),
+                        side: BorderSide(color: Colors.white.withOpacity(0.12)),
                       ),
                     ),
                     icon: Icon(
@@ -456,10 +461,7 @@ class _GameCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Icon(
-                Icons.chevron_right,
-                color: Colors.white.withOpacity(0.45),
-              ),
+              Icon(Icons.chevron_right, color: Colors.white.withOpacity(0.45)),
             ],
           ),
         ),

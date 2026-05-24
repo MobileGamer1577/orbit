@@ -224,7 +224,25 @@ class GameRegistry {
     ),
 
     // ┌─────────────────────────────────────────────────────┐
-    // │ SPIEL 2: Call of Duty: BO7 (direkt zu Modi)         │
+    // │ SPIEL 2: OpSucht.net (mit eigenem Hub-Screen)       │
+    // │ Zwischen Fortnite und BO7 — hat CustomHub           │
+    // └─────────────────────────────────────────────────────┘
+    GameDefinition(
+      id: 'opsucht',
+      title: 'OpSucht.net',
+      subtitle: 'OPPASS • Items • und mehr',
+      accentColor: Color(0xFF00E676),
+      secondaryColor: Color(0xFF00875A),
+      icon: Icons.public,
+      hasCustomHub: true,
+      // ↑ Hat OpSuchtHubScreen — Navigation in game_select_screen.dart
+      modes: [],
+      // ↑ OpSucht hat keine klassischen Game-Modi
+      //   Navigation erfolgt direkt über den Hub-Screen
+    ),
+
+    // ┌─────────────────────────────────────────────────────┐
+    // │ SPIEL 3: Call of Duty: BO7 (direkt zu Modi)         │
     // └─────────────────────────────────────────────────────┘
     GameDefinition(
       id: 'bo7',
