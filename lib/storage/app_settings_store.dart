@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class AppSettingsStore extends ChangeNotifier {
-  static const String _boxName    = 'settings';
+  static const String _boxName     = 'settings';
   static const String _keyLanguage = 'language';
 
   // ── Animations-Keys ────────────────────────────────────────
@@ -16,9 +16,27 @@ class AppSettingsStore extends ChangeNotifier {
 
   AppSettingsStore._(this._box);
 
+  // ── Singleton ──────────────────────────────────────────────
+  //
+  // Ermöglicht Zugriff auf die Settings von überall in der App,
+  // ohne sie durch jeden Navigator-Stack manuell durchzureichen.
+  //
+  // Verwendung:  AppSettingsStore.instance.animJurassic
+  //
+  static AppSettingsStore? _instance;
+
+  /// Gibt die globale Instanz zurück.
+  /// Wirft einen Fehler wenn create() noch nicht aufgerufen wurde.
+  static AppSettingsStore get instance {
+    assert(_instance != null,
+        'AppSettingsStore.create() muss vor instance aufgerufen werden.');
+    return _instance!;
+  }
+
   static Future<AppSettingsStore> create() async {
-    final box = await Hive.openBox(_boxName);
-    return AppSettingsStore._(box);
+    final box  = await Hive.openBox(_boxName);
+    _instance  = AppSettingsStore._(box);
+    return _instance!;
   }
 
   // ── Sprache ────────────────────────────────────────────────
@@ -36,7 +54,7 @@ class AppSettingsStore extends ChangeNotifier {
   //  Ist er false → alle Einzelwerte gelten als false.
   //  Ist er true  → die Einzelschalter entscheiden.
 
-  bool get animAll       => (_box.get(_keyAnimAll,       defaultValue: true) as bool);
+  bool get animAll => (_box.get(_keyAnimAll, defaultValue: true) as bool);
 
   // Effektive Werte (mit Master-Override)
   bool get animRainbow   => animAll && (_box.get(_keyAnimRainbow,   defaultValue: true) as bool);

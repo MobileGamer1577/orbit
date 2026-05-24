@@ -53,11 +53,11 @@ class _MapEvent {
   final int durationMinutes;
 
   // weeklyOnDay
-  final int? weekday; // 1=Mo … 7=So
+  final int? weekday;
   final int? hour;
   final int? minute;
 
-  // fixedTimesDaily (Stunden-Liste, Minuten immer :00)
+  // fixedTimesDaily
   final List<int>? fixedHours;
 
   // everyNHours
@@ -74,7 +74,7 @@ class _MapEvent {
     this.fixedHours,
     this.intervalHours,
   });
-  // ── Nächste Startzeit ────────────────────────────────────────
+
   DateTime get nextStart {
     final now = DateTime.now();
 
@@ -95,7 +95,6 @@ class _MapEvent {
           }
         }
         if (next != null) return next;
-        // Alle heute vorbei → erste Uhrzeit morgen
         final firstH = hours.reduce((a, b) => a < b ? a : b);
         return DateTime(
           now.year,
@@ -116,7 +115,6 @@ class _MapEvent {
 
   Duration get timeUntilNext => nextStart.difference(DateTime.now());
 
-  // ── Wiederholungs-Label ──────────────────────────────────────
   String scheduleLabel(AppLocalizations l10n) {
     switch (recurrence) {
       case _Recurrence.weeklyOnDay:

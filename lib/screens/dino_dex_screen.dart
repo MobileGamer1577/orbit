@@ -16,21 +16,9 @@ import '../widgets/orbit_glass_card.dart';
 //    DinoDexScreen  → Kategorie-Übersicht
 //    DinoListScreen → Dino-Liste einer Kategorie
 //
-//  Daten kommen aus zwei JSON-Dateien:
-//    assets/data/dino_dex.json       → Kategorien + Dino-IDs
-//    assets/data/dinos_database.json → Dino-Details (Name, Seltenheit)
-//
-//  Fortschritt (Häkchen) wird in Hive gespeichert —
-//  genau wie beim Quest-System, über TaskStore.
-//
-//  ✏️  NEUEN DINO HINZUFÜGEN:
-//    1. ID + Daten in dinos_database.json eintragen
-//    2. ID in der richtigen Kategorie in dino_dex.json eintragen
-//    → Kein Code ändern nötig!
-//
-//  ✏️  NEUE KATEGORIE HINZUFÜGEN:
-//    1. Neuen Kategorie-Block in dino_dex.json eintragen
-//    → Kein Code ändern nötig!
+//  Animation-Einstellungen werden direkt über
+//  AppSettingsStore.instance gelesen — kein optionaler
+//  Parameter mehr nötig.
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -39,37 +27,29 @@ import '../widgets/orbit_glass_card.dart';
 // ──────────────────────────────────────────────────────────────
 
 const _rarityOrder = [
-  'common',
-  'rare',
-  'epic',
-  'legendary',
-  'mythic',
-  'jurassic',
+  'common', 'rare', 'epic', 'legendary', 'mythic', 'jurassic',
 ];
 
 const _rarityColors = {
-  'common': Color(0xFF2ECC40),
-  'rare': Color(0xFF0077FF),
-  'epic': Color(0xFF9B59B6),
+  'common':    Color(0xFF2ECC40),
+  'rare':      Color(0xFF0077FF),
+  'epic':      Color(0xFF9B59B6),
   'legendary': Color(0xFFFFD700),
-  'mythic': Color(0xFFFF1744),
-  'jurassic': Color(0xFFCCCCCC),
+  'mythic':    Color(0xFFFF1744),
+  'jurassic':  Color(0xFFCCCCCC),
 };
 
 const _rarityLabels = {
-  'common': 'Common',
-  'rare': 'Rare',
-  'epic': 'Epic',
+  'common':    'Common',
+  'rare':      'Rare',
+  'epic':      'Epic',
   'legendary': 'Legendary',
-  'mythic': 'Mythic',
-  'jurassic': 'Jurassic',
+  'mythic':    'Mythic',
+  'jurassic':  'Jurassic',
 };
 
-Color _rarityColor(String rarity) =>
-    _rarityColors[rarity.toLowerCase()] ?? const Color(0xFF8F8F8F);
-
-String _rarityLabel(String rarity) =>
-    _rarityLabels[rarity.toLowerCase()] ?? rarity;
+Color  _rarityColor(String rarity) => _rarityColors[rarity.toLowerCase()] ?? const Color(0xFF8F8F8F);
+String _rarityLabel(String rarity) => _rarityLabels[rarity.toLowerCase()] ?? rarity;
 
 int _rarityIndex(String rarity) {
   final i = _rarityOrder.indexOf(rarity.toLowerCase());
@@ -81,9 +61,9 @@ int _rarityIndex(String rarity) {
 // ──────────────────────────────────────────────────────────────
 
 class _DinoCategory {
-  final String id;
-  final String label;
-  final String icon;
+  final String       id;
+  final String       label;
+  final String       icon;
   final List<String> dinoIds;
 
   const _DinoCategory({
@@ -100,9 +80,9 @@ class _DinoCategory {
         : j['id'] as String;
 
     return _DinoCategory(
-      id: (j['id'] as String?) ?? '',
-      label: label,
-      icon: (j['icon'] as String?) ?? '🦕',
+      id:      (j['id']   as String?) ?? '',
+      label:   label,
+      icon:    (j['icon'] as String?) ?? '🦕',
       dinoIds: (j['dinos'] as List?)?.cast<String>() ?? [],
     );
   }
@@ -125,6 +105,8 @@ class _DinoEntry {
 // ══════════════════════════════════════════════════════════════
 
 class DinoDexScreen extends StatefulWidget {
+  // settings-Parameter bleibt für Rückwärtskompatibilität,
+  // wird aber nicht mehr gebraucht (AppSettingsStore.instance wird verwendet)
   final AppSettingsStore? settings;
   const DinoDexScreen({super.key, this.settings});
 
@@ -133,9 +115,9 @@ class DinoDexScreen extends StatefulWidget {
 }
 
 class _DinoDexScreenState extends State<DinoDexScreen> {
-  List<_DinoCategory> _categories = [];
-  Map<String, dynamic> _dinoDb = {};
-  bool _loading = true;
+  List<_DinoCategory>    _categories = [];
+  Map<String, dynamic>   _dinoDb     = {};
+  bool                   _loading    = true;
 
   @override
   void initState() {
@@ -145,17 +127,17 @@ class _DinoDexScreenState extends State<DinoDexScreen> {
 
   Future<void> _load() async {
     try {
-      const lang = 'de';
+      const lang   = 'de';
       final results = await Future.wait([
         rootBundle.loadString('assets/data/dino_dex.json'),
         rootBundle.loadString('assets/data/dinos_database.json'),
       ]);
 
       final dexJson = jsonDecode(results[0]) as Map<String, dynamic>;
-      _dinoDb = jsonDecode(results[1]) as Map<String, dynamic>;
+      _dinoDb       = jsonDecode(results[1]) as Map<String, dynamic>;
 
       final rawCats = dexJson['categories'] as List? ?? [];
-      _categories = rawCats
+      _categories   = rawCats
           .whereType<Map<String, dynamic>>()
           .map((c) => _DinoCategory.fromJson(c, lang))
           .toList();
@@ -184,33 +166,25 @@ class _DinoDexScreenState extends State<DinoDexScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white.withOpacity(0.90),
-                      ),
+                      icon: Icon(Icons.arrow_back,
+                          color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
                     const Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '🦕 Dino Dex',
-                            style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                              letterSpacing: -0.3,
-                            ),
-                          ),
-                          Text(
-                            'Steal the Dino',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.white54,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          Text('🦕 Dino Dex',
+                              style: TextStyle(
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white,
+                                  letterSpacing: -0.3)),
+                          Text('Steal the Dino',
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.white54,
+                                  fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -224,41 +198,36 @@ class _DinoDexScreenState extends State<DinoDexScreen> {
                 child: _loading
                     ? const Center(
                         child: CircularProgressIndicator(
-                          color: Color(0xFF9C6FFF),
-                        ),
-                      )
+                            color: Color(0xFF9C6FFF)))
                     : _categories.isEmpty
                     ? Center(
-                        child: Text(
-                          'Keine Kategorien gefunden.',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.45),
-                          ),
-                        ),
-                      )
+                        child: Text('Keine Kategorien gefunden.',
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.45))))
                     : ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
                         itemCount: _categories.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 12),
+                        separatorBuilder: (_, __) =>
+                            const SizedBox(height: 12),
                         itemBuilder: (context, i) {
-                          final cat = _categories[i];
-                          final owned = _ownedCount(cat);
-                          final total = cat.dinoIds.length;
-                          final progress = total == 0 ? 0.0 : owned / total;
+                          final cat    = _categories[i];
+                          final owned  = _ownedCount(cat);
+                          final total  = cat.dinoIds.length;
+                          final progress =
+                              total == 0 ? 0.0 : owned / total;
 
                           return _CategoryCard(
                             category: cat,
-                            owned: owned,
-                            total: total,
+                            owned:    owned,
+                            total:    total,
                             progress: progress,
-                            onTap: () => Navigator.push(
+                            onTap:    () => Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (_) => DinoListScreen(
                                   category: cat,
-                                  dinoDb: _dinoDb,
-                                  settings: widget.settings,
+                                  dinoDb:   _dinoDb,
                                 ),
                               ),
                             ).then((_) => setState(() {})),
@@ -276,10 +245,10 @@ class _DinoDexScreenState extends State<DinoDexScreen> {
 
 class _CategoryCard extends StatelessWidget {
   final _DinoCategory category;
-  final int owned;
-  final int total;
-  final double progress;
-  final VoidCallback onTap;
+  final int           owned;
+  final int           total;
+  final double        progress;
+  final VoidCallback  onTap;
 
   const _CategoryCard({
     required this.category,
@@ -302,45 +271,39 @@ class _CategoryCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(category.icon, style: const TextStyle(fontSize: 28)),
+                  Text(category.icon,
+                      style: const TextStyle(fontSize: 28)),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          category.label,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 18,
-                          ),
-                        ),
-                        Text(
-                          '$owned / $total Dinos',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.50),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        Text(category.label,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 18)),
+                        Text('$owned / $total Dinos',
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.50),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ),
-                  Icon(
-                    Icons.chevron_right,
-                    color: Colors.white.withOpacity(0.35),
-                  ),
+                  Icon(Icons.chevron_right,
+                      color: Colors.white.withOpacity(0.35)),
                 ],
               ),
               const SizedBox(height: 12),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: LinearProgressIndicator(
-                  value: progress,
-                  minHeight: 6,
+                  value:           progress,
+                  minHeight:       6,
                   backgroundColor: Colors.white.withOpacity(0.10),
-                  valueColor: const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
+                  valueColor: const AlwaysStoppedAnimation(
+                      Color(0xFF9C6FFF)),
                 ),
               ),
             ],
@@ -356,16 +319,13 @@ class _CategoryCard extends StatelessWidget {
 // ══════════════════════════════════════════════════════════════
 
 class DinoListScreen extends StatefulWidget {
-  final _DinoCategory category;
-  final Map<String, dynamic> dinoDb;
-  final AppSettingsStore?
-  settings; // optional; wird von DinoDexScreen nicht übergeben
+  final _DinoCategory          category;
+  final Map<String, dynamic>   dinoDb;
 
   const DinoListScreen({
     super.key,
     required this.category,
     required this.dinoDb,
-    this.settings,
   });
 
   @override
@@ -373,38 +333,32 @@ class DinoListScreen extends StatefulWidget {
 }
 
 class _DinoListScreenState extends State<DinoListScreen> {
-  // Animations-Flag — wird aus AppSettingsStore gelesen
-  bool _animJurassic = true;
+  // Liest direkt aus AppSettingsStore.instance — kein Parameter nötig
+  bool get _animJurassic => AppSettingsStore.instance.animJurassic;
 
   @override
   void initState() {
     super.initState();
-    if (widget.settings != null) {
-      _animJurassic = widget.settings!.animJurassic;
-      widget.settings!.addListener(_onSettingsChanged);
-    }
+    // Auf Änderungen reagieren → setState aufrufen → UI neu bauen
+    AppSettingsStore.instance.addListener(_onSettingsChanged);
   }
 
   @override
   void dispose() {
-    widget.settings?.removeListener(_onSettingsChanged);
+    AppSettingsStore.instance.removeListener(_onSettingsChanged);
     super.dispose();
   }
 
   void _onSettingsChanged() {
-    if (mounted) {
-      setState(() {
-        _animJurassic = widget.settings!.animJurassic;
-      });
-    }
+    if (mounted) setState(() {});
   }
 
   List<_DinoEntry> _buildSortedList() {
     final entries = widget.category.dinoIds.map((id) {
       final data = widget.dinoDb[id] as Map<String, dynamic>?;
       return _DinoEntry(
-        id: id,
-        name: (data?['name'] as String?) ?? id,
+        id:     id,
+        name:   (data?['name']   as String?) ?? id,
         rarity: (data?['rarity'] as String?) ?? 'common',
       );
     }).toList();
@@ -430,7 +384,9 @@ class _DinoListScreenState extends State<DinoListScreen> {
   @override
   Widget build(BuildContext context) {
     final dinos = _buildSortedList();
-    final owned = dinos.where((d) => TaskStore.isDone('dino:${d.id}')).length;
+    final owned = dinos
+        .where((d) => TaskStore.isDone('dino:${d.id}'))
+        .length;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -445,10 +401,8 @@ class _DinoListScreenState extends State<DinoListScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white.withOpacity(0.90),
-                      ),
+                      icon: Icon(Icons.arrow_back,
+                          color: Colors.white.withOpacity(0.90)),
                     ),
                     const SizedBox(width: 4),
                     Expanded(
@@ -458,19 +412,17 @@ class _DinoListScreenState extends State<DinoListScreen> {
                           Text(
                             '${widget.category.icon}  ${widget.category.label}',
                             style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                              letterSpacing: -0.3,
-                            ),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                                letterSpacing: -0.3),
                           ),
                           Text(
                             '$owned / ${dinos.length} gesammelt',
                             style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.white.withOpacity(0.50),
-                              fontWeight: FontWeight.w500,
-                            ),
+                                fontSize: 13,
+                                color: Colors.white.withOpacity(0.50),
+                                fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -484,10 +436,11 @@ class _DinoListScreenState extends State<DinoListScreen> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: LinearProgressIndicator(
-                    value: dinos.isEmpty ? 0 : owned / dinos.length,
-                    minHeight: 6,
+                    value:           dinos.isEmpty ? 0 : owned / dinos.length,
+                    minHeight:       6,
                     backgroundColor: Colors.white.withOpacity(0.10),
-                    valueColor: const AlwaysStoppedAnimation(Color(0xFF9C6FFF)),
+                    valueColor: const AlwaysStoppedAnimation(
+                        Color(0xFF9C6FFF)),
                   ),
                 ),
               ),
@@ -497,26 +450,24 @@ class _DinoListScreenState extends State<DinoListScreen> {
               Expanded(
                 child: dinos.isEmpty
                     ? Center(
-                        child: Text(
-                          'Keine Dinos in dieser Kategorie.',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.45),
-                          ),
-                        ),
-                      )
+                        child: Text('Keine Dinos in dieser Kategorie.',
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.45))))
                     : ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
                         itemCount: dinos.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 8),
+                        separatorBuilder: (_, __) =>
+                            const SizedBox(height: 8),
                         itemBuilder: (context, i) {
-                          final dino = dinos[i];
-                          final isDone = TaskStore.isDone('dino:${dino.id}');
+                          final dino   = dinos[i];
+                          final isDone =
+                              TaskStore.isDone('dino:${dino.id}');
                           return _DinoTile(
-                            dino: dino,
-                            isDone: isDone,
+                            dino:         dino,
+                            isDone:       isDone,
                             animJurassic: _animJurassic,
-                            onToggle: () => _toggle(dino.id),
+                            onToggle:     () => _toggle(dino.id),
                           );
                         },
                       ),
@@ -534,9 +485,9 @@ class _DinoListScreenState extends State<DinoListScreen> {
 // ──────────────────────────────────────────────────────────────
 
 class _DinoTile extends StatefulWidget {
-  final _DinoEntry dino;
-  final bool isDone;
-  final bool animJurassic;
+  final _DinoEntry   dino;
+  final bool         isDone;
+  final bool         animJurassic;
   final VoidCallback onToggle;
 
   const _DinoTile({
@@ -555,21 +506,18 @@ class _DinoTileState extends State<_DinoTile> {
 
   @override
   Widget build(BuildContext context) {
-    final color = _rarityColor(widget.dino.rarity);
+    final color      = _rarityColor(widget.dino.rarity);
     final isJurassic = widget.dino.rarity.toLowerCase() == 'jurassic';
 
     // Shimmer nur wenn: Jurassic + nicht abgehakt + Animation an
     final Widget nameWidget =
         (isJurassic && !widget.isDone && widget.animJurassic)
         ? _JurassicShimmer(
-            child: Text(
-              widget.dino.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 15,
-              ),
-            ),
+            child: Text(widget.dino.name,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 15)),
           )
         : Text(
             widget.dino.name,
@@ -587,17 +535,14 @@ class _DinoTileState extends State<_DinoTile> {
           );
 
     return GestureDetector(
-      onTapDown: (_) => setState(() => _pressed = true),
-      onTapUp: (_) {
-        setState(() => _pressed = false);
-        widget.onToggle();
-      },
+      onTapDown:  (_) => setState(() => _pressed = true),
+      onTapUp:    (_) { setState(() => _pressed = false); widget.onToggle(); },
       onTapCancel: () => setState(() => _pressed = false),
 
       child: AnimatedScale(
-        scale: _pressed ? 0.96 : 1.0,
+        scale:    _pressed ? 0.96 : 1.0,
         duration: const Duration(milliseconds: 80),
-        curve: Curves.easeOut,
+        curve:    Curves.easeOut,
 
         child: Container(
           padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
@@ -617,18 +562,17 @@ class _DinoTileState extends State<_DinoTile> {
             children: [
               // Seltenheits-Farbstreifen
               Container(
-                width: 4,
-                height: 44,
+                width: 4, height: 44,
                 decoration: BoxDecoration(
                   gradient: isJurassic
                       ? const LinearGradient(
                           begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                          end:   Alignment.bottomCenter,
                           colors: [Color(0xFFFFFFFF), Color(0xFF888888)],
                         )
                       : null,
-                  color: isJurassic ? null : color,
-                  borderRadius: BorderRadius.circular(4),
+                  color:           isJurassic ? null : color,
+                  borderRadius:    BorderRadius.circular(4),
                 ),
               ),
               const SizedBox(width: 14),
@@ -650,9 +594,8 @@ class _DinoTileState extends State<_DinoTile> {
               // Checkbox
               AnimatedContainer(
                 duration: const Duration(milliseconds: 180),
-                curve: Curves.easeOut,
-                width: 26,
-                height: 26,
+                curve:    Curves.easeOut,
+                width: 26, height: 26,
                 decoration: BoxDecoration(
                   color: widget.isDone
                       ? color.withOpacity(0.80)
@@ -692,19 +635,16 @@ class _StaticBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color:        color.withOpacity(0.15),
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: color.withOpacity(0.45)),
+        border:       Border.all(color: color.withOpacity(0.45)),
       ),
-      child: Text(
-        label.toUpperCase(),
-        style: TextStyle(
-          color: color,
-          fontSize: 10,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 0.8,
-        ),
-      ),
+      child: Text(label.toUpperCase(),
+          style: TextStyle(
+              color:          color,
+              fontSize:       10,
+              fontWeight:     FontWeight.w800,
+              letterSpacing:  0.8)),
     );
   }
 }
@@ -729,7 +669,7 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-      vsync: this,
+      vsync:    this,
       duration: const Duration(milliseconds: 2200),
     )..repeat();
   }
@@ -746,13 +686,13 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
       child: AnimatedBuilder(
         animation: _ctrl,
         builder: (context, child) {
-          final t = _ctrl.value;
+          final t     = _ctrl.value;
           final begin = Alignment(-3.0 + 6.0 * t, 0);
-          final end = Alignment(-2.0 + 6.0 * t, 0);
+          final end   = Alignment(-2.0 + 6.0 * t, 0);
           return ShaderMask(
             shaderCallback: (bounds) => LinearGradient(
-              begin: begin,
-              end: end,
+              begin:  begin,
+              end:    end,
               colors: const [
                 Color(0xFF777777),
                 Color(0xFFFFFFFF),
@@ -761,7 +701,7 @@ class _JurassicShimmerState extends State<_JurassicShimmer>
               tileMode: TileMode.clamp,
             ).createShader(bounds),
             blendMode: BlendMode.srcIn,
-            child: child,
+            child:     child,
           );
         },
         child: widget.child,
@@ -783,19 +723,16 @@ class _JurassicBadge extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.10),
+          color:        Colors.white.withOpacity(0.10),
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: Colors.white, width: 1),
+          border:       Border.all(color: Colors.white, width: 1),
         ),
-        child: const Text(
-          'JURASSIC',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 10,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 0.8,
-          ),
-        ),
+        child: const Text('JURASSIC',
+            style: TextStyle(
+                color:         Colors.white,
+                fontSize:      10,
+                fontWeight:    FontWeight.w900,
+                letterSpacing: 0.8)),
       ),
     );
   }
