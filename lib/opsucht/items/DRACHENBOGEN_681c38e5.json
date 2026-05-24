@@ -1,0 +1,20 @@
+{
+  "internalname": "DRACHENBOGEN_681c38e5",
+  "displayname": "Drachenbogen",
+  "material": "BOW",
+  "cmd": 10102,
+  "damage": 0,
+  "lore": [
+    "",
+    "Geschaffen vom ersten Drachenmeister.",
+    "",
+    "Signiert vom Drachenmeister am 23.10.2023",
+    "",
+    "Drachenkollektion (10/12)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_model_data\":{floats:[10102.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Drachenbogen\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:flame\":2,\"minecraft:infinity\":1,\"minecraft:mending\":1,\"minecraft:power\":4,\"minecraft:unbreaking\":4},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Geschaffen vom ersten Drachenmeister.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Drachenmeister \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2023\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Drachenkollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"10\"},{color:\"gray\",italic:0b,text:\"/12)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}]},count:1,id:\"minecraft:bow\"}",
+  "capturedAt": "2026-05-14T13:42:42.208479600Z"
+}

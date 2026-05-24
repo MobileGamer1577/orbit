@@ -1,0 +1,16 @@
+{
+  "internalname": "SOMMER_APFEL_1a802fcb",
+  "displayname": "SOMMER APFEL",
+  "material": "ENCHANTED_GOLDEN_APPLE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "➥ Effekt: +5 Herzen (Off-Hand)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:82d374c8-72a2-4c7b-87b6-06f4dd321675\",operation:\"add_value\",slot:\"offhand\",type:\"minecraft:max_health\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#FFD900\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#F5DE22\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:1b,color:\"#EBE343\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"M\",underlined:0b},{bold:1b,color:\"#E1E965\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"M\",underlined:0b},{bold:1b,color:\"#D7EE87\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"E\",underlined:0b},{bold:1b,color:\"#CDF3A8\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"R \",underlined:0b},{bold:1b,color:\"#A5EED0\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"A\",underlined:0b},{bold:1b,color:\"#88E3D7\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"P\",underlined:0b},{bold:1b,color:\"#6AD9DD\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"F\",underlined:0b},{bold:1b,color:\"#4DCEE4\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"E\",underlined:0b},{bold:1b,color:\"#2FC4EA\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"L\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥\",underlined:0b},{color:\"gray\",italic:0b,text:\" Effekt:\"},{color:\"green\",italic:0b,text:\" +5 Herzen \"},{color:\"dark_gray\",italic:0b,text:\"(\"},{color:\"dark_gray\",italic:1b,text:\"Off-Hand\"},{color:\"dark_gray\",italic:0b,text:\")\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:enchanted_golden_apple\"}",
+  "capturedAt": "2026-05-14T14:05:43.509258700Z"
+}

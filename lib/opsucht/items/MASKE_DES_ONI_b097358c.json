@@ -1,0 +1,21 @@
+{
+  "internalname": "MASKE_DES_ONI_b097358c",
+  "displayname": "Maske des Oni",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "In den grimmigen Zügen dieser Visage",
+    "liegen sowohl Stärke als auch Schrecken der Oni.",
+    "",
+    "Signiert vom Oni am 01.11.2024",
+    "",
+    "➥ Effekt: +5 Rüstung (Kopf)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:3dd9a64f-01d0-4bf9-bdc4-97190fcb8f14\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Maske \",underlined:0b},{bold:1b,color:\"gold\",italic:0b,text:\"des \"},{bold:1b,color:\"red\",italic:0b,text:\"Oni\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:blast_protection\":5,\"minecraft:fire_protection\":5,\"minecraft:thorns\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"In den grimmigen Zügen dieser Visage\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"liegen sowohl Stärke als auch Schrecken der Oni.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Oni \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.11.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+5 Rüstung \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:profile\":{id:[I;869237945,-1007007902,-1920536107,-1233588503],name:\"Grimbear_\",properties:[{name:\"textures\",signature:\"f4Q2DMrKkoYtbrcP3x/tUGwSKzcD/3AXnpfSQ6/Cwb1DZ3SlAJ2SnZKnvZmgvT4hoK95UT7mUtPydivIPUYLc9ICttLdX7UrErdWybn1nyaC5tBpDwroAFdgKhH4xEq/rFZQ/lTqgzUT2bbyKt1EeEx18qplSWG5TDUdTBkYRaSn9VI2jmgzG6PgGsk0AhYcxbhHWm/FsiZxcw61wf1Zw+F43orW2RQFHRcJyQ1J1D4zU3oq7rUdYo0rezcQToT3nvLVlvsVg6yYA7V4l3z7Wmvs5ahe9PjeZocIOt2bWF8rRLWD2rxaAM27rbF601KFG7ebg0jtKyFsL40dfDOnw2004gPogce4t0xltZZadt1omiRlVKqCsmCf0vZzjplHITeYAWjzMuSP5/w+7uQA2BQmEljk/m/e5pArlY11VZrfnlrnmUBVnrq7glASIrHmzqD5eIdELhxWWNIGzJK4tS3tc/6Vnvq1Lg0p8LOJGHrwAe6IBw5xIDnfmrAqmanNFaSmtW2OZBpbuaGpfStmoZOtKZG8hab1UclKyaNVmaXNIreV7HEQt5tqlGAmIg8TgSAY+nAZVP411wRdSVrDJDLHuWoodRhgaK0NlB7rcNnZ1Jh8YCjbSd8eRbhbHNdSb2ED+33l0821E9DDIapiduIeBaLNEd2mdhj6g2YqUCc\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTcwNDMyMzE1Mzg5MiwKICAicHJvZmlsZUlkIiA6ICIzM2NmODRiOWMzZmE0NzYyOGQ4NmYxZDViNjc4ZWVlOSIsCiAgInByb2ZpbGVOYW1lIiA6ICJHcmltYmVhcl8iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjMwY2Q0ODRlNmY5MTA5ODAwNmYzMDBkYjFlMGVmNmE4MmM0ZjM3N2I5Njc4MjliYWEyNDU3ZDBlM2ZmNjE2ZiIKICAgIH0sCiAgICAiQ0FQRSIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjM0MGMwZTAzZGQyNGExMWIxNWE4YjMzYzJhN2U5ZTMyYWJiMjA1MWIyNDgxZDBiYTdkZWZkNjM1Y2E3YTkzMyIKICAgIH0KICB9Cn0\u003d\"}]},\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:01:43.387693100Z"
+}

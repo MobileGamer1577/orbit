@@ -1,0 +1,19 @@
+{
+  "internalname": "PHORX_PLOTSPITZHACKE_V4_1139ea59",
+  "displayname": "Phorx Plotspitzhacke v4",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Telepathie I",
+    "Knall I",
+    "",
+    "────────────",
+    "Signiert von Phorx am 02.02.2022",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Mega Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWAllowedWorlds:[\"world\"],IWEnchantments:[\"§7Telepathie I\",\"§7Knall I\"],IWLocked:1b},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phorx \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"Plotspitzhacke \"},{bold:1b,color:\"aqua\",italic:0b,text:\"v4\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":10,\"minecraft:mending\":2,\"minecraft:sharpness\":8,\"minecraft:unbreaking\":15},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Telepathie I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Knall I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"────────────\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"Phorx \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"gray\",italic:0b,text:\"0\"},{color:\"aqua\",italic:0b,text:\"2\"},{color:\"gray\",italic:0b,text:\".0\"},{color:\"aqua\",italic:0b,text:\"2\"},{color:\"gray\",italic:0b,text:\".\"},{color:\"aqua\",italic:0b,text:\"2\"},{color:\"gray\",italic:0b,text:\"0\"},{color:\"aqua\",italic:0b,text:\"22\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Mega Jackpot\"}],text:\"\"}],\"minecraft:repair_cost\":63},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:03:36.841001400Z"
+}

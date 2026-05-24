@@ -1,0 +1,19 @@
+{
+  "internalname": "1_MOBFARMSCHWERT_V5_1_225c7130",
+  "displayname": "1 Mobfarmschwert v5 1",
+  "material": "NETHERITE_SWORD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    " ",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+"alternative_raritys": [
+      "&6&lLucky&e&lBlock &cLegendär",
+"&6&lOPDrop &4&lJackpot",
+"&4Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:14.0d,id:\"minecraft:b9bb245e-1d3d-4f7a-bfe0-a87f252188f5\",operation:\"add_value\",slot:\"mainhand\",type:\"minecraft:attack_damage\"},{amount:15.0d,id:\"minecraft:ca61fefc-34fa-4492-bf02-a15f58b6bc38\",operation:\"add_value\",slot:\"mainhand\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:0b,color:\"yellow\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"1 \",underlined:0b},{bold:1b,color:\"green\",italic:0b,obfuscated:0b,text:\"Mobfarmschwert \"},{bold:0b,color:\"aqua\",italic:1b,text:\"v5 \"},{color:\"yellow\",italic:0b,obfuscated:1b,text:\"1\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:looting\":7,\"minecraft:mending\":1,\"minecraft:sharpness\":10,\"minecraft:unbreaking\":7},\"minecraft:lore\":[{extra:[\" \"],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:netherite_sword\"}",
+  "capturedAt": "2026-05-14T10:11:52.736912300Z"
+}

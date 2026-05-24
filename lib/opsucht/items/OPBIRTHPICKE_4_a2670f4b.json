@@ -1,0 +1,19 @@
+{
+  "internalname": "OPBIRTHPICKE_4_a2670f4b",
+  "displayname": "OPBirthPICKE #4",
+  "material": "NETHERITE_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "» Effekt: Schnelligkeit",
+    "» Spezial: +5 Rüstung",
+    "",
+    "Signiert von OPSUCHT am 23.10.2022",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » MEGA Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.05d,id:\"minecraft:fffe1fe1-0000-8267-0000-4c1efffefb32\",operation:\"add_value\",slot:\"mainhand\",type:\"minecraft:movement_speed\"},{amount:10.0d,id:\"minecraft:fffe1fe1-0000-82cb-0000-4c1efffefa6a\",operation:\"add_value\",slot:\"mainhand\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:0b,color:\"gold\",italic:0b,text:\"P\"},{color:\"aqua\",italic:0b,text:\"B\"},{color:\"green\",italic:0b,text:\"i\"},{color:\"red\",italic:0b,text:\"r\"},{color:\"gray\",italic:0b,text:\"t\"},{color:\"white\",italic:0b,text:\"h\"},{color:\"dark_blue\",italic:0b,text:\"P\"},{italic:0b,text:\"I\"},{color:\"aqua\",italic:0b,text:\"C\"},{color:\"gold\",italic:0b,text:\"K\"},{color:\"dark_blue\",italic:0b,text:\"E \"},{color:\"red\",italic:0b,text:\"#4\"}],text:\"\"},\"minecraft:dyed_color\":10511680,\"minecraft:enchantments\":{\"minecraft:efficiency\":13,\"minecraft:fortune\":5,\"minecraft:mending\":1,\"minecraft:unbreaking\":12},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"» \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Schnelligkeit\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"» \",underlined:0b},{color:\"gray\",italic:0b,text:\"Spezial: \"},{color:\"aqua\",italic:0b,text:\"+5 Rüstung\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"OPSUCHT \"},{bold:0b,color:\"gray\",italic:0b,text:\"am 23.10.2022\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"MEGA Jackpot\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:dyed_color\"]}},count:1,id:\"minecraft:netherite_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:01:34.982861400Z"
+}

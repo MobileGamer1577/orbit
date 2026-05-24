@@ -1,0 +1,16 @@
+{
+  "internalname": "X_KILLERHACKE_X_75832656",
+  "displayname": "x Killerhacke x",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "➤ Killer Kollektion (6/8)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"x \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,text:\"Killerhacke \"},{bold:0b,color:\"red\",italic:0b,obfuscated:1b,text:\"x\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":8,\"minecraft:fortune\":3,\"minecraft:mending\":2,\"minecraft:unbreaking\":6},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➤ \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"Killer Kollektion \"},{bold:0b,color:\"gray\",italic:1b,text:\"(6/8)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T09:51:31.938133500Z"
+}

@@ -1,0 +1,17 @@
+{
+  "internalname": "FEUERD_MON_BRUSTPLATTE_V4_9cd4bf3a",
+  "displayname": "Feuerdämon Brustplatte v4",
+  "material": "LEATHER_CHESTPLATE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Feuerschild I",
+    "",
+    "Signiert von den Dämonen der Hölle.",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWEnchantments:[\"§7Feuerschild I\"],IWLocked:1b},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Feuerdämon Brustplatte \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,text:\"v4\"}],text:\"\"},\"minecraft:dyed_color\":11546150,\"minecraft:enchantments\":{\"minecraft:mending\":1,\"minecraft:protection\":6,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Feuerschild I\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von den \",underlined:0b},{color:\"red\",italic:0b,text:\"Dämonen \"},{color:\"gray\",italic:0b,text:\"der \"},{color:\"red\",italic:0b,text:\"Hölle\"},{color:\"gray\",italic:0b,text:\".\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:leather_chestplate\"}",
+  "capturedAt": "2026-05-14T09:16:15.396006400Z"
+}

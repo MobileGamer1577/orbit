@@ -1,0 +1,20 @@
+{
+  "internalname": "_SCHNEESTIEFEL_b196a633",
+  "displayname": "❄ Schneestiefel ❄",
+  "material": "IRON_BOOTS",
+  "cmd": 10137,
+  "damage": 0,
+  "lore": [
+    "Die Schneestiefel bieten",
+    "Halt und Wärme im Winter.",
+    "",
+    "Signiert vom Winter am 01.11.2024",
+    "",
+    "➥ Effekt: +3 Herzen (Schuhe)",
+    "➥ Effekt: Kälte Schutz (Schuhe)",
+    "",
+    "➥ OP Pass Belohnung des 2. Chapter"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:6.0d,id:\"minecraft:dfd25056-5947-4236-895a-3d22aa94330d\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:max_health\"},{amount:3.0d,id:\"minecraft:60af0f08-7911-42c2-be0a-151dfcf53973\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:0.1d,id:\"minecraft:83c6555f-2cdb-4c38-9c27-c8111a7e2b52\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"},{amount:3.0d,id:\"minecraft:d62a007d-fd74-436f-b34f-a7623bf44670\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"}],\"minecraft:custom_data\":{IWCustomItems:{abilities:[{NO_FREEZING:1}]},itemsadder:{id:\"christmas_leggings\",namespace:\"_opsucht_sets\"}},\"minecraft:custom_model_data\":{floats:[10137.0f]},\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"❄ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"Schneestiefel \"},{bold:0b,color:\"aqua\",italic:0b,text:\"❄\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_protection\":5,\"minecraft:mending\":2,\"minecraft:protection\":8,\"minecraft:unbreaking\":5},\"minecraft:equippable\":{asset_id:\"_opsucht_sets:christmas\",slot:\"feet\"},\"minecraft:lore\":[{extra:[{bold:0b,color:\"aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Die Schneestiefel bieten\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Halt und Wärme im Winter.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Winter \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.11.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+3 Herzen \"},{color:\"dark_gray\",italic:1b,text:\"(Schuhe)\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Kälte Schutz \"},{color:\"dark_gray\",italic:1b,text:\"(Schuhe)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"OP Pass \"},{bold:0b,color:\"gray\",italic:0b,text:\"Belohnung des \"},{color:\"aqua\",italic:0b,text:\"2. Chapter\"}],text:\"\"}],\"minecraft:max_damage\":481},count:1,id:\"minecraft:iron_boots\"}",
+  "capturedAt": "2026-05-13T18:10:40.453307600Z"
+}

@@ -1,0 +1,17 @@
+{
+  "internalname": "KOPF_VON_HEROBRINE_3fb641a8",
+  "displayname": "Kopf von Herobrine",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Herobrine am 01.01.1992",
+    "➥ Effekt: x2 Speed Boost",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.1d,id:\"minecraft:00000000-0000-0063-0000-00000536f024\",operation:\"add_value\",slot:\"head\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Kopf von Herobrine\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:protection\":5,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"Herobrine \"},{color:\"gray\",italic:0b,text:\"am 01.01.1992\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"x2 Speed Boost\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:profile\":{id:[I;1723755434,-1732166984,-1825537926,1907024239],name:\"Herobrine\",properties:[{name:\"textures\",signature:\"bow3l9CU41pxPfLWb529N3P7OW8yYoN5DWpiSZZm+FchS/bH3vLxGNWR9X9rIddeT6A8PTe+a/kttVDtOxPWoNkys9ZSpULNP56Bx4KjWEmhJkqq6pEtRzu/7THorWNV478zVLfzl2xG/ENamGVSSr9Jnag58gBES2yvj5+tCdChEyVWn2NPl+CuL/NffyeK1XqzzZ3uOsEr+Dr2loRvQjASgu9j1hXz00bGznWd068Ob+6zOsHDe4w1sJXFfDDFOwMUdXWRUh2T3yNipEqW8oKD1yvRjZ5fv6MmEXqo+QUwFHS65FuIwW0jpGOuHPY1CW8KiEed4lJB1F4S4c/3/QWQN2V4/2DGl0Y7b6UlO0hEKu54TV6hh1AOZH4F6VrTxGFIevzSz1/NBWFWPbEe26Y4VsHX+qtYqIcsiqo4V5UKEYNmIbh5dPJZAcX7wqfLU3zDlOjYXDWOTwCX6UVNkA73PWB1gjsoilBlnQcD4BQfoWn0cFmY5+KyjUSNeHeoawFjiBZTs1aSH4QRZO1akx2YtLhXKb78aNVnsPYsWSpYSpp7xhgjCjVtZzV553ChZkqLRegB3xrPKtKQCGKmJLF8MhZfjzWoi9rteDC4WkSaiRVf4zbN+FvT/SjcdsGSTMuoaQGXoY0Sp9zEkc5aj0wu9foz9Qn7x1jG68FHoWQ\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY0ODQxMDM2NjY0OSwKICAicHJvZmlsZUlkIiA6ICJmODRjNmE3OTBhNGU0NWUwODc5YmNkNDllYmQ0YzRlMiIsCiAgInByb2ZpbGVOYW1lIiA6ICJIZXJvYnJpbmUiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWQ1OGFjNTc4ZDhkNDZiMDljNjFlNjUwOGNkOTFhNDI3NjA2ODI0MzQ0MjM0ZThlOGViMDgyY2FjMjhiNWI0MCIKICAgIH0KICB9Cn0\u003d\"}]},\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:56:01.261678800Z"
+}

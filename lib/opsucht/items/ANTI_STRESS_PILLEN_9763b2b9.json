@@ -1,0 +1,10 @@
+{
+  "internalname": "ANTI_STRESS_PILLEN_9763b2b9",
+  "displayname": "Anti Stress Pillen",
+  "material": "PAPER",
+  "cmd": 10012,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_model_data\":{floats:[10012.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Anti \",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"Stress \"},{bold:1b,color:\"white\",italic:0b,text:\"Pillen\"}],text:\"\"},\"minecraft:damage\":0},count:1,id:\"minecraft:paper\"}",
+  "capturedAt": "2026-05-14T13:54:00.208343700Z"
+}

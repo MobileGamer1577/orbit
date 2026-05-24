@@ -1,0 +1,16 @@
+{
+  "internalname": "OSTERHASEN_KOPF_94275bc1",
+  "displayname": "Osterhasen Kopf",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Osterhasen am 09.04.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:4509e110-7a44-4d6a-a693-59bee5d50459\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"},{amount:10.0d,id:\"minecraft:44699ade-e262-4203-b8e4-85ea8f385b63\",operation:\"add_value\",slot:\"head\",type:\"minecraft:max_health\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Osterhasen \",underlined:0b},{bold:1b,color:\"green\",italic:0b,text:\"Kopf\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:blast_protection\":6},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Osterhasen \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"09.04.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:profile\":{id:[I;161496148,1219251929,-1588061166,505391025],name:\"GAMINGFynn\",properties:[{name:\"textures\",signature:\"Hbk6G25wrnXbvNuvlXaurEPwsk05uJtKAzdivP9U8Vr5ahQPlUugIs2c1UBZnaAe48iAkjJhnz+vfGVHjA6uYi9V3oU9yeVDMmmqKlSFdq2QDvvKXPO9/ljM54lxp0iMKf6oU/pyGKdK30tCpr1QHyq4yWgtss5iAwyVOZXImWKdW0ZYDqv9QrtveqOBVq/GT9cmfERNXRk55E5darIP1hcTAwdhsHQ1K+0J+hgjPsApOXaabr1K2n6+CM01yv749VNHu5/6S8+CZ8ZO7b0vWpIhUUShCbH58hz9AzdBI4gBbybwQ+Hk1KY6FAbnFcBPXLPwGvAtEhpW5iAQhg1zA4/97cOO3DGHgZod2nK6Mb3SqmI6OrUjJndJ9bb7/bmLoE4NiwYOcDe1TB6a+ERM2QhWrkqEEfK7tUJ4T1p1Eme1JtPwpfDooDrEe5MSzChedgNt1lwhNkU6HJHBtoYRCVyRjft9gcmBnhmJS7xX3vE5AqquyyMCiBoj4Ns9Gkx18Iwvy7vjD07bjLef3Bg8OaSU14ybYXUWjivKU+Uqqr9Y409NnIeZRyx4HlfabGTvGrAizIpGIEnOvIjrRgrQQW9RcSiZdi23tHjLoOXWOXDWGcGwfJLmTPkbVKSS6dWa4WVDNflJBXG0WV/f85tJ4dCW9eOkXgL91gDWQLrbjI8\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY3Nzg1NTgwMjUzMCwKICAicHJvZmlsZUlkIiA6ICIwOWEwM2M1NDQ4YWM0ZWQ5YTE1ODFjMTIxZTFmYTdiMSIsCiAgInByb2ZpbGVOYW1lIiA6ICJHQU1JTkdGeW5uIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzZkYzE5MWRhZjFhNWRiYjIyMWZhNWY2NWZlZWUzZGE1ZmUzOTA0YTZiOWY3MDcyNDYwM2M4ODRmNWRhMGQzNTgiLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ\u003d\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:00:12.786645Z"
+}

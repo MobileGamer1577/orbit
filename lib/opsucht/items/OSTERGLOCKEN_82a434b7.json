@@ -1,0 +1,10 @@
+{
+  "internalname": "OSTERGLOCKEN_82a434b7",
+  "displayname": "Osterglocken ",
+  "material": "AZURE_BLUET",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Osterglocken \",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:looting\":5,\"minecraft:sharpness\":3,\"minecraft:unbreaking\":10}},count:1,id:\"minecraft:azure_bluet\"}",
+  "capturedAt": "2026-05-14T12:41:01.855632900Z"
+}

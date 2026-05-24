@@ -1,0 +1,20 @@
+{
+  "internalname": "KNOBLAUCH_edddd467",
+  "displayname": "Knoblauch",
+  "material": "QUARTZ",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Schützt dich vor Vampiren!",
+    "",
+    "Signiert vom Vampirjäger am 31.10.2023",
+    "",
+    "➥ Effekt: +5 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:30a8b9ab-dd71-4095-9a50-9848f13ab218\",operation:\"add_value\",type:\"minecraft:max_health\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Knoblauch\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:dyed_color\":10511680,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Schützt dich vor Vampiren!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Vampirjäger \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"31.10.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+5 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\",\"minecraft:enchantments\",\"minecraft:dyed_color\"]}},count:1,id:\"minecraft:quartz\"}",
+  "capturedAt": "2026-05-14T13:04:09.906217600Z"
+}

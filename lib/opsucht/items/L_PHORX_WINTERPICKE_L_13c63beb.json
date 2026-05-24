@@ -1,0 +1,17 @@
+{
+  "internalname": "L_PHORX_WINTERPICKE_L_13c63beb",
+  "displayname": "l☃ Phorx Winterpicke ☃l",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Phorx am 24.12.2020",
+    "Signiert von ?Wintermann? am 24.12.2020",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"l\",underlined:0b},{color:\"white\",italic:0b,obfuscated:0b,text:\"☃ \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"Phorx \"},{bold:1b,color:\"red\",italic:0b,text:\"Winterpicke \"},{bold:0b,color:\"white\",italic:0b,text:\"☃\"},{color:\"white\",italic:0b,obfuscated:1b,text:\"l\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":8,\"minecraft:fortune\":3,\"minecraft:mending\":2,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Phorx \"},{color:\"gray\",italic:0b,text:\"am 24.12.2020\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"?Wintermann? \"},{color:\"gray\",italic:0b,text:\"am 24.12.2020\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T09:52:46.434354900Z"
+}

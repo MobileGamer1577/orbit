@@ -1,0 +1,15 @@
+{
+  "internalname": "DEVINS_R_AAAAAAA_GE_KOPF_1bc24cf9",
+  "displayname": "Devins R*AAAAAAA*GE Kopf",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Rage XI",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Devins \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"R*AAAAAAA*GE \"},{bold:1b,color:\"red\",italic:0b,text:\"Kopf\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:protection\":8,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Rage XI\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:profile\":{id:[I;-1,-1871787601,-1,-1871787601],name:\"__THOMAS_\",properties:[{name:\"textures\",signature:\"CwizTv2hI2GxauELw3k6B+OXGxlycB3zxfGDQ5cjR8hEvOLv/sVYlDGZmJuu5yDau+6o3R6zV5wgoqPXvhY7c0rJF0S/hiXqVnc8YFRBVxDmSajtVVgDuEscrDfPWM00pxKT+yfYLIeuvFIRg21QoMJwy2+vLplc+/EpLFKuULgYZ5QuKFQln1fy2EigNnVjpoPcFRlKVF3qco7X5BEsZvigTFwjuOQgHSI7yqUe9Y80Hpj2b3gWI2DYKpf9l4QchXfdcwxyH1OUZVEH0jyhKFcBcOcsaSBEZ8Q96do3jEfr1o/OfRtdnEtN8E+bUPltpV+uWfSipOIuVU+lmzf2gxRRT7bcVpoIv5ofP9IjtsqbqAvB46xHXfXYAxHmjgdDJSUUalXQMRHJWQWntCo2HN+7IvNYlrs3RpfQdfFWtCECJQU6A4+32aHhKgq1mxL7BsCYwirjXDyMvBjuwWZsu3wptssBjqSkYRSyGKB71Arn2KaxVk+ehQewNhXw5CrcT9jR5yrSkmV0VbxRbskj9tGPU912UsYcuklOa1zHFJH4eGt8h3ln8wQClvDxUJ/NqTUzNl3yLGEM0u6eoanfV1Xcj03IE0IGAONeBBlHzYxTpoPgzzFndzI5P9rPTudyLcF95Zt9uJ6u8TRSl0SMR+7bpuCxbpbABELlJGT5Z8c\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY1NDI1OTk4OTkxOSwKICAicHJvZmlsZUlkIiA6ICI3YzMwYmUxMDNiOWY0M2FlOGVhMjliN2Y4OWUyYmM5MCIsCiAgInByb2ZpbGVOYW1lIiA6ICJfX1RIT01BU18iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzBkYjk1NDhmNDE1MzFmZDAwNTI1NjNkNWYwYTRjYzkzYTM1YjJjZmZlYzljYzIxNmQ5NWQ1NDI3NDdhYmJiNCIKICAgIH0KICB9Cn0\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:57:11.033355300Z"
+}

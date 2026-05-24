@@ -1,0 +1,15 @@
+{
+  "internalname": "JAPVINS_DISCORD_BUTTON_937aa8c1",
+  "displayname": "Japvins Discord Button",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Signiert von Japvin am 05.06.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Japvins Discord Button\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:infinity\":1},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Japvin\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 05.06.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:profile\":{id:[I;67411088,-739686879,-1666252800,-1432184791],name:\"\",properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGQ0MjMzN2JlMGJkY2EyMTI4MDk3ZjFjNWJiMTEwOWU1YzYzM2MxNzkyNmFmNWZiNmZjMjAwMDAwMTFhZWI1MyJ9fX0\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:26:37.594623Z"
+}

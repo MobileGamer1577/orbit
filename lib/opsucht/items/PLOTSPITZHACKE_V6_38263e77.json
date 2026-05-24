@@ -1,0 +1,22 @@
+{
+  "internalname": "PLOTSPITZHACKE_V6_38263e77",
+  "displayname": "Plotspitzhacke V6",
+  "material": "NETHERITE_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Telepathie I",
+    "Knall I",
+    "",
+    "Signiert von OPSUCHT am 01.03.2023",
+    "Signiert von Phorx am 01.03.2023",
+    "Signiert von SkyGuyTV am 01.03.2023",
+    "Signiert von NilsDev am 01.03.2023",
+    "Signiert von Japvin am 01.03.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Mega Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Plotspitzhacke \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,text:\"V6\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":12,\"minecraft:mending\":2,\"minecraft:sharpness\":7,\"minecraft:unbreaking\":20},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Telepathie I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Knall I\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"OPSUCHT\"},{bold:0b,color:\"gray\",italic:0b,text:\" am 01.03.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"Phorx\"},{color:\"gray\",italic:0b,text:\" am 01.03.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"SkyGuyTV\"},{color:\"gray\",italic:0b,text:\" am 01.03.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"NilsDev\"},{color:\"gray\",italic:0b,text:\" am 01.03.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"Japvin\"},{color:\"gray\",italic:0b,text:\" am 01.03.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Mega Jackpot\"}],text:\"\"}],\"minecraft:repair_cost\":63},count:1,id:\"minecraft:netherite_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:03:42.588551400Z"
+}

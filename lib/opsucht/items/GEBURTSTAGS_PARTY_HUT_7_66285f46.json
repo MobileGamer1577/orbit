@@ -1,0 +1,22 @@
+{
+  "internalname": "GEBURTSTAGS_PARTY_HUT_7_66285f46",
+  "displayname": "Geburtstags Party Hut #7",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10107,
+  "damage": 0,
+  "lore": [
+    "",
+    "Feiere den 7. Geburtstag",
+    "von OPSUCHT.net gemeinsam mit",
+    "der gesamten Community!",
+    "",
+    "Signiert von OPSUCHT am 23.10.2025",
+    "",
+    "➥ Effekt: Lokalisiert nächstes Diamanterz (Kopf)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:4c5daf73-e328-443b-bb2d-f19730ad2845\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:33a7c0fa-1bc0-4a29-a31d-8fa7535a5903\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:22f76c1b-6dde-4655-9e2b-29261b00ecfd\",operation:\"add_value\",slot:\"head\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{IWCustomItems:{abilities:[{ORE_FINDER:1}]}},\"minecraft:custom_model_data\":{floats:[10107.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"G\",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"e\"},{bold:1b,color:\"dark_green\",italic:0b,text:\"b\"},{bold:1b,color:\"dark_blue\",italic:0b,text:\"u\"},{bold:1b,color:\"light_purple\",italic:0b,text:\"r\"},{bold:1b,color:\"yellow\",italic:0b,text:\"t\"},{bold:1b,color:\"aqua\",italic:0b,text:\"s\"},{bold:1b,color:\"dark_purple\",italic:0b,text:\"t\"},{bold:1b,color:\"white\",italic:0b,text:\"a\"},{bold:1b,color:\"blue\",italic:0b,text:\"g\"},{bold:1b,color:\"green\",italic:0b,text:\"s \"},{bold:1b,color:\"white\",italic:0b,text:\"Party Hut \"},{bold:0b,color:\"red\",italic:0b,text:\"#\"},{bold:1b,color:\"red\",italic:0b,text:\"7\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:item_name\":{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"G\",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"e\"},{bold:1b,color:\"dark_green\",italic:0b,text:\"b\"},{bold:1b,color:\"dark_blue\",italic:0b,text:\"u\"},{bold:1b,color:\"light_purple\",italic:0b,text:\"r\"},{bold:1b,color:\"yellow\",italic:0b,text:\"t\"},{bold:1b,color:\"aqua\",italic:0b,text:\"s\"},{bold:1b,color:\"dark_purple\",italic:0b,text:\"t\"},{bold:1b,color:\"white\",italic:0b,text:\"a\"},{bold:1b,color:\"blue\",italic:0b,text:\"g\"},{bold:1b,color:\"green\",italic:0b,text:\"s \"},{bold:1b,color:\"white\",italic:0b,text:\"Party Hut \"},{bold:0b,color:\"red\",italic:0b,text:\"#\"},{bold:1b,color:\"red\",italic:0b,text:\"7\"}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Feiere den 7. Geburtstag\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"von \",underlined:0b},{bold:1b,color:\"red\",italic:1b,text:\"OPSUCHT.net\"},{bold:1b,color:\"red\",italic:1b,text:\" \"},{bold:0b,color:\"gold\",italic:1b,text:\"gemeinsam mit\"}],text:\"\"},{extra:[{bold:0b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"der gesamten Community!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2025\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Lokalisiert nächstes Diamanterz \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:05:33.655570600Z"
+}

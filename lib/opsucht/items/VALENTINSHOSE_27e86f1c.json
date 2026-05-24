@@ -1,0 +1,23 @@
+{
+  "internalname": "VALENTINSHOSE_27e86f1c",
+  "displayname": "Valentinshose",
+  "material": "LEATHER_LEGGINGS",
+  "cmd": 10117,
+  "damage": 0,
+  "lore": [
+    "",
+    "Eine verführerisch elegante Kollektion,",
+    "geschaffen mit Liebe und einem Hauch Romantik!",
+    "",
+    "Signiert von Valentin am 14.02.2024",
+    "",
+    "Valentinskollektion (8/11)",
+    "",
+    "➥ Effekt: +3 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:6.0d,id:\"minecraft:88ecb037-bd2a-4c9d-ab1e-6bcb493c4b4e\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:max_health\"},{amount:6.0d,id:\"minecraft:db654b3a-36c1-4446-a1e8-22390f7ad287\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:b502d96b-2b29-4bba-acb3-3c89cb081462\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:1dc6a131-a52d-4b00-895b-e8c4d0c6ed49\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"valentine_assortment-leggings\",namespace:\"sucht_4\"}},\"minecraft:custom_model_data\":{floats:[10117.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Valentinshose\",underlined:0b}],text:\"\"},\"minecraft:dyed_color\":6684800,\"minecraft:enchantments\":{\"minecraft:fire_protection\":5,\"minecraft:mending\":2,\"minecraft:protection\":5,\"minecraft:thorns\":5,\"minecraft:unbreaking\":9},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"light_purple\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Eine verführerisch elegante Kollektion,\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"light_purple\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"geschaffen mit Liebe und einem Hauch Romantik!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Valentin \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"14.02.2024\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Valentinskollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"8\"},{color:\"gray\",italic:0b,text:\"/11)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+3 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:max_damage\":555,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\",\"minecraft:dyed_color\"]}},count:1,id:\"minecraft:leather_leggings\"}",
+  "capturedAt": "2026-05-13T18:12:41.901751900Z"
+}

@@ -1,0 +1,10 @@
+{
+  "internalname": "PATRICK_S_ELYTRA_622d0ed8",
+  "displayname": "Patrick\u0027s Elytra ",
+  "material": "ELYTRA",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Patrick\u0027s Elytra \",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:mending\":1,\"minecraft:unbreaking\":4}},count:1,id:\"minecraft:elytra\"}",
+  "capturedAt": "2026-05-14T12:19:12.837467700Z"
+}

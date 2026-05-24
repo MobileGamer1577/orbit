@@ -1,0 +1,18 @@
+{
+  "internalname": "PHORX_WEIHNACHTSKOPF_66145b62",
+  "displayname": "Phorx Weihnachtskopf",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Phorx am 01.12.2021",
+    "",
+    "(toller kopf, tolle enchants :)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phorx \",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"Weihnachtskopf\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_protection\":6,\"minecraft:projectile_protection\":6,\"minecraft:protection\":6,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"Phorx \"},{bold:0b,color:\"gray\",italic:0b,text:\"am 01.12.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"(toller kopf, tolle enchants :)\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:profile\":{id:[I;-1,-1735003034,-1,-1735003034],name:\"Phorx\",properties:[{name:\"textures\",signature:\"lTLDVKmWVhnBN+WO18v2nRVZhvflRQIYcrkP3qmDNLvo9rKJ3XcyVlX0x3XLulL2mAcsxloTEhSr1OhKwH9oX1cf4uTWd4BBLSihhN1atoJy41YN7MDgVOsfO9BP4It6I6fN/PMpXkfQ5Ms4UYeMCQhbMEfK8TuBubMRDL33UGf8nPjUZ9qEWQtOWFXcb0SEMb1JL4I6ROZbid5X2pbyvjTXK/KJLa3AekAHJhFVfVAo7Pz7FFQq+RKjTw7ouCg1KEci5h5ORNjbJjeBgINcS01cucH501eiQwxQ7y9iLY/XbfSIwLq9lmzfJnsZ9lq0/iHb6bdSvV3RSY7n4uXBbE5umWgBg1fJ2d/Qo01Q6NloFkakx6AR4br7g56lJR/QxO0BJKpC7bTvfc837vY7yUlqXPAcGrJwkUAyN2++fSFRuTv+b1FlvgNEW8a44m97LfEK2DlP5MFGcDe+Yq37u2vzx81j9xmy1Mx8duer54uWbzD+welCfIH1MwLsLdTVAnfn2SxLtSntgubGgDZ1oxQcEJwvx0NIXrGeX6zMxkqxwC5FxnXocShSlzaMLBWTjWSdRkX+GQsq7kUohStGA4dmGQBF6xaDlNDvuJ2YhXXr+hdZNYrajZnW8d5+e13gIZgk2OgsMf8nQjVAViBWIn5McBKs+g9K02Htyihm+DY\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTYzNzc2ODQzNTk5OCwKICAicHJvZmlsZUlkIiA6ICI1YWU0YTFmYjJlYTI0ZTE5ODg1OTc5OGY1Nzg3Zjk4NiIsCiAgInByb2ZpbGVOYW1lIiA6ICJQaG9yeCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9hZDk1MDZlNjg5MjJlYzQ0N2MyODhlZDNjZjhiMjVmMzE0MWI2ZWNkNWU0MDhmNjA3YzkwZjc0NzVkMDlhMmJlIgogICAgfQogIH0KfQ\u003d\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:55:50.536571700Z"
+}

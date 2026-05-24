@@ -1,0 +1,17 @@
+{
+  "internalname": "X_DEVINS_FL_GEL_X_ea4aff9e",
+  "displayname": "x  Devins Flügel x",
+  "material": "ELYTRA",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von leDevin am 02.02.2022",
+    "➣ + 10 Herzen (beim tragen)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:20.0d,id:\"minecraft:00000000-0000-0063-0000-000005634818\",operation:\"add_value\",slot:\"chest\",type:\"minecraft:max_health\"}],\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"x \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,text:\" Devins \"},{bold:1b,color:\"red\",italic:0b,text:\"Flügel \"},{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,text:\"x\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_protection\":5,\"minecraft:protection\":5,\"minecraft:unbreaking\":8},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"leDevin \"},{color:\"gray\",italic:0b,text:\"am 02.02.2022\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➣ \",underlined:0b},{color:\"green\",italic:0b,text:\"+ 10 Herzen \"},{color:\"gray\",italic:1b,text:\"(beim tragen)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:elytra\"}",
+  "capturedAt": "2026-05-14T12:18:15.785639300Z"
+}

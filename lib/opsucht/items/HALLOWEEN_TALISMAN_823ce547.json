@@ -1,0 +1,16 @@
+{
+  "internalname": "HALLOWEEN_TALISMAN_823ce547",
+  "displayname": "Halloween Talisman",
+  "material": "PITCHER_POD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Auge des Zombie Königs.",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Halloween Talisman\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_aspect\":4,\"minecraft:knockback\":6,\"minecraft:looting\":4,\"minecraft:smite\":9,\"minecraft:unbreaking\":10},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_green\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Auge des Zombie Königs.\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}]},count:1,id:\"minecraft:pitcher_pod\"}",
+  "capturedAt": "2026-05-14T13:48:16.457211200Z"
+}

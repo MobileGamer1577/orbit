@@ -1,0 +1,18 @@
+{
+  "internalname": "JASONS_MASKE_579d2da2",
+  "displayname": "Jasons Maske",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10499,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Jason Voorhees am 31.10.2024",
+    "",
+    "➥ Effekt: +6 Rüstung (Kopf)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:12.0d,id:\"minecraft:d8b108a5-2ef0-44c8-af66-9e445bc8cd1c\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"}],\"minecraft:custom_model_data\":{floats:[10499.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#BEBD98\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"J\",underlined:0b},{bold:1b,color:\"#BBB090\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#B8A387\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b},{bold:1b,color:\"#B5967F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"o\",underlined:0b},{bold:1b,color:\"#B28976\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b},{bold:1b,color:\"#AF7C6E\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s \",underlined:0b},{bold:1b,color:\"#A9615D\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"M\",underlined:0b},{bold:1b,color:\"#A65454\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#A3474C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b},{bold:1b,color:\"#A03A43\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"k\",underlined:0b},{bold:1b,color:\"#9D2D3B\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Jason Voorhees \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"31.10.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥\",underlined:0b},{color:\"gray\",italic:0b,text:\" Effekt: \"},{color:\"green\",italic:0b,text:\"+6 Rüstung \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:04:31.259242Z"
+}

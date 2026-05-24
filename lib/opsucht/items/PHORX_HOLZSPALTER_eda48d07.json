@@ -1,0 +1,10 @@
+{
+  "internalname": "PHORX_HOLZSPALTER_eda48d07",
+  "displayname": "Phorx Holzspalter ",
+  "material": "IRON_AXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phorx Holzspalter \",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":10,\"minecraft:mending\":1,\"minecraft:unbreaking\":10}},count:1,id:\"minecraft:iron_axe\"}",
+  "capturedAt": "2026-05-14T10:34:08.086659300Z"
+}

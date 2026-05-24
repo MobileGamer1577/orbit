@@ -1,0 +1,21 @@
+{
+  "internalname": "12_OPSUCHT_AXT_12_36b730b4",
+  "displayname": "12 OPSUCHT Axt 12",
+  "material": "DIAMOND_AXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Diese Axt entstand bei",
+    "der Gründung von OPSUCHT",
+    "",
+    "OPSUCHT Kollektion (8/9)",
+    "",
+    "Signiert von OPSUCHT am 31.05.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"12 \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,text:\"OP\"},{bold:1b,color:\"white\",italic:0b,text:\"SUCHT \"},{bold:1b,color:\"aqua\",italic:0b,text:\"Axt \"},{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,text:\"12\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":5,\"minecraft:mending\":1,\"minecraft:unbreaking\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Diese Axt entstand bei\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"der Gründung von \",underlined:0b},{color:\"white\",italic:1b,text:\"OPSUCHT\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"OP\",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"SUCHT \"},{bold:0b,color:\"gray\",italic:0b,text:\"Kollektion \"},{color:\"gray\",italic:0b,text:\"(\"},{color:\"aqua\",italic:0b,text:\"8\"},{color:\"gray\",italic:0b,text:\"/\"},{color:\"gray\",italic:0b,text:\"9)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"31.05.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_axe\"}",
+  "capturedAt": "2026-05-14T11:24:11.587857700Z"
+}

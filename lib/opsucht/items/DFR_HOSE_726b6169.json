@@ -1,0 +1,15 @@
+{
+  "internalname": "DFR_HOSE_726b6169",
+  "displayname": "DFR Hose",
+  "material": "DIAMOND_LEGGINGS",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Signiert von DURCHRASTEN am 06.02.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:4.0d,id:\"minecraft:00000000-0001-6d2a-0000-00000004f18f\",operation:\"add_value\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"DFR Hose\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:protection\":4,\"minecraft:unbreaking\":5},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"DURCHRASTEN\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 06.02.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_leggings\"}",
+  "capturedAt": "2026-05-14T09:03:07.808328800Z"
+}

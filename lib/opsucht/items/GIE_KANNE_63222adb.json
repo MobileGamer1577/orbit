@@ -1,0 +1,21 @@
+{
+  "internalname": "GIE_KANNE_63222adb",
+  "displayname": "Gießkanne",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 6201,
+  "damage": 0,
+  "lore": [
+    "",
+    "Bewässere mit dieser Gießkanne",
+    "deinen Garten!",
+    "",
+    "➥ Effekt: Verwandelt Erde zu Schlamm",
+    "➥ Effekt: Verwandelt Trockenbeton zu Beton",
+    "➥ Effekt: Verwandelt Trockenes Feld zu Nasses Feld",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_data\":{IWCustomItems:{abilities:[{WATERING:1}]}},\"minecraft:custom_model_data\":{floats:[6201.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gießkanne\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:item_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gießkanne\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"green\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Bewässere mit dieser Gießkanne\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"green\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"deinen Garten!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Verwandelt Erde zu Schlamm\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Verwandelt Trockenbeton zu Beton\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Verwandelt Trockenes Feld zu Nasses Feld\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:58:15.055872400Z"
+}

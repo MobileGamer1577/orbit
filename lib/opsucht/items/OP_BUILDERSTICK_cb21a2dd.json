@@ -1,0 +1,24 @@
+{
+  "internalname": "OP_BUILDERSTICK_cb21a2dd",
+  "displayname": "OP BuilderStick",
+  "material": "STICK",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Dieser Stock ermöglicht es dir,",
+    "Blöcke zu manipulieren.",
+    "",
+    "➥ Effekt: Rotiere Blöcke wie Treppen, Schilder, Köpfe",
+    "➥ Effekt: Manipuliere das Wachstum von Pflanzen",
+    "➥ Effekt: Passe die Höhe einer Stufe an",
+    "➥ Effekt: Entzünde/Erlische Kerzen",
+    "➥ Effekt: (De-)Aktiviere Redstone-Lampen",
+    "➥ Effekt: Lasse Grasblöcke gefrieren",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{DEBUG_STICK:1}]}},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#31E5F5\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:1b,color:\"#2EE7EC\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"P \",underlined:0b},{bold:1b,color:\"#2BE8E4\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"B\",underlined:0b},{bold:1b,color:\"#28EADB\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"u\",underlined:0b},{bold:1b,color:\"#24ECD3\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"i\",underlined:0b},{bold:1b,color:\"#21EDCA\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"l\",underlined:0b},{bold:1b,color:\"#1EEFC1\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"d\",underlined:0b},{bold:1b,color:\"#1BF1B9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#18F3B0\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#15F4A7\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#11F69F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"t\",underlined:0b},{bold:1b,color:\"#0EF896\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"i\",underlined:0b},{bold:1b,color:\"#0BF98E\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"c\",underlined:0b},{bold:1b,color:\"#08FB85\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"k\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Dieser Stock ermöglicht es dir,\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Blöcke zu manipulieren.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Rotiere Blöcke wie Treppen, Schilder, Köpfe\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Manipuliere das Wachstum von Pflanzen\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Passe die Höhe einer Stufe an\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Entzünde/Erlische Kerzen\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"(De-)Aktiviere Redstone-Lampen\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Lasse Grasblöcke gefrieren\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:stick\"}",
+  "capturedAt": "2026-05-14T13:18:31.807601Z"
+}

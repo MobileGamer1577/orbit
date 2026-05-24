@@ -1,0 +1,19 @@
+{
+  "internalname": "OWNER_OPPHIL_21e17bbf",
+  "displayname": "Owner | OPPhil",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von OPPhil am 25.07.2023",
+    "",
+    "➥ Effekt: +10 Herzen",
+    "➥ Effekt: +10 Rüstung",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:20.0d,id:\"minecraft:16318f73-e020-4275-a27c-9e0b517a6777\",operation:\"add_value\",slot:\"head\",type:\"minecraft:max_health\"},{amount:20.0d,id:\"minecraft:0c4d12cf-bcc8-4ded-acbf-559b3f790d09\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Owner \",underlined:0b},{bold:0b,color:\"dark_gray\",italic:0b,text:\"| \"},{color:\"gray\",italic:0b,text:\"OPPhil\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_protection\":8,\"minecraft:protection\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPPhil \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"25.07.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Rüstung\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:profile\":{id:[I;-1003443860,34620746,-1443081546,-62178728],name:\"OPPhil\",properties:[{name:\"textures\",signature:\"dyUwOfKgaIDGhlXKbuLsWhtFIwKspXBQczA9yjmZ7lrAo7XoOCkyiwjrBIbLaUvj9d63HNE+uVf7vD52VNfyouRWFF1+pyb58lZXxfNcZD5tWMuZm0qLf0PZ09GCM8FYU40cvxJ5lAm6stRhmOJMX7l5PJyhj28LHXxIdkwp/ANZmagm0vhbyDVLpSDjZeIHEBSch0Lr8/uXBPbfSzyO8J/jjx3uZPy37QEd8zwppWPBiuzRk9YDbSVjN0bllGeG6OHzc7T9FnTXJNSzeG1i8VOL4f6MbH8PUXrR8GWbc21Ai05aGuwSpqA1yYiwgTWXpaJlFnFeseem8smbIOQNm9NkZJINeJXnWaS1uLfDMAcAUH6SVCKirVA4xcHTEFOeBoccvZbzOBcU5ldUC2eovYn8xB2Zbyyy5OrFKoPW13pPzyviEIdp7GLpLSxZpMoUHmImQVHue/s1oDBEBn4mV1kacAeKX125Vnh7q6EJ6ZLOj2OD177Fr91SCmFJMc5oodrPgAsAEq3br6G0lBvrx3gPtHuTljQVrDGoeKFZEeYKUoGEjzzIO5qd/EjZnCDZDSgto6WgpCHDJ3i9JHqbHP6zSzQq1z4DRO+s5S5ym19OmUSUgdbZrgPnYGF5WGhZCL+JTQTnPQDxuZ/LNy131m/N3XRrlYSCaI1kAwqt1tc\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY5MDE4OTc0MjE0MCwKICAicHJvZmlsZUlkIiA6ICJjNDMwYTk2YzAyMTA0NTRhYTlmYzUyYjZmYzRiM2E1OCIsCiAgInByb2ZpbGVOYW1lIiA6ICJPUFBoaWwiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmRhNzRiOGUyN2MwNGQ0NWNkZjA1ZmM0YjhiZTk3YTcyOTA1N2QyYTRhNDRmMzE4ZWQ3YTVkODJkNjlkYjc2YyIKICAgIH0KICB9Cn0\u003d\"}]},\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:55:38.085776500Z"
+}

@@ -1,0 +1,19 @@
+{
+  "internalname": "SKYGUYTVS_NOOBSCHAUFEL_25aba030",
+  "displayname": "SkyGuyTVs Noobschaufel",
+  "material": "WOODEN_SHOVEL",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Zu Beginn seiner Abenteuer",
+    "schuf SkyGuy diese Schaufel!",
+    "",
+    "Signiert von SkyGuyTV am 01.06.2024",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"SkyGuyTVs Noobschaufel\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":4,\"minecraft:silk_touch\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Zu Beginn seiner Abenteuer\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"schuf SkyGuy diese Schaufel!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"SkyGuyTV \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.06.2024\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:wooden_shovel\"}",
+  "capturedAt": "2026-05-14T11:33:22.385244400Z"
+}

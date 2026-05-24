@@ -1,0 +1,21 @@
+{
+  "internalname": "LUXURY_ISLAND_360837fb",
+  "displayname": "Luxury Island",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 3015,
+  "damage": 0,
+  "lore": [
+    "",
+    "Sammle diese Sammelkarte",
+    "in deinem /Album.",
+    "",
+    "Gewinntyp » Sammelkarte",
+    "Seltenheit » ✯✰✰✰✰",
+    "",
+    "1. EDITION (17/24)",
+    "",
+    "Off-Hand: Karte anschauen"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_data\":{IWBoosterPacks:{key:\"luxury_island\"}},\"minecraft:custom_model_data\":{floats:[3015.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Luxury Island\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:item_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Luxury Island\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Sammle diese Sammelkarte\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"in deinem \",underlined:0b},{color:\"aqua\",italic:0b,text:\"/Album\"},{color:\"gray\",italic:0b,text:\".\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Sammelkarte\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"✯✰✰✰✰\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"blue\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"1. EDITION \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"17\"},{color:\"gray\",italic:0b,text:\"/24)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Off-Hand: Karte anschauen\",underlined:0b}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T12:12:30.536464500Z"
+}

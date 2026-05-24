@@ -1,0 +1,21 @@
+{
+  "internalname": "RUDOLPHHOSE_aee43109",
+  "displayname": "Rudolphhose",
+  "material": "IRON_LEGGINGS",
+  "cmd": 5510,
+  "damage": 0,
+  "lore": [
+    "",
+    "seine glühende Nase leuchtet immer",
+    "dann auf, wenn ein neues Abenteuer ruft.",
+    "",
+    "Signiert von Rudolph am 10.12.2025",
+    "",
+    "Rudolphkollektion (3/4)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:6.0d,id:\"minecraft:424009c2-3f51-48a5-8805-d1ea45b27e2a\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:76eb1fb5-9885-44f4-aabe-f8ab4aef23f9\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:c12bdd20-61c4-4fe4-80c9-80ef51d3ab12\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"reindeer_leggings\",namespace:\"_opsucht_sets\"}},\"minecraft:custom_model_data\":{floats:[5510.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#765239\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Rudolphhose\",underlined:0b}],text:\"\"},\"minecraft:damage_resistant\":{types:\"#minecraft:is_fire\"},\"minecraft:enchantments\":{\"minecraft:blast_protection\":8,\"minecraft:mending\":2,\"minecraft:protection\":8,\"minecraft:unbreaking\":10},\"minecraft:equippable\":{asset_id:\"_opsucht_sets:reindeer\",slot:\"legs\"},\"minecraft:item_name\":{extra:[{bold:1b,color:\"#765239\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Rudolphhose\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"#765239\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"seine glühende Nase leuchtet immer\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"#765239\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"dann auf, wenn ein neues Abenteuer ruft.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Rudolph \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"10.12.2025\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"#765239\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Rudolphkollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"(\",underlined:0b},{color:\"green\",italic:0b,text:\"3\"},{color:\"gray\",italic:0b,text:\"/4)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:max_damage\":555},count:1,id:\"minecraft:iron_leggings\"}",
+  "capturedAt": "2026-05-13T18:04:36.055091100Z"
+}

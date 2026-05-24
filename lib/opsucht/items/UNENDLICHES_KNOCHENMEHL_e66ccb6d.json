@@ -1,0 +1,13 @@
+{
+  "internalname": "UNENDLICHES_KNOCHENMEHL_e66ccb6d",
+  "displayname": "Unendliches Knochenmehl",
+  "material": "BONE_MEAL",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "➥ OP Pass Belohnung des 3. Chapter"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{INFINITE_BONE_MEAL:1}]}},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Unendliches Knochenmehl\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"OP Pass \"},{bold:0b,color:\"gray\",italic:0b,text:\"Belohnung des \"},{color:\"aqua\",italic:0b,text:\"3. Chapter\"}],text:\"\"}]},count:1,id:\"minecraft:bone_meal\"}",
+  "capturedAt": "2026-05-14T14:04:26.005281Z"
+}

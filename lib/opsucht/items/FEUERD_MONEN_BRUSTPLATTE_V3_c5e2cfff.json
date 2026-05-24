@@ -1,0 +1,15 @@
+{
+  "internalname": "FEUERD_MONEN_BRUSTPLATTE_V3_c5e2cfff",
+  "displayname": "Feuerdämonen Brustplatte v3",
+  "material": "LEATHER_CHESTPLATE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Feuerschild I",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWEnchantments:[\"§7Feuerschild I\"],IWLocked:1b},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Feuerdämonen Brustplatte \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,text:\"v3\"}],text:\"\"},\"minecraft:dyed_color\":11546150,\"minecraft:enchantments\":{\"minecraft:protection\":6,\"minecraft:unbreaking\":8},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Feuerschild I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:leather_chestplate\"}",
+  "capturedAt": "2026-05-14T09:16:10.494068400Z"
+}

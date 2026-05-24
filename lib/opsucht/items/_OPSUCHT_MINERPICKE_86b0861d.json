@@ -1,0 +1,19 @@
+{
+  "internalname": "_OPSUCHT_MINERPICKE_86b0861d",
+  "displayname": "🔥 OPSUCHT Minerpicke 🔥",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "\u003d Booster Edition \u003d",
+    "",
+    "➥ Effekt: +10% Jobgeld beim Minerjob",
+    "➥ Effekt: +10% Job-XP beim Minerjob",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Mega Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{JOB_BOOSTER:1}],customData:{job_type:\"MINER\",money_multiplier:1.1d,xp_multiplier:1.1d}}},\"minecraft:custom_name\":{extra:[{bold:0b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"🔥 \",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"OPSUCHT \"},{bold:1b,color:\"yellow\",italic:0b,text:\"Minerpicke \"},{bold:0b,color:\"gold\",italic:0b,text:\"🔥\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":12,\"minecraft:fortune\":5,\"minecraft:mending\":2,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"green\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"\u003d \",underlined:0b},{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,text:\"Booster Edition \"},{bold:0b,color:\"green\",italic:0b,obfuscated:1b,text:\"\u003d\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10% Jobgeld beim Minerjob\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10% Job-XP beim Minerjob\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Mega Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:06:28.687859500Z"
+}

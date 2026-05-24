@@ -1,0 +1,15 @@
+{
+  "internalname": "SPIDERMAN_45c4be07",
+  "displayname": "Spiderman",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Spiderman am 19.01.2024",
+    "",
+    "➥ Effekt: +20% Geschwindigkeit (Head)"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.02d,id:\"minecraft:d0ce05a8-2bd8-43eb-9a4b-474d228cff1c\",operation:\"add_value\",slot:\"head\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"p\"},{bold:1b,color:\"white\",italic:0b,text:\"i\"},{bold:1b,color:\"red\",italic:0b,text:\"d\"},{bold:1b,color:\"white\",italic:0b,text:\"e\"},{bold:1b,color:\"red\",italic:0b,text:\"r\"},{bold:1b,color:\"white\",italic:0b,text:\"m\"},{bold:1b,color:\"red\",italic:0b,text:\"a\"},{bold:1b,color:\"white\",italic:0b,text:\"n\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:projectile_protection\":4,\"minecraft:protection\":3},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Spiderman \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"19.01.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+20% Geschwindigkeit \"},{color:\"dark_gray\",italic:1b,text:\"(Head)\"}],text:\"\"}],\"minecraft:profile\":{id:[I;67411088,-739686879,-1666252800,-1432017080],name:\"\",properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTNjNDIwOGFlODA5ZDE2NmQyZjFlOWMzYjBiNDVjZDI4ODRjMWZiZDJlMTZiMDM4MjY2ZGRjODg5MGIwNjAzZSJ9fX0\u003d\"}]},\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:59:33.358436800Z"
+}

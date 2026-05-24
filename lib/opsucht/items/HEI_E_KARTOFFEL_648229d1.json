@@ -1,0 +1,13 @@
+{
+  "internalname": "HEI_E_KARTOFFEL_648229d1",
+  "displayname": "Heiße Kartoffel",
+  "material": "BAKED_POTATO",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "➥ OP Pass Belohnung der 3. Season"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.6d,id:\"minecraft:d715c01b-b0dd-483e-94e3-9666aae9e6cd\",operation:\"add_multiplied_base\",slot:\"offhand\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Heiße Kartoffel\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_aspect\":10},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"OP Pass \"},{bold:0b,color:\"gray\",italic:0b,text:\"Belohnung der \"},{color:\"aqua\",italic:0b,text:\"3. Season\"},{color:\"gray\",italic:0b,text:\"\"}],text:\"\"}]},count:1,id:\"minecraft:baked_potato\"}",
+  "capturedAt": "2026-05-14T12:58:58.659703300Z"
+}

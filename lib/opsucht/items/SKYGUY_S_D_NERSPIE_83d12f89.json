@@ -1,0 +1,15 @@
+{
+  "internalname": "SKYGUY_S_D_NERSPIE_83d12f89",
+  "displayname": "SkyGuy´s Dönerspieß",
+  "material": "DIAMOND_SWORD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Signiert von SkyGuyTV am 03.09.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"SkyGuy´s Dönerspieß\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:knockback\":5,\"minecraft:sharpness\":6,\"minecraft:unbreaking\":6},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"SkyGuyTV\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 03.09.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_sword\"}",
+  "capturedAt": "2026-05-14T10:14:58.686704400Z"
+}

@@ -1,0 +1,22 @@
+{
+  "internalname": "SCHUHE_DES_PHARAOS_983e9cbf",
+  "displayname": "Schuhe des Pharaos",
+  "material": "NETHERITE_BOOTS",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Geborgen aus der versteckten Grabkammer.",
+    "",
+    "Signiert von Pharao am 01.08.2024",
+    "",
+    "Pharaokollektion (8/8)",
+    "",
+    "➥ Effekt: +2 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:4.0d,id:\"minecraft:80818b72-04dc-435f-834a-1a456bd41f05\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:max_health\"},{amount:3.0d,id:\"minecraft:d45ea085-b2cd-46da-844b-6e2c02d75227\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:6ab138e0-c4fe-47cc-83f6-0ddb1f5773e5\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:3263d624-5f23-4a34-96c5-322e7cd285d2\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Schuhe des Pharaos\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:mending\":1,\"minecraft:protection\":7,\"minecraft:thorns\":5,\"minecraft:unbreaking\":7},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Geborgen aus der versteckten Grabkammer.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Pharao \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.08.2024\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Pharaokollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"8\"},{color:\"gray\",italic:0b,text:\"/8)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+2 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\",\"minecraft:trim\"]},\"minecraft:trim\":{material:\"minecraft:gold\",pattern:\"minecraft:dune\"}},count:1,id:\"minecraft:netherite_boots\"}",
+  "capturedAt": "2026-05-14T09:08:44.991694900Z"
+}

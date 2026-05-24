@@ -1,0 +1,16 @@
+{
+  "internalname": "AMETHYSTHOSE_7ca1e9f3",
+  "displayname": "Amethysthose",
+  "material": "IRON_LEGGINGS",
+  "cmd": 10114,
+  "damage": 0,
+  "lore": [
+    "",
+    "Amethystkollektion (8/12)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:6.0d,id:\"minecraft:6e5508d5-3bbf-4a4a-ab51-a663cf0d08a2\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:114e64db-53ca-4e2f-b59f-d693801c76f8\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:4f5463ea-a952-42eb-9270-b6b0dcca7c05\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"purpleleggings\",namespace:\"sucht_3\"}},\"minecraft:custom_model_data\":{floats:[10114.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Amethysthose\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:mending\":1,\"minecraft:protection\":4,\"minecraft:thorns\":3,\"minecraft:unbreaking\":6},\"minecraft:equippable\":{asset_id:\"sucht_3:purplearmor\",slot:\"legs\"},\"minecraft:lore\":[\"\",{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Amethystkollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"8\"},{color:\"gray\",italic:0b,text:\"/12)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:max_damage\":555,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:iron_leggings\"}",
+  "capturedAt": "2026-05-14T13:35:50.961599700Z"
+}

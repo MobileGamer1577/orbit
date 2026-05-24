@@ -1,0 +1,16 @@
+{
+  "internalname": "GLOWSTONE_SCHNEIDER_cb012f55",
+  "displayname": "Glowstone | Schneider",
+  "material": "SHEARS",
+  "cmd": 10003,
+  "damage": 0,
+  "lore": [
+    "",
+    "➥ Effekt: Zerstört Glowstone mit einem Klick",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{GLOWSTONE_CUTTER:1}]}},\"minecraft:custom_model_data\":{floats:[10003.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Glowstone \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"| \"},{bold:1b,color:\"green\",italic:0b,text:\"Schneider\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":5,\"minecraft:mending\":1,\"minecraft:silk_touch\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Zerstört Glowstone mit einem Klick\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]},\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:shears\"}",
+  "capturedAt": "2026-05-14T11:42:02.086893400Z"
+}

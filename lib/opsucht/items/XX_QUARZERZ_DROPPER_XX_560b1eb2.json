@@ -1,0 +1,23 @@
+{
+  "internalname": "XX_QUARZERZ_DROPPER_XX_560b1eb2",
+  "displayname": "XX Quarzerz Dropper XX",
+  "material": "GOLDEN_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Glück 40",
+    "",
+    "⋆ Tipp:",
+    "⋆ Baue mit dieser Spitzhacke",
+    "⋆ Nur Quarzerz ab. Es wird",
+    "⋆ sehr viel davon droppen!! :)",
+    "",
+    "◘• Sammler Admin Item •◘",
+    "◘• Erstellt von OWNER •◘",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"XX \",underlined:0b},{bold:1b,color:\"white\",italic:0b,obfuscated:0b,text:\"Quarzerz Dropper \"},{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,text:\"XX\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:aqua_affinity\":1,\"minecraft:fortune\":55},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Glück 40\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⋆ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Tipp:\"}],text:\"\"},{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⋆ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Baue mit dieser Spitzhacke\"}],text:\"\"},{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⋆ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Nur \"},{color:\"white\",italic:0b,text:\"Quarzerz \"},{color:\"gray\",italic:0b,text:\"ab. Es wird\"}],text:\"\"},{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⋆ \",underlined:0b},{color:\"gray\",italic:0b,text:\"sehr viel davon droppen!! :)\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"◘• Sammler Admin Item •◘\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"◘• Erstellt von \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"OWNER \"},{bold:0b,color:\"gray\",italic:1b,text:\"•◘\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:repair_cost\":63,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]}},count:1,id:\"minecraft:golden_pickaxe\"}",
+  "capturedAt": "2026-05-14T09:46:41.336255100Z"
+}

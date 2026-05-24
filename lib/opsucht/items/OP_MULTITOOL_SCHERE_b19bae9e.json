@@ -1,0 +1,20 @@
+{
+  "internalname": "OP_MULTITOOL_SCHERE_b19bae9e",
+  "displayname": "OP-Multitool Schere",
+  "material": "SHEARS",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Trage Glasschneider, Kaktus Schneider,",
+    "Seelaternen Schneider, Teppichmesser",
+    "und Super Schere immer bei dir.",
+    "",
+    "Signiert von OPSUCHT am 24.05.2024",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{CACTUS_BREAKER:1,CARPET_CUTTER:1,GLASS_CUTTER:1,SEA_LANTERN_CUTTER:1}]}},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"OP-Multitool Schere\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:silk_touch\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Trage \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"Glasschneider\"},{bold:0b,color:\"gray\",italic:0b,text:\", \"},{bold:1b,color:\"dark_green\",italic:0b,text:\"Kaktus Schneider\"},{bold:0b,color:\"gray\",italic:0b,text:\",\"}],text:\"\"},{extra:[{bold:1b,color:\"dark_aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seelaternen Schneider\",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\", \"},{bold:1b,color:\"gray\",italic:0b,text:\"Teppichmesser\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"und \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"Super Schere \"},{bold:0b,color:\"gray\",italic:1b,text:\"immer bei dir.\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"24.05.2024\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]},\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:shears\"}",
+  "capturedAt": "2026-05-14T11:41:13.589483200Z"
+}

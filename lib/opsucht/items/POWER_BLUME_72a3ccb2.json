@@ -1,0 +1,10 @@
+{
+  "internalname": "POWER_BLUME_72a3ccb2",
+  "displayname": "Power Blume ",
+  "material": "RED_TULIP",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Power Blume \",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_aspect\":2,\"minecraft:knockback\":3,\"minecraft:looting\":3,\"minecraft:sharpness\":6}},count:1,id:\"minecraft:red_tulip\"}",
+  "capturedAt": "2026-05-14T12:49:55.661340400Z"
+}

@@ -1,0 +1,24 @@
+{
+  "internalname": "X_PHORX_PRIMEHACKE_V2_X_df99cfb7",
+  "displayname": "x Phorx Primehacke v2 x",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "● Dies ist eine EXTREM seltene Spitzhacke ●",
+    "",
+    "● Erstellt am: 23.10.2021 00:00Uhr ●",
+    "● Erstellt von: ¿?¿?¿? ●",
+    "● Seltenheit: SUPER JACKPOT ●",
+    "",
+    "Signiert von Phorx am 23.10.2021",
+    "Signiert von leDevin am 23.10.2021",
+    "Signiert von NilsDev am 23.10.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » MEGA Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"x \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,text:\"Phorx \"},{bold:1b,color:\"white\",italic:0b,text:\"Primehacke \"},{bold:1b,color:\"aqua\",italic:0b,text:\"v2 \"},{bold:1b,color:\"light_purple\",italic:0b,obfuscated:1b,text:\"x\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":10,\"minecraft:fire_aspect\":5,\"minecraft:fortune\":5,\"minecraft:knockback\":5,\"minecraft:mending\":2,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"● \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"Dies ist eine EXTREM seltene Spitzhacke \"},{bold:1b,color:\"light_purple\",italic:0b,text:\"●\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"● \",underlined:0b},{color:\"white\",italic:0b,text:\"Erstellt am: \"},{color:\"light_purple\",italic:0b,text:\"23.10.2021 00:00Uhr ●\"}],text:\"\"},{extra:[{bold:0b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"● \",underlined:0b},{color:\"white\",italic:0b,text:\"Erstellt von: \"},{color:\"light_purple\",italic:0b,text:\"¿?¿?¿? ●\"}],text:\"\"},{extra:[{bold:0b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"● \",underlined:0b},{color:\"white\",italic:0b,text:\"Seltenheit: \"},{bold:1b,color:\"light_purple\",italic:0b,text:\"SUPER JACKPOT \"},{bold:0b,color:\"light_purple\",italic:0b,text:\"●\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"Phorx \"},{color:\"gray\",italic:0b,text:\"am 23.10.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"leDevin \"},{color:\"gray\",italic:0b,text:\"am 23.10.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"NilsDev \"},{color:\"gray\",italic:0b,text:\"am 23.10.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"MEGA Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:02:48.885465400Z"
+}

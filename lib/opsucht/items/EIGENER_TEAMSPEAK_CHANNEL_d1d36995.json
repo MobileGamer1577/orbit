@@ -1,0 +1,18 @@
+{
+  "internalname": "EIGENER_TEAMSPEAK_CHANNEL_d1d36995",
+  "displayname": "Eigener TeamSpeak Channel!",
+  "material": "IRON_DOOR",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Melde dich im TeamSpeak",
+    "Support!",
+    "────────────────────",
+    "Signiert von SkyGuyTV am 24.09.2020",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » MEGA Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Eigener TeamSpeak Channel!\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:unbreaking\":50},\"minecraft:lore\":[{extra:[{color:\"yellow\",italic:0b,text:\"Melde dich im TeamSpeak\"}],text:\"\"},{extra:[{color:\"yellow\",italic:0b,text:\"Support!\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:1b,text:\"────────────────────\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"SkyGuyTV\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 24.09.2020\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"MEGA Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:iron_door\"}",
+  "capturedAt": "2026-05-14T13:21:17.861022500Z"
+}

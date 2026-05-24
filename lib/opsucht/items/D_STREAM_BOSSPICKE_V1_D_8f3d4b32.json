@@ -1,0 +1,20 @@
+{
+  "internalname": "D_STREAM_BOSSPICKE_V1_D_8f3d4b32",
+  "displayname": "d Stream Bosspicke v1 d",
+  "material": "NETHERITE_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "» Exklusive Stream Boss Spitzhacke",
+    "",
+    "» Seltenheit: EXKLUSIV",
+    "» Kategorie: Admin Picke",
+    "",
+    "Signiert von leDevin am 13.11.2021",
+    "",
+    "Schütze diese Picke gut, sie ist extrem selten!"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{extra:[{color:\"light_purple\",obfuscated:1b,text:\"d \"},{bold:1b,color:\"red\",text:\"Stream \"},{bold:1b,color:\"dark_red\",text:\"Bosspicke \"},{bold:1b,color:\"aqua\",text:\"v1 \"},{color:\"light_purple\",obfuscated:1b,text:\"d\"}],text:\"\"}],italic:0b,text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":6,\"minecraft:fire_aspect\":8,\"minecraft:fortune\":3,\"minecraft:knockback\":6,\"minecraft:looting\":4,\"minecraft:mending\":2,\"minecraft:sharpness\":10,\"minecraft:unbreaking\":7},\"minecraft:lore\":[{extra:[{color:\"red\",text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"dark_gray\",text:\"» \"},{color:\"gray\",text:\"Exklusive \"},{bold:1b,color:\"red\",text:\"Stream Boss \"},{color:\"gray\",text:\"Spitzhacke\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{color:\"dark_gray\",text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"dark_gray\",text:\"» \"},{color:\"gray\",text:\"Seltenheit: \"},{bold:1b,color:\"light_purple\",text:\"EXKLUSIV\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"dark_gray\",text:\"» \"},{color:\"gray\",text:\"Kategorie: \"},{bold:1b,color:\"dark_red\",text:\"Admin Picke\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{color:\"dark_gray\",text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"gray\",text:\"Signiert von \"},{color:\"dark_red\",text:\"leDevin \"},{color:\"gray\",text:\"am 13.11.2021\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{color:\"dark_gray\",text:\"\"}],italic:0b,text:\"\"},{extra:[{color:\"gray\",italic:1b,text:\"Schütze diese Picke gut, sie ist extrem selten!\"}],italic:0b,text:\"\"}],\"minecraft:repair_cost\":1},count:1,id:\"minecraft:netherite_pickaxe\"}",
+  "capturedAt": "2026-05-24T10:55:55.744442100Z"
+}

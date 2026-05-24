@@ -1,0 +1,18 @@
+{
+  "internalname": "ELEKTROPEITSCHE_a27fe2f7",
+  "displayname": "Elektropeitsche",
+  "material": "LEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Zwinge Iron Man in die Knie!",
+    "",
+    "Signiert von Ivan Vanko am 16.09.2024",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"blue\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Elektropeitsche\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:channeling\":1,\"minecraft:fire_aspect\":4,\"minecraft:sharpness\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"blue\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Zwinge Iron Man in die Knie!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Ivan Vanko \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"16.09.2024\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}]},count:1,id:\"minecraft:lead\"}",
+  "capturedAt": "2026-05-14T13:53:46.105114200Z"
+}

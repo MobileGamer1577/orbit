@@ -1,0 +1,17 @@
+{
+  "internalname": "GEBURTSTAGS_MUFFIN_3060edc0",
+  "displayname": "Geburtstags Muffin",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 6214,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von OPSUCHT am 23.10.2025",
+    "",
+    "➥ Effekt: Eile 2 beim Verzehr",
+    "➥ Effekt: Kein Hunger beim Verzehr",
+    "➥ Dauer: 15 Minuten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:consumable\":{on_consume_effects:[{effects:[{amplifier:1b,duration:18000,id:\"minecraft:haste\",show_icon:1b}],type:\"minecraft:apply_effects\"},{effects:[{duration:18000,id:\"minecraft:saturation\",show_icon:1b}],type:\"minecraft:apply_effects\"}]},\"minecraft:custom_model_data\":{floats:[6214.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"G\",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"e\"},{bold:1b,color:\"dark_green\",italic:0b,text:\"b\"},{bold:1b,color:\"dark_blue\",italic:0b,text:\"u\"},{bold:1b,color:\"light_purple\",italic:0b,text:\"r\"},{bold:1b,color:\"yellow\",italic:0b,text:\"t\"},{bold:1b,color:\"aqua\",italic:0b,text:\"s\"},{bold:1b,color:\"dark_purple\",italic:0b,text:\"t\"},{bold:1b,color:\"white\",italic:0b,text:\"a\"},{bold:1b,color:\"blue\",italic:0b,text:\"g\"},{bold:1b,color:\"green\",italic:0b,text:\"s \"},{bold:1b,color:\"#68401E\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Muffin\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:item_name\":{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"G\",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"e\"},{bold:1b,color:\"dark_green\",italic:0b,text:\"b\"},{bold:1b,color:\"dark_blue\",italic:0b,text:\"u\"},{bold:1b,color:\"light_purple\",italic:0b,text:\"r\"},{bold:1b,color:\"yellow\",italic:0b,text:\"t\"},{bold:1b,color:\"aqua\",italic:0b,text:\"s\"},{bold:1b,color:\"dark_purple\",italic:0b,text:\"t\"},{bold:1b,color:\"white\",italic:0b,text:\"a\"},{bold:1b,color:\"blue\",italic:0b,text:\"g\"},{bold:1b,color:\"green\",italic:0b,text:\"s \"},{bold:1b,color:\"#68401E\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Muffin\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2025\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Eile 2 beim Verzehr\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Kein Hunger beim Verzehr\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Dauer: \"},{color:\"green\",italic:0b,text:\"15 Minuten\"}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:06:39.008994900Z"
+}

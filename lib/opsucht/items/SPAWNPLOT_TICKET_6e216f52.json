@@ -1,0 +1,17 @@
+{
+  "internalname": "SPAWNPLOT_TICKET_6e216f52",
+  "displayname": "Spawnplot Ticket",
+  "material": "PAPER",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Glückwunsch du hast ein Spawnplot-",
+    "Ticket gewonnen. Damit kommt dein",
+    "Plot in die vordersten Reihen.",
+    "",
+    "Bitte melde dich im Ticket-Support",
+    "um dein Ticket einzulösen."
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Spawnplot Ticket\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:unbreaking\":1},\"minecraft:lore\":[{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Glückwunsch du hast ein Spawnplot-\",underlined:0b}],text:\"\"},{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Ticket gewonnen. Damit kommt dein\",underlined:0b}],text:\"\"},{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Plot in die vordersten Reihen.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Bitte melde dich im Ticket-Support\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"um dein Ticket einzulösen.\",underlined:0b}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]}},count:1,id:\"minecraft:paper\"}",
+  "capturedAt": "2026-05-14T13:19:14.208683600Z"
+}

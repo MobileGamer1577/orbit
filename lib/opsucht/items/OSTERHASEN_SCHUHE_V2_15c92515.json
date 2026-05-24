@@ -1,0 +1,18 @@
+{
+  "internalname": "OSTERHASEN_SCHUHE_V2_15c92515",
+  "displayname": "Osterhasen Schuhe V2",
+  "material": "LEATHER_BOOTS",
+  "cmd": 10121,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Osterhasen am 20.04.2025",
+    "",
+    "Osterhasen-Kollektion (9/14)",
+    " ",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:7a30d636-a972-4a6b-a95f-7340268f4a22\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:0.1d,id:\"minecraft:c2267e99-a0c2-4601-b803-2f5b3307dda2\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"},{amount:3.0d,id:\"minecraft:f7c1b578-7134-43e2-8a6b-2312497de553\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"}],\"minecraft:custom_data\":{itemsadder:{id:\"easterboots\",namespace:\"sucht_7\"}},\"minecraft:custom_model_data\":{floats:[10121.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Osterhasen Schuhe V2\",underlined:0b}],text:\"\"},\"minecraft:dyed_color\":11991295,\"minecraft:enchantments\":{\"minecraft:blast_protection\":5,\"minecraft:mending\":1,\"minecraft:protection\":8,\"minecraft:unbreaking\":10},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Osterhasen \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"20.04.2025\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Osterhasen-Kollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"9\"},{color:\"gray\",italic:0b,text:\"/14)\"}],text:\"\"},{extra:[\" \"],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:max_damage\":481,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\",\"minecraft:dyed_color\"]}},count:1,id:\"minecraft:leather_boots\"}",
+  "capturedAt": "2026-05-13T18:10:35.653670200Z"
+}

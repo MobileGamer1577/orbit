@@ -1,0 +1,13 @@
+{
+  "internalname": "ELYTRA_d10fd73a",
+  "displayname": "Elytra",
+  "material": "ELYTRA",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:lore\":[{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Selten\",underlined:0b}],text:\"\"}]},count:1,id:\"minecraft:elytra\"}",
+  "capturedAt": "2026-05-24T09:20:04.531773200Z"
+}

@@ -1,0 +1,19 @@
+{
+  "internalname": "NEUJAHRSBLUME_8e02f9f4",
+  "displayname": "Neujahrsblume",
+  "material": "RED_TULIP",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Die Neujahrsblume blühte und",
+    "brachte Hoffnung für das neue Jahr.",
+    "",
+    "➥ Effekt: +20% Geschwindigkeit (Off-Hand)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.2d,id:\"minecraft:e3fb6c1f-0819-40f5-91f5-81961a88d6dd\",operation:\"add_multiplied_base\",slot:\"offhand\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#FF3131\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"N\",underlined:0b},{bold:1b,color:\"#FF3C30\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#FF472F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"u\",underlined:0b},{bold:1b,color:\"#FF522F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"j\",underlined:0b},{bold:1b,color:\"#FF5C2E\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#FF672D\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#FF722C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#FF7D2B\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b},{bold:1b,color:\"#FF882A\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"b\",underlined:0b},{bold:1b,color:\"#FF932A\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"l\",underlined:0b},{bold:1b,color:\"#FF9D29\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"u\",underlined:0b},{bold:1b,color:\"#FFA828\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"m\",underlined:0b},{bold:1b,color:\"#FFB327\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:aqua_affinity\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Die Neujahrsblume blühte und\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"brachte Hoffnung für das neue Jahr.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+20% Geschwindigkeit \"},{color:\"dark_gray\",italic:1b,text:\"(Off-Hand)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\",\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:red_tulip\"}",
+  "capturedAt": "2026-05-14T13:00:22.254202600Z"
+}

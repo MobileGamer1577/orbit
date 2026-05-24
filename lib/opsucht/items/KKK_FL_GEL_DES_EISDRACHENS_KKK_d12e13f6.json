@@ -1,0 +1,16 @@
+{
+  "internalname": "KKK_FL_GEL_DES_EISDRACHENS_KKK_d12e13f6",
+  "displayname": "kkk Flügel des Eisdrachens kkk",
+  "material": "ELYTRA",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Eisdrachen am 17.12.2023",
+    "",
+    "⮩ Effekt: +2,5 Herzen (Brust)",
+    "⮩ Effekt: +2,5 Rüstung (Brust)"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:5.0d,id:\"minecraft:aa02eefb-52ff-4a79-adf6-b93fb02b0840\",operation:\"add_value\",slot:\"chest\",type:\"minecraft:armor\"},{amount:5.0d,id:\"minecraft:4a8c51f1-40ca-4942-bb03-264b08256e6d\",operation:\"add_value\",slot:\"chest\",type:\"minecraft:max_health\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"kkk \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,text:\"Flügel des Eisdrachens \"},{bold:1b,color:\"white\",italic:0b,obfuscated:1b,text:\"kkk\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:frost_walker\":7,\"minecraft:mending\":2,\"minecraft:protection\":3,\"minecraft:unbreaking\":4},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Eisdrachen \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"17.12.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⮩ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+2,5 Herzen \"},{color:\"dark_gray\",italic:1b,text:\"(Brust)\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⮩ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+2,5 Rüstung \"},{color:\"dark_gray\",italic:1b,text:\"(Brust)\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:elytra\"}",
+  "capturedAt": "2026-05-14T12:19:36.933523200Z"
+}

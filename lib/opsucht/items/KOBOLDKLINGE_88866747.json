@@ -1,0 +1,18 @@
+{
+  "internalname": "KOBOLDKLINGE_88866747",
+  "displayname": "Koboldklinge",
+  "material": "NETHERITE_SWORD",
+  "cmd": 10107,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Kobold am 23.10.2023",
+    "",
+    "➥ Effekt: +3 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:6.0d,id:\"minecraft:b0d8c389-28a3-4d00-ad93-2aa0891eef89\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:max_health\"}],\"minecraft:custom_model_data\":{floats:[10107.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Koboldklinge\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_aspect\":1,\"minecraft:looting\":3,\"minecraft:mending\":1,\"minecraft:sharpness\":5,\"minecraft:unbreaking\":4},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Kobold \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+3 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:netherite_sword\"}",
+  "capturedAt": "2026-05-14T10:19:42.440630Z"
+}

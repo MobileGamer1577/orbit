@@ -1,0 +1,19 @@
+{
+  "internalname": "_SONNEN_TALISMAN_7691bd23",
+  "displayname": "✳ Sonnen Talisman ✳",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10425,
+  "damage": 0,
+  "lore": [
+    "",
+    "Habe mit diesem Talisman",
+    "überall eine gute Sicht.",
+    "",
+    "➥ Effekt: Nachtsicht (Off-Hand)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_data\":{IWCustomItems:{abilities:[{NIGHT_VISION:1}]}},\"minecraft:custom_model_data\":{floats:[10425.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"✳ \",underlined:0b},{bold:1b,color:\"#25E4FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#42C3FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"o\",underlined:0b},{bold:1b,color:\"#5FA3FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b},{bold:1b,color:\"#7C82FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b},{bold:1b,color:\"#9A62FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#B741FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n \",underlined:0b},{bold:1b,color:\"#F100FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"T\",underlined:0b},{bold:1b,color:\"#F310DB\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#F521B6\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"l\",underlined:0b},{bold:1b,color:\"#F73192\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"i\",underlined:0b},{bold:1b,color:\"#F9416D\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b},{bold:1b,color:\"#FB5149\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"m\",underlined:0b},{bold:1b,color:\"#FD6224\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#FF7200\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n \",underlined:0b},{bold:1b,color:\"yellow\",italic:0b,text:\"✳\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"yellow\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Habe mit diesem Talisman\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"yellow\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"überall eine gute Sicht.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Nachtsicht \"},{color:\"dark_gray\",italic:1b,text:\"(Off-Hand)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-13T19:35:43.082840900Z"
+}

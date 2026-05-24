@@ -1,0 +1,10 @@
+{
+  "internalname": "SPEED_SCHUHE_b91fd360",
+  "displayname": "Speed Schuhe",
+  "material": "DIAMOND_BOOTS",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.1d,id:\"minecraft:d642b166-12dd-4e24-8ff7-a07f7b515b52\",operation:\"add_multiplied_base\",slot:\"feet\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Speed Schuhe\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:protection\":3,\"minecraft:unbreaking\":5}},count:1,id:\"minecraft:diamond_boots\"}",
+  "capturedAt": "2026-05-14T13:02:33.506730200Z"
+}

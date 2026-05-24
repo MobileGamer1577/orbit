@@ -1,0 +1,18 @@
+{
+  "internalname": "SCHUHE_VOM_KOBOLD_44ba0e84",
+  "displayname": "Schuhe vom Kobold",
+  "material": "IRON_BOOTS",
+  "cmd": 10106,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Kobold am 23.10.2023",
+    "",
+    "➥ Effekt: +4 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:8.0d,id:\"minecraft:5d273bb2-1f82-4766-a958-27da6256af93\",operation:\"add_value\",slot:\"head\",type:\"minecraft:max_health\"}],\"minecraft:custom_data\":{itemsadder:{id:\"saintpatrickboots\",namespace:\"pnew\"}},\"minecraft:custom_model_data\":{floats:[10106.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Schuhe vom Kobold\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_protection\":5,\"minecraft:frost_walker\":2,\"minecraft:mending\":1,\"minecraft:protection\":4},\"minecraft:equippable\":{asset_id:\"pnew:saintpatrickarmor\",slot:\"feet\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Kobold \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+4 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:iron_boots\"}",
+  "capturedAt": "2026-05-14T09:12:16.843967200Z"
+}

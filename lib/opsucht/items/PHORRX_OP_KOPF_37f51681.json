@@ -1,0 +1,14 @@
+{
+  "internalname": "PHORRX_OP_KOPF_37f51681",
+  "displayname": "Phorrx OP Kopf",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » ★★★★"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phorrx \",underlined:0b},{bold:1b,color:\"green\",italic:0b,text:\"OP \"},{bold:1b,color:\"aqua\",italic:0b,text:\"Kopf\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:aqua_affinity\":2,\"minecraft:blast_protection\":4,\"minecraft:fire_protection\":3,\"minecraft:mending\":1,\"minecraft:protection\":6,\"minecraft:unbreaking\":3},\"minecraft:lore\":[{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"★★★★\"}],text:\"\"}],\"minecraft:profile\":{id:[I;511168649,1209548976,-1220385992,-1401849019],name:\"Phorrx\",properties:[{name:\"textures\",signature:\"GRzN255BAfF9O7K3fl/lZP/JaAUqcqFnevlCGPmptQu4er0ym/HZs1FiSLSC3EAYRIUtfbH6fOBn+JgT7Dg129FRZPxfAPNk0moY3JMXRBAbBWShOg8xeavyeHujU4B3HTxGr2Wkvp5S0SBNSYB+lkmBdFL3UNJ1vhOxAIKU4vmWiJHNYOsuIEsBPiyWOe5d2fugzNSeljGEZN4Vov8O/J69LiMbD+wtW7Yi9hz9PeyazRHRDDBM4tQRYlQ4o6xe9aFzBHxLPnytZk/aMWTjwEgA4ozw4u9D16dB69aB9nTI5keB1UWmsQoE9H7gZNhuc73sBNbEY+IT8CgJ8xITzgcIBWlrqPYWVqYyxYbeA90oBrGFp9WK8g2H1T7gQ8jS2iR86ExnFzEOkO57zF5bzFMcjDn2DT9ie4aA7sFjwf3eJDG5jroR1bhIIM0lrShTumgZgkAbgAY9kP6BCxUn47WNTqMwnENcQgaobBYmaAXOBLo3kLIvAFEJHK6KYV3B8pdWDd+U81GmIzk67ZAkNGvKmFo+0xCYxpxAky4x1LISDEIRG3NyE2YAJJVnL4aXN5202MxiHLKH/uZ2IuYFHNTki2lrWUsS10bwNni+VZiR+LvPxkqrXyFYTKajD8UDqG5NhV22v+PyMCJBo4Hw7OgcMQbaekpq40yx8wP2gk4\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY3NTUwNDQ2MTkzMywKICAicHJvZmlsZUlkIiA6ICIxZTc3ZDA4OTQ4MTg0MGIwYjc0MjYzMzhhYzcxN2I0NSIsCiAgInByb2ZpbGVOYW1lIiA6ICJQaG9ycngiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U4ZjY4MTlmYzZhOTdiMDhlZjJhYmJmYWJjNjNjYTQxNjViZDJjZDZlYWE4MDNjYzYwMDU5YzA5NmZlYTk3OSIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:55:55.683187100Z"
+}

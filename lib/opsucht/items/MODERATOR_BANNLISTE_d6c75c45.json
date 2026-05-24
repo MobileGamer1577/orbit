@@ -1,0 +1,21 @@
+{
+  "internalname": "MODERATOR_BANNLISTE_d6c75c45",
+  "displayname": "Moderator-Bannliste",
+  "material": "BOOK",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Hier stehen alle Gebannten Spieler von OPSUCHT",
+    "",
+    "Nr. 1) XXXXXX",
+    "Nr. 2) XXXX",
+    "Nr. 3) XXXXXXXX",
+    "",
+    "Signiert von Moderator-Team am 01.07.2024",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Moderator-Bannliste\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Hier stehen alle Gebannten Spieler von OPSUCHT\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Nr. 1) \",underlined:0b},{color:\"dark_gray\",italic:0b,obfuscated:1b,text:\"XXXXXX\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Nr. 2) \",underlined:0b},{color:\"dark_gray\",italic:0b,obfuscated:1b,text:\"XXXX\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Nr. 3) \",underlined:0b},{color:\"dark_gray\",italic:0b,obfuscated:1b,text:\"XXXXXXXX\"}],text:\"\"},{extra:[{bold:0b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Moderator-Team \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.07.2024\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:book\"}",
+  "capturedAt": "2026-05-14T13:39:51.657216400Z"
+}

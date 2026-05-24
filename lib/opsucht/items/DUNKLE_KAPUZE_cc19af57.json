@@ -1,0 +1,21 @@
+{
+  "internalname": "DUNKLE_KAPUZE_cc19af57",
+  "displayname": "Dunkle Kapuze",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10504,
+  "damage": 0,
+  "lore": [
+    "",
+    "Diese Kapuze verkörpert",
+    "die Macht des Todes.",
+    "",
+    "Signiert vom Sensenmann am 31.10.2024",
+    "",
+    "➥ Effekt: Untote Kreaturen greifen nicht an (Kopf)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:d33b82d4-9123-4f3c-9544-05a6e8d5f442\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:3297cb7a-80dc-43b9-9f3c-2d171db6816c\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:ed45f791-67e9-4ba6-8f1a-6dcdd9f53bec\",operation:\"add_value\",slot:\"head\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{IWCustomItems:{abilities:[{UNDEAD_PROTECTION:1}]}},\"minecraft:custom_model_data\":{floats:[10504.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Dunkle Kapuze\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Diese Kapuze verkörpert\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"die Macht des Todes.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Sensenmann \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"31.10.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Untote Kreaturen greifen nicht an \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-13T18:12:31.903386200Z"
+}

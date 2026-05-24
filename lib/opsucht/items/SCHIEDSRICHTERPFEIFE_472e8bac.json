@@ -1,0 +1,18 @@
+{
+  "internalname": "SCHIEDSRICHTERPFEIFE_472e8bac",
+  "displayname": "Schiedsrichterpfeife",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10417,
+  "damage": 0,
+  "lore": [
+    "",
+    "Diese Pfeife ist unverzichtbar",
+    "für einen jeden Schiedsrichter!",
+    "",
+    "Signiert vom Schiedsrichter am 14.06.2024",
+    "",
+    "EM (2024) (7/8)"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_model_data\":{floats:[10417.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Schiedsrichterpfeife\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Diese Pfeife ist unverzichtbar\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"für einen jeden Schiedsrichter!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Schiedsrichter \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"14.06.2024\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"#FFFFFF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"E\",underlined:0b},{bold:1b,color:\"#E5E9FB\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"M \",underlined:0b},{bold:1b,color:\"#B1BEF3\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"(\",underlined:0b},{bold:1b,color:\"#97A8EF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"2\",underlined:0b},{bold:1b,color:\"#7C93EB\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"0\",underlined:0b},{bold:1b,color:\"#627DE7\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"2\",underlined:0b},{bold:1b,color:\"#4867E3\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"4\",underlined:0b},{bold:1b,color:\"#2E52DF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\") \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"(\",underlined:0b},{color:\"green\",italic:0b,text:\"7\"},{color:\"gray\",italic:0b,text:\"/8)\"}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:58:31.906768500Z"
+}

@@ -1,0 +1,15 @@
+{
+  "internalname": "ZOMBOTOMS_EWIGER_BEGLEITER_5608dc95",
+  "displayname": "Zombotoms ewiger Begleiter",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Signiert von Zombotom_ am 05.06.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Zombotoms ewiger Begleiter\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:binding_curse\":1},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Zombotom_\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 05.06.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:profile\":{id:[I;0,2112333629,0,2112333629],name:\"HabDichGurke\",properties:[{name:\"textures\",signature:\"of96PBvjFijqoE361nDHH7KIZO1dMHaSD7RILpgIMRtoYrYno/ytT8XmIZX5pc7CUWgN9wzH/7iQXEz5DtxVw6KwUhxvOPqJd7CadP2bQJQtT/xVCleEZIrpxVEEB0SldJiHTu7U2KrB3bEtrunTcq7JRfzLlGbC9KwpLjZgL1w+MJ86wTvLiut2KXoekBMj86BR9JH0btneJgq9e+jjEWq40AJhqn2S1u4v2HJCxtGbm0vVxiTlAa/5aOxcLrDbWRS61s96/8ZeJ3vLg7LAZjfG3ysTJvItbzPPEpgRme01V60HOOx0/7LpxiB3jHNl72FcxiAFj7udOqj7r9IYhzPGGVP27eZY2LTLl+eVRJBlXXMYBI2evqN7wkM0vgbwl5zaIQ88QKjbc+inTMVhuBzn0WE0f1tolvYcU4LCANRPkkpii2a/t/ypgNZ7S00KzPK9K6hYw8gztf7kpxU66YZFjWoMF/iIMfrv7eF4xPWNkIFwjezOHsYIPt8uerPb3MjNgP/5sEan/M2kACabVejEaKV8nSkmJsDR+dWsrc55own68DXniPcromxDhsUpTYP2SoprorrbvwCtgT+QGG3foFWp2XUlTQJNWvptQmIEYBWlFRQZyogupc2FzRuLSbVsltgDfFaZbjWG6JVlWSGaFeuzt1NW3OLipojUbIE\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTYyMTI2NTYzNzYwNCwKICAicHJvZmlsZUlkIiA6ICJiY2M4YjgyOTViNmU0NGQ2YWI0NzRhMzQzMjRhMTA3MyIsCiAgInByb2ZpbGVOYW1lIiA6ICJIYWJEaWNoR3Vya2UiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWE3NmE5NTMxNmQ0OGQ1YmUzZGI1NGY5NDk1Y2QzZDIzNDRjMTYxYTg4ZDhkMWJmMzVlNDljYTA4Y2JiZjA0ZCIKICAgIH0KICB9Cn0\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:25:01.685048Z"
+}

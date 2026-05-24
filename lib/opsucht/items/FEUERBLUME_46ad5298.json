@@ -1,0 +1,17 @@
+{
+  "internalname": "FEUERBLUME_46ad5298",
+  "displayname": "Feuerblume",
+  "material": "RED_TULIP",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von leDevin im Sommer 2021",
+    "Signiert von Phorx im Sommer 2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Feuerblume\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_aspect\":5,\"minecraft:knockback\":4,\"minecraft:sharpness\":6},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"leDevin \"},{color:\"gray\",italic:0b,text:\"im \"},{color:\"gold\",italic:0b,text:\"Sommer 2021\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Phorx \"},{color:\"gray\",italic:0b,text:\"im \"},{color:\"gold\",italic:0b,text:\"Sommer 2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}]},count:1,id:\"minecraft:red_tulip\"}",
+  "capturedAt": "2026-05-14T12:41:13.758435800Z"
+}

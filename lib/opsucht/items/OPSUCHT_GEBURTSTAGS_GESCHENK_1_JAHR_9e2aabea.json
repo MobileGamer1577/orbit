@@ -1,0 +1,15 @@
+{
+  "internalname": "OPSUCHT_GEBURTSTAGS_GESCHENK_1_JAHR_9e2aabea",
+  "displayname": "OPSUCHT GEBURTSTAGS GESCHENK (1 Jahr) ",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Phorx am 03.11.2019",
+    "Signiert von leDevin am 03.11.2019",
+    "Signiert von OPSUCHT.NET am 03.11.2019"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"OPSUCHT GEBURTSTAGS GESCHENK \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(1 Jahr) \"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Phorx \"},{color:\"gray\",italic:0b,text:\"am 03.11.2019\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"leDevin \"},{color:\"gray\",italic:0b,text:\"am 03.11.2019\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT.NET\"},{color:\"red\",italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 03.11.2019\"}],text:\"\"}],\"minecraft:profile\":{id:[I;0,2097966574,0,2097966574],name:\"CruXXx\",properties:[{name:\"textures\",signature:\"as+AtC/M24DExE5Z0tTv429F2czNZ1qfoG11zwtR1Ive5StemseweXdBhXQw9+zZ1Hjucf76PhTArO5iN825/kRPHbdKhrb2fwXhF0+hbAYzf8K5P86qUijkB4aAktyDe1nbOJBagQGy4Z2umAakZmTuqkRxIzQ8iagAaps9bOcY7CvCd97qWKp9E3Pk51LCDjdeWt2dV7cJDk2dLlzLdH6uaVhtOYwAqTnz4bFvL9ZzWgj4GmG9J3ZrZbe75RYfMwP39zoR+IAJcLisoqyhVnWh5/Owbm8WV6o7qbM3zXopq0rscc9ay1DfsS7lBD23mul4P/AdK2vnXIDm2strXfDvBGqaYEu6Flsrkmtz/654siZ9ZKENOAJNlshVJQ7rvy1A/hVkCLYRXDXZevBmj8ophRKz6OWEkKPdCBAtukoMuIoh0zay0BvIvsDy9c8epFRkYFWN0A0XfpQ/sT5Digc9kW5v7HjKCDy8Hpv9H3RIMl9bPLKU6s5fKNX2zCPe6ofRY2zH5ad9jcGz6g6WeSFJ1zQDtibKKCWa5yPh50nlHaiPSv2miX0WuaC/nONwHWK60Ji8LJeI9Y+5p4Z35u5qH4BEj/SjKFQa0snMFbzDsWd1I7/QQcjgZQiRXT6hDlwbwYaVYs9/vUPhz4WLurtxtx1oTaZCYdBqQ2Cf7uY\u003d\",value:\"eyJ0aW1lc3RhbXAiOjE1NzI3OTY1NTMwMzQsInByb2ZpbGVJZCI6IjViOGYxNjY1YWVkNTQ4NWViZTllNDEyOWEzNzdkM2ZkIiwicHJvZmlsZU5hbWUiOiJDcnVYWHgiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzc4NTIyM2JjZmZlNzdhZWQ1M2M0OGNiZGNjYTY1YzUyMDdmMDFlOWY0ZjU4OGQzYzNjNWE5MWUwOTMwZjk4NzIifX19\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:59:45.138552600Z"
+}

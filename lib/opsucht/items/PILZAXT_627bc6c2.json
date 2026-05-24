@@ -1,0 +1,18 @@
+{
+  "internalname": "PILZAXT_627bc6c2",
+  "displayname": "Pilzaxt",
+  "material": "NETHERITE_AXE",
+  "cmd": 10137,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von OPSUCHT am 01.12.2024",
+    "",
+    "➥ Effekt: Baut Pilze mit einem Klick ab",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{MUSHROOM_TIMBER:1}]}},\"minecraft:custom_model_data\":{floats:[10137.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#D0A37F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"P\",underlined:0b},{bold:1b,color:\"#CC8F7C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"i\",underlined:0b},{bold:1b,color:\"#C77C78\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"l\",underlined:0b},{bold:1b,color:\"#C36875\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"z\",underlined:0b},{bold:1b,color:\"#BE5471\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#BA416E\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"x\",underlined:0b},{bold:1b,color:\"#B52D6A\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"t\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":6,\"minecraft:mending\":1,\"minecraft:silk_touch\":1,\"minecraft:unbreaking\":8},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.12.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Baut Pilze mit einem Klick ab\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:netherite_axe\"}",
+  "capturedAt": "2026-05-14T10:35:02.989932200Z"
+}

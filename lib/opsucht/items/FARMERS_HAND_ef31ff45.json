@@ -1,0 +1,18 @@
+{
+  "internalname": "FARMERS_HAND_ef31ff45",
+  "displayname": "Farmers Hand",
+  "material": "DIAMOND_HOE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Pflanzer I",
+    "Pflug I",
+    "Sammler I",
+    "Reperatur I",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWEnchantments:[\"§7Pflanzer I\",\"§7Pflug I\",\"§7Sammler I\"],IWLocked:1b},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Farmers Hand\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:mending\":1},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Pflanzer I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Pflug I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Sammler I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Reperatur I\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]}},count:1,id:\"minecraft:diamond_hoe\"}",
+  "capturedAt": "2026-05-14T11:44:09.687854800Z"
+}

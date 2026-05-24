@@ -1,0 +1,21 @@
+{
+  "internalname": "SPAWNEGG_EICHH_RNCHEN_ef9b4992",
+  "displayname": "Spawnegg | Eichhörnchen",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 805,
+  "damage": 0,
+  "lore": [
+    "5x Eichhörnchen",
+    "",
+    "Dieses Item verschwindet,",
+    "wenn alle Mobs platziert sind.",
+    "",
+    "Achtung: Nur in den Farmwelten",
+    "platzierbar!",
+    " ",
+    "Haltbarkeit: 0/5"
+  ],
+"shard_price": 2250,
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_data\":{IWCustomItems:{abilities:[{POKEBALL:1}],customData:{mob:{amount:5,type:\"CUSTOM_MOB\",value:\"nm_squirrel_red\"}},usage:{current:0,max:5},worlds:[\"fw_normal\",\"fw_end\",\"fw_nether\"]}},\"minecraft:custom_model_data\":{floats:[805.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Spawnegg \",underlined:0b},{bold:0b,color:\"dark_gray\",italic:0b,text:\"| \"},{bold:1b,color:\"white\",italic:0b,text:\"Eichhörnchen\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:mending\":1},\"minecraft:item_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Spawnegg \",underlined:0b},{bold:0b,color:\"dark_gray\",italic:0b,text:\"| \"},{bold:1b,color:\"white\",italic:0b,text:\"Eichhörnchen\"}],text:\"\"},\"minecraft:lore\":[{extra:[{bold:0b,color:\"dark_gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"5x Eichhörnchen\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"white\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Dieses Item verschwindet,\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"wenn alle Mobs platziert sind.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Achtung: Nur in den Farmwelten\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"platzierbar!\",underlined:0b}],text:\"\"},{extra:[\" \"],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Haltbarkeit: \",underlined:0b},{color:\"aqua\",italic:0b,text:\"0\"},{color:\"gray\",italic:0b,text:\"/\"},{color:\"aqua\",italic:0b,text:\"5\"},{color:\"gray\",italic:0b,text:\"\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-15T09:05:49.871650300Z"
+}

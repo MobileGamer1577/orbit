@@ -1,0 +1,23 @@
+{
+  "internalname": "VALENTINSAXT_8180487b",
+  "displayname": "Valentinsaxt",
+  "material": "NETHERITE_AXE",
+  "cmd": 10116,
+  "damage": 0,
+  "lore": [
+    "",
+    "Eine verführerisch elegante Kollektion,",
+    "geschaffen mit Liebe und einem Hauch Romantik!",
+    "",
+    "Signiert von Valentin am 14.02.2024",
+    "",
+    "Valentinskollektion (2/11)",
+    "",
+    "➥ Effekt: +3 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:6.0d,id:\"minecraft:1f1bd41e-bad7-456a-be52-a83438d25019\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:max_health\"}],\"minecraft:custom_model_data\":{floats:[10116.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Valentinsaxt\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":8,\"minecraft:mending\":2,\"minecraft:silk_touch\":1,\"minecraft:unbreaking\":9},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"light_purple\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Eine verführerisch elegante Kollektion,\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"light_purple\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"geschaffen mit Liebe und einem Hauch Romantik!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Valentin \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"14.02.2024\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Valentinskollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"2\"},{color:\"gray\",italic:0b,text:\"/11)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+3 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:netherite_axe\"}",
+  "capturedAt": "2026-05-14T11:13:04.433945700Z"
+}

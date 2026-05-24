@@ -1,0 +1,16 @@
+{
+  "internalname": "AMETHYSTSCHUHE_8080967b",
+  "displayname": "Amethystschuhe",
+  "material": "IRON_BOOTS",
+  "cmd": 10114,
+  "damage": 0,
+  "lore": [
+    "",
+    "Amethystkollektion (9/12)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:0b28280e-3248-4b16-8fb0-c5bbc40b55a3\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:ef2df6b8-6ac5-4aec-b55d-d83920a098f9\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:079b17c2-a925-4ad7-b22a-1f63fc84501b\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"purpleboots\",namespace:\"sucht_3\"}},\"minecraft:custom_model_data\":{floats:[10114.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Amethystschuhe\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:feather_falling\":4,\"minecraft:mending\":1,\"minecraft:protection\":4,\"minecraft:thorns\":3,\"minecraft:unbreaking\":6},\"minecraft:equippable\":{asset_id:\"sucht_3:purplearmor\",slot:\"feet\"},\"minecraft:lore\":[\"\",{extra:[{bold:1b,color:\"dark_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Amethystkollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"9\"},{color:\"gray\",italic:0b,text:\"/12)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:max_damage\":481,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:iron_boots\"}",
+  "capturedAt": "2026-05-13T18:05:00.504395500Z"
+}

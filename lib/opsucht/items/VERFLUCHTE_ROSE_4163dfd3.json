@@ -1,0 +1,19 @@
+{
+  "internalname": "VERFLUCHTE_ROSE_4163dfd3",
+  "displayname": "Verfluchte Rose",
+  "material": "WITHER_ROSE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Durchdrungen von finsterer Magie,",
+    "verheißt diese Rose Unheil.",
+    "",
+    "➥ Effekt: +5 Rüstung (Off-Hand)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:892d3911-2592-4309-be50-555ee6a2ffb0\",operation:\"add_value\",slot:\"offhand\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Verfluchte Rose\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:knockback\":4,\"minecraft:smite\":10},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Durchdrungen von finsterer Magie,\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"verheißt diese Rose Unheil.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+5 Rüstung \"},{color:\"dark_gray\",italic:1b,text:\"(Off-Hand)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:wither_rose\"}",
+  "capturedAt": "2026-05-14T12:50:15.361746800Z"
+}

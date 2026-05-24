@@ -1,0 +1,20 @@
+{
+  "internalname": "FR_HLINGS_HELM_e47e2ad2",
+  "displayname": "FRÜHLINGS HELM",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10301,
+  "damage": 0,
+  "lore": [
+    "",
+    "✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿",
+    "• FRÜHLINGS KOLLEKTION (1/10)",
+    "✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿ ✿",
+    "",
+    "(mit /hat)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_model_data\":{floats:[10301.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"FRÜHLINGS \",underlined:0b},{bold:1b,color:\"dark_green\",italic:0b,text:\"HELM\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:aqua_affinity\":2,\"minecraft:mending\":1,\"minecraft:protection\":5,\"minecraft:unbreaking\":6},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"✿ \",underlined:0b},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"• \",underlined:0b},{bold:1b,color:\"green\",italic:0b,text:\"FRÜHLINGS \"},{bold:1b,color:\"dark_green\",italic:0b,text:\"KOLLEKTION \"},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"1\"},{color:\"gray\",italic:0b,text:\"/10\"},{color:\"gray\",italic:0b,text:\")\"}],text:\"\"},{extra:[{bold:0b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"✿ \",underlined:0b},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿ \"},{color:\"red\",italic:0b,text:\"✿ \"},{color:\"yellow\",italic:0b,text:\"✿\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"(mit /hat)\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}]},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-13T18:13:07.150391500Z"
+}

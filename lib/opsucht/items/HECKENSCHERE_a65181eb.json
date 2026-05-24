@@ -1,0 +1,16 @@
+{
+  "internalname": "HECKENSCHERE_a65181eb",
+  "displayname": "Heckenschere",
+  "material": "SHEARS",
+  "cmd": 10000,
+  "damage": 0,
+  "lore": [
+    "",
+    "➥ Effekt: Baut automatisch Laub im Umkreis ab",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:\u0027{\"abilities\":{\"LEAVES_TRIMMER\":1}}\u0027},\"minecraft:custom_model_data\":{floats:[10000.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Heckenschere\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Baut automatisch Laub im Umkreis ab\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:shears\"}",
+  "capturedAt": "2026-05-14T11:42:35.538841400Z"
+}

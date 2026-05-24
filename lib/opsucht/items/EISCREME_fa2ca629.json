@@ -1,0 +1,18 @@
+{
+  "internalname": "EISCREME_fa2ca629",
+  "displayname": "Eiscreme",
+  "material": "SNOWBALL",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Eine süße Abkühlung, die nicht schmilzt.",
+    "",
+    "➥ Effekt: +50% Geschwindigkeit (Off-Hand)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.5d,id:\"minecraft:6bbdf44c-7f8a-40f6-9c9f-f46b11087611\",operation:\"add_multiplied_base\",slot:\"offhand\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Eiscreme\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"white\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Eine süße Abkühlung, die nicht schmilzt.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+50% Geschwindigkeit \"},{color:\"dark_gray\",italic:1b,text:\"(Off-Hand)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}]},count:1,id:\"minecraft:snowball\"}",
+  "capturedAt": "2026-05-14T12:59:24.907025200Z"
+}

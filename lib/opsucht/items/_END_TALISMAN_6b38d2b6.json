@@ -1,0 +1,16 @@
+{
+  "internalname": "_END_TALISMAN_6b38d2b6",
+  "displayname": "⭐ End Talisman ⭐",
+  "material": "END_ROD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Enderman am 01.12.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"yellow\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⭐ \",underlined:0b},{bold:1b,color:\"dark_purple\",italic:0b,text:\"E\"},{bold:1b,color:\"light_purple\",italic:0b,text:\"n\"},{bold:1b,color:\"blue\",italic:0b,text:\"d \"},{bold:1b,color:\"yellow\",italic:0b,text:\"Talisman \"},{bold:0b,color:\"yellow\",italic:0b,text:\"⭐\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fortune\":4,\"minecraft:looting\":4,\"minecraft:mending\":1,\"minecraft:sharpness\":6},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Enderman \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.12.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}]},count:1,id:\"minecraft:end_rod\"}",
+  "capturedAt": "2026-05-14T13:48:33.056390300Z"
+}

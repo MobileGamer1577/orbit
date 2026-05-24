@@ -1,0 +1,15 @@
+{
+  "internalname": "ODIN_S_BENGALISCHES_LICHT_9557c531",
+  "displayname": "Odin´s bengalisches Licht",
+  "material": "FIREWORK_ROCKET",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Signiert von Odins_Rache am 06.02.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Odin´s bengalisches Licht\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_protection\":1},\"minecraft:fireworks\":{explosions:[{colors:[1973019,14602026,15790320],has_twinkle:1b,shape:\"large_ball\"},{colors:[11743532,15790320,15435844],shape:\"burst\"},{colors:[1973019,14602026,3887386],shape:\"small_ball\"},{colors:[6719955,2651799,2437522],shape:\"small_ball\"},{colors:[4312372,15790320,8073150,14602026],has_trail:1b,shape:\"creeper\"},{colors:[15435844,11743532],shape:\"star\"},{colors:[3887386,14188952],shape:\"large_ball\"}],flight_duration:1b},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Odins_Rache\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 06.02.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}]},count:1,id:\"minecraft:firework_rocket\"}",
+  "capturedAt": "2026-05-14T12:24:43.236734300Z"
+}

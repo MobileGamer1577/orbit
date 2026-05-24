@@ -1,0 +1,17 @@
+{
+  "internalname": "X_SKYGUYS_KNOCKBACK_BOOTS_V2_X_aa2ea007",
+  "displayname": "x  SKYGUYS KNOCKBACK BOOTS v2 x",
+  "material": "GOLDEN_BOOTS",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von SkyGuyTV am 01.04.2022",
+    "➥ Effekt: kein Knockback (beim tragen)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:5.0d,id:\"minecraft:00000000-0000-0063-0000-00000581117c\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_name\":{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"x \",underlined:0b},{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,text:\" SKYGUYS \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"KNOCKBACK BOOTS \"},{bold:1b,color:\"aqua\",italic:0b,text:\"v2 \"},{bold:0b,color:\"red\",italic:0b,obfuscated:1b,text:\"x\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_protection\":5,\"minecraft:projectile_protection\":5,\"minecraft:protection\":6},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"dark_red\",italic:0b,text:\"SkyGuyTV \"},{color:\"gray\",italic:0b,text:\"am 01.04.2022\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"kein Knockback \"},{color:\"gray\",italic:1b,text:\"(beim tragen)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]},\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:golden_boots\"}",
+  "capturedAt": "2026-05-14T09:05:59.654829Z"
+}

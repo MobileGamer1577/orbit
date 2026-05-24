@@ -1,0 +1,15 @@
+{
+  "internalname": "NURZENAXT_53b82f41",
+  "displayname": "NurZenAxt",
+  "material": "DIAMOND_AXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Signiert von NurZenox am 06.02.2021",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"NurZenAxt\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":8,\"minecraft:mending\":1,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"NurZenox\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 06.02.2021\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_axe\"}",
+  "capturedAt": "2026-05-14T10:30:56.138343400Z"
+}

@@ -1,0 +1,17 @@
+{
+  "internalname": "H4CKER_EXE_bae8e201",
+  "displayname": "H4CKER.exe",
+  "material": "LEATHER_LEGGINGS",
+  "cmd": 10201,
+  "damage": 0,
+  "lore": [
+    "ds101ds010110sdh",
+    "",
+    "Signiert vom Hacker am 01.04.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:2.0d,id:\"minecraft:c62a57e1-5473-4317-9cb4-81f3ebbc9236\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:d4cfc01e-4cd8-4c5b-bcde-01a91d8503d9\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:09d2e7c2-20c9-4617-b601-084a22355f88\",operation:\"add_value\",slot:\"legs\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"hacker_leggings\",namespace:\"opsucht\"}},\"minecraft:custom_model_data\":{floats:[10201.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"H\",underlined:0b},{bold:1b,color:\"dark_green\",italic:0b,obfuscated:1b,text:\"4\"},{bold:1b,color:\"dark_green\",italic:0b,obfuscated:0b,text:\"C\"},{bold:1b,color:\"dark_green\",italic:0b,obfuscated:1b,text:\"K\"},{bold:1b,color:\"dark_green\",italic:0b,obfuscated:0b,text:\"E\"},{bold:1b,color:\"dark_green\",italic:0b,text:\"R.exe\"}],text:\"\"},\"minecraft:dyed_color\":129793,\"minecraft:enchantments\":{\"minecraft:aqua_affinity\":5,\"minecraft:mending\":1,\"minecraft:protection\":22,\"minecraft:unbreaking\":2},\"minecraft:lore\":[{extra:[{bold:1b,color:\"dark_green\",italic:1b,obfuscated:1b,strikethrough:0b,text:\"ds\",underlined:0b},{bold:1b,color:\"dark_green\",italic:1b,obfuscated:0b,text:\"101\"},{bold:1b,color:\"dark_green\",italic:1b,obfuscated:1b,text:\"ds\"},{bold:1b,color:\"dark_green\",italic:1b,obfuscated:0b,text:\"010110\"},{bold:1b,color:\"dark_green\",italic:1b,obfuscated:1b,text:\"sdh\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"dark_green\",italic:0b,text:\"Hacker \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,obfuscated:1b,text:\"01\"},{color:\"aqua\",italic:0b,obfuscated:0b,text:\".\"},{color:\"aqua\",italic:0b,obfuscated:1b,text:\"04\"},{color:\"aqua\",italic:0b,obfuscated:0b,text:\".\"},{color:\"aqua\",italic:0b,text:\"2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:max_damage\":555},count:1,id:\"minecraft:leather_leggings\"}",
+  "capturedAt": "2026-05-13T18:08:03.250393900Z"
+}

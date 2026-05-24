@@ -1,0 +1,14 @@
+{
+  "internalname": "NIKOLAUS_STIEFEL_5c0bfb7f",
+  "displayname": "Nikolaus Stiefel",
+  "material": "LEATHER_BOOTS",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"N\",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"i\"},{bold:1b,color:\"white\",italic:0b,text:\"k\"},{bold:1b,color:\"dark_red\",italic:0b,text:\"o\"},{bold:1b,color:\"white\",italic:0b,text:\"l\"},{bold:1b,color:\"dark_red\",italic:0b,text:\"a\"},{bold:1b,color:\"white\",italic:0b,text:\"u\"},{bold:1b,color:\"dark_red\",italic:0b,text:\"s \"},{bold:1b,color:\"white\",italic:0b,text:\"S\"},{bold:1b,color:\"dark_red\",italic:0b,text:\"t\"},{bold:1b,color:\"white\",italic:0b,text:\"i\"},{bold:1b,color:\"dark_red\",italic:0b,text:\"e\"},{bold:1b,color:\"white\",italic:0b,text:\"f\"},{bold:1b,color:\"dark_red\",italic:0b,text:\"e\"},{bold:1b,color:\"white\",italic:0b,text:\"l\"}],text:\"\"},\"minecraft:dyed_color\":11546150,\"minecraft:enchantments\":{\"minecraft:unbreaking\":5},\"minecraft:lore\":[{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}]},count:1,id:\"minecraft:leather_boots\"}",
+  "capturedAt": "2026-05-14T09:06:02.858947200Z"
+}

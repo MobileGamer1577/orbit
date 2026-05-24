@@ -1,0 +1,19 @@
+{
+  "internalname": "OP_FL_GEL_f31d7559",
+  "displayname": "OP Flügel",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 13001,
+  "damage": 0,
+  "lore": [
+    "",
+    "➥ Effekt: +10 Herzen",
+    "➥ Effekt: +10 Rüstung",
+    "",
+    "Signiert von OPSUCHT am 01.10.2023",
+    " ",
+    "Seltenheit » Jackpot",
+    "OPSUCHT LuckyBlock"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:20.0d,id:\"minecraft:b6cb9dc9-43ab-443c-9d55-017f0b5eae7f\",operation:\"add_value\",type:\"minecraft:max_health\"},{amount:20.0d,id:\"minecraft:739e2d29-8da9-4a31-a5aa-ed30d5c643ab\",operation:\"add_value\",type:\"minecraft:armor\"}],\"minecraft:custom_model_data\":{floats:[13001.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"OP Flügel\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:mending\":1,\"minecraft:protection\":14,\"minecraft:unbreaking\":10},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Rüstung\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.10.2023\"}],text:\"\"},{extra:[\" \"],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"},{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"OPSUCHT \",underlined:0b},{bold:1b,color:\"gold\",italic:0b,text:\"Lucky\"},{bold:1b,color:\"yellow\",italic:0b,text:\"Block\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:59:03.805709200Z"
+}

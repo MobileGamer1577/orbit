@@ -1,0 +1,11 @@
+{
+  "internalname": "OPSHARDS_287910f8",
+  "displayname": "OPShards",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 6314,
+  "damage": 0,
+  "lore": [],
+"shard_price": 3750,
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[],\"minecraft:custom_model_data\":{floats:[6314.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#8A40BF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:1b,color:\"#B655DF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"P\",underlined:0b},{bold:1b,color:\"#E169FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#E169FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#B968FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#9067FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#6865FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"d\",underlined:0b},{bold:1b,color:\"#3F64FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:item_name\":{extra:[{bold:1b,color:\"#8A40BF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:1b,color:\"#B655DF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"P\",underlined:0b},{bold:1b,color:\"#E169FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#E169FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#B968FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#9067FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#6865FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"d\",underlined:0b},{bold:1b,color:\"#3F64FF\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b}],text:\"\"},\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-15T09:06:10.618012600Z"
+}

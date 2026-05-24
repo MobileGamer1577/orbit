@@ -1,0 +1,20 @@
+{
+  "internalname": "OPBIRTH_PICKE_5_24b0932d",
+  "displayname": "OPBirth Picke #5",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "» Effekt: Schnelligkeit",
+    "» Spezial: +5 Rüstung",
+    "",
+    "Signiert von OPSUCHT am 23.10.2023",
+    "Signiert von OPPhil am 23.10.2023",
+    "Signiert von SkyGuyTV am 23.10.2023",
+    "",
+    "Limitiert auf 5 Stück!"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.05d,id:\"minecraft:fffe1fe1-0000-8267-0000-4c1efffefb32\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:movement_speed\"},{amount:10.0d,id:\"minecraft:fffe1fe1-0000-82cb-0000-4c1efffefa6a\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:armor\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:0b,color:\"gold\",italic:0b,text:\"P\"},{color:\"aqua\",italic:0b,text:\"B\"},{color:\"green\",italic:0b,text:\"i\"},{color:\"red\",italic:0b,text:\"r\"},{color:\"gray\",italic:0b,text:\"t\"},{color:\"white\",italic:0b,text:\"h\"},{color:\"dark_blue\",italic:0b,text:\" \"},{bold:1b,color:\"aqua\",italic:0b,text:\"Picke \"},{bold:0b,color:\"red\",italic:0b,text:\"#5\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":13,\"minecraft:fortune\":5,\"minecraft:mending\":1,\"minecraft:unbreaking\":15},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"» \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"Schnelligkeit\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"» \",underlined:0b},{color:\"gray\",italic:0b,text:\"Spezial: \"},{color:\"aqua\",italic:0b,text:\"+5 Rüstung\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPPhil \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"SkyGuyTV \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"23.10.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Limitiert auf 5 Stück!\",underlined:0b}],text:\"\"}]},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:01:42.785048400Z"
+}

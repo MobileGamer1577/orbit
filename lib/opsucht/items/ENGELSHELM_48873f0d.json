@@ -1,0 +1,16 @@
+{
+  "internalname": "ENGELSHELM_48873f0d",
+  "displayname": "Engelshelm",
+  "material": "LEATHER_HELMET",
+  "cmd": 10301,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Engel am 01.04.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:adf2ea05-21da-4885-a091-64deb272b721\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor_toughness\"},{amount:3.0d,id:\"minecraft:9ac6bbbb-1551-4a56-ad5e-727477cfd0da\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"},{amount:0.1d,id:\"minecraft:6ea495b5-fb22-415c-8432-34a4cb655c94\",operation:\"add_value\",slot:\"head\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"angel_helmet\",namespace:\"opsucht\"}},\"minecraft:custom_model_data\":{floats:[10301.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Engelshelm\",underlined:0b}],text:\"\"},\"minecraft:dyed_color\":14668812,\"minecraft:enchantments\":{\"minecraft:fortune\":1,\"minecraft:mending\":1,\"minecraft:protection\":5,\"minecraft:unbreaking\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Engel \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.04.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:max_damage\":407},count:1,id:\"minecraft:leather_helmet\"}",
+  "capturedAt": "2026-05-13T18:11:10.851223800Z"
+}

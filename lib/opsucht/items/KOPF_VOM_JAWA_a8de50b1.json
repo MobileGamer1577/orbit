@@ -1,0 +1,18 @@
+{
+  "internalname": "KOPF_VOM_JAWA_a8de50b1",
+  "displayname": "Kopf vom Jawa",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Utinni UTINNI",
+    "",
+    "Signiert von den Jawas am 04.05.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Kopf vom Jawa\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:blast_protection\":5,\"minecraft:protection\":3},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"yellow\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Utinni UTINNI\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von den \",underlined:0b},{color:\"red\",italic:0b,text:\"Jawas \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"04.05.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:profile\":{id:[I;489158035,1219118824,-1604700618,444028808],name:\"Madben\",properties:[{name:\"textures\",signature:\"l54KcsC7MHLxW4+RZ2LER5nCVZolCbbaIozO8pS95bruZpKbe967TKWlMQ2XK+nwz+u6KQHWacAKPeIZKB4WqzBINnRFC5Wns8oa9zR4cEkj9pxE+sFl6GxX+/DAu2P+edzKevbtDbp2s4Y3UJDNtCD9zrTd47AqvGfoB+YFK3eErCTMzZxBacXpIEmLcVMpgPD/Ev53nBi3hcqh648kyAcdxSjzLoZHpOJZZvm4AXoOxVypDrioban/cj8gDG6MT1sYwqEyZFfoa6maCqnWanQ2RgyDoMPQfeCxJfbL+60o1tGHpKj8go7DypYAqI0TLlE3ps55gARMf5+VDF5cPMS2slTzazJ3pip/29ibAcq7gksYpQJ3pCyCtML0ktp5ncFPinBJGT9vdXLKxda5E+7zyQvdEyVJnjUxxtuFwWH03e713/aQ8lNQ1yYYeXmLmB+fL87P9L3p+n5LQtnZAQ8g3hhfsb1ZL/FeAoJR3mRKbOkKqvZ9dWveMVWjKulR06DVuAmDvSMSUjYTYw7fG7n9DPPPzOtT0J7Vy8jBteJItij+ajr5tzRSRfSTQi2mPiLMU4zDN9dXwr0DtpA0+bwAbL7uYimS9YHqw4GJHo7xKlWp+JfaQbVTAULj6NCRMzgXltBkKBV/BgBKlVq6B8lXnk6nu1yoZFPaRvQauWs\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY4MjYxOTE5ODA4NywKICAicHJvZmlsZUlkIiA6ICIxZDI3ZjU5MzQ4YWE0NmU4YTA1YTM2MzYxYTc3NTc4OCIsCiAgInByb2ZpbGVOYW1lIiA6ICJNYWRiZW4iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTllYjQ3YWE3ZTk3ODQzMjRkNWFkYTNlMGYxOGU5NGM3ZmVlNmQwYmI4MDMyM2Q4N2QyYTZhMTRhMjgyOTc0OSIKICAgIH0KICB9Cn0\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:59:57.237528700Z"
+}

@@ -1,0 +1,11 @@
+{
+  "internalname": "SHARD_LEUCHTFEUER_87e3fdcb",
+  "displayname": "Shard Leuchtfeuer",
+  "material": "BEACON",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+"shard_price": 7500,
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#3E95F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#55A2F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#6DAEF9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#84BBF9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#9CC7F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"d\",underlined:0b},{bold:1b,color:\"#B3D4F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\" \",underlined:0b},{bold:1b,color:\"#CAE0F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"L\",underlined:0b},{bold:1b,color:\"#E2EDF9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#F9F9F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"u\",underlined:0b},{bold:1b,color:\"#E2EDF9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"c\",underlined:0b},{bold:1b,color:\"#CAE0F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#B3D4F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"t\",underlined:0b},{bold:1b,color:\"#9CC7F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"f\",underlined:0b},{bold:1b,color:\"#84BBF9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#6DAEF9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"u\",underlined:0b},{bold:1b,color:\"#55A2F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#3E95F9\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b}],text:\"\"},\"minecraft:damage\":0},count:1,id:\"minecraft:beacon\"}",
+  "capturedAt": "2026-05-15T09:06:00.567275800Z"
+}

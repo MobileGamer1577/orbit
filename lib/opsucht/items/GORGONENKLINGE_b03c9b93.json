@@ -1,0 +1,17 @@
+{
+  "internalname": "GORGONENKLINGE_b03c9b93",
+  "displayname": "Gorgonenklinge",
+  "material": "NETHERITE_SWORD",
+  "cmd": 10501,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Medusa um 850 v. Chr.",
+    "",
+    "➥ Effekt: +5 Rüstung (Mainhand)",
+    "",
+    "➥ OP Pass Belohnung der 14. Season"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:71642a2d-784e-4203-b6f2-8970d7427ace\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:armor\"}],\"minecraft:custom_model_data\":{floats:[10501.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#633543\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"G\",underlined:0b},{bold:1b,color:\"#5F3C46\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"o\",underlined:0b},{bold:1b,color:\"#5B4349\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#574A4C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"g\",underlined:0b},{bold:1b,color:\"#52504F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"o\",underlined:0b},{bold:1b,color:\"#4E5752\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b},{bold:1b,color:\"#4A5E55\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#466557\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b},{bold:1b,color:\"#426C5A\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"k\",underlined:0b},{bold:1b,color:\"#3E735D\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"l\",underlined:0b},{bold:1b,color:\"#397960\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"i\",underlined:0b},{bold:1b,color:\"#358063\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b},{bold:1b,color:\"#318766\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"g\",underlined:0b},{bold:1b,color:\"#2D8E69\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_aspect\":2,\"minecraft:looting\":5,\"minecraft:mending\":1,\"minecraft:sharpness\":5,\"minecraft:sweeping_edge\":3,\"minecraft:unbreaking\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Medusa \"},{color:\"gray\",italic:0b,text:\"um \"},{color:\"aqua\",italic:0b,text:\"850 v. Chr.\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+5 Rüstung \"},{color:\"dark_gray\",italic:0b,text:\"(Mainhand)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"OP Pass \"},{bold:0b,color:\"gray\",italic:0b,text:\"Belohnung der \"},{color:\"aqua\",italic:0b,text:\"14. Season\"},{color:\"gray\",italic:0b,text:\"\"}],text:\"\"}],\"minecraft:repair_cost\":1,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:netherite_sword\"}",
+  "capturedAt": "2026-05-14T10:19:38.987262400Z"
+}

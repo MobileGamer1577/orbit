@@ -1,0 +1,18 @@
+{
+  "internalname": "PHORX_S_BUTTERMESSER_V2_b3db3cf2",
+  "displayname": "Phorx\u0027s Buttermesser v2 ",
+  "material": "DIAMOND_SWORD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "────────────────────",
+    "Signiert von Phorx am 09.02.2019",
+    "",
+    "Jackpot",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phorx\u0027s \",underlined:0b},{bold:1b,color:\"yellow\",italic:0b,text:\"Buttermesser v2 \"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:fire_aspect\":3,\"minecraft:knockback\":2,\"minecraft:looting\":3,\"minecraft:mending\":1,\"minecraft:sharpness\":6,\"minecraft:sweeping_edge\":6,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:1b,text:\"────────────────────\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Phorx \"},{color:\"gray\",italic:0b,text:\"am 09.02.2019\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Jackpot\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:repair_cost\":63},count:1,id:\"minecraft:diamond_sword\"}",
+  "capturedAt": "2026-05-14T10:12:39.837190600Z"
+}

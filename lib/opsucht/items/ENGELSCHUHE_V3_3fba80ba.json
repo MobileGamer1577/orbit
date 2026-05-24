@@ -1,0 +1,17 @@
+{
+  "internalname": "ENGELSCHUHE_V3_3fba80ba",
+  "displayname": "Engelschuhe v3",
+  "material": "LEATHER_BOOTS",
+  "cmd": 10301,
+  "damage": 0,
+  "lore": [
+    "Flügel I",
+    "",
+    "Signiert vom Engel am 01.04.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:146c5e9d-86e4-48bd-b745-0d6ff172a618\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:21b19349-c051-4b90-99da-9f09533b7b5a\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:c922813c-50e1-4495-a358-cd1590dd9404\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{IWEnchantments:[\"§7Flügel I\"],itemsadder:{id:\"angel_boots\",namespace:\"opsucht\"}},\"minecraft:custom_model_data\":{floats:[10301.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Engelschuhe \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,text:\"v3\"}],text:\"\"},\"minecraft:dyed_color\":14668812,\"minecraft:enchantments\":{\"minecraft:mending\":1,\"minecraft:unbreaking\":4},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Flügel I\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Engel \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.04.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:max_damage\":481},count:1,id:\"minecraft:leather_boots\"}",
+  "capturedAt": "2026-05-13T18:11:05.752897600Z"
+}

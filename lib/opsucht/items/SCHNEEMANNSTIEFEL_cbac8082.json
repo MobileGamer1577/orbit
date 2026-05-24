@@ -1,0 +1,18 @@
+{
+  "internalname": "SCHNEEMANNSTIEFEL_cbac8082",
+  "displayname": "Schneemannstiefel",
+  "material": "IRON_BOOTS",
+  "cmd": 10138,
+  "damage": 0,
+  "lore": [
+    "",
+    "Diese Rüstung verbreitet den",
+    "magischen Winterzauber!",
+    "",
+    "Signiert vom Schneemann am 24.12.2024",
+    "",
+    "Schneemannkollektion (4/4)"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:d60583a4-1369-41cb-94c7-6ac7079536f5\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:7c50061a-5a2d-4c11-8959-35d72d907072\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:f53506c0-ce8c-4138-b7b1-8bc353258057\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"snowman_boots\",namespace:\"_opsucht_armour\"}},\"minecraft:custom_model_data\":{floats:[10138.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Schneemannstiefel\",underlined:0b}],text:\"\"},\"minecraft:damage_resistant\":{types:\"#minecraft:is_fire\"},\"minecraft:enchantments\":{\"minecraft:blast_protection\":8,\"minecraft:mending\":2,\"minecraft:protection\":8,\"minecraft:unbreaking\":20},\"minecraft:equippable\":{asset_id:\"_opsucht_armour:snowman_armor\",slot:\"feet\"},\"minecraft:item_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Schneemannstiefel\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"white\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Diese Rüstung verbreitet den\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"magischen Winterzauber!\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Schneemann \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"24.12.2024\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Schneemannkollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"4\"},{color:\"gray\",italic:0b,text:\"/4)\"}],text:\"\"}],\"minecraft:max_damage\":481},count:1,id:\"minecraft:iron_boots\"}",
+  "capturedAt": "2026-05-13T18:04:13.450367100Z"
+}

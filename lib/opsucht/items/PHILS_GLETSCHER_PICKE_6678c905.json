@@ -1,0 +1,16 @@
+{
+  "internalname": "PHILS_GLETSCHER_PICKE_6678c905",
+  "displayname": "Phils Gletscher Picke",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Gefunden in den Gletschern von OPSUCHT",
+    "",
+    "Signiert vom Gletschergeist am 17.12.2023",
+    "Signiert von OPPhil am 17.12.2023"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phils \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"Gletscher Picke\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":8,\"minecraft:fortune\":3,\"minecraft:mending\":2,\"minecraft:punch\":3,\"minecraft:unbreaking\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"white\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Gefunden in den \",underlined:0b},{color:\"aqua\",italic:1b,text:\"Gletschern \"},{color:\"white\",italic:1b,text:\"von \"},{color:\"red\",italic:0b,text:\"OPSUCHT\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Gletschergeist \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"17.12.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPPhil \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"17.12.2023\"}],text:\"\"}]},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T09:53:14.038212700Z"
+}

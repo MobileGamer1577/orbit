@@ -1,0 +1,16 @@
+{
+  "internalname": "X_EVENT_DRACHENEI_X_3ac3d456",
+  "displayname": "x EVENT DRACHENEI x",
+  "material": "DRAGON_EGG",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Phorx am 07.07.2022",
+    "Signiert von leDevin am 07.07.2022",
+    "Signiert von SkyGuyTV am 07.07.2022",
+    "Signiert von NilsDev am 07.07.2022"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{extra:[{color:\"aqua\",obfuscated:1b,text:\"x \"},{bold:1b,color:\"yellow\",text:\"EVENT \"},{bold:1b,color:\"dark_red\",text:\"DRACHENEI \"},{color:\"aqua\",obfuscated:1b,text:\"x\"}],text:\"\"}],italic:0b,text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:mending\":10,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{color:\"gray\",text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"gray\",text:\"Signiert von \"},{color:\"dark_red\",text:\"Phorx \"},{color:\"gray\",text:\"am 07.07.2022\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"gray\",text:\"Signiert von \"},{color:\"dark_red\",text:\"leDevin \"},{color:\"gray\",text:\"am 07.07.2022\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"gray\",text:\"Signiert von \"},{color:\"dark_red\",text:\"SkyGuyTV \"},{color:\"gray\",text:\"am 07.07.2022\"}],text:\"\"}],italic:0b,text:\"\"},{extra:[{extra:[{color:\"gray\",text:\"Signiert von \"},{color:\"dark_red\",text:\"NilsDev \"},{color:\"gray\",text:\"am 07.07.2022\"}],text:\"\"}],italic:0b,text:\"\"}]},count:1,id:\"minecraft:dragon_egg\"}",
+  "capturedAt": "2026-05-14T13:16:21.857400200Z"
+}

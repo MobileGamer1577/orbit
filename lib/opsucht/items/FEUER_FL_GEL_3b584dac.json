@@ -1,0 +1,21 @@
+{
+  "internalname": "FEUER_FL_GEL_3b584dac",
+  "displayname": "Feuer Flügel",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 11801,
+  "damage": 0,
+  "lore": [
+    "",
+    "Geschaffen vom Gott",
+    "des Feuers aus der Lava.",
+    "",
+    "Signiert von Vulkan am 11.08.2023",
+    "",
+    "➥ Effekt: +5 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:8431c7ab-8a99-48ca-91dc-b62ded6d3b07\",operation:\"add_value\",slot:\"offhand\",type:\"minecraft:max_health\"}],\"minecraft:custom_model_data\":{floats:[11801.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Feuer Flügel\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Geschaffen vom Gott\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"des Feuers aus der Lava.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Vulkan \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"11.08.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+5 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:59:11.056675800Z"
+}

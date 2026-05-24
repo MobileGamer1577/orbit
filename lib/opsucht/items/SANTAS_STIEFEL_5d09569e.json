@@ -1,0 +1,20 @@
+{
+  "internalname": "SANTAS_STIEFEL_5d09569e",
+  "displayname": "Santas Stiefel",
+  "material": "LEATHER_BOOTS",
+  "cmd": 10109,
+  "damage": 0,
+  "lore": [
+    "",
+    "Angefertigt von seinen helfenden Elfen.",
+    "",
+    "Signiert von Santa am 01.12.2023",
+    "",
+    "Weihnachtskollektion (5/7)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:ce84884b-b8bc-4cb5-b4b9-24dbb34f91fc\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:ca9161d5-5438-4ade-a6dc-f8c05fbe7a2f\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:ba4d47f1-e322-411f-a0ca-7de0fd54cece\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"}],\"minecraft:custom_data\":{itemsadder:{id:\"xmasboots\",namespace:\"pnew3\"}},\"minecraft:custom_model_data\":{floats:[10109.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Santas \",underlined:0b},{bold:1b,color:\"dark_green\",italic:0b,text:\"Stiefel\"}],text:\"\"},\"minecraft:dyed_color\":12065345,\"minecraft:enchantments\":{\"minecraft:feather_falling\":4,\"minecraft:frost_walker\":5,\"minecraft:mending\":2,\"minecraft:protection\":6,\"minecraft:unbreaking\":10},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Angefertigt von seinen helfenden Elfen.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Santa \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.12.2023\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Weihnachtskollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"5\"},{color:\"gray\",italic:0b,text:\"/7)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:max_damage\":481,\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:dyed_color\"]}},count:1,id:\"minecraft:leather_boots\"}",
+  "capturedAt": "2026-05-13T18:12:54.903090700Z"
+}

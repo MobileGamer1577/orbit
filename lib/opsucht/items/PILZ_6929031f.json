@@ -1,0 +1,18 @@
+{
+  "internalname": "PILZ_6929031f",
+  "displayname": "Pilz",
+  "material": "RED_MUSHROOM",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Ein kleiner Herbstfreund",
+    "mit wunderbarem Geschmack.",
+    "",
+    "➥ Effekt: +60% Geschwindigkeit (Hand, Off-Hand, Kopf)",
+    "",
+    "➥ OP Pass Belohnung des 5. Chapter"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.6d,id:\"minecraft:87c31f37-9cb5-4fea-b0a8-6bb35d038db4\",operation:\"add_multiplied_base\",slot:\"mainhand\",type:\"minecraft:movement_speed\"},{amount:0.6d,id:\"minecraft:7525e496-aae3-4fce-ade3-4b3aba8014c4\",operation:\"add_multiplied_base\",slot:\"offhand\",type:\"minecraft:movement_speed\"},{amount:0.6d,id:\"minecraft:3fa5adcb-1bfc-40d4-b666-93ff081353ce\",operation:\"add_multiplied_base\",slot:\"head\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Pilz\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:infinity\":1},\"minecraft:item_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Pilz\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Ein kleiner Herbstfreund\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"mit wunderbarem Geschmack.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+60% Geschwindigkeit \"},{color:\"dark_gray\",italic:1b,text:\"(Hand, Off-Hand, Kopf)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"OP Pass \"},{bold:0b,color:\"gray\",italic:0b,text:\"Belohnung des \"},{color:\"aqua\",italic:0b,text:\"5. Chapter\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\",\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:red_mushroom\"}",
+  "capturedAt": "2026-05-14T13:02:21.655331Z"
+}

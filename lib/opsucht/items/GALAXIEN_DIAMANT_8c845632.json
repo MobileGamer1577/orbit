@@ -1,0 +1,10 @@
+{
+  "internalname": "GALAXIEN_DIAMANT_8c845632",
+  "displayname": "Galaxien Diamant",
+  "material": "DIAMOND",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Galaxien \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,text:\"Diamant\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:mending\":1}},count:1,id:\"minecraft:diamond\"}",
+  "capturedAt": "2026-05-14T11:50:14.888790Z"
+}

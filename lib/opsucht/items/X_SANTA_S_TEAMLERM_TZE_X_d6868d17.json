@@ -1,0 +1,15 @@
+{
+  "internalname": "X_SANTA_S_TEAMLERM_TZE_X_d6868d17",
+  "displayname": "x Santa\u0027s Teamlermütze x",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 2007,
+  "damage": 0,
+  "lore": [
+    "",
+    "» Spezial: +4 Rüstung (Helm)",
+    "",
+    "Signiert von OPSUCHT am 24.12.2022"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:8.0d,id:\"minecraft:ffed5dfd-0000-2f73-0000-44b3ffffa11a\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"}],\"minecraft:custom_model_data\":{floats:[2007.0f]},\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"x \",underlined:0b},{bold:1b,color:\"red\",italic:0b,obfuscated:0b,text:\"Santa\u0027s \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"Teamlermütze \"},{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,text:\"x\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:blast_protection\":7,\"minecraft:fire_protection\":7,\"minecraft:loyalty\":10,\"minecraft:projectile_protection\":7,\"minecraft:protection\":7},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"» \",underlined:0b},{color:\"gray\",italic:0b,text:\"Spezial: \"},{color:\"aqua\",italic:0b,text:\"+4 Rüstung \"},{color:\"gray\",italic:1b,text:\"(Helm)\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"OPSUCHT \"},{bold:0b,color:\"gray\",italic:0b,text:\"am 24.12.2022\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\",\"minecraft:written_book_content\",\"minecraft:potion_contents\",\"minecraft:tropical_fish/pattern\",\"minecraft:painting/variant\",\"minecraft:pot_decorations\",\"minecraft:firework_explosion\",\"minecraft:charged_projectiles\",\"minecraft:jukebox_playable\",\"minecraft:fireworks\",\"minecraft:block_entity_data\",\"minecraft:bundle_contents\",\"minecraft:block_state\",\"minecraft:bees\",\"minecraft:container_loot\",\"minecraft:container\",\"minecraft:banner_patterns\",\"minecraft:map_id\",\"minecraft:instrument\"]},\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:55:04.808749900Z"
+}

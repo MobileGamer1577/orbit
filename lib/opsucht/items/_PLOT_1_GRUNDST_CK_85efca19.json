@@ -1,0 +1,20 @@
+{
+  "internalname": "_PLOT_1_GRUNDST_CK_85efca19",
+  "displayname": "⚔ PLOT | 1 Grundstück",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Melde dich bei einem Moderator",
+    "um das Grundstück zu bekommen.",
+    "",
+    "",
+    "(nicht platzieren, mod droppen)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⚔ \",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"PLOT \"},{bold:0b,color:\"dark_gray\",italic:0b,text:\"| \"},{color:\"white\",italic:0b,text:\"1 Grundstück\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fortune\":4},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Melde dich bei einem \",underlined:0b},{color:\"red\",italic:0b,text:\"Moderator\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"um das Grundstück zu bekommen.\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"(nicht platzieren, mod droppen)\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:profile\":{id:[I;-1,-1692565083,-1,-1692565083],name:\"MHF_Grass\",properties:[{name:\"textures\",signature:\"j0/eOm6uN2mg7U39+/BiV9cv0YrWEmLWeSzsO7uhtjMByDKJtQClgq7Zl6dkp/BgCEUwmsBUS4V1TkiJ4IK0g8HyL0oRxM9RfN6zos3C+zEtfQs2xXmwCauDNzwyXKgFZ9txbXvVkEW+wFCDCEBdghKgEq2Xt5PU4f5V4m6cqv1UdiJ97Cek7aun1PChMDDN7OairYE0uWAaYRRO43YGsvh5oZWb8cOqfRUywyNLm4zJu2I12q2Gc+NuE+BFxK+PYm70xl07DxPwfH0PZKbWJXPNdmzKwkiwcujl718j7bKX5OUwZDqF4Io37yBijEgbm6Sf+FO5/ffYes+2gtA+8LKVGYVRFUL51kEh3jWeS7OuEgtE+ld+VdWjgxGi3IkpMYhS821E30/EfDqebvJAmDPNPUpp/ULCMadkwW4l9C6yvHWFbK4EdSZExUlg7IXNYC8tHNCmgjP8lql4MdNNxx2D2mA1sl6sWVHu48Zm5NxRuA9FECyX+zNGgm9qB+AyjXotzqUcgEC/p8a+weRiXILb5MAnQb5lzHe7DQXX28Ihyq8Q9PscNWNzZ56+9NmwH2kMw9D+7c+OFz9VzSr4GCsIko6Mt3Ji2XsaoUhypw7VAehkAaxNmiO7bpaMo7GByCloQFl+HvBXxevuGZ/FfCjZtH5PSprepemdA6bWXJc\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTY0NzYxMDY2MDY5MywKICAicHJvZmlsZUlkIiA6ICI5ZTFjYmQ4NjdiNjQ0MjM0YmZkMDRmZjQ5ODU0YmFjOSIsCiAgInByb2ZpbGVOYW1lIiA6ICJNSEZfR3Jhc3MiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTQwZjIzOTFlNzFkZjU2ZDhmODgxMGU4MDM5ZmNlZDViMmUzNTM5NGY0MGRlNmZlY2Y2NDRiZGUyZmZiMDE3ZCIKICAgIH0KICB9Cn0\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:59:20.487785600Z"
+}

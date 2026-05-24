@@ -1,0 +1,20 @@
+{
+  "internalname": "FROSCHLATSCHEN_d43bc078",
+  "displayname": "Froschlatschen",
+  "material": "IRON_BOOTS",
+  "cmd": 10011,
+  "damage": 0,
+  "lore": [
+    "",
+    "Aus den Tiefen des grünen Reichs erhoben,",
+    "verleiht sie dir die Kraft über alle Sümpfe.",
+    "",
+    "Signiert vom Froschkönig am 01.08.2025",
+    "",
+    "➥ Effekt: +1 Block Sprungkraft (Schuhe)",
+    "",
+    "➥ OP Pass Belohnung des 5. Chapter"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:3.0d,id:\"minecraft:4adff785-52ec-46a2-abbf-89a35dcbf5b1\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor\"},{amount:3.0d,id:\"minecraft:de8afbc1-c68d-4e6b-9fcd-842903663068\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:armor_toughness\"},{amount:0.1d,id:\"minecraft:b5299462-936f-43dc-9d73-56f6caa05bdc\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:knockback_resistance\"},{amount:9.0d,id:\"minecraft:9c9fb6fa-608d-4343-9ee6-47231b9e7c20\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:oxygen_bonus\"},{amount:0.1d,id:\"minecraft:e8457dbe-21be-4db0-ade6-22b28cfbb5d6\",operation:\"add_value\",slot:\"feet\",type:\"minecraft:jump_strength\"}],\"minecraft:custom_data\":{itemsadder:{id:\"frog_boots\",namespace:\"_opsucht_sets\"}},\"minecraft:custom_model_data\":{floats:[10011.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Froschlatschen\",underlined:0b}],text:\"\"},\"minecraft:damage_resistant\":{types:\"#minecraft:is_fire\"},\"minecraft:enchantments\":{\"minecraft:depth_strider\":4,\"minecraft:feather_falling\":5,\"minecraft:mending\":1,\"minecraft:protection\":6,\"minecraft:respiration\":9,\"minecraft:unbreaking\":7},\"minecraft:equippable\":{asset_id:\"_opsucht_sets:frog_set\",slot:\"feet\"},\"minecraft:item_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Froschlatschen\",underlined:0b}],text:\"\"},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"green\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Aus den Tiefen des grünen Reichs erhoben,\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"green\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"verleiht sie dir die Kraft über alle Sümpfe.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Froschkönig \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.08.2025\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+1 Block Sprungkraft \"},{color:\"dark_gray\",italic:1b,text:\"(Schuhe)\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"OP Pass \"},{bold:0b,color:\"gray\",italic:0b,text:\"Belohnung des \"},{color:\"aqua\",italic:0b,text:\"5. Chapter\"}],text:\"\"}],\"minecraft:max_damage\":481},count:1,id:\"minecraft:iron_boots\"}",
+  "capturedAt": "2026-05-13T18:04:06.153695900Z"
+}

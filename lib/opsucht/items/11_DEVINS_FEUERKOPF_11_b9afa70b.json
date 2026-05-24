@@ -1,0 +1,16 @@
+{
+  "internalname": "11_DEVINS_FEUERKOPF_11_b9afa70b",
+  "displayname": "11☢ Devins Feuerkopf ☢11",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "➽ Signiert von leDevin am 26.09.2020",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"11\",underlined:0b},{color:\"green\",italic:0b,obfuscated:0b,text:\"☢ \"},{bold:1b,color:\"red\",italic:0b,text:\"Devins \"},{bold:1b,color:\"dark_red\",italic:0b,text:\"Feuerkopf \"},{bold:0b,color:\"green\",italic:0b,text:\"☢\"},{color:\"aqua\",italic:0b,obfuscated:1b,text:\"11\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_protection\":8},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➽ Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"leDevin \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"26.09.2020\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}],\"minecraft:profile\":{id:[I;-1,-277104813,-1,-277104813],name:\"leDevin\",properties:[{name:\"textures\",signature:\"RhStLA0RrZMWaAf7lYXAUF6zt4LaCHTGIeD49Q4iSARDlLk5SF0Mfxw2yD6lhhqCzww1dQuvRV5CidKsYnpI82ASeXsHi5iOKr6hK2smcJotHIIwkpytGLduT0eBbFK8cHNOPvIp5YuibjGop/hZwJsv9mDH4KpjT+BzHypkuZWDl+O7008STNl8oqks9ynOeO8KkcIkDj+iUUZBUX1QzsBCEpkPQjzUWCg51tGbwcVb5es2qQX949p0qdv1XIXssjb2gFt9NPuhI8vXUPJLNbvyTzK8Gs+e80gmzsMkp+G6mMyn81FCTCHaVp26iWreO4qCbj/6XNsXP2NGA4orzmuLVscBlEf5FpbDgq0TW8VB3QTc8TpCyCgFBbcvx2w9g11uWYUgz0fFEkC4rh/ldfX1OiMYMyRVdW7dR40Hi+CWxnfrTrVb2HE9KWA+MStH/TDKQ7q3RAkAAd8AfrHU7BKAAxPkE2lBvo4pp3HSKovJhV6VGYFUMsCwbukPSiVt+3Z2fHlvcZ1kXpIN/jxSuVJ+PwCW4Cw+a9mG4vtpElBPn9lAHUK12b0uJlQi3mNhqSfBhemW6/EY4MlxX2rsY9TYt9ERE2TmOJjhkhvyUju9DEhH75dd5fQqnq2vAJcKEZ1zh0X3dN2iVCo1mi8YR0cgnB7MlG7hQKlK0EUOZvI\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTYwMTA5NjEwMjk2NiwKICAicHJvZmlsZUlkIiA6ICIwYTYwODAzMWI5MjM0OTMyODJlNzk0NDE3ODU0Y2Y4ZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJsZURldmluIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzc2Yjg0NDhjMTI2MTNkYjY1MGZlZTA3M2RhMTU1ZTI2MjM0Zjg1MzM5YmQ1MDMwNjExZTllYmUyOGVkYjA0NGUiLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ\u003d\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:57:12.836334500Z"
+}

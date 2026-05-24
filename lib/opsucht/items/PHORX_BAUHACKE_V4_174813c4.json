@@ -1,0 +1,16 @@
+{
+  "internalname": "PHORX_BAUHACKE_V4_174813c4",
+  "displayname": "Phorx Bauhacke V4 ",
+  "material": "DIAMOND_PICKAXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Hüte diese Spitzhacke wie dein Kind!",
+    "────────────────────",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Phorx Bauhacke \",underlined:0b},{bold:1b,color:\"aqua\",italic:0b,text:\"V4 \"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":10,\"minecraft:fortune\":4,\"minecraft:mending\":1,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Hüte diese Spitzhacke wie dein Kind!\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"────────────────────\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:repair_cost\":1},count:1,id:\"minecraft:diamond_pickaxe\"}",
+  "capturedAt": "2026-05-14T10:01:12.635734200Z"
+}

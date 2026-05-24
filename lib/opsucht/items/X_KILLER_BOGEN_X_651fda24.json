@@ -1,0 +1,16 @@
+{
+  "internalname": "X_KILLER_BOGEN_X_651fda24",
+  "displayname": "x Killer Bogen x",
+  "material": "BOW",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "➤ Killer Kollektion (8/8)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"red\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"x \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,text:\"Killer Bogen \"},{bold:0b,color:\"red\",italic:0b,obfuscated:1b,text:\"x\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:flame\":5,\"minecraft:infinity\":5,\"minecraft:power\":8,\"minecraft:punch\":5,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➤ \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,text:\"Killer Kollektion \"},{bold:0b,color:\"gray\",italic:1b,text:\"(8/8)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}]},count:1,id:\"minecraft:bow\"}",
+  "capturedAt": "2026-05-14T13:43:21.414336200Z"
+}

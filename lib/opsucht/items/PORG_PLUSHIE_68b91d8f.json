@@ -1,0 +1,18 @@
+{
+  "internalname": "PORG_PLUSHIE_68b91d8f",
+  "displayname": "Porg Plushie",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von den Progs am 04.05.2023",
+    "",
+    "➥ Effekt: +2 Herzen",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Selten"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:4.0d,id:\"minecraft:7bcc4fba-0d19-4a15-90fe-de55f794b7a5\",operation:\"add_value\",slot:\"head\",type:\"minecraft:max_health\"}],\"minecraft:custom_name\":{extra:[{bold:0b,color:\"blue\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Porg Plushie\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von den \",underlined:0b},{color:\"red\",italic:0b,text:\"Progs \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"04.05.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+2 Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"gold\",italic:0b,text:\"Selten\"}],text:\"\"}],\"minecraft:profile\":{id:[I;67411088,-739686879,-1666252800,-1432255385],name:\"\",properties:[{name:\"textures\",value:\"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGQwMjdlNTFiZTU1YmExMzJiNjVjYTIwN2ZjZTg1N2ZhYzFjNjFmN2E3NzYyNjA4ZTRjZDc0MjM4Y2M0MjczOSJ9fX0\u003d\"}]},\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T12:02:00.538481Z"
+}

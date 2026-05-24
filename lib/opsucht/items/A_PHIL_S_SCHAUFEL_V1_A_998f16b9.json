@@ -1,0 +1,19 @@
+{
+  "internalname": "A_PHIL_S_SCHAUFEL_V1_A_998f16b9",
+  "displayname": "a Phil´s Schaufel v1 a",
+  "material": "NETHERITE_SHOVEL",
+  "cmd": 10501,
+  "damage": 0,
+  "lore": [
+    "Diese Schaufel behütet dich.",
+    "⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊",
+    "➥ Effekt: +6 extra Herzen",
+    "",
+    "Signiert von OPPhil am 24.07.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:12.0d,id:\"minecraft:5696070f-f68e-498e-bc1d-3a1d6e4d8f03\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:max_health\"},{amount:12.0d,id:\"minecraft:263bde26-a934-4f7a-b08d-89443fb1a508\",operation:\"add_value\",slot:\"offhand\",type:\"minecraft:max_health\"}],\"minecraft:custom_model_data\":{floats:[10501.0f]},\"minecraft:custom_name\":{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"a \",underlined:0b},{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,text:\"Phil´s Schaufel \"},{bold:1b,color:\"aqua\",italic:0b,text:\"v1 \"},{bold:0b,color:\"white\",italic:0b,obfuscated:1b,text:\"a\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":7,\"minecraft:knockback\":6,\"minecraft:mending\":2,\"minecraft:sharpness\":7,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"dark_red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Diese Schaufel behütet dich.\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+6 extra Herzen\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPPhil \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"24.07.2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:netherite_shovel\"}",
+  "capturedAt": "2026-05-14T11:27:49.537912200Z"
+}

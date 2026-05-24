@@ -1,0 +1,18 @@
+{
+  "internalname": "HALLOWEEN_SCH_DEL_2cf66952",
+  "displayname": "Halloween Schädel",
+  "material": "PLAYER_HEAD",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓",
+    "• Halloween Kollektion •",
+    "♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Unbezahlbar"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Halloween \",underlined:0b},{bold:1b,color:\"white\",italic:0b,text:\"Schädel\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_protection\":5,\"minecraft:protection\":10,\"minecraft:thorns\":5,\"minecraft:unbreaking\":10},\"minecraft:lore\":[{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"• \",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"Halloween Kollektion \"},{bold:0b,color:\"dark_gray\",italic:0b,text:\"•\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓♓\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Unbezahlbar\"}],text:\"\"}],\"minecraft:profile\":{id:[I;-1,-1059110283,-1,-1059110283],name:\"MHF_Pumpkin\",properties:[{name:\"textures\",signature:\"o6Iw2zEC35pPeiKbwSvifDpvGJWOTkqqh+fg9QjgrZgbmsxP7NB9/D8hi+Oqhv1Ep7vcct5NNuj/xktlIUSYoIBpUuXZzPrPJWE+MMrQv33BJOu+S5lIe2bSPvrfUZr/mFrDpL1ubTIBLNq0OH8Cll1dEOKDJqZuH/G69lvFaZI7/Sl5nhtxZQrAr2KoxmXF9mMDk94MI80Yjz7oXInA/KFSJHjPja9ow5gs/ohg9xtSv8LgkyzXZpGP0nzCYQzpqi4hx17dJEnGkh2pSU09vZupNFfJoqRsfoe0kRA27Pht+jwFfU0mxq9Yot1vzzQHeQnSManLSFWU3mTHi0/VBrmDmmpr6GKJZPRMja8/Ix9EmkSr4mOH6ZzB5wmfJrJ5p1fuW7iAU/w3sZpg2tCuFN1vw0nGjg41j/utQnCch9ZmanRS5Xbd4StsV9TJePk5xyFCeoqNqIxLUYqdPxmwiQOlLVHFo5aynB4toF+FncjibJsynVjPnZQzH4Z3cks8BcZatqT0mMgCx5pyKmaVMKA6TNNCzZpnDl0e4CXcbov5TN5BZycqTOuSv18lzS4JrUmmwDh87Wk9Uz9rpSEeAiIdsQ5XmFxAltUy7Xk+6xMlXOHt7DRnbTpVDi7x+11aSCZGkC9uC/HbpWVgJ1+7gOanVAlhuJbPQDrRT+eTVHU\u003d\",value:\"ewogICJ0aW1lc3RhbXAiIDogMTYyODYwNzczMjMzMSwKICAicHJvZmlsZUlkIiA6ICJmNDRkMzU1YmI2YWU0YmE4OGU2MmFlNjQ0MTg1NDc4NSIsCiAgInByb2ZpbGVOYW1lIiA6ICJNSEZfUHVtcGtpbiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9iMTYyZDcyZDhkNTc2ZDliYmI4MWM5YWVkYzY5MDYxNzQxNmRlZGM5NWNjZjE3Zjc5NDU4MGNhNjc0OTQyYTY1IgogICAgfQogIH0KfQ\u003d\u003d\"}]}},count:1,id:\"minecraft:player_head\"}",
+  "capturedAt": "2026-05-14T11:59:41.133265300Z"
+}

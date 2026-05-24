@@ -1,0 +1,17 @@
+{
+  "internalname": "K_SANTA_S_TEAMLER_PINGUIN_K_dc534176",
+  "displayname": "k Santa\u0027s Teamler Pinguin k",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10140,
+  "damage": 0,
+  "lore": [
+    "",
+    "Ein kleiner Begleiter für den Winter.",
+    "",
+    "Signiert von OPSUCHT am 24.12.2023",
+    "",
+    "➥ Effekt: +5 Herzen"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:7e8aafa7-7194-4b9c-9ee0-8c54d76ccff2\",operation:\"add_value\",slot:\"head\",type:\"minecraft:max_health\"},{amount:10.0d,id:\"minecraft:d3422f6f-8192-4174-b57b-4a1cb26fb839\",operation:\"add_value\",slot:\"offhand\",type:\"minecraft:max_health\"}],\"minecraft:custom_model_data\":{floats:[10140.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:1b,strikethrough:0b,text:\"k \",underlined:0b},{bold:1b,color:\"red\",italic:0b,obfuscated:0b,text:\"Santa\u0027s Teamler \"},{bold:1b,color:\"white\",italic:0b,text:\"Pinguin \"},{bold:1b,color:\"aqua\",italic:0b,obfuscated:1b,text:\"k\"}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fire_protection\":7,\"minecraft:frost_walker\":3,\"minecraft:looting\":5,\"minecraft:loyalty\":10,\"minecraft:protection\":6},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Ein kleiner Begleiter für den Winter.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"24.12.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+5 Herzen\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]},\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T13:54:40.408258800Z"
+}

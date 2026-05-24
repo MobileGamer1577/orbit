@@ -1,0 +1,21 @@
+{
+  "internalname": "ZUCKERSTANGEN_SENSE_2b564d02",
+  "displayname": "Zuckerstangen Sense",
+  "material": "NETHERITE_HOE",
+  "cmd": 10107,
+  "damage": 0,
+  "lore": [
+    "",
+    "Eine süße Kleinigkeit",
+    "vom Weihnachtsmann.",
+    "",
+    "Signiert von Santa am 01.12.2023",
+    "",
+    "Zuckerstangenkollektion (4/7)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_model_data\":{floats:[10107.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Zuckerstangen \",underlined:0b},{bold:1b,color:\"dark_green\",italic:0b,text:\"Sense\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":7,\"minecraft:mending\":2,\"minecraft:unbreaking\":5},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"dark_aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Eine süße Kleinigkeit\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"dark_aqua\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"vom Weihnachtsmann.\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Santa \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.12.2023\"}],text:\"\"},\"\",{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Zuckerstangenkollektion \",underlined:0b},{bold:0b,color:\"gray\",italic:0b,text:\"(\"},{color:\"green\",italic:0b,text:\"4\"},{color:\"gray\",italic:0b,text:\"/7)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}]},count:1,id:\"minecraft:netherite_hoe\"}",
+  "capturedAt": "2026-05-14T11:45:01.235398600Z"
+}

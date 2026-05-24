@@ -1,0 +1,17 @@
+{
+  "internalname": "SPEED_AXT_0d87d9db",
+  "displayname": "Speed Axt",
+  "material": "DIAMOND_AXE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "In der Haupthand:",
+    "+110 % Schnelligkeit",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Legendär"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:0.05d,id:\"minecraft:84ea8a22-b1ec-4c4b-b8d3-74d623e3fe32\",operation:\"add_value\",slot:\"hand\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_name\":{extra:[{bold:1b,color:\"green\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Speed Axt\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":5,\"minecraft:fortune\":2,\"minecraft:mending\":1,\"minecraft:unbreaking\":4},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"In der Haupthand:\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"blue\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"+110 % Schnelligkeit\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"red\",italic:0b,text:\"Legendär\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:diamond_axe\"}",
+  "capturedAt": "2026-05-14T12:55:50.607625500Z"
+}

@@ -1,0 +1,20 @@
+{
+  "internalname": "HEXENHUT_a1c25efb",
+  "displayname": "Hexenhut",
+  "material": "GOLDEN_HORSE_ARMOR",
+  "cmd": 10129,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von der Hexe am 31.10.2023",
+    "",
+    "➥ Effekt: +10 Herzen (Kopf)",
+    "➥ Effekt: +10 Rüstung (Kopf)",
+    "➥ Effekt: +110% Geschwindigkeit (Kopf)",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:20.0d,id:\"minecraft:2f22f265-948f-44ea-9d2e-d4ac0f3f33d5\",operation:\"add_value\",slot:\"head\",type:\"minecraft:armor\"},{amount:20.0d,id:\"minecraft:3a82b3de-86db-4a8a-923e-955e319435c6\",operation:\"add_value\",slot:\"head\",type:\"minecraft:max_health\"},{amount:1.1d,id:\"minecraft:9073cced-9858-4234-8bc9-b1b6bc3a859f\",operation:\"add_multiplied_base\",slot:\"head\",type:\"minecraft:movement_speed\"}],\"minecraft:custom_model_data\":{floats:[10129.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Hexenhut\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von der \",underlined:0b},{color:\"red\",italic:0b,text:\"Hexe \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"31.10.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Herzen \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Rüstung \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+110% Geschwindigkeit \"},{color:\"dark_gray\",italic:1b,text:\"(Kopf)\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:golden_horse_armor\"}",
+  "capturedAt": "2026-05-14T12:58:53.661427300Z"
+}

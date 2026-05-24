@@ -1,0 +1,13 @@
+{
+  "internalname": "BEDROCK_cc6cf34f",
+  "displayname": "Bedrock",
+  "material": "BEDROCK",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von NilsDev am 17.06.2024"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#3494E6\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"B\",underlined:0b},{bold:1b,color:\"#538EDD\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#7187D3\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"d\",underlined:0b},{bold:1b,color:\"#9081CA\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#AF7BC0\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"o\",underlined:0b},{bold:1b,color:\"#CD74B7\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"c\",underlined:0b},{bold:1b,color:\"#EC6EAD\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"k\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:unbreaking\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"NilsDev \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"17.06.2024\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\",\"minecraft:unbreakable\"]},\"minecraft:unbreakable\":{}},count:1,id:\"minecraft:bedrock\"}",
+  "capturedAt": "2026-05-14T11:53:09.438852700Z"
+}

@@ -1,0 +1,18 @@
+{
+  "internalname": "LUKE_SKYWALKERS_LICHTSCHWERT_a95424c3",
+  "displayname": "Luke Skywalkers Lichtschwert",
+  "material": "NETHERITE_SWORD",
+  "cmd": 10401,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von Luke Skywalker am 04.05.2023",
+    "",
+    "➥ Effekt: +10 Rüstung",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:attribute_modifiers\":[{amount:10.0d,id:\"minecraft:9ff891fa-1478-42ce-80de-a6b9cbf3b0be\",operation:\"add_value\",slot:\"mainhand\",type:\"minecraft:armor\"}],\"minecraft:custom_model_data\":{floats:[10401.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Luke Skywalkers Lichtschwert\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:knockback\":5,\"minecraft:mending\":1,\"minecraft:sharpness\":6,\"minecraft:sweeping_edge\":4,\"minecraft:unbreaking\":8},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"Luke Skywalker \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"04.05.2023\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"➥ \",underlined:0b},{color:\"gray\",italic:0b,text:\"Effekt: \"},{color:\"green\",italic:0b,text:\"+10 Rüstung\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:attribute_modifiers\"]}},count:1,id:\"minecraft:netherite_sword\"}",
+  "capturedAt": "2026-05-14T13:49:29.507695500Z"
+}

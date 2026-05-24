@@ -1,0 +1,19 @@
+{
+  "internalname": "_ABGEHOBEN_eb82ea79",
+  "displayname": "#Abgehoben",
+  "material": "ELYTRA",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "Verzauberungssperre X",
+    "Danke das du für uns",
+    "gevotet hast.",
+    "────────────────────",
+    "Signiert von DURCHRASTEN am 25.02.2022",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"gold\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"#Abgehoben\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:unbreaking\":4},\"minecraft:lore\":[{extra:[{color:\"white\",italic:0b,text:\"Verzauberungssperre X\"}],text:\"\"},{extra:[{bold:1b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Danke das du für uns\",underlined:0b}],text:\"\"},{extra:[{bold:1b,color:\"white\",italic:0b,text:\"gevotet hast.\"}],text:\"\"},{extra:[{bold:0b,color:\"dark_gray\",italic:0b,obfuscated:0b,strikethrough:1b,text:\"────────────────────\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"DURCHRASTEN\"},{italic:0b,text:\" \"},{color:\"gray\",italic:0b,text:\"am 25.02.2022\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"yellow\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:repair_cost\":63},count:1,id:\"minecraft:elytra\"}",
+  "capturedAt": "2026-05-14T12:19:26.485051200Z"
+}

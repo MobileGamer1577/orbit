@@ -1,0 +1,16 @@
+{
+  "internalname": "VERST_RKTER_TIEFENSCHIEFER_1553040a",
+  "displayname": "Verstärkter Tiefenschiefer",
+  "material": "REINFORCED_DEEPSLATE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert von WARDEN am 01.02.2023",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » ★★★★★"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:0b,color:\"aqua\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Verstärkter Tiefenschiefer\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:dyed_color\":10511680,\"minecraft:enchantments\":{\"minecraft:unbreaking\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"WARDEN \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01\"},{color:\"gray\",italic:0b,text:\".\"},{color:\"aqua\",italic:0b,text:\"02\"},{color:\"gray\",italic:0b,text:\".\"},{color:\"aqua\",italic:0b,text:\"2023\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"★★★★★\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\",\"minecraft:dyed_color\"]}},count:1,id:\"minecraft:reinforced_deepslate\"}",
+  "capturedAt": "2026-05-14T11:52:30.537605800Z"
+}

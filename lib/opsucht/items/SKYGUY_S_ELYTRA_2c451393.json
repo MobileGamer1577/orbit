@@ -1,0 +1,10 @@
+{
+  "internalname": "SKYGUY_S_ELYTRA_2c451393",
+  "displayname": "SkyGuy\u0027s Elytra",
+  "material": "ELYTRA",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"SkyGuy\u0027s \",underlined:0b},{bold:1b,color:\"red\",italic:0b,text:\"Elytra\"}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:mending\":2,\"minecraft:unbreaking\":10}},count:1,id:\"minecraft:elytra\"}",
+  "capturedAt": "2026-05-14T12:18:57.286919500Z"
+}
