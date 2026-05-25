@@ -14,6 +14,10 @@ import '../widgets/orbit_glass_card.dart';
 //  Bilder kommen aus dem lokalen GitHub-Cache (keine Assets).
 //  Fullscreen-Zoom bei Tap.
 //
+//  Bilder-Quelle:
+//    GitHub Raw: lib/opsucht/oppass/1.png ... N.png
+//    Lokal gecacht in: getApplicationDocumentsDirectory()/opsucht/oppass/
+//
 // ══════════════════════════════════════════════════════════════
 
 class OpSuchtOppassScreen extends StatefulWidget {
@@ -33,7 +37,7 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
     final service = OpSuchtSyncService.instance;
     service.addListener(_onUpdate);
 
-    // Bilder laden falls noch nicht geladen
+    // Season + Bilder laden falls noch nicht geladen
     if (!service.seasonLoaded) {
       service.loadSeason();
     }
@@ -50,8 +54,7 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
     if (mounted) setState(() {});
   }
 
-  void _openFullscreen(BuildContext context, String path, int index,
-      List<String> paths) {
+  void _openFullscreen(int index, List<String> paths) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -76,6 +79,7 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               // ── Header ────────────────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 4, 16, 0),
@@ -94,12 +98,13 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
                           const Text(
                             'OPPASS',
                             style: TextStyle(
-                              fontSize:   26,
-                              fontWeight: FontWeight.w900,
-                              color:      Colors.white,
+                              fontSize:      26,
+                              fontWeight:    FontWeight.w900,
+                              color:         Colors.white,
                               letterSpacing: -0.3,
                             ),
                           ),
+                          // ✅ Format: "[Name] Season" — NICHT "Season Season"
                           Text(
                             '${season.name} Season',
                             style: TextStyle(
@@ -111,7 +116,8 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
                         ],
                       ),
                     ),
-                    // Seitenanzeige
+
+                    // Seitenanzeige oben rechts
                     if (images.isNotEmpty)
                       Text(
                         '${_currentPage + 1} / ${images.length}',
@@ -125,7 +131,7 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
                 ),
               ),
 
-              // ── Countdown Badge ───────────────────────
+              // ── Countdown-Zeile ───────────────────────
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 6, 20, 0),
                 child: _CountdownRow(season: season),
@@ -136,23 +142,27 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
               // ── Galerie ───────────────────────────────
               Expanded(
                 child: !service.seasonLoaded
+                    // Laden-Indikator
                     ? const Center(
                         child: CircularProgressIndicator(
                             color: Color(0xFF00D4FF)))
                     : images.isEmpty
-                    ? _EmptyState(season: season)
+                    // Keine Bilder (noch nicht geladen / nicht gefunden)
+                    ? _EmptyState(
+                        season:  season,
+                        syncing: service.syncing,
+                      )
+                    // Swipe-Galerie
                     : _Gallery(
-                        images:      images,
-                        pageCtrl:    _pageCtrl,
-                        currentPage: _currentPage,
-                        onPageChanged: (i) =>
-                            setState(() => _currentPage = i),
-                        onTap: (i) => _openFullscreen(
-                            context, images[i], i, images),
+                        images:        images,
+                        pageCtrl:      _pageCtrl,
+                        currentPage:   _currentPage,
+                        onPageChanged: (i) => setState(() => _currentPage = i),
+                        onTap:         (i) => _openFullscreen(i, images),
                       ),
               ),
 
-              // ── Dots Indikator ────────────────────────
+              // ── Dots-Indikator ────────────────────────
               if (service.seasonLoaded && images.isNotEmpty)
                 _DotsRow(count: images.length, current: _currentPage),
 
@@ -167,6 +177,9 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
 
 // ──────────────────────────────────────────────────────────────
 //  Countdown-Zeile
+//
+//  Zeigt verbleibende Zeit in Tagen oder Stunden.
+//  Wird rot + animiert wenn < 24h verbleibend.
 // ──────────────────────────────────────────────────────────────
 
 class _CountdownRow extends StatefulWidget {
@@ -186,8 +199,9 @@ class _CountdownRowState extends State<_CountdownRow>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 900));
-    _anim = Tween<double>(begin: 0.8, end: 1.0).animate(
+        vsync:    this,
+        duration: const Duration(milliseconds: 900));
+    _anim = Tween<double>(begin: 0.75, end: 1.0).animate(
         CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut));
     if (widget.season.isEndingVeryLoon) {
       _ctrl.repeat(reverse: true);
@@ -253,13 +267,17 @@ class _CountdownRowState extends State<_CountdownRow>
 }
 
 // ──────────────────────────────────────────────────────────────
-//  Galerie (horizontales PageView)
+//  Horizontale Swipe-Galerie
+//
+//  • PageView für links/rechts-Swipe
+//  • Hero-Animation beim Öffnen des Fullscreen-Viewers
+//  • Tap → Fullscreen mit Zoom
 // ──────────────────────────────────────────────────────────────
 
 class _Gallery extends StatelessWidget {
-  final List<String>  images;
-  final PageController pageCtrl;
-  final int           currentPage;
+  final List<String>      images;
+  final PageController    pageCtrl;
+  final int               currentPage;
   final ValueChanged<int> onPageChanged;
   final ValueChanged<int> onTap;
 
@@ -283,7 +301,7 @@ class _Gallery extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Hero(
-              tag: 'oppass_$i',
+              tag: 'oppass_img_$i',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: _LocalImage(path: images[i]),
@@ -298,6 +316,9 @@ class _Gallery extends StatelessWidget {
 
 // ──────────────────────────────────────────────────────────────
 //  Lokales Bild-Widget
+//
+//  Liest gecachte PNG-Datei vom Gerätespeicher.
+//  Fehler → Placeholder-Icon statt Crash.
 // ──────────────────────────────────────────────────────────────
 
 class _LocalImage extends StatelessWidget {
@@ -310,11 +331,14 @@ class _LocalImage extends StatelessWidget {
       File(path),
       fit:          BoxFit.contain,
       errorBuilder: (_, __, ___) => Container(
-        color: Colors.white.withOpacity(0.05),
+        decoration: BoxDecoration(
+          color:        Colors.white.withOpacity(0.04),
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Icon(
           Icons.broken_image_outlined,
-          color: Colors.white.withOpacity(0.25),
-          size: 48,
+          color: Colors.white.withOpacity(0.20),
+          size:  48,
         ),
       ),
     );
@@ -323,6 +347,9 @@ class _LocalImage extends StatelessWidget {
 
 // ──────────────────────────────────────────────────────────────
 //  Dots-Indikator
+//
+//  • Bis 20 Bilder → animierte Dots (aktiver Dot breiter)
+//  • Über 20 Bilder → nur Zahlen ("3 / 25")
 // ──────────────────────────────────────────────────────────────
 
 class _DotsRow extends StatelessWidget {
@@ -332,28 +359,30 @@ class _DotsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Bei mehr als 20 Dots → nur Zahlen anzeigen
     if (count > 20) {
-      return Center(
-        child: Text(
-          '${current + 1} / $count',
-          style: TextStyle(
-            color:      Colors.white.withOpacity(0.50),
-            fontSize:   13,
-            fontWeight: FontWeight.w600,
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Center(
+          child: Text(
+            '${current + 1} / $count',
+            style: TextStyle(
+              color:      Colors.white.withOpacity(0.50),
+              fontSize:   13,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       );
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(count, (i) {
           final active = i == current;
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 220),
             curve:    Curves.easeOut,
             margin:   const EdgeInsets.symmetric(horizontal: 3),
             width:    active ? 18 : 6,
@@ -361,7 +390,7 @@ class _DotsRow extends StatelessWidget {
             decoration: BoxDecoration(
               color:        active
                   ? const Color(0xFF00D4FF)
-                  : Colors.white.withOpacity(0.25),
+                  : Colors.white.withOpacity(0.22),
               borderRadius: BorderRadius.circular(3),
             ),
           );
@@ -373,11 +402,15 @@ class _DotsRow extends StatelessWidget {
 
 // ──────────────────────────────────────────────────────────────
 //  Empty State
+//
+//  Wird gezeigt wenn noch keine Bilder geladen sind.
+//  Unterscheidet zwischen "lädt noch" und "wirklich leer".
 // ──────────────────────────────────────────────────────────────
 
 class _EmptyState extends StatelessWidget {
   final OpSuchtSeasonData season;
-  const _EmptyState({required this.season});
+  final bool              syncing;
+  const _EmptyState({required this.season, required this.syncing});
 
   @override
   Widget build(BuildContext context) {
@@ -387,36 +420,47 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.photo_library_outlined,
-                color: Colors.white.withOpacity(0.20), size: 52),
+            if (syncing)
+              const CircularProgressIndicator(color: Color(0xFF00D4FF))
+            else
+              Icon(Icons.photo_library_outlined,
+                  color: Colors.white.withOpacity(0.18), size: 52),
+
             const SizedBox(height: 16),
+
             Text(
-              'Keine OPPASS Bilder verfügbar.',
+              syncing
+                  ? 'Bilder werden geladen…'
+                  : 'Keine OPPASS Bilder verfügbar.',
               style: TextStyle(
-                  color: Colors.white.withOpacity(0.55),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600),
+                color:      Colors.white.withOpacity(0.60),
+                fontSize:   16,
+                fontWeight: FontWeight.w700,
+              ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
-            Text(
-              'Bilder werden aus GitHub geladen.\n'
-              'Stelle sicher dass du online bist.',
-              style: TextStyle(
-                  color: Colors.white.withOpacity(0.35),
-                  fontSize: 13,
-                  height: 1.4),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            FilledButton.icon(
-              onPressed: () =>
-                  OpSuchtSyncService.instance.loadSeason(force: true),
-              style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF00D4FF).withOpacity(0.80)),
-              icon:  const Icon(Icons.refresh),
-              label: const Text('Erneut versuchen'),
-            ),
+
+            if (!syncing) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Bilder werden aus GitHub geladen.\n'
+                'Stelle sicher dass du online bist.',
+                style: TextStyle(
+                    color:  Colors.white.withOpacity(0.35),
+                    fontSize: 13,
+                    height: 1.4),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              FilledButton.icon(
+                onPressed: () =>
+                    OpSuchtSyncService.instance.loadSeason(force: true),
+                style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFF00D4FF).withOpacity(0.80)),
+                icon:  const Icon(Icons.refresh),
+                label: const Text('Erneut versuchen'),
+              ),
+            ],
           ],
         ),
       ),
@@ -426,6 +470,11 @@ class _EmptyState extends StatelessWidget {
 
 // ══════════════════════════════════════════════════════════════
 //  FULLSCREEN GALERIE
+//
+//  • Vollbild-Ansicht mit InteractiveViewer (Pinch-to-Zoom)
+//  • Swipe zwischen Bildern möglich
+//  • Hero-Animation vom Thumbnail zum Fullscreen
+//  • Schließen-Button oben rechts
 // ══════════════════════════════════════════════════════════════
 
 class _FullscreenGallery extends StatefulWidget {
@@ -442,7 +491,7 @@ class _FullscreenGallery extends StatefulWidget {
 }
 
 class _FullscreenGalleryState extends State<_FullscreenGallery> {
-  late int _current;
+  late int            _current;
   late PageController _ctrl;
 
   @override
@@ -464,51 +513,57 @@ class _FullscreenGalleryState extends State<_FullscreenGallery> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          // Galerie
+
+          // ── Bild-Galerie ──────────────────────────
           PageView.builder(
             controller:    _ctrl,
             onPageChanged: (i) => setState(() => _current = i),
             itemCount:     widget.paths.length,
-            itemBuilder:   (context, i) {
-              return InteractiveViewer(
-                minScale: 0.8,
-                maxScale: 5.0,
-                child:    Center(
-                  child: Hero(
-                    tag: 'oppass_$i',
-                    child: Image.file(
-                      File(widget.paths[i]),
-                      fit: BoxFit.contain,
+            itemBuilder:   (context, i) => InteractiveViewer(
+              minScale: 0.8,
+              maxScale: 5.0,
+              child:    Center(
+                child: Hero(
+                  tag: 'oppass_img_$i',
+                  child: Image.file(
+                    File(widget.paths[i]),
+                    fit:          BoxFit.contain,
+                    errorBuilder: (_, __, ___) => Icon(
+                      Icons.broken_image_outlined,
+                      color: Colors.white.withOpacity(0.20),
+                      size:  64,
                     ),
                   ),
                 ),
-              );
-            },
+              ),
+            ),
           ),
 
-          // Schließen-Button
+          // ── Schließen-Button ──────────────────────
           Positioned(
-            top:   MediaQuery.of(context).padding.top + 8,
+            top:   MediaQuery.of(context).padding.top + 12,
             right: 16,
             child: GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color:        Colors.black.withOpacity(0.55),
-                  shape:        BoxShape.circle,
-                  border:       Border.all(
-                      color: Colors.white.withOpacity(0.20)),
+                  color:  Colors.black.withOpacity(0.55),
+                  shape:  BoxShape.circle,
+                  border: Border.all(
+                      color: Colors.white.withOpacity(0.25)),
                 ),
-                child: const Icon(Icons.close, color: Colors.white, size: 22),
+                child: const Icon(
+                    Icons.close, color: Colors.white, size: 22),
               ),
             ),
           ),
 
-          // Seitenangabe
+          // ── Seitenangabe unten ────────────────────
           Positioned(
             bottom: MediaQuery.of(context).padding.bottom + 24,
-            left:   0, right: 0,
+            left:   0,
+            right:  0,
             child: Center(
               child: Container(
                 padding: const EdgeInsets.symmetric(

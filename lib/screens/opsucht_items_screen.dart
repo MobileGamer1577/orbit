@@ -11,13 +11,15 @@ import '../widgets/orbit_glass_card.dart';
 //  📦 OPSUCHT ITEMS SCREEN
 //  Datei: lib/screens/opsucht_items_screen.dart
 //
-//  Item-Datenbank von github.com/geldbedarf/OPMOD_REPO
+//  Item-Datenbank — Quellen (Priorität):
+//    1. lib/opsucht/items/ im Orbit-Repo (GitHub)
+//    2. Fallback: geldbedarf/OPMOD_REPO
 //
 //  Features:
-//    • Suche nach Name, Material, CMD
-//    • Grid/List-Toggle (vorbereitet)
-//    • Detail-Sheet bei Tap
-//    • Filter-Struktur vorbereitet
+//    • Suche nach displayname, internalname, material
+//    • Grid/List-Toggle
+//    • Detail-Sheet bei Tap (inkl. Lore + NBT-Tag kopierbar)
+//    • Filter-Struktur vorbereitet für spätere Erweiterung
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -60,26 +62,20 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
   void _onSearch() {
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 250), () {
-      if (mounted) setState(() => _query = _searchCtrl.text.trim().toLowerCase());
+      if (mounted) setState(() => _query = _searchCtrl.text.trim());
     });
   }
 
+  // ── Suche über den Service (nutzt searchIndex) ─────────────
   List<OpSuchtItem> _filtered() {
-    final items = OpSuchtSyncService.instance.items;
-    if (_query.isEmpty) return items;
-    return items.where((item) {
-      return item.displayname.toLowerCase().contains(_query)
-          || item.material.toLowerCase().contains(_query)
-          || item.internalname.toLowerCase().contains(_query)
-          || item.cmd.toString().contains(_query);
-    }).toList();
+    return OpSuchtSyncService.instance.search(_query);
   }
 
   void _openDetail(OpSuchtItem item) {
     showModalBottomSheet(
-      context:           context,
+      context:            context,
       isScrollControlled: true,
-      backgroundColor:   Colors.transparent,
+      backgroundColor:    Colors.transparent,
       builder: (_) => _ItemDetailSheet(item: item),
     );
   }
@@ -114,9 +110,9 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
                           const Text(
                             'Item Datenbank',
                             style: TextStyle(
-                              fontSize:   24,
-                              fontWeight: FontWeight.w900,
-                              color:      Colors.white,
+                              fontSize:      24,
+                              fontWeight:    FontWeight.w900,
+                              color:         Colors.white,
                               letterSpacing: -0.3,
                             ),
                           ),
@@ -131,13 +127,12 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
                       ),
                     ),
 
-                    // Refresh
+                    // Refresh-Button
                     if (!service.syncing)
                       IconButton(
                         icon: Icon(Icons.refresh,
                             color: Colors.white.withOpacity(0.70)),
-                        onPressed: () =>
-                            service.loadItems(force: true),
+                        onPressed: () => service.loadItems(force: true),
                       )
                     else
                       const Padding(
@@ -149,7 +144,7 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
                         ),
                       ),
 
-                    // Grid/List toggle (vorbereitet)
+                    // Grid/List-Toggle
                     IconButton(
                       icon: Icon(
                         _gridView ? Icons.list : Icons.grid_view,
@@ -178,7 +173,10 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
                           ? IconButton(
                               icon: Icon(Icons.clear,
                                   color: Colors.white.withOpacity(0.55)),
-                              onPressed: () => _searchCtrl.clear())
+                              onPressed: () {
+                                _searchCtrl.clear();
+                                setState(() => _query = '');
+                              })
                           : null,
                       border:        InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -202,9 +200,7 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
                 ),
 
               // ── Inhalt ────────────────────────────────
-              Expanded(
-                child: _buildBody(service, filtered),
-              ),
+              Expanded(child: _buildBody(service, filtered)),
             ],
           ),
         ),
@@ -213,6 +209,7 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
   }
 
   Widget _buildBody(OpSuchtSyncService service, List<OpSuchtItem> filtered) {
+    // Laden-Zustand (erstmaliges Laden)
     if (!service.itemsLoaded) {
       return Center(
         child: Column(
@@ -236,6 +233,7 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
       );
     }
 
+    // Fehler-Zustand (und kein Cache)
     if (service.error != null && filtered.isEmpty) {
       return _ErrorWidget(
         error:   service.error!,
@@ -243,6 +241,7 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
       );
     }
 
+    // Leer-Zustand
     if (filtered.isEmpty) {
       return Center(
         child: Text(
@@ -253,6 +252,7 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
       );
     }
 
+    // Grid-Ansicht
     if (_gridView) {
       return GridView.builder(
         physics:  const BouncingScrollPhysics(),
@@ -263,14 +263,15 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
           crossAxisSpacing: 10,
           childAspectRatio: 1.3,
         ),
-        itemCount:    filtered.length,
-        itemBuilder:  (context, i) => _ItemGridCard(
+        itemCount:   filtered.length,
+        itemBuilder: (context, i) => _ItemGridCard(
           item:  filtered[i],
           onTap: () => _openDetail(filtered[i]),
         ),
       );
     }
 
+    // Listen-Ansicht (Standard)
     return ListView.separated(
       physics:          const BouncingScrollPhysics(),
       padding:          const EdgeInsets.fromLTRB(16, 4, 16, 32),
@@ -296,6 +297,10 @@ class _ItemListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final name = item.displayname.isNotEmpty
+        ? item.displayname
+        : item.internalname;
+
     return OrbitGlassCard(
       child: InkWell(
         borderRadius: BorderRadius.circular(22),
@@ -304,7 +309,7 @@ class _ItemListTile extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
           child: Row(
             children: [
-              // Material-Icon
+              // Icon
               Container(
                 width: 42, height: 42,
                 decoration: BoxDecoration(
@@ -319,21 +324,19 @@ class _ItemListTile extends StatelessWidget {
               ),
               const SizedBox(width: 12),
 
-              // Name + Material
+              // Name + Material + Badges
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      item.displayname.isEmpty
-                          ? item.internalname
-                          : item.displayname,
+                      name,
                       style: const TextStyle(
                           color:      Colors.white,
                           fontWeight: FontWeight.w800,
                           fontSize:   14),
-                      maxLines:  1,
-                      overflow:  TextOverflow.ellipsis,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     if (item.material.isNotEmpty) ...[
                       const SizedBox(height: 2),
@@ -347,7 +350,6 @@ class _ItemListTile extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],
-                    // CMD Badge
                     if (item.cmd > 0) ...[
                       const SizedBox(height: 4),
                       Row(children: [
@@ -387,13 +389,18 @@ class _ItemGridCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final name = item.displayname.isNotEmpty
+        ? item.displayname
+        : item.internalname;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft, end: Alignment.bottomRight,
+            begin: Alignment.topLeft,
+            end:   Alignment.bottomRight,
             colors: [
               Colors.white.withOpacity(0.09),
               Colors.white.withOpacity(0.03),
@@ -410,9 +417,7 @@ class _ItemGridCard extends StatelessWidget {
                 color: const Color(0xFF00E676).withOpacity(0.60), size: 24),
             const Spacer(),
             Text(
-              item.displayname.isEmpty
-                  ? item.internalname
-                  : item.displayname,
+              name,
               style: const TextStyle(
                   color:      Colors.white,
                   fontWeight: FontWeight.w800,
@@ -438,6 +443,10 @@ class _ItemGridCard extends StatelessWidget {
 
 // ──────────────────────────────────────────────────────────────
 //  Item Detail Sheet
+//
+//  Zeigt alle verfügbaren Felder.
+//  lore wird als mehrzeiliger Text dargestellt.
+//  nbttag ist selektierbar + kopierbar.
 // ──────────────────────────────────────────────────────────────
 
 class _ItemDetailSheet extends StatelessWidget {
@@ -458,6 +467,9 @@ class _ItemDetailSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+    final name   = item.displayname.isNotEmpty
+        ? item.displayname
+        : item.internalname;
 
     return Padding(
       padding: EdgeInsets.only(left: 12, right: 12, bottom: 12 + bottom),
@@ -468,9 +480,10 @@ class _ItemDetailSheet extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize:        MainAxisSize.min,
+              crossAxisAlignment:  CrossAxisAlignment.start,
               children: [
+
                 // ── Titel ─────────────────────────────
                 Row(
                   children: [
@@ -480,9 +493,7 @@ class _ItemDetailSheet extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        item.displayname.isEmpty
-                            ? item.internalname
-                            : item.displayname,
+                        name,
                         style: const TextStyle(
                           color:      Colors.white,
                           fontWeight: FontWeight.w900,
@@ -499,35 +510,50 @@ class _ItemDetailSheet extends StatelessWidget {
                 const SizedBox(height: 12),
 
                 // ── Details ───────────────────────────
-                _InfoRow('Material',     item.material.isEmpty ? '—' : item.material),
-                _InfoRow('CMD',          item.cmd > 0 ? '${item.cmd}' : '—'),
+                if (item.material.isNotEmpty)
+                  _InfoRow('Material', item.material),
+                if (item.cmd > 0)
+                  _InfoRow('CMD', '${item.cmd}'),
+                if (item.damage > 0)
+                  _InfoRow('Damage', '${item.damage}'),
                 if (item.shardPrice.isNotEmpty)
                   _InfoRow('Shard-Preis', item.shardPrice),
                 if (item.alternativeRaritys.isNotEmpty)
                   _InfoRow('Seltenheiten', item.alternativeRaritys),
                 if (item.capturedAt.isNotEmpty)
-                  _InfoRow('Erfasst am', item.capturedAt),
-                _InfoRow('Internal Name', item.internalname),
+                  _InfoRow('Erfasst am', _fmtDate(item.capturedAt)),
+                if (item.internalname.isNotEmpty)
+                  _InfoRow('Internal Name', item.internalname),
 
-                // ── Lore ──────────────────────────────
+                // ── Lore (Array → mehrzeiliger Text) ──
                 if (item.lore.isNotEmpty) ...[
                   const SizedBox(height: 12),
                   _Divider(),
                   const SizedBox(height: 12),
                   _SectionLabel('LORE'),
                   const SizedBox(height: 8),
-                  Text(
-                    item.lore,
-                    style: TextStyle(
-                      color:      Colors.white.withOpacity(0.65),
-                      fontSize:   13,
-                      height:     1.5,
-                      fontFamily: 'monospace',
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color:        Colors.white.withOpacity(0.04),
+                      borderRadius: BorderRadius.circular(12),
+                      border:       Border.all(
+                          color: Colors.white.withOpacity(0.08)),
+                    ),
+                    child: Text(
+                      item.lore,
+                      style: TextStyle(
+                        color:      Colors.white.withOpacity(0.70),
+                        fontSize:   13,
+                        height:     1.6,
+                        fontFamily: 'monospace',
+                      ),
                     ),
                   ),
                 ],
 
-                // ── NBT-Tag (kopierbar) ────────────────
+                // ── NBT-Tag (selektierbar + kopierbar) ─
                 if (item.nbttag.isNotEmpty) ...[
                   const SizedBox(height: 12),
                   _Divider(),
@@ -538,19 +564,17 @@ class _ItemDetailSheet extends StatelessWidget {
                       _SectionLabel('NBT-TAG'),
                       GestureDetector(
                         onTap: () => _copy(context, item.nbttag, 'NBT-Tag'),
-                        child: Row(
-                          children: [
-                            Icon(Icons.copy,
-                                size:  14,
-                                color: Colors.white.withOpacity(0.45)),
-                            const SizedBox(width: 4),
-                            Text('Kopieren',
-                                style: TextStyle(
-                                    color:      Colors.white.withOpacity(0.45),
-                                    fontSize:   12,
-                                    fontWeight: FontWeight.w600)),
-                          ],
-                        ),
+                        child: Row(children: [
+                          Icon(Icons.copy,
+                              size:  14,
+                              color: Colors.white.withOpacity(0.45)),
+                          const SizedBox(width: 4),
+                          Text('Kopieren',
+                              style: TextStyle(
+                                  color:      Colors.white.withOpacity(0.45),
+                                  fontSize:   12,
+                                  fontWeight: FontWeight.w600)),
+                        ]),
                       ),
                     ],
                   ),
@@ -583,6 +607,16 @@ class _ItemDetailSheet extends StatelessWidget {
       ),
     );
   }
+
+  /// ISO-8601 → lesbares Datum
+  String _fmtDate(String iso) {
+    try {
+      final dt = DateTime.parse(iso).toLocal();
+      return '${dt.day.toString().padLeft(2, '0')}.${dt.month.toString().padLeft(2, '0')}.${dt.year}';
+    } catch (_) {
+      return iso;
+    }
+  }
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -611,6 +645,7 @@ class _Badge extends StatelessWidget {
 class _SectionLabel extends StatelessWidget {
   final String text;
   const _SectionLabel(this.text);
+
   @override
   Widget build(BuildContext context) => Text(
     text,
@@ -627,6 +662,7 @@ class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
   const _InfoRow(this.label, this.value);
+
   @override
   Widget build(BuildContext context) => Padding(
     padding: const EdgeInsets.only(bottom: 8),

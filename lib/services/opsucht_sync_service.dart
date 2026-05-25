@@ -13,29 +13,53 @@ import 'package:path_provider/path_provider.dart';
 //  Alle Daten werden lokal gecacht → Offline-Nutzung möglich.
 //
 //  GitHub-Quellen:
-//    Season/OPPASS: [dein Repo] (konfigurierbar)
-//    Items:         github.com/geldbedarf/OPMOD_REPO
+//    Season/OPPASS/Items: MobileGamer1577/orbit (lib/opsucht/)
+//    Items-Fallback:      github.com/geldbedarf/OPMOD_REPO
+//
+//  Korrekte Raw-URL-Basis (Dateien liegen unter lib/opsucht/):
+//    https://raw.githubusercontent.com/MobileGamer1577/orbit/main/lib/opsucht/
 //
 //  Cache-Ordner im App-Dokumente-Verzeichnis:
 //    opsucht/oppass/     → Bilder (1.png–20.png)
 //    opsucht/items/      → Item-JSON-Dateien
 //    opsucht/config/     → season.json
 //
+//  ✏️  URL ANPASSEN:
+//    Falls du die Dateien in einen anderen Ordner/Repo verschiebst,
+//    passe _kRepoRawBase unten an. Alle anderen Pfade werden
+//    automatisch daraus abgeleitet.
+//
 // ══════════════════════════════════════════════════════════════
 
 // ── Konfiguration ──────────────────────────────────────────────
 //
-//  ✏️  Hier deine GitHub-Repo-URL eintragen sobald verfügbar.
-//      Raw-URL Format: https://raw.githubusercontent.com/USER/REPO/BRANCH/
+//  ⚠️  WICHTIG: GitHub Raw-URLs brauchen immer das Format:
+//      https://raw.githubusercontent.com/USER/REPO/BRANCH/PFAD
+//      NICHT: https://github.com/USER/REPO/blob/BRANCH/PFAD
+//      (blob-Links sind Browser-Links, keine direkten Datei-Links)
 //
-const String _kOppassRawBase =
-    'https://raw.githubusercontent.com/MobileGamer1577/orbit/main/opsucht/oppass/';
-const String _kConfigRawBase =
-    'https://raw.githubusercontent.com/MobileGamer1577/orbit/main/opsucht/config/';
-const String _kItemsRawBase =
-    'https://raw.githubusercontent.com/geldbedarf/OPMOD_REPO/main/items/';
+//  Die Dateien liegen im Orbit-Repo unter lib/opsucht/:
+//    lib/opsucht/oppass/1.png ... 20.png
+//    lib/opsucht/config/season.json
+//    lib/opsucht/items/*.json
+//
+const String _kRepoRawBase =
+    'https://raw.githubusercontent.com/MobileGamer1577/orbit/main/lib/opsucht/';
+
+// Abgeleitete Pfade — bei Bedarf einzeln überschreiben
+const String _kOppassRawBase = _kRepoRawBase + 'oppass/';
+const String _kConfigRawBase = _kRepoRawBase + 'config/';
+const String _kItemsRawBase  = _kRepoRawBase + 'items/';
+
+// GitHub API für Items-Listing
 const String _kItemsApiBase =
+    'https://api.github.com/repos/MobileGamer1577/orbit/contents/lib/opsucht/items';
+
+// Fallback: externer OPMOD_REPO
+const String _kItemsFallbackApiBase =
     'https://api.github.com/repos/geldbedarf/OPMOD_REPO/contents/items';
+const String _kItemsFallbackRawBase =
+    'https://raw.githubusercontent.com/geldbedarf/OPMOD_REPO/main/items/';
 
 const Duration _kCacheTtl = Duration(hours: 6);
 const Duration _kTimeout  = Duration(seconds: 20);
@@ -45,10 +69,10 @@ const Duration _kTimeout  = Duration(seconds: 20);
 // ──────────────────────────────────────────────────────────────
 
 class OpSuchtSeasonData {
-  final String name;           // z.B. "Redstone"
+  final String name;
   final DateTime seasonEnd;
   final DateTime seasonStart;
-  final int totalImages;       // wie viele Bilder (1.png–N.png)
+  final int totalImages;
 
   const OpSuchtSeasonData({
     required this.name,
@@ -66,7 +90,6 @@ class OpSuchtSeasonData {
     );
   }
 
-  /// Fallback wenn kein season.json vorhanden
   factory OpSuchtSeasonData.fallback() => OpSuchtSeasonData(
     name:        'Season',
     seasonEnd:   DateTime.now().add(const Duration(days: 30)),
@@ -79,12 +102,23 @@ class OpSuchtSeasonData {
   bool get isEndingVeryLoon  => timeRemaining.inHours < 24;
 }
 
+// ──────────────────────────────────────────────────────────────
+//  OpSuchtItem — robuster Parser
+//
+//  Unterstützt:
+//    • lore als String ODER List<dynamic>
+//    • fehlende Felder → leerer String / 0
+//    • zusätzliche Felder → werden ignoriert
+//    • null-sicher für alle Felder
+// ──────────────────────────────────────────────────────────────
+
 class OpSuchtItem {
   final String internalname;
   final String displayname;
   final String material;
   final int    cmd;
-  final String lore;
+  final int    damage;
+  final String lore;           // immer String (Zeilen mit \n getrennt)
   final String nbttag;
   final String alternativeRaritys;
   final String shardPrice;
@@ -95,6 +129,7 @@ class OpSuchtItem {
     required this.displayname,
     required this.material,
     required this.cmd,
+    required this.damage,
     required this.lore,
     required this.nbttag,
     required this.alternativeRaritys,
@@ -102,17 +137,47 @@ class OpSuchtItem {
     required this.capturedAt,
   });
 
-  factory OpSuchtItem.fromJson(Map<String, dynamic> j) => OpSuchtItem(
-    internalname:       (j['internalname']        as String?) ?? '',
-    displayname:        (j['displayname']          as String?) ?? '',
-    material:           (j['material']             as String?) ?? '',
-    cmd:                (j['cmd']                  as int?)    ?? 0,
-    lore:               (j['lore']                 as String?) ?? '',
-    nbttag:             (j['nbttag']               as String?) ?? '',
-    alternativeRaritys: (j['alternative_raritys']  as String?) ?? '',
-    shardPrice:         (j['shard_price']           as String?) ?? '',
-    capturedAt:         (j['capturedAt']            as String?) ?? '',
-  );
+  factory OpSuchtItem.fromJson(Map<String, dynamic> j) {
+    // lore: String oder Array → immer String
+    String parseLore(dynamic raw) {
+      if (raw == null) return '';
+      if (raw is String) return raw;
+      if (raw is List) {
+        return raw
+            .map((e) => e?.toString() ?? '')
+            .join('\n')
+            .trim();
+      }
+      return raw.toString();
+    }
+
+    // int-Felder robust parsen
+    int parseInt(dynamic raw) {
+      if (raw == null) return 0;
+      if (raw is int) return raw;
+      if (raw is double) return raw.toInt();
+      return int.tryParse(raw.toString()) ?? 0;
+    }
+
+    String str(dynamic raw) => raw?.toString() ?? '';
+
+    return OpSuchtItem(
+      internalname:       str(j['internalname']),
+      displayname:        str(j['displayname']),
+      material:           str(j['material']),
+      cmd:                parseInt(j['cmd']),
+      damage:             parseInt(j['damage']),
+      lore:               parseLore(j['lore']),
+      nbttag:             str(j['nbttag']),
+      alternativeRaritys: str(j['alternative_raritys']),
+      shardPrice:         str(j['shard_price']),
+      capturedAt:         str(j['capturedAt']),
+    );
+  }
+
+  /// Suchindex — alle durchsuchbaren Felder
+  String get searchIndex =>
+      '$displayname $internalname $material'.toLowerCase();
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -123,8 +188,6 @@ class OpSuchtSyncService extends ChangeNotifier {
   static final OpSuchtSyncService instance = OpSuchtSyncService._();
   OpSuchtSyncService._();
 
-  // ── State ─────────────────────────────────────────────────
-
   bool _seasonLoaded   = false;
   bool _itemsLoaded    = false;
   bool _syncing        = false;
@@ -132,7 +195,7 @@ class OpSuchtSyncService extends ChangeNotifier {
 
   OpSuchtSeasonData? _season;
   List<OpSuchtItem> _items = [];
-  List<String>      _cachedImagePaths = [];   // lokale Pfade der OPPASS-Bilder
+  List<String>      _cachedImagePaths = [];
 
   bool get seasonLoaded => _seasonLoaded;
   bool get itemsLoaded  => _itemsLoaded;
@@ -196,10 +259,8 @@ class OpSuchtSyncService extends ChangeNotifier {
   // ══════════════════════════════════════════════════════════
 
   Future<void> loadSeason({bool force = false}) async {
-    // 1. Erst gecachte Daten anzeigen
     await _loadSeasonFromCache();
 
-    // 2. Wenn Cache gültig und kein Force → fertig
     if (!force && await _isCacheValid('season')) {
       _seasonLoaded = true;
       notifyListeners();
@@ -207,7 +268,6 @@ class OpSuchtSyncService extends ChangeNotifier {
       return;
     }
 
-    // 3. Von GitHub laden
     await _syncSeason();
     await _syncOppassImages();
   }
@@ -225,30 +285,44 @@ class OpSuchtSyncService extends ChangeNotifier {
 
   Future<void> _syncSeason() async {
     try {
+      // ✅ Korrekte Raw-URL: lib/opsucht/config/season.json
+      final url = '${_kConfigRawBase}season.json';
+      debugPrint('[OpSucht] Lade season.json: $url');
+
       final res = await http
-          .get(Uri.parse('${_kConfigRawBase}season.json'),
-               headers: {'User-Agent': 'Orbit-App'})
+          .get(Uri.parse(url),
+               headers: {
+                 'User-Agent': 'Orbit-App',
+                 'Cache-Control': 'no-cache',
+               })
           .timeout(_kTimeout);
+
+      debugPrint('[OpSucht] season.json HTTP ${res.statusCode}');
 
       if (res.statusCode == 200) {
         final json = jsonDecode(res.body) as Map<String, dynamic>;
         _season = OpSuchtSeasonData.fromJson(json);
 
-        // In Cache schreiben
         final dir  = await _configDir;
         await File('${dir.path}/season.json').writeAsString(res.body);
         await _setTimestamp('season');
+        debugPrint('[OpSucht] Season geladen: ${_season?.name}');
       }
-    } catch (_) {
-      // Kein season.json → Fallback nutzen
-      _season ??= OpSuchtSeasonData.fallback();
+    } catch (e) {
+      debugPrint('[OpSucht] season.json Fehler: $e');
     }
+
+    _season ??= OpSuchtSeasonData.fallback();
     _seasonLoaded = true;
     notifyListeners();
   }
 
   // ══════════════════════════════════════════════════════════
   //  OPPASS BILDER
+  //
+  //  Bilder liegen unter: lib/opsucht/oppass/1.png ... N.png
+  //  Raw-URL: _kOppassRawBase + "1.png"
+  //         = https://raw.githubusercontent.com/.../lib/opsucht/oppass/1.png
   // ══════════════════════════════════════════════════════════
 
   Future<void> _loadOppassImages() async {
@@ -262,6 +336,7 @@ class OpSuchtSyncService extends ChangeNotifier {
     }
 
     _cachedImagePaths = paths;
+    debugPrint('[OpSucht] ${paths.length} gecachte Bilder geladen');
     notifyListeners();
   }
 
@@ -273,18 +348,29 @@ class OpSuchtSyncService extends ChangeNotifier {
     for (int i = 1; i <= total; i++) {
       final file = File('${dir.path}/$i.png');
 
-      // Nur herunterladen wenn noch nicht lokal vorhanden
       if (!await file.exists()) {
+        // ✅ Korrekte Raw-URL: lib/opsucht/oppass/1.png
+        final url = '$_kOppassRawBase$i.png';
+        debugPrint('[OpSucht] Lade Bild $i: $url');
+
         try {
           final res = await http
-              .get(Uri.parse('$_kOppassRawBase$i.png'),
-                   headers: {'User-Agent': 'Orbit-App'})
+              .get(Uri.parse(url),
+                   headers: {
+                     'User-Agent': 'Orbit-App',
+                     'Cache-Control': 'no-cache',
+                   })
               .timeout(_kTimeout);
-          if (res.statusCode == 200) {
+
+          debugPrint('[OpSucht] Bild $i → HTTP ${res.statusCode} (${res.bodyBytes.length} bytes)');
+
+          if (res.statusCode == 200 && res.bodyBytes.isNotEmpty) {
             await file.writeAsBytes(res.bodyBytes);
+          } else {
+            continue;
           }
-        } catch (_) {
-          // Bild nicht verfügbar → überspringen
+        } catch (e) {
+          debugPrint('[OpSucht] Bild $i Fehler: $e');
           continue;
         }
       }
@@ -293,44 +379,65 @@ class OpSuchtSyncService extends ChangeNotifier {
     }
 
     _cachedImagePaths = paths;
+    debugPrint('[OpSucht] ${paths.length} Bilder gesamt verfügbar');
     notifyListeners();
   }
 
   // ══════════════════════════════════════════════════════════
   //  ITEMS LADEN
+  //
+  //  Primär:  lib/opsucht/items/ im Orbit-Repo
+  //  Fallback: geldbedarf/OPMOD_REPO
   // ══════════════════════════════════════════════════════════
 
   Future<void> loadItems({bool force = false}) async {
-    // 1. Erst aus Cache
     await _loadItemsFromCache();
     if (_items.isNotEmpty) {
       _itemsLoaded = true;
       notifyListeners();
     }
 
-    // 2. Cache prüfen
     if (!force && await _isCacheValid('items') && _items.isNotEmpty) return;
 
-    // 3. Von GitHub laden
     await _syncItems();
   }
 
   Future<void> _loadItemsFromCache() async {
     try {
-      final dir   = await _itemsDir;
-      final files = dir.listSync().whereType<File>()
+      final dir = await _itemsDir;
+      if (!await dir.exists()) return;
+
+      final files = dir.listSync()
+          .whereType<File>()
           .where((f) => f.path.endsWith('.json'))
           .toList();
 
       final loaded = <OpSuchtItem>[];
       for (final file in files) {
         try {
-          final json = jsonDecode(await file.readAsString()) as Map<String, dynamic>;
-          loaded.add(OpSuchtItem.fromJson(json));
-        } catch (_) {}
+          final json = jsonDecode(await file.readAsString());
+          if (json is Map<String, dynamic>) {
+            final item = OpSuchtItem.fromJson(json);
+            if (item.internalname.isNotEmpty || item.displayname.isNotEmpty) {
+              loaded.add(item);
+            }
+          }
+        } catch (e) {
+          debugPrint('[OpSucht] Cache-Lesefehler ${file.path}: $e');
+        }
       }
+
+      loaded.sort((a, b) {
+        final nameA = a.displayname.isNotEmpty ? a.displayname : a.internalname;
+        final nameB = b.displayname.isNotEmpty ? b.displayname : b.internalname;
+        return nameA.toLowerCase().compareTo(nameB.toLowerCase());
+      });
+
       _items = loaded;
-    } catch (_) {}
+      debugPrint('[OpSucht] ${_items.length} Items aus Cache');
+    } catch (e) {
+      debugPrint('[OpSucht] Item-Cache Fehler: $e');
+    }
   }
 
   Future<void> _syncItems() async {
@@ -338,79 +445,173 @@ class OpSuchtSyncService extends ChangeNotifier {
     _error   = null;
     notifyListeners();
 
+    bool success = await _syncItemsFromRepo(
+      apiUrl:  _kItemsApiBase,
+      rawBase: _kItemsRawBase,
+      label:   'Orbit-Repo',
+    );
+
+    if (!success) {
+      debugPrint('[OpSucht] Orbit-Repo leer → Fallback zu OPMOD_REPO');
+      success = await _syncItemsFromRepo(
+        apiUrl:  _kItemsFallbackApiBase,
+        rawBase: _kItemsFallbackRawBase,
+        label:   'OPMOD_REPO',
+      );
+    }
+
+    _syncing     = false;
+    _itemsLoaded = true;
+
+    if (!success && _items.isEmpty) {
+      _error = 'Keine Items gefunden. Prüfe deine Internetverbindung.';
+    }
+
+    notifyListeners();
+  }
+
+  Future<bool> _syncItemsFromRepo({
+    required String apiUrl,
+    required String rawBase,
+    required String label,
+  }) async {
     try {
-      // GitHub API → Liste aller JSON-Dateien im items/ Ordner
+      debugPrint('[OpSucht] Items von $label: $apiUrl');
+
       final res = await http
-          .get(Uri.parse(_kItemsApiBase),
+          .get(Uri.parse(apiUrl),
                headers: {
                  'User-Agent': 'Orbit-App',
                  'Accept':     'application/vnd.github+json',
+                 'Cache-Control': 'no-cache',
                })
           .timeout(const Duration(seconds: 30));
 
-      if (res.statusCode != 200) throw Exception('HTTP ${res.statusCode}');
+      debugPrint('[OpSucht] $label API → HTTP ${res.statusCode}');
 
-      final listing = jsonDecode(res.body) as List;
+      if (res.statusCode != 200) return false;
+
+      final listing = jsonDecode(res.body);
+      if (listing is! List) return false;
+
       final jsonFiles = listing
           .whereType<Map<String, dynamic>>()
-          .where((f) => (f['name'] as String).endsWith('.json'))
+          .where((f) {
+            final name = (f['name'] as String?) ?? '';
+            final type = (f['type'] as String?) ?? '';
+            return name.endsWith('.json') && type == 'file';
+          })
           .toList();
+
+      debugPrint('[OpSucht] $label: ${jsonFiles.length} JSON-Dateien');
+      if (jsonFiles.isEmpty) return false;
 
       final dir    = await _itemsDir;
       final loaded = <OpSuchtItem>[];
 
-      // Items herunterladen (parallel, max 10 gleichzeitig)
-      const batchSize = 10;
+      // Parallel laden, max 5 gleichzeitig
+      const batchSize = 5;
       for (int start = 0; start < jsonFiles.length; start += batchSize) {
-        final batch = jsonFiles.skip(start).take(batchSize);
+        final batch = jsonFiles.skip(start).take(batchSize).toList();
+
         await Future.wait(batch.map((f) async {
-          final name    = f['name'] as String;
-          final rawUrl  = f['download_url'] as String? ??
-              '$_kItemsRawBase$name';
+          final name = (f['name'] as String?) ?? '';
+          if (name.isEmpty) return;
+
+          final rawUrl    = (f['download_url'] as String?) ?? '$rawBase$name';
           final cacheFile = File('${dir.path}/$name');
 
           try {
             final itemRes = await http
                 .get(Uri.parse(rawUrl),
-                     headers: {'User-Agent': 'Orbit-App'})
+                     headers: {
+                       'User-Agent': 'Orbit-App',
+                       'Cache-Control': 'no-cache',
+                     })
                 .timeout(_kTimeout);
-            if (itemRes.statusCode == 200) {
+
+            if (itemRes.statusCode == 200 && itemRes.body.isNotEmpty) {
               await cacheFile.writeAsString(itemRes.body);
-              final json =
-                  jsonDecode(itemRes.body) as Map<String, dynamic>;
-              loaded.add(OpSuchtItem.fromJson(json));
+              final json = jsonDecode(itemRes.body);
+              if (json is Map<String, dynamic>) {
+                final item = OpSuchtItem.fromJson(json);
+                if (item.internalname.isNotEmpty || item.displayname.isNotEmpty) {
+                  loaded.add(item);
+                }
+              }
             }
-          } catch (_) {
-            // Lokale Kopie nutzen falls vorhanden
+          } catch (e) {
+            debugPrint('[OpSucht] Item $name Fehler: $e');
+            // Lokale Kopie als Fallback
             if (await cacheFile.exists()) {
               try {
-                final json = jsonDecode(await cacheFile.readAsString())
-                    as Map<String, dynamic>;
-                loaded.add(OpSuchtItem.fromJson(json));
+                final json = jsonDecode(await cacheFile.readAsString());
+                if (json is Map<String, dynamic>) {
+                  final item = OpSuchtItem.fromJson(json);
+                  if (item.internalname.isNotEmpty || item.displayname.isNotEmpty) {
+                    loaded.add(item);
+                  }
+                }
               } catch (_) {}
             }
           }
         }));
       }
 
+      if (loaded.isEmpty) return false;
+
+      loaded.sort((a, b) {
+        final nameA = a.displayname.isNotEmpty ? a.displayname : a.internalname;
+        final nameB = b.displayname.isNotEmpty ? b.displayname : b.internalname;
+        return nameA.toLowerCase().compareTo(nameB.toLowerCase());
+      });
+
       _items = loaded;
       await _setTimestamp('items');
+      debugPrint('[OpSucht] $label: ${loaded.length} Items geladen');
+      return true;
 
     } catch (e) {
-      _error = e.toString();
-      // Falls Cache vorhanden, nutzen
+      debugPrint('[OpSucht] $label Fehler: $e');
       if (_items.isEmpty) await _loadItemsFromCache();
-    } finally {
-      _syncing      = false;
-      _itemsLoaded  = true;
-      notifyListeners();
+      return false;
     }
   }
 
   // ── Manueller Refresh ─────────────────────────────────────
+  //
+  //  Löscht Timestamps + Season-Cache → erzwingt kompletten Neu-Download.
 
   Future<void> forceRefreshAll() async {
+    debugPrint('[OpSucht] Force-Refresh');
+
+    try {
+      final dir  = await getApplicationDocumentsDirectory();
+      final base = '${dir.path}/opsucht';
+      for (final key in ['season', 'items']) {
+        final ts = File('$base/.ts_$key');
+        if (await ts.exists()) await ts.delete();
+      }
+      final seasonFile = File('$base/config/season.json');
+      if (await seasonFile.exists()) await seasonFile.delete();
+    } catch (_) {}
+
+    _seasonLoaded = false;
+    _itemsLoaded  = false;
+    notifyListeners();
+
     await loadSeason(force: true);
     await loadItems(force: true);
+  }
+
+  // ── Suche ─────────────────────────────────────────────────
+  //
+  //  Durchsucht displayname, internalname, material.
+  //  Groß-/Kleinschreibung wird ignoriert.
+
+  List<OpSuchtItem> search(String query) {
+    if (query.trim().isEmpty) return _items;
+    final q = query.trim().toLowerCase();
+    return _items.where((item) => item.searchIndex.contains(q)).toList();
   }
 }

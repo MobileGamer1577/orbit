@@ -61,6 +61,7 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 // ── Header ────────────────────────────────
                 Row(
                   children: [
@@ -79,18 +80,18 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
                           const Text(
                             'OpSucht.net',
                             style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white,
+                              fontSize:      26,
+                              fontWeight:    FontWeight.w900,
+                              color:         Colors.white,
                               letterSpacing: -0.3,
                             ),
                           ),
                           Text(
                             'OPPASS • Items • und mehr',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.50),
+                              color:      Colors.white.withOpacity(0.50),
                               fontWeight: FontWeight.w600,
-                              fontSize: 15,
+                              fontSize:   15,
                             ),
                           ),
                         ],
@@ -111,7 +112,9 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
                 const SizedBox(height: 8),
 
                 // ── Season Banner ─────────────────────────
-                if (service.seasonLoaded) _SeasonBanner(season: season),
+                // Wird erst gezeigt wenn Season-Daten geladen sind
+                if (service.seasonLoaded)
+                  _SeasonBanner(season: season),
 
                 const SizedBox(height: 16),
 
@@ -121,29 +124,32 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
                     physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     children: [
+
                       // OPPASS
                       _HubCard(
-                        icon: Icons.photo_library_outlined,
+                        icon:      Icons.photo_library_outlined,
                         iconColor: const Color(0xFF00D4FF),
-                        title: 'OPPASS',
-                        subtitle: 'Season Bilder & Übersicht',
+                        title:     'OPPASS',
+                        subtitle:  'Season Bilder & Übersicht',
                         badge: service.oppassImages.isEmpty
                             ? null
                             : '${service.oppassImages.length} Bilder',
-                        onTap: () => _push(context, const OpSuchtOppassScreen()),
+                        onTap: () => _push(
+                            context, const OpSuchtOppassScreen()),
                       ),
                       const SizedBox(height: 12),
 
                       // Items
                       _HubCard(
-                        icon: Icons.inventory_2_outlined,
+                        icon:      Icons.inventory_2_outlined,
                         iconColor: const Color(0xFF00E676),
-                        title: 'Item Datenbank',
-                        subtitle: 'Alle OpSucht Items durchsuchen',
+                        title:     'Item Datenbank',
+                        subtitle:  'Alle OpSucht Items durchsuchen',
                         badge: service.items.isNotEmpty
                             ? '${service.items.length} Items'
                             : null,
-                        onTap: () => _push(context, const OpSuchtItemsScreen()),
+                        onTap: () => _push(
+                            context, const OpSuchtItemsScreen()),
                       ),
                     ],
                   ),
@@ -159,6 +165,13 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
 
 // ──────────────────────────────────────────────────────────────
 //  Season Banner
+//
+//  Zeigt:
+//    • Season-Name im Format "[Name] Season"
+//    • Countdown (Tage oder Stunden)
+//    • Fortschrittsbalken
+//    • "Season endet bald"-Badge wenn < 2 Tage
+//    • Puls-Animation wenn < 24h
 // ──────────────────────────────────────────────────────────────
 
 class _SeasonBanner extends StatefulWidget {
@@ -195,25 +208,30 @@ class _SeasonBannerState extends State<_SeasonBanner>
     super.dispose();
   }
 
-  String _buildCountdownText() {
+  String _countdownText() {
     final rem = widget.season.timeRemaining;
     if (rem.isNegative) return 'Season beendet';
-    if (rem.inHours < 24) {
-      return '${rem.inHours} Stunden verbleibend';
-    }
+    if (rem.inHours < 24) return '${rem.inHours} Stunden verbleibend';
     return '${rem.inDays} Tage verbleibend';
   }
 
   @override
   Widget build(BuildContext context) {
-    final season      = widget.season;
+    final season       = widget.season;
     final isEndingSoon = season.isEndingSoon;
     final isVeryLoon   = season.isEndingVeryLoon;
-    final countdownColor = isVeryLoon
+    final color = isVeryLoon
         ? const Color(0xFFFF1744)
         : isEndingSoon
         ? const Color(0xFFFF8C00)
         : const Color(0xFF00D4FF);
+
+    // Fortschritts-Berechnung
+    final total    = season.seasonEnd.difference(season.seasonStart);
+    final elapsed  = DateTime.now().difference(season.seasonStart);
+    final progress = (total.inMilliseconds == 0)
+        ? 0.0
+        : (elapsed.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -222,50 +240,48 @@ class _SeasonBannerState extends State<_SeasonBanner>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Season Name
+
+            // ✅ Season-Name Format: "[Name] Season"
             Text(
               '${season.name} Season',
               style: const TextStyle(
-                color:      Colors.white,
-                fontSize:   18,
-                fontWeight: FontWeight.w900,
+                color:         Colors.white,
+                fontSize:      18,
+                fontWeight:    FontWeight.w900,
                 letterSpacing: -0.3,
               ),
             ),
             const SizedBox(height: 8),
 
-            // Countdown + "endet bald" Badge
+            // Countdown + Badge
             Row(
               children: [
-                // Countdown
                 ScaleTransition(
                   scale: _pulseAnim,
                   child: Text(
-                    _buildCountdownText(),
+                    _countdownText(),
                     style: TextStyle(
-                      color:      countdownColor,
+                      color:      color,
                       fontSize:   15,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
                 ),
                 const Spacer(),
-
-                // "Season endet bald" Badge
                 if (isEndingSoon)
                   Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      color:        countdownColor.withOpacity(0.15),
+                      color:        color.withOpacity(0.15),
                       borderRadius: BorderRadius.circular(8),
-                      border:       Border.all(
-                          color: countdownColor.withOpacity(0.45)),
+                      border: Border.all(
+                          color: color.withOpacity(0.45)),
                     ),
                     child: Text(
                       isVeryLoon ? '⚠ < 24h' : 'Season endet bald',
                       style: TextStyle(
-                        color:      countdownColor,
+                        color:      color,
                         fontSize:   11,
                         fontWeight: FontWeight.w800,
                       ),
@@ -276,23 +292,16 @@ class _SeasonBannerState extends State<_SeasonBanner>
 
             const SizedBox(height: 10),
 
-            // Progress Bar (Season-Fortschritt)
-            Builder(builder: (_) {
-              final total   = season.seasonEnd.difference(season.seasonStart);
-              final elapsed = DateTime.now().difference(season.seasonStart);
-              final progress = (elapsed.inMilliseconds /
-                      total.inMilliseconds.toDouble())
-                  .clamp(0.0, 1.0);
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(6),
-                child: LinearProgressIndicator(
-                  value:           progress,
-                  minHeight:       5,
-                  backgroundColor: Colors.white.withOpacity(0.10),
-                  valueColor: AlwaysStoppedAnimation(countdownColor),
-                ),
-              );
-            }),
+            // Fortschrittsbalken
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: LinearProgressIndicator(
+                value:           progress,
+                minHeight:       5,
+                backgroundColor: Colors.white.withOpacity(0.10),
+                valueColor:      AlwaysStoppedAnimation(color),
+              ),
+            ),
           ],
         ),
       ),
@@ -305,11 +314,11 @@ class _SeasonBannerState extends State<_SeasonBanner>
 // ──────────────────────────────────────────────────────────────
 
 class _HubCard extends StatelessWidget {
-  final IconData  icon;
-  final Color     iconColor;
-  final String    title;
-  final String    subtitle;
-  final String?   badge;
+  final IconData     icon;
+  final Color        iconColor;
+  final String       title;
+  final String       subtitle;
+  final String?      badge;
   final VoidCallback onTap;
 
   const _HubCard({
@@ -336,7 +345,7 @@ class _HubCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color:        iconColor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(15),
-                  border:       Border.all(
+                  border: Border.all(
                       color: iconColor.withOpacity(0.35), width: 1.2),
                 ),
                 child: Icon(icon, color: iconColor, size: 26),
@@ -369,7 +378,7 @@ class _HubCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color:        iconColor.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(8),
-                    border:       Border.all(
+                    border: Border.all(
                         color: iconColor.withOpacity(0.30)),
                   ),
                   child: Text(badge!,
