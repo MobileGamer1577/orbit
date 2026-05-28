@@ -51,14 +51,27 @@ const String _kOppassRawBase = _kRepoRawBase + 'oppass/';
 const String _kConfigRawBase = _kRepoRawBase + 'config/';
 const String _kItemsRawBase  = _kRepoRawBase + 'items/';
 
-// GitHub API für Items-Listing
-const String _kItemsApiBase =
-    'https://api.github.com/repos/MobileGamer1577/orbit/contents/lib/opsucht/items';
+// ── GitHub API ─────────────────────────────────────────────────
+//
+//  ⚠️  WICHTIG: GitHub Contents API hat ein Hard-Limit von 1000 Dateien!
+//      Bei mehr als 1000 Items → Git Trees API mit recursive=1 verwenden.
+//      Die Trees API liefert ALLE Dateien ohne Limit.
+//
+//  Git Trees API (unbegrenzt, alle Dateien auf einmal):
+//    GET /repos/{owner}/{repo}/git/trees/{branch}?recursive=1
+//    Antwort: { "tree": [{ "path": "lib/opsucht/items/item.json", "type": "blob", "url": "..." }] }
+//
+const String _kItemsTreeApi =
+    'https://api.github.com/repos/MobileGamer1577/orbit/git/trees/main?recursive=1';
 
-// Fallback: externer OPMOD_REPO
-const String _kItemsFallbackApiBase =
-    'https://api.github.com/repos/geldbedarf/OPMOD_REPO/contents/items';
-const String _kItemsFallbackRawBase =
+// Items-Ordner im Repo (zum Filtern der Tree-Ergebnisse)
+const String _kItemsRepoPath = 'lib/opsucht/items/';
+
+// Fallback: externer OPMOD_REPO (ebenfalls mit Trees API)
+const String _kItemsFallbackTreeApi =
+    'https://api.github.com/repos/geldbedarf/OPMOD_REPO/git/trees/main?recursive=1';
+const String _kItemsFallbackRepoPath = 'items/';
+const String _kItemsFallbackRawBase  =
     'https://raw.githubusercontent.com/geldbedarf/OPMOD_REPO/main/items/';
 
 const Duration _kCacheTtl = Duration(hours: 6);
@@ -386,8 +399,18 @@ class OpSuchtSyncService extends ChangeNotifier {
   // ══════════════════════════════════════════════════════════
   //  ITEMS LADEN
   //
-  //  Primär:  lib/opsucht/items/ im Orbit-Repo
-  //  Fallback: geldbedarf/OPMOD_REPO
+  //  ⚠️  WICHTIG — Warum Git Trees API statt Contents API?
+  //
+  //  Die GitHub Contents API liefert maximal 1000 Einträge.
+  //  Bei 2321+ Item-Dateien werden die restlichen einfach
+  //  abgeschnitten — ohne Fehlermeldung!
+  //
+  //  Die Git Trees API mit recursive=1 liefert ALLE Dateien
+  //  des Repos auf einmal, ohne Limit. Wir filtern dann
+  //  lokal nach lib/opsucht/items/*.json.
+  //
+  //  Primär:  lib/opsucht/items/ im Orbit-Repo (Trees API)
+  //  Fallback: geldbedarf/OPMOD_REPO (Trees API)
   // ══════════════════════════════════════════════════════════
 
   Future<void> loadItems({bool force = false}) async {
@@ -445,18 +468,20 @@ class OpSuchtSyncService extends ChangeNotifier {
     _error   = null;
     notifyListeners();
 
-    bool success = await _syncItemsFromRepo(
-      apiUrl:  _kItemsApiBase,
-      rawBase: _kItemsRawBase,
-      label:   'Orbit-Repo',
+    bool success = await _syncItemsViaTreesApi(
+      treeApiUrl: _kItemsTreeApi,
+      repoPath:   _kItemsRepoPath,
+      rawBase:    _kItemsRawBase,
+      label:      'Orbit-Repo',
     );
 
     if (!success) {
       debugPrint('[OpSucht] Orbit-Repo leer → Fallback zu OPMOD_REPO');
-      success = await _syncItemsFromRepo(
-        apiUrl:  _kItemsFallbackApiBase,
-        rawBase: _kItemsFallbackRawBase,
-        label:   'OPMOD_REPO',
+      success = await _syncItemsViaTreesApi(
+        treeApiUrl: _kItemsFallbackTreeApi,
+        repoPath:   _kItemsFallbackRepoPath,
+        rawBase:    _kItemsFallbackRawBase,
+        label:      'OPMOD_REPO',
       );
     }
 
@@ -470,56 +495,86 @@ class OpSuchtSyncService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> _syncItemsFromRepo({
-    required String apiUrl,
+  // ──────────────────────────────────────────────────────────
+  //  _syncItemsViaTreesApi
+  //
+  //  Verwendet die Git Trees API (recursive=1) statt der
+  //  Contents API → überwindet das 1000-Einträge-Limit.
+  //
+  //  Ablauf:
+  //    1. GET /git/trees/main?recursive=1
+  //       → Alle Dateien des Repos als flache Liste
+  //    2. Filtern: path beginnt mit repoPath + endet mit .json
+  //    3. Jede Datei via Raw-URL herunterladen + cachen
+  //    4. JSON parsen + in _items speichern
+  //
+  //  Hinweis:
+  //    truncated=true bedeutet der Tree ist zu groß für eine
+  //    Antwort. In diesem Fall wäre Pagination nötig — aber
+  //    das Orbit-Repo mit 2321 Items liegt weit darunter.
+  // ──────────────────────────────────────────────────────────
+  Future<bool> _syncItemsViaTreesApi({
+    required String treeApiUrl,
+    required String repoPath,
     required String rawBase,
     required String label,
   }) async {
     try {
-      debugPrint('[OpSucht] Items von $label: $apiUrl');
+      debugPrint('[OpSucht] Trees API: $treeApiUrl');
 
       final res = await http
-          .get(Uri.parse(apiUrl),
+          .get(Uri.parse(treeApiUrl),
                headers: {
                  'User-Agent': 'Orbit-App',
                  'Accept':     'application/vnd.github+json',
                  'Cache-Control': 'no-cache',
                })
-          .timeout(const Duration(seconds: 30));
+          .timeout(const Duration(seconds: 60)); // Trees-Antwort kann größer sein
 
-      debugPrint('[OpSucht] $label API → HTTP ${res.statusCode}');
+      debugPrint('[OpSucht] $label Trees API → HTTP ${res.statusCode}');
 
       if (res.statusCode != 200) return false;
 
-      final listing = jsonDecode(res.body);
-      if (listing is! List) return false;
+      final treeData = jsonDecode(res.body) as Map<String, dynamic>;
 
-      final jsonFiles = listing
+      // truncated=true → Tree zu groß (sehr unwahrscheinlich)
+      final truncated = treeData['truncated'] as bool? ?? false;
+      if (truncated) {
+        debugPrint('[OpSucht] ⚠️  Tree ist truncated! Einige Dateien fehlen möglicherweise.');
+      }
+
+      final allFiles = (treeData['tree'] as List? ?? [])
           .whereType<Map<String, dynamic>>()
-          .where((f) {
-            final name = (f['name'] as String?) ?? '';
-            final type = (f['type'] as String?) ?? '';
-            return name.endsWith('.json') && type == 'file';
-          })
           .toList();
 
-      debugPrint('[OpSucht] $label: ${jsonFiles.length} JSON-Dateien');
-      if (jsonFiles.isEmpty) return false;
+      // Nur JSON-Dateien im Items-Ordner
+      final itemFiles = allFiles.where((f) {
+        final path = (f['path'] as String?) ?? '';
+        final type = (f['type'] as String?) ?? '';
+        return type == 'blob'
+            && path.startsWith(repoPath)
+            && path.endsWith('.json');
+      }).toList();
+
+      debugPrint('[OpSucht] $label: ${itemFiles.length} Item-Dateien gefunden');
+      if (itemFiles.isEmpty) return false;
 
       final dir    = await _itemsDir;
       final loaded = <OpSuchtItem>[];
 
-      // Parallel laden, max 5 gleichzeitig
-      const batchSize = 5;
-      for (int start = 0; start < jsonFiles.length; start += batchSize) {
-        final batch = jsonFiles.skip(start).take(batchSize).toList();
+      // Parallel herunterladen — max 10 gleichzeitig
+      const batchSize = 10;
+      for (int start = 0; start < itemFiles.length; start += batchSize) {
+        final batch = itemFiles.skip(start).take(batchSize).toList();
 
         await Future.wait(batch.map((f) async {
-          final name = (f['name'] as String?) ?? '';
-          if (name.isEmpty) return;
+          final path      = (f['path'] as String?) ?? '';
+          final fileName  = path.split('/').last;
+          if (fileName.isEmpty) return;
 
-          final rawUrl    = (f['download_url'] as String?) ?? '$rawBase$name';
-          final cacheFile = File('${dir.path}/$name');
+          // Raw-URL aus Dateiname bauen
+          final rawUrl    = '$rawBase$fileName';
+          final cacheFile = File('${dir.path}/$fileName');
 
           try {
             final itemRes = await http
@@ -541,7 +596,7 @@ class OpSuchtSyncService extends ChangeNotifier {
               }
             }
           } catch (e) {
-            debugPrint('[OpSucht] Item $name Fehler: $e');
+            debugPrint('[OpSucht] Item $fileName Fehler: $e');
             // Lokale Kopie als Fallback
             if (await cacheFile.exists()) {
               try {
@@ -556,6 +611,12 @@ class OpSuchtSyncService extends ChangeNotifier {
             }
           }
         }));
+
+        // Zwischenstand melden (UI bleibt responsive)
+        if (loaded.isNotEmpty) {
+          _items = List.of(loaded);
+          notifyListeners();
+        }
       }
 
       if (loaded.isEmpty) return false;
@@ -568,7 +629,7 @@ class OpSuchtSyncService extends ChangeNotifier {
 
       _items = loaded;
       await _setTimestamp('items');
-      debugPrint('[OpSucht] $label: ${loaded.length} Items geladen');
+      debugPrint('[OpSucht] $label: ${loaded.length} Items erfolgreich geladen');
       return true;
 
     } catch (e) {

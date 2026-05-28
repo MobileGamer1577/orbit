@@ -18,7 +18,7 @@ import '../widgets/orbit_glass_card.dart';
 //  Features:
 //    • Suche nach displayname, internalname, material
 //    • Grid/List-Toggle
-//    • Detail-Sheet bei Tap (inkl. Lore + NBT-Tag kopierbar)
+//    • Detail-Sheet bei Tap (inkl. Lore + NBT-Tag einklappbar)
 //    • Filter-Struktur vorbereitet für spätere Erweiterung
 //
 // ══════════════════════════════════════════════════════════════
@@ -444,14 +444,30 @@ class _ItemGridCard extends StatelessWidget {
 // ──────────────────────────────────────────────────────────────
 //  Item Detail Sheet
 //
-//  Zeigt alle verfügbaren Felder.
-//  lore wird als mehrzeiliger Text dargestellt.
-//  nbttag ist selektierbar + kopierbar.
+//  Fix:
+//    • DraggableScrollableSheet → Sheet beginnt bei 60% und
+//      kann auf 95% gezogen werden. Kein Overflow mehr.
+//    • Header ist sticky oben (bleibt beim Scrollen stehen)
+//    • NBT-Tag ist einklappbar (ExpansionTile-Style)
+//
+//  Was ist der NBT-Tag?
+//    NBT = Named Binary Tag — das Minecraft-Datenformat für Items.
+//    Der NBT-Tag enthält alle Item-Eigenschaften wie Verzauberungen,
+//    Custom-Name, Lore usw. als strukturierten Text.
+//    Er kann mit /give oder anderen Befehlen direkt genutzt werden.
 // ──────────────────────────────────────────────────────────────
 
-class _ItemDetailSheet extends StatelessWidget {
+class _ItemDetailSheet extends StatefulWidget {
   final OpSuchtItem item;
   const _ItemDetailSheet({required this.item});
+
+  @override
+  State<_ItemDetailSheet> createState() => _ItemDetailSheetState();
+}
+
+class _ItemDetailSheetState extends State<_ItemDetailSheet> {
+  // NBT-Tag standardmäßig eingeklappt
+  bool _nbtExpanded = false;
 
   void _copy(BuildContext context, String text, String label) {
     Clipboard.setData(ClipboardData(text: text));
@@ -466,149 +482,276 @@ class _ItemDetailSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
+    final item   = widget.item;
     final name   = item.displayname.isNotEmpty
         ? item.displayname
         : item.internalname;
 
-    return Padding(
-      padding: EdgeInsets.only(left: 12, right: 12, bottom: 12 + bottom),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
-        child: Material(
-          color: const Color(0xFF1A1026).withOpacity(0.97),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
+    // ✅ Fix: DraggableScrollableSheet verhindert Header-Overflow
+    //    Das Sheet startet bei 60% Höhe, max 95%.
+    //    Der Inhalt scrollt intern — Header bleibt immer sichtbar.
+    return DraggableScrollableSheet(
+      initialChildSize: 0.6,
+      minChildSize:     0.4,
+      maxChildSize:     0.95,
+      expand:           false,
+      builder: (context, scrollController) {
+        return ClipRRect(
+          borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(24)),
+          child: Material(
+            color: const Color(0xFF1A1026),
             child: Column(
-              mainAxisSize:        MainAxisSize.min,
-              crossAxisAlignment:  CrossAxisAlignment.start,
               children: [
 
-                // ── Titel ─────────────────────────────
-                Row(
-                  children: [
-                    Icon(Icons.inventory_2_outlined,
-                        color: const Color(0xFF00E676).withOpacity(0.80),
-                        size: 24),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        name,
-                        style: const TextStyle(
-                          color:      Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontSize:   18,
-                          height:     1.2,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 14),
-                _Divider(),
-                const SizedBox(height: 12),
-
-                // ── Details ───────────────────────────
-                if (item.material.isNotEmpty)
-                  _InfoRow('Material', item.material),
-                if (item.cmd > 0)
-                  _InfoRow('CMD', '${item.cmd}'),
-                if (item.damage > 0)
-                  _InfoRow('Damage', '${item.damage}'),
-                if (item.shardPrice.isNotEmpty)
-                  _InfoRow('Shard-Preis', item.shardPrice),
-                if (item.alternativeRaritys.isNotEmpty)
-                  _InfoRow('Seltenheiten', item.alternativeRaritys),
-                if (item.capturedAt.isNotEmpty)
-                  _InfoRow('Erfasst am', _fmtDate(item.capturedAt)),
-                if (item.internalname.isNotEmpty)
-                  _InfoRow('Internal Name', item.internalname),
-
-                // ── Lore (Array → mehrzeiliger Text) ──
-                if (item.lore.isNotEmpty) ...[
-                  const SizedBox(height: 12),
-                  _Divider(),
-                  const SizedBox(height: 12),
-                  _SectionLabel('LORE'),
-                  const SizedBox(height: 8),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color:        Colors.white.withOpacity(0.04),
-                      borderRadius: BorderRadius.circular(12),
-                      border:       Border.all(
+                // ── Sticky Header (scrollt nicht mit) ────
+                Container(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF1A1026),
+                    border: Border(
+                      bottom: BorderSide(
                           color: Colors.white.withOpacity(0.08)),
                     ),
-                    child: Text(
-                      item.lore,
-                      style: TextStyle(
-                        color:      Colors.white.withOpacity(0.70),
-                        fontSize:   13,
-                        height:     1.6,
-                        fontFamily: 'monospace',
-                      ),
-                    ),
                   ),
-                ],
-
-                // ── NBT-Tag (selektierbar + kopierbar) ─
-                if (item.nbttag.isNotEmpty) ...[
-                  const SizedBox(height: 12),
-                  _Divider(),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _SectionLabel('NBT-TAG'),
-                      GestureDetector(
-                        onTap: () => _copy(context, item.nbttag, 'NBT-Tag'),
-                        child: Row(children: [
-                          Icon(Icons.copy,
-                              size:  14,
-                              color: Colors.white.withOpacity(0.45)),
-                          const SizedBox(width: 4),
-                          Text('Kopieren',
-                              style: TextStyle(
-                                  color:      Colors.white.withOpacity(0.45),
-                                  fontSize:   12,
-                                  fontWeight: FontWeight.w600)),
-                        ]),
+                      // Drag-Handle
+                      Center(
+                        child: Container(
+                          width: 36, height: 4,
+                          decoration: BoxDecoration(
+                            color:        Colors.white.withOpacity(0.20),
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+
+                      // Item-Name + Icon
+                      Row(
+                        children: [
+                          Container(
+                            width: 40, height: 40,
+                            decoration: BoxDecoration(
+                              color:        const Color(0xFF00E676).withOpacity(0.12),
+                              borderRadius: BorderRadius.circular(11),
+                              border:       Border.all(
+                                  color: const Color(0xFF00E676).withOpacity(0.30)),
+                            ),
+                            child: Icon(Icons.inventory_2_outlined,
+                                color: const Color(0xFF00E676).withOpacity(0.80),
+                                size: 20),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              name,
+                              style: const TextStyle(
+                                color:      Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize:   17,
+                                height:     1.2,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color:        Colors.black.withOpacity(0.35),
-                      borderRadius: BorderRadius.circular(12),
-                      border:       Border.all(
-                          color: Colors.white.withOpacity(0.08)),
-                    ),
-                    child: SelectableText(
-                      item.nbttag,
-                      style: const TextStyle(
-                        color:      Color(0xFF9C6FFF),
-                        fontSize:   11,
-                        fontFamily: 'monospace',
-                        height:     1.5,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
 
-                const SizedBox(height: 8),
+                // ── Scrollbarer Inhalt ────────────────────
+                Expanded(
+                  child: ListView(
+                    controller: scrollController,
+                    padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
+                    children: [
+
+                      // ── Details ───────────────────────
+                      _SectionLabel('DETAILS'),
+                      const SizedBox(height: 10),
+                      if (item.material.isNotEmpty)
+                        _InfoRow('Material', item.material),
+                      if (item.cmd > 0)
+                        _InfoRow('CMD', '${item.cmd}'),
+                      if (item.damage > 0)
+                        _InfoRow('Damage', '${item.damage}'),
+                      if (item.shardPrice.isNotEmpty)
+                        _InfoRow('Shard-Preis', item.shardPrice),
+                      if (item.alternativeRaritys.isNotEmpty)
+                        _InfoRow('Seltenheiten', item.alternativeRaritys),
+                      if (item.capturedAt.isNotEmpty)
+                        _InfoRow('Erfasst am', _fmtDate(item.capturedAt)),
+                      if (item.internalname.isNotEmpty)
+                        _InfoRow('Internal Name', item.internalname),
+
+                      // ── Lore ──────────────────────────
+                      if (item.lore.isNotEmpty) ...[
+                        const SizedBox(height: 16),
+                        _Divider(),
+                        const SizedBox(height: 14),
+                        _SectionLabel('LORE'),
+                        const SizedBox(height: 8),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color:        Colors.white.withOpacity(0.04),
+                            borderRadius: BorderRadius.circular(12),
+                            border:       Border.all(
+                                color: Colors.white.withOpacity(0.08)),
+                          ),
+                          child: Text(
+                            item.lore,
+                            style: TextStyle(
+                              color:      Colors.white.withOpacity(0.75),
+                              fontSize:   13,
+                              height:     1.6,
+                              fontFamily: 'monospace',
+                            ),
+                          ),
+                        ),
+                      ],
+
+                      // ── NBT-Tag (einklappbar) ──────────
+                      //
+                      //  Was ist der NBT-Tag?
+                      //  NBT = Named Binary Tag — das Minecraft-Datenformat.
+                      //  Enthält alle Item-Eigenschaften: Verzauberungen,
+                      //  Custom-Name, Lore, Attribute usw.
+                      //  Kann direkt in /give-Befehlen verwendet werden.
+                      //
+                      if (item.nbttag.isNotEmpty) ...[
+                        const SizedBox(height: 16),
+                        _Divider(),
+                        const SizedBox(height: 8),
+
+                        // ── Einklappbarer Header ──────────
+                        GestureDetector(
+                          onTap: () => setState(() => _nbtExpanded = !_nbtExpanded),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10),
+                            child: Row(
+                              children: [
+                                _SectionLabel('NBT-TAG'),
+                                const SizedBox(width: 6),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 6, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color:        Colors.white.withOpacity(0.06),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Text(
+                                    'Minecraft Item-Daten',
+                                    style: TextStyle(
+                                        color:    Colors.white.withOpacity(0.30),
+                                        fontSize: 9),
+                                  ),
+                                ),
+                                const Spacer(),
+                                // Kopieren-Button immer sichtbar
+                                GestureDetector(
+                                  onTap: () => _copy(
+                                      context, item.nbttag, 'NBT-Tag'),
+                                  child: Row(children: [
+                                    Icon(Icons.copy,
+                                        size:  14,
+                                        color: Colors.white.withOpacity(0.45)),
+                                    const SizedBox(width: 4),
+                                    Text('Kopieren',
+                                        style: TextStyle(
+                                            color:      Colors.white.withOpacity(0.45),
+                                            fontSize:   12,
+                                            fontWeight: FontWeight.w600)),
+                                  ]),
+                                ),
+                                const SizedBox(width: 10),
+                                // Auf/Zu-Pfeil
+                                AnimatedRotation(
+                                  turns:    _nbtExpanded ? 0.5 : 0.0,
+                                  duration: const Duration(milliseconds: 200),
+                                  child: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: Colors.white.withOpacity(0.40),
+                                    size:  20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // ── Eingeklappter/Ausgeklappter Inhalt ──
+                        AnimatedCrossFade(
+                          duration:      const Duration(milliseconds: 220),
+                          crossFadeState: _nbtExpanded
+                              ? CrossFadeState.showSecond
+                              : CrossFadeState.showFirst,
+                          // Eingeklappt: kurze Vorschau
+                          firstChild: GestureDetector(
+                            onTap: () => setState(() => _nbtExpanded = true),
+                            child: Container(
+                              width:   double.infinity,
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color:        Colors.black.withOpacity(0.25),
+                                borderRadius: BorderRadius.circular(12),
+                                border:       Border.all(
+                                    color: Colors.white.withOpacity(0.06)),
+                              ),
+                              child: Text(
+                                // Erste 80 Zeichen als Vorschau
+                                item.nbttag.length > 80
+                                    ? '${item.nbttag.substring(0, 80)}…'
+                                    : item.nbttag,
+                                style: TextStyle(
+                                  color:      Colors.white.withOpacity(0.30),
+                                  fontSize:   11,
+                                  fontFamily: 'monospace',
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          // Ausgeklappt: vollständiger NBT-Tag
+                          secondChild: Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color:        Colors.black.withOpacity(0.35),
+                              borderRadius: BorderRadius.circular(12),
+                              border:       Border.all(
+                                  color: Colors.white.withOpacity(0.08)),
+                            ),
+                            child: SelectableText(
+                              item.nbttag,
+                              style: const TextStyle(
+                                color:      Color(0xFF9C6FFF),
+                                fontSize:   11,
+                                fontFamily: 'monospace',
+                                height:     1.5,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
-  /// ISO-8601 → lesbares Datum
   String _fmtDate(String iso) {
     try {
       final dt = DateTime.parse(iso).toLocal();

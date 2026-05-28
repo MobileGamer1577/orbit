@@ -29,7 +29,6 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
   @override
   void initState() {
     super.initState();
-    // Season-Daten laden für den Header
     OpSuchtSyncService.instance.loadSeason();
     OpSuchtSyncService.instance.addListener(_onUpdate);
   }
@@ -97,7 +96,6 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
                         ],
                       ),
                     ),
-                    // Refresh-Button
                     IconButton(
                       onPressed: () =>
                           OpSuchtSyncService.instance.forceRefreshAll(),
@@ -112,7 +110,6 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
                 const SizedBox(height: 8),
 
                 // ── Season Banner ─────────────────────────
-                // Wird erst gezeigt wenn Season-Daten geladen sind
                 if (service.seasonLoaded)
                   _SeasonBanner(season: season),
 
@@ -172,6 +169,9 @@ class _OpSuchtHubScreenState extends State<OpSuchtHubScreen> {
 //    • Fortschrittsbalken
 //    • "Season endet bald"-Badge wenn < 2 Tage
 //    • Puls-Animation wenn < 24h
+//
+//  Fix: Padding 16px horizontal damit Text nicht in die
+//  Abrundung des OrbitGlassCard läuft.
 // ──────────────────────────────────────────────────────────────
 
 class _SeasonBanner extends StatefulWidget {
@@ -226,7 +226,6 @@ class _SeasonBannerState extends State<_SeasonBanner>
         ? const Color(0xFFFF8C00)
         : const Color(0xFF00D4FF);
 
-    // Fortschritts-Berechnung
     final total    = season.seasonEnd.difference(season.seasonStart);
     final elapsed  = DateTime.now().difference(season.seasonStart);
     final progress = (total.inMilliseconds == 0)
@@ -234,8 +233,10 @@ class _SeasonBannerState extends State<_SeasonBanner>
         : (elapsed.inMilliseconds / total.inMilliseconds).clamp(0.0, 1.0);
 
     return Padding(
+      // ✅ Fix: horizontaler Padding damit Text nicht in Abrundung läuft
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: OrbitGlassCard(
+        // ✅ Expliziter Padding innen — genug Abstand zu allen Kanten
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,28 +247,36 @@ class _SeasonBannerState extends State<_SeasonBanner>
               '${season.name} Season',
               style: const TextStyle(
                 color:         Colors.white,
-                fontSize:      18,
+                fontSize:      17,
                 fontWeight:    FontWeight.w900,
-                letterSpacing: -0.3,
+                letterSpacing: -0.2,
               ),
+              // Sicherheitsnetz: kein Overflow
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
             const SizedBox(height: 8),
 
-            // Countdown + Badge
+            // Countdown + Badge in einer Row
             Row(
               children: [
-                ScaleTransition(
-                  scale: _pulseAnim,
-                  child: Text(
-                    _countdownText(),
-                    style: TextStyle(
-                      color:      color,
-                      fontSize:   15,
-                      fontWeight: FontWeight.w800,
+                // ✅ Expanded verhindert dass Text die Badge verdrängt
+                Expanded(
+                  child: ScaleTransition(
+                    scale: _pulseAnim,
+                    child: Text(
+                      _countdownText(),
+                      style: TextStyle(
+                        color:      color,
+                        fontSize:   15,
+                        fontWeight: FontWeight.w800,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 8),
                 if (isEndingSoon)
                   Container(
                     padding: const EdgeInsets.symmetric(

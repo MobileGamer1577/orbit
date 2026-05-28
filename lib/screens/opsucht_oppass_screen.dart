@@ -475,6 +475,10 @@ class _EmptyState extends StatelessWidget {
 //  • Swipe zwischen Bildern möglich
 //  • Hero-Animation vom Thumbnail zum Fullscreen
 //  • Schließen-Button oben rechts
+//
+//  Fix: Bild füllt jetzt den gesamten verfügbaren Bereich aus.
+//  InteractiveViewer mit constrainedAxis=null + SizedBox.expand
+//  damit das Bild nicht auf Originalgröße schrumpft.
 // ══════════════════════════════════════════════════════════════
 
 class _FullscreenGallery extends StatefulWidget {
@@ -509,37 +513,51 @@ class _FullscreenGalleryState extends State<_FullscreenGallery> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
 
-          // ── Bild-Galerie ──────────────────────────
+          // ── Bild-Galerie ──────────────────────────────
           PageView.builder(
             controller:    _ctrl,
             onPageChanged: (i) => setState(() => _current = i),
             itemCount:     widget.paths.length,
-            itemBuilder:   (context, i) => InteractiveViewer(
-              minScale: 0.8,
-              maxScale: 5.0,
-              child:    Center(
-                child: Hero(
-                  tag: 'oppass_img_$i',
-                  child: Image.file(
-                    File(widget.paths[i]),
-                    fit:          BoxFit.contain,
-                    errorBuilder: (_, __, ___) => Icon(
-                      Icons.broken_image_outlined,
-                      color: Colors.white.withOpacity(0.20),
-                      size:  64,
+            itemBuilder:   (context, i) {
+              return InteractiveViewer(
+                // ✅ Fix: Zoom-Bereich großzügiger, kein Clip
+                minScale:          0.5,
+                maxScale:          8.0,
+                clipBehavior:      Clip.none,
+                child: SizedBox(
+                  // ✅ Fix: Bild füllt den gesamten Screen aus
+                  width:  screenSize.width,
+                  height: screenSize.height,
+                  child: Hero(
+                    tag: 'oppass_img_$i',
+                    child: Image.file(
+                      File(widget.paths[i]),
+                      // ✅ BoxFit.contain + Breite = Screen → Bild so groß wie möglich
+                      fit:    BoxFit.contain,
+                      width:  screenSize.width,
+                      height: screenSize.height,
+                      errorBuilder: (_, __, ___) => Center(
+                        child: Icon(
+                          Icons.broken_image_outlined,
+                          color: Colors.white.withOpacity(0.20),
+                          size:  64,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
 
-          // ── Schließen-Button ──────────────────────
+          // ── Schließen-Button ──────────────────────────
           Positioned(
             top:   MediaQuery.of(context).padding.top + 12,
             right: 16,
@@ -559,7 +577,7 @@ class _FullscreenGalleryState extends State<_FullscreenGallery> {
             ),
           ),
 
-          // ── Seitenangabe unten ────────────────────
+          // ── Seitenangabe unten ────────────────────────
           Positioned(
             bottom: MediaQuery.of(context).padding.bottom + 24,
             left:   0,
