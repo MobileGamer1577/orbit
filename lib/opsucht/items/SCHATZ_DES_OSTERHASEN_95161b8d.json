@@ -1,0 +1,13 @@
+{
+  "internalname": "SCHATZ_DES_OSTERHASEN_95161b8d",
+  "displayname": "Schatz des Osterhasen",
+  "material": "DEEPSLATE_EMERALD_ORE",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Signiert vom Osterhasen am 20.04.2025"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#0DAA2C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"S\",underlined:0b},{bold:1b,color:\"#11A72F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"c\",underlined:0b},{bold:1b,color:\"#15A331\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#19A034\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#1E9D37\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"t\",underlined:0b},{bold:1b,color:\"#229939\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"z \",underlined:0b},{bold:1b,color:\"#2A933F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"d\",underlined:0b},{bold:1b,color:\"#2E8F41\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#328C44\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s \",underlined:0b},{bold:1b,color:\"#3B8549\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"O\",underlined:0b},{bold:1b,color:\"#3F824C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b},{bold:1b,color:\"#437F4F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"t\",underlined:0b},{bold:1b,color:\"#477B51\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#4B7854\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#4F7557\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#537159\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"a\",underlined:0b},{bold:1b,color:\"#586E5C\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"s\",underlined:0b},{bold:1b,color:\"#5C6B5F\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#606761\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"n\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:enchantments\":{\"minecraft:fortune\":1},\"minecraft:lore\":[\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert vom \",underlined:0b},{color:\"red\",italic:0b,text:\"Osterhasen \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"20.04.2025\"}],text:\"\"}],\"minecraft:tooltip_display\":{hidden_components:[\"minecraft:enchantments\"]}},count:1,id:\"minecraft:deepslate_emerald_ore\"}",
+  "capturedAt": "2026-05-30T11:22:30.970687900Z"
+}

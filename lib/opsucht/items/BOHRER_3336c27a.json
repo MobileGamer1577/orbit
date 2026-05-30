@@ -1,0 +1,23 @@
+{
+  "internalname": "BOHRER_3336c27a",
+  "displayname": "Bohrer",
+  "material": "NETHERITE_PICKAXE",
+  "cmd": 10136,
+  "damage": 0,
+  "lore": [
+    "",
+    "Mit diesem Werkzeug kannst du",
+    "in der Farmwelt 3x3 abbauen",
+    "",
+    "Item mit Verzauberungssperre",
+    "",
+    "Signiert von OPSUCHT am 01.03.2024",
+    "",
+    "Zustand: ✯✯✩",
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Jackpot"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_data\":{IWCustomItems:{abilities:[{DRILL:1}]}},\"minecraft:custom_model_data\":{floats:[10136.0f]},\"minecraft:custom_name\":{extra:[{bold:1b,color:\"#FF0000\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"B\",underlined:0b},{bold:1b,color:\"#FE1900\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"o\",underlined:0b},{bold:1b,color:\"#FD3200\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"h\",underlined:0b},{bold:1b,color:\"#FD4600\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b},{bold:1b,color:\"#FE5700\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"e\",underlined:0b},{bold:1b,color:\"#FF6700\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"r\",underlined:0b}],text:\"\"},\"minecraft:enchantments\":{\"minecraft:efficiency\":8,\"minecraft:mending\":1,\"minecraft:sharpness\":5,\"minecraft:unbreaking\":4},\"minecraft:lore\":[\"\",{extra:[{bold:1b,color:\"dark_red\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"Mit diesem Werkzeug kannst du\",underlined:0b}],text:\"\"},{extra:[{bold:1b,color:\"gold\",italic:1b,obfuscated:0b,strikethrough:0b,text:\"in der Farmwelt 3x3 abbauen\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"dark_red\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Item mit Verzauberungssperre\",underlined:0b}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Signiert von \",underlined:0b},{color:\"red\",italic:0b,text:\"OPSUCHT \"},{color:\"gray\",italic:0b,text:\"am \"},{color:\"aqua\",italic:0b,text:\"01.03.2024\"}],text:\"\"},\"\",{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Zustand: \",underlined:0b},{color:\"yellow\",italic:0b,text:\"✯✯✩\"}],text:\"\"},{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_red\",italic:0b,text:\"Jackpot\"}],text:\"\"}],\"minecraft:repair_cost\":999999999},count:1,id:\"minecraft:netherite_pickaxe\"}",
+  "capturedAt": "2026-05-29T22:10:15.035629500Z"
+}

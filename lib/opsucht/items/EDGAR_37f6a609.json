@@ -1,0 +1,14 @@
+{
+  "internalname": "EDGAR_37f6a609",
+  "displayname": "Edgar",
+  "material": "PIG_SPAWN_EGG",
+  "cmd": 0,
+  "damage": 0,
+  "lore": [
+    "",
+    "Gewinntyp » Item",
+    "Seltenheit » Episch"
+  ],
+  "nbttag": "{components:{\"minecraft:custom_name\":{extra:[{bold:1b,color:\"light_purple\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Edgar\",underlined:0b}],text:\"\"},\"minecraft:damage\":0,\"minecraft:lore\":[{extra:[{bold:0b,color:\"white\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Gewinntyp \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"aqua\",italic:0b,text:\"Item\"}],text:\"\"},{extra:[{bold:0b,color:\"gray\",italic:0b,obfuscated:0b,strikethrough:0b,text:\"Seltenheit \",underlined:0b},{color:\"dark_gray\",italic:0b,text:\"» \"},{color:\"dark_purple\",italic:0b,text:\"Episch\"}],text:\"\"}]},count:1,id:\"minecraft:pig_spawn_egg\"}",
+  "capturedAt": "2026-05-30T11:18:14.518348Z"
+}
