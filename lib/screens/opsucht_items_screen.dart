@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../services/opsucht_sync_service.dart';
 import '../theme/orbit_theme.dart';
+import '../widgets/minecraft_text.dart';
 import '../widgets/orbit_glass_card.dart';
 
 // ══════════════════════════════════════════════════════════════
@@ -20,6 +21,7 @@ import '../widgets/orbit_glass_card.dart';
 //    • Grid/List-Toggle
 //    • Detail-Sheet bei Tap (inkl. Lore + NBT-Tag einklappbar)
 //    • Filter-Struktur vorbereitet für spätere Erweiterung
+//    • ✅ Minecraft §-Farbcodes in Lore + Name werden farbig gerendert
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -209,7 +211,6 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
   }
 
   Widget _buildBody(OpSuchtSyncService service, List<OpSuchtItem> filtered) {
-    // Laden-Zustand (erstmaliges Laden)
     if (!service.itemsLoaded) {
       return Center(
         child: Column(
@@ -217,23 +218,18 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
           children: [
             const CircularProgressIndicator(color: Color(0xFF00E676)),
             const SizedBox(height: 16),
-            Text(
-              'Items werden geladen…',
-              style: TextStyle(
-                  color: Colors.white.withOpacity(0.55), fontSize: 14),
-            ),
+            Text('Items werden geladen…',
+                style: TextStyle(
+                    color: Colors.white.withOpacity(0.55), fontSize: 14)),
             const SizedBox(height: 6),
-            Text(
-              'Kann beim ersten Start einen Moment dauern.',
-              style: TextStyle(
-                  color: Colors.white.withOpacity(0.30), fontSize: 12),
-            ),
+            Text('Kann beim ersten Start einen Moment dauern.',
+                style: TextStyle(
+                    color: Colors.white.withOpacity(0.30), fontSize: 12)),
           ],
         ),
       );
     }
 
-    // Fehler-Zustand (und kein Cache)
     if (service.error != null && filtered.isEmpty) {
       return _ErrorWidget(
         error:   service.error!,
@@ -241,7 +237,6 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
       );
     }
 
-    // Leer-Zustand
     if (filtered.isEmpty) {
       return Center(
         child: Text(
@@ -252,7 +247,6 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
       );
     }
 
-    // Grid-Ansicht
     if (_gridView) {
       return GridView.builder(
         physics:  const BouncingScrollPhysics(),
@@ -271,7 +265,6 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
       );
     }
 
-    // Listen-Ansicht (Standard)
     return ListView.separated(
       physics:          const BouncingScrollPhysics(),
       padding:          const EdgeInsets.fromLTRB(16, 4, 16, 32),
@@ -287,6 +280,8 @@ class _OpSuchtItemsScreenState extends State<OpSuchtItemsScreen> {
 
 // ──────────────────────────────────────────────────────────────
 //  Item List Tile
+//
+//  ✅ MinecraftText rendert §-Farbcodes im displayname farbig.
 // ──────────────────────────────────────────────────────────────
 
 class _ItemListTile extends StatelessWidget {
@@ -297,7 +292,7 @@ class _ItemListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final name = item.displayname.isNotEmpty
+    final rawName = item.displayname.isNotEmpty
         ? item.displayname
         : item.internalname;
 
@@ -309,7 +304,6 @@ class _ItemListTile extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
           child: Row(
             children: [
-              // Icon
               Container(
                 width: 42, height: 42,
                 decoration: BoxDecoration(
@@ -324,19 +318,18 @@ class _ItemListTile extends StatelessWidget {
               ),
               const SizedBox(width: 12),
 
-              // Name + Material + Badges
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      name,
-                      style: const TextStyle(
-                          color:      Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize:   14),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    // ✅ Minecraft §-Farben im Item-Namen
+                    MinecraftText(
+                      text:         rawName,
+                      fontSize:     14,
+                      fontWeight:   FontWeight.w800,
+                      fallbackColor: Colors.white,
+                      maxLines:     1,
+                      overflow:     TextOverflow.ellipsis,
                     ),
                     if (item.material.isNotEmpty) ...[
                       const SizedBox(height: 2),
@@ -379,6 +372,8 @@ class _ItemListTile extends StatelessWidget {
 
 // ──────────────────────────────────────────────────────────────
 //  Item Grid Card
+//
+//  ✅ MinecraftText für den Item-Namen.
 // ──────────────────────────────────────────────────────────────
 
 class _ItemGridCard extends StatelessWidget {
@@ -389,7 +384,7 @@ class _ItemGridCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final name = item.displayname.isNotEmpty
+    final rawName = item.displayname.isNotEmpty
         ? item.displayname
         : item.internalname;
 
@@ -416,21 +411,20 @@ class _ItemGridCard extends StatelessWidget {
             Icon(Icons.inventory_2_outlined,
                 color: const Color(0xFF00E676).withOpacity(0.60), size: 24),
             const Spacer(),
-            Text(
-              name,
-              style: const TextStyle(
-                  color:      Colors.white,
-                  fontWeight: FontWeight.w800,
-                  fontSize:   13),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            // ✅ Minecraft §-Farben im Grid-Item-Namen
+            MinecraftText(
+              text:         rawName,
+              fontSize:     13,
+              fontWeight:   FontWeight.w800,
+              fallbackColor: Colors.white,
+              maxLines:     2,
+              overflow:     TextOverflow.ellipsis,
             ),
             if (item.material.isNotEmpty)
               Text(
                 item.material,
                 style: TextStyle(
-                    color:    Colors.white.withOpacity(0.40),
-                    fontSize: 11),
+                    color: Colors.white.withOpacity(0.40), fontSize: 11),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -449,6 +443,7 @@ class _ItemGridCard extends StatelessWidget {
 //      kann auf 95% gezogen werden. Kein Overflow mehr.
 //    • Header ist sticky oben (bleibt beim Scrollen stehen)
 //    • NBT-Tag ist einklappbar (ExpansionTile-Style)
+//    • ✅ Lore wird mit Minecraft §-Farben gerendert
 //
 //  Was ist der NBT-Tag?
 //    NBT = Named Binary Tag — das Minecraft-Datenformat für Items.
@@ -482,14 +477,11 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final item   = widget.item;
-    final name   = item.displayname.isNotEmpty
+    final item = widget.item;
+    final rawName = item.displayname.isNotEmpty
         ? item.displayname
         : item.internalname;
 
-    // ✅ Fix: DraggableScrollableSheet verhindert Header-Overflow
-    //    Das Sheet startet bei 60% Höhe, max 95%.
-    //    Der Inhalt scrollt intern — Header bleibt immer sichtbar.
     return DraggableScrollableSheet(
       initialChildSize: 0.6,
       minChildSize:     0.4,
@@ -504,7 +496,7 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
             child: Column(
               children: [
 
-                // ── Sticky Header (scrollt nicht mit) ────
+                // ── Sticky Header ─────────────────────────
                 Container(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                   decoration: BoxDecoration(
@@ -529,7 +521,7 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
                       ),
                       const SizedBox(height: 12),
 
-                      // Item-Name + Icon
+                      // Item-Icon + Name
                       Row(
                         children: [
                           Container(
@@ -546,16 +538,14 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
                           ),
                           const SizedBox(width: 12),
                           Expanded(
-                            child: Text(
-                              name,
-                              style: const TextStyle(
-                                color:      Colors.white,
-                                fontWeight: FontWeight.w900,
-                                fontSize:   17,
-                                height:     1.2,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                            // ✅ Minecraft §-Farben im Sheet-Titel
+                            child: MinecraftText(
+                              text:         rawName,
+                              fontSize:     17,
+                              fontWeight:   FontWeight.w900,
+                              fallbackColor: Colors.white,
+                              maxLines:     2,
+                              overflow:     TextOverflow.ellipsis,
                             ),
                           ),
                         ],
@@ -605,14 +595,21 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
                             border:       Border.all(
                                 color: Colors.white.withOpacity(0.08)),
                           ),
-                          child: Text(
-                            item.lore,
-                            style: TextStyle(
-                              color:      Colors.white.withOpacity(0.75),
-                              fontSize:   13,
-                              height:     1.6,
-                              fontFamily: 'monospace',
-                            ),
+                          // ✅ Jede Lore-Zeile mit §-Farben rendern
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: item.lore.split('\n').map((line) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 2),
+                                child: MinecraftText(
+                                  text:          line.isEmpty ? ' ' : line,
+                                  fontSize:      13,
+                                  fontWeight:    FontWeight.w500,
+                                  // Standard Lore-Farbe: Hellviolett (wie Minecraft)
+                                  fallbackColor: const Color(0xFFBF7FBF),
+                                ),
+                              );
+                            }).toList(),
                           ),
                         ),
                       ],
@@ -632,10 +629,11 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
 
                         // ── Einklappbarer Header ──────────
                         GestureDetector(
-                          onTap: () => setState(() => _nbtExpanded = !_nbtExpanded),
+                          onTap: () =>
+                              setState(() => _nbtExpanded = !_nbtExpanded),
                           child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10),
+                            padding:
+                                const EdgeInsets.symmetric(vertical: 10),
                             child: Row(
                               children: [
                                 _SectionLabel('NBT-TAG'),
@@ -657,8 +655,8 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
                                 const Spacer(),
                                 // Kopieren-Button immer sichtbar
                                 GestureDetector(
-                                  onTap: () => _copy(
-                                      context, item.nbttag, 'NBT-Tag'),
+                                  onTap: () =>
+                                      _copy(context, item.nbttag, 'NBT-Tag'),
                                   child: Row(children: [
                                     Icon(Icons.copy,
                                         size:  14,
@@ -687,15 +685,16 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
                           ),
                         ),
 
-                        // ── Eingeklappter/Ausgeklappter Inhalt ──
+                        // ── Eingeklappt / Ausgeklappt ─────
                         AnimatedCrossFade(
-                          duration:      const Duration(milliseconds: 220),
+                          duration:       const Duration(milliseconds: 220),
                           crossFadeState: _nbtExpanded
                               ? CrossFadeState.showSecond
                               : CrossFadeState.showFirst,
                           // Eingeklappt: kurze Vorschau
                           firstChild: GestureDetector(
-                            onTap: () => setState(() => _nbtExpanded = true),
+                            onTap: () =>
+                                setState(() => _nbtExpanded = true),
                             child: Container(
                               width:   double.infinity,
                               padding: const EdgeInsets.all(12),
@@ -706,7 +705,6 @@ class _ItemDetailSheetState extends State<_ItemDetailSheet> {
                                     color: Colors.white.withOpacity(0.06)),
                               ),
                               child: Text(
-                                // Erste 80 Zeichen als Vorschau
                                 item.nbttag.length > 80
                                     ? '${item.nbttag.substring(0, 80)}…'
                                     : item.nbttag,
@@ -852,14 +850,10 @@ class _ErrorWidget extends StatelessWidget {
         children: [
           const Icon(Icons.cloud_off_rounded, color: Colors.white24, size: 48),
           const SizedBox(height: 16),
-          const Text(
-            'Items konnten nicht geladen werden.',
-            style: TextStyle(
-                color:      Colors.white,
-                fontSize:   16,
-                fontWeight: FontWeight.w700),
-            textAlign: TextAlign.center,
-          ),
+          const Text('Items konnten nicht geladen werden.',
+              style: TextStyle(
+                  color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+              textAlign: TextAlign.center),
           const SizedBox(height: 8),
           Text(error,
               style: TextStyle(

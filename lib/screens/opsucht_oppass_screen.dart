@@ -12,7 +12,11 @@ import '../widgets/orbit_glass_card.dart';
 //
 //  Horizontale Swipe-Galerie für OPPASS Season Bilder.
 //  Bilder kommen aus dem lokalen GitHub-Cache (keine Assets).
-//  Fullscreen-Zoom bei Tap.
+//
+//  Änderungen:
+//    • Kein Vollbild-Screen mehr beim Tap
+//    • Stattdessen: InteractiveViewer inline (Pinch-to-Zoom)
+//    • Keine abgerundeten Ecken auf den Bildern
 //
 //  Bilder-Quelle:
 //    GitHub Raw: lib/opsucht/oppass/1.png ... N.png
@@ -52,18 +56,6 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
 
   void _onUpdate() {
     if (mounted) setState(() {});
-  }
-
-  void _openFullscreen(int index, List<String> paths) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => _FullscreenGallery(
-          paths:        paths,
-          initialIndex: index,
-        ),
-      ),
-    );
   }
 
   @override
@@ -132,6 +124,7 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
               ),
 
               // ── Countdown-Zeile ───────────────────────
+              // Kein OrbitGlassCard drumherum — nur plain Text-Zeile
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 6, 20, 0),
                 child: _CountdownRow(season: season),
@@ -152,13 +145,12 @@ class _OpSuchtOppassScreenState extends State<OpSuchtOppassScreen> {
                         season:  season,
                         syncing: service.syncing,
                       )
-                    // Swipe-Galerie
+                    // ✅ Swipe-Galerie — kein Vollbild, Zoom inline
                     : _Gallery(
                         images:        images,
                         pageCtrl:      _pageCtrl,
                         currentPage:   _currentPage,
                         onPageChanged: (i) => setState(() => _currentPage = i),
-                        onTap:         (i) => _openFullscreen(i, images),
                       ),
               ),
 
@@ -269,9 +261,9 @@ class _CountdownRowState extends State<_CountdownRow>
 // ──────────────────────────────────────────────────────────────
 //  Horizontale Swipe-Galerie
 //
-//  • PageView für links/rechts-Swipe
-//  • Hero-Animation beim Öffnen des Fullscreen-Viewers
-//  • Tap → Fullscreen mit Zoom
+//  ✅ Kein Vollbild mehr beim Tap.
+//  ✅ Keine abgerundeten Ecken.
+//  ✅ InteractiveViewer ermöglicht Pinch-to-Zoom inline.
 // ──────────────────────────────────────────────────────────────
 
 class _Gallery extends StatelessWidget {
@@ -279,14 +271,12 @@ class _Gallery extends StatelessWidget {
   final PageController    pageCtrl;
   final int               currentPage;
   final ValueChanged<int> onPageChanged;
-  final ValueChanged<int> onTap;
 
   const _Gallery({
     required this.images,
     required this.pageCtrl,
     required this.currentPage,
     required this.onPageChanged,
-    required this.onTap,
   });
 
   @override
@@ -296,17 +286,15 @@ class _Gallery extends StatelessWidget {
       onPageChanged: onPageChanged,
       itemCount:     images.length,
       itemBuilder:   (context, i) {
-        return GestureDetector(
-          onTap: () => onTap(i),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Hero(
-              tag: 'oppass_img_$i',
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: _LocalImage(path: images[i]),
-              ),
-            ),
+        return Padding(
+          // Kleiner horizontaler Abstand damit man swipen kann
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: InteractiveViewer(
+            // Pinch-to-Zoom ohne separaten Vollbild-Screen
+            minScale:     0.8,
+            maxScale:     5.0,
+            clipBehavior: Clip.none,
+            child: _LocalImage(path: images[i]),
           ),
         );
       },
@@ -317,6 +305,7 @@ class _Gallery extends StatelessWidget {
 // ──────────────────────────────────────────────────────────────
 //  Lokales Bild-Widget
 //
+//  ✅ Keine abgerundeten Ecken (kein ClipRRect).
 //  Liest gecachte PNG-Datei vom Gerätespeicher.
 //  Fehler → Placeholder-Icon statt Crash.
 // ──────────────────────────────────────────────────────────────
@@ -329,12 +318,10 @@ class _LocalImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.file(
       File(path),
+      // BoxFit.contain zeigt das gesamte Bild ohne Zuschnitt
       fit:          BoxFit.contain,
       errorBuilder: (_, __, ___) => Container(
-        decoration: BoxDecoration(
-          color:        Colors.white.withOpacity(0.04),
-          borderRadius: BorderRadius.circular(20),
-        ),
+        color: Colors.white.withOpacity(0.04),
         child: Icon(
           Icons.broken_image_outlined,
           color: Colors.white.withOpacity(0.20),
@@ -463,144 +450,6 @@ class _EmptyState extends StatelessWidget {
             ],
           ],
         ),
-      ),
-    );
-  }
-}
-
-// ══════════════════════════════════════════════════════════════
-//  FULLSCREEN GALERIE
-//
-//  • Vollbild-Ansicht mit InteractiveViewer (Pinch-to-Zoom)
-//  • Swipe zwischen Bildern möglich
-//  • Hero-Animation vom Thumbnail zum Fullscreen
-//  • Schließen-Button oben rechts
-//
-//  Fix: Bild füllt jetzt den gesamten verfügbaren Bereich aus.
-//  InteractiveViewer mit constrainedAxis=null + SizedBox.expand
-//  damit das Bild nicht auf Originalgröße schrumpft.
-// ══════════════════════════════════════════════════════════════
-
-class _FullscreenGallery extends StatefulWidget {
-  final List<String> paths;
-  final int          initialIndex;
-
-  const _FullscreenGallery({
-    required this.paths,
-    required this.initialIndex,
-  });
-
-  @override
-  State<_FullscreenGallery> createState() => _FullscreenGalleryState();
-}
-
-class _FullscreenGalleryState extends State<_FullscreenGallery> {
-  late int            _current;
-  late PageController _ctrl;
-
-  @override
-  void initState() {
-    super.initState();
-    _current = widget.initialIndex;
-    _ctrl    = PageController(initialPage: widget.initialIndex);
-  }
-
-  @override
-  void dispose() {
-    _ctrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-
-          // ── Bild-Galerie ──────────────────────────────
-          PageView.builder(
-            controller:    _ctrl,
-            onPageChanged: (i) => setState(() => _current = i),
-            itemCount:     widget.paths.length,
-            itemBuilder:   (context, i) {
-              return InteractiveViewer(
-                // ✅ Fix: Zoom-Bereich großzügiger, kein Clip
-                minScale:          0.5,
-                maxScale:          8.0,
-                clipBehavior:      Clip.none,
-                child: SizedBox(
-                  // ✅ Fix: Bild füllt den gesamten Screen aus
-                  width:  screenSize.width,
-                  height: screenSize.height,
-                  child: Hero(
-                    tag: 'oppass_img_$i',
-                    child: Image.file(
-                      File(widget.paths[i]),
-                      // ✅ BoxFit.contain + Breite = Screen → Bild so groß wie möglich
-                      fit:    BoxFit.contain,
-                      width:  screenSize.width,
-                      height: screenSize.height,
-                      errorBuilder: (_, __, ___) => Center(
-                        child: Icon(
-                          Icons.broken_image_outlined,
-                          color: Colors.white.withOpacity(0.20),
-                          size:  64,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-
-          // ── Schließen-Button ──────────────────────────
-          Positioned(
-            top:   MediaQuery.of(context).padding.top + 12,
-            right: 16,
-            child: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color:  Colors.black.withOpacity(0.55),
-                  shape:  BoxShape.circle,
-                  border: Border.all(
-                      color: Colors.white.withOpacity(0.25)),
-                ),
-                child: const Icon(
-                    Icons.close, color: Colors.white, size: 22),
-              ),
-            ),
-          ),
-
-          // ── Seitenangabe unten ────────────────────────
-          Positioned(
-            bottom: MediaQuery.of(context).padding.bottom + 24,
-            left:   0,
-            right:  0,
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 6),
-                decoration: BoxDecoration(
-                  color:        Colors.black.withOpacity(0.50),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  '${_current + 1} / ${widget.paths.length}',
-                  style: const TextStyle(
-                      color:      Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize:   14),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
